@@ -241,11 +241,21 @@ case "$1" in
 	tobuild=$*
 	if [ -z "$tobuild" ] || [ "$tobuild" == "all" ]; then
 		batch_flag="-b"
-		for tgt in "${!fulltargets[@]}"; do
+
+		mapfile -d '' sorted < \
+		    <( printf '%s\n' ${!fulltargets[@]} | sort)
+		pkgcount=${#fulltargets[@]}
+		pkgnum=0
+		for tgt in ${sorted[@]}; do
+			((pkgnum = pkgnum + 1))
                         # Uncomment the echo line if you want to see a
                         # one-package-per-line status of what's building in
                         # /tmp/debug.<PID>.
                         # echo "Target = $tgt" >> /tmp/debug.$$
+			echo "\n"
+			echo "***********"
+			echo "*********** ($pkgnum/$pkgcount) Building $tgt"
+			echo "***********\n"
 			build $tgt
 		done
 	else
