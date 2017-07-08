@@ -243,10 +243,11 @@ case "$1" in
 		batch_flag="-b"
 
 		mapfile -d '' sorted < \
-		    <( printf '%s\n' ${!fulltargets[@]} | sort)
+		    <( printf '%s\n' ${!fulltargets[@]} | sort | \
+		       grep -v kayak-kernel)
 		pkgcount=${#fulltargets[@]}
 		pkgnum=0
-		for tgt in ${sorted[@]}; do
+		for tgt in ${sorted[@]} system/install/kayak-kernel; do
 			((pkgnum = pkgnum + 1))
                         # Uncomment the echo line if you want to see a
                         # one-package-per-line status of what's building in
