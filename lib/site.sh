@@ -1,6 +1,6 @@
 # Package server URL and publisher
 : ${PKGPUBLISHER:=omnios}
-: ${PKGSRVR:=file:///$MYDIR/../tmp.repo/}
+: ${PKGSRVR:=file://$MYDIR/../tmp.repo/}
 
 # To create a on-disk repo in the top level of your checkout
 # and publish there instead of the URI specified above.
