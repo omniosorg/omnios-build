@@ -48,6 +48,7 @@ extract_manifest_name() {
 
 add_manifests() {
     for manifest in `find . -name \*.p5m | cut -c3-`; do
+        [ -f `dirname $manifest`/.disabled ] && continue
         for PKG in `extract_manifest_name $manifest`; do
             add_target $PKG $manifest
         done
@@ -64,6 +65,7 @@ extract_pkgs() {
 
 add_buildscripts() {
     for build in `find . -name build\*.sh | cut -c3-`; do
+        [ -f `dirname $build`/.disabled ] && continue
         for PKG in `extract_pkgs $build`; do
             add_target $PKG $build
         done
