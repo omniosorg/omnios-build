@@ -1,0 +1,3 @@
+<transform file dir link path=.*/share/info -> drop>
+
+license files/COPYING.LIB license=LGPLv2.1

@@ -1,8 +1,0 @@
-
-# Automatic dependency resolution adds a 'require-any' for the two
-# libgmp packages. Remove that and add an explicit dependency on the
-# gcc5 private version.
-
-<transform depend type=require-any -> drop>
-depend fmri=pkg:/developer/gcc5/libgmp-gcc5 type=require
-

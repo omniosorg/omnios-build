@@ -20,6 +20,10 @@ developer/gcc5				5
 developer/gcc5/libgmp-gcc5		6
 developer/gcc5/libmpc-gcc5		1
 developer/gcc5/libmpfr-gcc5		3
+developer/gcc6				6
+developer/gcc6/libgmp-gcc6		6
+developer/gcc6/libmpc-gcc6		1
+developer/gcc6/libmpfr-gcc6		3
 developer/gnu-binutils			2.25
 developer/lexer/flex			2.6
 developer/macro/cpp			0.5.11
@@ -112,6 +116,8 @@ system/library/c++/sunpro		0.5.11
 system/library/dbus			1.11
 system/library/g++-5-runtime		5
 system/library/gcc-5-runtime		5
+system/library/g++-6-runtime		6
+system/library/gcc-6-runtime		6
 system/library/iconv/unicode		0.5.11
 system/library/iconv/utf-8/manual	0.5.11
 system/library/iconv/utf-8		0.5.11

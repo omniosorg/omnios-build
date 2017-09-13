@@ -4,6 +4,7 @@ set name=pkg.summary value="Single meta-package containing required tools to bui
 set name=pkg.description value="Single meta-package containing required tools to build omnios."
 
 depend fmri=developer/gcc5 type=require
+depend fmri=developer/gcc6 type=require
 depend fmri=developer/build/gnu-make type=require
 depend fmri=archiver/gnu-tar type=require
 depend fmri=compatibility/ucb type=require

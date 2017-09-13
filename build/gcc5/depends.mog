@@ -1,0 +1,27 @@
+
+# Replace detected require-any dependencies with specific dependencies on
+# gcc5 packages
+
+# depend fmri=pkg:/system/library/gcc-6-runtime@6.4.0-0.151023
+#        fmri=pkg:/system/library/gcc-5-runtime@5.4.0-0.151023
+#        fmri=pkg:/developer/gcc5@5.4.0-0.151023 type=require-any
+
+<transform depend type=require-any fmri=.*(gcc-\d-runtime|gcc\d@) -> \
+    emit depend type=require fmri=system/library/gcc-$(MAJOR)-runtime>
+<transform depend type=require-any fmri=.*(gcc-\d-runtime|gcc\d@) -> drop>
+
+# depend fmri=pkg:/system/library/g++-5-runtime@5.4.0-0.151023
+#        fmri=pkg:/system/library/g++-6-runtime@6.4.0-0.151023
+#        fmri=pkg:/developer/gcc5@5.4.0-0.151023 type=require-any
+
+<transform depend type=require-any fmri=.*(g\+\+-.-runtime|gcc\d@) -> \
+    emit depend type=require fmri=system/library/g++-$(MAJOR)-runtime>
+<transform depend type=require-any fmri=.*(g\+\+-.-runtime|gcc\d@) -> drop>
+
+# depend fmri=pkg:/library/gmp@6.1.2-0.151023
+#        fmri=pkg:/developer/gcc5/libgmp-gcc5@6.1.2-0.151023 type=require-any
+
+<transform depend type=require-any fmri=.*(libgmp-gcc\d|gmp@) -> \
+    emit depend type=require fmri=developer/gcc$(MAJOR)/libgmp-gcc$(MAJOR)>
+<transform depend type=require-any fmri=.*(libgmp-gcc\d|gmp@) -> drop>
+

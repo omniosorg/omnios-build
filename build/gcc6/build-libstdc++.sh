@@ -29,16 +29,21 @@
 . ../../lib/functions.sh
 . $SRCDIR/common.sh
 
-PROG=libgcc_s
+PROG=libstdc++
 VER=$GCCVER
 VERHUMAN=$VER
-PKG=system/library/gcc-5-runtime
-SUMMARY="gcc $VER runtime"
+PKG=system/library/g++-6-runtime
+SUMMARY="g++ runtime dependencies libstc++/libssp"
 DESC="$SUMMARY"
 
 LOGFILE+=".$PROG"
 
 BUILD_DEPENDS_IPS="$PKGV"
+
+RUN_DEPENDS_IPS="system/library/gcc-$GCCMAJOR-runtime"
+
+# For now, g++-5-runtime carries the legacy versions of the stdc++ library.
+RUN_DEPENDS_IPS+=" system/library/g++-5-runtime"
 
 # This stuff is in its own domain
 PKGPREFIX=""
@@ -47,7 +52,6 @@ PREFIX=$OPT
 
 init
 prep_build
-
 mkdir -p $TMPDIR/$BUILDDIR
 for license in COPYING.RUNTIME COPYING.LIB COPYING3.LIB
 do
@@ -56,11 +60,44 @@ do
 done
 
 mkdir -p $DESTDIR/usr/lib
-cp $OPT/lib/libgcc_s.so.1 $DESTDIR/usr/lib/libgcc_s.so.1.gcc$GCCMAJOR
 mkdir -p $DESTDIR/usr/lib/amd64
-cp $OPT/lib/amd64/libgcc_s.so.1 \
-    $DESTDIR/usr/lib/amd64/libgcc_s.so.1.gcc$GCCMAJOR
 
-make_package runtime.mog depends.mog
+##################################################################
+LIB=libstdc++.so
+LIBVER=6.0.22
+XFORM_ARGS+=" -DSTDCVER=$LIBVER"
+
+# Copy in legacy library versions
+
+# Currently delivered by g++-5-runtime.
+# Once GCC6 is the primary compiler, g++-6-runtime will obsolete g++-5-runtime
+# and incorporate the legacy libraries.
+#for v in 6.0.13 6.0.16 6.0.17 6.0.18; do
+#	if [ -f /usr/lib/$LIB.$v ]; then
+#		cp /usr/lib/$LIB.$v $DESTDIR/usr/lib/$LIB.$v
+#	else
+#		logerr "/usr/lib/libstdc++.so.$v not found"
+#	fi
+#
+#	if [ -f /usr/lib/amd64/$LIB.$v ]; then
+#		cp /usr/lib/amd64/$LIB.$v $DESTDIR/usr/lib/amd64/$LIB.$v
+#	else
+#		logerr "/usr/lib/amd64/libstdc++.so.$v not found"
+#	fi
+#done
+
+# and current version
+cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER \
+    || logerr "Failed to copy $LIBVER"
+cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER \
+    || logerr "Failed to copy $LIBVER (amd64)"
+
+##################################################################
+LIB=libssp.so
+LIBVER=0.0.0
+cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER.gcc$GCCMAJOR
+cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER.gcc$GCCMAJOR
+
+make_package runtime++.mog depends.mog
 clean_up
 

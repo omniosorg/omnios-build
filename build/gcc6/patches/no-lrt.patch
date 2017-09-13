@@ -1,0 +1,11 @@
+--- gcc-5.1.0.orig/libstdc++-v3/configure	Mon Mar 23 12:47:18 2015
++++ gcc-5.1.0/libstdc++-v3/configure	Tue Jun 16 16:47:56 2015
+@@ -19617,7 +19617,7 @@
+         ac_has_nanosleep=yes
+         ;;
+       solaris*)
+-        GLIBCXX_LIBS="$GLIBCXX_LIBS -lrt"
++#        GLIBCXX_LIBS="$GLIBCXX_LIBS -lrt"
+         ac_has_clock_monotonic=yes
+         ac_has_clock_realtime=yes
+         ac_has_nanosleep=yes

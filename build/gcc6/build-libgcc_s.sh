@@ -32,7 +32,7 @@
 PROG=libgcc_s
 VER=$GCCVER
 VERHUMAN=$VER
-PKG=system/library/gcc-5-runtime
+PKG=system/library/gcc-6-runtime
 SUMMARY="gcc $VER runtime"
 DESC="$SUMMARY"
 

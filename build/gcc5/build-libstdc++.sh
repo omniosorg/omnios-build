@@ -38,10 +38,7 @@ DESC="$SUMMARY"
 
 LOGFILE+=".$PROG"
 
-PATH=$OPT/bin:$PATH
-export LD_LIBRARY_PATH=$OPT/lib
-
-BUILD_DEPENDS_IPS="$PKGV gcc44"
+BUILD_DEPENDS_IPS="$PKGV"
 
 DEPENDS_IPS="system/library/gcc-$GCCMAJOR-runtime"
 
@@ -65,14 +62,11 @@ mkdir -p $DESTDIR/usr/lib/amd64
 ##################################################################
 LIB=libstdc++.so
 LIBVER=6.0.21
+XFORM_ARGS+=" -DSTDCVER=$LIBVER"
 
 # Copy in legacy library versions
 
-# from gcc-4.4
-cp /opt/gcc-4.4.4/lib/$LIB.6.0.13 $DESTDIR/usr/lib/$LIB.6.0.13
-cp /opt/gcc-4.4.4/lib/amd64/$LIB.6.0.13 $DESTDIR/usr/lib/amd64/$LIB.6.0.13
-
-for v in 6.0.16 6.0.17 6.0.18; do
+for v in 6.0.13 6.0.16 6.0.17 6.0.18; do
 	if [ -f /usr/lib/$LIB.$v ]; then
 		cp /usr/lib/$LIB.$v $DESTDIR/usr/lib/$LIB.$v
 	else
@@ -92,23 +86,12 @@ cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER \
 cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER \
     || logerr "Failed to copy $LIBVER (amd64)"
 
-# Symlinks
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/$LIB.6
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/$LIB
-
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.6
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB
-
 ##################################################################
 LIB=libssp.so
 LIBVER=0.0.0
-cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/$LIB.0
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/$LIB
-cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.0
-ln -s $LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB
+cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER.gcc$GCCMAJOR
+cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER.gcc$GCCMAJOR
 
-make_package runtime.mog
+make_package runtime++.mog depends.mog
 clean_up
 

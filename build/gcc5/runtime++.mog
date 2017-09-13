@@ -1,0 +1,25 @@
+license COPYING.LIB license=LGPLv2.1
+license COPYING.RUNTIME license="GCC runtime license"
+license COPYING3.LIB license=LGPLv3
+
+<transform link -> default mediator gpp-runtime>
+<transform link -> default mediator-version $(MAJOR)>
+
+# libssp
+
+link path=usr/lib/libssp.so.0.0.0 target=libssp.so.0.0.0.gcc$(MAJOR)
+link path=usr/lib/libssp.so.0 target=libssp.so.0.0.0
+link path=usr/lib/libssp.so target=libssp.so.0.0.0
+
+link path=usr/lib/amd64/libssp.so.0.0.0 target=libssp.so.0.0.0.gcc$(MAJOR)
+link path=usr/lib/amd64/libssp.so.0 target=libssp.so.0.0.0
+link path=usr/lib/amd64/libssp.so target=libssp.so.0.0.0
+
+# libstdc++
+
+link path=usr/lib/libstdc++.so.6 target=libstdc++.so.$(STDCVER)
+link path=usr/lib/libstdc++.so target=libstdc++.so.$(STDCVER)
+
+link path=usr/lib/amd64/libstdc++.so.6 target=libstdc++.so.$(STDCVER)
+link path=usr/lib/amd64/libstdc++.so target=libstdc++.so.$(STDCVER)
+

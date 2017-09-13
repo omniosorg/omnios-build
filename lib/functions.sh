@@ -215,6 +215,7 @@ url_encode() {
 # Set the LANG to C as the assembler will freak out on unicode in headers
 LANG=C
 GCCPATH=/opt/gcc-5
+GCC6PATH=/opt/gcc-6
 # Set the path - This can be overriden/extended in the build script
 PATH="$GCCPATH/bin:/usr/ccs/bin:/usr/bin:/usr/sbin:/usr/gnu/bin:/usr/sfw/bin"
 export LANG GCCPATH PATH
@@ -243,6 +244,9 @@ shift $((OPTIND - 1))
 BasicRequirements(){
     local needed=""
     [[ -x $GCCPATH/bin/gcc ]] || needed+=" developer/gcc5"
+    # Require gcc6 too in order to build the gcc6 packages and to ensure a
+    # consistent set of package dependencies between builds.
+    [[ -x $GCC6PATH/bin/gcc ]] || needed+=" developer/gcc6"
     [[ -x /usr/bin/ar ]] || needed+=" developer/object-file"
     [[ -x /usr/bin/ld ]] || needed+=" developer/linker"
     [[ -f /usr/lib/crt1.o ]] || needed+=" developer/library/lint"
@@ -743,7 +747,9 @@ make_package() {
         $PKGDEPEND resolve -m $P5M_INT3
     ) || logerr "--- Dependency resolution failed"
     logmsg "--- Detected dependencies"
-    logmsg `grep '^depend ' $P5M_INT3.res`
+    grep '^depend ' $P5M_INT3.res | while read line; do
+        logmsg "$line"
+    done
     echo > "$MANUAL_DEPS"
     if [[ -n "$RUN_DEPENDS_IPS" ]]; then
         logmsg "------ Adding manual dependencies"
@@ -796,8 +802,12 @@ make_package() {
             fi
         done
     fi
-    $PKGMOGRIFY "${P5M_INT3}.res" "$MANUAL_DEPS" $FINAL_MOG_FILE | \
+    $PKGMOGRIFY $XFORM_ARGS "${P5M_INT3}.res" "$MANUAL_DEPS" $FINAL_MOG_FILE | \
         $PKGFMT -u > $P5M_FINAL
+    logmsg "--- Final dependencies"
+    grep '^depend ' $P5M_FINAL | while read line; do
+        logmsg "$line"
+    done
     if [[ -z $SKIP_PKGLINT ]] && ( [[ -n $BATCH ]] || ask_to_pkglint ); then
         $PKGLINT -c $TMPDIR/lint-cache -r $PKGSRVR $P5M_FINAL || \
             logerr "----- pkglint failed"

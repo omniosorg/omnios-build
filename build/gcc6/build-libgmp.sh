@@ -29,38 +29,31 @@
 . ../../lib/functions.sh
 . $SRCDIR/common.sh
 
-PROG=libgcc_s
-VER=$GCCVER
-VERHUMAN=$VER
-PKG=system/library/gcc-5-runtime
-SUMMARY="gcc $VER runtime"
-DESC="$SUMMARY"
+PROG=gmp         # App name
+VER=6.1.2        # App version
+VERHUMAN=$VER    # Human-readable version
+PKG=developer/gcc6/libgmp-gcc6
+SUMMARY="$PKGV - private libgmp"
+DESC="$SUMMARY" # Longer description
 
 LOGFILE+=".$PROG"
-
-BUILD_DEPENDS_IPS="$PKGV"
 
 # This stuff is in its own domain
 PKGPREFIX=""
 
+[ "$BUILDARCH" = "both" ] && BUILDARCH=32
 PREFIX=$OPT
+CC=gcc
+CONFIGURE_OPTS="--enable-cxx --disable-assembly"
+CFLAGS="-fexceptions"
+ABI=32
+export ABI
 
+reset_configure_opts
 init
+download_source $PROG $PROG $VER
 prep_build
-
-mkdir -p $TMPDIR/$BUILDDIR
-for license in COPYING.RUNTIME COPYING.LIB COPYING3.LIB
-do
-    logcmd cp $SRCDIR/files/$license $TMPDIR/$BUILDDIR/$license || \
-        logerr "Cannot copy licence: $license"
-done
-
-mkdir -p $DESTDIR/usr/lib
-cp $OPT/lib/libgcc_s.so.1 $DESTDIR/usr/lib/libgcc_s.so.1.gcc$GCCMAJOR
-mkdir -p $DESTDIR/usr/lib/amd64
-cp $OPT/lib/amd64/libgcc_s.so.1 \
-    $DESTDIR/usr/lib/amd64/libgcc_s.so.1.gcc$GCCMAJOR
-
-make_package runtime.mog depends.mog
+build
+make_isa_stub
+make_package libgmp.mog depends.mog
 clean_up
-

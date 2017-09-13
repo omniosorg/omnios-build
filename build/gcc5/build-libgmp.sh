@@ -29,9 +29,6 @@
 . ../../lib/functions.sh
 . $SRCDIR/common.sh
 
-PATH=$OPT/bin:$PATH
-export LD_LIBRARY_PATH=$OPT/lib
-
 PROG=gmp         # App name
 VER=6.1.2        # App version
 VERHUMAN=$VER    # Human-readable version
@@ -44,7 +41,7 @@ LOGFILE+=".$PROG"
 # This stuff is in its own domain
 PKGPREFIX=""
 
-[[ "$BUILDARCH" == "both" ]] && BUILDARCH=32
+[ "$BUILDARCH" = "both" ] && BUILDARCH=32
 PREFIX=$OPT
 CC=gcc
 CONFIGURE_OPTS="--enable-cxx --disable-assembly"
@@ -58,5 +55,5 @@ download_source $PROG $PROG $VER
 prep_build
 build
 make_isa_stub
-make_package libgmp.mog libgmp-final.mog
+make_package libgmp.mog depends.mog
 clean_up

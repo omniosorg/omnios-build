@@ -43,7 +43,7 @@ DEPENDS_IPS="developer/$PKGV/libgmp-$PKGV developer/$PKGV/libmpfr-$PKGV"
 # This stuff is in its own domain
 PKGPREFIX=""
 
-[[ "$BUILDARCH" == "both" ]] && BUILDARCH=32
+[ "$BUILDARCH" = "both" ] && BUILDARCH=32
 PREFIX=$OPT
 CC=gcc
 CONFIGURE_OPTS="--with-gmp=$OPT --with-mpfr=$OPT"
@@ -55,5 +55,5 @@ download_source $PROG $PROG $VER
 prep_build
 build
 make_isa_stub
-make_package libmpc.mog
+make_package libmpc.mog depends.mog
 clean_up

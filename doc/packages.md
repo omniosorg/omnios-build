@@ -16,6 +16,7 @@
 | developer/build/gnu-make		| 4.2.1			| http://git.savannah.gnu.org/cgit/make.git/refs/tags
 | developer/build/libtool		| 2.4.6			| https://www.gnu.org/software/libtool/
 | developer/gcc5			| 5.4			| https://www.gnu.org/software/gcc/releases.html
+| developer/gcc6			| 6.4			| https://www.gnu.org/software/gcc/releases.html
 | developer/java/jdk			| 1.7.0_151-b01		| http://hg.openjdk.java.net/jdk7u/jdk7u/tags
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.18		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags

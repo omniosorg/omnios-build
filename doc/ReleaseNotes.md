@@ -77,11 +77,20 @@ r151024 release repository: https://pkg.omniosce.org/r151024/core
 
 ### Developer Features
 
-* GCC has been upgraded to 5.4.0 and **moved to `/opt/gcc-5`** to reflect the
-  new numbering scheme used from version 5 onwards. The mediated symlinks in
-  /usr/bin are still the best way to invoke GCC but you may need to update
+* GCC 5 has been upgraded to 5.4.0 and **moved to `/opt/gcc-5`** to reflect
+  the new numbering scheme used from version 5 onwards. The mediated symlinks
+  in /usr/bin are still the best way to invoke GCC but you may need to update
   your `$PATH` or scripts if you have previously explicitly used
   `/opt/gcc-5.1.0`.
+
+* GCC version 6 is now available - `pkg install developer/gcc6` - and can be
+  found in `/opt/gcc-6`.
+  Note that GCC 6's default standard for C++ is `-std=gnu++14`. This is a
+  change from GCC 5 which used `-std=gnu++98`. Some software may assume
+  gnu++98 and to compile it with GCC 6 you will need to specify
+  `--std=gnu++98` or update the software. More detail on the changes in GCC 6
+  can be found on
+  [the gcc web site](https://gcc.gnu.org/gcc-6/changes.html).
 
 * Perl has been upgraded to 5.24.2 and the components have been renamed to
   remove the minor version from paths. This means that modules no longer
@@ -106,6 +115,7 @@ r151024 release repository: https://pkg.omniosce.org/r151024/core
 
 * The `calendar` utility has been removed.
 * The `audiovia97` driver has been removed.
+* GCC version 5 will be removed in the next stable version of OmniOS, r151026.
 
 ### Package changes ([+] Added, [-] Removed, [\*] Changed)
 
