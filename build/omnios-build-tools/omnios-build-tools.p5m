@@ -30,6 +30,7 @@ depend fmri=library/idnkit type=require
 depend fmri=library/libffi type=require
 depend fmri=library/libidn type=require
 depend fmri=library/nspr/header-nspr type=require
+depend fmri=library/python-2/coverage-27 type=require
 depend fmri=library/security/openssl type=require
 depend fmri=web/ca-bundle type=require
 depend fmri=library/zlib type=require
