@@ -62,6 +62,10 @@ r151024 release repository: https://pkg.omniosce.org/r151024/core
 
 * `zpool scrub -p` to pause a scrub.
 
+* `ipadm -T dhcp -h <hostname>` to specify a hostname that will be sent to
+  the DHCP server in order to request an association. Existing DHCP addresses
+  can have this added via `ipadm set-addrprop -p reqhost=<hostname> <if>`.
+
 * New `nvmeadm` utility to manage NVMe controllers and namespaces.
 
 * New `zfs program` facility to run lua scripts to perform batch
@@ -76,6 +80,11 @@ r151024 release repository: https://pkg.omniosce.org/r151024/core
   the current year.
 
 ### Developer Features
+
+* `ld` now handles arguments of the form `-Wl,-z,aslr` (two commas).
+  This is a compiler argument which should result in the linker being called
+  with `-z aslr` but some buggy build systems pass it directly to the
+  linker.
 
 * GCC 5 has been upgraded to 5.4.0 and **moved to `/opt/gcc-5`** to reflect
   the new numbering scheme used from version 5 onwards. The mediated symlinks
@@ -103,7 +112,11 @@ r151024 release repository: https://pkg.omniosce.org/r151024/core
   to be selectively disabled. This is most useful for people developing
   OmniOS but can also aid temporary local package updates. Example:
 
-  `omnios# pkg change-facet version-lock.web/wget=False`
+  `omnios# pkg change-facet version-lock.web/wget=false`
+
+  To revert, set the facet to `none`
+
+  `omnios# pkg change-facet version-lock.web/wget=none`
 
 * New `omnios-build-tools` package to easily install everything required to
   build OmniOS userland.
