@@ -1,6 +1,18 @@
 <transform file path=^usr/java/src.zip -> drop>
 license LICENSE license=CDDL
 
+# Replace CA certs files with link to file delivered in web/ca-bundle
+
+<transform file path=usr/java/lib/security/cacerts -> emit \
+    link target=../../../../etc/ssl/java/cacerts \
+    path=usr/java/lib/security/cacerts>
+<transform file path=usr/java/lib/security/cacerts -> drop>
+
+<transform file path=usr/java/jre/lib/security/cacerts -> emit \
+    link target=../../../../../etc/ssl/java/cacerts \
+    path=usr/java/jre/lib/security/cacerts>
+<transform file path=usr/java/jre/lib/security/cacerts -> drop>
+
 # Prevents pkgdepend from freaking out.
 
 <transform file path=usr/java/lib/i386/headless/libmawt.so -> set pkg.depend.bypass-generate .*>

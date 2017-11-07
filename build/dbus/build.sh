@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# CDDL HEADER START
+# {{{ CDDL HEADER START
 #
 # The contents of this file are subject to the terms of the
 # Common Development and Distribution License, Version 1.0 only
@@ -18,8 +18,7 @@
 # fields enclosed by brackets "[]" replaced with your own identifying
 # information: Portions Copyright [yyyy] [name of copyright owner]
 #
-# CDDL HEADER END
-#
+# CDDL HEADER END }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Use is subject to license terms.
@@ -28,7 +27,7 @@
 . ../../lib/functions.sh
 
 PROG=dbus
-VER=1.11.20
+VER=1.12.0
 PKG=dbus ##IGNORE##
 SUMMARY="$PROG - IPC-based message notifications"
 DESC="$SUMMARY"
@@ -37,13 +36,13 @@ DESC="$SUMMARY"
 CFLAGS+="-std=gnu89"
 CPPFLAGS+="-D__EXTENSIONS__ -D_REENTRANT"
 CONFIGURE_OPTS="
-	--with-dbus-daemondir=/usr/lib
-	--bindir=/usr/bin
-	--localstatedir=/var
-	--libexecdir=/usr/libexec
-	--with-x=no
-	--with-dbus-user=root
-	--disable-static
+    --with-dbus-daemondir=/usr/lib
+    --bindir=/usr/bin
+    --localstatedir=/var
+    --libexecdir=/usr/libexec
+    --with-x=no
+    --with-dbus-user=root
+    --disable-static
 "
 
 LIBTOOL_NOSTDLIB=libtool
@@ -85,3 +84,6 @@ DESC="Simple IPC library based on messages - client libraries"
 make_package libdbus.mog
 
 clean_up
+
+# Vim hints
+# vim:ts=4:sw=4:et:fdm=marker

@@ -7,7 +7,7 @@ libtool: link: g++ -m64 -fno-strict-aliasing -m64 -fno-strict-aliasing -o .libs/
 PASS: runtests
 PASS: runtestspp
 ============================================================================
-Testsuite summary for expat 2.2.4
+Testsuite summary for expat 2.2.5
 ============================================================================
 # TOTAL: 2
 # PASS:  2

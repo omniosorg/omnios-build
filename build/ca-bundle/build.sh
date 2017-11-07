@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# CDDL HEADER START
+# {{{ CDDL HEADER START
 #
 # The contents of this file are subject to the terms of the
 # Common Development and Distribution License, Version 1.0 only
@@ -18,94 +18,82 @@
 # fields enclosed by brackets "[]" replaced with your own identifying
 # information: Portions Copyright [yyyy] [name of copyright owner]
 #
-# CDDL HEADER END
-#
+# CDDL HEADER END }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
+# Copyright 2017 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 # Load support functions
 . ../../lib/functions.sh
 
-PROG=cabundle   # App name
-VER=5.11        # App version
-VERHUMAN=$VER   # Human-readable version
-NSSVER=`grep '^VER=' \
-    $SRCDIR/../mozilla-nss-nspr/build.sh | head -1 | cut -d= -f2`
-PKG=web/ca-bundle  # Package name (without prefix)
+PROG=cabundle
+VER=5.11
+VERHUMAN=$VER
+PKG=web/ca-bundle
 SUMMARY="$PROG - Bundle of SSL Root CA certificates"
-DESC="SSL Root CA certificates extracted from mozilla-nss $NSSVER source, plus OmniOSce CA cert."
+
+NSSVER="`grep '^VER=' $SRCDIR/../mozilla-nss-nspr/build.sh \
+    | head -1 | cut -d= -f2`"
+# Make-ca from https://github.com/djlucas/make-ca
+MAKECAVER=0.6
+
+DESC="SSL Root CA certificates extracted from mozilla-nss $NSSVER source"
+DESC+=", plus OmniOSce CA cert."
 
 BUILDARCH=32
 
 build_pem() {
-  logmsg "Extracting certdata.txt from nss-$NSSVER source"
-  # Fetch and extract the NSS source to get certdata.txt
-  BUILDDIR_ORIG=$BUILDDIR
-  BUILDDIR=nss-$NSSVER
-  download_source nss nss $NSSVER
-  BUILDDIR=$BUILDDIR_ORIG
-  logcmd mkdir -p $TMPDIR/$BUILDDIR
-  pushd $TMPDIR/$BUILDDIR > /dev/null
-  logcmd cp $TMPDIR/nss-$NSSVER/nss/lib/ckfw/builtins/certdata.txt . || \
-    logerr "--- Failed to copy certdata.txt file"
-  logcmd $SRCDIR/mk-ca-bundle.pl -n cacert.pem || \
-    logerr "--- Failed to convert certdata.txt into PEM format"
-  logcmd cp $TMPDIR/nss-$NSSVER/nss/COPYING license || \
-    logerr "--- Failed to copy license file"
-  popd > /dev/null
+    BUILDDIR_ORIG=$BUILDDIR
+
+    # Fetch and extract the NSS source to get certdata.txt
+    NSSDIR=nss-$NSSVER
+    BUILDDIR=$NSSDIR download_source nss nss $NSSVER
+
+    # Fetch and extract make-ca
+    MAKECADIR=make-ca-$MAKECAVER
+    BUILDDIR=$MAKECADIR download_source make-ca make-ca $MAKECAVER
+
+    BUILDDIR=$BUILDDIR_ORIG
+
+    logmsg "-- Generating CA certificate files"
+    PATH=/usr/gnu/bin:$PATH logcmd bash $TMPDIR/$MAKECADIR/make-ca \
+        --destdir $DESTDIR \
+        --certdata $TMPDIR/$NSSDIR/nss/lib/ckfw/builtins/certdata.txt \
+        --keytool /usr/bin/keytool \
+        --cafile /etc/ssl/cacert.pem \
+        || logerr "Failed to generate certificates"
+
+    logcmd mkdir -p $TMPDIR/$BUILDDIR
+    logcmd cp $TMPDIR/nss-$NSSVER/nss/COPYING $TMPDIR/$BUILDDIR/license || \
+        logerr "--- Failed to copy license file"
 }
 
-install_pem() {
-  logmsg "Installing PEM file"
-  logcmd mkdir -p $DESTDIR/etc/ssl/certs || \
-    logerr "------ Failed to create ssl directory"
-  logmsg "Placing PEM in package root"
-  logcmd cp $TMPDIR/$BUILDDIR/cacert.pem $DESTDIR/etc/ssl || \
-    logerr "--- Failed to copy file"
-  logmsg "--- Creating symlink from /etc/ssl"
-  pushd $DESTDIR/etc/ssl/certs > /dev/null
-  CNT=`awk '/BEGIN/{n++} END{print n-2}' $DESTDIR/etc/ssl/cacert.pem`
-  logcmd csplit -n3 -f cert $DESTDIR/etc/ssl/cacert.pem '/END CERT/1' "{$CNT}"
-  # first one will be blank
-  for cert in cert*
-  do
-    if [ -s $cert ]; then
-      HASH=`openssl x509 -hash -noout -in $cert`.0
-      openssl x509 -text -in $cert >> $HASH
-    fi
-    rm $cert
-  done
-  popd > /dev/null
-}
-
-# Install the OmniOSce CA cert separately, to be used by pkg(1)
+# Install the OmniOSce CA cert, to be used by pkg(1)
 install_omnios_cacert() {
-  logmsg "Installing OmniOSce CA certs for pkg(1) use"
-  logcmd mkdir -p $DESTDIR/etc/ssl/pkg
+    logmsg "Installing OmniOSce CA certs for pkg(1) use"
 
-  for cert in $SRCDIR/files/*.pem; do
-    local file=$( basename $cert )
-    subj_hash=`openssl x509 -hash -noout -in $cert`.0
+    logcmd mkdir -p $DESTDIR/etc/ssl/pkg
 
-    logmsg "--- Copying $file"
-    logcmd cp -p $cert $DESTDIR/etc/ssl/pkg/ || \
-      logerr "--- Failed to copy CA cert $file"
+    for cert in $SRCDIR/files/*.pem; do
+        local file=`basename $cert`
+        local subj_hash=`openssl x509 -hash -noout -in $cert`
 
-    logcmd chmod 444 $DESTDIR/etc/ssl/pkg/$file || \
-      logerr "--- Failed to chmod CA cert $file"
+        logmsg "--- Copying $file"
+        logcmd cp $cert $DESTDIR/etc/ssl/pkg/ || \
+            logerr "--- Failed to copy CA cert $file"
 
-    pushd $DESTDIR/etc/ssl/pkg/ > /dev/null
-    logcmd ln -s $file $subj_hash || \
-      logerr "--- Failed to create subject hash link for $file"
-    popd > /dev/null
-  done
+        logcmd ln -s $file $DESTDIR/etc/ssl/pkg/$subj_hash.0 || \
+            logerr "--- Failed to create subject hash link for $file"
+    done
 }
 
 init
 prep_build
 build_pem
-install_pem
 install_omnios_cacert
 make_package
 clean_up
+
+# Vim hints
+# vim:ts=4:sw=4:et:fdm=marker

@@ -152,6 +152,7 @@ build32() {
             ENABLE_FULL_DEBUG_SYMBOLS=0 \
             PARALLEL_COMPILE_JOBS=$MJOBS \
             NO_DOCS=1 \
+            ALT_CACERTS_FILE=/etc/ssl/java/cacerts \
             ALT_BOOTDIR=$ALT_BOOTDIR \
             ALT_COMPILER_PATH=$ALT_COMPILER_PATH \
             ALT_CUPS_HEADERS_PATH=$ALT_CUPS_HEADERS_PATH \

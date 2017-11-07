@@ -1,4 +1,10 @@
 license license license="MPL 1.1/GPL 2.0/LGPL 2.1"
-<transform file path=etc/ssl/.*\.pem$ -> set mode 0444>
-<transform file path=etc/ssl/certs/.*\.0$ -> set mode 0444>
-<transform file path=etc/ssl/pkg/.*\.pem$ -> set mode 0444>
+
+# Don't include PKI anchors for now
+<transform dir file link path=etc/pki -> drop>
+
+<transform file path=etc/ssl/email-ca-bundle.crt -> \
+    set path etc/ssl/email-cacert.pem>
+
+<transform file -> set mode 0444>
+

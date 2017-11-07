@@ -113,7 +113,7 @@ system/install/kayak-kernel		1.1
 system/install/kayak			1.1
 system/kvm				1.0
 system/library/c++/sunpro		0.5.11
-system/library/dbus			1.11
+system/library/dbus			1.12
 system/library/g++-5-runtime		5
 system/library/gcc-5-runtime		5
 system/library/g++-6-runtime		6
@@ -123,7 +123,7 @@ system/library/iconv/utf-8/manual	0.5.11
 system/library/iconv/utf-8		0.5.11
 system/library/iconv/xsh4/latin		0.5.11
 system/library/libdbus-glib		0.108
-system/library/libdbus			1.11
+system/library/libdbus			1.12
 system/library/mozilla-nss/header-nss	3.33
 system/library/mozilla-nss		3.33
 system/library/mtsk			0.5.11

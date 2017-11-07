@@ -23,7 +23,7 @@ omnios developer/apptrace 0.5.11-0.151025
 omnios developer/apptrace/ucblib 0.5.11-0.151025
 omnios developer/as 0.5.11-0.151025
 omnios developer/astdev 0.5.11-0.151025
-omnios developer/bmake 20170812-0.151025
+omnios developer/bmake 20171028-0.151025
 omnios developer/build/autoconf 2.69-0.151025
 omnios developer/build/automake 1.15.1-0.151025
 omnios developer/build/gnu-make 4.2.1-0.151025
@@ -71,7 +71,7 @@ omnios developer/sunstudio12.1 12.1-0.151025
 omnios developer/swig 3.0.12-0.151025
 omnios developer/tnf 0.5.11-0.151025
 omnios developer/versioning/git 2.15.0-0.151025
-omnios developer/versioning/mercurial 4.3.3-0.151025
+omnios developer/versioning/mercurial 4.4-0.151025
 omnios developer/versioning/sccs 0.5.11-0.151025
 omnios diagnostic/cpu-counters 0.5.11-0.151025
 omnios diagnostic/diskinfo 0.5.11-0.151025
@@ -248,7 +248,7 @@ omnios incorporation/jeos/omnios-userland 11-0.151025
 omnios install/beadm 0.5.11-0.151025
 omnios library/c++/sigcpp 2.99.9-0.151025
 omnios library/demo/audio-samples 0.5.11-0.151025
-omnios library/expat 2.2.4-0.151025
+omnios library/expat 2.2.5-0.151025
 omnios library/glib2 2.54.0-0.151025
 omnios library/gmp 6.1.2-0.151025
 omnios library/idnkit 2.3-0.151025
@@ -557,7 +557,7 @@ omnios system/kvm 1.0.5.11-0.151025
 omnios system/library 0.5.11-0.151025
 omnios system/library/c++/sunpro 0.5.11-0.151025
 omnios system/library/c-runtime 0.5.11-0.151025
-omnios system/library/dbus 1.11.20-0.151025
+omnios system/library/dbus 1.12.0-0.151025
 omnios system/library/g++-4-runtime r 4.8.1-0.151025
 omnios system/library/g++-5-runtime 5.5.0-0.151025
 omnios system/library/g++-6-runtime 6.4.0-0.151025
@@ -569,7 +569,7 @@ omnios system/library/iconv/utf-8 0.5.11-0.151025
 omnios system/library/iconv/utf-8/manual 0.5.11-0.151025
 omnios system/library/iconv/xsh4/latin 0.5.11-0.151025
 omnios system/library/install/libinstzones 0.5.11-0.151025
-omnios system/library/libdbus 1.11.20-0.151025
+omnios system/library/libdbus 1.12.0-0.151025
 omnios system/library/libdbus-glib 0.108-0.151025
 omnios system/library/libdiskmgt 0.5.11-0.151025
 omnios system/library/libdiskmgt/header-libdiskmgt 0.5.11-0.151025

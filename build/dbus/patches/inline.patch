@@ -1,7 +1,7 @@
-diff -ru dbus-1.11.20~/dbus/dbus-address.h dbus-1.11.20/dbus/dbus-address.h
---- dbus-1.11.20~/dbus/dbus-address.h	2017-09-25 16:00:11.000000000 +0000
-+++ dbus-1.11.20/dbus/dbus-address.h	2017-10-03 19:18:23.609279401 +0000
-@@ -71,12 +71,9 @@
+diff -pruN '--exclude=*.orig' dbus-1.12.0~/dbus/dbus-address.h dbus-1.12.0/dbus/dbus-address.h
+--- dbus-1.12.0~/dbus/dbus-address.h	2017-10-30 13:26:18.000000000 +0000
++++ dbus-1.12.0/dbus/dbus-address.h	2017-11-07 14:16:30.855769173 +0000
+@@ -71,12 +71,9 @@ char* dbus_address_unescape_value (const
   * pointer_to_entries must not be #NULL, but *pointer_to_entries
   * may be #NULL.
   */
@@ -17,10 +17,10 @@ diff -ru dbus-1.11.20~/dbus/dbus-address.h dbus-1.11.20/dbus/dbus-address.h
  
  /** @} */
  
-diff -ru dbus-1.11.20~/dbus/dbus-connection.h dbus-1.11.20/dbus/dbus-connection.h
---- dbus-1.11.20~/dbus/dbus-connection.h	2017-09-25 16:00:11.000000000 +0000
-+++ dbus-1.11.20/dbus/dbus-connection.h	2017-10-03 19:21:01.461972513 +0000
-@@ -461,12 +461,9 @@
+diff -pruN '--exclude=*.orig' dbus-1.12.0~/dbus/dbus-connection.h dbus-1.12.0/dbus/dbus-connection.h
+--- dbus-1.12.0~/dbus/dbus-connection.h	2017-10-30 13:26:18.000000000 +0000
++++ dbus-1.12.0/dbus/dbus-connection.h	2017-11-07 14:16:30.855961013 +0000
+@@ -461,12 +461,9 @@ dbus_bool_t dbus_connection_get_socket
   * pointer_to_connection must not be #NULL, but *pointer_to_connection
   * may be #NULL.
   */
@@ -36,10 +36,10 @@ diff -ru dbus-1.11.20~/dbus/dbus-connection.h dbus-1.11.20/dbus/dbus-connection.
  
  /** @} */
  
-diff -ru dbus-1.11.20~/dbus/dbus-message.h dbus-1.11.20/dbus/dbus-message.h
---- dbus-1.11.20~/dbus/dbus-message.h	2017-09-25 16:00:11.000000000 +0000
-+++ dbus-1.11.20/dbus/dbus-message.h	2017-10-03 19:19:57.553991741 +0000
-@@ -363,12 +363,8 @@
+diff -pruN '--exclude=*.orig' dbus-1.12.0~/dbus/dbus-message.h dbus-1.12.0/dbus/dbus-message.h
+--- dbus-1.12.0~/dbus/dbus-message.h	2017-10-30 13:26:18.000000000 +0000
++++ dbus-1.12.0/dbus/dbus-message.h	2017-11-07 14:16:30.856091867 +0000
+@@ -363,12 +363,8 @@ dbus_bool_t dbus_message_get_allow_inter
   * pointer_to_message must not be #NULL, but *pointer_to_message
   * may be #NULL.
   */
@@ -54,10 +54,10 @@ diff -ru dbus-1.11.20~/dbus/dbus-message.h dbus-1.11.20/dbus/dbus-message.h
  
  /** @} */
  
-diff -ru dbus-1.11.20~/dbus/dbus-pending-call.h dbus-1.11.20/dbus/dbus-pending-call.h
---- dbus-1.11.20~/dbus/dbus-pending-call.h	2017-09-25 16:00:11.000000000 +0000
-+++ dbus-1.11.20/dbus/dbus-pending-call.h	2017-10-03 19:20:25.004700360 +0000
-@@ -84,12 +84,9 @@
+diff -pruN '--exclude=*.orig' dbus-1.12.0~/dbus/dbus-pending-call.h dbus-1.12.0/dbus/dbus-pending-call.h
+--- dbus-1.12.0~/dbus/dbus-pending-call.h	2017-10-30 13:26:18.000000000 +0000
++++ dbus-1.12.0/dbus/dbus-pending-call.h	2017-11-07 14:16:30.856204978 +0000
+@@ -84,12 +84,9 @@ void*       dbus_pending_call_get_data
   * pointer_to_pending_call must not be #NULL, but *pointer_to_pending_call
   * may be #NULL.
   */
@@ -73,10 +73,10 @@ diff -ru dbus-1.11.20~/dbus/dbus-pending-call.h dbus-1.11.20/dbus/dbus-pending-c
  
  /** @} */
  
-diff -ru dbus-1.11.20~/dbus/dbus-server.h dbus-1.11.20/dbus/dbus-server.h
---- dbus-1.11.20~/dbus/dbus-server.h	2017-09-25 16:00:11.000000000 +0000
-+++ dbus-1.11.20/dbus/dbus-server.h	2017-10-03 19:20:40.870000899 +0000
-@@ -112,11 +112,8 @@
+diff -pruN '--exclude=*.orig' dbus-1.12.0~/dbus/dbus-server.h dbus-1.12.0/dbus/dbus-server.h
+--- dbus-1.12.0~/dbus/dbus-server.h	2017-10-30 13:26:18.000000000 +0000
++++ dbus-1.12.0/dbus/dbus-server.h	2017-11-07 14:16:30.856306850 +0000
+@@ -112,11 +112,8 @@ void*       dbus_server_get_data
   * pointer_to_server must not be #NULL, but *pointer_to_server
   * may be #NULL.
   */

@@ -10,7 +10,7 @@
 | compress/zip				| 3.0			| http://www.info-zip.org/Zip.html
 | data/iso-codes			| 3.76			| http://pkg-isocodes.alioth.debian.org/downloads/
 | database/sqlite-3			| 3210000		| https://www.sqlite.org/download.html
-| developer/bmake			| 20170812		| http://www.crufty.net/ftp/pub/sjg/
+| developer/bmake			| 20171028		| http://www.crufty.net/ftp/pub/sjg/
 | developer/build/autoconf		| 2.69			| https://git.savannah.gnu.org/cgit/autoconf.git/refs/tags
 | developer/build/automake		| 1.15.1		| https://git.savannah.gnu.org/cgit/automake.git/refs/tags
 | developer/build/gnu-make		| 4.2.1			| http://git.savannah.gnu.org/cgit/make.git/refs/tags
@@ -23,14 +23,14 @@
 | developer/parser/bison		| 3.0.4			| https://git.savannah.gnu.org/cgit/bison.git/refs/tags
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.15.0		| https://www.kernel.org/pub/software/scm/git
-| developer/versioning/mercurial	| 4.3.3			| https://www.mercurial-scm.org/release/?M=D
+| developer/versioning/mercurial	| 4.4			| https://www.mercurial-scm.org/release/?M=D
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/releases
 | editor/vim				| 8.0.586		| http://ftp.vim.org/pub/vim/unix
 | file/gnu-coreutils			| 8.28			| https://git.savannah.gnu.org/cgit/coreutils.git/refs/tags
 | file/gnu-findutils			| 4.6.0			| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 2.99.9		| https://download.gnome.org/sources/libsigc++/cache.json
 | library/libevent			| 2.1.8			| https://github.com/libevent/libevent/releases | Used solely by tmux
-| library/expat				| 2.2.4			| https://sourceforge.net/projects/expat/files/expat
+| library/expat				| 2.2.5			| https://sourceforge.net/projects/expat/files/expat
 | library/gmp				| 6.1.2			| https://gmplib.org/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
 | library/libidn			| 1.33			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags
@@ -62,7 +62,7 @@
 | shell/pipe-viewer			| 1.6.6			| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.20.00		| https://github.com/tcsh-org/tcsh/releases
 | shell/zsh				| 5.4.2			| https://sourceforge.net/projects/zsh/files/zsh
-| system/library/dbus			| 1.11.20		| https://dbus.freedesktop.org/releases/dbus
+| system/library/dbus			| 1.12.0		| https://dbus.freedesktop.org/releases/dbus
 | system/library/libdbus-glib		| 0.108			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/pcap			| 1.8.1			| http://www.tcpdump.org/#latest-releases
 | system/management/ipmitool		| 1.8.18		| https://sourceforge.net/projects/ipmitool/files/ipmitool
