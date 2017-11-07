@@ -31,7 +31,7 @@ developer/macro/gnu-m4			1.4.18
 developer/parser/bison			3.0
 developer/sunstudio12.1			12.1
 developer/swig				3.0
-developer/versioning/git		2.14
+developer/versioning/git		2.15
 developer/versioning/mercurial		4
 developer/versioning/sccs		0.5.11
 driver/tuntap				1.3

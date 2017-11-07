@@ -2582,7 +2582,7 @@ ok 155 - test_submodule_relative_url: ../ ../foo/submodule ../submodule => ../..
 ok 156 - test_submodule_relative_url: ../ ./foo ../submodule => ../submodule
 ok 157 - test_submodule_relative_url: ../ ./foo/bar ../submodule => ../foo/submodule
 ok 158 - test_submodule_relative_url: ../../../ ../foo/bar ../sub/a/b/c => ../../../../foo/sub/a/b/c
-ok 159 - test_submodule_relative_url: ../ /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/addtest ../repo => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/repo
+ok 159 - test_submodule_relative_url: ../ /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/addtest ../repo => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/repo
 ok 160 - test_submodule_relative_url: ../ foo/bar ../submodule => ../foo/submodule
 ok 161 - test_submodule_relative_url: ../ foo ../submodule => ../submodule
 ok 162 - test_submodule_relative_url: (null) ../foo/bar ../sub/a/b/c => ../foo/sub/a/b/c
@@ -2594,16 +2594,16 @@ ok 167 - test_submodule_relative_url: (null) ../foo ../submodule => ../submodule
 ok 168 - test_submodule_relative_url: (null) ./foo/bar ../submodule => foo/submodule
 ok 169 - test_submodule_relative_url: (null) ./foo ../submodule => submodule
 ok 170 - test_submodule_relative_url: (null) //somewhere else/repo ../subrepo => //somewhere else/subrepo
-ok 171 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/subsuper_update_r ../subsubsuper_update_r => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/subsubsuper_update_r
-ok 172 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/super_update_r2 ../subsuper_update_r => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/subsuper_update_r
-ok 173 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/. ../. => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/.
-ok 174 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils ./. => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/.
-ok 175 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/addtest ../repo => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/repo
-ok 176 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils ./å äö => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/å äö
-ok 177 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/. ../submodule => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/submodule
-ok 178 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/submodule ../submodule => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/submodule
-ok 179 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/home2/../remote ../bundle1 => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/home2/../bundle1
-ok 180 - test_submodule_relative_url: (null) /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/submodule_update_repo ./. => /build/tmp/git-2.14.3/t/trash directory.t0060-path-utils/submodule_update_repo/.
+ok 171 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/subsuper_update_r ../subsubsuper_update_r => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/subsubsuper_update_r
+ok 172 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/super_update_r2 ../subsuper_update_r => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/subsuper_update_r
+ok 173 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/. ../. => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/.
+ok 174 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils ./. => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/.
+ok 175 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/addtest ../repo => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/repo
+ok 176 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils ./å äö => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/å äö
+ok 177 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/. ../submodule => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/submodule
+ok 178 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/submodule ../submodule => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/submodule
+ok 179 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/home2/../remote ../bundle1 => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/home2/../bundle1
+ok 180 - test_submodule_relative_url: (null) /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/submodule_update_repo ./. => /tmp/build_hadfl/git-2.15.0/t/trash directory.t0060-path-utils/submodule_update_repo/.
 ok 181 - test_submodule_relative_url: (null) file:///tmp/repo ../subrepo => file:///tmp/subrepo
 ok 182 - test_submodule_relative_url: (null) foo/bar ../submodule => foo/submodule
 ok 183 - test_submodule_relative_url: (null) foo ../submodule => submodule
@@ -2778,15 +2778,15 @@ ok 8 - eval_gettext: our eval_gettext() fallback can interpolate variables with 
 *** t0202-gettext-perl.sh ***
 # lib-gettext: Found 'is_IS.UTF-8' as an is_IS UTF-8 locale
 # lib-gettext: Found 'is_IS.ISO8859-1' as an is_IS ISO-8859-1 locale
-# run 0: Perl Git::I18N API (perl /build/tmp/git-2.14.3/t/t0202/test.pl)
+# run 0: Perl Git::I18N API (perl /tmp/build_hadfl/git-2.15.0/t/t0202/test.pl)
 1..13
 ok 1 - Testing Git::I18N with NO Perl gettext library
-ok 2 - Git::I18N is located at /build/tmp/git-2.14.3/t/../perl/blib/lib/Git/I18N.pm
+ok 2 - Git::I18N is located at /tmp/build_hadfl/git-2.15.0/t/../perl/blib/lib/Git/I18N.pm
 ok 3 - sanity: Git::I18N has 3 export(s)
 ok 4 - sanity: Git::I18N exports everything by default
-ok 5 - sanity: N__ has a $ prototype
-ok 6 - sanity: __ has a $ prototype
-ok 7 - sanity: __n has a $$$ prototype
+ok 5 - sanity: __n has a $$$ prototype
+ok 6 - sanity: N__ has a $ prototype
+ok 7 - sanity: __ has a $ prototype
 ok 8 - Passing a string through __() in the C locale works
 ok 9 - Get singular string through __n() in C locale
 ok 10 - Get plural string through __n() in C locale
@@ -2827,4 +2827,4 @@ ok 8 - gettext.c: git init UTF-8 -> ISO-8859-1
 1..8
 gmake[2]: *** [Makefile:49: t0204-gettext-reencode-sanity.sh] Error 1
 gmake[1]: *** [Makefile:36: test] Error 2
-gmake: *** [Makefile:2414: test] Error 2
+gmake: *** [Makefile:2439: test] Error 2

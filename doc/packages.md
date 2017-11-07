@@ -22,7 +22,7 @@
 | developer/macro/gnu-m4		| 1.4.18		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
 | developer/parser/bison		| 3.0.4			| https://git.savannah.gnu.org/cgit/bison.git/refs/tags
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.14.3		| https://www.kernel.org/pub/software/scm/git
+| developer/versioning/git		| 2.15.0		| https://www.kernel.org/pub/software/scm/git
 | developer/versioning/mercurial	| 4.3.3			| https://www.mercurial-scm.org/release/?M=D
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/releases
 | editor/vim				| 8.0.586		| http://ftp.vim.org/pub/vim/unix
