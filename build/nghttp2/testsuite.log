@@ -5,7 +5,7 @@ Making check in src
 Making check in includes
 Making all in includes
 ============================================================================
-Testsuite summary for nghttp2 1.27.0
+Testsuite summary for nghttp2 1.28.0
 ============================================================================
 # TOTAL: 0
 # PASS:  0
@@ -21,7 +21,7 @@ Making check in tests
 Making check in testdata
 Making all in testdata
 ============================================================================
-Testsuite summary for nghttp2 1.27.0
+Testsuite summary for nghttp2 1.28.0
 ============================================================================
 # TOTAL: 0
 # PASS:  0

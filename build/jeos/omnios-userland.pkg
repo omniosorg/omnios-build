@@ -48,7 +48,7 @@ library/libtool/libltdl			2.4
 library/libxml2				2.9
 library/libxslt				1.1
 library/ncurses				6
-library/nghttp2				1.27
+library/nghttp2				1.28
 library/nspr/header-nspr		4.17
 library/nspr				4.17
 library/pcre				8.41
