@@ -22,14 +22,14 @@
 #
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2016 Jim Klimov
+# Copyright 2016-2018 Jim Klimov
 # Use is subject to license terms.
 #
 # Load support functions
 . ../../lib/functions.sh
 
 PROG=ccache                   # App name
-VER=3.3.3                     # App version
+VER=3.3.6                     # App version
 PKG=developer/ccache          # Package name (without prefix)
 SUMMARY="ccache - cacher of GCC-compiled files to avoid doing the same job twice"
 DESC="$SUMMARY ($VER)"
