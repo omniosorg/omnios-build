@@ -67,6 +67,7 @@ driver/network/ibdma				0.5.11	require		S
 driver/network/ibp				0.5.11	require		S
 driver/network/igb				0.5.11	require		S
 driver/network/iprb				0.5.11	require		S
+driver/network/iwn				0.5.11	require		S
 driver/network/ixgb				0.5.11	require		S
 driver/network/ixgbe				0.5.11	require		S
 driver/network/mxfe				0.5.11	require		S
