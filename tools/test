@@ -285,7 +285,7 @@ check_entire()
 
 add_targets
 #print_targets
-check_packages_md
+#check_packages_md
 check_userland
 check_entire
 

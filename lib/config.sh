@@ -28,7 +28,7 @@
 #############################################################################
 
 # Default branch
-RELVER=151025
+RELVER=151026
 PVER=0.$RELVER
 
 # Default package publisher
