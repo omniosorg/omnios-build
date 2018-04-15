@@ -31,7 +31,7 @@
 | editor/vim				| 8.0.586		| http://ftp.vim.org/pub/vim/unix
 | file/gnu-coreutils			| 8.29			| https://git.savannah.gnu.org/cgit/coreutils.git/refs/tags
 | file/gnu-findutils			| 4.6.0			| https://ftp.gnu.org/pub/gnu/findutils/
-| library/c++/sigcpp			| 2.99.10		| https://download.gnome.org/sources/libsigc++/cache.json
+| library/c++/sigcpp			| 2.99.10		| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.2.5			| https://sourceforge.net/projects/expat/files/expat
 | library/gmp				| 6.1.2			| https://gmplib.org/
 | library/mpc				| 1.1.0			| http://www.multiprecision.org/mpc/download.html
@@ -45,7 +45,7 @@
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/ncurses			| 6.1.20180331		| http://invisible-mirror.net/archives/ncurses/current/ https://ftp.gnu.org/gnu/ncurses/ | Updated every week
 | library/nghttp2			| 1.31.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.36			| https://ftp.mozilla.org/pub/security/nss/releases/
+| library/nss				| 3.36			| https://ftp.mozilla.org/pub/security/nss/releases/ https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Releases
 | library/nspr				| 4.19			| http://archive.mozilla.org/pub/nspr/releases/
 | library/pcre				| 8.42			| https://ftp.pcre.org/pub/pcre/
 | library/readline			| 7.0			| https://ftp.gnu.org/gnu/readline/
