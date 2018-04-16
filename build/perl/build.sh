@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2017 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 # We need this for the Sun assembler
@@ -35,7 +35,7 @@ export SHELL
 
 case $DEPVER in
     "")
-        DEPVER=5.26.1
+        DEPVER=5.26.2
         logmsg "no version specified, using $DEPVER"
         ;;
 esac
@@ -45,11 +45,15 @@ VER=$DEPVER
 NODOTVER=$(echo $DEPVER| sed -e's/\.//g;')
 SVER=${VER%.*}
 PKG=runtime/perl-$NODOTVER ##IGNORE##
-SUMMARY="Perl $VER Programming Language"
+SUMMARY="Perl $SVER Programming Language"
 DESC="$SUMMARY"
 PREFIX=/usr/perl5/${SVER}
 
 BUILD_DEPENDS_IPS="text/gnu-sed"
+
+TESTSUITE_SED="
+    /ExtUtils::Command/d
+"
 
 #
 # Perl build configuration options that are common to each
@@ -231,21 +235,23 @@ filelist perl.all.bit
 build_mogs
 
 PKG=runtime/perl
-SUMMARY="Perl $VER Programming Language"
+SUMMARY="Perl $SVER Programming Language"
 DESC="$SUMMARY"
 DEPENDS_IPS="system/library/g++-runtime system/library/math system/library"
 make_package $TMPDIR/perl.mog
 
 PKG=runtime/perl/manual
-SUMMARY="Perl $VER Programming Language Docs"
+SUMMARY="Perl $SVER Programming Language Docs"
 DESC="$SUMMARY"
 DEPENDS_IPS="=runtime/perl@${VER},${SUNOSVER}-${PVER} runtime/perl@${VER},${SUNOSVER}-${PVER}"
+HARDLINK_TARGETS="usr/perl5/$SVER/man/man1/perlbug.1"
 make_package $TMPDIR/perl-docs.mog
 
 PKG=runtime/perl-64
-SUMMARY="Perl $VER Programming Language (64-bit)"
+SUMMARY="Perl $SVER Programming Language (64-bit)"
 DESC="$SUMMARY"
 DEPENDS_IPS="=runtime/perl@${VER},${SUNOSVER}-${PVER} runtime/perl@${VER},${SUNOSVER}-${PVER}"
+HARDLINK_TARGETS=
 make_package $TMPDIR/perl-64.mog
 
 clean_up

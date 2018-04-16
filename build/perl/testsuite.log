@@ -8,14 +8,6 @@ ppport.h in dist/Time-HiRes is up-to-date
  
 	Making utilities
 lib/unicore/mktables: Files seem to be ok, not bothering to rebuild.  Add '-w' option to force build
-/build/tmp/perl-5.26.1/cpan/Encode/Byte/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- Byte.bs ../../../lib/auto/Encode/Byte/Byte.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/CN/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- CN.bs ../../../lib/auto/Encode/CN/CN.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/EBCDIC/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- EBCDIC.bs ../../../lib/auto/Encode/EBCDIC/EBCDIC.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/JP/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- JP.bs ../../../lib/auto/Encode/JP/JP.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/KR/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- KR.bs ../../../lib/auto/Encode/KR/KR.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/Symbol/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- Symbol.bs ../../../lib/auto/Encode/Symbol/Symbol.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/TW/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- TW.bs ../../../lib/auto/Encode/TW/TW.bs 644
-/build/tmp/perl-5.26.1/cpan/Encode/Unicode/../../../miniperl "-I../../../lib" -MExtUtils::Command::MM -e 'cp_nonempty' -- Unicode.bs ../../../lib/auto/Encode/Unicode/Unicode.bs 644
 Extracting runtests (with variable substitutions)
 t/base/cond .................................................... ok
 t/base/if ...................................................... ok
@@ -2117,6 +2109,7 @@ dist/Term-Complete/t/Complete .................................. ok
 dist/Term-ReadLine/t/AE ........................................ skipped
 dist/Term-ReadLine/t/AETk ...................................... skipped
 dist/Term-ReadLine/t/ReadLine .................................. ok
+dist/Term-ReadLine/t/ReadLine-STDERR ........................... ok
 dist/Term-ReadLine/t/Tk ........................................ skipped
 dist/Test/t/05_about_verbose ................................... ok
 dist/Test/t/fail ............................................... ok
@@ -2329,6 +2322,7 @@ ext/PerlIO-encoding/t/nolooping ................................ ok
 ext/PerlIO-encoding/t/threads .................................. ok
 ext/PerlIO-scalar/t/scalar ..................................... ok
 ext/PerlIO-scalar/t/scalar_ungetc .............................. ok
+ext/PerlIO-via/t/thread ........................................ ok
 ext/PerlIO-via/t/via ........................................... ok
 ext/Pod-Functions/t/Functions .................................. ok
 ext/Pod-Html/t/anchorify ....................................... ok
@@ -2577,7 +2571,7 @@ lib/vars ....................................................... ok
 lib/vars_carp .................................................. ok
 lib/vmsish ..................................................... ok
 lib/warnings ................................................... ok
-Failed 1 test out of 2451, 99.96% okay.
+Failed 1 test out of 2453, 99.96% okay.
 	../lib/locale.t
 ### Since not all tests were successful, you may want to run some of
 ### them individually and examine any diagnostic messages they produce.
@@ -2592,6 +2586,6 @@ Failed 1 test out of 2451, 99.96% okay.
 ###   export LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH; cd t; ./perl harness
 ### for csh-style shells, like tcsh; or for traditional/modern
 ### Bourne-style shells, like bash, ksh, and zsh, respectively.
-Elapsed: 791 sec
-u=6.27  s=2.49  cu=375.89  cs=16.23  scripts=2451  tests=1241291
+Elapsed: 993 sec
+u=10.13  s=4.29  cu=555.99  cs=41.77  scripts=2453  tests=1241494
 gmake: *** [makefile:822: test] Error 1
