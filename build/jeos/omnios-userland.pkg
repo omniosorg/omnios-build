@@ -139,7 +139,7 @@ system/pkgtree				1
 system/prerequisite/gnu			0.5.11
 system/virtualization/open-vm-tools	10
 terminal/screen				4.6
-terminal/tmux				2.6
+terminal/tmux				2.7
 text/auto_ef				0.5.11
 text/gawk				4.2
 text/gnu-diffutils			3.6
