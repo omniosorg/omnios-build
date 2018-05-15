@@ -1,0 +1,14 @@
+diff -pruN '--exclude=*.orig' nss-3.37~/nss/lib/softoken/pkcs11.c nss-3.37/nss/lib/softoken/pkcs11.c
+--- nss-3.37~/nss/lib/softoken/pkcs11.c	2018-05-04 13:40:51.000000000 +0000
++++ nss-3.37/nss/lib/softoken/pkcs11.c	2018-05-15 15:58:05.267206771 +0000
+@@ -3077,8 +3077,8 @@ nsc_CommonInitialize(CK_VOID_PTR pReserv
+         char buf[200];
+         int major = 0, minor = 0;
+ 
+-        long rv = sysinfo(SI_RELEASE, buf, sizeof(buf));
+-        if (rv > 0 && rv < sizeof(buf)) {
++        long rvtmp = sysinfo(SI_RELEASE, buf, sizeof(buf));
++        if (rvtmp > 0 && rvtmp < sizeof(buf)) {
+             if (2 == sscanf(buf, "%d.%d", &major, &minor)) {
+                 /* Are we on Solaris 10 or greater ? */
+                 if (major > 5 || (5 == major && minor >= 10)) {
