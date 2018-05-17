@@ -341,7 +341,6 @@ set_gccver() {
         PATH="$CCACHE_PATH:$PATH"
     fi
     export GCCVER GCCPATH PATH
-    logmsg "-- New PATH=$PATH"
 }
 
 set_gccver $DEFAULT_GCC_VER

@@ -60,6 +60,8 @@ NSPR_BINS=
 
 NSPR_SAVE="$TMPDIR/nspr-save.$$"
 
+export CC
+
 make_clean() {
     # Assume PWD == top-level with nss & nspr subdirs.
     /bin/rm -rf dist
