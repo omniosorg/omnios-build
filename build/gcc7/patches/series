@@ -11,3 +11,4 @@ no-lrt.patch
 0011-i386-Save-integer-passed-arguments-to-the-stack-to-a.patch
 0012-16-update-cmn_err-format-specifier.patch
 0013-19-cmn_err-b-conversion-should-accept-0-flag.patch
+1000-ld-flags.patch

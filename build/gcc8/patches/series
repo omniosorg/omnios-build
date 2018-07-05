@@ -13,3 +13,4 @@ no-lrt.patch
 libstdc++-aligned_alloc.patch
 1005-use-compare-debug.patch
 0002-compare_tests-Use-nawk-on-OmniOS.patch
+1000-ld-flags.patch

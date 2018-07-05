@@ -1,3 +1,4 @@
 ld_eh_frame_hdr.patch
 patch-libgo_runtime_proc.c
 no-lrt.patch
+ld-flags.patch
