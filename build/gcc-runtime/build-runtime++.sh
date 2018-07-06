@@ -1,28 +1,18 @@
 #!/usr/bin/bash
 #
-# {{{ CDDL HEADER START
+# {{{ CDDL HEADER
 #
-# The contents of this file are subject to the terms of the
-# Common Development and Distribution License, Version 1.0 only
-# (the "License").  You may not use this file except in compliance
-# with the License.
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
 #
-# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
-# or http://www.opensolaris.org/os/licensing.
-# See the License for the specific language governing permissions
-# and limitations under the License.
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+# }}}
 #
-# When distributing Covered Code, include this CDDL HEADER in each
-# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
-# If applicable, add the following below this CDDL HEADER, with the
-# fields enclosed by brackets "[]" replaced with your own identifying
-# information: Portions Copyright [yyyy] [name of copyright owner]
-#
-# CDDL HEADER END }}}
-#
-# Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
-# Use is subject to license terms.
 #
 . ../../lib/functions.sh
 
@@ -30,49 +20,104 @@ PKG=system/library/g++-runtime
 PROG=libstdc++
 VER=8
 VERHUMAN=$VER
-SUMMARY="g++ runtime dependencies libstc++/libssp"
+SUMMARY="GNU C++ compiler runtime dependencies"
 DESC="$SUMMARY"
-
-OPT=/opt/gcc-$VER
 
 init
 prep_build
+shopt -s extglob
 
-mkdir -p $DESTDIR/usr/lib
-mkdir -p $DESTDIR/usr/lib/amd64
+# Abort if any of the following commands fail
+set -o errexit
+pushd $DESTDIR >/dev/null
 
-##################################################################
-LIB=libstdc++.so
-LIBVER=6.0.25
-XFORM_ARGS+=" -DSTDCVER=$LIBVER"
+# To keep all of the logic in one place, links are not created in the .mog
 
-# Copy in legacy library versions
+mkdir -p usr/lib/$ISAPART64
 
-for v in 6.0.13 6.0.16 6.0.17 6.0.18 6.0.21 6.0.22 6.0.24; do
-	if [ -f /usr/lib/$LIB.$v ]; then
-		cp /usr/lib/$LIB.$v $DESTDIR/usr/lib/$LIB.$v
-	else
-		logerr "/usr/lib/$LIB.$v not found"
-	fi
+for v in 5 6 7 8; do
+    logcmd mkdir -p usr/gcc/$v/lib/$ISAPART64
+    for lib in libstdc++ libssp; do
+        # Find the library file in this gcc version
+        full=
+        if [ -d /opt/gcc-$v/lib ]; then
+            for l in /opt/gcc-$v/lib/$lib.so.*; do
+                # There is a libstdc++.so.6.0.xx-gdb.py
+                [[ $l = *.py ]] && continue
+                [ -f $l -a ! -h $l ] && full=$l && break
+            done
+        else
+            for l in /usr/gcc/$v/lib/$lib.so.*; do
+                [[ $l = *.py ]] && continue
+                [ -f $l -a ! -h $l ] && full=$l && break
+            done
+        fi
+        [ -f $full ] || logerr "No $lib lib for gcc-$v"
+        full=`basename $full`                          # libxxxx.so.1.2.3
+        maj=${full/%.+([0-9]).+([0-9])/}               # libxxxx.so.1
 
-	if [ -f /usr/lib/amd64/$LIB.$v ]; then
-		cp /usr/lib/amd64/$LIB.$v $DESTDIR/usr/lib/amd64/$LIB.$v
-	else
-		logerr "/usr/lib/amd64/$LIB.$v not found"
-	fi
+        logmsg "-- GCC $v - $full ($maj)"
+
+        if [ -f /opt/gcc-$v/lib/$full ]; then
+            logcmd cp /opt/gcc-$v/lib/$full usr/gcc/$v/lib/$full
+            logcmd cp /opt/gcc-$v/lib/$ISAPART64/$full \
+                usr/gcc/$v/lib/$ISAPART64/$full
+        else
+            logcmd cp /usr/gcc/$v/lib/$full usr/gcc/$v/lib/$full
+            logcmd cp /usr/gcc/$v/lib/$ISAPART64/$full \
+                usr/gcc/$v/lib/$ISAPART64/$full
+        fi
+
+        # Now sort out the links
+
+        # Link versioned libraries to /usr/lib - latest gcc version will win in
+        # the case that two deliver the same versioned file.
+        logcmd ln -sf ../gcc/$v/lib/$full usr/lib/$full
+        logcmd ln -sf $full usr/lib/$maj
+        logcmd ln -sf ../../gcc/$v/lib/$ISAPART64/$full usr/lib/$ISAPART64/$full
+        logcmd ln -sf $full usr/lib/$ISAPART64/$maj
+
+        logcmd ln -s $full usr/gcc/$v/lib/$maj
+        logcmd ln -s $full usr/gcc/$v/lib/$ISAPART64/$maj
+        logcmd ln -s $maj usr/gcc/$v/lib/$lib.so
+        logcmd ln -s $maj usr/gcc/$v/lib/$ISAPART64/$lib.so
+
+        # And now link in the main .so version for the current gcc
+
+        logcmd ln -sf $maj usr/lib/$lib.so
+        logcmd ln -sf ../gcc/$DEFAULT_GCC_VER/lib/$maj usr/lib/$maj
+        logcmd ln -sf $maj usr/lib/$ISAPART64/$lib.so
+        logcmd ln -sf ../../gcc/$DEFAULT_GCC_VER/lib/$ISAPART64/$maj \
+            usr/lib/$ISAPART64/$maj
+    done
 done
 
-# and current version
-cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER"
-cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER (amd64)"
+# And special-case libssl.so.0.0.0
+lib=libssp.so.0.0.0
+logcmd ln -sf ../gcc/$DEFAULT_GCC_VER/lib/$lib usr/lib/$lib
+logcmd ln -sf ../../gcc/$DEFAULT_GCC_VER/lib/$ISAPART64/$lib \
+    usr/lib/$ISAPART64/$lib
 
-##################################################################
-LIB=libssp.so
-LIBVER=0.0.0
-cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER
-cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER
+# Copy in legacy versions in case old code is linked against them
+mkdir -p usr/gcc/legacy/lib/$ISAPART64
+for lver in `seq 13 25`; do
+    [ -f /usr/lib/libstdc++.so.6.0.$lver ] || continue
+    # Already provided by non-legacy
+    [ -f usr/lib/libstdc++.so.6.0.$lver ] && continue
+    logmsg "-- Installing legacy libstdc++.so.6.0.$lver"
+    logcmd cp /usr/lib/libstdc++.so.6.0.$lver usr/gcc/legacy/lib
+    logcmd cp /usr/lib/$ISAPART64/libstdc++.so.6.0.$lver \
+        usr/gcc/legacy/lib/$ISAPART64
+done
+
+for f in usr/gcc/legacy/lib/lib*; do
+    bf=`basename $f`
+    ln -sf ../gcc/legacy/lib/$bf usr/lib/$bf
+    ln -sf ../../gcc/legacy/lib/$ISAPART64/$bf usr/lib/$ISAPART64/$bf
+done
+
+popd >/dev/null
+set +o errexit
 
 make_package runtime++.mog
 clean_up

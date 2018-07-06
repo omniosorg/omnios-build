@@ -23,54 +23,79 @@ VERHUMAN=$VER
 SUMMARY="GNU fortran runtime dependencies"
 DESC="$SUMMARY"
 
-OPT=/opt/gcc-$VER
-LOPT=/opt/gcc-7
-
 init
 prep_build
+shopt -s extglob
 
-mkdir -p $DESTDIR/usr/lib
-mkdir -p $DESTDIR/usr/lib/amd64
+# Abort if any of the following commands fail
+set -o errexit
+pushd $DESTDIR >/dev/null
 
-##################################################################
-LIB=libgfortran.so
-LIBVER=5.0.0
-XFORM_ARGS+=" -DLIB=$LIB -DLIBVER=$LIBVER"
+# To keep all of the logic in one place, links are not created in the .mog
 
-# Copy in legacy library versions
+mkdir -p usr/lib/$ISAPART64
 
-for v in 3.0.0 4.0.0; do
-    if [ -f /usr/lib/$LIB.$v ]; then
-        cp /usr/lib/$LIB.$v $DESTDIR/usr/lib/$LIB.$v
-    elif [ -f $LOPT/lib/$LIB.$v ]; then
-        cp $LOPT/lib/$LIB.$v $DESTDIR/usr/lib/$LIB.$v
-    else
-        logerr "/usr/lib/$LIB.$v not found"
-    fi
+for v in 5 6 7 8; do
+    logcmd mkdir -p usr/gcc/$v/lib/$ISAPART64
+    for lib in libgfortran libquadmath; do
+        # Find the library file in this gcc version
+        full=
+        if [ -d /opt/gcc-$v/lib ]; then
+            for l in /opt/gcc-$v/lib/$lib.so.*; do
+                [ -f $l -a ! -h $l ] && full=$l && break
+            done
+        else
+            for l in /usr/gcc/$v/lib/$lib.so.*; do
+                [ -f $l -a ! -h $l ] && full=$l && break
+            done
+        fi
+        [ -f $full ] || logerr "No $lib lib for gcc-$v"
+        full=`basename $full`                          # libxxxx.so.1.2.3
+        maj=${full/%.+([0-9]).+([0-9])/}               # libxxxx.so.1
 
-    if [ -f /usr/lib/amd64/$LIB.$v ]; then
-        cp /usr/lib/amd64/$LIB.$v $DESTDIR/usr/lib/amd64/$LIB.$v
-    elif [ -f $LOPT/lib/amd64/$LIB.$v ]; then
-        cp $LOPT/lib/amd64/$LIB.$v $DESTDIR/usr/lib/amd64/$LIB.$v
-    else
-        logerr "/usr/lib/amd64/$LIB.$v not found"
-    fi
+        logmsg "-- GCC $v - $full ($maj)"
+
+        if [ -f /opt/gcc-$v/lib/$full ]; then
+            logcmd cp /opt/gcc-$v/lib/$full usr/gcc/$v/lib/$full
+            logcmd cp /opt/gcc-$v/lib/$ISAPART64/$full \
+                usr/gcc/$v/lib/$ISAPART64/$full
+        else
+            logcmd cp /usr/gcc/$v/lib/$full usr/gcc/$v/lib/$full
+            logcmd cp /usr/gcc/$v/lib/$ISAPART64/$full \
+                usr/gcc/$v/lib/$ISAPART64/$full
+        fi
+
+        # Now sort out the links
+
+        # Link versioned libraries to /usr/lib - latest gcc version will win in
+        # the case that two deliver the same versioned file.
+        logcmd ln -sf ../gcc/$v/lib/$full usr/lib/$full
+        logcmd ln -sf $full usr/lib/$maj
+        logcmd ln -sf ../../gcc/$v/lib/$ISAPART64/$full usr/lib/$ISAPART64/$full
+        logcmd ln -sf $full usr/lib/$ISAPART64/$maj
+
+        logcmd ln -s $full usr/gcc/$v/lib/$maj
+        logcmd ln -s $full usr/gcc/$v/lib/$ISAPART64/$maj
+        logcmd ln -s $maj usr/gcc/$v/lib/$lib.so
+        logcmd ln -s $maj usr/gcc/$v/lib/$ISAPART64/$lib.so
+    done
 done
 
-# and current version
-cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER"
-cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER (amd64)"
+# Unversioned links
+for lib in libgfortran libquadmath; do
+    logcmd ln -sf ../gcc/$DEFAULT_GCC_VER/lib/$lib.so usr/lib/$lib.so
+    logcmd ln -sf ../../gcc/$DEFAULT_GCC_VER/lib/$ISAPART64/$lib.so \
+        usr/lib/amd64/$lib.so
+done
 
-# libquadmath
-LIB=libquadmath.so
-LIBVER=0.0.0
+# And special-case libquadmath.so.0.0.0
+lib=libquadmath.so.0.0.0
+logcmd ln -sf ../gcc/$DEFAULT_GCC_VER/lib/$lib usr/lib/$lib
+logcmd ln -sf ../../gcc/$DEFAULT_GCC_VER/lib/$ISAPART64/$lib \
+    usr/lib/$ISAPART64/$lib
 
-cp $OPT/lib/$LIB.$LIBVER $DESTDIR/usr/lib/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER"
-cp $OPT/lib/amd64/$LIB.$LIBVER $DESTDIR/usr/lib/amd64/$LIB.$LIBVER \
-    || logerr "Failed to copy $LIBVER (amd64)"
+popd >/dev/null
+set +o errexit
 
 make_package runtimef.mog runtimef_post.mog
 clean_up

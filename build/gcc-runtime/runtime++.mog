@@ -1,20 +1,18 @@
+# {{{ CDDL HEADER
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+# }}}
+
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+
 license files/COPYING.LIB license=LGPLv2.1
 license files/COPYING.RUNTIME license="GCC runtime license"
 license files/COPYING3.LIB license=LGPLv3
-
-# libssp
-
-link path=usr/lib/libssp.so.0 target=libssp.so.0.0.0
-link path=usr/lib/libssp.so target=libssp.so.0.0.0
-
-link path=usr/lib/amd64/libssp.so.0 target=libssp.so.0.0.0
-link path=usr/lib/amd64/libssp.so target=libssp.so.0.0.0
-
-# libstdc++
-
-link path=usr/lib/libstdc++.so.6 target=libstdc++.so.$(STDCVER)
-link path=usr/lib/libstdc++.so target=libstdc++.so.$(STDCVER)
-
-link path=usr/lib/amd64/libstdc++.so.6 target=libstdc++.so.$(STDCVER)
-link path=usr/lib/amd64/libstdc++.so target=libstdc++.so.$(STDCVER)
 

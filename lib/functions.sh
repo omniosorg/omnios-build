@@ -994,6 +994,7 @@ make_package() {
         FMRI="${PKG}@${VER},${SUNOSVER}-${PVER}"
     fi
     if [ -n "$DESTDIR" ]; then
+        check_symlinks $DESTDIR
         logmsg "--- Generating package manifest from $DESTDIR"
         logmsg "------ Running: $PKGSEND generate $DESTDIR > $P5M_INT"
         GENERATE_ARGS=
@@ -1702,6 +1703,17 @@ strip_install() {
         logcmd chmod $MODE "$file" || logerr "chmod failed: $file"
     done < <(find . -depth -type f)
     popd > /dev/null
+}
+
+#############################################################################
+# Check for dangling symlinks
+#############################################################################
+
+check_symlinks() {
+    logmsg "Checking for dangling symlinks"
+    for link in `find "$1" -type l`; do
+        readlink -e $link >/dev/null || logerr "Dangling symlink $link"
+    done
 }
 
 #############################################################################
