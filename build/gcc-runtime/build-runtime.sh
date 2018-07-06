@@ -61,7 +61,6 @@ logcmd ln -s $full usr/lib/$ISAPART64/libgcc_s.so
 popd >/dev/null
 set +o errexit
 
-check_symlinks $DESTDIR
 make_package runtime.mog
 clean_up
 

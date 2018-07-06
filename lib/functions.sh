@@ -994,6 +994,7 @@ make_package() {
         FMRI="${PKG}@${VER},${SUNOSVER}-${PVER}"
     fi
     if [ -n "$DESTDIR" ]; then
+        check_symlinks $DESTDIR
         logmsg "--- Generating package manifest from $DESTDIR"
         logmsg "------ Running: $PKGSEND generate $DESTDIR > $P5M_INT"
         GENERATE_ARGS=

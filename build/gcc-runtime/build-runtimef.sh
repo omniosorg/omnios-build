@@ -97,7 +97,6 @@ logcmd ln -sf ../../gcc/$DEFAULT_GCC_VER/lib/$ISAPART64/$lib \
 popd >/dev/null
 set +o errexit
 
-check_symlinks $DESTDIR
 make_package runtimef.mog runtimef_post.mog
 clean_up
 
