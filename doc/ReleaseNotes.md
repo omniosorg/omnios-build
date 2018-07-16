@@ -11,7 +11,7 @@ Weekly release for w/c 16th of July 2018.
 ### Security fixes
 
 * Mercurial updated to fix
-  [CVE-2018-13348](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-13348)
+  * [CVE-2018-13348](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-13348)
 * Curl updated to 7.61.0
   * [CVE-2018-0500](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0500)
 * Bind updated to 9.11.4
