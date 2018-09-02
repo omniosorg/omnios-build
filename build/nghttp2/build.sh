@@ -27,11 +27,13 @@
 . ../../lib/functions.sh
 
 PROG=nghttp2
-VER=1.32.1
+VER=1.33.0
 VERHUMAN=$VER
 PKG=library/nghttp2
 SUMMARY="nghttp2: HTTP/2 C Library"
 DESC="An implementation of the Hypertext Transfer Protocol version 2 in C"
+
+BUILD_DEPENDS_IPS="ooce/developer/cunit"
 
 LDFLAGS="-lm"
 CONFIGURE_OPTS="
@@ -43,6 +45,12 @@ export ZLIB_CFLAGS="-I/usr/include"
 export ZLIB_LIBS="-L/usr/lib"
 export OPENSSL_CFLAGS="-I/usr/include"
 export OPENSSL_LIBS="-L/usr/lib"
+export CUNIT_CFLAGS="-I/opt/ooce/include"
+export CUNIT_LIBS="-L/opt/ooce/lib/amd64 -R/opt/ooce/lib/amd64 -lcunit"
+
+TESTSUITE_SED="
+    /^libtool:/d
+"
 
 init
 download_source $PROG $PROG $VER

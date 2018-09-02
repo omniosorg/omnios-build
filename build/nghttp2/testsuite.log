@@ -5,7 +5,7 @@ Making check in src
 Making check in includes
 Making all in includes
 ============================================================================
-Testsuite summary for nghttp2 1.32.1
+Testsuite summary for nghttp2 1.33.0
 ============================================================================
 # TOTAL: 0
 # PASS:  0
@@ -19,12 +19,13 @@ Making check in examples
 Making check in python
 Making check in tests
 Making check in testdata
-Making all in testdata
+PASS: main
+PASS: failmalloc
 ============================================================================
-Testsuite summary for nghttp2 1.32.1
+Testsuite summary for nghttp2 1.33.0
 ============================================================================
-# TOTAL: 0
-# PASS:  0
+# TOTAL: 2
+# PASS:  2
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0
