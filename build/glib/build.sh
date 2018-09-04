@@ -27,9 +27,9 @@
 . ../../lib/functions.sh
 
 PROG=glib
-VER=2.56.2
+VER=2.58.0
 PKG=library/glib2
-SUMMARY="$PROG - GNOME utility library"
+SUMMARY="GNOME utility library"
 DESC="$SUMMARY"
 
 DEPENDS_IPS="
@@ -47,15 +47,38 @@ CONFIGURE_OPTS="
     --disable-dependency-tracking
 "
 
-TESTSUITE_FILTER='^[A-Z#][A-Z ]'
-
-# With gcc 6, -Werror_format=2 produces errors like:
+# With gcc 6 and above, -Werror_format=2 produces errors like:
 #   error: format not a string literal, arguments not checked
 # Tell configure that this flag doesn't exist for the compiler.
-export cc_cv_CFLAGS__Werror_format_2=no
+CONFIGURE_OPTS+="
+    cc_cv_CFLAGS__Werror_format_2=no
+"
+
+# As of glib 2.58.0, the sys/auxv.h header is spotted and then it is assumed
+# that we have getauxval() and the Linux glibc-specific AT_SECURE; we don't.
+CONFIGURE_OPTS+="
+    ac_cv_header_sys_auxv_h=no
+"
+
+# glib 2.58.0 does not contain a built autotools. This could be deliberate
+# since they are moving to Meson/ninja or it could be fixed in the next
+# release.
+build_autotools() {
+    pushd $TMPDIR/$BUILDDIR > /dev/null
+    [ -x configure ] && return
+    logmsg "-- Running autogen.sh"
+    # The OmniOS `which` command produces output on stdout if the file is
+    # not found. Adjust script accordingly.
+    logcmd sed -i '/^GTKDOCIZE=/s/=.*/=/' autogen.sh
+    NOCONFIGURE=1 logcmd ./autogen.sh || logerr "Failed to run autogen.sh"
+    popd > /dev/null
+}
+
+TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 
 init
 download_source $PROG $PROG $VER
+build_autotools
 patch_source
 run_autoreconf
 prep_build

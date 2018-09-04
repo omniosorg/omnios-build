@@ -41,6 +41,11 @@ CONFIGURE_OPTS="
     --enable-ipv4-pktinfo
 "
 
+# With the move of inet_aton and friends from libnsl to libc, configure
+# no longer detects that -lnsl is required; however it is still required for
+# gethostbyaddr() amongst others.
+CONFIGURE_OPTS+=" ac_cv_search_inet_aton=-lnsl "
+
 pre_package() {
     # Make empty lease files. They get preserve=true in local.mog.
     logcmd mkdir -p $DESTDIR/var/db || logerr "mkdir of $DESTDIR/var/db failed"

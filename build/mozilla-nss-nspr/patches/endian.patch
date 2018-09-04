@@ -1,6 +1,7 @@
---- nss-3.33~/nss/lib/freebl/verified/kremlib.h	2017-09-20 06:47:27.000000000 +0000
-+++ nss-3.33/nss/lib/freebl/verified/kremlib.h	2017-09-20 13:38:53.908505774 +0000
-@@ -205,6 +205,7 @@
+diff -wpruN '--exclude=*.orig' a~/nss/lib/freebl/verified/kremlib.h a/nss/lib/freebl/verified/kremlib.h
+--- a~/nss/lib/freebl/verified/kremlib.h	1970-01-01 00:00:00
++++ a/nss/lib/freebl/verified/kremlib.h	1970-01-01 00:00:00
+@@ -205,6 +205,7 @@ typedef const char *Prims_string;
  
  /* ... for Solaris */
  #elif defined(__sun__)

@@ -33,9 +33,21 @@ From GCC documentation:
 	supports mixing legacy codes that run with a 4-byte aligned stack with
 	modern codes that keep a 16-byte stack for SSE compatibility.
 
---- nss-3.33~/nss/lib/freebl/rijndael.c	2017-09-20 06:47:27.000000000 +0000
-+++ nss-3.33/nss/lib/freebl/rijndael.c	2017-10-25 09:34:34.628062306 +0000
-@@ -968,6 +968,7 @@
+diff -wpruN '--exclude=*.orig' a~/nss/lib/freebl/gcm.c a/nss/lib/freebl/gcm.c
+--- a~/nss/lib/freebl/gcm.c	1970-01-01 00:00:00
++++ a/nss/lib/freebl/gcm.c	1970-01-01 00:00:00
+@@ -220,6 +220,7 @@ bmul32(uint32_t x, uint32_t y, uint32_t
+     *r_low = (uint32_t)z;
+ }
+ 
++__attribute__((force_align_arg_pointer))
+ SECStatus
+ gcm_HashMult_sftw32(gcmHashContext *ghash, const unsigned char *buf,
+                     unsigned int count)
+diff -wpruN '--exclude=*.orig' a~/nss/lib/freebl/rijndael.c a/nss/lib/freebl/rijndael.c
+--- a~/nss/lib/freebl/rijndael.c	1970-01-01 00:00:00
++++ a/nss/lib/freebl/rijndael.c	1970-01-01 00:00:00
+@@ -760,6 +760,7 @@ rijndael_decryptECB(AESContext *cx, unsi
      return SECSuccess;
  }
  
@@ -43,13 +55,3 @@ From GCC documentation:
  static SECStatus
  rijndael_decryptCBC(AESContext *cx, unsigned char *output,
                      unsigned int *outputLen, unsigned int maxOutputLen,
---- nss-3.33~/nss/lib/freebl/gcm.c	2017-09-20 06:47:27.000000000 +0000
-+++ nss-3.33/nss/lib/freebl/gcm.c	2017-10-25 09:34:34.628062306 +0000
-@@ -283,6 +283,7 @@
- }
- #endif /* HAVE_INT128_SUPPORT */
- 
-+__attribute__((force_align_arg_pointer))
- SECStatus
- gcm_HashMult_hw(gcmHashContext *ghash, const unsigned char *buf,
-                 unsigned int count)

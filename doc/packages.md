@@ -45,8 +45,8 @@
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/ncurses			| 6.1.20180818		| http://invisible-mirror.net/archives/ncurses/current/ https://ftp.gnu.org/gnu/ncurses/ | Updated every week
 | library/nghttp2			| 1.33.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.38			| https://ftp.mozilla.org/pub/security/nss/releases/ https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Releases
-| library/nspr				| 4.19			| http://archive.mozilla.org/pub/nspr/releases/
+| library/nss				| 3.39			| https://ftp.mozilla.org/pub/security/nss/releases/ https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Releases
+| library/nspr				| 4.20			| http://archive.mozilla.org/pub/nspr/releases/
 | library/pcre				| 8.42			| https://ftp.pcre.org/pub/pcre/
 | library/readline			| 7.0			| https://ftp.gnu.org/gnu/readline/
 | library/security/openssl-1.0		| 1.0.2p		| https://www.openssl.org/source/
@@ -91,7 +91,7 @@
 | text/less				| 530			| https://ftp.gnu.org/gnu/less/
 | web/curl				| 7.61.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.19.5		| https://git.savannah.gnu.org/cgit/wget.git/refs/tags
-| library/glib2				| 2.56.2		| https://download.gnome.org/sources/glib/cache.json https://developer.gnome.org/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.58.0		| https://download.gnome.org/sources/glib/cache.json https://developer.gnome.org/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.31.1		| https://ftp.gnu.org/gnu/binutils
 | media/cdrtools			| 3.01			| https://sourceforge.net/projects/cdrtools/files
 | system/virtualization/open-vm-tools	| 10.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/

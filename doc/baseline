@@ -231,7 +231,7 @@ omnios driver/storage/ses
 omnios driver/storage/si3124
 omnios driver/storage/skd
 omnios driver/storage/smp
-omnios driver/storage/sv
+omnios driver/storage/sv o
 omnios driver/storage/vioblk
 omnios driver/tuntap
 omnios driver/usb
@@ -278,6 +278,7 @@ omnios library/python-2/asn1crypto-27
 omnios library/python-2/cffi-27
 omnios library/python-2/cheroot-27
 omnios library/python-2/cherrypy-27
+omnios library/python-2/contextlib2-27
 omnios library/python-2/coverage-27
 omnios library/python-2/cryptography-27
 omnios library/python-2/enum-27
@@ -310,10 +311,12 @@ omnios library/python-2/simplejson-27
 omnios library/python-2/six-27
 omnios library/python-2/tempora-27
 omnios library/python-2/typing-27 o
+omnios library/python-2/zc.lockfile-27
 omnios library/python-3/asn1crypto-35
 omnios library/python-3/cffi-35
 omnios library/python-3/cheroot-35
 omnios library/python-3/cherrypy-35
+omnios library/python-3/contextlib2-35
 omnios library/python-3/coverage-35
 omnios library/python-3/cryptography-35
 omnios library/python-3/functools_lru_cache-35
@@ -336,6 +339,7 @@ omnios library/python-3/setuptools-35
 omnios library/python-3/simplejson-35
 omnios library/python-3/six-35
 omnios library/python-3/tempora-35
+omnios library/python-3/zc.lockfile-35
 omnios library/readline
 omnios library/security/openssl
 omnios library/security/tcp-wrapper
@@ -519,7 +523,7 @@ omnios service/resource-pools
 omnios service/resource-pools/poold
 omnios service/security/gss
 omnios service/security/kerberos-5
-omnios service/storage/avs/cache-management
+omnios service/storage/avs/cache-management o
 omnios service/storage/fibre-channel/fc-fabric
 omnios service/storage/isns
 omnios service/storage/media-volume-manager
@@ -535,9 +539,9 @@ omnios source/demo/system
 omnios source/network/pppdump o
 omnios source/security/tcp-wrapper o
 omnios source/system/grub
-omnios storage/avs
-omnios storage/avs/point-in-time-copy
-omnios storage/avs/remote-mirror
+omnios storage/avs o
+omnios storage/avs/point-in-time-copy o
+omnios storage/avs/remote-mirror o
 omnios storage/metassist o
 omnios storage/mpathadm
 omnios storage/stmf

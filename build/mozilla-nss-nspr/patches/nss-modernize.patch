@@ -1,7 +1,7 @@
-diff -ur pristine/nspr/configure nss-3.16.1/nspr/configure
---- pristine/nspr/configure	Thu May  1 18:27:29 2014
-+++ nss-3.16.1/nspr/configure	Thu May 22 20:57:50 2014
-@@ -7627,7 +7627,7 @@
+diff -wpruN '--exclude=*.orig' a~/nspr/configure a/nspr/configure
+--- a~/nspr/configure	1970-01-01 00:00:00
++++ a/nspr/configure	1970-01-01 00:00:00
+@@ -7665,7 +7665,7 @@ fi
      # be linked against -lrt (or -lposix4) so add it to OS_LIBS
      _rev=`uname -r`
      _librt=`echo $_rev 5.6 | awk '{ if ($1 > $2) print "-lrt"; else print "-lposix4" }'`
@@ -10,10 +10,10 @@ diff -ur pristine/nspr/configure nss-3.16.1/nspr/configure
      ;;
  
  *-sco-sysv5*)
-diff -ur pristine/nss/coreconf/SunOS5.mk nss-3.16.1/nss/coreconf/SunOS5.mk
---- pristine/nss/coreconf/SunOS5.mk	Fri May  2 03:27:18 2014
-+++ nss-3.16.1/nss/coreconf/SunOS5.mk	Thu May 22 20:54:20 2014
-@@ -141,4 +141,4 @@
+diff -wpruN '--exclude=*.orig' a~/nss/coreconf/SunOS5.mk a/nss/coreconf/SunOS5.mk
+--- a~/nss/coreconf/SunOS5.mk	1970-01-01 00:00:00
++++ a/nss/coreconf/SunOS5.mk	1970-01-01 00:00:00
+@@ -141,4 +141,4 @@ else
  RPATH = -R '$$ORIGIN'
  endif
  

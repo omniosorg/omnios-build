@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -14628,9 +14628,9 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+@@ -14499,9 +14499,9 @@ $as_echo "$lt_cv_irix_exported_symbol" >
        no_undefined_flag=' -z defs'
        if test yes = "$GCC"; then
  	wlarc='$wl'
@@ -16,7 +16,7 @@ diff -wpruN '--exclude=*.orig' a~/configure a/configure
 diff -wpruN '--exclude=*.orig' a~/m4macros/libtool.m4 a/m4macros/libtool.m4
 --- a~/m4macros/libtool.m4	1970-01-01 00:00:00
 +++ a/m4macros/libtool.m4	1970-01-01 00:00:00
-@@ -5901,9 +5901,9 @@ _LT_EOF
+@@ -5898,9 +5898,9 @@ _LT_EOF
        _LT_TAGVAR(no_undefined_flag, $1)=' -z defs'
        if test yes = "$GCC"; then
  	wlarc='$wl'
