@@ -127,8 +127,9 @@ configure64() {
     # Borrowed from Joyent's build.sh within the source
     # so we can find ctfconvert during 'make install'
     CTFBINDIR="${PROTO_AREA}-nd/opt/onbld/bin/i386"
+    CTFCONVERT="$CTFBINDIR/ctfconvert"
     PATH+=":$CTFBINDIR"
-    export CTFBINDIR PATH
+    export CTFBINDIR CTFCONVERT PATH
 }
 
 make_prog() {
