@@ -99,5 +99,7 @@ $SUDO ./sudo-bits.sh $KAYAK_CLOBBER $TMPDIR/$BUILDDIR \
 make_package kayak-kernel.mog
 clean_up
 
+exit 0
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

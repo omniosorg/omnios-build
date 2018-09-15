@@ -68,5 +68,7 @@ make_package
 clean_up
 logcmd rm -f $SRCDIR/$PROG
 
+exit 0
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

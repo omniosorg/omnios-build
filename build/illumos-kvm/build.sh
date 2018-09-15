@@ -154,5 +154,7 @@ SUMMARY="illumos KVM utilities ($PROG ${KVM_CMD_COMMIT:0:10})"
 make_package kvm-cmd.mog
 clean_up
 
+exit 0
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

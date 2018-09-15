@@ -101,5 +101,7 @@ gnu_links
 make_package
 clean_up
 
+exit 0
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker
