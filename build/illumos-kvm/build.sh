@@ -127,8 +127,9 @@ configure64() {
     # Borrowed from Joyent's build.sh within the source
     # so we can find ctfconvert during 'make install'
     CTFBINDIR="${PROTO_AREA}-nd/opt/onbld/bin/i386"
+    CTFCONVERT="$CTFBINDIR/ctfconvert"
     PATH+=":$CTFBINDIR"
-    export CTFBINDIR PATH
+    export CTFBINDIR CTFCONVERT PATH
 }
 
 make_prog() {
@@ -152,6 +153,8 @@ build
 SUMMARY="illumos KVM utilities ($PROG ${KVM_CMD_COMMIT:0:10})"
 make_package kvm-cmd.mog
 clean_up
+
+exit 0
 
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

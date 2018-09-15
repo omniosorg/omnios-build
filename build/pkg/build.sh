@@ -112,5 +112,7 @@ if [ -z "$BATCH" -a -z "$SKIP_PKG_DIFF" ]; then
     done
 fi
 
+exit 0
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker
