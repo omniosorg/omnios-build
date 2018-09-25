@@ -129,4 +129,4 @@
 | library/python-3/six-35		| 1.11.0		| https://pypi.org/project/six
 | library/python-3/tempora-35		| 1.13			| https://pypi.org/project/tempora
 | library/python-3/zc.lockfile-35	| 1.3.0			| https://pypi.org/project/zc.lockfile
-
+| library/libpciaccess			| 0.14			| https://xorg.freedesktop.org/archive/individual/lib
