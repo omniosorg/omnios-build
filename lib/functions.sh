@@ -1084,6 +1084,11 @@ make_package() {
     # Package metadata
     logmsg "--- Generating package metadata"
     [ -z "$VERHUMAN" ] && VERHUMAN="$VER"
+    if [ "$OVERRIDE_SOURCE_URL" = "none" ]; then
+        _ARC_SOURCE=
+    elif [ -n "$OVERRIDE_SOURCE_URL" ]; then
+        _ARC_SOURCE="$OVERRIDE_SOURCE_URL"
+    fi
     (
         pkgmeta pkg.fmri            "$FMRI"
         pkgmeta pkg.summary         "$SUMMARY"
