@@ -1,3 +1,5 @@
 CVE-2018-13348.patch
 rewrite_pathlen.patch
 out_of_bounds.patch
+subrepo.6c10eba6b9cd.patch
+subrepo.83377b4b4ae0.patch

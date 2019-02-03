@@ -1,0 +1,26 @@
+
+# HG changeset patch
+# User Yuya Nishihara <yuya@tcha.org>
+# Date 1546953576 -32400
+# Node ID 83377b4b4ae0e9a6b8e579f7b0a693b8cf5c3b10
+# Parent  6c10eba6b9cddab020de49fd4fabcb2cadcd85d0
+subrepo: reject potentially unsafe subrepo paths (BC) (SEC)
+
+In addition to the previous patch, this prohibits '~', '$nonexistent', etc.
+for any subrepo types. I think this is safer, and real-world subrepos wouldn't
+use such (local) paths.
+
+diff -r 6c10eba6b9cd -r 83377b4b4ae0 mercurial/subrepo.py
+--- a/mercurial/subrepo.py	Tue Jan 08 22:07:45 2019 +0900
++++ b/mercurial/subrepo.py	Tue Jan 08 22:19:36 2019 +0900
+@@ -115,6 +115,10 @@
+                 vfs.unlink(vfs.reljoin(dirname, f))
+ 
+ def _auditsubrepopath(repo, path):
++    # sanity check for potentially unsafe paths such as '~' and '$FOO'
++    if path.startswith('~') or '$' in path or util.expandpath(path) != path:
++        raise error.Abort(_('subrepo path contains illegal component: %s')
++                          % path)
+     # auditor doesn't check if the path itself is a symlink
+     pathutil.pathauditor(repo.root)(path)
+     if repo.wvfs.islink(path):
