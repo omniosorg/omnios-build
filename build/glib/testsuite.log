@@ -1,245 +1,246 @@
 [0/1] Running all tests.
-  1/237 glib:glib / cache                       OK
-  2/237 glib:glib / rec-mutex                   OK
-  3/237 glib:glib / shell                       OK
-  4/237 glib:glib / timer                       OK
-  5/237 glib:glib / fileutils                   OK
-  6/237 glib:glib / unix                        OK
-  7/237 glib:glib / collate                     OK
-  8/237 glib:glib / once                        OK
-  9/237 glib:glib / bookmarkfile                OK
- 10/237 glib:glib / unicode                     OK
- 11/237 glib:glib / 1bit-mutex                  OK
- 12/237 glib:glib / overflow-fallback           OK
- 13/237 glib:glib / markup-parse                OK
- 14/237 glib:glib / rcbox                       OK
- 15/237 glib:glib / include                     OK
- 16/237 glib:glib / refcount                    OK
- 17/237 glib:glib / base64                      OK
- 18/237 glib:glib / bytes                       OK
- 19/237 glib:glib / test-printf                 OK
- 20/237 glib:glib / macros                      OK
- 21/237 glib:glib / autoptr                     OK
- 22/237 glib:glib / refcount-macro              OK
- 23/237 glib:glib / gwakeup-fallback            OK
- 24/237 glib:glib / hostutils                   OK
- 25/237 glib:glib / guuid                       OK
- 26/237 glib:glib / private                     OK
- 27/237 glib:glib / hmac                        OK
- 28/237 glib:glib / rand                        OK
- 29/237 glib:glib+slow / sequence               OK
- 30/237 glib:glib / protocol                    OK
- 31/237 glib:glib / timeout                     OK
- 32/237 glib:glib / mutex                       OK
- 33/237 glib:glib / node                        OK
- 34/237 glib:glib+slow / 1bit-emufutex          OK
- 35/237 glib:glib / gwakeup                     OK
- 36/237 glib:glib / refstring                   OK
- 37/237 glib:glib / overflow                    OK
- 38/237 glib:glib / search-utils                OK
- 39/237 glib:glib / error                       OK
- 40/237 glib:glib / scannerapi                  OK
- 41/237 glib:glib / utf8-performance            OK
- 42/237 glib:glib / dir                         OK
- 43/237 glib:glib / strfuncs                    FAIL
- 44/237 glib:glib / list                        OK
- 45/237 glib:glib / string                      FAIL
- 46/237 glib:glib / regex                       OK
- 47/237 glib:glib / atomic                      OK
- 48/237 glib:glib / mainloop                    OK
- 49/237 glib:glib / checksum                    OK
- 50/237 glib:glib / asyncqueue                  OK
- 51/237 glib:glib+slow / 642026-ec              OK
- 52/237 glib:glib / uri                         OK
- 53/237 glib:glib / pattern                     OK
- 54/237 glib:glib / slist                       OK
- 55/237 glib:glib / logging                     OK
- 56/237 glib:glib / markup-subparser            OK
- 57/237 glib:glib / convert                     FAIL
- 58/237 glib:glib / date                        OK
- 59/237 glib:glib / spawn-singlethread          OK
- 60/237 glib:glib / tree                        OK
- 61/237 glib:glib / spawn-multithreaded         OK
- 62/237 glib:glib / utf8-pointer                OK
- 63/237 glib:glib / thread                      OK
- 64/237 glib:glib+slow / gdatetime              FAIL
- 65/237 glib:glib / utf8-misc                   OK
- 66/237 glib:glib / slice                       OK
- 67/237 glib:glib / option-argv0                OK
- 68/237 glib:glib+slow / 642026                 OK
- 69/237 glib:glib / testing                     OK
- 70/237 glib:glib / markup-collect              OK
- 71/237 glib:glib / utils                       OK
- 72/237 glib:glib / markup-escape               OK
- 73/237 glib:glib / charset                     OK
- 74/237 glib:glib / mem-overflow                OK
- 75/237 glib:glib / markup                      OK
- 76/237 glib:glib / rwlock                      OK
- 77/237 glib:glib / hash                        OK
- 78/237 glib:glib / cond                        OK
- 79/237 glib:glib / utf8-validate               OK
- 80/237 glib:glib / hook                        OK
- 81/237 glib:glib / environment                 OK
- 82/237 glib:glib / keyfile                     OK
- 83/237 glib:glib / queue                       OK
- 84/237 glib:glib / bitlock                     OK
- 85/237 glib:glib / mappedfile                  OK
- 86/237 glib:glib / array-test                  OK
- 87/237 glib:glib+slow / gvariant               OK
- 88/237 glib:glib / option-context              OK
- 89/237 glib:glib / sort                        OK
- 90/237 glib:glib / dataset                     OK
- 91/237 glib:glib / gtester-xmllint-check       OK
- 92/237 glib:gobject / binding                  OK
- 93/237 glib:gobject / ifaceproperties          OK
- 94/237 glib:gobject / autoptr                  OK
- 95/237 glib:gobject / enums                    OK
- 96/237 glib:gobject / flags                    OK
- 97/237 glib:gobject / qdata                    OK
- 98/237 glib:gobject / boxed                    OK
- 99/237 glib:gobject / object                   OK
-100/237 glib:gobject / closure                  OK
-101/237 glib:gobject / dynamictests             OK
-102/237 glib:gobject / properties               OK
-103/237 glib:gobject / signal-handler           OK
-104/237 glib:gobject / signals                  OK
-105/237 glib:gobject / type                     OK
-106/237 glib:gobject / gobject-private          OK
-107/237 glib:gobject / reference                OK
-108/237 glib:gobject / param                    OK
-109/237 glib:gobject / threadtests              OK
-110/237 glib:gobject / value                    OK
-111/237 glib:gobject+slow / closure-refcount    OK
-112/237 glib:gobject / mkenums.py               FAIL
-113/237 glib:gio / socket                       OK
-114/237 glib:gio / tls-interaction              OK
-115/237 glib:gio / trash                        OK
-116/237 glib:gio / network-address              OK
-117/237 glib:gio / contenttype                  FAIL
-118/237 glib:gio / socket-service               OK
-119/237 glib:gio / readwrite                    OK
-120/237 glib:gio / giomodule                    OK
-121/237 glib:gio / permission                   OK
-122/237 glib:gio / g-file                       OK
-123/237 glib:gio / mimeapps                     OK
-124/237 glib:gio / vfs                          OK
-125/237 glib:gio / gsubprocess                  OK
-126/237 glib:gio / async-close-output-stream    OK
-127/237 glib:gio / g-file-info-filesystem-readonly  OK
-128/237 glib:gio / g-file-info                  OK
-129/237 glib:gio / data-output-stream           OK
-130/237 glib:gio / appmonitor                   FAIL
-131/237 glib:gio / gschema-compile              OK
-132/237 glib:gio / socket-listener              OK
-133/237 glib:gio / async-splice-output-stream   OK
-134/237 glib:gio / credentials                  OK
-135/237 glib:gio / volumemonitor                OK
-136/237 glib:gio / autoptr-gio                  OK
-137/237 glib:gio / gdbus-serialization          OK
-138/237 glib:gio / inet-address                 OK
-139/237 glib:gio / file                         OK
-140/237 glib:gio / mount-operation              OK
-141/237 glib:gio / gsocketclient-slow           FAIL
-142/237 glib:gio / gdbus-non-socket             OK
-143/237 glib:gio / appinfo                      FAIL
-144/237 glib:gio / buffered-input-stream        OK
-145/237 glib:gio / buffered-output-stream       OK
-146/237 glib:gio / srvtarget                    OK
-147/237 glib:gio / io-stream                    OK
-148/237 glib:gio / network-monitor-race         OK
-149/237 glib:gio / unix-streams                 OK
-150/237 glib:gio / gdbus-connection-flush       OK
-151/237 glib:gio / gsettings                    FAIL
-152/237 glib:gio / simple-proxy                 OK
-153/237 glib:gio / tls-database                 OK
-154/237 glib:gio / cancellable                  OK
-155/237 glib:gio / task                         OK
-156/237 glib:gio / g-icon                       OK
-157/237 glib:gio / unix-mounts                  OK
-158/237 glib:gio / data-input-stream            OK
-159/237 glib:gio / tls-certificate              OK
-160/237 glib:gio / gdbus-peer                   OK
-161/237 glib:gio / desktop-app-info             FAIL
-162/237 glib:gio / memory-input-stream          OK
-163/237 glib:gio / gdbus-message                OK
-164/237 glib:gio / monitor                      FAIL
-165/237 glib:gio / sleepy-stream                OK
-166/237 glib:gio / resources                    OK
-167/237 glib:gio / stream-rw_all                OK
-168/237 glib:gio / proxy-test                   OK
-169/237 glib:gio / gdbus-addresses              OK
-170/237 glib:gio / gdbus-peer-object-manager    OK
-171/237 glib:gio / memory-output-stream         OK
-172/237 glib:gio+slow+flaky / testfilemonitor   FAIL
-173/237 glib:gio / network-monitor              OK
-174/237 glib:gio / glistmodel                   OK
-175/237 glib:gio / contexts                     OK
-176/237 glib:gio / simple-async-result          OK
-177/237 glib:gio / filter-streams               OK
-178/237 glib:gio / converter-stream             FAIL
-179/237 glib:gio / socket-address               OK
-180/237 glib:gio / thumbnail-verification       OK
-181/237 glib:gio / unix-fd                      OK
-182/237 glib:gio / defaultvalue                 FAIL
-183/237 glib:gio / fileattributematcher         OK
-184/237 glib:gio / live-g-file                  OK
-185/237 glib:gio / pollable                     OK
-186/237 glib:gobject / deftype                  OK
-187/237 glib:gobject / references               OK
-188/237 glib:gobject / singleton                OK
-189/237 glib:gobject / paramspec-test           OK
-190/237 glib:gobject / defaultiface             OK
-191/237 glib:gobject / signals                  OK
-192/237 glib:gobject / accumulator              OK
-193/237 glib:gobject / testgobject              OK
-194/237 glib:gobject / override                 OK
-195/237 glib:gobject / dynamictype              OK
-196/237 glib:gobject / gvalue-test              OK
-197/237 glib:gobject / timeloop-closure         OK
-198/237 glib:refcount / objects                 OK
-199/237 glib:refcount+slow / properties2        OK
-200/237 glib:refcount / signal4                 OK
-201/237 glib:refcount+slow / properties3        OK
-202/237 glib:refcount / properties4             OK
-203/237 glib:refcount / signal3                 OK
-204/237 glib:refcount+slow / objects2           OK
-205/237 glib:refcount / properties              OK
-206/237 glib:refcount / signal2                 OK
-207/237 glib:refcount / signal1                 OK
-208/237 glib:glib / completion-test             OK
-209/237 glib:glib / asyncqueue-test             OK
-210/237 glib:glib / iochannel-test              OK
-211/237 glib:glib / unicode-caseconv            OK
-212/237 glib:glib / unicode-encoding            FAIL
-213/237 glib:glib / dirname-test                OK
-214/237 glib:glib / testglib                    OK
-215/237 glib:glib / sources                     OK
-216/237 glib:glib / relation-test               OK
-217/237 glib:glib / thread-test                 OK
-218/237 glib:glib / cxx-test                    OK
-219/237 glib:glib / qsort-test                  OK
-220/237 glib:glib / datetime                    OK
-221/237 glib:glib / spawn-test                  OK
-222/237 glib:glib+slow / threadpool-test        OK
-223/237 glib:glib / module-test                 OK
-224/237 glib:glib / atomic-test                 OK
-225/237 glib:glib / mainloop-test               OK
-226/237 glib:glib / type-test                   OK
-227/237 glib:glib / gio-test                    OK
-228/237 glib:glib / mapping-test                FAIL
-229/237 glib:glib / onceinit                    OK
-230/237 glib:glib / child-test                  OK
-231/237 glib:glib / file-test                   OK
-232/237 glib:glib / env-test                    OK
-233/237 glib:glib / timeloop                    OK
-234/237 glib:glib / slice-concurrent            OK
-235/237 glib:glib / bit-test                    OK
-236/237 glib:glib / testgdate                   OK
-237/237 glib:glib / slice-threadinit            OK
+glib:gio / appinfo                      FAIL
+glib:gio / appmonitor                   FAIL
+glib:gio / async-close-output-stream    OK
+glib:gio / async-splice-output-stream   OK
+glib:gio / autoptr-gio                  OK
+glib:gio / buffered-input-stream        OK
+glib:gio / buffered-output-stream       OK
+glib:gio / cancellable                  OK
+glib:gio / contenttype                  FAIL
+glib:gio / contexts                     OK
+glib:gio / converter-stream             FAIL
+glib:gio / credentials                  OK
+glib:gio / data-input-stream            OK
+glib:gio / data-output-stream           OK
+glib:gio / defaultvalue                 FAIL
+glib:gio / desktop-app-info             FAIL
+glib:gio / file                         FAIL
+glib:gio / fileattributematcher         OK
+glib:gio / filter-streams               OK
+glib:gio / g-file                       OK
+glib:gio / g-file-info                  OK
+glib:gio / g-file-info-filesystem-readonly  OK
+glib:gio / g-icon                       OK
+glib:gio / gdbus-addresses              OK
+glib:gio / gdbus-connection-flush       OK
+glib:gio / gdbus-message                OK
+glib:gio / gdbus-non-socket             OK
+glib:gio / gdbus-peer                   FAIL
+glib:gio / gdbus-peer-object-manager    FAIL
+glib:gio / gdbus-serialization          OK
+glib:gio / giomodule                    OK
+glib:gio / glistmodel                   OK
+glib:gio / gschema-compile              OK
+glib:gio / gsettings                    FAIL
+glib:gio / gsocketclient-slow           FAIL
+glib:gio / gsubprocess                  OK
+glib:gio / inet-address                 OK
+glib:gio / io-stream                    OK
+glib:gio / live-g-file                  OK
+glib:gio / memory-input-stream          OK
+glib:gio / memory-output-stream         OK
+glib:gio / mimeapps                     OK
+glib:gio / monitor                      FAIL
+glib:gio / mount-operation              OK
+glib:gio / network-address              OK
+glib:gio / network-monitor              OK
+glib:gio / network-monitor-race         OK
+glib:gio / permission                   OK
+glib:gio / pollable                     OK
+glib:gio / proxy-test                   FAIL
+glib:gio / readwrite                    OK
+glib:gio / resources                    OK
+glib:gio / simple-async-result          OK
+glib:gio / simple-proxy                 OK
+glib:gio / sleepy-stream                OK
+glib:gio / socket                       FAIL
+glib:gio / socket-address               OK
+glib:gio / socket-listener              OK
+glib:gio / socket-service               OK
+glib:gio / srvtarget                    OK
+glib:gio / stream-rw_all                OK
+glib:gio / task                         OK
+glib:gio / thumbnail-verification       OK
+glib:gio / tls-certificate              OK
+glib:gio / tls-database                 OK
+glib:gio / tls-interaction              OK
+glib:gio / trash                        OK
+glib:gio / unix-fd                      OK
+glib:gio / unix-mounts                  OK
+glib:gio / unix-streams                 OK
+glib:gio / vfs                          OK
+glib:gio / volumemonitor                OK
+glib:gio+slow+flaky / testfilemonitor   FAIL
+glib:glib / 1bit-mutex                  OK
+glib:glib / array-test                  OK
+glib:glib / asyncqueue                  OK
+glib:glib / asyncqueue-test             OK
+glib:glib / atomic                      OK
+glib:glib / atomic-test                 OK
+glib:glib / autoptr                     OK
+glib:glib / base64                      OK
+glib:glib / bit-test                    OK
+glib:glib / bitlock                     OK
+glib:glib / bookmarkfile                OK
+glib:glib / bytes                       OK
+glib:glib / cache                       OK
+glib:glib / charset                     OK
+glib:glib / checksum                    OK
+glib:glib / child-test                  OK
+glib:glib / collate                     OK
+glib:glib / completion-test             OK
+glib:glib / cond                        OK
+glib:glib / convert                     FAIL
+glib:glib / cxx-test                    OK
+glib:glib / dataset                     OK
+glib:glib / date                        OK
+glib:glib / datetime                    OK
+glib:glib / dir                         OK
+glib:glib / dirname-test                OK
+glib:glib / env-test                    OK
+glib:glib / environment                 OK
+glib:glib / error                       OK
+glib:glib / file-test                   OK
+glib:glib / fileutils                   OK
+glib:glib / gio-test                    OK
+glib:glib / gtester-xmllint-check       OK
+glib:glib / guuid                       OK
+glib:glib / gwakeup                     OK
+glib:glib / gwakeup-fallback            OK
+glib:glib / hash                        OK
+glib:glib / hmac                        OK
+glib:glib / hook                        OK
+glib:glib / hostutils                   OK
+glib:glib / include                     OK
+glib:glib / iochannel-test              OK
+glib:glib / keyfile                     OK
+glib:glib / list                        OK
+glib:glib / logging                     OK
+glib:glib / macros                      OK
+glib:glib / mainloop                    OK
+glib:glib / mainloop-test               OK
+glib:glib / mappedfile                  OK
+glib:glib / mapping-test                FAIL
+glib:glib / markup                      OK
+glib:glib / markup-collect              OK
+glib:glib / markup-escape               OK
+glib:glib / markup-parse                OK
+glib:glib / markup-subparser            OK
+glib:glib / mem-overflow                OK
+glib:glib / module-test                 OK
+glib:glib / mutex                       OK
+glib:glib / node                        OK
+glib:glib / once                        OK
+glib:glib / onceinit                    OK
+glib:glib / option-argv0                OK
+glib:glib / option-context              OK
+glib:glib / overflow                    OK
+glib:glib / overflow-fallback           OK
+glib:glib / pattern                     OK
+glib:glib / private                     OK
+glib:glib / protocol                    OK
+glib:glib / qsort-test                  OK
+glib:glib / queue                       OK
+glib:glib / rand                        OK
+glib:glib / rcbox                       OK
+glib:glib / rec-mutex                   OK
+glib:glib / refcount                    OK
+glib:glib / refcount-macro              OK
+glib:glib / refstring                   OK
+glib:glib / regex                       OK
+glib:glib / relation-test               OK
+glib:glib / rwlock                      OK
+glib:glib / scannerapi                  OK
+glib:glib / search-utils                OK
+glib:glib / shell                       OK
+glib:glib / slice                       OK
+glib:glib / slice-concurrent            OK
+glib:glib / slice-threadinit            OK
+glib:glib / slist                       OK
+glib:glib / sort                        OK
+glib:glib / sources                     OK
+glib:glib / spawn-multithreaded         OK
+glib:glib / spawn-singlethread          OK
+glib:glib / spawn-test                  OK
+glib:glib / strfuncs                    FAIL
+glib:glib / string                      FAIL
+glib:glib / test-printf                 OK
+glib:glib / testgdate                   OK
+glib:glib / testglib                    OK
+glib:glib / testing                     OK
+glib:glib / thread                      OK
+glib:glib / thread-test                 OK
+glib:glib / timeloop                    OK
+glib:glib / timeout                     OK
+glib:glib / timer                       OK
+glib:glib / tree                        OK
+glib:glib / type-test                   OK
+glib:glib / unicode                     OK
+glib:glib / unicode-caseconv            OK
+glib:glib / unicode-encoding            FAIL
+glib:glib / unix                        OK
+glib:glib / uri                         OK
+glib:glib / utf8-misc                   OK
+glib:glib / utf8-performance            OK
+glib:glib / utf8-pointer                OK
+glib:glib / utf8-validate               OK
+glib:glib / utils                       OK
+glib:glib+slow / 1bit-emufutex          OK
+glib:glib+slow / 642026                 OK
+glib:glib+slow / 642026-ec              OK
+glib:glib+slow / gdatetime              FAIL
+glib:glib+slow / gvariant               OK
+glib:glib+slow / sequence               OK
+glib:glib+slow / threadpool-test        OK
+glib:gobject / accumulator              OK
+glib:gobject / autoptr                  OK
+glib:gobject / binding                  OK
+glib:gobject / boxed                    OK
+glib:gobject / closure                  OK
+glib:gobject / defaultiface             OK
+glib:gobject / deftype                  OK
+glib:gobject / dynamictests             OK
+glib:gobject / dynamictype              OK
+glib:gobject / enums                    OK
+glib:gobject / flags                    OK
+glib:gobject / gobject-private          OK
+glib:gobject / gvalue-test              OK
+glib:gobject / ifaceproperties          OK
+glib:gobject / mkenums.py               FAIL
+glib:gobject / object                   OK
+glib:gobject / override                 OK
+glib:gobject / param                    OK
+glib:gobject / paramspec-test           OK
+glib:gobject / properties               OK
+glib:gobject / qdata                    OK
+glib:gobject / reference                OK
+glib:gobject / references               OK
+glib:gobject / signal-handler           OK
+glib:gobject / signals                  OK
+glib:gobject / signals                  OK
+glib:gobject / singleton                OK
+glib:gobject / testgobject              OK
+glib:gobject / threadtests              OK
+glib:gobject / timeloop-closure         OK
+glib:gobject / type                     OK
+glib:gobject / value                    OK
+glib:gobject+slow / closure-refcount    OK
+glib:refcount / objects                 OK
+glib:refcount / properties              OK
+glib:refcount / properties4             OK
+glib:refcount / signal1                 OK
+glib:refcount / signal2                 OK
+glib:refcount / signal3                 OK
+glib:refcount / signal4                 OK
+glib:refcount+slow / objects2           OK
+glib:refcount+slow / properties2        OK
+glib:refcount+slow / properties3        OK
 
-Ok:                  220
+
+Ok:                  215
 Expected Fail:         0
-Fail:                 17
+Fail:                 22
 Unexpected Pass:       0
 Skipped:               0
 Timeout:               0
