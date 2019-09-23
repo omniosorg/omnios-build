@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028au (2019-09-23)
+Weekly release for w/c 23rd of September 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+# Other Changes
+
+<br>
+
+---
+
 ## r151028as (2019-09-12)
 Weekly release for w/c 9th of September 2019.
 > This is a non-reboot update
