@@ -31,6 +31,13 @@ packages[collections]=2.1
 packages[functools]=2.0
 packages[text]=3.2.0
 
+# jaraco.functools is obsoleted and replaced by this combined jaraco package.
+# However, in order to allow for a seamless upgrade, we have to list
+# jaraco.functools as a dependency so that it will be updated to the obsoleted
+# version and have its files removed. Failing to do this causes pkg to complain
+# about conflicting actions.
+RUN_DEPENDS_IPS+=" library/python-$PYVER/jaraco.functools-$SPYVER@2.0-$RELVER.1"
+
 init
 prep_build
 

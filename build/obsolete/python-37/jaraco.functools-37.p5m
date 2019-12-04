@@ -1,4 +1,4 @@
-set name=pkg.fmri value=pkg://@PKGPUBLISHER@/library/python-3/jaraco.functools-37@2.0,@SUNOSVER@-@PVER@
+set name=pkg.fmri value=pkg://@PKGPUBLISHER@/library/python-3/jaraco.functools-37@2.0,@SUNOSVER@-@RELVER@.1
 set name=pkg.summary value="jaraco.functools - Additional functools"
 set name=publisher value=sa@omniosce.org
 set name=pkg.obsolete value=true
