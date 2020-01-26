@@ -23,12 +23,6 @@ PKG=library/gmp
 SUMMARY="GNU MP"
 DESC="The GNU Multiple Precision (Bignum) Library"
 
-# Build library to use only common CPU features rather than those supported
-# on the build machine.
-MPN32="x86/pentium x86 generic"
-MPN64="x86_64/pentium4 x86_64 generic"
-export MPN32 MPN64
-
 BUILD_DEPENDS_IPS=developer/build/libtool
 
 TESTSUITE_SED="
@@ -36,46 +30,24 @@ TESTSUITE_SED="
     /^Making /d
 "
 
-CFLAGS+=" -fexceptions"
+# Support for a "fat" binary on i386, with CPU autodetection.
 CONFIGURE_OPTS="
     --includedir=$PREFIX/include/gmp
     --localstatedir=/var
     --enable-shared
     --disable-static
-    --disable-libtool-lock
-    --disable-alloca
     --enable-cxx
-    --enable-fft
-    --disable-fat
-    --with-pic
-    gmp_cv_asm_x86_mulx=no
+    --enable-fat
 "
 
-CONFIGURE_OPTS_WS_32="
-    ABI=32
-    MPN_PATH=\"$MPN32\"
-"
-
-CONFIGURE_OPTS_WS_64="
-    ABI=64
-    MPN_PATH=\"$MPN64\"
-"
-
-tests() {
-    # In the past, libgmp has had a habit of detecting that the build host
-    # CPU supports the BMI2 mulx instruction and building a binary that does
-    # not work on pre-Haswell processors. We explicitly check for this in the
-    # resulting 64-bit library file.
-    dis $DESTDIR/usr/lib/$ISAPART64/libgmp.so | egrep -s mulx \
-        && logerr "libgmp has been built with mulx instructions"
-}
+CONFIGURE_OPTS_32+=" ABI=32"
+CONFIGURE_OPTS_64+=" ABI=64"
 
 init
 download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-tests
 run_testsuite check
 make_package
 clean_up
