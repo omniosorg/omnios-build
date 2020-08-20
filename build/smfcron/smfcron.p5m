@@ -1,0 +1,6 @@
+set name=pkg.fmri value=pkg://@PKGPUBLISHER@/system/util/smfcron@11,5.11-@PVER@
+set name=pkg.summary value="SMF cron job management helper"
+set name=pkg.description value="SMF cron job management helper"
+
+file files/smfcron path=lib/svc/bin/smfcron owner=root group=bin mode=0555
+

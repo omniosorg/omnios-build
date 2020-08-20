@@ -771,6 +771,7 @@ omnios system/test/zfstest
 omnios system/tnf
 omnios system/trusted
 omnios system/trusted/global-zone
+omnios system/util/smfcron
 omnios system/virtualization/azure-agent
 omnios system/virtualization/open-vm-tools
 omnios system/watch
