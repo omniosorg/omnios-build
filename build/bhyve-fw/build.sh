@@ -40,6 +40,9 @@ export GAR=/usr/bin/gar
 export GLD=/usr/bin/gld
 export GOBJCOPY=/usr/bin/gobjcopy
 
+# set firmware versions for symlinks
+XFORM_ARGS+=" -D UEFIVER=2.70 -D CSMVER=2.40"
+
 # Since the firmware builds will run in parallel in the background,
 # put them in a new task which will be killed on interrupt.
 newtask -c $$
