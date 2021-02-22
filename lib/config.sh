@@ -13,7 +13,7 @@
 #
 # Copyright (c) 2015 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 #
 #############################################################################
 # Configuration for the build system
@@ -95,6 +95,7 @@ if [ $((RELVER % 2)) == 0 ]; then
 else
     IPS_REPO=https://pkg.omnios.org/bloody/core
 fi
+INCORP_REPO=$IPS_REPO
 
 ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.gz tgz tar zip"
 

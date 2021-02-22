@@ -22,29 +22,7 @@ PKG=release/name
 SUMMARY="OmniOS release information"
 DESC="OmniOS /etc/release and /etc/os-release files"
 
-# Update the following line with the current release suffix
-RELSUFFIX=
-
-RELEASE=${RELVER}${RELSUFFIX}
-RELDATE="`date +%Y.%m.%d`"
-RELNUM=${RELVER}
-RELREV=0
-
-if [[ "$RELEASE" = *[a-z] ]]; then
-    alpha="`echo "$RELEASE" | sed 's/[0-9]//g'`"
-    while [ ${#alpha} -gt 0 ]; do
-        ((RELREV *= 26))
-        ch="`ord26 ${alpha:0:1}`"
-        ((RELREV += ch))
-        alpha="${alpha:1}"
-    done
-fi
-
-DASHREV=$RELREV
-
-XFORM_ARGS="
-    -DRELEASE=$RELEASE -DRELNUM=$RELNUM -DRELDATE=$RELDATE -DRELREV=$RELREV
-"
+. $SRCDIR/common.sh
 
 build() {
     logmsg "Generating release files"

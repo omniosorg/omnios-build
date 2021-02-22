@@ -253,6 +253,7 @@ omnios file/gnu-coreutils
 omnios file/gnu-findutils
 omnios incorporation/jeos/illumos-gate o
 omnios incorporation/jeos/omnios-userland o
+omnios incorporation/omnios-release
 omnios install/beadm
 omnios library/c++/sigcpp
 omnios library/demo/audio-samples

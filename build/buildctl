@@ -112,12 +112,15 @@ EOM
 }
 
 # Dependencies are limited at the moment. The only thing that matters is
-# that kayak-kernel is built last. Build everything else in alphabetical
-# order.
+# that kayak-kernel and omnios-release are built last. Build everything else in
+# alphabetical order.
 buildorder() {
     mapfile -d '' sorted < <( printf '%s\n' ${!fulltargets[@]} | sort | \
-       grep -v kayak-kernel)
-    for target in ${sorted[@]} system/install/kayak-kernel; do
+       egrep -v 'kayak-kernel|incorporation/omnios-release' )
+    for target in ${sorted[@]} \
+        system/install/kayak-kernel \
+        incorporation/omnios-release \
+    ; do
         echo $target
     done
 }
@@ -535,11 +538,18 @@ parallel_build() {
 
     [ -n "$ETHROTTLE" ] || ETHROTTLE=0
 
+    # Defer these packages until last
+    declare -A trailers=(
+        [system/install/kayak-kernel]=1
+        [incorporation/omnios-release]=1
+    )
+    ntrailers=${#trailers[@]}
+
     # Queue up the packages to build
     declare -a defer
     for tgt in `buildorder`; do
-        # Defer this until last
-        [ "$tgt" = "system/install/kayak-kernel" ] && continue
+        # Defer these until last
+        [ -n "${trailers[$tgt]}" ] && continue
         # If nightly is running, defer dependent services to last
         if nightly_running && [[ $tgt = *illumos-gate ]]; then
                 defer+=($tgt)
@@ -550,8 +560,13 @@ parallel_build() {
     for tgt in ${defer[@]}; do
         queue+=($tgt)
     done
-    [ -z "$SKIP_KAYAK_KERNEL" ] && \
-        queue+=(.REBUILD system/install/kayak-kernel)
+    queue+=(.REBUILD)
+    if [ -z "$SKIP_KAYAK_KERNEL" ]; then
+        queue+=(system/install/kayak-kernel)
+    else
+        ((ntrailers--))
+    fi
+    queue+=(incorporation/omnios-release)
 
     pkgcount=${#queue[@]}
 
@@ -562,6 +577,7 @@ parallel_build() {
 
         ((pkgnum++))
 
+        tgtargs=
         # Handle special targets
         case "$tgt" in
             .WAIT)
@@ -576,6 +592,9 @@ parallel_build() {
                 wait_for_jobs "emptying for rebuild"
                 pkgrepo -s $PKGSRVR rebuild
                 continue
+            ;;
+            incorporation/omnios-release)
+                tgtargs="-d $PKGSRVR"
             ;;
         esac
 
@@ -606,10 +625,10 @@ parallel_build() {
                 # location, then the target is just appended.
                 newloc=${expensive[$tgt]}
                 ((newloc *= 10))
-                # Ensure that kayak-kernel remains last
-                if [ $((newloc + 1)) -ge ${#queue[@]} ]; then
+                # Ensure that the trailers remain last
+                if [ $((newloc + ntrailers)) -ge ${#queue[@]} ]; then
                     newloc=${#queue[@]}
-                    ((newloc -= 2))
+                    ((newloc -= ntrailers + 1))
                 fi
                 # If the new location is at the head of the queue or if
                 # the queue size is less than the number of expensive
@@ -641,7 +660,7 @@ parallel_build() {
         fi
 
         note -h "($pkgnum/$pkgcount) Building $tgt (slot $nextslot)"
-        logprefix="[$nextslot] " build $tgt &
+        logprefix="[$nextslot] " build $tgtargs $tgt &
         slots[$nextslot]=$!
         slottgt[$nextslot]=$tgt
         slotdesc[$nextslot]="`printf "(%3d/%d) %s" $pkgnum $pkgcount $tgt`"

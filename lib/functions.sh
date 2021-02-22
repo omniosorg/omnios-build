@@ -14,7 +14,7 @@
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 #
 
 umask 022
@@ -322,6 +322,19 @@ ord26() {
     ASCII=$((ASCII - 64))
     [[ $ASCII -gt 32 ]] && ASCII=$((ASCII - 32))
     echo $ASCII
+}
+
+# Convert a release suffix like 'bq' to an IPS revision like 69
+suffixtorel() {
+    local release="$1"
+    local rev=0
+    while [ ${#release} -gt 0 ]; do
+        ((rev *= 26))
+        ch="`ord26 ${release:0:1}`"
+        ((rev += ch))
+        release="${release:1}"
+    done
+    echo $rev
 }
 
 set_coredir() {
