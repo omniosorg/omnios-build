@@ -24,3 +24,4 @@ sshd_config.patch
 openssl11-local.patch
 revert-dscp.patch
 scp-name-validator.patch
+CVE-2021-28041.patch
