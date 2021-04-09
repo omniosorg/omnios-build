@@ -1,0 +1,18 @@
+
+Allowing the server to maintain a pool of keepalive connections breaks
+handling of multiple parallel connections on low latency links. This
+regression occured between cheroot-8.4.2 and cheroot-8.4.5.
+Until the root cause is found, disable the keepalive pool.
+
+diff -wpruN '--exclude=*.orig' a~/cheroot/server.py a/cheroot/server.py
+--- a~/cheroot/server.py	1970-01-01 00:00:00
++++ a/cheroot/server.py	1970-01-01 00:00:00
+@@ -1575,7 +1575,7 @@ class HTTPServer:
+     ``PEERCREDS``-provided IDs.
+     """
+ 
+-    keep_alive_conn_limit = 10
++    keep_alive_conn_limit = 0
+     """The maximum number of waiting keep-alive connections that will be kept open.
+ 
+     Default is 10. Set to None to have unlimited connections."""
