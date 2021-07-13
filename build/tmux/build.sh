@@ -43,19 +43,12 @@ CONFIGURE_OPTS="
     ac_cv_lib_xnet_socket=no
 "
 
-save_function configure64 _configure64
-
-configure64(){
-    run_autoreconf -fi
-    _configure64
-}
-
 build_dependency libevent $LIBEVENT_DIR \
     libevent libevent ${LIBEVENT_VER}-stable
 
-save_function _configure64 configure64
-
 #########################################################################
+
+note -n "-- Building $PROG"
 
 CPPFLAGS=" \
     -I$DEPROOT/usr/include -I$DEPROOT/usr/include/event2 \

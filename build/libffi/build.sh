@@ -13,21 +13,21 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=libffi
-VER=3.3
+VER=3.4.2
 PKG=library/libffi
 SUMMARY="A Portable Foreign Function Interface Library"
-DESC="$SUMMARY"
+DESC="$PROG - $SUMMARY"
 
 SKIP_LICENCES=libffi
 
 # Previous versions that also need to be built and packaged since compiled
 # software may depend on it.
-PVERS="3.2.1"
+PVERS="3.2.1 3.3"
 
 LDFLAGS+=" $SSPFLAGS"
 
@@ -35,7 +35,7 @@ LDFLAGS+=" $SSPFLAGS"
 # The exact reason for this unclear but historic commit messages indicate that
 # it may be related to C++ throw/catch across the library interface.
 # We should try and clarify the exact reason but we retain the same link
-# behavour.
+# behaviour.
 
 save_function make_prog _make_prog
 make_prog() {
@@ -66,6 +66,7 @@ for pver in $PVERS; do
     save_variable BUILDDIR
     BUILDDIR=$PROG-$pver
     download_source $PROG $PROG $pver
+    patch_source $PROG-`echo $pver | cut -d. -f1-2`
     build
     tests
     restore_variable BUILDDIR

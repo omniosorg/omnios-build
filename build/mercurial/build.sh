@@ -18,7 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=mercurial
-VER=5.8
+VER=5.8.1
 PKG=developer/versioning/mercurial
 SUMMARY="Mercurial source control management"
 DESC="Free, distributed source control management tool"

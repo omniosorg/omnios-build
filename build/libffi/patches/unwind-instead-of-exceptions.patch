@@ -1,7 +1,7 @@
-diff -ru libffi-3.1-orig/configure libffi-3.1/configure
---- libffi-3.1-orig/configure	Mon May 19 09:44:03 2014
-+++ libffi-3.1/configure	Tue Aug 12 20:18:42 2014
-@@ -16944,7 +16944,7 @@
+diff -wpruN '--exclude=*.orig' a~/configure a/configure
+--- a~/configure	1970-01-01 00:00:00
++++ a/configure	1970-01-01 00:00:00
+@@ -17502,7 +17502,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
  fi
  
  if test "x$GCC" = "xyes"; then
@@ -10,12 +10,12 @@ diff -ru libffi-3.1-orig/configure libffi-3.1/configure
  fi
  
  cat > local.exp <<EOF
-@@ -18661,7 +18661,7 @@
+@@ -18758,7 +18758,7 @@ else
  
-   	libffi_cv_ro_eh_frame=no
+   	libffi_cv_ro_eh_frame=yes
    	echo 'extern void foo (void); void bar (void) { foo (); foo (); }' > conftest.c
--  	if $CC $CFLAGS -c -fpic -fexceptions -o conftest.o conftest.c > /dev/null 2>&1; then
-+  	if $CC $CFLAGS -c -fpic -funwind-tables -o conftest.o conftest.c > /dev/null 2>&1; then
- 	    objdump -h conftest.o > conftest.dump 2>&1
- 	    libffi_eh_frame_line=`grep -n eh_frame conftest.dump | cut -d: -f 1`
- 	    libffi_test_line=`expr $libffi_eh_frame_line + 1`p
+-  	if $CC $CFLAGS -c -fpic -fexceptions $libffi_cv_no_lto -o conftest.o conftest.c > /dev/null 2>&1; then
++  	if $CC $CFLAGS -c -fpic -funwind-tables $libffi_cv_no_lto -o conftest.o conftest.c > /dev/null 2>&1; then
+ 	    if $READELF -WS conftest.o | grep -q -n 'eh_frame .* WA'; then
+ 	        libffi_cv_ro_eh_frame=no
+ 	    fi

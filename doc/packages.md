@@ -26,7 +26,7 @@
 | developer/parser/bison		| 3.7.6			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.32.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 5.8			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 5.8.1			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/releases
 | editor/vim				| 8.2			| http://ftp.vim.org/pub/vim/unix
@@ -43,8 +43,8 @@
 | library/libedit			| 20210522-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/releases | Currently used solely by tmux
 | library/libidn			| 1.37			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
-| library/libffi			| 3.3			| https://sourceware.org/libffi/
-| library/libuv				| 1.41.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libffi			| 3.4.2			| https://sourceware.org/libffi/
+| library/libuv				| 1.41.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.9.12		| https://github.com/GNOME/libxml2/releases http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/ncurses			| 6.2			| https://ftp.gnu.org/gnu/ncurses/
@@ -62,7 +62,7 @@
 | library/unixodbc			| 2.3.9			| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.0			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.2.11		| http://www.zlib.net/
-| meta/data/microcode			| 20210216		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode			| 20210608		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.16.18		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 8.6p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.3			| https://rsync.samba.org/
@@ -119,9 +119,9 @@
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-39	| 1.4.0			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-39		| 21.2.0		| https://pypi.org/project/attrs
-| library/python-3/cffi-39		| 1.14.5		| https://pypi.org/project/cffi
+| library/python-3/cffi-39		| 1.14.6		| https://pypi.org/project/cffi
 | library/python-3/cheroot-39		| 8.5.2			| https://pypi.org/project/cheroot
-| library/python-3/cherrypy-39		| 18.6.0		| https://pypi.org/project/cherrypy http://docs.cherrypy.org/en/latest/history.html
+| library/python-3/cherrypy-39		| 18.6.1		| https://pypi.org/project/cherrypy http://docs.cherrypy.org/en/latest/history.html
 | library/python-3/coverage-39		| 5.5			| https://pypi.org/project/coverage
 | library/python-3/cryptography-39	| 3.4.7			| https://pypi.org/project/cryptography
 | library/python-3/idna-39		| 3.2			| https://pypi.org/project/idna
@@ -145,7 +145,7 @@
 | library/python-3/pycparser-39		| 2.20			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-39		| 7.43.0.6		| https://pypi.org/project/pycurl
 | library/python-3/pyopenssl-39		| 20.0.1		| https://pypi.org/project/pyOpenSSL
-| library/python-3/pyrsistent-39	| 0.17.3		| https://pypi.org/project/pyrsistent
+| library/python-3/pyrsistent-39	| 0.18.0		| https://pypi.org/project/pyrsistent
 | library/python-3/pytz-39		| 2021.1		| https://pypi.org/project/pytz
 | library/python-3/rapidjson-39		| 1.4			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-39	| 2.8.5			| https://pypi.org/project/semantic-version

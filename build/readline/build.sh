@@ -35,16 +35,15 @@ init
 prep_build
 
 # Build previous versions
-save_variables BUILDDIR PATCHDIR EXTRACTED_SRC
+save_variables BUILDDIR EXTRACTED_SRC
 for pver in $PVERS; do
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
-    set_patchdir patches-${pver%%.*}
     download_source $PROG $PROG $pver
-    patch_source
+    patch_source patches-${pver%%.*}
     build
 done
-restore_variables BUILDDIR PATCHDIR EXTRACTED_SRC
+restore_variables BUILDDIR EXTRACTED_SRC
 
 note -n "Building current version: $VER"
 download_source $PROG $PROG $VER

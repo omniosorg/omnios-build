@@ -9,9 +9,9 @@
 # http://www.illumos.org/license/CDDL.
 #
 
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
-license LICENCE.mit license=MIT
+license LICENSE.mit license=MIT
 
 <transform file path=usr/bin \
     -> edit path usr/bin usr/lib/python$(PYTHONVER)/bin>
