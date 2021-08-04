@@ -39,7 +39,8 @@ link path=usr/lib/amd64/libpython3.so target=libpython$(PYTHONVER)-stub.so
 
 <transform link path=usr/(bin|share) -> set mediator python3>
 <transform link path=usr/lib/amd64/.*3m?\.so -> set mediator python3>
-<transform link path=usr/lib/amd64/pkgconfig/python3.pc -> set mediator python3>
+<transform link path=usr/lib/amd64/pkgconfig/python3(-embed)?.pc \
+    -> set mediator python3>
 
 <transform link mediator=python3 -> set mediator-version $(PYTHONVER)>
 
