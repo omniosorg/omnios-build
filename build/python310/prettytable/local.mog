@@ -1,0 +1,24 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+#
+
+# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+
+license COPYING license=modified-BSD
+
+<transform file -> set mode 0644>
+
+# This module has conditional imports to handle python 2 and python3.
+# In particular, the syntax for 'html' imports differs in case between
+# python 2 & 3. We therefore bypass dependency generation completely
+# and add the known dependencies by hand.
+<transform file -> set pkg.depend.bypass-generate .*>
+depend type=require fmri=library/python-3/wcwidth-39
+

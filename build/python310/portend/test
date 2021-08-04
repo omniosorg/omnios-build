@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+import portend
+
+portend.occupied('localhost:31923', timeout=1)
+

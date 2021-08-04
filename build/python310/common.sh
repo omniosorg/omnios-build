@@ -12,6 +12,12 @@
 
 # Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
+if [ -z "$PREVIEW_BUILD" -a "$FLAVOR" != "preview" ]; then
+    logmsg "$PROG $VER is not built by default, pass '-f preview'"
+    exit 0
+fi
+unset FLAVOR
+
 set_python_version 3.10
 
 PYVER=$PYTHONVER           # 3.10

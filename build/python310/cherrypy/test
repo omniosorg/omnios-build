@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+import cherrypy, pkg_resources, pprint
+
+pprint.pprint(pkg_resources.require('cherrypy'))
+
+class HelloWorld(object):
+    def index(self):
+        return "Hello World!"
+    index.exposed = True
+
+cherrypy.quickstart(HelloWorld())
+

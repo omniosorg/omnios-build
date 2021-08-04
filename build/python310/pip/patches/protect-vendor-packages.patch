@@ -1,0 +1,98 @@
+This patch is partially based on one from
+  https://github.com/oracle/solaris-userland
+
+This is a workaround to reduce the risk of damage to IPS delivered Python
+packages by `pip` operations.
+
+This patch prevents pip from uninstalling anything from the vendor-packages
+folder. Pip can still see all packages in the vendor-packages folder (for
+dependency resolution) but cannot remove them. This prevents pip from
+uninstalling IPS related packages and thus breaking the system.
+
+Updating a system package via pip will now result in the new being installed
+into the site-packages folder, and the old being left in place. This retains
+the version that is needed for system tools like `pkg` because these tools
+explicitly ignore the `site-packages` area.
+
+All to-be-deleted paths are checked whether they start with the vendor-packages
+path. normalize_path is used mainly to correctly resolve symlinks.
+
+This patch only helps as long as `pip` itself is not upgraded. If that happens
+then there are two installed versions of `pip`, one in each of
+`{site,vendor}-packages` and the new, unpatched, `pip` will start to be used.
+
+To protect against that, we also patch `pip` to stop prompting users to
+upgrade it, and to disallow updates of itself.
+
+Furthermore the system packages are installed in such a way that pip will not
+remove them since it thinks they were installed with distutils. See
+python_vendor_relocate() in lib/functions.sh for more details.
+
+diff -wpruN '--exclude=*.orig' a~/src/pip/_internal/cli/cmdoptions.py a/src/pip/_internal/cli/cmdoptions.py
+--- a~/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
+@@ -865,7 +865,7 @@ disable_pip_version_check = partial(
+     "--disable-pip-version-check",
+     dest="disable_pip_version_check",
+     action="store_true",
+-    default=False,
++    default=True,
+     help="Don't periodically check PyPI to determine whether a new version "
+     "of pip is available for download. Implied with --no-index.",
+ )  # type: Callable[..., Option]
+diff -wpruN '--exclude=*.orig' a~/src/pip/_internal/commands/install.py a/src/pip/_internal/commands/install.py
+--- a~/src/pip/_internal/commands/install.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/commands/install.py	1970-01-01 00:00:00
+@@ -331,6 +331,11 @@ class InstallCommand(RequirementCommand)
+                 modifying_pip=modifying_pip
+             )
+ 
++            if modifying_pip:
++                raise InstallationError(
++                    "Please use the OmniOS 'pkg' utility to update pip"
++                )
++
+             check_binary_allowed = get_check_binary_allowed(
+                 finder.format_control
+             )
+diff -wpruN '--exclude=*.orig' a~/src/pip/_internal/req/req_uninstall.py a/src/pip/_internal/req/req_uninstall.py
+--- a~/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
+@@ -327,6 +327,14 @@ class UninstallPathSet:
+         remove/modify, False otherwise.
+ 
+         """
++        # Omit the vendor-packages augmentation to site-packages
++        # only when uninstalling. We want OmniOS IPS delivered packages
++        # in vendor-packages to be able to satisfy install dependencies
++        # but pip should never remove them.
++        vendor_packages_path = '/usr/lib/python{}.{}/vendor-packages'.format(
++            sys.version_info.major, sys.version_info.minor)
++        if normalize_path(path).startswith(vendor_packages_path):
++            return False
+         return is_local(path)
+ 
+     def add(self, path):
+@@ -506,9 +514,8 @@ class UninstallPathSet:
+ 
+         elif distutils_egg_info:
+             raise UninstallationError(
+-                "Cannot uninstall {!r}. It is a distutils installed project "
+-                "and thus we cannot accurately determine which files belong "
+-                "to it which would lead to only a partial uninstall.".format(
++                "Cannot uninstall {!r} as it is an IPS managed package.\n"
++                "Use the system 'pkg' command instead.".format(
+                     dist.project_name,
+                 )
+             )
+diff -wpruN '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
+--- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
+@@ -109,6 +109,7 @@ def pip_self_version_check(session, opti
+     the active virtualenv or in the user's USER_CACHE_DIR keyed off the prefix
+     of the pip script path.
+     """
++    return
+     installed_dist = get_default_environment().get_distribution("pip")
+     if not installed_dist:
+         return

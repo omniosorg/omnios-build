@@ -1,0 +1,24 @@
+diff -wpruN '--exclude=*.orig' a~/mesonbuild/compilers/compilers.py a/mesonbuild/compilers/compilers.py
+--- a~/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
++++ a/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
+@@ -1025,7 +1025,7 @@ class Compiler(metaclass=abc.ABCMeta):
+ 
+     def get_largefile_args(self) -> T.List[str]:
+         '''Enable transparent large-file-support for 32-bit UNIX systems'''
+-        if not (self.get_argument_syntax() == 'msvc' or self.info.is_darwin()):
++        if not (self.get_argument_syntax() == 'msvc' or self.info.is_darwin() or self.info.is_sunos()):
+             # Enable large-file support unconditionally on all platforms other
+             # than macOS and MSVC. macOS is now 64-bit-only so it doesn't
+             # need anything special, and MSVC doesn't have automatic LFS.
+diff -wpruN '--exclude=*.orig' a~/mesonbuild/environment.py a/mesonbuild/environment.py
+--- a~/mesonbuild/environment.py	1970-01-01 00:00:00
++++ a/mesonbuild/environment.py	1970-01-01 00:00:00
+@@ -732,7 +732,7 @@ class Environment:
+         self.default_rust = ['rustc']
+         self.default_swift = ['swiftc']
+         self.default_vala = ['valac']
+-        self.default_static_linker = ['ar', 'gar']
++        self.default_static_linker = ['gar', 'ar']
+         self.default_strip = ['strip']
+         self.vs_static_linker = ['lib']
+         self.clang_cl_static_linker = ['llvm-lib']

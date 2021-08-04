@@ -1,0 +1,44 @@
+
+Python module dependencies
+--------------------------
+
+setuptools
+	pip	 (and pip depends on setuptools!)
+
+pkg
+	cherrypy
+		cheroot
+			more-itertools
+		portend
+			tempora
+				pytz
+		zc.lockfile
+		jaraco
+	cryptography
+		setuptools-rust
+			semantic-version
+		six
+		cffi
+			pycparser
+		asn1crypto
+		idna
+	jsonrpclib
+	jsonschema
+		attrs
+		pyrsistent
+		js-regex
+	mako
+	orjson
+	ply
+	prettytable
+		wcwidth
+	pybonjour
+	pycurl
+	rapidjson
+	coverage
+	pyopenssl
+		cryptography
+
+glib2
+	meson
+
