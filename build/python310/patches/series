@@ -1,0 +1,34 @@
+setup.patch
+autoconf-macros.patch
+vendor-packages.patch
+dont-use-ccs.patch
+default-lib-path.patch
+no-zip-in-sys-path.patch
+disable_epoll.patch
+enable-ossaudiodev.patch
+strxfrm-fix.patch
+encoding-alias.patch
+pty.patch
+locale-encoding.patch
+cgiserver.patch
+futures-dictsize.patch
+#
+# Additional modules
+module-ucred.patch
+module-dlpi.patch
+module-priv-rbac.patch
+#
+# Module fixes
+mod-posix-sched_priority.patch
+mod-shutil-sendfile.patch
+mod-time-threadtime.patch
+mod-socket-xpg6.patch
+#
+# Test related
+test-filecomments.patch
+test-opts.patch
+test-vmlimit.patch
+test-processgroup.patch
+test-zipfile.patch
+test-pkgutil.patch
+revert-makedirs.patch

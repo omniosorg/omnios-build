@@ -1,0 +1,95 @@
+
+By default, python places a zip file at the start of the module path
+
+>>> import sys; sys.path
+['', '/usr/lib/python3x.zip', '/usr/lib/python3.x', ...
+
+We don't ship this or have any need to provide modules there, so remove it
+from the path. This also cleans up package dependency resolution output
+which frequently refers to this non-existent file.
+
+diff -wpruN '--exclude=*.orig' a~/Lib/test/test_embed.py a/Lib/test/test_embed.py
+--- a~/Lib/test/test_embed.py	1970-01-01 00:00:00
++++ a/Lib/test/test_embed.py	1970-01-01 00:00:00
+@@ -1170,8 +1170,6 @@ class InitConfigTests(EmbeddingTestsMixi
+             ver = sys.version_info
+             return [
+                 os.path.join(prefix, sys.platlibdir,
+-                             f'python{ver.major}{ver.minor}.zip'),
+-                os.path.join(prefix, sys.platlibdir,
+                              f'python{ver.major}.{ver.minor}'),
+                 os.path.join(exec_prefix, sys.platlibdir,
+                              f'python{ver.major}.{ver.minor}', 'lib-dynload'),
+diff -wpruN '--exclude=*.orig' a~/Modules/getpath.c a/Modules/getpath.c
+--- a~/Modules/getpath.c	1970-01-01 00:00:00
++++ a/Modules/getpath.c	1970-01-01 00:00:00
+@@ -140,7 +140,9 @@ typedef struct {
+     const wchar_t *platlibdir;
+ 
+     wchar_t *argv0_path;
++#ifndef SKIP_ZIP_APTH
+     wchar_t *zip_path;
++#endif
+     wchar_t *prefix;
+     wchar_t *exec_prefix;
+ } PyCalculatePath;
+@@ -1288,6 +1290,7 @@ calculate_read_pyenv(PyCalculatePath *ca
+ }
+ 
+ 
++#ifndef SKIP_ZIP_PATH
+ static PyStatus
+ calculate_zip_path(PyCalculatePath *calculate)
+ {
+@@ -1330,6 +1333,7 @@ done:
+     PyMem_RawFree(path);
+     return res;
+ }
++#endif
+ 
+ 
+ static PyStatus
+@@ -1362,7 +1366,9 @@ calculate_module_search_path(PyCalculate
+         defpath = delim + 1;
+     }
+ 
++#ifndef SKIP_ZIP_PATH
+     bufsz += wcslen(calculate->zip_path) + 1;
++#endif
+     bufsz += wcslen(calculate->exec_prefix) + 1;
+ 
+     /* Allocate the buffer */
+@@ -1379,8 +1385,10 @@ calculate_module_search_path(PyCalculate
+     }
+ 
+     /* Next is the default zip path */
++#ifndef SKIP_ZIP_PATH
+     wcscat(buf, calculate->zip_path);
+     wcscat(buf, delimiter);
++#endif
+ 
+     /* Next goes merge of compile-time $PYTHONPATH with
+      * dynamically located prefix.
+@@ -1480,7 +1488,9 @@ calculate_free(PyCalculatePath *calculat
+     PyMem_RawFree(calculate->vpath_macro);
+     PyMem_RawFree(calculate->lib_python);
+     PyMem_RawFree(calculate->path_env);
++#ifndef SKIP_ZIP_PATH
+     PyMem_RawFree(calculate->zip_path);
++#endif
+     PyMem_RawFree(calculate->argv0_path);
+     PyMem_RawFree(calculate->prefix);
+     PyMem_RawFree(calculate->exec_prefix);
+@@ -1516,10 +1526,12 @@ calculate_path(PyCalculatePath *calculat
+         return status;
+     }
+ 
++#ifndef SKIP_ZIP_PATH
+     status = calculate_zip_path(calculate);
+     if (_PyStatus_EXCEPTION(status)) {
+         return status;
+     }
++#endif
+ 
+     status = calculate_exec_prefix(calculate, pathconfig);
+     if (_PyStatus_EXCEPTION(status)) {

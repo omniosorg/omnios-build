@@ -1,0 +1,56 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+
+license LICENSE license=PSFv2
+
+# Drop static library
+<transform file path=.*\.a$ -> drop>
+
+# Remove idle
+<transform file link path=usr/bin(/.*)?/idle -> drop >
+<transform path=usr/lib/python$(PYTHONVER)/idlelib -> drop>
+
+# Move binaries from usr/bin to private bin
+<transform file link \
+    path=usr/bin(/.*)?/(2to3|easy_install|pip|pyvenv) -> \
+    edit path usr/bin usr/lib/python$(PYTHONVER)/bin>
+
+# Remove test files
+<transform path=usr/lib/python$(PYTHONVER)/test -> drop>
+
+# Prevent pkgdepend from reporting an error
+<transform file path=. -> set pkg.depend.bypass-generate .*>
+
+# Move /usr/lib/amd64/libpython3.so and replace with a symlink
+<transform file path=usr/lib/amd64/libpython3.so$ \
+    -> edit path 3 $(PYTHONVER)-stub>
+link path=usr/lib/amd64/libpython3.so target=libpython$(PYTHONVER)-stub.so
+
+# Set mediators on links in shared directories
+
+<transform link path=usr/(bin|share) -> set mediator python3>
+<transform link path=usr/lib/amd64/.*3m?\.so -> set mediator python3>
+<transform link path=usr/lib/amd64/pkgconfig/python3(-embed)?.pc \
+    -> set mediator python3>
+
+<transform link mediator=python3 -> set mediator-version $(PYTHONVER)>
+
+# This is currently NOT the default python3 version
+#<transform link mediator=python3 -> set mediator-priority vendor>
+
+# Add mediated link for /usr/bin/python
+link path=usr/bin/python target=python3
+<transform link path=usr/bin/python$ -> set mediator python>
+<transform link path=usr/bin/python$ -> set mediator-version 3>
+<transform link path=usr/bin/python$ -> set target python3>
+<transform link path=usr/bin/python$ -> set mediator-priority vendor>
+

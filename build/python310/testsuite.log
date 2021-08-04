@@ -1,0 +1,18 @@
+402 tests OK.
+
+1 test failed:
+    test_os
+
+24 tests skipped:
+    test_dbm_gnu test_epoll test_gdb test_idle test_kqueue test_msilib
+    test_ossaudiodev test_smtpnet test_socketserver test_startfile
+    test_tcl test_timeout test_tix test_tk test_ttk_guionly
+    test_ttk_textonly test_turtle test_urllib2net test_urllibnet
+    test_winconsoleio test_winreg test_winsound test_xmlrpc_net
+    test_zipfile64
+
+1 re-run test:
+    test_os
+
+Tests result: FAILURE
+gmake: *** [Makefile:1224: test] Error 2

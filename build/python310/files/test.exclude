@@ -1,0 +1,12 @@
+#
+# Elements on the python test suite to skip on OmniOS
+#
+# illumos does not support multiple SCM_RIGHTS messages in a packet
+*FDPassSeparate*
+#
+# https://bugs.python.org/issue37573
+#test.test_asyncio.test_subprocess.SubprocessMultiLoopWatcherTests.*
+#
+# Related to wchar_t differences on illumos
+*.test_re.ReTests.test_locale_compiled
+*.test_re.ReTests.test_locale_caching

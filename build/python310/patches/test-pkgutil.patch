@@ -1,0 +1,14 @@
+Python does not expect the build system to already have a 'pkg' module
+
+diff -wpruN '--exclude=*.orig' a~/Lib/test/test_pkgutil.py a/Lib/test/test_pkgutil.py
+--- a~/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
++++ a/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
+@@ -519,7 +519,7 @@ class NestedNamespacePackageTest(unittes
+         sys.path.insert(0, os.path.join(self.basedir, 'b'))
+         import pkg
+         self.addCleanup(unload, 'pkg')
+-        self.assertEqual(len(pkg.__path__), 2)
++        self.assertEqual(len(pkg.__path__), 3)
+         import pkg.subpkg
+         self.addCleanup(unload, 'pkg.subpkg')
+         self.assertEqual(len(pkg.subpkg.__path__), 2)
