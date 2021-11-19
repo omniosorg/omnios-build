@@ -71,4 +71,5 @@ depend fmri=pkg://@PKGPUBLISHER@/system/zones/internal type=require
 depend fmri=pkg://@PKGPUBLISHER@/text/gnu-sed type=require
 depend fmri=pkg://@PKGPUBLISHER@/text/intltool type=require
 depend fmri=pkg://@PKGPUBLISHER@/web/ca-bundle type=require
+depend fmri=pkg://@PKGPUBLISHER@/web/wget2 type=require
 

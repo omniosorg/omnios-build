@@ -974,13 +974,8 @@ patch_source() {
 get_resource() {
     local RESOURCE=$1
     case ${MIRROR:0:1} in
-        /)
-            logcmd cp $MIRROR/$RESOURCE .
-            ;;
-        *)
-            URLPREFIX=$MIRROR
-            $WGET -a $LOGFILE $URLPREFIX/$RESOURCE
-            ;;
+        /)  logcmd cp $MIRROR/$RESOURCE . ;;
+        *)  $WGET -a $LOGFILE $MIRROR/$RESOURCE ;;
     esac
 }
 
