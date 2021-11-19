@@ -145,7 +145,9 @@ jobs[CSM]=$!
 
 # Firmware branches are built in parallel, wait for them to finish
 for job in "${!jobs[@]}"; do
-    wait ${jobs[$job]}
+    pid=${jobs[$job]}
+    kill -0 $pid || continue
+    wait $pid
     [ $? -ne 0 -a $? -ne 127 ] && logerr "Job $job failed ($?)"
 done
 
