@@ -10,7 +10,7 @@
 # Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
 license $(FWDIR)/LICENCE.$(UEFITAG).BhyvePkg license=BSD-2-Clause-Patent
-license $(FWDIR)/LICENCE.$(UEFITAG).OvmfPkg license=ovmf/BSD-2-Clause-Patent
+license $(FWDIR)/LICENCE.$(UEFITAG).OvmfPkg license=BSD-2-Clause-Patent/ovmf
 license $(FWDIR)/LICENCE.$(UEFITAG).OvmfPkg license=MIT
 
 license $(FWDIR)/LICENCE.$(CSMTAG).OvmfPkg license=simplified-BSD
