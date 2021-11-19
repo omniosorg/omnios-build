@@ -2724,7 +2724,18 @@ check_libabi() {
 
 strip_files() {
     [ -n "$SKIP_STRIP" ] && return
-    logcmd strip -x "$@" || logerr "strip $@ failed"
+    local mode
+    for f in "$@"; do
+        mode=
+        if [ ! -w "$f" ]; then
+            mode=$(stat -c %a "$f")
+            logcmd chmod u+w "$f" || logerr -b "chmod failed: $f (u+w)"
+        fi
+        logcmd strip -x "$f" || logerr "strip $f failed"
+        if [ -n "$mode" ]; then
+            logcmd chmod $mode "$f" || logerr -b "chmod failed: $f ($mode)"
+        fi
+    done
 }
 
 rtime_files() {
@@ -2745,10 +2756,7 @@ strip_install() {
     pushd $DESTDIR > /dev/null || logerr "Cannot change to $DESTDIR"
     while read file; do
         logmsg "------ stripping $file"
-        MODE=$(stat -c %a "$file")
-        logcmd chmod u+w "$file" || logerr -b "chmod failed: $file"
         strip_files "$file"
-        logcmd chmod $MODE "$file" || logerr -b "chmod failed: $file"
     done < <(rtime_objects)
     popd > /dev/null
 }
@@ -2774,8 +2782,11 @@ convert_ctf() {
             continue
         fi
 
-        typeset mode=`stat -c %a "$file"`
-        logcmd chmod u+w "$file" || logerr -b "chmod u+w failed: $file"
+        typeset mode=
+        if [ ! -w "$file" ]; then
+            mode=`stat -c %a "$file"`
+            logcmd chmod u+w "$file" || logerr -b "chmod u+w failed: $file"
+        fi
         typeset tf="$file.$$"
 
         typeset flags="$CTF_FLAGS"
@@ -2804,7 +2815,9 @@ convert_ctf() {
 
         logcmd rm -f "$tf"
         strip_files "$file"
-        logcmd chmod $mode "$file" || logerr -b "chmod failed: $file"
+        if [ -n "$mode" ]; then
+            logcmd chmod $mode "$file" || logerr -b "chmod failed: $file"
+        fi
     done < <(rtime_objects "$dir")
 
     popd >/dev/null
