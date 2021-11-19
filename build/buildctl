@@ -423,6 +423,7 @@ reap_slot() {
             ;;
         *)  logmsg -e "-- Job $i ($job) terminated with status $s"
             note -e "***** BUILD ERROR ***** ($job/$s)"
+            builderr="($job/s)"
             ret=1
             ;;
     esac
@@ -433,7 +434,7 @@ reap_slot() {
 nextslot=
 wait_for_slot() {
     nextslot=
-    err=
+    builderr=
     while :; do
         for i in `seq 0 $threads`; do
             # Idle slot? Just return the slot number
@@ -627,7 +628,7 @@ parallel_build() {
         slotstart[$nextslot]=`date +%s`
     done
 
-    if [ -n "$err" -a -z "$NOKILL_ON_ERROR" ]; then
+    if [ -n "$builderr" -a -z "$NOKILL_ON_ERROR" ]; then
         logmsg -e "-- error encountered, killing jobs"
         for i in `seq 0 $threads`; do
             [ -n "${slots[$i]}" ] && kill "${slots[$i]}"
@@ -637,8 +638,8 @@ parallel_build() {
         wait_for_jobs draining
     fi
 
-    if [ -n "$err" ]; then
-        note -e "***** BUILD ERROR ***** ($err)"
+    if [ -n "$builderr" ]; then
+        note -e "***** BUILD ERROR ***** ($builderr)"
     else
         baseline check
     fi
