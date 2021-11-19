@@ -11,8 +11,7 @@
 # Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=GPLv2
-# nettle is also licensed under GPLv2
-#license ../nettle-$(NETTLEVER)/COPYINGv2 license=GPLv2
+license ../nettle-$(NETTLEVER)/COPYINGv2 license=GPLv2/nettle
 
 group groupname=$(PROG) gid=23
 user ftpuser=false username=$(PROG) uid=23 group=$(PROG) \
