@@ -3,3 +3,4 @@ mntent.patch
 no_inotify.patch
 no_export_dynamic.patch
 libsocket.patch
+CVE-2021-3800.patch
