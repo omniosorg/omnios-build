@@ -19,7 +19,7 @@
 . common.sh
 
 PROG=openssl
-VER=3.0.0
+VER=3.0.1
 PKG=library/security/openssl-3
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
@@ -105,7 +105,7 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-PATH=$OOCEBIN:$PATH run_testsuite test "" testsuite-${VER%.*}.log
+PATH=$OOCEBIN:$PATH run_testsuite test "" testsuite-${VER%%.*}.log
 make_package
 clean_up
 
