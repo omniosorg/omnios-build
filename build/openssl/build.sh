@@ -26,7 +26,7 @@
 . ../../lib/functions.sh
 
 PROG=openssl
-VER=1.1.1l
+VER=1.1.1m
 LVER=1.0.2u
 VERHUMAN=$VER
 PKG=library/security/openssl
