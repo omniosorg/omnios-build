@@ -57,6 +57,7 @@ Result: NOTESTS
 04-test_provfetch.t ................ ok
 04-test_provider.t ................. ok
 04-test_provider_fallback.t ........ ok
+04-test_provider_pkey.t ............ ok
 04-test_upcalls.t .................. ok
 05-test_bf.t ....................... ok
 05-test_cast.t ..................... ok
@@ -246,5 +247,5 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=241, Tests=3251, 
+Files=242, Tests=3258, 
 Result: PASS
