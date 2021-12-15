@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030eg (2021-12-17)
+Weekly release for w/c 13th of December 2021.
+> This update requires a reboot if you have the lx zone brand installed
+
+### Changes
+
+* glib2 updated to fix
+  [CVE-2021-3800](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3800).
+
+* Strengthened LX-exclusive filesystems against races
+
+* Openssl has been updated to version 1.1.1m
+
+<br>
+
+---
+
 ## r151030ec (2021-11-17)
 Weekly release for w/c 15th of November 2021.
 > This is a non-reboot update
