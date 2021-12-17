@@ -53,6 +53,7 @@ driver/network/chxge					S
 driver/network/dmfe					S
 driver/network/e1000g					S
 driver/network/emlxs					S
+driver/network/ena					S
 driver/network/eoib					S
 driver/network/fcip					S
 driver/network/fcsm					S
