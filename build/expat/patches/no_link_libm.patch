@@ -1,0 +1,12 @@
+diff -wpruN '--exclude=*.orig' a~/m4/libtool.m4 a/m4/libtool.m4
+--- a~/m4/libtool.m4	1970-01-01 00:00:00
++++ a/m4/libtool.m4	1970-01-01 00:00:00
+@@ -3867,7 +3867,7 @@ case $host in
+   AC_CHECK_LIB(m, cos, LIBM="$LIBM -lm")
+   ;;
+ *)
+-  AC_CHECK_LIB(m, cos, LIBM=-lm)
++  # AC_CHECK_LIB(m, cos, LIBM=-lm)
+   ;;
+ esac
+ AC_SUBST([LIBM])
