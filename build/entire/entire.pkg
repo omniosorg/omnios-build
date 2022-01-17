@@ -137,7 +137,7 @@ file/gnu-coreutils				8	require
 file/gnu-findutils				4.6	require
 install/beadm					0.5.11	require
 library/c++/sigcpp				2.99	require
-library/expat					2.2	require
+library/expat					2.4	require
 library/glib2					2.60	require
 library/gmp					6.1	require
 library/libffi					3.2	require
