@@ -4,6 +4,30 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030el (2022-01-18)
+Weekly release for w/c 17th of January 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* `tmpfs` could be induced to deadlock -
+  [CVE-2021-43395](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-43395).
+
+* `expat` updated to version 2.4.3, fixing
+  [CVE-2021-45960](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45960),
+  [CVE-2021-46143](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-46143),
+  [CVE-2022-22822](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22822),
+  [CVE-2022-22823](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22823),
+  [CVE-2022-22824](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22824),
+  [CVE-2022-22825](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22825),
+  [CVE-2022-22826](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22826)
+  and
+  [CVE-2022-22827](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22827).
+
+<br>
+
+---
+
 ## r151030eg (2021-12-17)
 Weekly release for w/c 13th of December 2021.
 > This update requires a reboot if you have the lx zone brand installed
