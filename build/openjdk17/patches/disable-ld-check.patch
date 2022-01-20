@@ -1,0 +1,11 @@
+--- a/make/autoconf/toolchain.m4~
++++ b/make/autoconf/toolchain.m4
+@@ -683,7 +683,7 @@
+   TOOLCHAIN_EXTRACT_LD_VERSION([LD], [linker])
+   TOOLCHAIN_PREPARE_FOR_LD_VERSION_COMPARISONS
+ 
+-  if test "x$TOOLCHAIN_MINIMUM_LD_VERSION" != x; then
++  if false && test "x$TOOLCHAIN_MINIMUM_LD_VERSION" != x; then
+     AC_MSG_NOTICE([comparing linker version to minimum version $TOOLCHAIN_MINIMUM_LD_VERSION])
+     TOOLCHAIN_CHECK_LINKER_VERSION(VERSION: $TOOLCHAIN_MINIMUM_LD_VERSION,
+         IF_OLDER_THAN: [

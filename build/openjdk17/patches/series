@@ -40,3 +40,4 @@ omnios-headless.patch
 headless_build_needs_x11.patch
 security-pkcs11.patch
 fontpath.patch
+disable-ld-check.patch
