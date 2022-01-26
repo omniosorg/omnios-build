@@ -2281,17 +2281,16 @@
   * See ProcessHandleImpl_unix.c for more details.
   */
  
---- old/src/java.base/unix/native/libjava/ProcessImpl_md.c	2020-05-20 18:01:09.319404766 -0700
-+++ new/src/java.base/unix/native/libjava/ProcessImpl_md.c	2020-05-20 18:01:08.935397393 -0700
-@@ -230,14 +230,7 @@
+--- old/src/java.base/unix/native/libjava/ProcessImpl_md.c	2022-01-20 15:09:14.171320968 +0000
++++ new/src/java.base/unix/native/libjava/ProcessImpl_md.c.orig	2021-12-07 18:03:22.000000000 +0000
+@@ -230,13 +230,7 @@
  static const char*
  defaultPath(void)
  {
 -#ifdef __solaris__
--    /* These really are the Solaris defaults! */
 -    return (geteuid() == 0 || getuid() == 0) ?
--        "/usr/xpg4/bin:/usr/bin:/opt/SUNWspro/bin:/usr/sbin" :
--        "/usr/xpg4/bin:/usr/bin:/opt/SUNWspro/bin:";
+-        "/usr/sbin:/sbin:/usr/bin" :
+-        "/usr/bin:/usr/sbin:/sbin:/usr/gnu/bin";
 -#else
 -    return ":/bin:/usr/bin";    /* glibc */
 -#endif
@@ -2299,33 +2298,24 @@
  }
  
  static const char*
-@@ -452,7 +445,6 @@
+@@ -452,7 +445,7 @@
  #endif
  
- /* vfork(2) is deprecated on Solaris */
--#ifndef __solaris__
+ /* vfork(2) is deprecated on Darwin */
+-#if !defined __APPLE__ && !defined __solaris__
++#ifndef __APPLE__
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -471,7 +463,6 @@
-     assert(resultPid != 0);  /* childProcess never returns */
-     return resultPid;
- }
--#endif
- 
- static pid_t
- forkChild(ChildStuff *c) {
-@@ -583,10 +574,8 @@
+@@ -583,7 +576,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
- /* vfork(2) is deprecated on Solaris */
--#ifndef __solaris__
+ /* vfork(2) is deprecated on Darwin*/
+-      #if !defined(__APPLE__) && !defined(__solaris__)
++      #ifndef __APPLE__
        case MODE_VFORK:
          return vforkChild(c);
--#endif
-       case MODE_FORK:
-         return forkChild(c);
-       case MODE_POSIX_SPAWN:
+       #endif
 --- old/src/java.base/unix/native/libjava/TimeZone_md.c	2020-05-20 18:01:10.467426810 -0700
 +++ new/src/java.base/unix/native/libjava/TimeZone_md.c	2020-05-20 18:01:10.059418975 -0700
 @@ -35,9 +35,6 @@
