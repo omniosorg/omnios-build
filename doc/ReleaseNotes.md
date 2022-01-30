@@ -2,7 +2,19 @@
 <img src="https://omnios.org/OmniOSce_logo.svg" height="128">
 </a>
 
-# Release Notes for OmniOSce v11 r151040
+# Release Notes for OmniOS v11 r151040
+
+## r151040n (2022-01-31)
+Weekly release for w/c 31st of January 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `openjdk` has been updated to 17.0.2+8 and 11.0.14+9 fixing several CVEs.
+
+<br>
+
+---
 
 ## r151040l (2022-01-18)
 Weekly release for w/c 17th of January 2022.
