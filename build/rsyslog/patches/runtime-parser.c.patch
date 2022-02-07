@@ -18,7 +18,7 @@ diff -wpruN '--exclude=*.orig' a~/runtime/parser.c a/runtime/parser.c
 +		 * therefore not compressed (though it may well begin with
 +		 * 'z'!).
 +		 */
-+		if ((pMsg->msgFlags & NO_PRI_IN_RAW) == 0)
++		if ((pMsg->msgFlags & NO_PRI_IN_RAW) != 0)
 +			FINALIZE;
 +
  		iLenDefBuf = glbl.GetMaxLine();
