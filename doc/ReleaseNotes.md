@@ -4,6 +4,45 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030eq (2022-02-21)
+Weekly release for w/c 21st of February 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* The Intel CPU microcode has been updated to version 20220207. Depending on
+  the processor, this includes fixes for
+  [CVE-2021-0146](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0146),
+  [CVE-2021-0127](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0127).
+
+* The `expat` library package has been updated, fixing
+  [CVE-2022-23852](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23852),
+  [CVE-2022-23990](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23990),
+  [CVE-2022-25235](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25235),
+  [CVE-2022-25236](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25236),
+  [CVE-2022-25313](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25313),
+  [CVE-2022-25314](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25314),
+  [CVE-2022-25315](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25315).
+
+* The `libxml2` library package has been updated, fixing
+  [CVE-2022-23308](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23308).
+
+* It was possible for an unprivileged user to replace the contents of a
+  setuid/setgid file without clearing the special attributes, if they had
+  write access to the file and were able to induce a kernel panic.
+
+### Bug Fixes
+
+* The `zpool online -e` command could cause the ZFS pool to become unavailable
+  until the system is rebooted when the disk partition table needed to be
+  modified.
+
+* The UDP packet send path was acquiring a mutex unecessarily.
+
+<br>
+
+---
+
 ## r151030el (2022-01-18)
 Weekly release for w/c 17th of January 2022.
 > This update requires a reboot
