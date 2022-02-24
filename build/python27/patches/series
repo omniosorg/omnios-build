@@ -26,3 +26,5 @@ CVE-2020-20907.patch
 CVE-2020-8492.patch
 CVE-2021-3177.patch
 security-issue43285.patch
+CVE-2021-3733.patch
+CVE-2022-0391.patch
