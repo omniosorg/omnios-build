@@ -13,13 +13,13 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 . common.sh
 
 PROG=openssl
-VER=3.0.1
+VER=3.0.2
 PKG=library/security/openssl-3
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
