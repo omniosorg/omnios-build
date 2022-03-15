@@ -30,6 +30,7 @@
 ../test/recipes/04-test_pem.t ...................... ok
 ../test/recipes/05-test_bf.t ....................... ok
 ../test/recipes/05-test_cast.t ..................... ok
+../test/recipes/05-test_cmac.t ..................... ok
 ../test/recipes/05-test_des.t ...................... ok
 ../test/recipes/05-test_hmac.t ..................... ok
 ../test/recipes/05-test_idea.t ..................... ok
@@ -47,11 +48,13 @@
 ../test/recipes/15-test_ec.t ....................... ok
 ../test/recipes/15-test_ecdsa.t .................... ok
 ../test/recipes/15-test_ecparam.t .................. ok
+../test/recipes/15-test_genec.t .................... ok
 ../test/recipes/15-test_genrsa.t ................... ok
 ../test/recipes/15-test_mp_rsa.t ................... ok
 ../test/recipes/15-test_out_option.t ............... ok
 ../test/recipes/15-test_rsa.t ...................... ok
 ../test/recipes/15-test_rsapss.t ................... ok
+../test/recipes/20-test_dgst.t ..................... ok
 ../test/recipes/20-test_enc.t ...................... ok
 ../test/recipes/20-test_enc_more.t ................. ok
 ../test/recipes/20-test_passwd.t ................... ok
@@ -154,5 +157,5 @@
 ../test/recipes/99-test_ecstress.t ................. ok
 ../test/recipes/99-test_fuzz.t ..................... ok
 All tests successful.
-Files=155, Tests=1462, 188 wallclock secs ( 1.86 usr  0.65 sys + 100.28 cusr 51.35 csys = 154.13 CPU)
+Files=158, Tests=2636, 171 wallclock secs ( 2.13 usr  0.49 sys + 88.55 cusr 47.46 csys = 138.63 CPU)
 Result: PASS
