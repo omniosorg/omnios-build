@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030et (2022-03-17)
+Weekly release for w/c 14th of March 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `openssl` packages have been updated/patched, fixing
+  [CVE-2022-0778](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0778).
+
+* `python-27` has been patched, fixing
+  [CVE-2021-3733](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3733),
+  [CVE-2022-0391](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-0391).
+
+### Other Changes
+
+* `expat` has been updated to 2.4.7.
+
+<br>
+
+---
+
 ## r151030eq (2022-02-21)
 Weekly release for w/c 21st of February 2022.
 > This update requires a reboot
