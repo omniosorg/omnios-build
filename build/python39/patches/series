@@ -11,7 +11,6 @@ encoding-alias.patch
 pty.patch
 locale-encoding.patch
 cgiserver.patch
-futures-dictsize.patch
 #
 # Additional modules
 module-ucred.patch

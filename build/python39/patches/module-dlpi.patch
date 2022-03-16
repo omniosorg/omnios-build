@@ -1339,7 +1339,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/dlpimodule.c a/Modules/dlpimodule.c
 diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
-@@ -1828,6 +1828,7 @@ class PyBuildExt(build_ext):
+@@ -1830,6 +1830,7 @@ class PyBuildExt(build_ext):
              self.missing.append('_tkinter')
          self.detect_uuid()
          self.detect_ucred()
@@ -1347,7 +1347,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
  
  ##         # Uncomment these lines if you want to play with xxmodule.c
  ##         self.add(Extension('xx', ['xxmodule.c']))
-@@ -2342,6 +2343,13 @@ class PyBuildExt(build_ext):
+@@ -2344,6 +2345,13 @@ class PyBuildExt(build_ext):
              return
          self.add(Extension('ucred', ['ucred.c'], libraries = ['tsol']))
  
