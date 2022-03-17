@@ -462,7 +462,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/ucred.c a/Modules/ucred.c
 diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
-@@ -1827,6 +1827,7 @@ class PyBuildExt(build_ext):
+@@ -1829,6 +1829,7 @@ class PyBuildExt(build_ext):
          if not self.detect_tkinter():
              self.missing.append('_tkinter')
          self.detect_uuid()
@@ -470,7 +470,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
  
  ##         # Uncomment these lines if you want to play with xxmodule.c
  ##         self.add(Extension('xx', ['xxmodule.c']))
-@@ -2333,6 +2334,14 @@ class PyBuildExt(build_ext):
+@@ -2335,6 +2336,14 @@ class PyBuildExt(build_ext):
                             sources=sources,
                             depends=depends))
  

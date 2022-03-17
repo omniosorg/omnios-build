@@ -5,7 +5,7 @@ needs to be built in an XPG6 environment.
 diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
-@@ -1156,6 +1156,10 @@ class PyBuildExt(build_ext):
+@@ -1161,6 +1161,10 @@ class PyBuildExt(build_ext):
              if MACOS:
                  # Issue #35569: Expose RFC 3542 socket options.
                  kwargs['extra_compile_args'] = ['-D__APPLE_USE_RFC_3542']

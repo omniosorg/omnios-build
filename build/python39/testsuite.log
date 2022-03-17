@@ -1,11 +1,10 @@
-401 tests OK.
+402 tests OK.
 
-24 tests skipped:
+23 tests skipped:
     test_dbm_gnu test_epoll test_gdb test_idle test_kqueue test_msilib
     test_ossaudiodev test_smtpnet test_socketserver test_startfile
-    test_tcl test_timeout test_tix test_tk test_ttk_guionly
-    test_ttk_textonly test_turtle test_urllib2net test_urllibnet
-    test_winconsoleio test_winreg test_winsound test_xmlrpc_net
-    test_zipfile64
+    test_tcl test_tix test_tk test_ttk_guionly test_ttk_textonly
+    test_turtle test_urllib2net test_urllibnet test_winconsoleio
+    test_winreg test_winsound test_xmlrpc_net test_zipfile64
 
 Tests result: SUCCESS
