@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
@@ -165,7 +165,8 @@ build -noctf
 #############################################################################
 # Build packages
 
-VER=$IVER.$UPDATE.$BUILD
+VER=$IVER.$UPDATE
+DASHREV=$BUILD
 _DESC="Open-source implementation of the eighth edition of the Java SE Platform"
 
 #############################################################################
