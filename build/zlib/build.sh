@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=zlib
-VER=1.2.11
+VER=1.2.12
 PKG=library/zlib
 SUMMARY="$PROG - A compression library"
 DESC="$SUMMARY"
@@ -29,30 +29,23 @@ SKIP_LICENCES=zlib
 CFLAGS+=" -DNO_VIZ"
 LDFLAGS32+=" -lssp_ns"
 
-CONFIGURE_OPTS_32="--prefix=$PREFIX
+CONFIGURE_OPTS="
+    --prefix=$PREFIX
     --includedir=$PREFIX/include
-    --libdir=$PREFIX/lib"
+"
+CONFIGURE_OPTS_32="--libdir=$PREFIX/lib"
+CONFIGURE_OPTS_64="--libdir=$PREFIX/lib/$ISAPART64"
+LDFLAGS32+=" -lssp_ns"
+export cc=$CC
 
-CONFIGURE_OPTS_64="--prefix=$PREFIX
-    --includedir=$PREFIX/include
-    --libdir=$PREFIX/lib/$ISAPART64"
+MAKE_ARGS_WS="
+    LDSHARED=\"$CC -shared -nostdlib $SO_LDFLAGS -Wl,-h,libz.so.1\"
+"
 
 install_license(){
     # This is fun, take from the zlib.h header
     /bin/awk '/Copyright/,/\*\//{if($1 != "*/"){print}}' \
         $TMPDIR/$BUILDDIR/zlib.h > $DESTDIR/license
-}
-
-make_prog32() {
-    pushd $TMPDIR/$BUILDDIR > /dev/null
-    logcmd gmake LDSHARED="gcc -shared -nostdlib" || logerr "gmake failed"
-    popd > /dev/null
-}
-
-make_prog64() {
-    pushd $TMPDIR/$BUILDDIR > /dev/null
-    logcmd gmake LDSHARED="gcc -shared -nostdlib" || logerr "gmake failed"
-    popd > /dev/null
 }
 
 init
