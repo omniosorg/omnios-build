@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040v (2022-03-28)
+Weekly release for w/c 28th of March 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `python-39` has been updated to 3.9.12, fixing
+  [several CVEs](https://www.python.org/downloads/release/python-3911/).
+
+<br>
+
+---
+
 ## r151040t (2022-03-17)
 Weekly release for w/c 14th of March 2022.
 > This is a non-reboot update
