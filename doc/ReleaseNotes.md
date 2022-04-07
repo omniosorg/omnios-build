@@ -4,6 +4,31 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040w (2022-04-08)
+Weekly release for w/c 4th of April 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* The emulated e1000g network interface in bhyve was subject to an
+  out-of-bounds write vulnerability -
+  [CVE-2022-23087](https://www.freebsd.org/security/advisories/FreeBSD-SA-22:05.bhyve.asc).
+
+* `gzip` updated to version 1.12
+
+### Other Changes
+
+* LX zones support for newer Linux distributions that use glibc >= 2.35
+
+* Fix a bug where zpool expansion could hang with some disk drivers.
+
+* Prefer PIT over HPET for clock calibration; see
+  [illumos 14554](https://www.illumos.org/issues/14554).
+
+<br>
+
+---
+
 ## r151040v (2022-03-28)
 Weekly release for w/c 28th of March 2022.
 > This is a non-reboot update
