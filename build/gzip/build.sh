@@ -21,13 +21,13 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/functions.sh
 
 PROG=gzip
-VER=1.10
+VER=1.12
 VERHUMAN=$VER
 PKG=compress/gzip
 SUMMARY="GNU zip"
