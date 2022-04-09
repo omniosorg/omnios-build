@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030ew (2022-04-08)
+Weekly release for w/c 4th of April 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `gzip` updated to version 1.12
+
+<br>
+
+---
+
 ## r151030et (2022-03-17)
 Weekly release for w/c 14th of March 2022.
 > This is a non-reboot update
