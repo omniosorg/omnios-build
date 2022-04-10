@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040x (2022-04-11)
+Weekly release for w/c 11th of April 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `zlib` updated to version 1.2.12, fixing
+  [CVE-2018-25032](https://nvd.nist.gov/vuln/detail/CVE-2018-25032).
+
+<br>
+
+---
+
 ## r151040w (2022-04-08)
 Weekly release for w/c 4th of April 2022.
 > This update requires a reboot
