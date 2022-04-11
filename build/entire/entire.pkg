@@ -155,7 +155,7 @@ library/readline				8.0	require
 library/security/openssl			1.1	require
 library/security/tcp-wrapper			7.6	require
 library/security/trousers			0.3	require
-library/zlib					1.2.11	require
+library/zlib					1.2.12	require
 locale/af					0.5.11	require		S
 locale/ar					0.5.11	require		S
 locale/as					0.5.11	require		S

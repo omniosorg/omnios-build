@@ -90,7 +90,7 @@ library/readline			8.0
 library/security/openssl		1.1
 library/security/trousers		0.3
 library/unixodbc			2.3
-library/zlib				1.2.11
+library/zlib				1.2.12
 media/cdrtools				3
 network/dns/bind			9.11
 network/dns/idnconv			2.3
