@@ -18,8 +18,8 @@
 
 PROG=openjdk
 VER=1.8
-UPDATE=312
-BUILD=07
+UPDATE=332
+BUILD=09
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
 
@@ -47,9 +47,8 @@ XFORM_ARGS="
     -D IFULL=$IFULL
 "
 
-set_builddir "$VERHUMAN"
 set_arch 64
-MJOBS=8
+set_builddir "jdk${MVER}u-jdk${MVER}u$UPDATE-b$BUILD"
 
 # Do these steps early to set up TMPDIR
 init
