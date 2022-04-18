@@ -1,0 +1,15 @@
+diff -wpruN '--exclude=*.orig' a~/make/common/MakeBase.gmk a/make/common/MakeBase.gmk
+--- a~/make/common/MakeBase.gmk	1970-01-01 00:00:00
++++ a/make/common/MakeBase.gmk	1970-01-01 00:00:00
+@@ -318,9 +318,9 @@ SCM_TIP_FILECMD := $(PRINTF) "$(SCM):%s"
+ # Emit the scm:id pair to $@
+ define GetSourceTips
+ 	$(CD) $(SRC_ROOT) ; \
+-	if [ -d $(SCM_DIR) -a "$(SCM_VERSION)" != "" ] ; then \
++	if [ -d "$(SCM_DIR)" -a "$(SCM_VERSION)" != "" ] ; then \
+ 	  $(ID_COMMAND) >> $@ ; \
+-	elif [ -f $(SCM_TIP_FILENAME) ] ; then \
++	elif [ -f "$(SCM_TIP_FILENAME)" ] ; then \
+           $(SCM_TIP_FILECMD) >> $@ ; \
+ 	fi;
+ 	$(PRINTF) "\n" >> $@
