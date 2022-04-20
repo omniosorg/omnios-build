@@ -13,22 +13,22 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=iso-codes
-VER=4.7.0
+VER=4.9.0
 PKG=data/iso-codes
 SUMMARY="ISO code lists and translations"
 DESC="Lists of various ISO standards "
 DESC+="(e.g. country, language, language scripts, and currency names)"
 
-set_builddir $PROG-$PROG-$VER
+set_builddir $PROG-v$VER
 set_arch 64
 
 init
-download_source $PROG $PROG-$PROG $VER
+download_source $PROG $PROG v$VER
 patch_source
 prep_build
 build
