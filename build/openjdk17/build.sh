@@ -18,8 +18,8 @@
 
 PROG=openjdk
 VER=17
-UPDATE=2
-BUILD=8
+UPDATE=3
+BUILD=7
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk $VER"
 DESC="Open-source implementation of the seventeenth edition of the "
@@ -118,8 +118,7 @@ BUILDDIR=$LFDIR download_source liberation-fonts $LFDIR
 prep_build autoconf -oot
 chmod +x $CONFIGURE_CMD
 build -noctf
-VER=$IVER.$UPDATE.$BUILD
-make_package
+VER=$IVER.$UPDATE DASHREV=$BUILD make_package
 clean_up
 
 # Vim hints
