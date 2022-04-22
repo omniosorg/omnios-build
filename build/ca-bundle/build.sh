@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -80,26 +80,19 @@ build_pem() {
     '
     logcmd rm -f $DESTDIR/etc/ssl/cacert.pem.full
 
-    # Move certificates into the /etc/ssl/CA directory with a filename that
-    # matches their alias, and update the hash links.
-    logmsg "-- Relocating CA certificates"
-    pushd $DESTDIR/etc/ssl >/dev/null
-    logcmd mkdir -p CA
-    logcmd $FD -t l . certs -X rm
-    for c in certs/*.pem; do
-        local alias=`openssl x509 -in $c -noout -alias | tr ' ' '_' \
+    # Move certificates to a name that matches their alias, and re-generate
+    # the hash links.
+    logmsg "-- Renaming CA certificates"
+    pushd $DESTDIR/etc/ssl/certs >/dev/null || logerr "pushd certs failed"
+    logcmd $FD -t l . -X rm
+    for c in *.pem; do
+        typeset alias=`openssl x509 -in $c -noout -alias | tr ' ' '_' \
             | tr -cd '[:print:]'`
-        local hash=`openssl x509 -in $c -noout -hash`
-        [ -f "CA/$alias.pem" ] && logerr "Duplicate certificate $c / $alias"
-        logcmd mv $c "CA/$alias.pem" || logerr "Failed to rename $c"
-        local suf=0
-        while [ -f certs/$hash.$suf ]; do
-            ((suf++))
-        done
-        ((suf > 0)) && logmsg -e "--- handled CA collision for $hash ($suf)"
-        logcmd ln -sf "../CA/$alias.pem" "certs/$hash.$suf" \
-            || logerr "Failed to link $alias.pem to $hash.$suf"
+        logcmd mv $c "$alias.pem" || logerr "Failed to rename $c"
+        logmsg "    $c -> $alias"
     done
+    logmsg "Re-hashing certificates"
+    logcmd openssl rehash -v . || logerr "rehash failed"
     popd >/dev/null
 }
 
