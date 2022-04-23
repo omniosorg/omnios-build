@@ -23,7 +23,7 @@ diff -wpruN '--exclude=*.orig' a~/jdk/src/solaris/native/java/net/NetworkInterfa
  #endif
  
  #ifdef LIFNAMSIZ
-@@ -1852,9 +1854,18 @@ static int getMacFromDevice
+@@ -1862,9 +1864,18 @@ static int getMacFromDevice
      char buf[128];
      int flags = 0;
  
