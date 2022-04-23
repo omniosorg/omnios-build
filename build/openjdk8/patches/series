@@ -61,3 +61,4 @@ patch-jdk_test_Makefile.patch
 patch-jdk_test_sun_security_ec_TestEC.java.patch
 patch-pkcs11.patch
 illumos-port-6.patch
+build-non-scm.patch
