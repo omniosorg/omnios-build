@@ -92,11 +92,16 @@ add_targets() {
 
 # Dependencies are limited at the moment. The only thing that matters is
 # that kayak-kernel is built last. Build everything else in alphabetical
-# order.
+# order except for net-snmp. net-snmp cannot be built using parallel make and
+# so takes a very long time to build (around 16 minutes); build it first.
 buildorder() {
-    mapfile -d '' sorted < <( printf '%s\n' ${!fulltargets[@]} | sort | \
-       grep -v kayak-kernel)
-    for target in ${sorted[@]} system/install/kayak-kernel; do
+    typeset -a sorted
+    sorted+=(system/management/snmp/net-snmp)
+    mapfile -d '' -O ${#sorted[@]} sorted \
+        < <( printf '%s\n' ${!fulltargets[@]} | sort | \
+       egrep -v 'kayak-kernel|net-snmp')
+    sorted+=(system/install/kayak-kernel)
+    for target in ${sorted[@]}; do
         echo $target
     done
 }
