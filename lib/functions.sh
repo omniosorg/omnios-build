@@ -1089,6 +1089,7 @@ make_package() {
 
     ## Strip leading zeros in version components.
     VER=`echo $VER | sed -e 's/\.0*\([1-9]\)/.\1/g;'`
+    PVER=`echo $PVER | sed -e 's/\.0*\([1-9]\)/.\1/g;'`
     if [ -n "$FLAVOR" ]; then
         # We use FLAVOR instead of FLAVORSTR as we don't want the trailing dash
         FMRI="${PKG}-${FLAVOR}@${VER},${SUNOSVER}-${PVER}"
