@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -31,8 +31,8 @@ SKIP_LICENCES='*'
 
 XFORM_ARGS="-D ROOT=usr/share/lib/dict"
 
-pr_EN=aspell6;      ver_EN="2017.08.24-0"
-pr_DE=aspell;       ver_DE="0.50-2"
+pr_EN=aspell6;      ver_EN="2020.12.07-0"
+pr_DE=aspell6;      ver_DE="20161207-7-0"
 pr_DE_alt=aspell6;  ver_DE_alt="2.1-1"
 pr_ES=aspell6;      ver_ES="1.11-2"
 pr_IT=aspell6;      ver_IT="2.2_20050523-0"
@@ -103,7 +103,7 @@ install_dicts() {
     combine en-common.wl en_AU*wl > $out/australian-english
     combine en-common.wl en_CA*wl > $out/canadian-english
 
-    combine de-only.wl de_*wl > $out/ngerman
+    combine de-common.wl de_*wl > $out/ngerman
     combine de-alt.wl > $out/ogerman
 
     combine es.wl > $out/spanish
