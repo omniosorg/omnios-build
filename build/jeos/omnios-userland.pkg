@@ -22,7 +22,7 @@ developer/dtrace/toolkit		0.99
 developer/gcc5				5
 developer/gcc7				7
 developer/gnu-binutils			2
-developer/java/openjdk8			1.8
+developer/java/openjdk8			1.8	9
 developer/lexer/flex			2.6
 developer/macro/cpp			0.5.11
 developer/macro/gnu-m4			1.4.18
@@ -102,7 +102,7 @@ network/test/iperf			3
 network/test/netperf			2.7
 release/name				0.5.11	-
 release/notices				0.5.11
-runtime/java/openjdk8			1.8
+runtime/java/openjdk8			1.8	9
 runtime/perl-64				5.28
 runtime/perl/manual			5.28
 runtime/perl				5.28
