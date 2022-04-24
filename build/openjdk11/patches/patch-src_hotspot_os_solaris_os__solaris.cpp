@@ -5,15 +5,6 @@ Fix building on SunOS in C99 mode.
 diff -wpruN '--exclude=*.orig' a~/src/hotspot/os/solaris/os_solaris.cpp a/src/hotspot/os/solaris/os_solaris.cpp
 --- a~/src/hotspot/os/solaris/os_solaris.cpp	1970-01-01 00:00:00
 +++ a/src/hotspot/os/solaris/os_solaris.cpp	1970-01-01 00:00:00
-@@ -169,6 +169,8 @@ extern "C" {
- 
-   static int lwp_cond_init(cond_t *cv, int scope, void *arg){ memset(cv, 0, sizeof(cond_t)); return 0; }
-   static int lwp_cond_destroy(cond_t *cv)                   { return 0; }
-+  int memcntl(caddr_t, size_t, int, caddr_t, int, int);
-+  int meminfo(const uint64_t *, int, const uint_t *, int, uint64_t *, uint_t *);
- }
- 
- // "default" initializers for pthread-based synchronization
 @@ -2325,7 +2327,7 @@ void os::pd_commit_memory_or_exit(char*
  
  // Uncommit the pages in a specified region.
