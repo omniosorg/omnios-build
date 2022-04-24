@@ -41,3 +41,4 @@ headless_build_needs_x11.patch
 security-pkcs11.patch
 fontpath.patch
 disable-ld-check.patch
+memcntl-remove-own-declaration.patch
