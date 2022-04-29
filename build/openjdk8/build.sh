@@ -20,6 +20,7 @@ PROG=openjdk
 VER=1.8
 UPDATE=332
 BUILD=09
+DASHREV=9
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
 
@@ -167,7 +168,6 @@ build
 # Build packages
 
 VER=$IVER.$UPDATE
-DASHREV=$BUILD
 _DESC="Open-source implementation of the eighth edition of the Java SE Platform"
 
 #############################################################################
