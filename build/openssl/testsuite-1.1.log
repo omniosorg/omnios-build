@@ -157,5 +157,5 @@
 ../test/recipes/99-test_ecstress.t ................. ok
 ../test/recipes/99-test_fuzz.t ..................... ok
 All tests successful.
-Files=158, Tests=2636, 149 wallclock secs ( 1.84 usr  0.32 sys + 92.21 cusr 34.30 csys = 128.67 CPU)
+Files=158, Tests=2637, 197 wallclock secs ( 2.26 usr  0.52 sys + 102.35 cusr 68.09 csys = 173.21 CPU)
 Result: PASS
