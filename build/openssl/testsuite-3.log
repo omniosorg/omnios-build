@@ -12,6 +12,7 @@ Result: NOTESTS
 02-test_internal_keymgmt.t ......... ok
 02-test_internal_provider.t ........ ok
 02-test_lhash.t .................... ok
+02-test_localetest.t ............... ok
 02-test_ordinals.t ................. ok
 02-test_sparse_array.t ............. ok
 02-test_stack.t .................... ok
@@ -247,5 +248,5 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=242, Tests=3261, 
+Files=243, Tests=3268, 
 Result: PASS

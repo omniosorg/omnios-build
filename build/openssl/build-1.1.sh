@@ -19,7 +19,7 @@
 . common.sh
 
 PROG=openssl
-VER=1.1.1n
+VER=1.1.1o
 PKG=library/security/openssl-11
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
