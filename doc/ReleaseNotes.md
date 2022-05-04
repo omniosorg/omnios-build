@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030fa (2022-05-04)
+Weekly release for w/c 2nd of May 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL has been updated to versions 3.0.3 and 1.1.1o.
+
+* OpenJDK has been updated to version 1.8.332-09.
+
+* Curl has been updated to version 7.83.0.
+
+<br>
+
+---
+
 ## r151030ex (2022-04-11)
 Weekly release for w/c 11th of April 2022.
 > This is a non-reboot update
