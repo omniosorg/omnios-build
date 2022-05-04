@@ -10,7 +10,8 @@ Weekly release for w/c 2nd of May 2022.
 
 ### Security Fixes
 
-* OpenSSL has been updated to versions 3.0.3 and 1.1.1o.
+* OpenSSL has been updated to version 1.1.1o, and version 1.0.2 has been
+  patched against CVE-2022-1292..
 
 * OpenJDK has been updated to version 1.8.332-09.
 
