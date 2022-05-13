@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040ab (2022-05-12)
+Weekly release for w/c 9th of May 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* libxml2 updated to version 2.9.14, fixing
+  [CVE-2022-23308](https://nvd.nist.gov/vuln/detail/CVE-2022-23308).
+
+* curl updated to version 7.83.1, fixing
+  [CVE-2022-30115](https://curl.se/docs/CVE-2022-30115.html),
+  [CVE-2022-27782](https://curl.se/docs/CVE-2022-27782.html),
+  [CVE-2022-27781](https://curl.se/docs/CVE-2022-27781.html),
+  [CVE-2022-27780](https://curl.se/docs/CVE-2022-27780.html),
+  [CVE-2022-27779](https://curl.se/docs/CVE-2022-27779.html) and
+  [CVE-2022-27778](https://curl.se/docs/CVE-2022-27778.html).
+
+<br>
+
+---
+
 ## r151040aa (2022-05-04)
 Weekly release for w/c 2nd of May 2022.
 > This is a non-reboot update
