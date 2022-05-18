@@ -21,20 +21,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/ossaudiodev.c a/Modules/ossaudiodev.c
  #ifdef SNDCTL_DSP_BIND_CHANNEL
      _EXPORT_INT(m, SNDCTL_DSP_BIND_CHANNEL);
  #endif
-@@ -1243,8 +1245,12 @@ PyInit_ossaudiodev(void)
-     _EXPORT_INT(m, SNDCTL_DSP_GETSPDIF);
- #endif
-     _EXPORT_INT(m, SNDCTL_DSP_GETTRIGGER);
-+#ifdef SNDCTL_DSP_MAPINBUF
-     _EXPORT_INT(m, SNDCTL_DSP_MAPINBUF);
-+#endif
-+#ifdef SNDCTL_DSP_MAPOUTBUF
-     _EXPORT_INT(m, SNDCTL_DSP_MAPOUTBUF);
-+#endif
-     _EXPORT_INT(m, SNDCTL_DSP_NONBLOCK);
-     _EXPORT_INT(m, SNDCTL_DSP_POST);
- #ifdef SNDCTL_DSP_PROFILE
-@@ -1264,6 +1270,7 @@ PyInit_ossaudiodev(void)
+@@ -1268,6 +1270,7 @@ PyInit_ossaudiodev(void)
      _EXPORT_INT(m, SNDCTL_DSP_STEREO);
      _EXPORT_INT(m, SNDCTL_DSP_SUBDIVIDE);
      _EXPORT_INT(m, SNDCTL_DSP_SYNC);
@@ -42,7 +29,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/ossaudiodev.c a/Modules/ossaudiodev.c
      _EXPORT_INT(m, SNDCTL_FM_4OP_ENABLE);
      _EXPORT_INT(m, SNDCTL_FM_LOAD_INSTR);
      _EXPORT_INT(m, SNDCTL_MIDI_INFO);
-@@ -1305,5 +1312,6 @@ PyInit_ossaudiodev(void)
+@@ -1309,5 +1312,6 @@ PyInit_ossaudiodev(void)
      _EXPORT_INT(m, SNDCTL_TMR_STOP);
      _EXPORT_INT(m, SNDCTL_TMR_TEMPO);
      _EXPORT_INT(m, SNDCTL_TMR_TIMEBASE);
