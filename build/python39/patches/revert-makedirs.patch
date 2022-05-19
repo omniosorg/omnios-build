@@ -28,7 +28,7 @@ diff -wpruN '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
 diff -wpruN '--exclude=*.orig' a~/Lib/test/test_os.py a/Lib/test/test_os.py
 --- a~/Lib/test/test_os.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_os.py	1970-01-01 00:00:00
-@@ -1434,12 +1434,12 @@ class MakedirTests(unittest.TestCase):
+@@ -1435,12 +1435,12 @@ class MakedirTests(unittest.TestCase):
              base = support.TESTFN
              parent = os.path.join(base, 'dir1')
              path = os.path.join(parent, 'dir2')
