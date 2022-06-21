@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040ah (2022-06-22)
+Weekly release for w/c 20th of June 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSL has been updated to versions 3.0.4 and 1.1.1p, fixing
+  [CVE-2022-2068](https://www.openssl.org/news/secadv/20220621.txt).
+
+* Intel CPU microcode has been updated to version 20220419.
+
+### Other Changes
+
+* Python 3.9 has been updated to version 3.9.13
+
+* lx sendfile() compability has been improved.
+
+<br>
+
+---
+
 ## r151040ab (2022-05-12)
 Weekly release for w/c 9th of May 2022.
 > This is a non-reboot update
