@@ -248,5 +248,5 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=243, Tests=3268, 
+Files=243, Tests=3272, 
 Result: PASS
