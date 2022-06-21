@@ -4,7 +4,7 @@ On illumos, sendfile(fd1, fd1) succeeds without raising an exception
 diff -wpruN '--exclude=*.orig' a~/Lib/test/test_shutil.py a/Lib/test/test_shutil.py
 --- a~/Lib/test/test_shutil.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_shutil.py	1970-01-01 00:00:00
-@@ -2392,7 +2392,7 @@ class _ZeroCopyFileTest(object):
+@@ -2396,7 +2396,7 @@ class _ZeroCopyFileTest(object):
      def test_same_file(self):
          self.addCleanup(self.reset)
          with self.get_files() as (src, dst):
