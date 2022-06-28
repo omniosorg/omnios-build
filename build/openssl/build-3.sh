@@ -20,6 +20,7 @@
 
 PROG=openssl
 VER=3.0.4
+DASHREV=1
 PKG=library/security/openssl-3
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
