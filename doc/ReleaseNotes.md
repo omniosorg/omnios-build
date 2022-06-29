@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040ai (2022-06-30)
+Weekly release for w/c 27th of June 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSL 3.0.4 patched, fixing GSD-2022-1002526 heap overflow.
+
+* Intel CPU microcode has been updated to version 20220510.
+
+* curl updated to version 7.84.0, fixing
+  [CVE-2022-32208](https://curl.se/docs/CVE-2022-32208.html),
+  [CVE-2022-32207](https://curl.se/docs/CVE-2022-32207.html),
+  [CVE-2022-32206](https://curl.se/docs/CVE-2022-32206.html) and
+  [CVE-2022-32205](https://curl.se/docs/CVE-2022-32205.html).
+
+<br>
+
+---
+
 ## r151040ah (2022-06-22)
 Weekly release for w/c 20th of June 2022.
 > This update requires a reboot
