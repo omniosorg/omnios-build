@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038bi (2022-06-30)
+Weekly release for w/c 27th of June 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode has been updated to version 20220510.
+
+* curl updated to version 7.84.0, fixing
+  [CVE-2022-32208](https://curl.se/docs/CVE-2022-32208.html),
+  [CVE-2022-32207](https://curl.se/docs/CVE-2022-32207.html),
+  [CVE-2022-32206](https://curl.se/docs/CVE-2022-32206.html) and
+  [CVE-2022-32205](https://curl.se/docs/CVE-2022-32205.html).
+
+<br>
+
+---
+
 ## r151038bh (2022-06-22)
 Weekly release for w/c 20th of June 2022.
 > This update requires a reboot
