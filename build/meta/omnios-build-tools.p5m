@@ -40,6 +40,7 @@ depend fmri=pkg://@PKGPUBLISHER@/library/pcre2 type=require
 depend fmri=pkg://@PKGPUBLISHER@/library/python-3/coverage-39 type=require
 depend fmri=pkg://@PKGPUBLISHER@/library/python-3/meson-39 type=require
 depend fmri=pkg://@PKGPUBLISHER@/library/python-3/pip-39 type=require
+depend fmri=pkg://@PKGPUBLISHER@/library/python-3/pyyaml-39 type=require
 depend fmri=pkg://@PKGPUBLISHER@/library/python-3/setuptools-rust-39 \
     type=require
 depend fmri=pkg://@PKGPUBLISHER@/library/security/openssl type=require
