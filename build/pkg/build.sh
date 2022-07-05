@@ -51,6 +51,7 @@ fi
 
 BUILD_DEPENDS_IPS="
     developer/versioning/git
+    library/python-3/pyyaml-39
     system/zones/internal
     text/intltool
 "
