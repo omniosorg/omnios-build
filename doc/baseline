@@ -132,6 +132,7 @@ omnios driver/network/e1000g
 omnios driver/network/efe
 omnios driver/network/elxl
 omnios driver/network/emlxs
+omnios driver/network/ena
 omnios driver/network/eoib
 omnios driver/network/fcip
 omnios driver/network/fcoe
