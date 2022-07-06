@@ -19,8 +19,8 @@
 . common.sh
 
 PROG=openssl
-VER=3.0.4
-DASHREV=1
+VER=3.0.5
+DASHREV=0
 PKG=library/security/openssl-3
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
