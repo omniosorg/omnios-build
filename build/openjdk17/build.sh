@@ -18,8 +18,8 @@
 
 PROG=openjdk
 VER=17
-UPDATE=3
-BUILD=7
+UPDATE=4
+BUILD=8
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk $VER"
 DESC="Open-source implementation of the seventeenth edition of the "
