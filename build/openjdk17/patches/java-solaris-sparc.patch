@@ -134,18 +134,19 @@
  endif
 --- old/make/autoconf/basic_tools.m4	2020-05-20 17:58:27.308294035 -0700
 +++ new/make/autoconf/basic_tools.m4	2020-05-20 17:58:26.972287584 -0700
-@@ -270,23 +270,15 @@
+@@ -270,8 +270,6 @@
      TAR_TYPE="bsd"
    elif test "x$($TAR -v | $GREP "bsdtar")" != "x"; then
      TAR_TYPE="bsd"
 -  elif test "x$OPENJDK_BUILD_OS" = "xsolaris"; then
 -    TAR_TYPE="solaris"
+   elif test "x$($TAR --version | $GREP "busybox")" != "x"; then
+     TAR_TYPE="busybox"
    elif test "x$OPENJDK_BUILD_OS" = "xaix"; then
-     TAR_TYPE="aix"
-   fi
+@@ -280,15 +278,9 @@
    AC_MSG_CHECKING([what type of tar was found])
    AC_MSG_RESULT([$TAR_TYPE])
- 
+
 -  TAR_CREATE_FILE_PARAM=""
 -
    if test "x$TAR_TYPE" = "xgnu"; then
@@ -157,7 +158,7 @@
 -    fi
    elif test "x$TAR_TYPE" = "aix"; then
      # -L InputList of aix tar: name of file listing the files and directories
-     # that need to be   archived or extracted
+     # that need to be archived or extracted
 @@ -297,7 +289,6 @@
      TAR_SUPPORTS_TRANSFORM="false"
    fi
@@ -226,16 +227,6 @@
    elif test "x$OPENJDK_TARGET_OS" = xmacosx; then
      CFLAGS_OS_DEF_JVM="-D_ALLBSD_SOURCE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE"
      CFLAGS_OS_DEF_JDK="-D_ALLBSD_SOURCE -D_DARWIN_UNLIMITED_SELECT"
-@@ -465,9 +410,6 @@
-   # Setup debug/release defines
-   if test "x$DEBUG_LEVEL" = xrelease; then
-     DEBUG_CFLAGS_JDK="-DNDEBUG"
--    if test "x$OPENJDK_TARGET_OS" = xsolaris; then
--      DEBUG_CFLAGS_JDK="$DEBUG_CFLAGS_JDK -DTRIMMED"
--    fi
-   else
-     DEBUG_CFLAGS_JDK="-DDEBUG"
- 
 --- old/make/autoconf/flags-other.m4	2020-05-20 17:58:32.576395187 -0700
 +++ new/make/autoconf/flags-other.m4	2020-05-20 17:58:32.200387967 -0700
 @@ -51,8 +51,6 @@
@@ -249,7 +240,7 @@
    elif test "x$OPENJDK_TARGET_OS" = xaix; then
 --- old/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.812457321 -0700
 +++ new/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.432450025 -0700
-@@ -265,7 +265,7 @@
+@@ -282,7 +282,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xexternal; then
  
@@ -258,7 +249,7 @@
        if test "x$OBJCOPY" = x; then
          # enabling of enable-debug-symbols and can't find objcopy
          # this is an error
-@@ -278,7 +278,7 @@
+@@ -295,7 +295,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xzipped; then
  
@@ -341,7 +332,7 @@
  ################################################################################
 --- old/make/autoconf/platform.m4	2020-05-20 17:58:42.328582435 -0700
 +++ new/make/autoconf/platform.m4	2020-05-20 17:58:41.904574294 -0700
-@@ -178,10 +190,6 @@
+@@ -184,10 +196,6 @@
        VAR_OS=linux
        VAR_OS_TYPE=unix
        ;;
@@ -352,7 +343,7 @@
      *darwin*)
        VAR_OS=macosx
        VAR_OS_TYPE=unix
-@@ -452,17 +460,6 @@
+@@ -458,17 +466,6 @@
    fi
    AC_SUBST(OPENJDK_$1_CPU_LEGACY_LIB)
  
@@ -370,7 +361,7 @@
    # Setup OPENJDK_$1_CPU_OSARCH, which is used to set the os.arch Java system property
    OPENJDK_$1_CPU_OSARCH="$OPENJDK_$1_CPU"
    if test "x$OPENJDK_$1_OS" = xlinux && test "x$OPENJDK_$1_CPU" = xx86; then
-@@ -592,9 +587,6 @@
+@@ -598,9 +593,6 @@
  
  AC_DEFUN([PLATFORM_SET_RELEASE_FILE_OS_VALUES],
  [
@@ -380,7 +371,7 @@
    if test "x$OPENJDK_TARGET_OS" = "xlinux"; then
      RELEASE_FILE_OS_NAME=Linux
    fi
-@@ -650,25 +642,9 @@
+@@ -656,25 +648,9 @@
    PLATFORM_SET_MODULE_TARGET_OS_VALUES
    PLATFORM_SET_RELEASE_FILE_OS_VALUES
    PLATFORM_SETUP_LEGACY_VARS
@@ -418,15 +409,7 @@
  OPENJDK_TARGET_CPU_LEGACY:=@OPENJDK_TARGET_CPU_LEGACY@
  OPENJDK_TARGET_CPU_LEGACY_LIB:=@OPENJDK_TARGET_CPU_LEGACY_LIB@
  OPENJDK_TARGET_CPU_OSARCH:=@OPENJDK_TARGET_CPU_OSARCH@
-@@ -484,7 +483,6 @@
- 
- DISABLE_WARNING_PREFIX := @DISABLE_WARNING_PREFIX@
- CFLAGS_WARNINGS_ARE_ERRORS:=@CFLAGS_WARNINGS_ARE_ERRORS@
--LDFLAGS_WARNINGS_ARE_ERRORS:=@LDFLAGS_WARNINGS_ARE_ERRORS@
- DISABLED_WARNINGS := @DISABLED_WARNINGS@
- DISABLED_WARNINGS_C := @DISABLED_WARNINGS_C@
- DISABLED_WARNINGS_CXX := @DISABLED_WARNINGS_CXX@
-@@ -534,7 +532,6 @@
+@@ -535,7 +534,6 @@
  # LDFLAGS used to link the jdk native libraries (C-code)
  LDFLAGS_JDKLIB:=@LDFLAGS_JDKLIB@
  JDKLIB_LIBS:=@JDKLIB_LIBS@
@@ -434,7 +417,7 @@
  
  # LDFLAGS used to link the jdk native launchers (C-code)
  LDFLAGS_JDKEXE:=@LDFLAGS_JDKEXE@
-@@ -751,7 +744,6 @@
+@@ -751,7 +746,6 @@
  LDD:=@LDD@
  OTOOL:=@OTOOL@
  READELF:=@READELF@
@@ -442,7 +425,7 @@
  EXPR:=@EXPR@
  FILE:=@FILE@
  DOT:=@DOT@
-@@ -769,7 +761,6 @@
+@@ -770,7 +763,6 @@
  ULIMIT:=@ULIMIT@
  
  TAR_TYPE:=@TAR_TYPE@
@@ -450,7 +433,7 @@
  TAR_INCLUDE_PARAM:=@TAR_INCLUDE_PARAM@
  TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TRANSFORM@
  
-@@ -784,7 +775,6 @@
+@@ -785,7 +777,6 @@
  VCRUNTIME_1_DLL:=@VCRUNTIME_1_DLL@
  MSVCP_DLL:=@MSVCP_DLL@
  UCRT_DLL_DIR:=@UCRT_DLL_DIR@
@@ -507,15 +490,7 @@
    # set. Some files get their write permissions removed after being copied to the
 --- old/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.780687120 -0700
 +++ new/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.440680591 -0700
-@@ -749,7 +743,6 @@
-   ifeq ($$($1_WARNINGS_AS_ERRORS_$(TOOLCHAIN_TYPE)), true)
-     $1_EXTRA_CFLAGS += $(CFLAGS_WARNINGS_ARE_ERRORS)
-     $1_EXTRA_CXXFLAGS += $(CFLAGS_WARNINGS_ARE_ERRORS)
--    $1_EXTRA_LDFLAGS += $(LDFLAGS_WARNINGS_ARE_ERRORS)
-   endif
- 
-   ifeq (NONE, $$($1_OPTIMIZATION))
-@@ -987,7 +969,7 @@
+@@ -986,7 +969,7 @@
            $1_DEBUGINFO_FILES := $$($1_SYMBOLS_DIR)/$$($1_NOSUFFIX).pdb \
                $$($1_SYMBOLS_DIR)/$$($1_NOSUFFIX).map
  
@@ -942,17 +917,6 @@
    LIBAWT_EXFILES += awt_Font.c CUPSfuncs.c fontpath.c X11Color.c
  endif
  
-@@ -112,9 +108,7 @@
- 
- LIBAWT_CFLAGS += -D__MEDIALIB_OLD_NAMES -D__USE_J2D_NAMES $(X_CFLAGS)
- 
--ifeq ($(call isTargetOs, solaris), false)
--  LIBAWT_CFLAGS += -DMLIB_NO_LIBSUNMATH
--endif
-+LIBAWT_CFLAGS += -DMLIB_NO_LIBSUNMATH
- 
- ifeq ($(call isTargetOs, windows), true)
-   LIBAWT_CFLAGS += -EHsc -DUNICODE -D_UNICODE
 @@ -167,7 +156,6 @@
          -delayload:comctl32.dll -delayload:shlwapi.dll, \
      LIBS_unix := -ljvm -ljava $(LIBM), \
@@ -1246,7 +1210,7 @@
  set -e
 --- old/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:33.301561154 -0700
 +++ new/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:32.909553627 -0700
-@@ -873,10 +869,6 @@
+@@ -869,10 +869,6 @@
  
  BUILD_HOTSPOT_JTREG_EXECUTABLES_LIBS_exesigtest := -ljvm
  
@@ -1256,7 +1220,7 @@
 -
  ifeq ($(call isTargetOs, windows), true)
      BUILD_HOTSPOT_JTREG_EXECUTABLES_CFLAGS_exeFPRegs := -MT
-     BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c
+     BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c
 --- old/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.437582966 -0700
 +++ new/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.045575440 -0700
 @@ -73,9 +73,6 @@
@@ -1465,21 +1429,6 @@
    // The only supported platforms are: (1) Linux/64-bit and (2) Solaris/64-bit and
    // (3) MacOSX/64-bit
    // This #if condition should be in sync with the areCustomLoadersSupportedForCDS
---- old/src/hotspot/share/gc/shared/gcVMOperations.cpp	2020-05-20 18:00:08.990246402 -0700
-+++ new/src/hotspot/share/gc/shared/gcVMOperations.cpp	2020-05-20 18:00:08.654239951 -0700
-@@ -73,12 +73,10 @@
- void VM_GC_Operation::notify_gc_begin(bool full) {
-   HOTSPOT_GC_BEGIN(
-                    full);
--  HS_DTRACE_WORKAROUND_TAIL_CALL_BUG();
- }
- 
- void VM_GC_Operation::notify_gc_end() {
-   HOTSPOT_GC_END();
--  HS_DTRACE_WORKAROUND_TAIL_CALL_BUG();
- }
- 
- // Allocations may fail in several threads at about the same time,
 --- old/src/hotspot/share/runtime/abstract_vm_version.cpp	2020-05-20 18:00:26.906590409 -0700
 +++ new/src/hotspot/share/runtime/abstract_vm_version.cpp	2020-05-20 18:00:26.522583036 -0700
 @@ -166,7 +166,6 @@
@@ -1552,16 +1501,6 @@
    // All the flags that get adjusted by VM_Version_init and os::init_2
    // have been set so dump the flags now.
    if (PrintFlagsFinal || PrintFlagsRanges) {
---- old/src/hotspot/share/runtime/java.cpp	2020-05-20 18:00:33.342713988 -0700
-+++ new/src/hotspot/share/runtime/java.cpp	2020-05-20 18:00:32.958706615 -0700
-@@ -588,7 +588,6 @@
- void notify_vm_shutdown() {
-   // For now, just a dtrace probe.
-   HOTSPOT_VM_SHUTDOWN();
--  HS_DTRACE_WORKAROUND_TAIL_CALL_BUG();
- }
- 
- void vm_direct_exit(int code) {
 --- old/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.390734111 -0700
 +++ new/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.014726891 -0700
 @@ -484,7 +484,7 @@
@@ -1657,42 +1596,6 @@
    tty->print_cr("                 - in gdb do 'set overload-resolution off' before calling pns()");
    tty->print_cr("                 - in dbx do 'frame 1' before calling pns()");
  
---- old/src/hotspot/share/utilities/dtrace.hpp	2020-05-20 18:00:42.798895553 -0700
-+++ new/src/hotspot/share/utilities/dtrace.hpp	2020-05-20 18:00:42.462889102 -0700
-@@ -29,23 +29,11 @@
- #if defined(DTRACE_ENABLED)
- 
- #include <sys/sdt.h>
-+#include <sys/types.h>
- 
- #define DTRACE_ONLY(x) x
- #define NOT_DTRACE(x)
- 
--#if defined(SOLARIS)
--// Work around dtrace tail call bug 6672627 until it is fixed in solaris 10.
--#define HS_DTRACE_WORKAROUND_TAIL_CALL_BUG() \
--  do { volatile size_t dtrace_workaround_tail_call_bug = 1; } while (0)
--#elif defined(LINUX)
--#define HS_DTRACE_WORKAROUND_TAIL_CALL_BUG()
--#elif defined(__APPLE__)
--#define HS_DTRACE_WORKAROUND_TAIL_CALL_BUG()
--#include <sys/types.h>
--#else
--#error "dtrace enabled for unknown os"
--#endif /* defined(SOLARIS) */
--
- #include "dtracefiles/hotspot.h"
- #include "dtracefiles/hotspot_jni.h"
- #include "dtracefiles/hs_private.h"
-@@ -55,8 +43,6 @@
- #define DTRACE_ONLY(x)
- #define NOT_DTRACE(x) x
- 
--#define HS_DTRACE_WORKAROUND_TAIL_CALL_BUG()
--
- #include "dtrace_disabled.hpp"
- 
- #endif /* defined(DTRACE_ENABLED) */
 --- old/src/hotspot/share/utilities/globalDefinitions_gcc.hpp	2020-05-20 18:00:44.978937412 -0700
 +++ new/src/hotspot/share/utilities/globalDefinitions_gcc.hpp	2020-05-20 18:00:44.586929885 -0700
 @@ -39,36 +39,15 @@
@@ -2281,16 +2184,17 @@
   * See ProcessHandleImpl_unix.c for more details.
   */
  
---- old/src/java.base/unix/native/libjava/ProcessImpl_md.c	2022-01-20 15:09:14.171320968 +0000
-+++ new/src/java.base/unix/native/libjava/ProcessImpl_md.c.orig	2021-12-07 18:03:22.000000000 +0000
-@@ -230,13 +230,7 @@
+--- old/src/java.base/unix/native/libjava/ProcessImpl_md.c	2020-05-20 18:01:09.319404766 -0700
++++ new/src/java.base/unix/native/libjava/ProcessImpl_md.c	2020-05-20 18:01:08.935397393 -0700
+@@ -230,14 +230,7 @@
  static const char*
  defaultPath(void)
  {
 -#ifdef __solaris__
+-    /* These really are the Solaris defaults! */
 -    return (geteuid() == 0 || getuid() == 0) ?
--        "/usr/sbin:/sbin:/usr/bin" :
--        "/usr/bin:/usr/sbin:/sbin:/usr/gnu/bin";
+-        "/usr/xpg4/bin:/usr/bin:/opt/SUNWspro/bin:/usr/sbin" :
+-        "/usr/xpg4/bin:/usr/bin:/opt/SUNWspro/bin:";
 -#else
 -    return ":/bin:/usr/bin";    /* glibc */
 -#endif
@@ -2302,16 +2206,16 @@
  #endif
  
  /* vfork(2) is deprecated on Darwin */
--#if !defined __APPLE__ && !defined __solaris__
+-#ifndef __solaris__
 +#ifndef __APPLE__
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -583,7 +576,7 @@
+@@ -585,7 +576,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
  /* vfork(2) is deprecated on Darwin*/
--      #if !defined(__APPLE__) && !defined(__solaris__)
+-      #ifndef __solaris__
 +      #ifndef __APPLE__
        case MODE_VFORK:
          return vforkChild(c);
@@ -2795,17 +2699,6 @@
  
 -#endif /* !_SOLARIS_JLONG_MD_H_ */
 +#endif /* !_UNIX_JLONG_MD_H_ */
---- old/src/java.base/unix/native/libjli/java_md.h	2020-05-20 18:01:16.943551155 -0700
-+++ new/src/java.base/unix/native/libjli/java_md.h	2020-05-20 18:01:16.611544781 -0700
-@@ -27,7 +27,7 @@
- #define JAVA_MD_H
- 
- /*
-- * This file contains common defines and includes for Solaris, Linux and MacOSX.
-+ * This file contains common defines and includes for unix.
-  */
- #include <limits.h>
- #include <unistd.h>
 --- old/src/java.base/unix/native/libjsig/jsig.c	2020-05-20 18:01:20.019610218 -0700
 +++ new/src/java.base/unix/native/libjsig/jsig.c	2020-05-20 18:01:19.603602231 -0700
 @@ -35,16 +35,6 @@
@@ -4046,25 +3939,17 @@
          int ret;
 --- old/src/java.base/unix/native/libnio/ch/DatagramChannelImpl.c	2020-05-20 18:01:31.615832874 -0700
 +++ new/src/java.base/unix/native/libnio/ch/DatagramChannelImpl.c	2020-05-20 18:01:31.211825117 -0700
-@@ -50,9 +50,6 @@
+@@ -50,9 +50,7 @@
      jint fd = fdval(env, fdo);
      int rv;
  
 -#if defined(__solaris__)
 -    rv = connect(fd, 0, 0);
--#else
-     SOCKETADDRESS sa;
-     socklen_t len = isIPv6 ? sizeof(struct sockaddr_in6) :
-                              sizeof(struct sockaddr_in);
-@@ -78,8 +75,6 @@
-         rv = errno = 0;
- #endif // defined(_ALLBSD_SOURCE) || defined(_AIX)
- 
--#endif // defined(__solaris__)
--
-     if (rv < 0)
-         handleSocketError(env, errno);
- }
+-#elif defined(__APPLE__)
++#if defined(__APPLE__)
+     // On macOS systems we use disconnectx
+     rv = disconnectx(fd, SAE_ASSOCID_ANY, SAE_CONNID_ANY);
+ #else
 --- old/src/java.base/unix/native/libnio/ch/FileChannelImpl.c	2020-05-20 18:01:32.667853074 -0700
 +++ new/src/java.base/unix/native/libnio/ch/FileChannelImpl.c	2020-05-20 18:01:32.291845854 -0700
 @@ -29,7 +29,7 @@
@@ -4521,7 +4406,7 @@
  
      /* This is intended to be called, and the returned value used,
       * from within a block synchronized on this font object.
-@@ -1049,14 +974,7 @@
+@@ -1057,14 +982,7 @@
              style = Font.ITALIC;
              break;
          case fsSelectionBoldBit:
@@ -4671,97 +4556,6 @@
          try {
              verify();
          } catch (Throwable t) {
---- old/src/java.desktop/share/native/common/awt/medialib/mlib_ImageCopy_Bit.c	2020-05-20 18:01:53.368250536 -0700
-+++ new/src/java.desktop/share/native/common/awt/medialib/mlib_ImageCopy_Bit.c	2020-05-20 18:01:53.036244162 -0700
-@@ -256,9 +256,6 @@
-   }
- 
-   if (j < size) lsrc1 = sp[0];
--#ifdef __SUNPRO_C
--#pragma pipeloop(0)
--#endif /* __SUNPRO_C */
-   for (; j <= size - 64; j += 64) {
-     lsrc0 = lsrc1;
-     lsrc1 = sp[1];
-@@ -387,9 +384,6 @@
- #ifdef _LITTLE_ENDIAN
-   src1 = (src1 << 24) | ((src1 & 0xFF00) << 8) | ((src1 >> 8) & 0xFF00) | (src1 >> 24);
- #endif /* _LITTLE_ENDIAN */
--#ifdef __SUNPRO_C
--#pragma pipeloop(0)
--#endif /* __SUNPRO_C */
-   for (; j <= size - 32; j += 32) {
-     src0 = src1;
-     src1 = sp[-1];
-@@ -478,9 +472,6 @@
-   }
- 
-   if (j < size) lsrc1 = sp[0];
--#ifdef __SUNPRO_C
--#pragma pipeloop(0)
--#endif /* __SUNPRO_C */
-   for (; j <= size - 64; j += 64) {
-     lsrc0 = lsrc1;
-     lsrc1 = sp[-1];
---- old/src/java.desktop/share/native/common/awt/medialib/mlib_sys.c	2020-05-20 18:01:54.384270045 -0700
-+++ new/src/java.desktop/share/native/common/awt/medialib/mlib_sys.c	2020-05-20 18:01:54.048263593 -0700
-@@ -39,20 +39,7 @@
- /***************************************************************/
- 
- #if ! defined ( __MEDIALIB_OLD_NAMES )
--#if defined ( __SUNPRO_C )
--
--#pragma weak mlib_memmove = __mlib_memmove
--#pragma weak mlib_malloc = __mlib_malloc
--#pragma weak mlib_realloc = __mlib_realloc
--#pragma weak mlib_free = __mlib_free
--#pragma weak mlib_memset = __mlib_memset
--#pragma weak mlib_memcpy = __mlib_memcpy
--
--#ifdef MLIB_NO_LIBSUNMATH
--#pragma weak mlib_sincosf = __mlib_sincosf
--#endif /* MLIB_NO_LIBSUNMATH */
--
--#elif defined ( __GNUC__ ) /* defined ( __SUNPRO_C ) */
-+#if defined ( __GNUC__ )
- 
-   __typeof__ ( __mlib_memmove) mlib_memmove
-     __attribute__ ((weak,alias("__mlib_memmove")));
-@@ -67,19 +54,16 @@
-   __typeof__ ( __mlib_memcpy) mlib_memcpy
-     __attribute__ ((weak,alias("__mlib_memcpy")));
- 
--#ifdef MLIB_NO_LIBSUNMATH
--
- void __mlib_sincosf (float x, float *s, float *c);
- 
- __typeof__ ( __mlib_sincosf) mlib_sincosf
-     __attribute__ ((weak,alias("__mlib_sincosf")));
--#endif /* MLIB_NO_LIBSUNMATH */
- 
--#else /* defined ( __SUNPRO_C ) */
-+#else /* defined ( __GNUC__ ) */
- 
- #error  "unknown platform"
- 
--#endif /* defined ( __SUNPRO_C ) */
-+#endif /* defined ( __GNUC__ ) */
- #endif /* ! defined ( __MEDIALIB_OLD_NAMES ) */
- 
- /***************************************************************/
-@@ -127,12 +111,8 @@
-   return memmove(s1, s2, n);
- }
- 
--#ifdef MLIB_NO_LIBSUNMATH
--
- void __mlib_sincosf (mlib_f32 x, mlib_f32 *s, mlib_f32 *c)
- {
-   *s = (mlib_f32)sin(x);
-   *c = (mlib_f32)cos(x);
- }
--
--#endif /* MLIB_NO_LIBSUNMATH */
 --- old/src/java.desktop/share/native/libjsound/SoundDefs.h	2020-05-20 18:01:56.500310674 -0700
 +++ new/src/java.desktop/share/native/libjsound/SoundDefs.h	2020-05-20 18:01:56.112303224 -0700
 @@ -29,10 +29,9 @@
@@ -4799,35 +4593,6 @@
  #if X_PLATFORM == X_LINUX
  #define INLINE          inline
  #endif
---- old/src/java.desktop/share/native/libmlib_image/mlib_SysMath.h	2020-05-20 18:02:19.928760518 -0700
-+++ new/src/java.desktop/share/native/libmlib_image/mlib_SysMath.h	2020-05-20 18:02:19.548753221 -0700
-@@ -57,26 +57,12 @@
- 
- #define mlib_sqrt       sqrt
- 
--#ifdef MLIB_NO_LIBSUNMATH
--
- #define mlib_sinf       (float) sin
- #define mlib_cosf       (float) cos
- void mlib_sincosf (float x, float *s, float *c);
- #define mlib_sqrtf      (float) sqrt
- #define mlib_fabsf      (float) fabs
- 
--#else
--
--#include <sunmath.h>
--
--#define mlib_sinf       sinf
--#define mlib_cosf       cosf
--#define mlib_sincosf    sincosf
--#define mlib_sqrtf       sqrtf
--#define mlib_fabsf       fabsf
--
--#endif  /* MLIB_NO_LIBSUNMATH */
--
- #endif  /* MLIB_LIBCAFEMATH */
- 
- 
 --- old/src/java.desktop/unix/classes/sun/awt/X11FontManager.java	2020-05-20 18:02:35.237054448 -0700
 +++ new/src/java.desktop/unix/classes/sun/awt/X11FontManager.java	2020-05-20 18:02:34.897047919 -0700
 @@ -696,8 +696,7 @@
@@ -5185,80 +4950,8 @@
              return getAIXServiceAttributes();
          } else {
              return getBSDServiceAttributes();
---- old/src/java.desktop/unix/native/common/awt/X11Color.c	2020-05-20 18:02:42.777199224 -0700
-+++ new/src/java.desktop/unix/native/common/awt/X11Color.c	2020-05-20 18:02:42.441192773 -0700
-@@ -89,59 +89,7 @@
- #define CMAP_ALLOC_DEFAULT      200     /* default number of colors in cmap */
- #define CMAP_ALLOC_MAX          245     /* maximum number of colors in cmap */
- 
--#ifdef __solaris__
--#include <sys/utsname.h>
--
--struct {
--    char *machine;
--    int  cubesize;
--} machinemap[] = {
--    { "i86pc", LOOKUPSIZE / 4 }, /* BugTraq ID 4102599 */
--    { "sun4c", LOOKUPSIZE / 4 },
--    { "sun4m", LOOKUPSIZE / 2 },
--    { "sun4d", LOOKUPSIZE / 2 },
--    { "sun4u", LOOKUPSIZE / 1 },
--};
--
--#define MACHMAPSIZE     (sizeof(machinemap) / sizeof(machinemap[0]))
--
--int getVirtCubeSize() {
--    struct utsname name;
--    int i, ret;
--
--    ret = uname(&name);
--    if (ret < 0) {
--#ifdef DEBUG
--#include <errno.h>
--        jio_fprintf(stderr, "uname errno = %d, using default cubesize %d\n",
--                    errno, LOOKUPSIZE);
--#endif
--        return LOOKUPSIZE;
--    }
--
--    for (i = 0; i < MACHMAPSIZE; i++) {
--        if (strcmp(name.machine, machinemap[i].machine) == 0) {
--#ifdef DEBUG
--            if (debug_colormap) {
--                jio_fprintf(stderr, "'%s'.cubesize = '%d'\n",
--                            machinemap[i].machine, machinemap[i].cubesize);
--            }
--#endif
--            return machinemap[i].cubesize;
--        }
--    }
--
--#ifdef DEBUG
--    if (debug_colormap) {
--        jio_fprintf(stderr, "unknown machine '%s' using cubesize %d\n",
--                    name.machine, LOOKUPSIZE);
--    }
--#endif
--    return LOOKUPSIZE;
--}
--#else /* __solaris__ */
- #define getVirtCubeSize()       (LOOKUPSIZE)
--#endif /* __solaris__ */
- 
- unsigned char img_bwgamma[256];
- uns_ordered_dither_array img_oda_alpha;
 --- old/src/java.desktop/unix/native/common/awt/fontpath.c	2020-05-20 18:02:43.805218963 -0700
 +++ new/src/java.desktop/unix/native/common/awt/fontpath.c	2020-05-20 18:02:43.465212435 -0700
-@@ -34,9 +34,6 @@
- #include <sys/mman.h>
- #include <fcntl.h>
- #include <unistd.h>
--#ifdef __solaris__
--#include <sys/systeminfo.h>
--#endif
- 
- #include <jni.h>
- #include <jni_util.h>
 @@ -64,57 +61,7 @@
  
  #define MAXFDIRS 512    /* Max number of directories that contain fonts */
@@ -5318,7 +5011,7 @@
  /* All the known interesting locations we have discovered on
   * various flavors of Linux
   */
-@@ -364,14 +311,6 @@
+@@ -230,14 +177,6 @@
          if (strstr(x11Path[i], ".gnome") != NULL) {
              continue;
          }
@@ -5333,7 +5026,7 @@
          fontdirs[pos] = strdup(x11Path[i]);
          slen = strlen(fontdirs[pos]);
          if (slen > 0 && fontdirs[pos][slen-1] == '/') {
-@@ -521,8 +460,6 @@
+@@ -387,8 +326,6 @@
  
  #if defined(__linux__)
      knowndirs = fullLinuxFontPath;
@@ -5342,39 +5035,6 @@
  #elif defined(_AIX)
      knowndirs = fullAixFontPath;
  #endif
-@@ -592,10 +529,6 @@
-     char *homeEnv;
-     static char *homeEnvStr = "HOME="; /* must be static */
-     void* libfontconfig = NULL;
--#ifdef __solaris__
--#define SYSINFOBUFSZ 8
--    char sysinfobuf[SYSINFOBUFSZ];
--#endif
- 
-     /* Private workaround to not use fontconfig library.
-      * May be useful during testing/debugging
-@@ -605,21 +538,6 @@
-         return NULL;
-     }
- 
--#ifdef __solaris__
--    /* fontconfig is likely not properly configured on S8/S9 - skip it,
--     * although allow user to override this behaviour with an env. variable
--     * ie if USE_J2D_FONTCONFIG=yes then we skip this test.
--     * NB "4" is the length of a string which matches our patterns.
--     */
--    if (useFC == NULL || strcmp(useFC, "yes")) {
--        if (sysinfo(SI_RELEASE, sysinfobuf, SYSINFOBUFSZ) == 4) {
--            if ((!strcmp(sysinfobuf, "5.8") || !strcmp(sysinfobuf, "5.9"))) {
--                return NULL;
--            }
--        }
--    }
--#endif
--
- #if defined(_AIX)
-     /* On AIX, fontconfig is not a standard package supported by IBM.
-      * instead it has to be installed from the "AIX Toolbox for Linux Applications"
 --- old/src/java.desktop/unix/native/libawt_xawt/awt/awt_GraphicsEnv.c	2020-05-20 18:02:46.009261282 -0700
 +++ new/src/java.desktop/unix/native/libawt_xawt/awt/awt_GraphicsEnv.c	2020-05-20 18:02:45.625253909 -0700
 @@ -399,12 +399,7 @@
@@ -5391,24 +5051,6 @@
          if (xrenderLibHandle == NULL) {
              xrenderLibHandle = dlopen("libXrender.a(libXrender.so.0)",
                                        RTLD_MEMBER | RTLD_LAZY | RTLD_GLOBAL);
---- old/src/java.desktop/unix/native/libawt_xawt/awt/awt_InputMethod.c	2020-05-20 18:02:47.085281942 -0700
-+++ new/src/java.desktop/unix/native/libawt_xawt/awt/awt_InputMethod.c	2020-05-20 18:02:46.697274492 -0700
-@@ -179,15 +179,6 @@
- static Window getParentWindow(Window);
- #endif
- 
--#ifdef __solaris__
--/* Prototype for this function is missing in Solaris X11R6 Xlib.h */
--extern char *XSetIMValues(
--#if NeedVarargsPrototypes
--    XIM /* im */, ...
--#endif
--);
--#endif
--
- /*
-  * This function is stolen from /src/solaris/hpi/src/system_md.c
-  * It is used in setting the time in Java-level InputEvents
 --- old/src/java.desktop/unix/native/libawt_xawt/java2d/x11/XRBackendNative.c	2020-05-20 18:02:47.985299224 -0700
 +++ new/src/java.desktop/unix/native/libawt_xawt/java2d/x11/XRBackendNative.c	2020-05-20 18:02:47.661293003 -0700
 @@ -76,29 +61,6 @@
@@ -16038,7 +15680,7 @@
 -#endif // OS_CPU_SOLARIS_X86_OS_SOLARIS_X86_HPP
 --- old/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.inline.hpp	2020-05-20 18:10:02.505642227 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,34 +0,0 @@
+@@ -1,39 +0,0 @@
 -/*
 - * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -16068,9 +15710,14 @@
 -
 -#include "runtime/os.hpp"
 -
--extern "C" jlong _raw_rdtsc(); // In .il file
--
--inline jlong os::rdtsc() { return _raw_rdtsc(); }
+-// See http://www.technovelty.org/code/c/reading-rdtsc.htl for details
+-inline jlong os::rdtsc() {
+-  uint64_t res;
+-  uint32_t ts1, ts2;
+-  __asm__ __volatile__ ("rdtsc" : "=a" (ts1), "=d" (ts2));
+-  res = ((uint64_t)ts1 | (uint64_t)ts2 << 32);
+-  return (jlong)res;
+-}
 -
 -#endif // OS_CPU_SOLARIS_X86_OS_SOLARIS_X86_INLINE_HPP
 --- old/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp	2020-05-20 18:10:03.249656511 -0700
