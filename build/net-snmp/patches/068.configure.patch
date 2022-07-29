@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -13228,7 +13228,7 @@ lt_prog_compiler_static=
+@@ -13236,7 +13236,7 @@ lt_prog_compiler_static=
        ;;
  
      solaris*)

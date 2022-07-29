@@ -1,6 +1,6 @@
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/perl/agent/Makefile.PL net-snmp-5.8/perl/agent/Makefile.PL
---- net-snmp-5.8~/perl/agent/Makefile.PL	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/perl/agent/Makefile.PL	2018-07-24 09:51:36.908087118 +0000
+diff -wpruN '--exclude=*.orig' a~/perl/agent/Makefile.PL a/perl/agent/Makefile.PL
+--- a~/perl/agent/Makefile.PL	1970-01-01 00:00:00
++++ a/perl/agent/Makefile.PL	1970-01-01 00:00:00
 @@ -95,7 +95,7 @@ sub AgentInitMakeParams {
                  " " . $Params{'LIBS'};
  	    $Params{'CCFLAGS'} = "-I../../include " . $Params{'CCFLAGS'};

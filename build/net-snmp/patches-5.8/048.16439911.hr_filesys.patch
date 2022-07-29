@@ -4,9 +4,9 @@
 # https://sourceforge.net/p/net-snmp/patches/1287/.
 # This patch has not been accepted yet.
 #
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/agent/mibgroup/host/hr_filesys.c net-snmp-5.8/agent/mibgroup/host/hr_filesys.c
---- net-snmp-5.8~/agent/mibgroup/host/hr_filesys.c	2018-07-24 09:51:39.794276773 +0000
-+++ net-snmp-5.8/agent/mibgroup/host/hr_filesys.c	2018-07-24 09:51:42.680543091 +0000
+diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
+--- a~/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
++++ a/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 @@ -745,20 +745,25 @@ const char     *HRFS_ignores[] = {
  static int
  load_mnttab_cache_solaris()

@@ -1,0 +1,29 @@
+
+The testsuite starts various agent and trap servers and always appends
+"-f" to each command line, after any operands which define the listening
+port. illumos getopt() does not handle options following operands.
+The "-f" should be part of the calling functions' command construction
+anyway.
+
+Reported upstream as https://github.com/net-snmp/net-snmp/pull/442
+
+diff -wpruN '--exclude=*.orig' a~/testing/fulltests/support/simple_eval_tools.sh a/testing/fulltests/support/simple_eval_tools.sh
+--- a~/testing/fulltests/support/simple_eval_tools.sh	1970-01-01 00:00:00
++++ a/testing/fulltests/support/simple_eval_tools.sh	1970-01-01 00:00:00
+@@ -525,6 +525,7 @@ STARTPROG() {
+     if test -f $CFG_FILE; then
+ 	COMMAND="$COMMAND -C -c $CFG_FILE"
+     fi
++    COMMAND="$COMMAND -f"
+     if [ "x$PORT_SPEC" != "x" ]; then
+         COMMAND="$COMMAND $PORT_SPEC"
+     fi
+@@ -537,7 +538,7 @@ STARTPROG() {
+         echo $COMMAND >> $LOG_FILE.command
+     fi
+     {
+-	{ $COMMAND -f; } >$LOG_FILE.stdout 2>&1
++	{ $COMMAND; } >$LOG_FILE.stdout 2>&1
+ 	echo $? >$LOG_FILE.exitcode
+     } &
+ }

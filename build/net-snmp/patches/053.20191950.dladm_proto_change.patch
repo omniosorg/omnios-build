@@ -13,7 +13,7 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
  /*-
   * Includes of local application header files 
   */
-@@ -1771,7 +1772,12 @@ int link_to_phydev(char *link, char *phy
+@@ -1772,7 +1773,12 @@ int link_to_phydev(char *link, char *phy
          dladm_phys_attr_t dpa;
          dladm_handle_t handle;
  

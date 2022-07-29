@@ -4,9 +4,9 @@ circumstances, causes a core dump during snmp_shutdown.
 (Upstream Bug) #2374 net-snmp is coring when stopped
 =====================================================================
 
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/snmplib/pkcs.c net-snmp-5.8/snmplib/pkcs.c
---- net-snmp-5.8~/snmplib/pkcs.c	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/snmplib/pkcs.c	2018-07-24 09:51:34.896806141 +0000
+diff -wpruN '--exclude=*.orig' a~/snmplib/pkcs.c a/snmplib/pkcs.c
+--- a~/snmplib/pkcs.c	1970-01-01 00:00:00
++++ a/snmplib/pkcs.c	1970-01-01 00:00:00
 @@ -1,5 +1,5 @@
  /*
 - * Copyright Copyright 2003 Sun Microsystems, Inc. All rights reserved.
