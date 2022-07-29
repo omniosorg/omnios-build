@@ -15,7 +15,6 @@
 029.7097655.ipAddressTable_container.patch
 030.7147779.kernel_sunos5.patch
 038.16032482.kernel_sunos5.patch
-043.16634190.kernel_sunos5.patch
 048.16439911.hr_filesys.patch
 053.20191950.dladm_proto_change.patch
 054.20479968.net-snmp-config.in.patch
@@ -23,3 +22,5 @@
 060.20461627.17502158.kernel_sunos5.patch
 067.1.kernel_sunos5.patch
 068.configure.patch
+closefrom.patch
+testsuite.patch

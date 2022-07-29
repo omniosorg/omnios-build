@@ -76,8 +76,8 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
 +            boolean_t flags_unknown, int mtu)
  { 
      boolean_t havespeed = B_FALSE;
- 
-@@ -1634,6 +1639,9 @@ set_if_info(mib2_ifEntry_t *ifp, unsigne
+     uint64_t ifspeed = 0;
+@@ -1635,6 +1640,9 @@ set_if_info(mib2_ifEntry_t *ifp, unsigne
      ifp->ifDescr.o_length = strlen(name);
      strcpy(ifp->ifDescr.o_bytes, name);
      ifp->ifAdminStatus = (flags & IFF_UP) ? 1 : 2;
