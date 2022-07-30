@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 
 PROG=net-snmp
-VER=5.9.1
+VER=5.9.3
 PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
@@ -87,6 +87,7 @@ prep_build
 # We only want the libraries from legacy versions
 CONFIGURE_OPTS_64+=" $LIBRARIES_ONLY"
 for pver in $PVERS; do
+    [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"
     build_dependency -merge -ctf -oot -multi \
         $PROG-$pver $PROG-$pver $PROG $PROG $pver
