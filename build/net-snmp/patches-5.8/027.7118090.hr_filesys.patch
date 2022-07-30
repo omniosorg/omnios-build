@@ -20,9 +20,9 @@ function called from the Init_HR_FileSys() function.
 Developed in-house. Bug submitted upstream
 https://sourceforge.net/p/net-snmp/bugs/2588/
 
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/agent/mibgroup/host/hr_filesys.c net-snmp-5.8/agent/mibgroup/host/hr_filesys.c
---- net-snmp-5.8~/agent/mibgroup/host/hr_filesys.c	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/agent/mibgroup/host/hr_filesys.c	2018-07-24 09:51:39.794276773 +0000
+diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
+--- a~/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
++++ a/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 @@ -46,6 +46,10 @@
  #include <sys/mount.h>
  #endif

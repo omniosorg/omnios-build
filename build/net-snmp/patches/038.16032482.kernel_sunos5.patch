@@ -26,7 +26,7 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
  #if defined(HAVE_IF_NAMEINDEX)
  static int _dlpi_open(const char *devname);
  static int _dlpi_get_phys_address(int fd, char *paddr, int maxlen,
-@@ -1760,11 +1764,155 @@ getif(mib2_ifEntry_t *ifbuf, size_t size
+@@ -1761,12 +1765,156 @@ getif(mib2_ifEntry_t *ifbuf, size_t size
  }
  #endif /*defined(HAVE_IF_NAMEINDEX)*/
  
@@ -176,13 +176,14 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
              boolean_t flags_unknown, int mtu)
  { 
      boolean_t havespeed = B_FALSE;
+     uint64_t ifspeed = 0;
 +    char phydevname[100];
 +    char devbasename[100];
 +    int instance = -1;
  
      /*
       * Set basic information 
-@@ -1808,6 +1956,16 @@ set_if_info(mib2_ifEntry_t *ifp, unsigne
+@@ -1816,6 +1964,16 @@ set_if_info(mib2_ifEntry_t *ifp, unsigne
          /* only UPed interfaces get correct link status - if any */
          if (getKstatInt(NULL, name,"link_up",&i_tmp) == 0) {
              ifp->ifOperStatus = i_tmp ? 1 : 2;
@@ -202,7 +203,7 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
 diff -wpruN '--exclude=*.orig' a~/snmplib/Makefile.in a/snmplib/Makefile.in
 --- a~/snmplib/Makefile.in	1970-01-01 00:00:00
 +++ a/snmplib/Makefile.in	1970-01-01 00:00:00
-@@ -223,7 +223,7 @@ FTOBJS=	snmp_client.ft mib.ft parse.ft s
+@@ -222,7 +222,7 @@ FTOBJS=	snmp_client.ft mib.ft parse.ft s
  TOBJS=$(LOBJS)
  
  # To satisfy -zdefs

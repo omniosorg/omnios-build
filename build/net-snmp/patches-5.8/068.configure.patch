@@ -1,6 +1,6 @@
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/configure net-snmp-5.8/configure
---- net-snmp-5.8~/configure	2018-07-16 14:33:50.000000000 +0000
-+++ net-snmp-5.8/configure	2018-07-24 09:51:45.439837943 +0000
+diff -wpruN '--exclude=*.orig' a~/configure a/configure
+--- a~/configure	1970-01-01 00:00:00
++++ a/configure	1970-01-01 00:00:00
 @@ -12886,7 +12886,7 @@ lt_prog_compiler_static=
        ;;
  

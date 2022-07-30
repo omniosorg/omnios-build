@@ -1,22 +1,21 @@
 diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgroup/kernel_sunos5.c
 --- a~/agent/mibgroup/kernel_sunos5.c	1970-01-01 00:00:00
 +++ a/agent/mibgroup/kernel_sunos5.c	1970-01-01 00:00:00
-@@ -292,7 +292,9 @@ getKstatInt(const char *classname, const
-     kstat_t        *ks;
+@@ -293,6 +293,7 @@ getKstatInt(const char *classname, const
      kid_t           kid;
      kstat_named_t  *named;
-+ 
      int             ret = -1;        /* fail unless ... */
-+    int             lookup_stat = 0;	
++    int             lookup_stat = 0;
  
      if (kstat_fd == 0) {
  	kstat_fd = kstat_open();
-@@ -303,6 +305,65 @@ getKstatInt(const char *classname, const
+@@ -303,6 +304,65 @@ getKstatInt(const char *classname, const
      if ((ksc = kstat_fd) == NULL) {
  	goto Return;
      }
-+   
-+    if ((ks = kstat_lookup(ksc, statname, 0, "link")) != NULL)
++
++    if ((ks = kstat_lookup(ksc, NETSNMP_REMOVE_CONST(char *, statname),
++         -1, "link")) != NULL)
 +    {
 +        kid = kstat_read(ksc, ks, NULL);
 +        if (kid == -1) {
@@ -67,54 +66,34 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/kernel_sunos5.c a/agent/mibgrou
 +                                lookup_stat = 1;
 +                            break;
 +#endif
-+                    } 
++                    }
 +            }
 +        }
 +    }
-+     
-+    if(!lookup_stat) 
-+    {
-     ks = kstat_lookup(ksc, classname, -1, statname);
++if (!lookup_stat) {
++
+     ks = kstat_lookup(ksc, NETSNMP_REMOVE_CONST(char *, classname),
+                       -1, NETSNMP_REMOVE_CONST(char *, statname));
      if (ks == NULL) {
- 	DEBUGMSGTL(("kernel_sunos5", "class %s, stat %s not found\n",
-@@ -310,12 +371,14 @@ getKstatInt(const char *classname, const
- 		statname ? statname : "NULL"));
- 	goto Return;
-     }
-+        
-     kid = kstat_read(ksc, ks, NULL);
-     if (kid == -1) {
- 	DEBUGMSGTL(("kernel_sunos5", "cannot read class %s stats %s\n",
- 		classname ? classname : "NULL", statname ? statname : "NULL"));
- 	goto Return;
-     }
-+        
-     named = kstat_data_lookup(ks, varname);
-     if (named == NULL) {
- 	DEBUGMSGTL(("kernel_sunos5", "no var %s for class %s stat %s\n",
-@@ -323,7 +386,7 @@ getKstatInt(const char *classname, const
+@@ -324,7 +384,7 @@ getKstatInt(const char *classname, const
  		statname ? statname : "NULL"));
  	goto Return;
      }
 -
-+    } 
++}
      ret = 0;                /* maybe successful */
      switch (named->data_type) {
  #ifdef KSTAT_DATA_INT32         /* Solaris 2.6 and up */
-@@ -440,10 +503,19 @@ getKstat(const char *statname, const cha
-     /*
-      * Get the named statistics 
+@@ -444,9 +504,16 @@ getKstat(const char *statname, const cha
       */
--    if ((ks = kstat_lookup(ksc, module_name, instance, statname)) == NULL) {
-+
-+    if ((ks = kstat_lookup(ksc, module_name, instance, statname)) == NULL)
-+    {
+     if ((ks = kstat_lookup(ksc, module_name, instance,
+                            NETSNMP_REMOVE_CONST(char *, statname))) == NULL) {
 +        /*
 +         * Try to lookup the kstat module with
-+         * modulename = linkname and statname = "link".
++         * modulename = statname and statname = "link".
 +         */
-+
-+        if ((ks = kstat_lookup(ksc, statname, 0, "link")) == NULL) {
++      if ((ks = kstat_lookup(ksc, NETSNMP_REMOVE_CONST(char *, statname),
++          0, "link")) == NULL) {
  	ret = -10;
  	goto Return;        /* kstat errors */
      }

@@ -2,9 +2,9 @@
 #
 # Developed in-house. Solaris-specific; not suitable for upstream
 
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/ltmain.sh net-snmp-5.8/ltmain.sh
---- net-snmp-5.8~/ltmain.sh	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/ltmain.sh	2018-07-24 09:51:35.687556392 +0000
+diff -wpruN '--exclude=*.orig' a~/ltmain.sh a/ltmain.sh
+--- a~/ltmain.sh	1970-01-01 00:00:00
++++ a/ltmain.sh	1970-01-01 00:00:00
 @@ -5406,7 +5406,9 @@ func_mode_link ()
  	  if test "$prev" = rpath; then
  	    case "$rpath " in

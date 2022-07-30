@@ -1,6 +1,6 @@
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/doxygen.conf net-snmp-5.8/doxygen.conf
---- net-snmp-5.8~/doxygen.conf	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/doxygen.conf	2018-07-24 09:51:40.212943215 +0000
+diff -wpruN '--exclude=*.orig' a~/doxygen.conf a/doxygen.conf
+--- a~/doxygen.conf	1970-01-01 00:00:00
++++ a/doxygen.conf	1970-01-01 00:00:00
 @@ -422,6 +422,12 @@ HTML_FOOTER            =
  
  HTML_STYLESHEET        = 

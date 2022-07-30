@@ -8,9 +8,9 @@ This patch is taken from the below link.
 
 https://bugs.launchpad.net/ubuntu/+source/net-snmp/+bug/865268
 
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/agent/mibgroup/host/hr_storage.c net-snmp-5.8/agent/mibgroup/host/hr_storage.c
---- net-snmp-5.8~/agent/mibgroup/host/hr_storage.c	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/agent/mibgroup/host/hr_storage.c	2018-07-24 09:51:44.249520111 +0000
+diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_storage.c a/agent/mibgroup/host/hr_storage.c
+--- a~/agent/mibgroup/host/hr_storage.c	1970-01-01 00:00:00
++++ a/agent/mibgroup/host/hr_storage.c	1970-01-01 00:00:00
 @@ -527,6 +527,7 @@ var_hrstore(struct variable *vp,
              int exact, size_t * var_len, WriteMethod ** write_method)
  {

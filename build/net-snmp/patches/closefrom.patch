@@ -1,0 +1,22 @@
+diff -wpruN '--exclude=*.orig' a~/agent/netsnmp_close_fds.c a/agent/netsnmp_close_fds.c
+--- a~/agent/netsnmp_close_fds.c	1970-01-01 00:00:00
++++ a/agent/netsnmp_close_fds.c	1970-01-01 00:00:00
+@@ -23,6 +23,11 @@ void netsnmp_close_fds(int fd)
+     if (fd < -1)
+         fd = -1;
+ 
++#ifdef __illumos__
++    closefrom(fd + 1);
++    return;
++#else
++
+ #ifdef __linux__
+     if ((dir = opendir("/proc/self/fd"))) {
+         while ((ent = readdir(dir))) {
+@@ -54,5 +59,6 @@ void netsnmp_close_fds(int fd)
+ 
+     for (i = largest_fd; i > fd && i >= 0; i--)
+         close(i);
++#endif /* __illumos__ */
+ #endif
+ }

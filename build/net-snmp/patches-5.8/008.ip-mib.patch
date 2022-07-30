@@ -1,6 +1,6 @@
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/agent/mibgroup/mibII.h net-snmp-5.8/agent/mibgroup/mibII.h
---- net-snmp-5.8~/agent/mibgroup/mibII.h	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/agent/mibgroup/mibII.h	2018-07-24 09:51:35.283930004 +0000
+diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/mibII.h a/agent/mibgroup/mibII.h
+--- a~/agent/mibgroup/mibII.h	1970-01-01 00:00:00
++++ a/agent/mibgroup/mibII.h	1970-01-01 00:00:00
 @@ -55,3 +55,10 @@ config_require(ip-mib/ipSystemStatsTable
   * ip-mib/ipv6ScopeZoneIndexTable
   */

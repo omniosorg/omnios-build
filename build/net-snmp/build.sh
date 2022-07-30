@@ -13,20 +13,21 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 
 PROG=net-snmp
-VER=5.9
+VER=5.9.3
 PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
 
-NO_PARALLEL_MAKE=true
 SKIP_LICENCES="CMU/UCD"
 
-RUN_DEPENDS_IPS="shell/bash"
+# net-snmp builds fail randomly with parallel make. There are patches upstream
+# but none of them resolve it successfully.
+NO_PARALLEL_MAKE=1
 
 # Previous versions that also need to be built and the libraries packaged
 # since compiled software may depend on them.
@@ -77,17 +78,19 @@ TESTSUITE_SED="
     1,/RUNFULLTESTS$/d
     s/([^)]*net-snmp-.*//
     /^gmake/d
+    s%-[0-9][0-9]*/[^)]*%/%g
 "
 
 init
-prep_build
-
-# We only want the libraries from legacy versions
 save_buildenv
+prep_build
+# We only want the libraries from legacy versions
 CONFIGURE_OPTS_64+=" $LIBRARIES_ONLY"
 for pver in $PVERS; do
+    [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"
-    build_dependency -merge -ctf $PROG-$pver $PROG-$pver $PROG $PROG $pver
+    build_dependency -merge -ctf -oot -multi \
+        $PROG-$pver $PROG-$pver $PROG $PROG $pver
 done
 restore_buildenv
 # Remove unnecessary files from the legacy versions
@@ -95,11 +98,11 @@ logcmd rm -rf $DESTDIR/usr/{include,bin}
 logcmd $FD lib $DESTDIR/usr/lib -e la -e so -X rm {}
 
 note -n "Building current version: $VER"
+
 download_source $PROG $PROG $VER
 patch_source
-# The source archive for version 5.9 includes some .o files that need cleaning
-CLEAN_SOURCE=
-build
+prep_build autoconf -oot -keep
+build -multi
 run_testsuite test
 install_smf application/management net-snmp.xml svc-net-snmp
 make_package

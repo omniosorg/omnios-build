@@ -6,9 +6,9 @@
 # Developed in-house. Bug submitted upstream
 # https://sourceforge.net/p/net-snmp/bugs/2589
 #
-diff -wpruN '--exclude=*.orig' net-snmp-5.8~/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c net-snmp-5.8/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c
---- net-snmp-5.8~/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c	2018-07-16 14:33:40.000000000 +0000
-+++ net-snmp-5.8/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c	2018-07-24 09:51:40.622857533 +0000
+diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c a/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c
+--- a~/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c	1970-01-01 00:00:00
++++ a/agent/mibgroup/ip-mib/ipAddressTable/ipAddressTable_data_access.c	1970-01-01 00:00:00
 @@ -377,6 +377,8 @@ ipAddressTable_container_load(netsnmp_co
       * missing addresses to be deleted. Also, prune interfaces in
       * ipaddress_container, so only the new interfaces remain.
