@@ -9,7 +9,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
  VXWORKS = ('vxworks' in HOST_PLATFORM)
  CC = os.environ.get("CC")
  if not CC:
-@@ -826,7 +827,7 @@ class PyBuildExt(build_ext):
+@@ -825,7 +826,7 @@ class PyBuildExt(build_ext):
          # Ensure that /usr/local is always used, but the local build
          # directories (i.e. '.' and 'Include') must be first.  See issue
          # 10520.
@@ -18,7 +18,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
              add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
              add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
          # only change this for cross builds for 3.3, issues on Mageia
-@@ -1150,6 +1151,14 @@ class PyBuildExt(build_ext):
+@@ -1149,6 +1150,14 @@ class PyBuildExt(build_ext):
                                                       ['/usr/lib/termcap'],
                                                       'termcap'):
                  readline_libs.append('termcap')
@@ -33,7 +33,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
              self.add(Extension('readline', ['readline.c'],
                                 library_dirs=['/usr/lib/termcap'],
                                 extra_link_args=readline_extra_link_args,
-@@ -1184,6 +1193,12 @@ class PyBuildExt(build_ext):
+@@ -1183,6 +1192,12 @@ class PyBuildExt(build_ext):
  
          curses_enabled = True
          if curses_library.startswith('ncurses'):
@@ -46,7 +46,7 @@ diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
              curses_libs = [curses_library]
              self.add(Extension('_curses', ['_cursesmodule.c'],
                                 extra_compile_args=['-DPy_BUILD_CORE_MODULE'],
-@@ -1213,10 +1228,15 @@ class PyBuildExt(build_ext):
+@@ -1212,10 +1227,15 @@ class PyBuildExt(build_ext):
          skip_curses_panel = True if AIX else False
          if (curses_enabled and not skip_curses_panel and
                  self.compiler.find_library_file(self.lib_dirs, panel_library)):
