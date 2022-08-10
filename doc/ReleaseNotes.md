@@ -4,6 +4,39 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040ao (2022-08-09)
+Weekly release for w/c 8th of August 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* Fix for Post-barrier Return Stack Buffer Predictions
+  [CVE-2022-26373](https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/advisory-guidance/post-barrier-return-stack-buffer-predictions.html)
+
+* Fix for a rare kernel panic due to a race condition in poll()
+
+* net-snmp updated to version 5.9.3, fixing
+  [CVE-2022-24805](https://nvd.nist.gov/vuln/detail/CVE-2022-24805),
+  [CVE-2022-24809](https://nvd.nist.gov/vuln/detail/CVE-2022-24809),
+  [CVE-2022-24806](https://nvd.nist.gov/vuln/detail/CVE-2022-24806),
+  [CVE-2022-24807](https://nvd.nist.gov/vuln/detail/CVE-2022-24807),
+  [CVE-2022-24808](https://nvd.nist.gov/vuln/detail/CVE-2022-24808) and
+  [CVE-2022-24810](https://nvd.nist.gov/vuln/detail/CVE-2022-24810)
+
+* AMD CPU microcode updated to latest versions as of 20220408
+
+* OpenJDK packages updated to versions 1.8.345-01, 11.0.16+8 and 17.0.4+8
+
+* OpenSSL updated to version 1.1.1q and 3.0.5
+
+### Other Changes
+
+* Updates to ZFS to gracefully handle unknown/invalid vdev device IDs
+
+<br>
+
+---
+
 ## r151040ai (2022-06-30)
 Weekly release for w/c 27th of June 2022.
 > This update requires a reboot
