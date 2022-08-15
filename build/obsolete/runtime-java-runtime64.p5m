@@ -1,0 +1,10 @@
+# The system/dtrace/tests package in illumos-gate has a dependency on
+# runtime/java and runtime/java/runtime64.
+# This renamed package exists to make it easier to onu to gate with the
+# dtrace tests package installed, or to install that tests package in a gate
+# onu.
+# It's a straight rename to runtime/java, which is itself a rename to a
+# particular version of openjdk.
+set name=pkg.fmri value=pkg://@PKGPUBLISHER@/runtime/java/runtime64@1.8.0.999,@SUNOSVER@-@PVER@
+set name=pkg.renamed value=true
+depend fmri=pkg:/runtime/java type=require
