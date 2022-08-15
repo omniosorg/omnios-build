@@ -577,6 +577,7 @@ omnios release/notices
 omnios runtime/java r
 omnios runtime/java/openjdk11
 omnios runtime/java/openjdk8
+omnios runtime/java/runtime64 r
 omnios runtime/perl
 omnios runtime/perl-64 r
 omnios runtime/perl/manual o
