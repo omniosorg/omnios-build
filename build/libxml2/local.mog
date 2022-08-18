@@ -10,9 +10,9 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=MIT
+license Copyright license=MIT
 
 # Move libs to /lib, to match upstream
 <transform file link path=usr/lib(/amd64)?/lib.* -> edit path usr/lib lib>
