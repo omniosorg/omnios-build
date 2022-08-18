@@ -15,5 +15,6 @@ license COPYING.LGPLv2.1 license=LGPLv2.1
 license COPYING.GPLv2 license=GPLv2
 license COPYING.GPLv3 license=GPLv3
 
-<transform path=usr/share/(?:doc|man/de) -> drop>
+<transform path=usr/share/(?:doc|man/(?:fr|de)) -> drop>
+<transform file path=.*\.a$ -> drop>
 
