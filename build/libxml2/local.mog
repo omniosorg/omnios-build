@@ -7,9 +7,9 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=MIT
+license Copyright license=MIT
 
 # Drop documentation
 <transform path=usr/share/(gtk-)?doc -> drop>
