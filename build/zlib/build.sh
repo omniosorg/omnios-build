@@ -19,6 +19,7 @@
 
 PROG=zlib
 VER=1.2.12
+DASHREV=1
 PKG=library/zlib
 SUMMARY="$PROG - A compression library"
 DESC="$SUMMARY"

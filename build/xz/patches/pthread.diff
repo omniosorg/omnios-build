@@ -14,8 +14,7 @@ diff -wpruN '--exclude=*.orig' a~/m4/ax_pthread.m4 a/m4/ax_pthread.m4
          ;;
  esac
  
-@@ -230,8 +230,8 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
- # [3] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=468555
+@@ -231,7 +231,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
  # To solve this, first try -pthread together with -lpthread for GCC
  
  AS_IF([test "x$GCC" = "xyes"],
