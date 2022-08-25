@@ -1,6 +1,7 @@
---- open-vm-tools-11.1.0-16036546~/configure.ac	2020-05-14 11:18:04.304138834 +0000
-+++ open-vm-tools-11.1.0-16036546/configure.ac	2020-05-14 11:27:58.840409776 +0000
-@@ -926,7 +926,7 @@
+diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -1183,7 +1183,7 @@ else
     AC_CHECK_LIB(
        [pthread],
        [pthread_mutex_init],
@@ -9,7 +10,7 @@
        [AC_MSG_ERROR(
           [libpthread not found. Please install the libc/libpthread devel package(s).])])
  fi
-@@ -1360,7 +1360,7 @@
+@@ -1618,7 +1618,7 @@ if test "$os" = "solaris"; then
     LIBVMTOOLS_LIBADD="$LIBVMTOOLS_LIBADD -lnsl"
     LIBVMTOOLS_LIBADD="$LIBVMTOOLS_LIBADD -lresolv"
     LIBVMTOOLS_LIBADD="$LIBVMTOOLS_LIBADD -lrpcsvc"

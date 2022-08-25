@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/services/vmtoolsd/pluginMgr.c a/services/vmtoolsd/pluginMgr.c
 --- a~/services/vmtoolsd/pluginMgr.c	1970-01-01 00:00:00
 +++ a/services/vmtoolsd/pluginMgr.c	1970-01-01 00:00:00
-@@ -638,7 +638,7 @@ ToolsCore_LoadPlugins(ToolsServiceState
+@@ -654,7 +654,7 @@ ToolsCore_LoadPlugins(ToolsServiceState
     guint i;
     GPtrArray *plugins = NULL;
  
