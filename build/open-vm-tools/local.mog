@@ -35,14 +35,3 @@ set name=info.classification \
 
 <transform file path=etc/vmware-tools/tools.conf -> set preserve true>
 
-#
-# Were we to support kernel modules, we would need to use something like
-# the following transforms:
-#
-# <transform link path=sbin/mount.vmblock$ -> edit target ^.*$ usr/sbin/mount.vmblock>
-# <transform dir path=kernel$ -> edit group bin sys>
-# <transform dir path=kernel/drv$ -> edit group bin sys>
-# <transform dir path=kernel/drv/amd64$ -> edit group bin sys>
-# Note: use the "driver" action (see
-# http://docs.oracle.com/cd/E26502_01/html/E21383/pkgterms.html#gluea) for
-# drivers.
