@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040aq (2022-08-25)
+Weekly release for w/c 22nd of August 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `compress/xz` updated to version 5.2.6, fixing
+  [CVE-2022-1271](https://nvd.nist.gov/vuln/detail/CVE-2022-1271).
+
+* `library/libxml2` updated to version 2.10.0, fixing
+  [CVE-2022-2309](https://nvd.nist.gov/vuln/detail/CVE-2022-2309).
+
+* `library/zlib` updated to fix
+  [CVE-2022-37434](https://nvd.nist.gov/vuln/detail/CVE-2022-37434).
+
+* Fix for a boundary condition in the 9p library used by bhyve.
+
+### Other Changes
+
+* Added `runtime/java/runtime64` package, which is just a rename to
+  `runtime/java`, to aid developers working on illumos-gate.
+
+<br>
+
+---
+
 ## r151040ao (2022-08-09)
 Weekly release for w/c 8th of August 2022.
 > This update requires a reboot
