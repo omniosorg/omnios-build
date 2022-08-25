@@ -19,11 +19,11 @@
 
 PKG=system/virtualization/open-vm-tools
 PROG=open-vm-tools
-VER=12.0.0
+VER=12.1.0
 # The open-vm-tools have been inconsistent in the past in regard to whether
 # the filenames and extracted directories contain the build number. If they
 # do, set the build number.
-BUILD=19345655
+BUILD=20219665
 SUMMARY="Open Virtual Machine Tools"
 DESC="The Open Virtual Machine Tools project aims to provide a suite of open "
 DESC+="source virtualisation utilities and drivers to improve the "
@@ -47,6 +47,7 @@ BUILD_DEPENDS_IPS='developer/pkg-config'
 # __EXTENSIONS__ (see CFLAGS) - Need gethostbyname_r in XPG4v2
 set_standard XPG4v2
 
+SKIP_RTIME_CHECK=1
 NO_SONAME_EXPECTED=1
 
 CFLAGS+="\
