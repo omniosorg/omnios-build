@@ -31,7 +31,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/nicInfo/nicInfoPosix.c a/lib/nicInfo/nicIn
  static unsigned
  CountNetmaskBitsV6(struct sockaddr *netmask)
  {
-@@ -447,7 +444,7 @@ GuestInfoGetNicInfo(unsigned int maxIPv4
+@@ -452,7 +449,7 @@ GuestInfoGetNicInfo(unsigned int maxIPv4
     }
  
     return TRUE;
@@ -40,7 +40,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/nicInfo/nicInfoPosix.c a/lib/nicInfo/nicIn
     struct ifaddrs *ifaddrs = NULL;
  
     if (getifaddrs(&ifaddrs) == 0 && ifaddrs != NULL) {
-@@ -496,6 +493,7 @@ GuestInfoGetNicInfo(unsigned int maxIPv4
+@@ -501,6 +498,7 @@ GuestInfoGetNicInfo(unsigned int maxIPv4
   */
  #if defined(__FreeBSD__) || \
      defined(__APPLE__) || \

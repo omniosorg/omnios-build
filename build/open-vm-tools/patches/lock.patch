@@ -23,7 +23,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c a/lib/file/fileLo
        goto corrupt;
     }
  
-@@ -1095,8 +1095,8 @@ FileLockWaitForPossession(const char *lo
+@@ -1100,8 +1100,8 @@ FileLockWaitForPossession(const char *lo
         ((memberValues->lamportNumber == myValues->lamportNumber) &&
            (Unicode_Compare(memberValues->memberName,
                             myValues->memberName) < 0))) &&
