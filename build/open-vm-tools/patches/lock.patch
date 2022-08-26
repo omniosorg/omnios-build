@@ -34,7 +34,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c a/lib/file/fileLo
        Bool thisMachine = FileLockMachineIDMatch(myValues->machineID,
                                                  memberValues->machineID);
        char *path = Unicode_Join(lockDir, DIRSEPS, fileName, NULL);
-@@ -1702,7 +1702,7 @@ FileLockIntrinsicPortable(const char *pa
+@@ -1697,7 +1697,7 @@ FileLockIntrinsicPortable(const char *pa
            */
  
           Warning(LGPFX" %s implicit %s lock succeeded on '%s'.\n",
@@ -43,7 +43,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c a/lib/file/fileLo
  
           *err = 0;
           memberFilePath = &implicitReadToken;
-@@ -1866,7 +1866,7 @@ FileLockIntrinsic(const char *pathName,
+@@ -1861,7 +1861,7 @@ FileLockIntrinsic(const char *pathName,
     /* Construct the locking directory path */
     lockBase = Unicode_Append(pathName, FILELOCK_SUFFIX);
  

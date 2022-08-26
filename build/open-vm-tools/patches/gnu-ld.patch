@@ -8,7 +8,7 @@ This has been submitted upstream at:
 diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1531,7 +1531,11 @@ VMTOOLS_LIBS="$BUILDDIR/libvmtools/libvm
+@@ -1760,7 +1760,11 @@ VMTOOLS_LIBS="$BUILDDIR/libvmtools/libvm
  VMTOOLS_CPPFLAGS="-DVMTOOLS_USE_GLIB $GLIB2_CPPFLAGS"
  
  PLUGIN_CPPFLAGS="$VMTOOLS_CPPFLAGS $PLUGIN_CPPFLAGS"
