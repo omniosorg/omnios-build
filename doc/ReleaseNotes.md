@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151042
 
+## r151042r (2022-08-30)
+Weekly release for w/c 29th of August 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `open-vm-tools` updated to version 12.1.0, fixing
+  [CVE-2022-31676](https://www.vmware.com/security/advisories/VMSA-2022-0024.html)
+
+### Other Changes
+
+* `library/libxml2` updated to version 2.10.1
+
+<br>
+
+---
+
 ## r151042q (2022-08-25)
 Weekly release for w/c 22nd of August 2022.
 > This is a non-reboot update
