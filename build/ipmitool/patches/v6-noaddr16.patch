@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/src/plugins/ipmi_intf.c a/src/plugins/ipmi_intf.c
 --- a~/src/plugins/ipmi_intf.c	1970-01-01 00:00:00
 +++ a/src/plugins/ipmi_intf.c	1970-01-01 00:00:00
-@@ -429,8 +429,11 @@ ipmi_intf_socket_connect(struct ipmi_int
+@@ -455,8 +455,11 @@ ipmi_intf_socket_connect(struct ipmi_int
  								tmp6->sin6_scope_id);
  						}
  
@@ -13,7 +13,7 @@ diff -wpruN '--exclude=*.orig' a~/src/plugins/ipmi_intf.c a/src/plugins/ipmi_int
  						} else {
  							/*
  							 * No scope information in interface address information
-@@ -444,6 +447,7 @@ ipmi_intf_socket_connect(struct ipmi_int
+@@ -470,6 +473,7 @@ ipmi_intf_socket_connect(struct ipmi_int
  								addr6->sin6_scope_id = ntohs(tmp6->sin6_addr.s6_addr[1]);
  							}
  						}
