@@ -29,7 +29,7 @@ diff -wpruN '--exclude=*.orig' a~/Makefile.pre.in a/Makefile.pre.in
  
  Programs/_testembed: Programs/_testembed.o $(LIBRARY) $(LDLIBRARY) $(PY3LIBRARY) $(EXPORTSYMS)
  	$(LINKCC) $(PY_CORE_LDFLAGS) $(LINKFORSHARED) -o $@ Programs/_testembed.o $(BLDLIBRARY) $(LIBS) $(MODLIBS) $(SYSLIBS)
-@@ -1248,7 +1257,7 @@ multisslcompile: build_all
+@@ -1249,7 +1258,7 @@ multisslcompile: build_all
  multissltest: build_all
  	$(RUNSHARED) ./$(BUILDPYTHON) Tools/ssl/multissltests.py
  
