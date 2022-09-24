@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=expat
-VER=2.4.8
+VER=2.4.9
 PKG=library/expat
 SUMMARY="XML parser library"
 DESC="Fast streaming XML parser written in C"
