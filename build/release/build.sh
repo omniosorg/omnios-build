@@ -23,7 +23,7 @@ SUMMARY="OmniOS release information"
 DESC="OmniOS /etc/release and /etc/os-release files"
 
 # Update the following line with the current release suffix
-RELSUFFIX=ar
+RELSUFFIX=av
 
 RELEASE=${RELVER}${RELSUFFIX}
 RELDATE="`date +%Y.%m.%d`"
