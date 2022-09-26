@@ -4,6 +4,33 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038bv (2022-09-27)
+Weekly release for w/c 26th of September 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* A race condition in the fdinfo directory without procfs could cause a system
+  panic
+
+* Expat has been updated to version 2.4.9, fixing
+  [CVE-2022-40674](https://nvd.nist.gov/vuln/detail/CVE-2022-40674).
+
+* The bundled Intel CPU microcode has been updated to 20220809
+
+### Other Changes
+
+* bhyve has been updated to fix some issues within the emulated network
+  and NVMe devices
+
+* The timezone database files have been updated
+
+* Python has been updated to version 3.9.14
+
+<br>
+
+---
+
 ## r151038br (2022-08-30)
 Weekly release for w/c 29th of August 2022.
 > This is a non-reboot update
