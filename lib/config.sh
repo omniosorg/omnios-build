@@ -163,40 +163,59 @@ SFWBIN=/usr/sfw/bin
 ONBLDBIN=/opt/onbld/bin
 GNUBIN=/usr/gnu/bin
 
-AWK=$USRBIN/gawk
+# Define variables for standard utilities so that we can choose to run the
+# native version even if a build script modifies the path to put GNUBIN first.
+for util in \
+    basename cat comm cut tput digest mktemp sort sed tee rm mv cp mkdir \
+    rmdir readlink ln ls chmod touch grep time find fgrep egrep uniq stat strip
+do
+    declare -n _var=${util^^}
+    declare -g _var=$USRBIN/$util
+    unset -vn _var
+done
+
 CURL=$USRBIN/curl
-EGREP=$USRBIN/egrep
 ELFEDIT=$USRBIN/elfedit
 GIT=$USRBIN/git
-MAKE=$USRBIN/gmake
-PATCH=$USRBIN/gpatch
-TAR="$USRBIN/gtar --no-same-permissions --no-same-owner"
-TESTSUITE_MAKE=$USRBIN/gmake
+LZIP=$USRBIN/lzip
+NAWK=$USRBIN/awk
+RSYNC=$USRBIN/rsync
 UNZIP=$USRBIN/unzip
 WGET=$USRBIN/wget2
 XZCAT=$USRBIN/xzcat
 ZSTD=$USRBIN/zstd
-LZIP=$USRBIN/lzip
+
+# GNU utilities
+AWK=$GNUBIN/awk
+MAKE=$GNUBIN/make
+TESTSUITE_MAKE="$MAKE"
+GDIFF=$GNUBIN/diff
+PATCH=$GNUBIN/patch
+REALPATH=$GNUBIN/realpath
+TAR="$GNUBIN/tar --no-same-permissions --no-same-owner"
 
 # Command for privilege escalation. Can be overridden in site.sh
 PFEXEC=$USRBIN/sudo
 
-PKGSEND=$USRBIN/pkgsend
+# pkg(7) commands
+PKGCLIENT=$USRBIN/pkg
+PKGDEPEND=$USRBIN/pkgdepend
+PKGFMT=$USRBIN/pkgfmt
 PKGLINT=$USRBIN/pkglint
 PKGMOGRIFY=$USRBIN/pkgmogrify
-PKGFMT=$USRBIN/pkgfmt
-PKGDEPEND=$USRBIN/pkgdepend
+PKGRECV=$USRBIN/pkgrecv
+PKGREPO=$USRBIN/pkgrepo
+PKGSEND=$USRBIN/pkgsend
 
+# Utilities that come from omnios-extra
 BUNZIP2=$OOCEBIN/pbunzip2
+CARGO=$OOCEBIN/cargo
 CMAKE=$OOCEBIN/cmake
 FD=$OOCEBIN/fd
 GZIP=$OOCEBIN/pigz
 JQ=$OOCEBIN/jq
 NINJA=$OOCEBIN/ninja
 RIPGREP=$OOCEBIN/rg
-CARGO=$OOCEBIN/cargo
-
-REALPATH=$GNUBIN/realpath
 
 FIND_ELF=$ONBLDBIN/find_elf
 CHECK_RTIME=$ONBLDBIN/check_rtime

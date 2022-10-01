@@ -32,7 +32,7 @@ ROOTDIR=${BLIBDIR%/*}
 
 . $BLIBDIR/config.sh
 [ -f $BLIBDIR/site.sh ] && . $BLIBDIR/site.sh
-mkdir -p $TMPDIR
+$MKDIR -p $TMPDIR
 BASE_TMPDIR=$TMPDIR
 
 BASEPATH=/usr/ccs/bin:$USRBIN:/usr/sbin:$GNUBIN:$SFWBIN
@@ -126,13 +126,13 @@ process_opts() {
 # Show usage information
 #############################################################################
 show_synopsis() {
-    cat << EOM
+    $CAT << EOM
 Usage: $0 [-blt] [-f FLAVOR] [-h] [-a 32|64|both] [-d DEPVER]
 EOM
 }
 
 show_usage() {
-    cat << EOM
+    $CAT << EOM
   -a ARCH   : build 32/64 bit only, or both (default: both)
   -b        : batch mode (exit on errors without asking)
   -c        : use 'ccache' to speed up (re-)compilation
@@ -155,7 +155,7 @@ EOM
 }
 
 print_config() {
-    cat << EOM
+    $CAT << EOM
 
 BLIBDIR:                $BLIBDIR
 ROOTDIR:                $ROOTDIR
@@ -188,7 +188,7 @@ logcmd() {
     else
         if [ "$preserve_stdout" = 0 ]; then
             echo Running: "$@"
-            "$@" | tee -a $LOGFILE 2>&1
+            "$@" | $TEE -a $LOGFILE 2>&1
             return ${PIPESTATUS[0]}
         else
             "$@"
@@ -197,13 +197,13 @@ logcmd() {
 }
 
 pipelog() {
-    tee -a $LOGFILE 2>&1
+    $TEE -a $LOGFILE 2>&1
 }
 
-c_highlight="`tput setaf 2`"
-c_error="`tput setaf 1`"
-c_note="`tput setaf 6`"
-c_reset="`tput sgr0`"
+c_highlight="`$TPUT setaf 2`"
+c_error="`$TPUT setaf 1`"
+c_note="`$TPUT setaf 6`"
+c_reset="`$TPUT sgr0`"
 logmsg() {
     typeset highlight=0
     [ "$1" = "-h" ] && shift && highlight=1
@@ -273,7 +273,7 @@ ask_to_install() {
     MSG=$2
     if [ -n "$AUTOINSTALL" ]; then
         logmsg "Auto-installing $ati_PKG..."
-        logcmd $PFEXEC pkg install $ati_PKG || \
+        logcmd $PFEXEC $PKGCLIENT install $ati_PKG || \
             logerr "pkg install $ati_PKG failed"
         return
     fi
@@ -284,7 +284,8 @@ ask_to_install() {
     ask_to_continue_ "$MSG " "Install/Abort/Skip?" "i/a/s" "[iIaAsS]"
     case $REPLY in
         i|I)
-            logcmd $PFEXEC pkg install $ati_PKG || logerr "pkg install failed"
+            logcmd $PFEXEC $PKGCLIENT install $ati_PKG \
+                || logerr "pkg install failed"
             ;;
         s|S)
             # Skip
@@ -324,7 +325,7 @@ copyright_string() {
 url_encode() {
     [ $# -lt 1 ] && logerr "Not enough arguments to url_encode()"
     local encoded="$1";
-    echo $* | sed -e '
+    echo $* | $SED -e '
         s!/!%2F!g
         s!+!%2B!g
         s/%../_/g
@@ -367,10 +368,10 @@ parallelise() {
 init_tools() {
     BASEPATH=$TMPDIR/tools:$BASEPATH
     [ -d $TMPDIR/tools ] && return
-    logcmd mkdir -p $TMPDIR/tools || logerr "mkdir tools failed"
+    logcmd $MKDIR -p $TMPDIR/tools || logerr "mkdir tools failed"
     # Disable any commands that should not be used for the build
     for cmd in cc CC; do
-        logcmd ln -sf /bin/false $TMPDIR/tools/$cmd || logerr "ln $cmd failed"
+        logcmd $LN -sf /bin/false $TMPDIR/tools/$cmd || logerr "ln $cmd failed"
     done
 }
 
@@ -387,8 +388,8 @@ set_ssp() {
         all)    SSPFLAGS="-fstack-protector-all" ;;
         *)      logerr "Unknown stack protector variant ($1)" ;;
     esac
-    local LCFLAGS=`echo $CFLAGS | sed 's/-fstack-protector[^ ]*//'`
-    local LCXXFLAGS=`echo $CXXFLAGS | sed 's/-fstack-protector[^ ]*//'`
+    local LCFLAGS=`echo $CFLAGS | $SED 's/-fstack-protector[^ ]*//'`
+    local LCXXFLAGS=`echo $CXXFLAGS | $SED 's/-fstack-protector[^ ]*//'`
     CFLAGS="$LCFLAGS $SSPFLAGS"
     CXXFLAGS="$LCFLAGS $SSPFLAGS"
     [ -z "$2" ] && logmsg "-- Set stack protection to '$1'"
@@ -459,6 +460,7 @@ set_gover() {
     GOVER="$1"
     logmsg "-- Setting Go version to $GOVER"
     GO_PATH="/opt/ooce/go-$GOVER"
+    GO=$GO_PATH/bin/go
     PATH="$GO_PATH/bin:$PATH"
     GOROOT_BOOTSTRAP="$GO_PATH"
     export PATH GOROOT_BOOTSTRAP
@@ -559,7 +561,7 @@ set_arch() {
 }
 
 check_mediators() {
-    OPENSSLVER=`pkg mediator -H openssl 2>/dev/null| awk '{print $3}'`
+    OPENSSLVER=`$PKGCLIENT mediator -H openssl 2>/dev/null | $NAWK '{print $3}'`
     if [ "$OPENSSLVER" != "$EXP_OPENSSLVER" ]; then
         if [ -n "$OPENSSL_TEST" ]; then
             logmsg -h "--- OpenSSL version $OPENSSLVER but OPENSSL_TEST is set"
@@ -569,7 +571,8 @@ check_mediators() {
     fi
     OPENSSLPATH=/usr/ssl-$OPENSSLVER
 
-    typeset _med=`pkg mediator -H python3 2>/dev/null| awk '{print $3}'`
+    typeset _med=`$PKGCLIENT mediator -H python3 2>/dev/null | \
+        $NAWK '{print $3}'`
     if [ -n "$_med" -a "$_med" != "$PYTHON3VER" ]; then
         logerr "--- Python3 mediator is set incorrectly ($_med)"
     fi
@@ -620,11 +623,11 @@ libtool_nostdlib() {
 
 init_repo() {
     if [[ "$PKGSRVR" == file:/* ]]; then
-        RPATH="`echo $PKGSRVR | sed 's^file:/*^/^'`"
+        RPATH="`echo $PKGSRVR | $SED 's^file:/*^/^'`"
         if [ ! -d "$RPATH" ]; then
             logmsg "-- Initialising local repo at $RPATH"
-            pkgrepo create $RPATH || logerr "Could not create local repo"
-            pkgrepo add-publisher -s $RPATH $PKGPUBLISHER || \
+            $PKGREPO create $RPATH || logerr "Could not create local repo"
+            $PKGREPO add-publisher -s $RPATH $PKGPUBLISHER || \
                 logerr "Could not set publisher on local repo"
         fi
     fi
@@ -714,7 +717,7 @@ init() {
 
     if ((EXTRACT_MODE == 0)); then
         init_repo
-        pkgrepo get -s $PKGSRVR > /dev/null 2>&1 || \
+        $PKGREPO get -s $PKGSRVR > /dev/null 2>&1 || \
             logerr "The PKGSRVR ($PKGSRVR) isn't available. All is doomed."
         verify_depends
     fi
@@ -726,11 +729,11 @@ init() {
     fi
 
     # Create symbolic links to build area
-    logcmd mkdir -p $TMPDIR
-    [ -h $SRCDIR/tmp ] && rm -f $SRCDIR/tmp
-    logcmd ln -sf $TMPDIR $SRCDIR/tmp
-    [ -h $TMPDIR/src ] && rm -f $TMPDIR/src
-    logcmd ln -sf $BUILDDIR $TMPDIR/src
+    logcmd $MKDIR -p $TMPDIR
+    [ -h $SRCDIR/tmp ] && $RM -f $SRCDIR/tmp
+    logcmd $LN -sf $TMPDIR $SRCDIR/tmp
+    [ -h $TMPDIR/src ] && $RM -f $TMPDIR/src
+    logcmd $LN -sf $BUILDDIR $TMPDIR/src
 }
 
 set_builddir() {
@@ -770,12 +773,12 @@ verify_depends() {
                 # If it's an exclude, we should error if it's installed rather
                 # than missing
                 i=${i:1}
-                logcmd pkg info -q $i \
+                logcmd $PKGCLIENT info -q $i \
                     && logerr "--- $i should not be installed during build."
                 continue
                 ;;
         esac
-        logcmd pkg info -q $i \
+        logcmd $PKGCLIENT info -q $i \
             || ask_to_install "$i" "--- Build-time dependency $i not found"
     done
 }
@@ -831,14 +834,14 @@ prep_build() {
     logmsg "--- Creating temporary installation directory"
 
     if [ -z "$DONT_REMOVE_INSTALL_DIR" ]; then
-        logcmd chmod -R u+w $DESTDIR > /dev/null 2>&1
-        logcmd rm -rf $DESTDIR || \
+        logcmd $CHMOD -R u+w $DESTDIR > /dev/null 2>&1
+        logcmd $RM -rf $DESTDIR || \
             logerr "Failed to remove old temporary install dir"
-        logcmd mkdir -p $DESTDIR || \
+        logcmd $MKDIR -p $DESTDIR || \
             logerr "Failed to create temporary install dir"
     fi
 
-    rm -f "$TMPDIR/frag.mog"
+    logcmd $RM -f "$TMPDIR/frag.mog"
 
     [ -n "$OUT_OF_TREE_BUILD" ] \
         && CONFIGURE_CMD=$TMPDIR/$BUILDDIR/$CONFIGURE_CMD
@@ -871,16 +874,16 @@ prep_build() {
     if [ -n "$OUT_OF_TREE_BUILD" ]; then
         logmsg "-- Setting up for out-of-tree build"
         BUILDDIR+=-build
-        [ -d $TMPDIR/$BUILDDIR ] && logcmd rm -rf $TMPDIR/$BUILDDIR
-        logcmd mkdir -p $TMPDIR/$BUILDDIR
+        [ -d $TMPDIR/$BUILDDIR ] && logcmd $RM -rf $TMPDIR/$BUILDDIR
+        logcmd $MKDIR -p $TMPDIR/$BUILDDIR
     fi
 
     # Create symbolic links to build area
-    [ -h $TMPDIR/build ] && rm -f $TMPDIR/build
-    logcmd ln -sf $BUILDDIR $TMPDIR/build
+    [ -h $TMPDIR/build ] && $RM -f $TMPDIR/build
+    logcmd $LN -sf $BUILDDIR $TMPDIR/build
     # ... and to DESTDIR
-    [ -h $TMPDIR/pkg ] && rm -f $TMPDIR/pkg
-    logcmd ln -sf ${DESTDIR##*/} $TMPDIR/pkg
+    [ -h $TMPDIR/pkg ] && $RM -f $TMPDIR/pkg
+    logcmd $LN -sf ${DESTDIR##*/} $TMPDIR/pkg
 }
 
 #############################################################################
@@ -959,7 +962,7 @@ rebase_patches() {
 
     pushd $root > /dev/null || logerr "chdir $root failed"
     logmsg "Archiving unpatched $dir"
-    logcmd rsync -ac --delete $dir{,.unpatched}/ || logerr "rsync $dir failed"
+    logcmd $RSYNC -ac --delete $dir{,.unpatched}/ || logerr "rsync $dir failed"
 
     # Read the series file for patch filenames
     # Use a separate file handle so that logerr() can be used in the loop
@@ -970,25 +973,25 @@ rebase_patches() {
         local patchfile="$SRCDIR/$patchdir/${LINE%% *}"
         [ -f $patchfile ] || continue
 
-        logcmd rsync -ac --delete $dir{,~}/ || logerr "rsync $dir~ failed"
+        logcmd $RSYNC -ac --delete $dir{,~}/ || logerr "rsync $dir~ failed"
         ( cd $dir && patch_file $patchdir $LINE )
-        logcmd mv $patchfile{,~} || logerr "mv $patchfile{,~}"
+        logcmd $MV $patchfile{,~} || logerr "mv $patchfile{,~}"
         # Extract the original patch header text
-        sed -n '
+        $SED -n '
             /^---/q
             /^diff -/q
             p
             ' < $patchfile~ > $patchfile
-        gdiff -wpruN --exclude='*.orig' $dir{~,} >> $patchfile
+        $GDIFF -wpruN --exclude='*.orig' $dir{~,} >> $patchfile
         local stat=$?
         if ((stat != 1)); then
-            logcmd mv $patchfile{~,}
+            logcmd $MV $patchfile{~,}
             logerr "Could not generate new patch ($stat)"
         else
-            logcmd rm -f $patchfile~
+            logcmd $RM -f $patchfile~
             # Normalise the header lines so that they do not change with each
             # run.
-            sed -i '
+            $SED -i '
                     /^diff -wpruN/,/^\+\+\+ / {
                         s% [^ ~/]*\(~*\)/% a\1/%g
                         s%[0-9][0-9][0-9][0-9]-[0-9].*%1970-01-01 00:00:00%
@@ -999,11 +1002,11 @@ rebase_patches() {
     exec 3<&-
 
     logmsg "Restoring unpatched $dir"
-    logcmd rsync -ac --delete $dir{.unpatched,}/ || logerr "rsync $dir failed"
+    logcmd $RSYNC -ac --delete $dir{.unpatched,}/ || logerr "rsync $dir failed"
     popd > /dev/null
 
     # Now the patches have been re-based, -pX is no longer required.
-    sed -i 's/ -p.*//' "$SRCDIR/$patchdir/series"
+    $SED -i 's/ -p.*//' "$SRCDIR/$patchdir/series"
 }
 
 patch_source() {
@@ -1022,7 +1025,7 @@ patch_source() {
 get_resource() {
     local RESOURCE=$1
     case ${MIRROR:0:1} in
-        /)  logcmd cp $MIRROR/$RESOURCE . ;;
+        /)  logcmd $CP $MIRROR/$RESOURCE . ;;
         *)  $WGET -a $LOGFILE $MIRROR/$RESOURCE ;;
     esac
 }
@@ -1036,7 +1039,7 @@ set_checksum() {
         return
     fi
 
-    digest -l | $EGREP -s "^$alg$" || logerr "Unknown checksum algorithm $alg"
+    $DIGEST -l | $EGREP -s "^$alg$" || logerr "Unknown checksum algorithm $alg"
 
     CHECKSUM_VALUE="$alg:$sum"
 }
@@ -1055,14 +1058,14 @@ verify_checksum() {
             [ -f "$FILENAME.$alg" ] || get_resource $DLDIR/$FILENAME.$alg
             [ -f "$FILENAME.$alg" ] || continue
 
-            sum=`awk '{print $1}' "$FILENAME.$alg"`
+            sum=`$NAWK '{print $1}' "$FILENAME.$alg"`
             found=1
             break
         done
     fi
 
     if [ $found -eq 1 ]; then
-        typeset filesum=`digest -a $alg $FILENAME`
+        typeset filesum=`$DIGEST -a $alg $FILENAME`
         if [ "$sum" = "$filesum" ]; then
             logmsg "Checksum verified using $alg"
         else
@@ -1109,7 +1112,7 @@ download_source() {
     # Create TARGETDIR if it doesn't exist
     if [ ! -d "$TARGETDIR" ]; then
         logmsg "Creating target directory $TARGETDIR"
-        logcmd mkdir -p $TARGETDIR
+        logcmd $MKDIR -p $TARGETDIR
     fi
 
     pushd $TARGETDIR >/dev/null
@@ -1117,7 +1120,7 @@ download_source() {
     logmsg "Checking for source directory"
     if [ -d "$BUILDDIR" ]; then
         logmsg "--- Source directory found, removing"
-        logcmd rm -rf "$BUILDDIR" || logerr "Failed to remove source directory"
+        logcmd $RM -rf "$BUILDDIR" || logerr "Failed to remove source directory"
     else
         logmsg "--- Source directory not found"
     fi
@@ -1213,12 +1216,12 @@ clone_github_source() {
     typeset fresh=0
 
     logmsg "$prog -> $TMPDIR/$BUILDDIR/$prog"
-    [ -d $TMPDIR/$BUILDDIR ] || logcmd mkdir -p $TMPDIR/$BUILDDIR
+    [ -d $TMPDIR/$BUILDDIR ] || logcmd $MKDIR -p $TMPDIR/$BUILDDIR
     pushd $TMPDIR/$BUILDDIR > /dev/null
 
     if [ -n "$local" -a -d "$local" ]; then
         logmsg "-- syncing $prog from local clone"
-        logcmd rsync -ar $local/ $prog/ || logerr "rsync failed."
+        logcmd $RSYNC -ar $local/ $prog/ || logerr "rsync failed."
         logcmd $GIT -C $prog clean -fdx
         fresh=1
     elif [ ! -d $prog ]; then
@@ -1277,7 +1280,7 @@ clone_go_source() {
     logcmd go get -d ./... || logerr "failed to get dependencies"
 
     logmsg "Fixing permissions on dependencies"
-    logcmd chmod -R u+w $GOPATH
+    logcmd $CHMOD -R u+w $GOPATH
 
     ((EXTRACT_MODE == 1)) && exit
 
@@ -1294,9 +1297,9 @@ run_pkglint() {
 
     typeset _repo=
     if [ ! -f $BASE_TMPDIR/lint/pkglintrc ]; then
-        logcmd mkdir $BASE_TMPDIR/lint
+        logcmd $MKDIR $BASE_TMPDIR/lint
         (
-            cat << EOM
+            $CAT << EOM
 [pkglint]
 use_progress_tracker = True
 log_level = INFO
@@ -1307,7 +1310,7 @@ pkglint001.5.report-linted = True
 
 EOM
             echo "pkglint.action005.1.missing-deps = \\c"
-            for pkg in `nawk '
+            for pkg in `$NAWK '
                 $3 == "" {
                     printf("pkg:/%s ", $2)
                 }' $ROOTDIR/doc/baseline`; do
@@ -1374,11 +1377,11 @@ manifest_add() {
 #   manifest_finalise <manifest> <prefix> [prefix]...
 manifest_finalise() {
     typeset mf=${1:?mf}; shift
-    typeset tf=`mktemp`
+    typeset tf=`$MKTEMP`
 
     logmsg "-- Finalising ${mf##*/}"
 
-    logcmd cp $mf $tf || logerr "cp $mf $tf"
+    logcmd $CP $mf $tf || logerr "cp $mf $tf"
 
     typeset prefix
     for prefix in "$@"; do
@@ -1386,11 +1389,11 @@ manifest_finalise() {
         logmsg "--- determining implicit directories for $prefix"
         $RIPGREP "^dir.* path=$prefix(\$|\\s)" $SEEDMF >> $tf
         $RIPGREP "(file|link|hardlink).* path=$prefix/" $mf \
-            | sed "
+            | $SED "
                 s^.*path=$prefix/^^
                 s^  *target=.*$^^
                 s^/[^/]*$^^
-        " | sort -u | while read dir; do
+        " | $SORT -u | while read dir; do
             logmsg "---- $dir"
             while :; do
                 $RIPGREP "^dir.* path=$prefix/$dir(\$|\\s)" $SEEDMF >> $tf
@@ -1399,8 +1402,8 @@ manifest_finalise() {
             done
         done
     done
-    sort -u < $tf > $mf
-    rm -f $tf
+    $SORT -u < $tf > $mf
+    logcmd $RM -f $tf
 }
 
 # Create a manifest file containing all of the lines that are not present
@@ -1409,18 +1412,18 @@ manifest_finalise() {
 manifest_uniq() {
     typeset dst="$1"; shift
 
-    typeset tf=`mktemp`
-    typeset mftmp=`mktemp`
-    typeset seedtmp=`mktemp`
-    sort -u < $SEEDMF > $seedtmp
+    typeset tf=`$MKTEMP`
+    typeset mftmp=`$MKTEMP`
+    typeset seedtmp=`$MKTEMP`
+    $SORT -u < $SEEDMF > $seedtmp
 
     for mf in "$@"; do
-        sort -u < $mf > $mftmp
-        logcmd -p comm -13 $mftmp $seedtmp > $tf
-        logcmd mv $tf $seedtmp
+        $SORT -u < $mf > $mftmp
+        logcmd -p $COMM -13 $mftmp $seedtmp > $tf
+        logcmd $MV $tf $seedtmp
     done
-    logcmd mv $seedtmp $dst
-    rm -f $tf $mftmp
+    logcmd $MV $seedtmp $dst
+    logcmd $RM -f $tf $mftmp
 }
 
 generate_manifest() {
@@ -1466,7 +1469,7 @@ convert_version() {
     fi
 
     ## Strip leading zeros in version components.
-    var=`echo $var | sed -e 's/\.0*\([0-9]\)/.\1/g;'`
+    var=`echo $var | $SED -e 's/\.0*\([0-9]\)/.\1/g;'`
 
     [ "$var" = "$_var" ] || logmsg "--- Converted version '$_var' -> '$var'"
 }
@@ -1558,12 +1561,12 @@ make_package() {
 
     if [ -z "$MOG_TEST" ]; then
         if [ -n "$seed_manifest" ]; then
-            logcmd cp $seed_manifest $P5M_GEN || logerr "seed copy failed"
+            logcmd $CP $seed_manifest $P5M_GEN || logerr "seed copy failed"
         elif [ -n "$DESTDIR" ]; then
             generate_manifest $P5M_GEN
         else
             logmsg "--- Looks like a meta-package. Creating empty manifest"
-            logcmd touch $P5M_GEN || \
+            logcmd $TOUCH $P5M_GEN || \
                 logerr "------ Failed to create empty manifest"
         fi
         [ -z "$BATCH" ] && check_libabi "$PKG" "$P5M_GEN"
@@ -1610,7 +1613,7 @@ make_package() {
     exec 3>&-
 
     if [ -z "$BATCH" -a -s "$TMPDIR/mog.stderr" ]; then
-        cat "$TMPDIR/mog.stderr" | while read l; do
+        $CAT "$TMPDIR/mog.stderr" | while read l; do
             logmsg -e "$l"
         done
         logerr "Warnings from mogrify process"
@@ -1630,7 +1633,7 @@ make_package() {
         logcmd $PKGDEPEND resolve -m $P5M_DEPGEN
     ) || logerr "--- Dependency resolution failed"
     logmsg "--- Detected dependencies"
-    grep '^depend ' $P5M_DEPGEN.res | while read line; do
+    $GREP '^depend ' $P5M_DEPGEN.res | while read line; do
         logmsg "$line"
     done
     echo > "$MANUAL_DEPS"
@@ -1680,7 +1683,7 @@ make_package() {
             # ugly grep, but pkgmogrify doesn't seem to provide any way to add
             # actions while avoiding duplicates (except maybe by running it
             # twice, using drop transform on the first run)
-            if grep -q "^depend .*fmri=[^ ]*$depname" "${P5M_DEPGEN}.res"; then
+            if $GREP -q "^depend .*fmri=[^ ]*$depname" "${P5M_DEPGEN}.res"; then
                 autoresolved=true
             else
                 autoresolved=false
@@ -1698,14 +1701,14 @@ make_package() {
     logcmd -p $PKGMOGRIFY $XFORM_ARGS "${P5M_DEPGEN}.res" \
         "$MANUAL_DEPS" $FINAL_MOG_FILE | $PKGFMT -u > $P5M_FINAL
     logmsg "--- Final dependencies"
-    grep '^depend ' $P5M_FINAL | while read line; do
+    $GREP '^depend ' $P5M_FINAL | while read line; do
         logmsg "$line"
     done
 
     logmsg "--- Formatting manifest"
     logcmd $PKGFMT -s $P5M_FINAL
 
-    fgrep -q '$(' $P5M_FINAL \
+    $FGREP -q '$(' $P5M_FINAL \
         && logerr "------ Manifest contains unresolved variables"
 
     if [ -z "$SKIP_PKGLINT" ] && ( [ -n "$BATCH" ] || ask_to_pkglint ); then
@@ -1740,7 +1743,7 @@ translate_manifest() {
     local src=$1
     local dst=$2
 
-    sed -e "
+    $SED -e "
         s/@PKGPUBLISHER@/$PKGPUBLISHER/g
         s/@RELVER@/$RELVER/g
         s/@PVER@/$PVER/g
@@ -1764,7 +1767,7 @@ publish_manifest() {
         run_pkglint $PKGSRVR $pmf.final
     fi
 
-    logcmd pkgsend -s $PKGSRVR publish $root $pmf.final \
+    logcmd $PKGSEND -s $PKGSRVR publish $root $pmf.final \
         || logerr "pkgsend failed"
     [ -n "$pkg" -a -z "$SKIP_PKG_DIFF" ] && diff_latest $pkg
 }
@@ -1782,7 +1785,7 @@ build_xform_sed() {
         # causes them to get expanded into filenames in the current
         # directory. To avoid this, we temporarily disable globbing ...
         set -o noglob
-        _v="`echo $v | sed '
+        _v="`echo $v | $SED '
             s/[&$^\\]/\\\&/g
         '`"
         set +o noglob
@@ -1799,7 +1802,7 @@ xform() {
 
     [ -n "$XFORM_SED_CMD" ] || build_xform_sed
 
-    sed "$XFORM_SED_CMD" < $file
+    $SED "$XFORM_SED_CMD" < $file
 }
 
 #############################################################################
@@ -1811,7 +1814,7 @@ xform() {
 # content, just whether items have been added, removed or had their attributes
 # such as ownership changed.
 pkgitems() {
-    pkg contents -m "$@" 2>&1 | pkgfmt -u | sed -E "
+    $PKGCLIENT contents -m "$@" 2>&1 | $PKGFMT -u | $SED -E "
         # Remove signatures
         /^signature/d
         # Remove version numbers from the package FMRI
@@ -1841,20 +1844,20 @@ diff_packages() {
     if [ -n "$BATCH" ]; then
         of=$TMPDIR/pkg.diff.$$
         echo "Package: $fmri" > $of
-        if ! gdiff -u \
+        if ! $GDIFF -u \
             <(pkgitems -g $srcrepo $srcfmri) \
             <(pkgitems -g $dstrepo $dstfmri) \
             >> $of; then
                     logmsg -e "----- $srcfmri has changed"
-                    mv $of $TMPDIR/pkg.diff
+                    logcmd $MV $of $TMPDIR/pkg.diff
                     return 1
         else
-            rm -f $of
+            logcmd $RM -f $of
             return 0
         fi
     else
         logmsg "--- Comparing old package with new"
-        if ! gdiff -U0 --color=always --minimal \
+        if ! $GDIFF -U0 --color=always --minimal \
             <(pkgitems -g $srcrepo $srcfmri) \
             <(pkgitems -g $dstrepo $dstfmri) \
             > $TMPDIR/pkgdiff.$$; then
@@ -1862,10 +1865,10 @@ diff_packages() {
                 # Not anchored due to colour codes in file
                 $EGREP -v '(\-\-\-|\+\+\+|\@\@) ' $TMPDIR/pkgdiff.$$
                 note "Differences found between old and new packages"
-                rm -f $TMPDIR/pkgdiff.$$
+                logcmd $RM -f $TMPDIR/pkgdiff.$$
                 [ -z "$PKGDIFF_NOASK" ] && ask_to_continue
         fi
-        rm -f $TMPDIR/pkgdiff.$$
+        logcmd $RM -f $TMPDIR/pkgdiff.$$
     fi
 }
 
@@ -1877,7 +1880,7 @@ diff_package() {
 }
 
 diff_latest() {
-    typeset fmri="`pkg list -nvHg $PKGSRVR $1 | nawk 'NR==1{print $1}'`"
+    typeset fmri="`$PKGCLIENT list -nvHg $PKGSRVR $1 | $NAWK 'NR==1{print $1}'`"
     logmsg "-- Generating diffs for $fmri"
     diff_package $fmri
 }
@@ -1889,29 +1892,29 @@ diff_latest() {
 republish_packages() {
     REPUBLISH_SRC="$1"
     logmsg "Republishing packages from $REPUBLISH_SRC"
-    [ -d $TMPDIR/$BUILDDIR ] || mkdir $TMPDIR/$BUILDDIR
+    [ -d $TMPDIR/$BUILDDIR ] || $MKDIR $TMPDIR/$BUILDDIR
     mog=$TMPDIR/$BUILDDIR/pkgpublisher.mog
-    cat << EOM > $mog
+    $CAT << EOM > $mog
 <transform set name=pkg.fmri -> edit value pkg://[^/]+/ pkg://$PKGPUBLISHER/>
 EOM
 
     incoming=$TMPDIR/$BUILDDIR/incoming
-    [ -d $incoming ] && rm -rf $incoming
-    mkdir $incoming
-    for pkg in `pkgrecv -s $REPUBLISH_SRC -d $incoming --newest`; do
+    [ -d $incoming ] && $RM -rf $incoming
+    $MKDIR $incoming
+    for pkg in `$PKGRECV -s $REPUBLISH_SRC -d $incoming --newest`; do
         logmsg "    Receiving $pkg"
-        logcmd pkgrecv -s $REPUBLISH_SRC -d $incoming --raw $pkg
+        logcmd $PKGRECV -s $REPUBLISH_SRC -d $incoming --raw $pkg
     done
 
     for pdir in $incoming/*/*; do
         logmsg "    Processing $pdir"
-        pkgmogrify $pdir/manifest $mog > $pdir/manifest.newpub
-        logcmd pkgsend publish -s $PKGSRVR -d $pdir $pdir/manifest.newpub
+        $PKGMOGRIFY $pdir/manifest $mog > $pdir/manifest.newpub
+        logcmd $PKGSEND publish -s $PKGSRVR -d $pdir $pdir/manifest.newpub
     done
 }
 
 mog_fragment() {
-    cat >> $TMPDIR/frag.mog
+    $CAT >> $TMPDIR/frag.mog
 }
 
 #############################################################################
@@ -1932,9 +1935,9 @@ add_notes() {
     pushd $DESTDIR > /dev/null
     logmsg "-- Adding notes from $file"
     local tgt=${NOTES_LOCATION#/}
-    logcmd mkdir -p $tgt
-    logcmd cp $SRCDIR/files/$file $tgt/$PKGD || logerr "Cannot copy to $tgt"
-    cat << EOM | mog_fragment
+    logcmd $MKDIR -p $tgt
+    logcmd $CP $SRCDIR/files/$file $tgt/$PKGD || logerr "Cannot copy to $tgt"
+    $CAT << EOM | mog_fragment
 <transform file path=$tgt/$PKGD\$ -> set release-note feature/pkg/self@$ver>
 <transform file path=$tgt/$PKGD\$ -> set must-display true>
 EOM
@@ -1966,19 +1969,19 @@ install_smf() {
         || logerr "Manifest does not pass validation"
 
     # Manifest
-    logcmd mkdir -p lib/svc/manifest/$mtype \
+    logcmd $MKDIR -p lib/svc/manifest/$mtype \
         || logerr "mkdir of $DESTDIR/lib/svc/manifest/$mtype failed"
-    logcmd cp $manifestf lib/svc/manifest/$mtype/ \
+    logcmd $CP $manifestf lib/svc/manifest/$mtype/ \
         || logerr "Cannot copy SMF manifest"
-    logcmd chmod 0444 lib/svc/manifest/$mtype/$manifest
+    logcmd $CHMOD 0444 lib/svc/manifest/$mtype/$manifest
 
     # Method
     if [ -n "$method" ]; then
-        logcmd mkdir -p lib/svc/method \
+        logcmd $MKDIR -p lib/svc/method \
             || logerr "mkdir of $DESTDIR/lib/svc/method failed"
-        logcmd cp $methodf lib/svc/method/ \
+        logcmd $CP $methodf lib/svc/method/ \
             || logerr "Cannot install SMF method"
-        logcmd chmod 0555 lib/svc/method/$method
+        logcmd $CHMOD 0555 lib/svc/method/$method
     fi
 
     popd > /dev/null
@@ -1995,11 +1998,11 @@ install_fragment() {
 
     [ -f "$SRCDIR/files/$src" ] || logerr "fragment files/$src not found"
 
-    typeset fragfile=`mktemp -p $TMPDIR`
+    typeset fragfile=`$MKTEMP -p $TMPDIR`
 
     xform "$SRCDIR/files/$src" > "$fragfile"
 
-    cat << EOM | mog_fragment
+    $CAT << EOM | mog_fragment
 file ../${fragfile##*/} path=$dst/$tgt owner=root group=sys mode=0444
 EOM
 }
@@ -2037,10 +2040,10 @@ install_go() {
     typeset dst="${2:-$PROG}"
     typeset dstdir="${3:-$DESTDIR/$PREFIX/bin}"
 
-    logcmd mkdir -p $dstdir \
+    logcmd $MKDIR -p $dstdir \
         || logerr "Failed to create install dir"
 
-    logcmd cp $TMPDIR/$BUILDDIR/$src $dstdir/$dst \
+    logcmd $CP $TMPDIR/$BUILDDIR/$src $dstdir/$dst \
         || logerr "Failed to install binary"
 }
 
@@ -2051,17 +2054,17 @@ install_go() {
 install_rust() {
     logmsg "Installing $PROG"
 
-    logcmd mkdir -p "$DESTDIR/$PREFIX/bin" \
+    logcmd $MKDIR -p "$DESTDIR/$PREFIX/bin" \
         || logerr "Failed to create install dir"
-    logcmd cp $TMPDIR/$BUILDDIR/target/release/$PROG \
+    logcmd $CP $TMPDIR/$BUILDDIR/target/release/$PROG \
         $DESTDIR/$PREFIX/bin/$PROG || logerr "Failed to install binary"
 
     for f in `$FD "^$PROG\.1\$" $TMPDIR/$BUILDDIR`; do
         logmsg "Found man page at $f"
 
-        logcmd mkdir -p "$DESTDIR/$PREFIX/share/man/man1" \
+        logcmd $MKDIR -p "$DESTDIR/$PREFIX/share/man/man1" \
             || logerr "Failed to create man install dir"
-        logcmd cp $f $DESTDIR/$PREFIX/share/man/man1/$PROG.1 \
+        logcmd $CP $f $DESTDIR/$PREFIX/share/man/man1/$PROG.1 \
             || logerr "Failed to install man page"
         break
     done
@@ -2096,22 +2099,22 @@ make_isaexec_stub_arch() {
         if [ -z "$STUBLINKS" -a -h "$file" ]; then
             # Symbolic link. If it's relative to within the same ARCH
             # directory, then replicate it at the ISAEXEC level.
-            link=`readlink "$file"`
+            link=`$READLINK "$file"`
             [[ $link = */* ]] && continue
-            base=`basename "$file"`
+            base=`$BASENAME "$file"`
             [ -h "$base" ] && continue
             logmsg "------ Symbolic link: $file - replicating"
-            logcmd ln -s $link $base || logerr "--- Link failed"
+            logcmd $LN -s $link $base || logerr "--- Link failed"
             continue
         fi
         # Check to make sure we don't have a script
         read -n 4 < $file
-        file=`basename $file`
+        file=`$BASENAME $file`
         # Only copy non-binaries if we set NOSCRIPTSTUB
         if [[ $REPLY != $'\177'ELF && -n "$NOSCRIPTSTUB" ]]; then
             logmsg "------ Non-binary file: $file - copying instead"
-            logcmd cp $1/$file . && rm $1/$file || logerr "--- Copy failed"
-            chmod +x $file
+            logcmd $CP $1/$file . && $RM $1/$file || logerr "--- Copy failed"
+            $CHMOD +x $file
             continue
         fi
         # Skip if we already made a stub for this file
@@ -2151,7 +2154,7 @@ make_clean() {
     logmsg "--- make (dist)clean"
     (
         $MAKE distclean || $MAKE clean
-    ) 2>&1 | sed 's/error: /errorclean: /' | pipelog >/dev/null
+    ) 2>&1 | $SED 's/error: /errorclean: /' | pipelog >/dev/null
 }
 
 configure_autoreconf() {
@@ -2289,7 +2292,7 @@ build() {
         if [[ $BUILDARCH =~ ^($b|both)$ ]]; then
             if [ -n "$MULTI_BUILD" ]; then
                 BUILDDIR+="/build.$b"
-                mkdir -p $TMPDIR/$BUILDDIR
+                $MKDIR -p $TMPDIR/$BUILDDIR
                 MULTI_BUILD_LAST=$BUILDDIR
             fi
             build$b
@@ -2305,7 +2308,7 @@ check_buildlog() {
 
     logmsg "--- Checking logfile for errors (expect $expected)"
 
-    errs="`grep 'error: ' $LOGFILE | \
+    errs="`$GREP 'error: ' $LOGFILE | \
         $EGREP -cv 'pathspec.*did not match any file'`"
 
     [ "$errs" -ne "$expected" ] \
@@ -2348,17 +2351,17 @@ run_testsuite() {
             pushd $TMPDIR/$MULTI_BUILD_LAST/$dir > /dev/null
         fi
         logmsg "Running testsuite"
-        op=`mktemp`
+        op=`$MKTEMP`
         eval set -- $MAKE_TESTSUITE_ARGS_WS
-        $TESTSUITE_MAKE $target $MAKE_TESTSUITE_ARGS "$@" 2>&1 | tee $op
+        $TESTSUITE_MAKE $target $MAKE_TESTSUITE_ARGS "$@" 2>&1 | $TEE $op
         if [ -n "$TESTSUITE_SED" ]; then
-            sed "$TESTSUITE_SED" $op > $SRCDIR/$output
+            $SED "$TESTSUITE_SED" $op > $SRCDIR/$output
         elif [ -n "$TESTSUITE_FILTER" ]; then
             $EGREP "$TESTSUITE_FILTER" $op > $SRCDIR/$output
         else
-            cp $op $SRCDIR/$output
+            $CP $op $SRCDIR/$output
         fi
-        rm -f $op
+        logcmd $RM -f $op
         popd > /dev/null
     fi
 }
@@ -2400,7 +2403,7 @@ build_dependency() {
     if [ $merge -eq 0 ]; then
         DEPROOT=$TMPDIR/_deproot
         DESTDIR=$DEPROOT
-        mkdir -p $DEPROOT
+        $MKDIR -p $DEPROOT
     else
         DEPROOT=$DESTDIR
     fi
@@ -2412,8 +2415,8 @@ build_dependency() {
         logmsg "-- Setting up for out-of-tree build"
         CONFIGURE_CMD=$TMPDIR/$BUILDDIR/$CONFIGURE_CMD
         BUILDDIR+=-build
-        [ -d $TMPDIR/$BUILDDIR ] && logcmd rm -rf $TMPDIR/$BUILDDIR
-        logcmd mkdir -p $TMPDIR/$BUILDDIR
+        [ -d $TMPDIR/$BUILDDIR ] && logcmd $RM -rf $TMPDIR/$BUILDDIR
+        logcmd $MKDIR -p $TMPDIR/$BUILDDIR
     fi
     ((EXTRACT_MODE == 0)) && build $buildargs
 
@@ -2449,17 +2452,17 @@ python_vendor_relocate() {
     [ -d $DESTDIR/$PYTHONSITE ] || return
     logmsg "Relocating python $PYTHONVER site-packages to vendor-packages"
     if [ -d $DESTDIR$PYTHONVENDOR ]; then
-        rsync -a $DESTDIR$PYTHONSITE/ $DESTDIR$PYTHONVENDOR/ \
+        logcmd $RSYNC -a $DESTDIR$PYTHONSITE/ $DESTDIR$PYTHONVENDOR/ \
             || logerr "python: cannot copy from site to vendor-packages"
-        rm -rf $DESTDIR$PYTHONSITE
+        logcmd $RM -rf $DESTDIR$PYTHONSITE
     else
-        mv $DESTDIR$PYTHONSITE/ $DESTDIR$PYTHONVENDOR/ \
+        logcmd $MV $DESTDIR$PYTHONSITE/ $DESTDIR$PYTHONVENDOR/ \
             || logerr "python: cannot move from site to vendor-packages"
     fi
 
     for d in $DESTDIR$PYTHONVENDOR/*.{egg,dist}-info; do
         [ -d "$d" ] || continue
-        logmsg "-- Setting INSTALLER for `basename $d`"
+        logmsg "-- Setting INSTALLER for `$BASENAME $d`"
         echo pkg > $d/INSTALLER
     done
 }
@@ -2571,7 +2574,7 @@ build_rust() {
 #############################################################################
 
 siteperl_to_vendor() {
-    logcmd mv $DESTDIR/$PREFIX/perl5/site_perl \
+    logcmd $MV $DESTDIR/$PREFIX/perl5/site_perl \
         $DESTDIR/$PREFIX/perl5/vendor_perl \
         || logerr "can't move to vendor_perl"
 }
@@ -2642,7 +2645,7 @@ build_install() {
 test_if_core() {
     logmsg "Testing whether $MODNAME is in core"
     logmsg "--- Ensuring ${PKG} is not installed"
-    if logcmd pkg info -q ${PKG}; then
+    if logcmd $PKGCLIENT info -q ${PKG}; then
         logerr "------ Package ${PKG} appears to be installed.  Please uninstall it."
     else
         logmsg "------ Not installed, good."
@@ -2662,8 +2665,8 @@ test_if_core() {
 
 check_symlinks() {
     logmsg "-- Checking for dangling symlinks"
-    for link in `find "$1" -type l`; do
-        readlink -e $link >/dev/null || logerr "Dangling symlink $link"
+    for link in `$FIND "$1" -type l`; do
+        $READLINK -e $link >/dev/null || logerr "Dangling symlink $link"
     done
 }
 
@@ -2694,9 +2697,9 @@ check_hardlinks() {
         tlookup[$t]=1
     done
 
-    hlf=`mktemp`
+    hlf=`$MKTEMP`
 
-    nawk '$1 == "hardlink" {
+    $NAWK '$1 == "hardlink" {
             path = ""
             for (i = 0; i <= NF; i++) {
                 split($i, a, "=")
@@ -2722,13 +2725,13 @@ check_hardlinks() {
         logmsg "---"
         logmsg -e "These hardlinks do not have locked targets,"\
             "resulting in inconsistent builds."
-        cat $hlf | while read hl; do
+        $CAT $hlf | while read hl; do
             logmsg -e "--- Unlocked hardlink: $hl"
         done
         logerr "---"
     fi
 
-    rm -f $hlf
+    logcmd $RM -f $hlf
 }
 
 #############################################################################
@@ -2744,12 +2747,12 @@ extract_libabis() {
         lib=${file%.so.*}
         abi=${file#*.so.}
         array[$lib]+="$abi "
-    done < <(sed < "$src" '
+    done < <($SED < "$src" '
         # basename
         s/.*\///
         # Remove minor versions (e.g. .so.7.1.2 -> .so.7)
         s/\(\.so\.[0-9][0-9]*\)\..*/\1/
-        ' | sort | uniq)
+        ' | $SORT | $UNIQ)
 }
 
 check_libabi() {
@@ -2759,18 +2762,18 @@ check_libabi() {
     logmsg "-- Checking for library ABI changes"
 
     # Build list of libraries and ABIs from this package on disk
-    nawk '
+    $NAWK '
         $1 == "file" && $2 ~ /\.so\.[0-9]/ { print $2 }
     ' < $mf > $TMPDIR/libs.$$
     extract_libabis cla__new $TMPDIR/libs.$$
-    logcmd rm -f $TMPDIR/libs.$$
+    logcmd $RM -f $TMPDIR/libs.$$
 
     [ ${#cla__new[@]} -gt 0 ] || return
 
     # The package has at least one library
 
     logmsg "--- Found libraries, fetching previous package contents"
-    pkgitems -g $IPS_REPO $pkg | nawk '
+    pkgitems -g $IPS_REPO $pkg | $NAWK '
             /^file path=.*\.so\./ {
                 sub(/path=/, "", $2)
                 print $2
@@ -2780,7 +2783,7 @@ check_libabi() {
     # In case the user chooses to continue after the previous error
     [ -s $TMPDIR/libs.$$ ] || return
     extract_libabis cla__prev $TMPDIR/libs.$$
-    rm -f $TMPDIR/libs.$$
+    logcmd $RM -f $TMPDIR/libs.$$
 
     # Compare
     typeset change=0
@@ -2813,12 +2816,12 @@ strip_files() {
     for f in "$@"; do
         mode=
         if [ ! -w "$f" ]; then
-            mode=$(stat -c %a "$f")
-            logcmd chmod u+w "$f" || logerr -b "chmod failed: $f (u+w)"
+            mode=$($STAT -c %a "$f")
+            logcmd $CHMOD u+w "$f" || logerr -b "chmod failed: $f (u+w)"
         fi
-        logcmd strip -x "$f" || logerr "strip $f failed"
+        logcmd $STRIP -x "$f" || logerr "strip $f failed"
         if [ -n "$mode" ]; then
-            logcmd chmod $mode "$f" || logerr -b "chmod failed: $f ($mode)"
+            logcmd $CHMOD $mode "$f" || logerr -b "chmod failed: $f ($mode)"
         fi
     done
 }
@@ -2837,9 +2840,9 @@ rtime_objects() {
     if ((full)); then
         # OBJECT 32 DYN  NOVERDEF <path>
         # -> <path> <type> <bits>
-        nawk '/^OBJECT/ { print $NF, $3, $2 }' $TMPDIR/rtime.files
+        $NAWK '/^OBJECT/ { print $NF, $3, $2 }' $TMPDIR/rtime.files
     else
-        nawk '/^OBJECT/ { print $NF }' $TMPDIR/rtime.files
+        $NAWK '/^OBJECT/ { print $NF }' $TMPDIR/rtime.files
     fi
 }
 
@@ -2877,8 +2880,8 @@ convert_ctf() {
 
         typeset mode=
         if [ ! -w "$file" -o -u "$file" -o -g "$file" -o -k "$file" ]; then
-            mode=`stat -c %a "$file"`
-            logcmd chmod u+w "$file" || logerr -b "chmod u+w failed: $file"
+            mode=`$STAT -c %a "$file"`
+            logcmd $CHMOD u+w "$file" || logerr -b "chmod u+w failed: $file"
         fi
         typeset tf="$file.$$"
 
@@ -2886,11 +2889,11 @@ convert_ctf() {
         [ -f $SRCDIR/files/ctf.ignore ] && flags+=" -M$SRCDIR/files/ctf.ignore"
         if logcmd $CTFCONVERT $flags -l "$PROG-$VER" -o "$tf" "$file"; then
             if [ -s "$tf" ]; then
-                logcmd cp "$tf" "$file"
+                logcmd $CP "$tf" "$file"
                 if [ -z "$BATCH" -o -n "$CTF_AUDIT" ]; then
                     logmsg -n "$ctftag $file" \
                         "`$CTFDUMP -S $file | \
-                        nawk '/number of functions/{print $6}'` function(s)"
+                        $NAWK '/number of functions/{print $6}'` function(s)"
                 else
                     logmsg "$ctftag converted $file"
                 fi
@@ -2900,16 +2903,16 @@ convert_ctf() {
         else
             logmsg -e "$ctftag failed $file"
             if [ -n "$CTF_AUDIT" ]; then
-                logcmd mkdir -p $BASE_TMPDIR/ctfobj
+                logcmd $MKDIR -p $BASE_TMPDIR/ctfobj
                 typeset f=${file:2}
-                logcmd cp $file $BASE_TMPDIR/ctfobj/${f//\//_}
+                logcmd $CP $file $BASE_TMPDIR/ctfobj/${f//\//_}
             fi
         fi
 
-        logcmd rm -f "$tf"
+        logcmd $RM -f "$tf"
         strip_files "$file"
         if [ -n "$mode" ]; then
-            logcmd chmod $mode "$file" || logerr -b "chmod failed: $file"
+            logcmd $CHMOD $mode "$file" || logerr -b "chmod failed: $file"
         fi
     done < <(rtime_objects "$dir")
 
@@ -2920,8 +2923,8 @@ check_rtime() {
     logmsg "-- Checking ELF runtime attributes"
     rtime_files
 
-    cp $ROOTDIR/doc/rtime $TMPDIR/rtime.cfg
-    [ -f $SRCDIR/rtime ] && cat $SRCDIR/rtime >> $TMPDIR/rtime.cfg
+    $CP $ROOTDIR/doc/rtime $TMPDIR/rtime.cfg
+    [ -f $SRCDIR/rtime ] && $CAT $SRCDIR/rtime >> $TMPDIR/rtime.cfg
 
     logcmd $CHECK_RTIME \
         -e $TMPDIR/rtime.cfg \
@@ -2929,7 +2932,7 @@ check_rtime() {
         -f $TMPDIR/rtime.files
 
     if [ -s "$TMPDIR/rtime.err" ]; then
-        cat $TMPDIR/rtime.err | tee -a $LOGFILE
+        $CAT $TMPDIR/rtime.err | $TEE -a $LOGFILE
         logerr "ELF runtime problems detected"
     fi
 }
@@ -2947,7 +2950,7 @@ check_ssp() {
     done < <(rtime_objects)
     wait
     if [ -s "$TMPDIR/rtime.ssp" ]; then
-        cat $TMPDIR/rtime.ssp | tee -a $LOGFILE
+        $CAT $TMPDIR/rtime.ssp | $TEE -a $LOGFILE
         logerr "Found object(s) without SSP"
     fi
 }
@@ -2966,8 +2969,8 @@ check_soname() {
         case $type in
             EXEC)
                 if $ELFEDIT -re 'dyn:tag needed' "$DESTDIR/$obj" \
-                    | egrep 'NEEDED.*\.so$'; then
-                    if [ -z "$if" ] || ! egrep -s "^${obj#/}\$" $if; then
+                    | $EGREP 'NEEDED.*\.so$'; then
+                    if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
                         echo "$obj has an unqualified dependency" \
                             >> $TMPDIR/rtime.soname
                     fi
@@ -2975,7 +2978,7 @@ check_soname() {
             DYN)
                 if ! $ELFEDIT -re 'dyn:tag soname' "$DESTDIR/$obj" \
                     >/dev/null 2>&1; then
-                    if [ -z "$if" ] || ! egrep -s "^${obj#/}\$" $if; then
+                    if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
                         echo "$obj is missing an SONAME" \
                             >> $TMPDIR/rtime.soname
                     fi
@@ -2985,7 +2988,7 @@ check_soname() {
     done < <(rtime_objects -f)
     wait
     if [ -s "$TMPDIR/rtime.soname" ]; then
-        cat $TMPDIR/rtime.soname | tee -a $LOGFILE
+        $CAT $TMPDIR/rtime.soname | $TEE -a $LOGFILE
         logerr "Found SONAME problems"
     fi
 }
@@ -3010,7 +3013,7 @@ check_bmi() {
     done < <(rtime_objects)
     wait
     if [ -s "$TMPDIR/rtime.bmi" ]; then
-        cat $TMPDIR/rtime.bmi | tee -a $LOGFILE
+        $CAT $TMPDIR/rtime.bmi | $TEE -a $LOGFILE
         logerr "BMI instruction set found"
     fi
 }
@@ -3042,10 +3045,10 @@ check_licences() {
         fi
 
         # Consolidate found licences into a temporary directory
-        mkdir -p $BASE_TMPDIR/licences
-        typeset lf="$BASE_TMPDIR/licences/$PKGD.`basename $file`"
+        $MKDIR -p $BASE_TMPDIR/licences
+        typeset lf="$BASE_TMPDIR/licences/$PKGD.`$BASENAME $file`"
         dos2unix "$dir/$file" "$lf"
-        chmod u+rw "$lf"
+        $CHMOD u+rw "$lf"
 
         [ -z "$FORCE_LICENCE_CHECK" -a -n "$BATCH" ] && continue
 
@@ -3054,7 +3057,7 @@ check_licences() {
             case "$type" in $SKIP_LICENCES) continue ;; esac
 
             # Check that the licence type is correct
-            pattern="`nawk -F"\t+" -v type="${type%%/*}" '
+            pattern="`$NAWK -F"\t+" -v type="${type%%/*}" '
                 /^#/ { next }
                 $1 == type { print $2 }
             ' $ROOTDIR/doc/licences`"
@@ -3067,7 +3070,7 @@ check_licences() {
             fi
         done
         IFS="$_IFS"
-    done < <(nawk '
+    done < <($NAWK '
             $1 == "license" {
                 if (split($0, a, /"/) != 3) split($0, a, "=")
                 print $2, a[2]
@@ -3095,11 +3098,11 @@ clean_up() {
     logmsg "-- Cleaning up"
     if [ -z "$DONT_REMOVE_INSTALL_DIR" ]; then
         logmsg "--- Removing temporary install directory $DESTDIR"
-        logcmd chmod -R u+w $DESTDIR > /dev/null 2>&1
-        logcmd rm -rf $DESTDIR || \
+        logcmd $CHMOD -R u+w $DESTDIR > /dev/null 2>&1
+        logcmd $RM -rf $DESTDIR || \
             logerr "Failed to remove temporary install directory"
         logmsg "--- Cleaning up temporary manifest and transform files"
-        logcmd rm -f $P5M_GEN $P5M_MOG $P5M_DEPGEN $P5M_DEPGEN.res $P5M_FINAL \
+        logcmd $RM -f $P5M_GEN $P5M_MOG $P5M_DEPGEN $P5M_DEPGEN.res $P5M_FINAL \
             $MY_MOG_FILE $MANUAL_DEPS || \
             logerr "Failed to remove temporary manifest and transform files"
         logmsg "Done."
@@ -3177,13 +3180,13 @@ wait_for_prebuilt() {
 
     # NOTE -> if the nightly finishes between the above check and now, we
     # can produce confusing output since nightly_pid will be empty.
-    nightly_pid="`readlink $PREBUILT_ILLUMOS/log/nightly.lock | cut -d. -f3`"
+    nightly_pid="`$READLINK $PREBUILT_ILLUMOS/log/nightly.lock | $CUT -d. -f3`"
     # Wait for nightly to be finished if it's running.
     logmsg "Waiting for illumos nightly build $nightly_pid to be finished."
     logmsg "Time spent waiting via time(1) printed below."
-    logcmd touch $BASE_TMPDIR/.nw.$PPID
-    logmsg "`/bin/time pwait $nightly_pid`"
-    logcmd rm -f $BASE_TMPDIR/.nw.$PPID
+    logcmd $TOUCH $BASE_TMPDIR/.nw.$PPID
+    logmsg "`$TIME pwait $nightly_pid`"
+    logcmd $RM -f $BASE_TMPDIR/.nw.$PPID
     if [ -h $PREBUILT_ILLUMOS/log/nightly.lock ]; then
         logerr "Nightly lock present, but build not running. Aborting."
     fi
@@ -3207,7 +3210,7 @@ pkg_ver() {
 
     src=$ROOTDIR/build/$src/$script
     [ -f $src ] || logerr "pkg_ver: cannot locate source"
-    local ver=`sed -n '/^VER=/ {
+    local ver=`$SED -n '/^VER=/ {
                 s/.*=//
                 p
                 q
@@ -3226,7 +3229,7 @@ make_versionsbuild() {
     local dir=${2:-$DESTDIR}
     local bdir=${3:-$TMPDIR/$BUILDDIR}
 
-    logcmd mkdir -p $dir/etc/versions || logerr "-- mkdir etc/versions"
+    logcmd $MKDIR -p $dir/etc/versions || logerr "-- mkdir etc/versions"
     echo "$prog - `$GIT -C "$bdir" describe --all --long --dirty`" \
         > $dir/etc/versions/build.$prog \
         || logerr "-- could not make /etc/versions/build.$1"
