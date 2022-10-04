@@ -1,0 +1,31 @@
+tmux disables event port use in libevent due to a historical bug which does
+not currently show up in OmniOS.
+
+See:	https://github.com/tmux/tmux/issues/2702
+	https://github.com/TritonDataCenter/smartos-live/issues/988
+
+We would rather use event ports than poll, and given that we cannot replicate
+the original bug, we re-enable them.
+
+diff -wpruN '--exclude=*.orig' a~/osdep-sunos.c a/osdep-sunos.c
+--- a~/osdep-sunos.c	1970-01-01 00:00:00
++++ a/osdep-sunos.c	1970-01-01 00:00:00
+@@ -96,17 +96,5 @@ osdep_get_cwd(int fd)
+ struct event_base *
+ osdep_event_init(void)
+ {
+-	struct event_base	*base;
+-
+-	/*
+-	 * On Illumos, evports don't seem to work properly. It is not clear if
+-	 * this a problem in libevent, with the way tmux uses file descriptors,
+-	 * or with some types of file descriptor. But using poll instead is
+-	 * fine.
+-	 */
+-	setenv("EVENT_NOEVPORT", "1", 1);
+-
+-	base = event_init();
+-	unsetenv("EVENT_NOEVPORT");
+-	return (base);
++	return (event_init());
+ }
