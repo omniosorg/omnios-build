@@ -9,6 +9,7 @@ Result: NOTESTS
 02-test_errstr.t ................... ok
 02-test_internal_context.t ......... ok
 02-test_internal_ctype.t ........... ok
+02-test_internal_exts.t ............ ok
 02-test_internal_keymgmt.t ......... ok
 02-test_internal_provider.t ........ ok
 02-test_lhash.t .................... ok
@@ -185,9 +186,7 @@ Result: NOTESTS
 80-test_cipherbytes.t .............. ok
 80-test_cipherlist.t ............... ok
 80-test_ciphername.t ............... ok
-
-# 
-Killing mock server with pid=-test_cmp_http.t ................. ok
+80-test_cmp_http.t ................. ok
 
 # 80-test_cms.t ...................... ok
 80-test_cmsapi.t ................... ok
@@ -248,5 +247,5 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=243, Tests=3276, 
+Files=244, Tests=3293, 
 Result: PASS
