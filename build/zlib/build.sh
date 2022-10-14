@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=zlib
-VER=1.2.12
+VER=1.2.13
 PKG=library/zlib
 SUMMARY="$PROG compression library"
 DESC="A patent-free compression library"
