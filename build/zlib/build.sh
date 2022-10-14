@@ -18,8 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=zlib
-VER=1.2.12
-DASHREV=1
+VER=1.2.13
 PKG=library/zlib
 SUMMARY="$PROG - A compression library"
 DESC="$SUMMARY"
