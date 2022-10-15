@@ -28,7 +28,6 @@ DESC="Kayak generates install media for OmniOS: either ISO/USB or network instal
 BUILD_DEPENDS_IPS="developer/versioning/git"
 RUN_DEPENDS_IPS="
     developer/build/gnu-make
-    library/python-3/cherrypy-${PYTHON3VER//./}
 "
 
 # Respect environmental overrides for these to ease development.
