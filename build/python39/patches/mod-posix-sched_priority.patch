@@ -7,7 +7,7 @@ However, -1 alongside EINVAL represents an error.
 diff -wpruN '--exclude=*.orig' a~/Modules/posixmodule.c a/Modules/posixmodule.c
 --- a~/Modules/posixmodule.c	1970-01-01 00:00:00
 +++ a/Modules/posixmodule.c	1970-01-01 00:00:00
-@@ -6723,7 +6723,11 @@ os_sched_get_priority_max_impl(PyObject
+@@ -6727,7 +6727,11 @@ os_sched_get_priority_max_impl(PyObject
      int max;
  
      max = sched_get_priority_max(policy);
@@ -19,7 +19,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/posixmodule.c a/Modules/posixmodule.c
          return posix_error();
      return PyLong_FromLong(max);
  }
-@@ -6742,7 +6746,11 @@ os_sched_get_priority_min_impl(PyObject
+@@ -6746,7 +6750,11 @@ os_sched_get_priority_min_impl(PyObject
  /*[clinic end generated code: output=7595c1138cc47a6d input=21bc8fa0d70983bf]*/
  {
      int min = sched_get_priority_min(policy);
