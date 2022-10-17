@@ -4,6 +4,35 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040ay (2022-10-19)
+Weekly release for w/c 17th of October 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* libxml2 has been updated to 2.10.3, fixing
+  [CVE-2022-40303](https://nvd.nist.gov/vuln/detail/CVE-2022-40303),
+  [CVE-2022-40304](https://nvd.nist.gov/vuln/detail/CVE-2022-40304)
+
+* zlib has been updated to 1.2.13, fixing
+  [CVE-2022-37434](https://nvd.nist.gov/vuln/detail/CVE-2022-37434)
+
+### Other Changes
+
+* It was possible to see occasional failures in port\_associate(3C) when
+  using event ports
+
+* The previous fix ([illumos 14788](https://www.illumos.org/issues/14788))
+  for /proc/fdinfo could occasionally cause event ports to misbehave
+
+* The bundled AMD CPU microcode has been updated to version 20220930
+
+* Python has been updated to version 3.9.15
+
+<br>
+
+---
+
 ## r151040av (2022-09-27)
 Weekly release for w/c 26th of September 2022.
 > This update requires a reboot
