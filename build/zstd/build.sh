@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -43,7 +43,7 @@ configure64() {
     MAKE_INSTALL_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"
         LIBDIR=$PREFIX/lib/$ISAPART64"
     MAKE_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"
-        lib-release zstd-release"
+        LIBDIR=$PREFIX/lib/$ISAPART64 lib-release zstd-release"
 }
 
 make_install64() {
