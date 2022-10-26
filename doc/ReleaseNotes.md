@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r151040az (2022-10-26)
+Weekly release for w/c 24th of October 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* curl updated to version 7.86.0, fixing
+  [CVE-2022-42916](https://curl.se/docs/CVE-2022-42916.html),
+  [CVE-2022-42915](https://curl.se/docs/CVE-2022-42915.html),
+  [CVE-2022-35260](https://curl.se/docs/CVE-2022-35260.html) and
+  [CVE-2022-32221](https://curl.se/docs/CVE-2022-32221.html).
+
+* OpenJDK packages updated to versions 1.8.352-08, 11.0.17+8 and 17.0.5+8.
+
+### Other Changes
+
+* The 64-bit `libzstd.pc` file was incorrect.
+
+<br>
+
+---
+
 ## r151040ay (2022-10-19)
 Weekly release for w/c 17th of October 2022.
 > This update requires a reboot
