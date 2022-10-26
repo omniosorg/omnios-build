@@ -7,7 +7,7 @@ ksh ends up removing the empty parameter to --[no]proxy without this patch.
 diff -wpruN '--exclude=*.orig' a~/tests/data/test1004 a/tests/data/test1004
 --- a~/tests/data/test1004	1970-01-01 00:00:00
 +++ a/tests/data/test1004	1970-01-01 00:00:00
-@@ -36,7 +36,7 @@ http
+@@ -39,7 +39,7 @@ http
  HTTP GET with empty proxy
   </name>
   <command>
