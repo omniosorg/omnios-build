@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ca (2022-11-01)
+Weekly release for w/c 31st of October 2022.
+> This is a non-reboot update
+
+### Fixes
+
+* OpenSSL upgraded to version 1.1.1s.
+
+<br>
+
+---
+
 ## r151038bz (2022-10-26)
 Weekly release for w/c 24th of October 2022.
 > This is a non-reboot update
