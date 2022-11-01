@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOS v11 r151040
 
+## r150040ba (2022-11-01)
+Weekly release for w/c 31st of October 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL upgraded to version 3.0.7 and 1.1.1s, fixing
+  [CVE-2022-3602](https://nvd.nist.gov/vuln/detail/CVE-2022-3602),
+  [CVE-2022-3786](https://nvd.nist.gov/vuln/detail/CVE-2022-3786).
+
+<br>
+
+---
+
 ## r151040az (2022-10-26)
 Weekly release for w/c 24th of October 2022.
 > This is a non-reboot update
