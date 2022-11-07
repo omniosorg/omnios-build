@@ -3,7 +3,6 @@
 </a>
 
 # Release Notes for OmniOSce v11 r151044
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
 Stable Release, 7th of November 2022
 
