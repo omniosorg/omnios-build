@@ -9,10 +9,10 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 
-<transform file dir link hardlink path=var/db -> drop>
+<transform path=var/db -> drop>
 
 <transform file dir path=etc/sudoers -> set group root>
 <transform file path=etc/sudoers$ -> set preserve renamenew>
@@ -24,6 +24,7 @@
 
 <transform file path=.*logsrvd -> drop>
 <transform path=usr/share/doc/sudo -> drop>
+<transform dir path=var/run -> drop>
 
-license doc/LICENSE license=Various
+license LICENSE.md license=Various
 
