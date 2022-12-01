@@ -25,7 +25,7 @@ DESC="A library that implements typesafe callback system for standard C++"
 
 export MAKE
 CONFIGURE_OPTS="--includedir=/usr/include"
-LDFLAGS32+=" -lssp_ns"
+LDFLAGS[i386]+=" -lssp_ns"
 
 TESTSUITE_SED="
     s/  *[0-9]\.[0-9]*s$//

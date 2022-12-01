@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -30,7 +30,7 @@ export PATH=$PATH:$OOCEBIN
 
 SKIP_LICENCES="*"
 
-export XML_CATALOG_FILES=/opt/ooce/docbook-xsl/catalog.xml
+export XML_CATALOG_FILES=$OOCEOPT/docbook-xsl/catalog.xml
 
 # Required to include struct timespec definition and constants.
 export CFLAGS+=" -D__EXTENSIONS__"
@@ -49,7 +49,7 @@ CONFIGURE_OPTS="
     --nopyc --nopyo --nopycache
     --enable-debug-gdb
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --build-desc=\"OmniOS $RELVER\"
 "
 
@@ -59,19 +59,18 @@ make_clean() {
     logcmd ./waf distclean
 }
 
-configure64() {
-    logmsg "--- configure"
+configure_arch() {
     BIN_ASCIIDOC=$OOCEBIN/asciidoc \
         BIN_A2X=$OOCEBIN/a2x \
         BIN_XSLTPROC=$USRBIN/xsltproc \
-        CC='gcc -m64' \
+        CC="$CC $CFLAGS" \
         logcmd ./waf configure $CONFIGURE_OPTS \
         || logerr "--- configure failed"
     logcmd mkdir -p build/main/pylib
     logcmd ln -s . build/main/pylib/64
 }
 
-make_prog() {
+make_arch() {
     logmsg "--- build"
     logcmd ./waf build || logerr "--- build failed"
 }

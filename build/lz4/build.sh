@@ -23,17 +23,17 @@ SUMMARY="LZ4"
 DESC="Extremely fast compression"
 
 # we build/ship 32 and 64-bit libraries but only 64-bit binaries
-configure32() {
+configure_i386() {
     MAKE_ARGS_WS="
-        CFLAGS=\"$CFLAGS $CFLAGS32\"
-        LDFLAGS=\"$LDFLAGS $LDFLAGS32\"
+        CFLAGS=\"$CFLAGS ${CFLAGS[i386]}\"
+        LDFLAGS=\"$LDFLAGS ${LDFLAGS[i386]}\"
     "
 }
 
-configure64() {
+configure_amd64() {
     MAKE_ARGS_WS="
-        CFLAGS=\"$CFLAGS $CFLAGS64\"
-        LDFLAGS=\"$LDFLAGS $LDFLAGS64\"
+        CFLAGS=\"$CFLAGS ${CFLAGS[amd64]}\"
+        LDFLAGS=\"$LDFLAGS ${LDFLAGS[amd64]}\"
     "
 }
 
@@ -41,8 +41,8 @@ MAKE_INSTALL_ARGS="
     INSTALL=$GNUBIN/install
     PREFIX=$PREFIX
 "
-MAKE_INSTALL_ARGS_32="LIBDIR=$PREFIX/lib BINDIR=$PREFIX/bin/$ISAPART"
-MAKE_INSTALL_ARGS_64="LIBDIR=$PREFIX/lib/$ISAPART64"
+MAKE_INSTALL_ARGS_32="LIBDIR=$PREFIX/lib BINDIR=$PREFIX/bin/i386"
+MAKE_INSTALL_ARGS_64="LIBDIR=$PREFIX/lib/amd64"
 
 MAKE_TESTSUITE_ARGS="$MAKE_INSTALL_ARGS -k"
 

@@ -58,13 +58,13 @@ MAKE_ARGS="
 "
 CFLAGS+=" -DNSS_FIPS_DISABLED"
 MAKE_ARGS_WS_32="
-    XCFLAGS=\"$CTF_CFLAGS $CFLAGS32 $CFLAGS\"
-    LDFLAGS=\"$LDFLAGS32 $LDFLAGS\"
+    XCFLAGS=\"$CTF_CFLAGS ${CFLAGS[i386]} $CFLAGS\"
+    LDFLAGS=\"${LDFLAGS[i386]} $LDFLAGS\"
 "
 MAKE_ARGS_WS_64="
     USE_64=1
-    XCFLAGS=\"$CTF_CFLAGS $CFLAGS64 $CFLAGS\"
-    LDFLAGS=\"$LDFLAGS64 $LDFLAGS\"
+    XCFLAGS=\"$CTF_CFLAGS ${CFLAGS[adm64]} $CFLAGS\"
+    LDFLAGS=\"${LDFLAGS[amd64]} $LDFLAGS\"
 "
 
 NSS_LIBS="libfreebl3.so libfreeblpriv3.so libnss3.so libnssckbi.so libnssdbm3.so
@@ -82,17 +82,17 @@ make_clean() {
     CLEANED=1
 }
 
-configure32() {
+configure_i386() {
     export MAKE_ARGS_WS="$MAKE_ARGS_WS_32"
 }
 
-configure64() {
+configure_amd64() {
     export MAKE_ARGS_WS="$MAKE_ARGS_WS_64"
 }
 
-make_install32() { :; }
+make_install_i386() { :; }
 
-make_install64() {
+make_install_amd64() {
     typeset dist=$TMPDIR/$BUILDDIR/dist
     typeset dist32=$dist/$DIST32
     typeset dist64=$dist/$DIST64
@@ -102,29 +102,29 @@ make_install64() {
 
     set -eE; trap 'logerr Installation failed at $BASH_LINENO' ERR
 
-    logcmd mkdir -p bin include/mps lib/mps/$ISAPART64 share/man/man1
+    logcmd mkdir -p bin include/mps lib/mps/amd64 share/man/man1
     logcmd rsync -a $dist64/include/ include/mps/
     logcmd rsync -a $dist/public/nss/ include/mps/nss/
     logcmd rsync -a $dist/public/dbm/ include/mps/nss/
     logcmd rsync -a $dist32/lib/ lib/mps/
-    logcmd rsync -a $dist64/lib/ lib/mps/$ISAPART64/
+    logcmd rsync -a $dist64/lib/ lib/mps/amd64/
     logcmd rsync -a $dist/../nss/doc/nroff/ share/man/man1/
 
     ( cd $dist64/bin; cp $NSS_BINS $OLDPWD/bin/ ) >/dev/null
     for b in bin/*; do
-        logcmd elfedit -e "dyn:runpath $PREFIX/lib/mps/$ISAPART64" $b
+        logcmd elfedit -e "dyn:runpath $PREFIX/lib/mps/amd64" $b
     done
 
     # There is no provided nss.pc file, and the nspr.pc doesn't account for
     # the alternate library path in OmniOS; we need to synthesise them.
-    logcmd mkdir -p lib/pkgconfig lib/$ISAPART64/pkgconfig
+    logcmd mkdir -p lib/pkgconfig lib/amd64/pkgconfig
     for c in nss nspr; do
         sed < $SRCDIR/files/$c.pc > lib/pkgconfig/$c.pc "
             s/__NSSVER__/$VER/g
             s/__NSPRVER__/$NSPRVER/g
         "
-        sed < lib/pkgconfig/$c.pc > lib/$ISAPART64/pkgconfig/$c.pc "
-            /^libdir=/s^\$^/$ISAPART64^
+        sed < lib/pkgconfig/$c.pc > lib/amd64/pkgconfig/$c.pc "
+            /^libdir=/s^\$^/amd64^
         "
     done
 
@@ -148,7 +148,7 @@ DESC="$SUMMARY"
 manifest_start $TMPDIR/manifest.nss.header
 manifest_add_dir $PREFIX/include/mps/nss
 manifest_add $PREFIX/lib/pkgconfig nss.pc
-manifest_add $PREFIX/lib/$ISAPART64/pkgconfig nss.pc
+manifest_add $PREFIX/lib/amd64/pkgconfig nss.pc
 manifest_finalise $TMPDIR/manifest.nss.header $PREFIX
 
 make_package -seed $TMPDIR/manifest.nss.header nss.mog
@@ -161,7 +161,7 @@ DESC="$SUMMARY"
 
 manifest_start $TMPDIR/manifest.nss
 manifest_add $PREFIX/lib/mps $NSS_LIBS $NSS_LIBCHK
-manifest_add $PREFIX/lib/mps/$ISAPART64 $NSS_LIBS $NSS_LIBCHK
+manifest_add $PREFIX/lib/mps/amd64 $NSS_LIBS $NSS_LIBCHK
 manifest_add $PREFIX/bin $NSS_BINS
 manifest_add $PREFIX/share/man/man1 $NSS_MANS
 manifest_finalise $TMPDIR/manifest.nss $PREFIX
@@ -178,7 +178,7 @@ DESC="$SUMMARY"
 manifest_start $TMPDIR/manifest.nspr.header
 manifest_add_dir $PREFIX/include/mps md obsolete private
 manifest_add $PREFIX/lib/pkgconfig nspr.pc
-manifest_add $PREFIX/lib/$ISAPART64/pkgconfig nspr.pc
+manifest_add $PREFIX/lib/amd64/pkgconfig nspr.pc
 manifest_finalise $TMPDIR/manifest.nspr.header $PREFIX
 
 make_package -seed $TMPDIR/manifest.nspr.header nspr.mog
@@ -191,7 +191,7 @@ DESC="$SUMMARY"
 
 manifest_start $TMPDIR/manifest.nspr
 manifest_add $PREFIX/lib/mps $NSPR_LIBS
-manifest_add $PREFIX/lib/mps/$ISAPART64 $NSPR_LIBS
+manifest_add $PREFIX/lib/mps/amd64 $NSPR_LIBS
 manifest_finalise $TMPDIR/manifest.nspr $PREFIX
 
 make_package -seed $TMPDIR/manifest.nspr nspr.mog

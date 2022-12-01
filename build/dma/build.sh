@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -38,14 +38,19 @@ export PREFIX=/usr
 export SBIN=${PREFIX}/lib/smtp/dma
 export LIBEXEC=${PREFIX}/lib/smtp/dma
 
+MAKEFLAGS+=" -e"
+
 # No configure
-configure64() {
+configure_amd64() {
     export CC=gcc
     export YACC=bison
     export LEX=flex
+}
 
-    CFLAGS+=" $CFLAGS64"
-    LDADD+=" $LDFLAGS64"
+pre_make() {
+    xCFLAGS="$CFLAGS ${CFLAGS[amd64]}"
+    LDADD+=" $LDFLAGS ${LDFLAGS[amd64]}"
+    unset CFLAGS; CFLAGS="$xCFLAGS"
     export CFLAGS LDADD
 }
 

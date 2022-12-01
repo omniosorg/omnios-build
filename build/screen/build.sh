@@ -28,15 +28,13 @@ set_arch 64
 # Need access to additional fields in struct msghdr
 set_standard XPG6
 
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --with-sys-screenrc=/etc/screenrc
     --enable-colors256
     LDFLAGS=\"-m64 -lxnet\"
 "
 
-save_function make_install make_install_orig
-make_install() {
-    make_install_orig
+post_install() {
     logmsg "Installing /etc/screenrc"
     logcmd mkdir $DESTDIR/etc || logerr "-- Failed to mkdir $DESTDIR/etc"
     sed '

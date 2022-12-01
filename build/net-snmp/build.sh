@@ -45,7 +45,7 @@ LIBRARIES_ONLY="
 "
 
 forgo_isaexec
-CONFIGURE_OPTS_32+=" $LIBRARIES_ONLY"
+CONFIGURE_OPTS[i386]+=" $LIBRARIES_ONLY"
 
 CONFIGURE_OPTS="
     --with-defaults
@@ -69,7 +69,7 @@ CONFIGURE_OPTS="
     --with-openssl=/usr/ssl
 "
 
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --with-transports=\"Unix UDP TCP UDPIPv6 TCPIPv6\"
     --with-mib-modules=\"$MIB_MODULES\"
 "
@@ -85,7 +85,7 @@ init
 save_buildenv
 prep_build
 # We only want the libraries from legacy versions
-CONFIGURE_OPTS_64+=" $LIBRARIES_ONLY"
+CONFIGURE_OPTS[amd64]+=" $LIBRARIES_ONLY"
 for pver in $PVERS; do
     [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"

@@ -31,7 +31,6 @@ PREFIX=/usr/gnu
 # to /usr/bin/, but we need to continue building dual arch so that the
 # 32-bit libstdbuf.so is available. This enables the stdbuf command to
 # work with 32-bit binaries.
-set_arch both
 forgo_isaexec
 
 # hardlinks are defined in local.mog
@@ -43,8 +42,8 @@ CONFIGURE_OPTS+="
     gl_cv_host_operating_system=illumos
     ac_cv_func_inotify_init=no
 "
-CONFIGURE_OPTS_32+=" --libexecdir=/usr/lib"
-CONFIGURE_OPTS_64+=" --libexecdir=/usr/lib/$ISAPART64"
+CONFIGURE_OPTS[i386]+=" --libexecdir=/usr/lib"
+CONFIGURE_OPTS[amd64]+=" --libexecdir=/usr/lib/amd64"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 

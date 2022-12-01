@@ -55,7 +55,7 @@ function install_lib {
     local v=$1
     local libs="$2"
 
-    logcmd mkdir -p usr/gcc/$v/lib/$ISAPART64
+    logcmd mkdir -p usr/gcc/$v/lib/amd64
     for lib in $libs; do
 
         find_lib $v $lib    # sets pth, full, maj variables
@@ -63,31 +63,31 @@ function install_lib {
         # Copy the libraries across to /usr/gcc/X/lib
 
         logcmd cp $pth/$full usr/gcc/$v/lib/$full
-        logcmd cp $pth/$ISAPART64/$full usr/gcc/$v/lib/$ISAPART64/$full
+        logcmd cp $pth/amd64/$full usr/gcc/$v/lib/amd64/$full
         checksum usr/gcc/$v/lib/$full
-        checksum usr/gcc/$v/lib/$ISAPART64/$full
+        checksum usr/gcc/$v/lib/amd64/$full
 
         # Create the links
 
         if [ "$full" != "$maj" ]; then
             # /usr/gcc/X/lib/libxxxx.so.1 -> libxxxx.so.1.2.3
             logcmd ln -s $full usr/gcc/$v/lib/$maj
-            logcmd ln -s $full usr/gcc/$v/lib/$ISAPART64/$maj
+            logcmd ln -s $full usr/gcc/$v/lib/amd64/$maj
         fi
         # /usr/gcc/X/lib/libxxxx.so -> libxxxx.so.1
         logcmd ln -s $maj usr/gcc/$v/lib/$lib.so
-        logcmd ln -s $maj usr/gcc/$v/lib/$ISAPART64/$lib.so
+        logcmd ln -s $maj usr/gcc/$v/lib/amd64/$lib.so
 
         # Link versioned libraries to /usr/lib - latest gcc version will win in
         # the case that two deliver the same versioned file.
 
         # /usr/lib/libxxxx.so.1.2.3 -> /usr/gcc/lib/X/libxxxx.so.1.2.3
         logcmd ln -sf ../gcc/$v/lib/$full usr/lib/$full
-        logcmd ln -sf ../../gcc/$v/lib/$ISAPART64/$full usr/lib/$ISAPART64/$full
+        logcmd ln -sf ../../gcc/$v/lib/amd64/$full usr/lib/amd64/$full
         if [ "$full" != "$maj" ]; then
             # /usr/lib/libxxxx.so.1 -> libxxxx.so.1.2.3
             logcmd ln -sf $full usr/lib/$maj
-            logcmd ln -sf $full usr/lib/$ISAPART64/$maj
+            logcmd ln -sf $full usr/lib/amd64/$maj
         fi
 
     done
@@ -105,7 +105,7 @@ install_unversioned() {
         find_lib $v $lib
         # /usr/lib/libxxxx.so.1 -> ../gcc/X/lib/libxxxx.so.1
         logcmd ln -sf ../gcc/$v/lib/$maj usr/lib/$maj
-        logcmd ln -sf ../../gcc/$v/lib/$ISAPART64/$maj usr/lib/amd64/$maj
+        logcmd ln -sf ../../gcc/$v/lib/amd64/$maj usr/lib/amd64/$maj
         # /usr/lib/libxxxx.so -> libxxxx.so.1
         logcmd ln -sf $maj usr/lib/$lib.so
         logcmd ln -sf $maj usr/lib/amd64/$lib.so

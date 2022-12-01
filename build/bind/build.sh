@@ -66,23 +66,21 @@ prep_build autoconf -autoreconf
 # Download and build a static version of libuv
 
 save_buildenv
-save_function configure64 _configure64
 
-configure64() {
+pre_configure() {
     run_inbuild "./autogen.sh"
-    _configure64 "$@"
 }
 
 CFLAGS+=" -fPIC"
-CONFIGURE_OPTS=" --disable-shared --enable-static"
+CONFIGURE_OPTS="--disable-shared --enable-static"
 
 build_dependency libuv libuv-$LIBUVVER libuv v$LIBUVVER
 
-save_function _configure64 configure64
+unset -f pre_configure
 restore_buildenv
 
 export LIBUV_CFLAGS="-I$DEPROOT$PREFIX/include"
-export LIBUV_LIBS="-L$DEPROOT$PREFIX/lib/$ISAPART64 -luv"
+export LIBUV_LIBS="-L$DEPROOT$PREFIX/lib/amd64 -luv"
 
 #########################################################################
 

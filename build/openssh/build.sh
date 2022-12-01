@@ -27,7 +27,7 @@ set_arch 64
 
 SKIP_LICENCES=OpenSSH
 
-CONFIGURE_OPTS_64+="
+CONFIGURE_OPTS[amd64]+="
     --sysconfdir=/etc/ssh
 "
 
@@ -71,7 +71,7 @@ build_manifests() {
     manifest_add etc/ssh moduli sshd_config
     manifest_add_dir lib/svc manifest/network method
     manifest_add_dir usr/lib/dtrace/64
-    manifest_add usr/libexec/$ISAPART64 sftp-server
+    manifest_add usr/libexec/amd64 sftp-server
     manifest_add usr/sbin sshd
     manifest_add usr/share/man/man1m sshd.8 sftp-server.8
     manifest_add usr/share/man/man4 moduli.5 sshd_config.5

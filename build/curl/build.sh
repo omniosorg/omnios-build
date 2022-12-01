@@ -38,7 +38,7 @@ CONFIGURE_OPTS="
 # Otherwise there are test failures because some tests preload a library
 # to override the hostname. If the library is 64-bit then the test aborts
 # when runtests.pl calls a 32-bit shell to spawn a sub-process.
-BUILDORDER="64 32"
+[ "$BUILDARCH" = "i386 amd64" ] && BUILDARCH="amd64 i386"
 
 # As of curl 7.61.1, Makefiles include macros over 8192 bytes long which our
 # default make does not like. Ensure that GNU make is used for all invocations.

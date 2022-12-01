@@ -39,7 +39,7 @@ pushd $DESTDIR >/dev/null
 
 libs="libgfortran libquadmath"
 
-mkdir -p usr/lib/$ISAPART64
+mkdir -p usr/lib/amd64
 
 for v in `seq 5 $VER`; do
     install_lib $v "$libs"
@@ -50,8 +50,8 @@ install_unversioned $SHARED_GCC_VER "$libs"
 # And special-case libquadmath.so.0.0.0
 lib=libquadmath.so.0.0.0
 logcmd ln -sf ../gcc/$SHARED_GCC_VER/lib/$lib usr/lib/$lib
-logcmd ln -sf ../../gcc/$SHARED_GCC_VER/lib/$ISAPART64/$lib \
-    usr/lib/$ISAPART64/$lib
+logcmd ln -sf ../../gcc/$SHARED_GCC_VER/lib/amd64/$lib \
+    usr/lib/amd64/$lib
 
 popd >/dev/null
 set +o errexit

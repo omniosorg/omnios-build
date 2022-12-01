@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -30,9 +30,9 @@ SKIP_LICENCES="*"
 
 export CPP="gcc -E"
 
-configure64() {
-    export ISAPART DESTDIR PREFIX
-    MAKE_ARGS_WS="CC=\"gcc -m$BUILDARCH $CFLAGS $CFLAGS64\" CPP=\"gcc -E\""
+configure_amd64() {
+    export i386 DESTDIR PREFIX
+    MAKE_ARGS_WS="CC=\"gcc $CFLAGS ${CFLAGS[amd64]}\" CPP=\"gcc -E\""
 }
 
 BASE_MAKE_ARGS="-f unix/Makefile"

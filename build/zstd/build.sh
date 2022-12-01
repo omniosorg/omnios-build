@@ -32,21 +32,21 @@ base_MAKE_ARGS="
     INSTALL=$GNUBIN/install
 "
 
-configure32() {
-    MOREFLAGS="$CFLAGS $CFLAGS32"
+configure_i386() {
+    MOREFLAGS="$CFLAGS ${CFLAGS[i386]}"
     MAKE_INSTALL_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\""
     MAKE_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\" lib-release"
 }
 
-configure64() {
-    MOREFLAGS="$CFLAGS $CFLAGS64"
+configure_amd64() {
+    MOREFLAGS="$CFLAGS ${CFLAGS[amd64]}"
     MAKE_INSTALL_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"
-        LIBDIR=$PREFIX/lib/$ISAPART64"
+        LIBDIR=$PREFIX/lib/amd64"
     MAKE_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"
-        LIBDIR=$PREFIX/lib/$ISAPART64 lib-release zstd-release"
+        LIBDIR=$PREFIX/lib/amd64 lib-release zstd-release"
 }
 
-make_install64() {
+make_install_amd64() {
     make_install
     MAKE_INSTALL_TARGET="-C programs install" make_install
     # With the current way that the makefile builds are set up, the library

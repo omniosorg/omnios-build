@@ -13,7 +13,7 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -52,12 +52,12 @@ CONFIGURE_OPTS="
     gmp_cv_asm_x86_mulx=no
 "
 
-CONFIGURE_OPTS_WS_32="
+CONFIGURE_OPTS[i386_WS]="
     ABI=32
     MPN_PATH=\"$MPN32\"
 "
 
-CONFIGURE_OPTS_WS_64="
+CONFIGURE_OPTS[amd64_WS]="
     ABI=64
     MPN_PATH=\"$MPN64\"
 "

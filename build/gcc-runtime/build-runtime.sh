@@ -37,12 +37,12 @@ pushd $DESTDIR >/dev/null
 
 libs="libgcc_s libatomic libgomp libssp"
 
-mkdir -p usr/lib/$ISAPART64
+mkdir -p usr/lib/amd64
 
 for v in `seq 5 $VER`; do
     install_lib $v "$libs"
     # The gcc-runtime package provides the 64 -> amd64 links
-    logcmd ln -s $ISAPART64 usr/gcc/$v/lib/64
+    logcmd ln -s amd64 usr/gcc/$v/lib/64
 done
 
 install_unversioned $SHARED_GCC_VER "$libs"
@@ -50,8 +50,8 @@ install_unversioned $SHARED_GCC_VER "$libs"
 # And special-case libssp.so.0.0.0
 lib=libssp.so.0.0.0
 logcmd ln -sf ../gcc/$SHARED_GCC_VER/lib/$lib usr/lib/$lib
-logcmd ln -sf ../../gcc/$SHARED_GCC_VER/lib/$ISAPART64/$lib \
-    usr/lib/$ISAPART64/$lib
+logcmd ln -sf ../../gcc/$SHARED_GCC_VER/lib/amd64/$lib \
+    usr/lib/amd64/$lib
 
 popd >/dev/null
 set +o errexit

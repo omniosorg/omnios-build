@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -33,7 +33,7 @@ build() {
     CPPFLAGS+=" -I."
     CPPFLAGS+=" -I$TMPDIR/openwin/X11/include"
 
-    logcmd $GCC $CFLAGS $CFLAGS64 $CPPFLAGS \
+    logcmd $GCC $CFLAGS ${CFLAGS[amd64]} $CPPFLAGS \
         -o resize resize.c version.c xstrings.c -lncurses \
         || logerr "build failed"
 

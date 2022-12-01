@@ -38,7 +38,7 @@ set_arch 64
 
 set_builddir $PROG-${PROG^^}_${VER//./_}
 
-CONFIGURE_OPTS_64+=" --bindir=/usr/sbin --sbindir=/usr/lib"
+CONFIGURE_OPTS[amd64]+=" --bindir=/usr/sbin --sbindir=/usr/lib"
 CONFIGURE_OPTS+="
     --mandir=/usr/share/man
     --enable-intf-free=yes

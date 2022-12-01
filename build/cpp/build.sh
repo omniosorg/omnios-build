@@ -29,7 +29,7 @@ SKIP_LICENCES="*.licence"
 # cpp does not work properly when built 64-bit
 set_arch 32
 
-configure32() {
+configure_i386() {
     export CFLAGS+=" $CFLAGS32"
 }
 

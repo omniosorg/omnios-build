@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -38,10 +38,7 @@ set_arch 32
 # Although we're building a 32-bit version of the compiler, gcc will take
 # care of building 32 and 64-bit objects to support its toolchain. We need
 # to unset the build flags and leave it to the gcc build system.
-unset CFLAGS32 CFLAGS64
-unset CPPFLAGS32 CPPFLAGS64
-unset CXXFLAGS32 CXXFLAGS64
-unset LDFLAGS32 LDFLAGS64
+clear_archflags
 
 RUN_DEPENDS_IPS="
     developer/linker
@@ -81,7 +78,7 @@ PKGDIFF_HELPER="
     s^/gcc-$GCCMAJOR\\.[0-9]\\.[0-9]^/gcc-$GCCMAJOR.x.x^
 "
 
-CONFIGURE_OPTS_32="--prefix=$OPT"
+CONFIGURE_OPTS[i386]="--prefix=$OPT"
 CONFIGURE_OPTS="
     --host $ARCH
     --build $ARCH
@@ -98,12 +95,12 @@ CONFIGURE_OPTS="
     --disable-libitm
     enable_frame_pointer=yes
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --with-boot-cflags=\"-g -O2\"
     --with-pkgversion=\"OmniOS $RELVER/$VER-$ILVER\"
     --with-bugurl=$HOMEURL/about/contact
 "
-LDFLAGS32="-R$OPT/lib"
+LDFLAGS[i386]="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
 
 # If the selected compiler is the same version as the one we're building

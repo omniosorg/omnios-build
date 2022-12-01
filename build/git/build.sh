@@ -35,11 +35,11 @@ BUILD_DEPENDS_IPS="
 "
 
 HARDLINK_TARGETS="
-    usr/libexec/$ISAPART64/git-core/git
-    usr/libexec/$ISAPART64/git-core/git-remote-ftp
-    usr/libexec/$ISAPART64/git-core/git-cvsserver
-    usr/libexec/$ISAPART64/git-core/git-shell
-    usr/libexec/$ISAPART64/git-core/scalar
+    usr/libexec/amd64/git-core/git
+    usr/libexec/amd64/git-core/git-remote-ftp
+    usr/libexec/amd64/git-core/git-cvsserver
+    usr/libexec/amd64/git-core/git-shell
+    usr/libexec/amd64/git-core/scalar
 "
 
 # For inet_ntop which isn't detected properly in the configure script
@@ -57,10 +57,8 @@ MAKE_INSTALL_ARGS+=" perllibdir=$perllib"
 # Checking for BMI instructions is very expensive; disable for batch builds
 BMI_EXPECTED=$BATCH
 
-save_function configure64 configure64_orig
-configure64() {
+pre_configure() {
     make_param configure
-    configure64_orig
 }
 
 install_man() {

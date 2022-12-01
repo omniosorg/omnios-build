@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 . common.sh
@@ -39,7 +39,7 @@ pushd $DESTDIR >/dev/null
 
 libs="libgo"
 
-mkdir -p usr/lib/$ISAPART64
+mkdir -p usr/lib/amd64
 
 for v in `seq 9 $VER`; do
     install_lib $v "$libs"

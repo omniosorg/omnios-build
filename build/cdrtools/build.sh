@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -24,7 +24,7 @@ SUMMARY="CD creation utilities"
 DESC="$SUMMARY"
 
 set_arch 32
-objdir=i386-sunos5-gcc$BUILDARCH
+objdir=i386-sunos5-gcc32
 
 make_clean() {
     logcmd ./.clean
@@ -32,10 +32,10 @@ make_clean() {
 
 # cdrtools doesn't use configure in the normal way, just make will invoke
 # configure automatically.
-configure32() { :; }
+configure_arch() { :; }
 
 MAKE=dmake
-MAKE_ARGS="CCOM=gcc$BUILDARCH"
+MAKE_ARGS="CCOM=gcc32"
 MAKE_ARGS_WS="
     COPTX=\"$CTF_CFLAGS $SSPFLAGS\"
     LDOPTX=\"$CTF_CFLAGS $SSPFLAGS\"

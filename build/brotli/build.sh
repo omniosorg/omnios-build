@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -33,16 +33,13 @@ CONFIGURE_OPTS="
     -DCMAKE_INSTALL_PREFIX=$PREFIX
     -DCMAKE_VERBOSE_MAKEFILE=1
 "
-CONFIGURE_OPTS_32=
-CONFIGURE_OPTS_64="
-    -DCMAKE_INSTALL_LIBDIR=lib/$ISAPART64
-    -DCMAKE_LIBRARY_ARCHITECTURE=$ISAPART64
+CONFIGURE_OPTS[i386]=
+CONFIGURE_OPTS[amd64]="
+    -DCMAKE_INSTALL_LIBDIR=lib/amd64
+    -DCMAKE_LIBRARY_ARCHITECTURE=amd64
 "
 
-save_function make_install _make_install
-make_install() {
-    _make_install "$@"
-
+post_install() {
     # Install man pages. There does not seem to be an install target for this.
     for s in 1 3; do
         logcmd mkdir -p $DESTDIR/$PREFIX/share/man/man$s || logerr "mkdir"

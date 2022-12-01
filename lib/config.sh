@@ -13,7 +13,7 @@
 #
 # Copyright (c) 2015 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 #############################################################################
 # Configuration for the build system
@@ -70,6 +70,11 @@ PVER=$RELVER.$DASHREV
 # Default package publisher
 PKGPUBLISHER=omnios
 
+# Supported architectures, and the default set.
+ARCH_LIST="i386 amd64 aarch64"
+CROSS_ARCH="aarch64"
+DEFAULT_ARCH="i386 amd64"
+
 HOMEURL=https://omnios.org
 
 # Default repository
@@ -105,6 +110,7 @@ ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.lz tar.gz tgz tar zip"
 # Default prefix for packages (may be overridden)
 PREFIX=/usr
 NOTES_LOCATION=$PREFIX/share/doc/release-notes
+CROSSTOOLS=/opt/cross
 
 # Temporary directories
 # TMPDIR is used for source archives and build directories
@@ -123,9 +129,6 @@ PATCHDIR=patches
 
 # Do we create isaexec stubs for scripts and other non-binaries (default yes)
 NOSCRIPTSTUB=
-
-ISAPART=i386
-ISAPART64=amd64
 
 TRIPLET32=i386-pc-solaris2.11
 TRIPLET64=x86_64-pc-solaris2.11
@@ -159,7 +162,8 @@ PERL_MAKE_TEST=1
 # Paths to common tools
 #############################################################################
 USRBIN=/usr/bin
-OOCEBIN=/opt/ooce/bin
+OOCEOPT=/opt/ooce
+OOCEBIN=$OOCEOPT/bin
 SFWBIN=/usr/sfw/bin
 ONBLDBIN=/opt/onbld/bin
 GNUBIN=/usr/gnu/bin
@@ -233,23 +237,13 @@ CTFCFLAGS[12]="-gstrict-dwarf"
 CTF_DEFAULT=1
 
 # Figure out number of logical CPUs for use with parallel gmake jobs (-j)
-# Default to 1.5*nCPUs as we assume the build machine is 100% devoted to
+# Default to 1.5*n CPUs as we assume the build machine is 100% devoted to
 # compiling.
 # A build script may serialize make by setting NO_PARALLEL_MAKE
 LCPUS=`psrinfo | wc -l`
 MJOBS="$[ $LCPUS + ($LCPUS / 2) ]"
 [ "$MJOBS" = "0" ] && MJOBS=2
 MAKE_JOBS="-j $MJOBS"
-MAKE_ARGS=
-MAKE_ARGS_WS=
-MAKE_INSTALL_TARGET=install
-MAKE_INSTALL_ARGS=
-MAKE_INSTALL_ARGS_WS=
-MAKE_INSTALL_ARGS_32=
-MAKE_INSTALL_ARGS_64=
-NO_PARALLEL_MAKE=
-MAKE_TESTSUITE_ARGS=--quiet
-MAKE_TESTSUITE_ARGS_WS=
 
 # Remove install or packaging files by default. You can set this in a build
 # script when testing to speed up building a package
@@ -265,32 +259,21 @@ PKG_INCLUDE_TS="*.py"
 
 # The list of options which define the build environment
 BUILDENV_OPTS="
-    CONFIGURE_CMD
-    CONFIGURE_OPTS CONFIGURE_OPTS_32 CONFIGURE_OPTS_64
-    CONFIGURE_OPTS_WS_32 CONFIGURE_OPTS_WS_64
-    CFLAGS CFLAGS32 CFLAGS64
-    CXXFLAGS CXXFLAGS32 CXXFLAGS64
-    CPPFLAGS CPPFLAGS32 CPPFLAGS64
-    LDFLAGS LDFLAGS32 LDFLAGS64
+    CONFIGURE_CMD CONFIGURE_OPTS
+    CFLAGS CXXFLAGS CPPFLAGS
+    LDFLAGS
 "
-
-# isaexec(3C) variants
-# These variables will be passed to the build to construct multi-arch
-# binary and lib directories in DESTDIR
 
 CCACHE_PATH=/opt/ooce/ccache/bin
 
-BUILDORDER="32 64"
-
-# For OmniOS we (almost) always want GCC
+# We (almost) always want GCC
 CC=gcc
 CXX=g++
 
 # Specify default versions for building packages
 DEFAULT_GCC_VER=12
 ILLUMOS_GCC_VER=10
-
-DEFAULT_CLANG_VER=13
+DEFAULT_CLANG_VER=15
 
 PYTHON2VER=2.7
 PYTHON3VER=3.10
@@ -331,47 +314,44 @@ STANDARDS[XPG4v2]="-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED=1"
 STANDARDS[XPG5]="-D_XOPEN_SOURCE=500 -D__EXTENSIONS__=1"
 STANDARDS[XPG6]="-D_XOPEN_SOURCE=600 -D__EXTENSIONS__=1"
 
-# CFLAGS applies to both builds, 32/64 only gets applied to the respective
-# build
-CFLAGS=
-CFLAGS32="-m32"
-CFLAGS64="-m64"
+typeset -A CFLAGS=(
+    [i386]=-m32
+    [amd64]=-m64
+)
 
-# Linker flags
-LDFLAGS=
-LDFLAGS32="-m32"
-LDFLAGS64="-m64"
-SO_LDFLAGS="-Wl,-ztext -Wl,-zdefs"
+typeset -A LDFLAGS=(
+    [i386]=-m32
+    [amd64]=-m64
+)
 
-# C pre-processor flags
-CPPFLAGS=
-CPPFLAGS32=
-CPPFLAGS64=
+typeset -A CXXFLAGS=(
+    [i386]=-m32
+    [amd64]=-m64
+)
 
-# C++ flags
-CXXFLAGS=
-CXXFLAGS32="-m32"
-CXXFLAGS64="-m64"
+typeset -A CPPFLAGS=()
+typeset -A PKG_CONFIG_PATH=()
 
-# pkg-config paths
-PKG_CONFIG_PATH32=
-PKG_CONFIG_PATH64=
+MAKE_ARGS=
+MAKE_ARGS_WS=
+MAKE_INSTALL_TARGET=install
+MAKE_INSTALL_ARGS=
+MAKE_INSTALL_ARGS_WS=
+MAKE_INSTALL_ARGS_32=
+MAKE_INSTALL_ARGS_64=
+NO_PARALLEL_MAKE=
+MAKE_TESTSUITE_ARGS=--quiet
+MAKE_TESTSUITE_ARGS_WS=
+
+DESTDIR=
 
 #############################################################################
 # Configuration of the packaged software
 #############################################################################
-# Default configure command - almost always sufficient
+
 CONFIGURE_CMD="./configure"
 
-# Configure options to apply to both builds - this is the one you usually want
-# to change for things like --enable-feature
-CONFIGURE_OPTS=
-CONFIGURE_OPTS_32=
-CONFIGURE_OPTS_64=
-# Configure options that can contain embedded white-space within escaped quotes
-CONFIGURE_OPTS_WS=
-CONFIGURE_OPTS_WS_32=
-CONFIGURE_OPTS_WS_64=
+typeset -A CONFIGURE_OPTS=()
 FORGO_ISAEXEC=
 
 # Vim hints

@@ -39,13 +39,11 @@ export MAKE
 # We should try and clarify the exact reason but we retain the same link
 # behaviour.
 
-save_function make_prog _make_prog
-make_prog() {
-    _make_prog
+post_make() {
+    typeset arch="$1"
     logmsg "--- rebuilding libraries with -nostdlib"
     pushd $TRIPLET64 >/dev/null || logerr "pushd"
-    if [ "$ISALIST" = "$ISAPART" ]; then
-        # 32-bit
+    if [ $arch = 'i386' ]; then
         libtool_nostdlib libtool "-lc -lssp_ns"
     else
         libtool_nostdlib libtool "-lc"

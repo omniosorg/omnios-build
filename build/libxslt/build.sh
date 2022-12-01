@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -31,8 +31,8 @@ PKG=library/libxslt
 SUMMARY="The XSLT C library"
 DESC="The portable XSLT C library built on libxml2"
 
-CFLAGS32+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
-CFLAGS64+=" -D_LARGEFILE_SOURCE"
+CFLAGS[i386]+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+CFLAGS[amd64]+=" -D_LARGEFILE_SOURCE"
 
 # Without --with-libxml-prefix, configure does not find /usr/bin/xml2-config!
 CONFIGURE_OPTS="
@@ -53,16 +53,14 @@ SKIP_LICENCES=libxslt
 # During build, several errors are output as part of validation checks.
 SKIP_BUILD_ERRCHK=1
 
-backup_man() {
+pre_build() {
+    [ -z "$1" ] || return
     logmsg "making a backup of xsltproc.1"
     logcmd cp $TMPDIR/$BUILDDIR/doc/xsltproc.1 $TMPDIR/$BUILDDIR/backup.1
 }
 
-save_function configure64 _configure64
-configure64() {
-    _configure64
+pre_configure() {
     logmsg "restoring backup of xsltproc.1"
-    [ -f $TMPDIR/$BUILDDIR/doc/xsltproc.1 ] && logerr "xsltproc.1 fixed!"
     logcmd cp $TMPDIR/$BUILDDIR/backup.1 $TMPDIR/$BUILDDIR/doc/xsltproc.1
     logcmd touch $TMPDIR/$BUILDDIR/doc/xsltproc.1
 }
@@ -77,7 +75,6 @@ init
 download_source $PROG $PROG $VER
 patch_source
 prep_build autoconf -autoreconf
-backup_man
 build
 make_isa_stub
 tests

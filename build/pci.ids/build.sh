@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/build.sh
@@ -42,9 +42,12 @@ VER=${FORMAT}.${SNAPDATE}
 VERHUMAN="v$FORMAT snapshot from $SNAPDATE"
 PKG=system/pciutils/pci.ids
 SUMMARY="Repository of all known IDs used in PCI devices"
-DESC="Repository of all known IDs used in PCI devices: IDs of vendors, devices, subsystems and device classes. It is used in various programs (like pciutils) to display full human-readable names instead of cryptic numeric codes."
+DESC="Repository of all known IDs used in PCI devices: IDs of vendors, "
+DESC+="devices, subsystems and device classes. It is used in various programs "
+DESC+="(like pciutils) to display full human-readable names instead of "
+DESC+="cryptic numeric codes."
 
-BUILDARCH=32
+set_arch 64
 
 # Nothing to configure or build, just package
 make_install() {
@@ -54,9 +57,10 @@ make_install() {
     logcmd cp -p ${PROG}.gz $DESTDIR$PREFIX/share/ || \
         logerr "------ Failed to copy file into place."
 }
-build32() {
+
+build() {
     pushd $TMPDIR > /dev/null
-    gzip -c $SRCDIR/$PROG > ${PROG}.gz
+    logcmd gzip -c $SRCDIR/$PROG > ${PROG}.gz
     make_install
     popd > /dev/null
 }

@@ -47,21 +47,15 @@ build_dependency nettle nettle-$NETTLEVER \
 restore_buildenv
 
 CPPFLAGS="-I$DEPROOT$PREFIX/include"
-LDFLAGS64+=" -L$DEPROOT$PREFIX/lib/$ISAPART64"
-addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/$ISAPART64/pkgconfig
+LDFLAGS[amd64]+=" -L$DEPROOT$PREFIX/lib/amd64"
+addpath PKG_CONFIG_PATH[amd64] $DEPROOT$PREFIX/lib/amd64/pkgconfig
 
 #########################################################################
 
-test_config() {
+post_configure() {
     for flag in $EXPECTED_OPTIONS; do
         $EGREP -s "$flag 1" config.h || logerr "$flag not set"
     done
-}
-
-save_function configure64 _configure64
-configure64() {
-    _configure64
-    test_config
 }
 
 CONFIGURE_OPTS="

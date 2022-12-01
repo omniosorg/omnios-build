@@ -45,7 +45,7 @@ CONFIGURE_OPTS="
     --disable-gui
     --disable-gtktest
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --with-compiledby=\"OmniOS $RELVER\"
 "
 MAKE_INSTALL_ARGS="STRIP=/bin/true"

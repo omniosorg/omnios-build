@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -27,10 +27,10 @@ set_arch 64
 # This code is not complicated enough to trigger SSP
 SKIP_SSP_CHECK=1
 
-build64() {
-    mkdir -p $DESTDIR/$PREFIX/libexec/$ISAPART64
-    logcmd $CC $CFLAGS $CFLAGS64 \
-        -o $DESTDIR/$PREFIX/libexec/$ISAPART64/$PROG \
+build_amd64() {
+    mkdir -p $DESTDIR/$PREFIX/libexec/amd64
+    logcmd $CC $CFLAGS ${CFLAGS[64]} \
+        -o $DESTDIR/$PREFIX/libexec/amd64/$PROG \
         $SRCDIR/files/$PROG.c \
         || logerr "$PROG build failed"
 }

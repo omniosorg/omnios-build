@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -35,55 +35,48 @@ export CC
 
 base_CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Wall -Winline"
 
-configure32() {
-    BINISA=""
-    LIBISA=""
-    CFLAGS="$CFLAGS $CFLAGS32 $base_CFLAGS"
-    LDFLAGS="$LDFLAGS $LDFLAGS32"
-    export BINISA LIBISA CFLAGS LDFLAGS
-}
-
-configure64() {
-    BINISA=""
-    LIBISA=$ISAPART64
-    CFLAGS="$CFLAGS $CFLAGS64 $base_CFLAGS"
-    LDFLAGS="$LDFLAGS $LDFLAGS64"
-    export BINISA LIBISA CFLAGS LDFLAGS
-}
-
-save_function make_clean _make_clean
-make_clean() {
-    _make_clean
+post_clean() {
     logcmd $MAKE -f Makefile-libbz2_so clean
 }
 
-# We need to build the shared lib using a second Makefile
-make_shlib() {
+# No configure
+configure_arch() { :; }
+
+pre_make() {
+    typeset arch=${1:?arch}
+
+    # We need to build the shared lib using a second Makefile
     logmsg "--- make (shared lib)"
-    OLD_CFLAGS=$CFLAGS
-    CFLAGS="-fPIC $CFLAGS"
-    export CFLAGS
-    logcmd $MAKE $MAKE_JOBS -f Makefile-libbz2_so || \
+    CFLAGS="-fPIC $CFLAGS ${CFLAGS[$arch]}" \
+        LDFLAGS="$LDFLAGS ${LDFLAGS[$arch]}" \
+        logcmd $MAKE $MAKE_JOBS -f Makefile-libbz2_so || \
         logerr "--- Make failed (shared lib)"
-    CFLAGS=$OLD_CFLAGS
-    export CFLAGS
+
+    save_variables CFLAGS LDFLAGS
+    case $arch in
+        i386)
+            export BINISA=
+            export LIBISA=
+            export xCFLAGS="$CFLAGS ${CFLAGS[i386]} $base_CFLAGS"
+            export xLDFLAGS="$LDFLAGS ${LDFLAGS[i386]}"
+            ;;
+        amd64)
+            export BINISA=
+            export LIBISA=amd64
+            export xCFLAGS="$CFLAGS ${CFLAGS[amd64]} $base_CFLAGS"
+            export xLDFLAGS="$LDFLAGS ${LDFLAGS[amd64]}"
+            ;;
+    esac
+    unset CFLAGS LDFLAGS
+    export CFLAGS="$xCFLAGS"
+    export LDFLAGS="$xLDFLAGS"
 }
 
-save_function make_prog32 _make_prog32
-make_prog32() {
-    make_shlib
-    _make_prog32
+post_make() {
+    restore_variables CFLAGS LDFLAGS
 }
 
-save_function make_prog64 _make_prog64
-make_prog64() {
-    make_shlib
-    _make_prog64
-}
-
-save_function make_install _make_install
-make_install() {
-    _make_install "$@"
+post_install() {
     logcmd cp $TMPDIR/$BUILDDIR/bzip2-shared $DESTDIR/usr/bin/bzip2 \
         || logerr "Cannot copy shared bzip2 into place"
 }

@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -39,7 +39,7 @@ CONFIGURE_OPTS+="
 	--sysconfdir=/etc/security
 	--disable-usercheck
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     LIBS=\"$LIBS\"
 "
 

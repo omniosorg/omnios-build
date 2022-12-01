@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -34,15 +34,15 @@ CONFIGURE_OPTS="
     --disable-tests
     GLIB_GENMARSHAL=/usr/bin/glib-genmarshal
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     DBUS_LIBS=-ldbus-1
     DBUS_GLIB_LIBS=\"-lglib-2.0 -lgobject-2.0 -lgio-2.0\"
 "
-CONFIGURE_OPTS_WS_32="
+CONFIGURE_OPTS[i386_WS]="
     DBUS_CFLAGS=\"-I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include\"
     DBUS_GLIB_CFLAGS=\"-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include\"
 "
-CONFIGURE_OPTS_WS_64="
+CONFIGURE_OPTS[amd64_WS]="
     DBUS_CFLAGS=\"-I/usr/include/dbus-1.0 -I/usr/lib/amd64/dbus-1.0/include\"
     DBUS_GLIB_CFLAGS=\"-I/usr/include/glib-2.0 -I/usr/lib/amd64/glib-2.0/include\"
 "

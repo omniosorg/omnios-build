@@ -45,10 +45,10 @@ export DEST_HOME DEST_BIN DEST_SHARE DEST_SHARE_DOC DEST_MAN
 
 MAKE_ARGS=all3
 
-configure32() {
+configure_i386() {
     logcmd cp makefile.solaris_x86 makefile.machine
 
-    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS32 $CFLAGS\""
+    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE ${CFLAGS[i386]} $CFLAGS\""
 
     MAKE_INSTALL_ARGS_WS="
         $MAKE_ARGS_WS
@@ -58,14 +58,14 @@ configure32() {
     "
 }
 
-configure64() {
-    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS64 $CFLAGS\""
+configure_amd64() {
+    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE ${CFLAGS[amd64]} $CFLAGS\""
 
     MAKE_INSTALL_ARGS_WS="
         $MAKE_ARGS_WS
         DEST_DIR=\"$DESTDIR\"
         DEST_BIN=$DEST_HOME/bin
-        DEST_SHARE=$DEST_HOME/lib/$ISAPART64
+        DEST_SHARE=$DEST_HOME/lib/amd64
     "
 }
 

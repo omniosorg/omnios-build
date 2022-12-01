@@ -31,20 +31,16 @@ CONFIGURE_OPTS="
     --prefix=$PREFIX
     --includedir=$PREFIX/include
 "
-CONFIGURE_OPTS_32="--libdir=$PREFIX/lib"
-CONFIGURE_OPTS_64="--libdir=$PREFIX/lib/$ISAPART64"
-LDFLAGS32+=" -lssp_ns"
+CONFIGURE_OPTS[i386]="--libdir=$PREFIX/lib"
+CONFIGURE_OPTS[amd64]="--libdir=$PREFIX/lib/amd64"
+CONFIGURE_OPTS[aarch64]="--libdir=$PREFIX/lib/aarch64"
+LDFLAGS[i386]+=" -lssp_ns"
 export cc=$CC
 
+SO_LDFLAGS="-Wl,-ztext -Wl,-zdefs"
 MAKE_ARGS_WS="
     LDSHARED=\"$CC -shared -nostdlib $SO_LDFLAGS -Wl,-h,libz.so.1\"
 "
-
-install_license() {
-    # This is fun, take from the zlib.h header
-    /bin/awk '/Copyright/,/\*\//{if($1 != "*/"){print}}' \
-        $TMPDIR/$BUILDDIR/zlib.h > $DESTDIR/license
-}
 
 init
 download_source $PROG $PROG $VER
@@ -52,7 +48,6 @@ patch_source
 prep_build autoconf-like
 build
 run_testsuite
-install_license
 make_package
 clean_up
 

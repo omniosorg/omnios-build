@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -46,14 +46,14 @@ CONFIGURE_OPTS_COMMON="
 "
 CONFIGURE_OPTS_ABI6="$CONFIGURE_OPTS_COMMON"
 CONFIGURE_OPTS_ABI5="$CONFIGURE_OPTS_COMMON --with-abi-version=5"
-CONFIGURE_OPTS_32="
-    --bindir=$PREFIX/bin/$ISAPART
+CONFIGURE_OPTS[i386]="
+    --bindir=$PREFIX/bin/i386
     --with-pkg-config-libdir=$PREFIX/lib/pkgconfig
 "
-CONFIGURE_OPTS_64="
-    --bindir=$PREFIX/bin/$ISAPART64
-    --libdir=$GPREFIX/lib/$ISAPART64
-    --with-pkg-config-libdir=$PREFIX/lib/$ISAPART64/pkgconfig
+CONFIGURE_OPTS[amd64]="
+    --bindir=$PREFIX/bin/amd64
+    --libdir=$GPREFIX/lib/amd64
+    --with-pkg-config-libdir=$PREFIX/lib/amd64/pkgconfig
 "
 
 build_abi5() {

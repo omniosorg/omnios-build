@@ -50,7 +50,7 @@ TESTSUITE_SED="
     /ExtUtils::Command/d
 "
 
-configure64() {
+configure_amd64() {
     logmsg "--- configure (64-bit)"
     # A note about 'myuname'. In previous OmniOS releases this was set to be
     # undefined, but as of the r151041 bloody cycle it has been set to 'sunos'.
@@ -87,13 +87,13 @@ configure64() {
         -Dvendorlib=/usr/perl5/vendor_perl/$MAJVER \
         -Ulocincpth= \
         -Uloclibpth= \
-        -Dlibpth="/lib/$ISAPART64 /usr/lib/$ISAPART64" \
+        -Dlibpth="/lib/amd64 /usr/lib/amd64" \
         -Dlibs="-lsocket -lnsl -lm -lc" \
         || logerr "--- Configure failed"
 
     logcmd sed -i "
         s/mydomain=\"\.undef\"/mydomain=\"undef\"/g
-        s!^libpth=.*!libpth=\"/lib/$ISAPART64 /usr/lib/$ISAPART64\"!g
+        s!^libpth=.*!libpth=\"/lib/amd64 /usr/lib/amd64\"!g
     " config.sh
 }
 

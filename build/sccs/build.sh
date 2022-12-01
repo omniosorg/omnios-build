@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -34,10 +34,10 @@ HARDLINK_TARGETS="
 # sccs uses the schily build environment so neither the clean nor configure
 # step are required.
 make_clean() { :; }
-configure32() { :; }
+configure_arch() { :; }
 
 MAKE="dmake"
-MAKE_ARGS="CCOM=gcc$BUILDARCH"
+MAKE_ARGS="CCOM=gcc32"
 MAKE_ARGS_WS="
     COPTX=\"$CTF_CFLAGS $SSPFLAGS\"
     LDOPTX=\"$CTF_CFLAGS $SSPFLAGS\"

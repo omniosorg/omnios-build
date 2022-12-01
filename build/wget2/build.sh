@@ -48,8 +48,8 @@ if [ -z "$SKIP_TESTSUITE" ]; then
     restore_variable BUILDARCH
 
     CPPFLAGS="-I$DEPROOT$PREFIX/include"
-    LDFLAGS64+=" -L$DEPROOT$PREFIX/lib/$ISAPART64"
-    addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/$ISAPART64/pkgconfig
+    LDFLAGS[amd64]+=" -L$DEPROOT$PREFIX/lib/amd64"
+    addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/amd64/pkgconfig
 fi
 
 ###########################################################################
@@ -74,7 +74,7 @@ CONFIGURE_OPTS="
     --with-zstd
 "
 
-CONFIGURE_OPTS_32+=" --without-libmicrohttpd"
+CONFIGURE_OPTS[i386]+=" --without-libmicrohttpd"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 

@@ -81,14 +81,16 @@ CONFIGURE_OPTS="
     --disable-dtrace
     --with-cacerts-file=/etc/ssl/java/cacerts
     --x-includes=$OOCEPREFIX/include
-    --x-libraries=$OOCEPREFIX/lib/$ISAPART64
     --with-cups-include=$OOCEPREFIX/include
     --with-freetype=bundled
     --with-fontconfig-include=$OOCEPREFIX/include
 "
-CONFIGURE_OPTS_WS="
-    --with-extra-cflags=\"$CFLAGS $CFLAGS64\"
-    --with-extra-cxxflags=\"$CXXFLAGS $CXXFLAGS64\"
+CONFIGURE_OPTS[amd64]+="
+    --x-libraries=$OOCEPREFIX/lib/amd64
+"
+CONFIGURE_OPTS[amd64_WS]="
+    --with-extra-cflags=\"$CFLAGS ${CFLAGS[amd64]}\"
+    --with-extra-cxxflags=\"$CXXFLAGS ${CXXFLAGS[amd64]}\"
 "
 
 MAKE_ARGS="all"

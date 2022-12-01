@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/build.sh
@@ -79,10 +79,9 @@ clone_source
 ###########################################################################
 # Kernel module build
 
-configure64() { :; }
+configure_arch() { :; }
 
-make_prog() {
-    logmsg "--- make"
+make_arch() {
     logcmd $MAKE \
         KERNEL_SOURCE=$KERNEL_SOURCE \
         PROTO_AREA=$PROTO_AREA \
@@ -128,13 +127,13 @@ clean_up
 
 unset SKIP_SSP_CHECK
 
-configure64() {
+configure_arch() {
     PREFIX=/usr
     CC=$GCC
     export KERNEL_SOURCE KVM_DIR PREFIX CC
 }
 
-make_prog() {
+make_arch() {
     logmsg "--- build.sh"
     logcmd ./build.sh || logerr "--- build.sh failed"
 }

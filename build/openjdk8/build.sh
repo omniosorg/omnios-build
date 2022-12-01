@@ -83,12 +83,14 @@ CONFIGURE_OPTS="
     --with-native-debug-symbols=none
     --with-freetype=$OOCEPREFIX
     --with-freetype-include=$OOCEPREFIX/include/freetype2
-    --with-freetype-lib=$OOCEPREFIX/lib/$ISAPART64
     --with-fontconfig=$OOCEPREFIX
     --with-fontconfig-include=$OOCEPREFIX/include
     --with-jobs=$MJOBS
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[amd64]+="
+    --with-freetype-lib=$OOCEPREFIX/lib/amd64
+"
+CONFIGURE_OPTS[WS]="
     --with-extra-cflags=\"-std=gnu89 -std=gnu++98 -fno-lifetime-dse\"
     --with-extra-cxxflags=\"-std=gnu++98\"
 "

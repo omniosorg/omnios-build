@@ -33,7 +33,7 @@ RUN_DEPENDS_IPS+="
 set_builddir "$PROG-$PROG-$VER"
 set_arch 64
 
-CONFIGURE_OPTS_64="
+CONFIGURE_OPTS[amd64]="
     --prefix=$PREFIX
     --extra-cflags=-m64
     --disable-native

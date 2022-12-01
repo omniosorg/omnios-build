@@ -44,11 +44,8 @@ ARCH=$TRIPLET64
 # building and putting the 32/64 objects in the right places. We also want
 # to unset all of the flags that we usually pass for a 64-bit object so that
 # gcc can properly create the multilib targets.
-CONFIGURE_OPTS_64="$CONFIGURE_OPTS_32"
-unset CFLAGS32 CFLAGS64
-unset CPPFLAGS32 CPPFLAGS64
-unset CXXFLAGS32 CXXFLAGS64
-unset LDFLAGS32 LDFLAGS64
+CONFIGURE_OPTS[amd64]="$CONFIGURE_OPTS[i386]"
+clear_archflags
 
 # Use bash for all shells - some corruption occurs in libstdc++-v3/config.status
 # otherwise.
@@ -119,7 +116,7 @@ CONFIGURE_OPTS="
     --with-diagnostics-urls=auto-if-env
     enable_frame_pointer=yes
 "
-CONFIGURE_OPTS_WS="
+CONFIGURE_OPTS[WS]="
     --with-boot-ldflags=\"-R$OPT/lib\"
     --with-boot-cflags=\"-O2\"
     --with-pkgversion=\"OmniOS $RELVER/$VER-$ILVER\"

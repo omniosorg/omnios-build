@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/mesonbuild/compilers/compilers.py a/mesonbuild/compilers/compilers.py
 --- a~/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
 +++ a/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
-@@ -1043,7 +1043,7 @@ class Compiler(HoldableObject, metaclass
+@@ -1067,7 +1067,7 @@ class Compiler(HoldableObject, metaclass
  
      def get_largefile_args(self) -> T.List[str]:
          '''Enable transparent large-file-support for 32-bit UNIX systems'''

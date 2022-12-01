@@ -96,11 +96,17 @@ add_targets() {
 # so takes a very long time to build (around 16 minutes); build it first.
 buildorder() {
     typeset -a sorted
-    sorted+=(system/management/snmp/net-snmp)
-    mapfile -d '' -O ${#sorted[@]} sorted \
-        < <( printf '%s\n' ${!fulltargets[@]} | sort | \
-       egrep -v 'kayak-kernel|net-snmp')
-    sorted+=(system/install/kayak-kernel)
+    if [ -f "$ROOTDIR/doc/pkglist.$CLIBUILDARCH" ]; then
+        SKIP_KAYAK_KERNEL=1
+        mapfile -d '' sorted \
+            < <(grep -v '^#' $ROOTDIR/doc/pkglist.$CLIBUILDARCH)
+    else
+        sorted+=(system/management/snmp/net-snmp)
+        mapfile -d '' -O ${#sorted[@]} sorted \
+            < <( printf '%s\n' ${!fulltargets[@]} | sort | \
+           egrep -v 'kayak-kernel|net-snmp')
+        sorted+=(system/install/kayak-kernel)
+    fi
     for target in ${sorted[@]}; do
         echo $target
     done
@@ -530,6 +536,7 @@ count_expensive() {
 
 set_batch_build_flags() {
     build_flags="-b -t -l"
+    [ -n "$CLIBUILDARCH" ] && build_flags+=" -a $CLIBUILDARCH"
     [ -n "$USE_CCACHE" ] && build_flags+=" -c"
     ((EXTRACT_MODE == 1)) && build_flags+=" -x"
     ((EXTRACT_MODE == 2)) && build_flags+=" -xx"
@@ -554,7 +561,7 @@ parallel_build() {
 
     start_built_listener
     # Do this now to avoid a race in the child tasks
-    init_repo
+    init_repos
 
     declare -A slots
     declare -A slotpid
@@ -569,6 +576,7 @@ parallel_build() {
     # Queue up the packages to build
     declare -a defer
     for tgt in `buildorder`; do
+        [[ "$tgt" = "#"* ]] && continue
         # Defer this until last
         [ "$tgt" = "system/install/kayak-kernel" ] && continue
         # If nightly is running, defer dependent services to last
@@ -609,6 +617,13 @@ parallel_build() {
                 logmsg -n "-- Rebuilding the package repository"
                 wait_for_jobs "emptying for rebuild"
                 pkgrepo -s $PKGSRVR rebuild
+                continue
+            ;;
+            .SYSROOT)
+                logmsg -n "-- Updating the sysroot"
+                wait_for_jobs "emptying for sysroot"
+                pkgrepo -s $PKGSRVR rebuild
+                update_sysroot
                 continue
             ;;
         esac
@@ -759,6 +774,7 @@ shift $((OPTIND - 1))
 [ -n "$SKIP_PKGLINT" ] && build_flags+="-l "
 [ -n "$SKIP_TESTSUITE" ] && build_flags+="-t "
 [ -n "$SKIP_HARDLINK" ] && build_flags+="-L "
+[ -n "$CLIBUILDARCH" ] && build_flags+="-a $CLIBUILDARCH "
 ((EXTRACT_MODE == 1)) && build_flags+="-x "
 ((EXTRACT_MODE == 2)) && build_flags+="-xx "
 

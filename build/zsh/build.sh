@@ -40,7 +40,7 @@ CONFIGURE_OPTS+="
 	--disable-gdbm
 "
 
-CONFIGURE_OPTS_WS="--enable-ldflags=\"-m64 -zignore\""
+CONFIGURE_OPTS[WS]="--enable-ldflags=\"-m64 -zignore\""
 
 HARDLINK_TARGETS=usr/bin/zsh-$VER
 SKIP_LICENCES="*"

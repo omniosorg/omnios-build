@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -36,13 +36,13 @@ CONFIGURE_OPTS="
 # The libltdl library encodes a search path for library files that is correct
 # for 32-bit processes, but needs to be amended for 64-bit processes so that it
 # matches the system default.
-CONFIGURE_OPTS_64+="
-    LT_SYS_LIBRARY_PATH=/lib/$ISAPART64:/usr/lib/$ISAPART64
+CONFIGURE_OPTS[amd64]+="
+    LT_SYS_LIBRARY_PATH=/lib/amd64:/usr/lib/amd64
 "
 
 build_manifests() {
     manifest_start $TMPDIR/manifest.libltdl
-    manifest_add_dir $PREFIX/lib $ISAPART64
+    manifest_add_dir $PREFIX/lib amd64
     manifest_finalise $TMPDIR/manifest.libltdl $PREFIX
     manifest_uniq $TMPDIR/manifest.{libtool,libltdl}
     manifest_finalise $TMPDIR/manifest.libtool $PREFIX

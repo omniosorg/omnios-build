@@ -8,15 +8,15 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 # Relocate libraries from /usr/lib to /lib, leaving links in /usr/lib
 # Any pkgconfig files in /usr/lib are left alone.
-<transform file path=usr/lib(/amd64)?/lib -> edit path usr/lib lib>
-<transform link path=usr/lib/((amd64/)?lib.*)$ target=lib -> emit \
+<transform file path=usr/lib(/(amd64|aarch64))?/lib -> edit path usr/lib lib>
+<transform link path=usr/lib/((amd64/|aarch64/)?lib.*)$ target=lib -> emit \
     link path=lib/%<1> target=%(target) >
 <transform file path=lib/(lib.*)$ -> emit \
     link path=usr/lib/%<1> target=../../lib/%<1> >
-<transform file path=lib/amd64/(lib.*)$ -> emit \
-    link path=usr/lib/amd64/%<1> target=../../../lib/amd64/%<1> >
+<transform file path=lib/(amd64|aarch64)/(lib.*)$ -> emit \
+    link path=usr/lib/%<1>/%<2> target=../../../lib/%<1>/%<2> >
 

@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 . common.sh
@@ -38,57 +38,49 @@ XFORM_ARGS+="
 set_patchdir patches-${VER%.*}
 TESTSUITE_FILTER='[0-9] tests|TESTS'
 
-# Generic options for both 32- and 64-bit variants
-base_LDFLAGS="-shared -Wl,-z,text,-z,aslr,-z,ignore"
+# Generic options for all architectures
+LDFLAGS[base]="-shared -Wl,-z,text,-z,aslr,-z,ignore"
+declare -A OPENSSL_CONFIG_OPTS
 OPENSSL_CONFIG_OPTS="shared threads zlib enable-ssl2 enable-ssl3"
 OPENSSL_CONFIG_OPTS+=" --prefix=$PREFIX"
 
-# Configure options specific to a 32-bit or 64-bit builds
-OPENSSL_CONFIG_32_OPTS="--libdir=lib"
-OPENSSL_CONFIG_32_OPTS+=" --pk11-libname=$PREFIX/lib/libpkcs11.so.1"
-OPENSSL_CONFIG_64_OPTS="--libdir=lib/$ISAPART64"
-OPENSSL_CONFIG_64_OPTS+=" enable-ec_nistp_64_gcc_128"
-OPENSSL_CONFIG_64_OPTS+=" --pk11-libname=$PREFIX/lib/$ISAPART64/libpkcs11.so.1"
+# Configure options specific to a particular arch.
+OPENSSL_CONFIG_OPTS[i386]="--libdir=lib"
+OPENSSL_CONFIG_OPTS[i386]+=" --pk11-libname=$PREFIX/lib/libpkcs11.so.1"
+OPENSSL_CONFIG_OPTS[amd64]="--libdir=lib/amd64"
+OPENSSL_CONFIG_OPTS[amd64]+=" enable-ec_nistp_64_gcc_128"
+OPENSSL_CONFIG_OPTS[amd64]+=" --pk11-libname=$PREFIX/lib/amd64/libpkcs11.so.1"
 
-save_function make_prog _make_prog
-make_prog() {
+pre_build() {
+    [ -z "$1" ] || return
+    declare -g DUH=$DESTDIR$PREFIX/include/openssl/opensslconf.h
+    declare -Ag OPENSSL_CFLAGS
+    OPENSSL_CFLAGS[i386]="$CFLAGS ${CFLAGS[i386]}"
+    OPENSSL_CFLAGS[amd64]="$CFLAGS ${CFLAGS[amd64]}"
+    unset CFLAGS
+}
+
+configure_arch() {
+    typeset arch=${1:?arch}
+
+    [ $arch = amd64 ] && SSLPLAT=solaris64-x86_64-gcc || SSLPLAT=solaris-x86-gcc
+    logmsg -n "--- Configure $arch ($SSLPLAT)"
+    export __CNF_CFLAGS="${OPENSSL_CFLAGS[$arch]}"
+    logcmd ./Configure $SSLPLAT \
+        ${OPENSSL_CONFIG_OPTS} ${OPENSSL_CONFIG_OPTS[$arch]} \
+        || logerr "Failed to run configure"
     MAKE_ARGS_WS="
-        SHARED_LDFLAGS=\"$SHARED_LDFLAGS\"
-        LIB_LDFLAGS=\"$SHARED_LDFLAGS\"
+        SHARED_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
+        LIB_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
     "
-    _make_prog
-}
-
-configure32() {
-    SSLPLAT=solaris-x86-gcc
-    logmsg -n "--- Configure (32-bit) $SSLPLAT"
-    export __CNF_CFLAGS="$CFLAGS $CFLAGS32"
-    logcmd ./Configure $SSLPLAT \
-        ${OPENSSL_CONFIG_OPTS} ${OPENSSL_CONFIG_32_OPTS} \
-        || logerr "Failed to run configure"
-    SHARED_LDFLAGS="$LDFLAGS32 $base_LDFLAGS"
-}
-
-configure64() {
-    SSLPLAT=solaris64-x86_64-gcc
-    logmsg -n "--- Configure (64-bit) $SSLPLAT"
-    export __CNF_CFLAGS="$CFLAGS $CFLAGS64"
-    logcmd ./Configure $SSLPLAT \
-        ${OPENSSL_CONFIG_OPTS} ${OPENSSL_CONFIG_64_OPTS} \
-        || logerr "Failed to run configure"
-    SHARED_LDFLAGS="$LDFLAGS64 $base_LDFLAGS"
 }
 
 # Preserve the opensslconf.h file from each build since there will be
 # differences due to the architecture.
-build() {
-    local duh=$DESTDIR$PREFIX/include/openssl/opensslconf.h
 
-    [[ $BUILDARCH =~ ^(32|both)$ ]] && build32 && logcmd cp ${duh}{,.32}
-    [[ $BUILDARCH =~ ^(64|both)$ ]] && build64 && logcmd cp ${duh}{,.64}
-
-    logcmd -p diff -D __x86_64 ${duh}.{32,64} > $duh
-
+post_build() {
+    [ -z "$1" ] || return
+    logcmd -p diff -D __x86_64 ${DUH}.{i386,amd64} > $DUH
     patch_pc $MAJVER $DESTDIR$PREFIX/lib || logerr "patch_pc failed"
 }
 
@@ -102,9 +94,11 @@ install_pkcs11()
 
 # OpenSSL 1.0 uses INSTALL_PREFIX= instead of DESTDIR=
 make_install() {
+    typeset arch=${1:?arch}
     logmsg "--- make install"
     logcmd make INSTALL_PREFIX=$DESTDIR install \
         || logerr "Failed to make install"
+    logcmd cp ${DUH}{,.$1}
 }
 
 init

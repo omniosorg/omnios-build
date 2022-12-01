@@ -550,7 +550,6 @@ omnios runtime/perl/module/sun-solaris
 omnios runtime/python-27 l
 omnios runtime/python-310
 omnios runtime/python-311
-omnios runtime/python-311
 omnios runtime/python-39 r
 omnios security/bart
 omnios security/sudo

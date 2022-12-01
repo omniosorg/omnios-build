@@ -1,0 +1,18 @@
+# This is the list of packages that are built for the aarch64 architecture.
+# They are listed in groups with directives between them to wait for everything
+# in the group to complete, before performing an action and moving on.
+#
+# Available actions are:
+# 	.WAIT		Wait for everything in group to complete before
+# 			continuing
+# 	.REBUILD	Wait and then rebuild the repo.
+# 	.SYSROOT	Wait, rebuild the repo, `pkg install *` to the
+#		 	arch-specific sysroot.
+
+compress/gzip
+library/zlib
+shell/pipe-viewer
+developer/macro/gnu-m4
+#library/security/openssl-3
+.SYSROOT
+#web/curl

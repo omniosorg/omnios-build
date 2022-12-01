@@ -21,8 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
-# Use is subject to license terms.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -34,9 +33,12 @@ DESC="$SUMMARY $VER"
 
 DEPENDS_IPS="system/library"
 
-BUILDARCH=64
+set_arch 64
 
-CONFIGURE_OPTS="--bindir=$PREFIX/bin"
+CONFIGURE_OPTS="
+    --bindir=$PREFIX/bin
+    --disable-static
+"
 LDFLAGS="-lsocket -lnsl"
 SKIP_LICENCES=iperf
 

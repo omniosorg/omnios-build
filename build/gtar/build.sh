@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -43,7 +43,7 @@ CONFIGURE_OPTS="
 # so it links libgen into the final binary. However, we also have faccessat()
 # and that is used in preference to eaccess(). libgen is therefore an
 # unecessary library.
-CONFIGURE_OPTS_WS="ac_cv_search_eaccess=\"none required\""
+CONFIGURE_OPTS[WS]="ac_cv_search_eaccess=\"none required\""
 
 init
 download_source $PROG $PROG $VER

@@ -27,15 +27,7 @@ SKIP_LICENCES=xz
 
 forgo_isaexec
 
-save_function configure32 _configure32
-configure32() {
-    _configure32 "$@"
-    logcmd gmake -C $TMPDIR/$BUILDDIR/src/liblzma foo
-}
-
-save_function configure64 _configure64
-configure64() {
-    _configure64 "$@"
+post_configure() {
     logcmd gmake -C $TMPDIR/$BUILDDIR/src/liblzma foo
 }
 
@@ -44,8 +36,7 @@ TESTSUITE_SED="/libtool/d"
 init
 download_source $PROG $PROG $VER
 patch_source
-run_autoreconf -fi
-prep_build
+prep_build autoconf -autoreconf
 build
 run_testsuite check
 make_package

@@ -30,13 +30,13 @@ set_arch 64
 
 export PATH=$GNUBIN:$PATH
 
-configure64() {
-    LDFLAGS+=" $LDFLAGS64"
+configure_amd64() {
+    LDFLAGS+=" ${LDFLAGS[amd64]}"
     export LDFLAGS CC PREFIX
     MAKE_ARGS_WS="
         PREFIX=$PREFIX
         CC=\"$CC\"
-        OPT=\"$CFLAGS $CFLAGS64 -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234\"
+        OPT=\"$CFLAGS ${CFLAGS[amd64]} -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234\"
     "
 }
 

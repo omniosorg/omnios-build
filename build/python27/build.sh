@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -47,12 +47,12 @@ CXX=g++
 NO_SONAME_EXPECTED=1
 
 export CCSHARED="-fPIC"
-LDFLAGS32+=" -L/usr/gnu/lib -R/usr/gnu/lib"
-LDFLAGS64+=" -L/usr/gnu/lib/amd64 -R/usr/gnu/lib/amd64"
+LDFLAGS[i386]+=" -L/usr/gnu/lib -R/usr/gnu/lib"
+LDFLAGS[amd64]+=" -L/usr/gnu/lib/amd64 -R/usr/gnu/lib/amd64"
 LDFLAGS+=" $SSPFLAGS"
 CPPFLAGS+=" -I/usr/include/ncurses -D_LARGEFILE64_SOURCE"
-CPPFLAGS64="`pkg-config --cflags libffi`"
-CPPFLAGS32="${CPPFLAGS64/amd64?/}"
+CPPFLAGS[amd64]="`pkg-config --cflags libffi`"
+CPPFLAGS[i386]="${CPPFLAGS[amd64]/amd64?/}"
 CONFIGURE_OPTS="
     --enable-shared
     --with-dtrace
@@ -70,17 +70,17 @@ preprep_build() {
 }
 
 # Need to set CC='$CC -m64' for 64-bit build
-save_function configure64 _configure64
-configure64() {
-    CC="$CC -m64" _configure64
+save_function configure_amd64 _configure_amd64
+configure_amd64() {
+    CC="$CC -m64" _configure_amd64
 }
 
-make_prog32() {
+make_prog_i386() {
     logmsg "--- make"
     logcmd $MAKE $MAKE_JOBS DFLAGS=-32 || logerr "--- Make failed"
 }
 
-make_prog64() {
+make_prog_amd64() {
     logmsg "--- make"
     logcmd $MAKE $MAKE_JOBS DFLAGS=-64 \
         DESTSHARED=/usr/lib/python2.7/lib-dynload || logerr "--- Make failed"
@@ -126,13 +126,13 @@ TESTSUITE_SED="
     /No differences encountered/d
 "
 
-make_install32() {
+make_install_i386() {
     make_install
     save_arch 32
     run_testsuite test "" testsuite-32.log
 }
 
-make_install64() {
+make_install_amd64() {
     logmsg "--- make install (64)"
     logcmd $MAKE DESTDIR=${DESTDIR} install \
         DESTSHARED=/usr/lib/python2.7/lib-dynload || \

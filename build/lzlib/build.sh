@@ -28,26 +28,21 @@ CONFIGURE_OPTS="
 
 SKIP_LICENCES=lzlib
 
-save_function configure32 _configure32
-configure32() {
-    CONFIGURE_OPTS_WS_32="
-        CC=\"$CC\"
-        CPPFLAGS=\"$CPPFLAGS $CPPFLAGS32\"
-        CFLAGS=\"$CFLAGS $CFLAGS32\"
-        LDFLAGS=\"$LDFLAGS $LDFLAGS32\"
-    "
-    _configure32 "$@"
-}
+pre_build() {
+    [ -z "$1" ] || return
 
-save_function configure64 _configure64
-configure64() {
-    CONFIGURE_OPTS_WS_64="
+    CONFIGURE_OPTS[i386_WS]="
         CC=\"$CC\"
-        CPPFLAGS=\"$CPPFLAGS $CPPFLAGS64\"
-        CFLAGS=\"$CFLAGS $CFLAGS64\"
-        LDFLAGS=\"$LDFLAGS $LDFLAGS64\"
+        CPPFLAGS=\"$CPPFLAGS ${CPPFLAGS[i386]}\"
+        CFLAGS=\"$CFLAGS ${CFLAGS[i386]}\"
+        LDFLAGS=\"$LDFLAGS ${LDFLAGS[i386]}\"
     "
-    _configure64 "$@"
+    CONFIGURE_OPTS[amd64_WS]="
+        CC=\"$CC\"
+        CPPFLAGS=\"$CPPFLAGS ${CPPFLAGS[amd64]}\"
+        CFLAGS=\"$CFLAGS ${CFLAGS[amd64]}\"
+        LDFLAGS=\"$LDFLAGS ${LDFLAGS[amd64]}\"
+    "
 }
 
 init

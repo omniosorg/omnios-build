@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -34,10 +34,10 @@ SKIP_LICENCES="*"
 # Copied from upstream's pkg makefile
 export LOCAL_UNZIP="-DUNICODE_SUPPORT -DNO_WORKING_ISPRINT -DUNICODE_WCHAR"
 
-configure64() {
-    export ISAPART
+configure_amd64() {
+    export i386
     MAKE_ARGS_WS="
-        CC=\"gcc -m$BUILDARCH $CFLAGS $CFLAGS64\"
+        CC=\"gcc $CFLAGS ${CFLAGS[amd64]}\"
     "
 }
 

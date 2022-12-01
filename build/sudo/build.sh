@@ -25,8 +25,8 @@ DESC="Provide limited super-user privileges to specific users"
 
 set_arch 64
 
-CONFIGURE_OPTS_64+="
-    --libexecdir=/usr/lib/$PROG/$ISAPART64
+CONFIGURE_OPTS[amd64]+="
+    --libexecdir=/usr/lib/$PROG/amd64
 "
 
 CONFIGURE_OPTS="

@@ -10,9 +10,8 @@
 
 # Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
-<transform file path=license$ -> drop>
 <transform link path=lib/64$ -> drop>
-license license license=zlib
+license LICENSE license=zlib
 
 <transform file path=.*\.a$ -> drop>
 

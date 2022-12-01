@@ -54,7 +54,7 @@
 <transform file dir path=usr/lib/devfsadm -> set group sys>
 <transform file dir path=usr/lib/mdb -> set group sys>
 
-<transform file dir path=usr/lib/(amd64/)?pkgconfig$ -> set group other>
+<transform file dir path=usr/lib/((amd|aarch)64/)?pkgconfig$ -> set group other>
 <transform file dir path=usr/share/aclocal$ -> set group other>
 <transform file dir path=usr/share/doc$ -> set group other>
 <transform file dir path=usr/share/locale -> set group other>
@@ -83,7 +83,7 @@
 <transform dir path=etc/versions$ -> drop>
 <transform dir path=kernel$ -> drop>
 <transform dir path=kernel/drv$ -> drop>
-<transform dir path=kernel/drv/amd64$ -> drop>
+<transform dir path=kernel/drv/(amd|aarch)64$ -> drop>
 <transform dir path=lib$ -> drop>
 <transform dir path=(lib|var)/svc$ -> drop>
 <transform dir path=(lib|var)/svc/manifest$ -> drop>
@@ -106,18 +106,18 @@
 <transform dir path=sbin$ -> drop>
 <transform dir path=usr$ -> drop>
 <transform dir path=usr/bin$ -> drop>
-<transform dir path=usr/bin/amd64$ -> drop>
+<transform dir path=usr/bin/(amd|aarch)64$ -> drop>
 <transform dir path=usr/bin/i86$ -> drop>
 <transform dir path=usr/kernel$ -> drop>
 <transform dir path=usr/kernel/drv$ -> drop>
-<transform dir path=usr/kernel/drv/amd64$ -> drop>
+<transform dir path=usr/kernel/drv/(amd|aarch)64$ -> drop>
 <transform dir path=usr/lib$ -> drop>
-<transform dir path=usr/lib/amd64$ -> drop>
+<transform dir path=usr/lib/(amd|aarch)64$ -> drop>
 <transform dir path=usr/lib/devfsadm$ -> drop>
 <transform dir path=usr/lib/devfsadm/linkmod$ -> drop>
 <transform dir path=usr/platform$ -> drop>
 <transform dir path=usr/sbin$ -> drop>
-<transform dir path=usr/sbin/amd64$ -> drop>
+<transform dir path=usr/sbin/(amd|aarch)64$ -> drop>
 <transform dir path=usr/sbin/i86$ -> drop>
 <transform dir path=usr/share$ -> drop>
 <transform dir path=usr/share/lib$ -> drop>
@@ -139,7 +139,7 @@
 # This should only ever be in libiconv, but other GNU packages install it
 <transform file path=usr/gnu/lib/charset.alias$ -> drop>
 <transform file path=usr/lib/charset.alias$ -> drop>
-<transform file path=usr/lib/amd64/charset.alias$ -> drop>
+<transform file path=usr/lib/(amd|aarch)64/charset.alias$ -> drop>
 # Drop compiled optimised python files
 <transform file path=.*\.pyo$ -> drop>
 
@@ -173,7 +173,7 @@
 <transform path=usr.*/include(/|$) -> default facet.devel true>
 <transform file path=.*lib/.+\.a$ -> default facet.devel true>
 <transform path=.*/pkgconfig(/.+\.pc)?$ -> default facet.devel true>
-<transform file path=.*lib/(amd64/)?cmake/.+\.cmake$ -> \
+<transform file path=.*lib/((amd|aarch)64/)?cmake/.+\.cmake$ -> \
     default facet.devel true>
 
 #

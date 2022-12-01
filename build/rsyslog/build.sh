@@ -47,10 +47,10 @@ build_dependency estr libestr-$ESTRVER $PROG/estr v$ESTRVER
 restore_buildenv
 
 export LIBFASTJSON_CFLAGS="-I$DEPROOT/usr/include/libfastjson"
-export LIBFASTJSON_LIBS="-L$DEPROOT/usr/lib/$ISAPART64 -lfastjson"
+export LIBFASTJSON_LIBS="-L$DEPROOT/usr/lib/amd64 -lfastjson"
 export LIBESTR_CFLAGS="-I$DEPROOT/usr/include"
-export LIBESTR_LIBS="-L$DEPROOT/usr/lib/$ISAPART64 -lestr"
-addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/$ISAPART64/pkgconfig
+export LIBESTR_LIBS="-L$DEPROOT/usr/lib/amd64 -lestr"
+addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/amd64/pkgconfig
 
 #########################################################################
 
@@ -89,7 +89,7 @@ CONFIGURE_OPTS="
 "
 
 # There is no need to install the plugins under amd64/
-CONFIGURE_OPTS_64+="
+CONFIGURE_OPTS[amd64]+="
     --libdir=$PREFIX/lib
     --libexecdir=$PREFIX/lib
 "

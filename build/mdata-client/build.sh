@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -27,11 +27,11 @@ DESC+="or KVM virtual machines."
 
 set_builddir "$PROG-release-$VER"
 
-set_arch 32
+set_arch 64
 
-# There is no configure step here
-CONFIGURE_CMD=true
-MAKE_ARGS_WS="CC=\"gcc -m$BUILDARCH\""
+configure_amd64() {
+    MAKE_ARGS_WS="CC=\"gcc $CFLAGS ${CFLAGS[amd64]}\""
+}
 
 init
 download_source $PROG $PROG $VER

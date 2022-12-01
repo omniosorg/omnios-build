@@ -25,8 +25,8 @@ DESC+="CPUID instruction"
 
 set_arch 64
 
-configure64() {
-    MAKE_ARGS_WS="CC=\"gcc -m$BUILDARCH $CFLAGS $CFLAGS64\""
+configure_amd64() {
+    MAKE_ARGS_WS="CC=\"gcc -m64 $CFLAGS ${CFLAGS[amd64]}\""
     # cpuid uses lower case $prefix
     MAKE_INSTALL_ARGS_WS="$MAKE_ARGS_WS prefix=$PREFIX"
 }

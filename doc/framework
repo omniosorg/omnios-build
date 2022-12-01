@@ -1,0 +1,85 @@
+
+Variables
+---------
+
+There are several variables which can be set or adjusted to influence the
+build. These include:
+
+    CONFIGURE_OPTS      Generic configuration options, such as --enable-feature
+    CPPFLAGS            C pre-processor options.
+    CFLAGS              C compiler options.
+    CXXFLAGS            C++ compiler options.
+    LDFLAGS             Linker options.
+
+Each of these is actually an associative array, keyed on things like the target
+architecture. For example, the following options are available for CFLAGS:
+
+    CFLAGS              Compiler options common to all architectures.
+    CFLAGS[i386]        Compiler options specific to i386 (default: -m32)
+    CFLAGS[amd64]       Compiler options specific to amd64 (default: -m64)
+
+The same variations are available for the other variables too, and
+CONFIGURE_OPTS has some additional ones.
+
+    CONFIGURE_OPTS          Configuration options for all architectures. Empty
+                            by default.
+    CONFIGURE_OPTS[WS]      As CONFIGURE_OPTS but for arguments that contain
+                            whitespace.
+    CONFIGURE_OPTS[i386]    Options for i386. By default this contains standard
+                            autoconf settings system directories, including
+                            --prefix, --sysconfdir, etc. The default values of
+                            these options depend on whether ISAEXEC is in use
+                            and are reset after any call to `set_arch'.
+    CONFIGURE_OPTS[i386_WS] As [i386] but can contain whitespace.
+
+In these, i386 is just an example that should be replaced with the name of
+the target architecture (i386, amd64 or aarch64).
+
+The following variables are also available. These have not yet been converted
+to associative arrays but likely will be in the future:
+
+    MAKE_ARGS
+    MAKE_ARGS_WS
+    MAKE_INSTALL_TARGET     (Default: install)
+    MAKE_INSTALL_ARGS
+    MAKE_INSTALL_ARGS_WS
+    MAKE_INSTALL_ARGS_32
+    MAKE_INSTALL_ARGS_64
+    MAKE_TESTSUITE_ARGS     (Default: --quiet)
+    MAKE_TESTSUITE_ARGS_WS
+
+
+Hooks
+-----
+
+The main build() function is responsible for running the clean, configure, make
+and install tasks in turn. There are also various optional hooks which can be
+defined in the build.sh script. The list below shows the normal call flow of
+build(), with the optional hooks indicated with a leading '*'. If the build
+script defines a function with the hook name then it will be called with the
+indicated argument.
+
+build
+    *pre_build
+     foreach arch
+         build_<arch>
+            *pre_build <arch>
+             make_clean_<arch>
+                *pre_clean <arch>
+                 make_clean <arch>
+                *post_clean <arch>
+             configure_<arch>
+                *pre_configure <arch>
+                 configure_arch <arch>
+                *post_configure <arch>
+             make_prog_<arch>
+                *pre_make <arch>
+                 make_arch <arch>
+                *post_make <arch>
+             make_install_<arch>
+                *pre_install <arch>
+                 make_install <arch> [options]
+                *post_install <arch>
+            *post_build <arch>
+    *post_build
+

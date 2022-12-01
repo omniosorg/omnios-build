@@ -44,7 +44,7 @@ CFLAGS+=" -Wno-error=format-nonliteral -Wno-error=format=2"
 set_standard POSIX
 
 LDFLAGS+=" -Wl,-z,ignore"
-LDFLAGS32+=" -lssp_ns"
+LDFLAGS[i386]+=" -lssp_ns"
 
 CONFIGURE_OPTS="
     --prefix=$PREFIX
@@ -53,13 +53,13 @@ CONFIGURE_OPTS="
     -Ddtrace=false
     -Db_asneeded=false
 "
-CONFIGURE_OPTS_32="
+CONFIGURE_OPTS[i386]="
     --bindir=$PREFIX/bin
     --libdir=$PREFIX/lib
 "
-CONFIGURE_OPTS_64="
+CONFIGURE_OPTS[amd64]="
     --bindir=$PREFIX/bin
-    --libdir=$PREFIX/lib/$ISAPART64
+    --libdir=$PREFIX/lib/amd64
 "
 
 clean_testsuite() {

@@ -55,7 +55,7 @@ set_arch 64
 export CCSHARED="-fPIC"
 CPPFLAGS+=" -I/usr/include/ncurses -D_LARGEFILE64_SOURCE"
 CPPFLAGS+=" -DSKIP_ZIP_PATH"
-CPPFLAGS64="`pkg-config --cflags libffi`"
+CPPFLAGS[amd64]+=" `pkg-config --cflags libffi`"
 CC+=' -m64'
 export DFLAGS=-64
 MAKE_ARGS="

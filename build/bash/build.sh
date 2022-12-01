@@ -57,8 +57,7 @@ prep_build
 # Build the bash-completions package, including illumos extensions
 # courtesy of OpenIndiana
 
-save_function make_clean _make_clean
-make_clean() {
+pre_clean() {
     # Patch the bash completions to use GNU grep and GNU sed since that is
     # what they expect. Now that awk -> nawk, that does not need patching.
     logcmd find completions bash_completion -type f -exec sed -i '
@@ -69,16 +68,14 @@ make_clean() {
     ' {} +
 }
 
-save_function configure64 _configure64
-configure64() {
+pre_configure() {
     run_autoreconf -fi
-    _configure64 "$@"
 }
 
 build_dependency -merge bash-completion bash-completion-$BCVER \
     $PROG bash-completion $BCVER
 
-save_function _configure64 configure64
+unset -f pre_configure
 
 clone_github_source -dependency illumos-completion \
     https://github.com/OpenIndiana/openindiana-completions master
@@ -90,7 +87,7 @@ if ((EXTRACT_MODE == 0)); then
         $DESTDIR/$PREFIX/share/bash-completion/completions/ || logerr rsync
 fi
 
-save_function _make_clean make_clean
+unset -f pre_clean
 
 ###########################################################################
 
