@@ -10,7 +10,7 @@ There is no nice way to tell configure that we don't have it
 diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -3786,7 +3786,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#in
+@@ -3787,7 +3787,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#in
    [AC_MSG_RESULT(no)
  ])
  AC_MSG_CHECKING(for epoll)
