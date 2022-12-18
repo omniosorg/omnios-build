@@ -1,4 +1,4 @@
-404 tests OK.
+402 tests OK.
 
 23 tests skipped:
     test_dbm_gnu test_epoll test_gdb test_idle test_kqueue test_msilib
