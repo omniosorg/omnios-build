@@ -18,7 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=curl
-VER=7.86.0
+VER=7.87.0
 PKG=web/curl
 SUMMARY="Command line tool for transferring data with URL syntax"
 DESC="Curl is a command line tool for transferring data with URL syntax, "
