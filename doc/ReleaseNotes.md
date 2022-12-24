@@ -4,6 +4,34 @@
 
 # Release Notes for OmniOSce v11 r151044
 
+## r151044g (2022-12-24)
+Weekly release for w/c 19th of December 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* Curl updated to 7.87.0
+
+* Intel CPU microcode updated to 20221108
+
+* Python updated to version 3.10.9
+
+* Sudo updated to version 1.9.12p1
+
+### Other Changes
+
+* Fix for excessive CPU consumption by rust binaries in lx zones
+
+* 15286 do_composition() needs sign awareness
+
+* 15206 setcontext(2) should restore %fsbase
+
+* Fix possible bhyve network interface deadlock
+
+<br>
+
+---
+
 Stable Release, 7th of November 2022
 
 `uname -a` shows `omnios-r151044-d3b715b9d1`
