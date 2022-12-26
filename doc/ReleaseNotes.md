@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ch (2022-12-24)
+Weekly release for w/c 19th of December 2022.
+> This update requires a reboot
+
+### Security Fixes
+
+* Curl updated to 7.87.0
+
+* Intel CPU microcode updated to 20221108
+
+* Python updated to version 3.9.15
+
+* Sudo updated to version 1.9.12p1
+
+### Other Changes
+
+* Fix for excessive CPU consumption by rust binaries in lx zones
+
+* 14041 Dell R650 Xeon Gold 5318Y not booting
+
+* 15286 do_composition() needs sign awareness
+
+<br>
+
+---
+
 ## r151038ca (2022-11-01)
 Weekly release for w/c 31st of October 2022.
 > This is a non-reboot update
