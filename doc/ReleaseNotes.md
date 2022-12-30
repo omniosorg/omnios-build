@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151042
 
+## r151042ai (2022-12-31)
+Weekly release for w/c 26th of December 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* [15295 SMB servers did not always check IPC caller privileges](https://www.illumos.org/issues/15295)
+
+<br>
+
+---
+
 ## r151042ah (2022-12-24)
 Weekly release for w/c 19th of December 2022.
 > This update requires a reboot
