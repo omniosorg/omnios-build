@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ci (2022-12-31)
+Weekly release for w/c 26th of December 2022.
+> This is a non-reboot update
+
+### Security Fixes
+
+* [15295 SMB servers did not always check IPC caller privileges](https://www.illumos.org/issues/15295)
+
+<br>
+
+---
+
 ## r151038ch (2022-12-24)
 Weekly release for w/c 19th of December 2022.
 > This update requires a reboot
