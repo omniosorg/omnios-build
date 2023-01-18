@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038cl (2023-01-18)
+Weekly release for w/c 16th of January 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* The `git` package has been updated to a version which includes a fix for
+  [CVE-2022-23521(https://github.com/git/git/security/advisories/GHSA-c738-c5qq-xg89).
+
+<br>
+
+---
+
 ## r151038ci (2022-12-31)
 Weekly release for w/c 26th of December 2022.
 > This is a non-reboot update
