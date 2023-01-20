@@ -13,6 +13,9 @@ Weekly release for w/c 16th of January 2023.
 * The `git` package has been updated to a version which includes a fix for
   [CVE-2022-23521(https://github.com/git/git/security/advisories/GHSA-c738-c5qq-xg89).
 
+* `sudo` has been updated to address
+  [CVE-2023-22809](https://www.sudo.ws/security/advisories/sudoedit_any/).
+
 <br>
 
 ---
