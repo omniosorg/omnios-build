@@ -1,9 +1,7 @@
-patch-make_autoconf_basics.m4
 patch-make_autoconf_flags-cflags.m4
 patch-make_autoconf_jdk-options.m4
 patch-make_autoconf_lib-x11.m4
 patch-make_autoconf_libraries.m4
-patch-make_autoconf_spec.gmk.in
 patch-make_autoconf_toolchain.m4
 patch-make_GenerateLinkOptData.gmk
 patch-make_hotspot_gensrc_GensrcAdlc.gmk
