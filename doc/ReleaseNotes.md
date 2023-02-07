@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038co (2023-02-07)
+Weekly release for w/c 06th of February 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to 1.1.1t, fixing
+  [various vulnerabilities](https://www.openssl.org/news/secadv/20230207.txt)
+
+* OpenSSL 1.0.2 has been also been patched to resolve vulnerabilities.
+
+* OpenJDK packages updated to 11.0.18+10 and 1.8.362-09
+
+<br>
+
+---
+
 ## r151038cl (2023-01-18)
 Weekly release for w/c 16th of January 2023.
 > This is a non-reboot update
