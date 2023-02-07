@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151042
 
+## r151042ao (2023-02-07)
+Weekly release for w/c 06th of February 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL packages updated to 3.0.8 and 1.1.1t, fixing
+  [various vulnerabilities](https://www.openssl.org/news/secadv/20230207.txt)
+
+* OpenSSL 1.0.2 has been also been patched to resolve vulnerabilities.
+
+* OpenJDK packages updated to 17.0.6+10, 11.0.18+10 and 1.8.362-09
+
+<br>
+
+---
+
 ## r151042al (2023-01-18)
 Weekly release for w/c 16th of January 2023.
 > This is a non-reboot update
