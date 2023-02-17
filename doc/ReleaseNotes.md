@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038cq (2023-02-21)
+Weekly release for w/c 20th of February 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* Git has been updated to version 2.31.7.
+
+### Other Changes
+
+* The bundled AMD CPU microcode has been updated.
+
+* The `signalfd` driver could cause a system panic.
+
+* It was possible that the system could panic if the in-zone NFS server was in
+  use.
+
+<br>
+
+---
+
 ## r151038co (2023-02-07)
 Weekly release for w/c 06th of February 2023.
 > This is a non-reboot update
