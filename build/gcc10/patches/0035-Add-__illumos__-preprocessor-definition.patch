@@ -1,4 +1,4 @@
-From 63e0e35a346a66b7260909cf859b3396c280a5a2 Mon Sep 17 00:00:00 2001
+From 69cc0dd93adce92802a8fe2972eb604e5ff7000b Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 28 Apr 2021 11:40:25 +0000
 Subject: Add __illumos__ preprocessor definition

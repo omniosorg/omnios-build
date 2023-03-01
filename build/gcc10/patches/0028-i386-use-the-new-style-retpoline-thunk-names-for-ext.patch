@@ -1,4 +1,4 @@
-From 08514ee11f2bf20ef3fcfc8e25567410ae3325c3 Mon Sep 17 00:00:00 2001
+From 519ade5d10449257cad30198ba1ee897e20d3cd3 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Wed, 7 Feb 2018 02:13:42 +0000
 Subject: i386: use the new-style retpoline thunk names for
@@ -9,10 +9,10 @@ Subject: i386: use the new-style retpoline thunk names for
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386.c b/gcc/config/i386/i386.c
-index 14152259bbe..ee7d5a56712 100644
+index eba1cf123e0..374656a10b7 100644
 --- a/gcc/config/i386/i386.c
 +++ b/gcc/config/i386/i386.c
-@@ -5353,7 +5353,9 @@ indirect_thunk_name (char name[32], unsigned int regno,
+@@ -5354,7 +5354,9 @@ indirect_thunk_name (char name[32], unsigned int regno,
    if (regno != INVALID_REGNUM && regno != CX_REG && ret_p)
      gcc_unreachable ();
  

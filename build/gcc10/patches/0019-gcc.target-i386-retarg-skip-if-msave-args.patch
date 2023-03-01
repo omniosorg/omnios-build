@@ -1,4 +1,4 @@
-From f6693f1dc0f3b7dcdc1f54c0dae13a7c77582d30 Mon Sep 17 00:00:00 2001
+From 24a378e93c2ce8f7d1d41e787a4ef7fa7a5c5546 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 01:02:08 +0000
 Subject: gcc.target/i386/retarg: skip if msave-args

@@ -1,4 +1,4 @@
-From 32e337f467b200c47b1cc714bef2ff3252ae5c3e Mon Sep 17 00:00:00 2001
+From e6cc5410edffa5a5e260adab815b86f4ff1d1dac Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Mon, 29 Oct 2018 18:21:34 +0000
 Subject: libstdc++v3: illumos and Solaris haven't needed -lrt in
