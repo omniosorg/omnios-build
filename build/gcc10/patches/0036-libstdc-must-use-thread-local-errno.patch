@@ -1,4 +1,4 @@
-From bde870d280219af04315b50d1b504c35b6a45207 Mon Sep 17 00:00:00 2001
+From 1f8c6b1d90dd69d36e9de7c1962b42e349561085 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 31 Aug 2021 21:40:48 +0000
 Subject: libstdc++ must use thread-local errno

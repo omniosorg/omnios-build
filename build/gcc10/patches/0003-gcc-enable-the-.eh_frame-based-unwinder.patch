@@ -1,4 +1,4 @@
-From ef77ba5119df20c74f30462b7f5a5ddf50704015 Mon Sep 17 00:00:00 2001
+From ad48400aa2f8769068ed4df0379c5b20da951d21 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Wed, 5 Mar 2014 04:12:52 +0000
 Subject: gcc: enable the .eh_frame based unwinder
@@ -9,10 +9,10 @@ Subject: gcc: enable the .eh_frame based unwinder
  2 files changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/gcc/configure b/gcc/configure
-index 8fe9c91fd7c..c20dfc771ea 100755
+index 53c27dba58e..077f8f5ef0c 100755
 --- a/gcc/configure
 +++ b/gcc/configure
-@@ -23445,11 +23445,12 @@ if test $in_tree_ld != yes ; then
+@@ -23541,11 +23541,12 @@ if test $in_tree_ld != yes ; then
  	# numbers can be used in ld.so.1 feature checks even if a different
  	# linker is configured.
  	ld_ver=`$gcc_cv_ld -V 2>&1`
@@ -28,7 +28,7 @@ index 8fe9c91fd7c..c20dfc771ea 100755
  	fi
  	;;
      esac
-@@ -28833,6 +28834,8 @@ elif test x$gcc_cv_ld != x; then
+@@ -28964,6 +28965,8 @@ elif test x$gcc_cv_ld != x; then
          # Sun ld has various bugs in .eh_frame_hdr support before version 1.2251.
          if test "$ld_vers_major" -gt 1 || test "$ld_vers_minor" -ge 2251; then
            gcc_cv_ld_eh_frame_hdr=yes
@@ -38,10 +38,10 @@ index 8fe9c91fd7c..c20dfc771ea 100755
          ;;
      esac
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 84dceb8074a..ddbab71370d 100644
+index c3efabc2e5e..6a02496cb7b 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
-@@ -2852,11 +2852,12 @@ if test $in_tree_ld != yes ; then
+@@ -2894,11 +2894,12 @@ if test $in_tree_ld != yes ; then
  	# numbers can be used in ld.so.1 feature checks even if a different
  	# linker is configured.
  	ld_ver=`$gcc_cv_ld -V 2>&1`
@@ -57,7 +57,7 @@ index 84dceb8074a..ddbab71370d 100644
  	fi
  	;;
      esac
-@@ -5367,6 +5368,8 @@ elif test x$gcc_cv_ld != x; then
+@@ -5418,6 +5419,8 @@ elif test x$gcc_cv_ld != x; then
          # Sun ld has various bugs in .eh_frame_hdr support before version 1.2251.
          if test "$ld_vers_major" -gt 1 || test "$ld_vers_minor" -ge 2251; then
            gcc_cv_ld_eh_frame_hdr=yes
