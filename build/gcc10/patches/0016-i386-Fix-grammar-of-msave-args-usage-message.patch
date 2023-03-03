@@ -1,4 +1,4 @@
-From ad935c264c1b50887d8a8994da3945318657e3ff Mon Sep 17 00:00:00 2001
+From d4707f0cf4bc2f3d424e73dce15ffe8d8fe59bab Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 26 Apr 2019 03:05:14 +0000
 Subject: i386: Fix grammar of -msave-args usage message

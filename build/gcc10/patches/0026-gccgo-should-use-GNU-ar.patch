@@ -1,4 +1,4 @@
-From 9f853d6bd52ab3fa27c86636967694404ff829e6 Mon Sep 17 00:00:00 2001
+From b88a938db14e28d48cd3378af821b1c492fc1d02 Mon Sep 17 00:00:00 2001
 From: Petr Sumbera <petr.sumbera@oracle.com>
 Date: Wed, 13 Nov 2019 18:05:21 +0000
 Subject: gccgo should use GNU ar
