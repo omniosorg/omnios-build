@@ -1,4 +1,4 @@
-From c007de5a4045d8cd477618a0ec4c9159f1f80612 Mon Sep 17 00:00:00 2001
+From c0b92dcc6cc7c7b8dde38a4f37084ed49cce078b Mon Sep 17 00:00:00 2001
 From: Aurelien Larcher <aurelien.larcher@gmail.com>
 Date: Tue, 12 Nov 2019 15:01:57 +0000
 Subject: Fix libsanitizer build for illumos
@@ -38,7 +38,7 @@ index 77ae6e6a44d..25f11e00ef8 100644
  
  extern int glob_nomatch;
 diff --git a/libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp b/libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp
-index 304b3a01a08..745753f0d8f 100644
+index 44359b3d1ac..041fd4bd793 100644
 --- a/libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp
 +++ b/libsanitizer/sanitizer_common/sanitizer_posix_libcdep.cpp
 @@ -64,24 +64,24 @@ void ReleaseMemoryPagesToOS(uptr beg, uptr end) {

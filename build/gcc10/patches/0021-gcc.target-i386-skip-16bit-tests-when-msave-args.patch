@@ -1,4 +1,4 @@
-From 09a2ebb63ffdf4503cc29b52833c41f45c55a44e Mon Sep 17 00:00:00 2001
+From 7137406a8b36f18a090ce5dc37db3637ca1a82d8 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 01:22:56 +0000
 Subject: gcc.target/i386: skip 16bit tests when -msave-args

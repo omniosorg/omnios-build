@@ -1,4 +1,4 @@
-From 206cc59560d6407e52e320a38acab7a9a7ce3104 Mon Sep 17 00:00:00 2001
+From 6e04441a5ad3e91797501f701ffd8a446f9d8819 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Fri, 19 Jul 2019 11:42:58 +0000
 Subject: Use GNU backends for gcc-{ar,nm,ranlib}
