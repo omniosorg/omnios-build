@@ -46,6 +46,8 @@ CONFIGURE_OPTS+="
     --enable-solaris-opt
 "
 
+CPPFLAGS+=" -D_PATH_RUN='\"/var/run/\"'"
+
 init
 download_source $PROG ${PROG^^}_${VER//./_}
 patch_source
