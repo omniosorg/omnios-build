@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038cs (2023-03-11)
+Weekly release for w/c 6th of March 2023.
+> This is a non-reboot update
+
+### Other Changes
+
+* Updated system headers to provide the `__maybe_unused` macro.
+
+* Updated `gcc10` to 10.4.0.
+
+
+<br>
+
+---
+
 ## r151038cq (2023-02-21)
 Weekly release for w/c 20th of February 2023.
 > This update requires a reboot
