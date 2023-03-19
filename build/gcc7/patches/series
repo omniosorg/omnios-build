@@ -28,4 +28,5 @@
 0029-13185-zassert-deflib-does-not-work-for-64-bit-object.patch
 0030-Add-__illumos__-preprocessor-definition.patch
 0031-libstdc-must-use-thread-local-errno.patch
-0032-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0032-cmn_err-supports-h-and-hh.patch
+0033-OOCE-Adjust-default-library-paths-for-OmniOS.patch
