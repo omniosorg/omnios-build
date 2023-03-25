@@ -2,22 +2,22 @@
 <img src="https://omnios.org/OmniOSce_logo.svg" height="128">
 </a>
 
-# Release Notes for OmniOSce v11 r151040
+# Release Notes for OmniOSce v11 r1510XX
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-Stable Release, TBC of November 2021
+Stable Release, TBC of May 20XX
 
-`uname -a` shows `omnios-r151040-XXX`
+`uname -a` shows `omnios-r1510XX-XXX`
 
-r151040 release repository: https://pkg.omnios.org/r151040/core
+r1510XX release repository: https://pkg.omnios.org/r1510XX/core
 
 ## Upgrade Notes
 
-Upgrades are supported from the r151038 release only. If upgrading from an
-earlier version, upgrade in stages, referring to the table at
-<https://omnios.org/upgrade>.
+Upgrades are supported from the r1510... releases
+only. If upgrading from an earlier version, upgrade in stages, referring to the
+table at <https://omnios.org/upgrade>.
 
-## New features since r151038
+## New features since r1510XX
 
 ### System Features
 
@@ -53,9 +53,9 @@ earlier version, upgrade in stages, referring to the table at
   be maintained only on a best-efforts basis.
 
 * OpenSSL 1.0.x is deprecated and reached end-of-support at the end of 2019.
-  OmniOS has completely transitioned to OpenSSL 1.1.1 but retains the OpenSSL
-  1.0.2 libraries for backwards compatibility. The 1.0.2 libraries are
-  maintained solely on a best-efforts basis.
+  OmniOS has transitioned to OpenSSL 3 and still ships OpenSSL 1.1.1 for
+  compatibility. The OpenSSL 1.0.2 libraries are also retained for
+  backwards compatibility but are maintained solely on a best-efforts basis.
 
 ### Package changes
 
