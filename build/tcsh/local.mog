@@ -7,7 +7,14 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 license Copyright license=modified-BSD
+
+# mediated symlinks
+link path=usr/bin/csh mediator=csh mediator-implementation=tcsh \
+    mediator-priority=vendor target=tcsh
+link path=usr/share/man/man1/csh.1 mediator=csh \
+    mediator-implementation=tcsh mediator-priority=vendor \
+    target=tcsh.1
 
