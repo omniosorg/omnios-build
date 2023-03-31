@@ -25,7 +25,7 @@
 #
 
 #
-# Default permissions and ownership
+# Default permissions, ownership and so on.
 #
 
 # For kernel/drv, set .conf files to mode 0644; assume all other files there
@@ -46,6 +46,14 @@
 <transform file dir -> default group bin>
 <transform file -> default mode 0644>
 <transform dir -> default mode 0755>
+
+# The timestamp on any compiled python objects that are shipped in a package
+# must always be newer than the corresponding source file, or python recompiles
+# and the benefit of shipping the compiled version is lost, particularly if
+# python is not running with privileges that can update the compiled version on
+# disk.
+<transform file path=.*\.py$ -> default timestamp $(TS_SRC)>
+<transform file path=.*\.pyc$ -> default timestamp $(TS_OBJ)>
 
 # Overrides
 <transform file dir path=(lib|var)/svc/manifest/ -> set group sys>

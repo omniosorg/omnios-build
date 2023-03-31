@@ -181,7 +181,7 @@ GNUBIN=/usr/gnu/bin
 for util in \
     basename cat comm cut dis tput digest mktemp sort sed tee rm mv cp mkdir \
     rmdir readlink ln ls chmod touch grep time find fgrep egrep uniq stat \
-    strip sleep tail
+    strip sleep tail date
 do
     declare -n _var=${util^^}
     declare -g _var=$USRBIN/$util
@@ -269,9 +269,9 @@ MAKE_TARGET=
 # script when testing to speed up building a package
 DONT_REMOVE_INSTALL_DIR=
 
+SYS_XFORM_ARGS=
 XFORM_ARGS=
-
-PKG_INCLUDE_TS="*.py"
+PKG_INCLUDE_TS=
 
 #############################################################################
 # C compiler options - these can be overridden by a build script
