@@ -1049,8 +1049,13 @@ prep_build() {
 
     logmsg "Preparing for $style build"
 
-    # Get the current date/time for the package timestamp
-    DATETIME=`TZ=UTC /usr/bin/date +"%Y%m%dT%H%M%SZ"`
+    # Generate timestamps
+    typeset now=`TZ=UTC $DATE +%s`
+    typeset TS_FMT="%Y%m%dT%H%M%SZ"
+    typeset TS_SRC=`$DATE -r $((now - 60)) +$TS_FMT`
+    typeset TS_OBJ=`$DATE -r $((now - 30)) +$TS_FMT`
+
+    SYS_XFORM_ARGS+=" -DTS_SRC=$TS_SRC -DTS_OBJ=$TS_OBJ"
 
     logmsg "--- Creating temporary installation directory"
 
@@ -1898,6 +1903,7 @@ make_package_impl() {
     logmsg "--- Applying transforms"
     exec 3>"$TMPDIR/mog.stderr"
     logcmd -p $PKGMOGRIFY -P /dev/fd/3 -I $BLIBDIR/mog \
+        $SYS_XFORM_ARGS \
         $XFORM_ARGS \
         $P5M_GEN \
         $MY_MOG_FILE \
@@ -1995,7 +2001,7 @@ make_package_impl() {
             fi
         done
     fi
-    logcmd -p $PKGMOGRIFY $XFORM_ARGS "${P5M_DEPGEN}.res" \
+    logcmd -p $PKGMOGRIFY $SYS_XFORM_ARGS $XFORM_ARGS "${P5M_DEPGEN}.res" \
         "$MANUAL_DEPS" $FINAL_MOG_FILE | $PKGFMT -u > $P5M_FINAL
     logmsg "--- Final dependencies"
     $GREP '^depend ' $P5M_FINAL | while read line; do
@@ -2051,7 +2057,7 @@ publish_manifest_impl() {
     [ -n "$root" ] && root="-d $root"
 
     logcmd -p $PKGMOGRIFY -P /dev/fd/3 -I $BLIBDIR/mog \
-        $XFORM_ARGS `build_archmog $arch` $pmf \
+        $SYS_XFORM_ARGS $XFORM_ARGS `build_archmog $arch` $pmf \
         | $PKGFMT -u > $pmf.$arch.final
 
     if [ -z "$SKIP_PKGLINT" ] && ( [ -n "$BATCH" ] || ask_to_pkglint ); then
@@ -2109,7 +2115,7 @@ publish_manifest() {
 build_xform_sed() {
     XFORM_SED_CMD=
 
-    for kv in $XFORM_ARGS; do
+    for kv in $SYS_XFORM_ARGS $XFORM_ARGS; do
         typeset k=${kv%%=*}
         typeset v=${kv#*=}
         typeset _v
@@ -2130,7 +2136,8 @@ build_xform_sed() {
     done
 }
 
-# Transform a file using the translations defined in $XFORM_ARGS
+# Transform a file using the translations defined in $SYS_XFORM_ARGS and
+# $XFORM_ARGS
 xform() {
     local file="$1"
 
