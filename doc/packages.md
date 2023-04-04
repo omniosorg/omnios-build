@@ -37,7 +37,7 @@
 | library/c++/sigcpp			| 3.4.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.5.0			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
-| library/fastjson			| 0.99.9		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
+| library/fastjson			| 0.99.9.1		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/gmp				| 6.2.1			| https://gmplib.org/download/gmp/ https://gmplib.org/
 | library/mpc				| 1.3.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.0			| http://www.mpfr.org/mpfr-current/
