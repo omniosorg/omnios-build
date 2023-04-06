@@ -114,7 +114,6 @@ build_aarch64() {
         DMAKE_MAX_JOBS=$MJOBS
         PYTHON3_VERSION=$PYTHONVER
         PERL_VERSION=$SPERLVER
-        PERL_PKGVERS=-${SPERLVER//./}
         DTC=$OOCEBIN/dtc
         MKIMAGE=$OOCEOPT/u-boot/tools/mkimage
     "
