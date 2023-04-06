@@ -4,6 +4,38 @@
 
 # Release Notes for OmniOSce v11 r151042
 
+## r151042aw (2023-04-07)
+Weekly release for w/c 3rd of April 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* The bundled Intel CPU microcode has been updated. See
+  <https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases/tag/microcode-20230214> for details.
+
+* curl has been updated to version 8.0.1 fixing
+  [6 security vulnerabilities](https://curl.se/docs/vuln-7.88.1.html)
+
+* openssl has been updated to mitigate
+  [CVE-2023-0464](https://www.openssl.org/news/secadv/20230322.txt)
+
+* rsyslog has been updated to address a vulnerability in the `fastjson`
+  component that it uses internally. Due to extra bounds checks employed
+  by rsyslog, it is unlike that this problem could be exploited.
+
+### Other Changes
+
+* zstd has been updated to version 1.5.5 to fix a
+  [rare corruption bug](https://github.com/facebook/zstd/releases/tag/v1.5.5).
+
+* The timezone database has been updated to version 2023c.
+
+* gcc 7 has been updated to the latest illumos version, gcc 7.5.0-il-2.
+
+<br>
+
+---
+
 ## r151042as (2023-03-11)
 Weekly release for w/c 6th of March 2023.
 > This is a non-reboot update
