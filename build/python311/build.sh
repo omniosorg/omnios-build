@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.2
+VER=3.11.3
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
@@ -187,18 +187,6 @@ multi_build() {
     logcmd rm -rf $DESTDIR.debug
     logcmd mkdir -p $DESTDIR.debug
     BUILDDIR+=".debug" DESTDIR+=".debug" build
-
-    # The packages built from these two destination trees will be merged
-    # after publication using a variant to separate them. We want files which
-    # are identical across the trees to only appear once in the package and
-    # without a variant tag; therefore they must match in all attributes
-    # including timestamp. Go through and update the debug package timestamps
-    # to match the production one. This is only necessary for python modules
-    # since only these get published with timestamps.
-    find "$DESTDIR.debug" -type f -name \*.py | while read f; do
-        pf="${f/.debug/.prod}"
-        [ -f "$pf" ] && logcmd touch -r "$pf" "$f"
-    done
 }
 
 merged_package() {

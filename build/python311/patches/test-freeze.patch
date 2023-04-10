@@ -1,3 +1,14 @@
+
+This patch:
+
+ - updates the test to run GNU make;
+ - Prevents running "make clean" in the copy of the source tree as that removes
+   the platform-specific sysconfig module, breaking the built python which is
+   in newroot.
+ - Strips all configure arguments of the form `--XXXdir=YYY` from the configure
+   lines used to build the new perl tree, since these override the temporary
+   --prefix being used for the test.
+
 diff -wpruN '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/test/freeze.py
 --- a~/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
 +++ a/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
@@ -10,3 +21,20 @@ diff -wpruN '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/tes
  FREEZE = os.path.join(TOOL_ROOT, 'freeze.py')
  OUTDIR = os.path.join(TESTS_DIR, 'outdir')
  
+@@ -93,8 +93,6 @@
+         return subdirs_to_skip
+ 
+     shutil.copytree(oldroot, newroot, ignore=ignore_non_src)
+-    if os.path.exists(os.path.join(newroot, 'Makefile')):
+-        _run_quiet([MAKE, 'clean'], newroot)
+ 
+ 
+ def get_makefile_var(builddir, name):
+@@ -153,6 +153,7 @@ def prepare(script=None, outdir=None):
+         os.path.join(srcdir, 'configure'),
+         *shlex.split(get_config_var(srcdir, 'CONFIG_ARGS') or ''),
+     ]
++    cmd = [c for c in cmd if not re.search(r'^--.*dir=', c)]
+     ensure_opt(cmd, 'cache-file', os.path.join(outdir, 'python-config.cache'))
+     prefix = os.path.join(outdir, 'python-installation')
+     ensure_opt(cmd, 'prefix', prefix)
