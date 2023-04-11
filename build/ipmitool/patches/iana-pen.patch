@@ -1,0 +1,19 @@
+
+This was fixed upstream in
+
+    https://github.com/ipmitool/ipmitool/commit/1edb0e27e44196d1ebe449aba0b9be
+
+but has not yet made it into a release.
+
+diff -wpruN '--exclude=*.orig' a~/Makefile.am a/Makefile.am
+--- a~/Makefile.am	1970-01-01 00:00:00
++++ a/Makefile.am	1970-01-01 00:00:00
+@@ -41,7 +41,7 @@ MAINTAINERCLEANFILES = Makefile.in acloc
+ 	$(distdir).tar.gz $(distdir).tar.bz2
+ 
+ SUBDIRS = lib src include doc contrib control
+-IANA_PEN = http://www.iana.org/assignments/enterprise-numbers
++IANA_PEN = https://www.iana.org/assignments/enterprise-numbers.txt
+ 
+ dist-hook:
+ 	cp control/ipmitool.spec $(distdir)
