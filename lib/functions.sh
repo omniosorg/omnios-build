@@ -767,7 +767,7 @@ init_sysroot() {
         tmpsysroot=$sysroot.$$
 
         logmsg "-- Creating $arch sysroot"
-        logcmd $PKGCLIENT image-create --full \
+        logcmd $PKGCLIENT image-create --zone \
             --publisher $PKGPUBLISHER=$repo \
             --variant variant.arch=$arch \
             --facet doc.man=false \
