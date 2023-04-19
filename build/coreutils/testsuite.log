@@ -137,6 +137,7 @@ PASS: tests/misc/csplit-heap.sh
 PASS: tests/misc/csplit-io-err.sh
 PASS: tests/misc/csplit-suppress-matched.pl
 PASS: tests/misc/date-debug.sh
+PASS: tests/misc/date-f.sh
 PASS: tests/misc/date-sec.sh
 PASS: tests/misc/date-tz.sh
 PASS: tests/misc/dircolors.pl
@@ -639,8 +640,8 @@ SKIP: tests/factor/t33.sh
 SKIP: tests/factor/t34.sh
 SKIP: tests/factor/t35.sh
 SKIP: tests/factor/t36.sh
-# TOTAL: 641
-# PASS:  493
+# TOTAL: 643
+# PASS:  495
 # SKIP:  148
 # XFAIL: 0
 # FAIL:  0
@@ -672,6 +673,7 @@ PASS: test-bind
 PASS: test-bitrotate
 PASS: test-btowc1.sh
 PASS: test-btowc2.sh
+PASS: test-btowc3.sh
 PASS: test-byteswap
 PASS: test-c-ctype
 PASS: test-c-strcase.sh
@@ -834,6 +836,18 @@ PASS: test-lstat
 PASS: test-malloc-gnu
 PASS: test-malloca
 PASS: test-math
+PASS: test-mbrlen1.sh
+PASS: test-mbrlen2.sh
+SKIP: test-mbrlen3.sh
+SKIP: test-mbrlen4.sh
+PASS: test-mbrlen5.sh
+SKIP: test-mbrlen-w32-1.sh
+SKIP: test-mbrlen-w32-2.sh
+SKIP: test-mbrlen-w32-3.sh
+SKIP: test-mbrlen-w32-4.sh
+SKIP: test-mbrlen-w32-5.sh
+SKIP: test-mbrlen-w32-6.sh
+SKIP: test-mbrlen-w32-7.sh
 PASS: test-mbrtowc1.sh
 PASS: test-mbrtowc2.sh
 SKIP: test-mbrtowc3.sh
@@ -854,6 +868,7 @@ PASS: test-mbsrtowcs1.sh
 PASS: test-mbsrtowcs2.sh
 SKIP: test-mbsrtowcs3.sh
 SKIP: test-mbsrtowcs4.sh
+PASS: test-mbsrtowcs5.sh
 PASS: test-mbsstr1
 PASS: test-mbsstr2.sh
 SKIP: test-mbsstr3.sh
@@ -872,7 +887,7 @@ PASS: test-nanosleep
 PASS: test-netdb
 PASS: test-netinet_in
 PASS: test-nl_langinfo1.sh
-FAIL: test-nl_langinfo2.sh
+PASS: test-nl_langinfo2.sh
 PASS: test-nl_langinfo-mt
 PASS: test-nstrftime
 PASS: test-open
@@ -971,9 +986,13 @@ PASS: test-termios
 PASS: test-init.sh
 PASS: test-thread_self
 PASS: test-thread_create
+PASS: test-time-h
 PASS: test-time
 PASS: test-timespec
 PASS: test-tls
+PASS: test-trim1.sh
+PASS: test-trim2.sh
+SKIP: test-trim3.sh
 PASS: test-u64
 PASS: test-uname
 PASS: test-unicodeio1.sh
@@ -1025,65 +1044,10 @@ PASS: test-xstrtol.sh
 PASS: test-xstrtoumax.sh
 PASS: test-xvasprintf
 PASS: test-yesno.sh
-# TOTAL: 379
-# PASS:  355
-# SKIP:  23
+# TOTAL: 397
+# PASS:  364
+# SKIP:  33
 # XFAIL: 0
-# FAIL:  1
-# XPASS: 0
-# ERROR: 0
-SKIP: test-mbrtowc3.sh
-SKIP test-mbrtowc3.sh (exit status: 77)
-SKIP: test-mbrtowc4.sh
-SKIP test-mbrtowc4.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-1.sh
-SKIP test-mbrtowc-w32-1.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-2.sh
-SKIP test-mbrtowc-w32-2.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-3.sh
-SKIP test-mbrtowc-w32-3.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-4.sh
-SKIP test-mbrtowc-w32-4.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-5.sh
-SKIP test-mbrtowc-w32-5.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-6.sh
-SKIP test-mbrtowc-w32-6.sh (exit status: 77)
-SKIP: test-mbrtowc-w32-7.sh
-SKIP test-mbrtowc-w32-7.sh (exit status: 77)
-SKIP: test-mbscasecmp.sh
-SKIP test-mbscasecmp.sh (exit status: 77)
-SKIP: test-mbschr.sh
-SKIP test-mbschr.sh (exit status: 77)
-SKIP: test-mbsrtowcs3.sh
-SKIP test-mbsrtowcs3.sh (exit status: 77)
-SKIP: test-mbsrtowcs4.sh
-SKIP test-mbsrtowcs4.sh (exit status: 77)
-SKIP: test-mbsstr3.sh
-SKIP test-mbsstr3.sh (exit status: 77)
-FAIL: test-nl_langinfo2.sh
-FAIL test-nl_langinfo2.sh (exit status: 262)
-SKIP: test-unicodeio3.sh
-SKIP test-unicodeio3.sh (exit status: 77)
-SKIP: test-vc-list-files-cvs.sh
-SKIP test-vc-list-files-cvs.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-1.sh
-SKIP test-wcrtomb-w32-1.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-2.sh
-SKIP test-wcrtomb-w32-2.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-3.sh
-SKIP test-wcrtomb-w32-3.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-4.sh
-SKIP test-wcrtomb-w32-4.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-5.sh
-SKIP test-wcrtomb-w32-5.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-6.sh
-SKIP test-wcrtomb-w32-6.sh (exit status: 77)
-SKIP: test-wcrtomb-w32-7.sh
-SKIP test-wcrtomb-w32-7.sh (exit status: 77)
-# TOTAL: 379
-# PASS:  355
-# SKIP:  23
-# XFAIL: 0
-# FAIL:  1
+# FAIL:  0
 # XPASS: 0
 # ERROR: 0
