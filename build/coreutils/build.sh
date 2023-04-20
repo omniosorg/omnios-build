@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=coreutils
-VER=9.2
+VER=9.3
 PKG=file/gnu-coreutils
 SUMMARY="coreutils - GNU core utilities"
 DESC="GNU core utilities"
@@ -41,6 +41,7 @@ CONFIGURE_OPTS+="
     --with-openssl=auto
     gl_cv_host_operating_system=illumos
     ac_cv_func_inotify_init=no
+    ac_year2038_required=no
 "
 CONFIGURE_OPTS[i386]+=" --libexecdir=/usr/lib"
 CONFIGURE_OPTS[amd64]+=" --libexecdir=/usr/lib/amd64"
