@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038cy (2023-04-21)
+Weekly release for w/c 17th of April 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* The bundled AMD CPU microcode has received an update for AMD Rome CPUs (processor family 17h).
+
+* libxml2 has been updated to 2.10.4, fixing several CVEs.
+
+* `pkg` has been patched, fixing [CVE-2023-21928](https://nvd.nist.gov/vuln/detail/CVE-2023-21928).
+
+### Other Changes
+
+* The `onbld` package now ships updated `.env` files to set gcc 10 as primary compiler for `illumos-gate` builds.
+  See <https://illumos.topicbox.com/groups/developer/Tc01851d253a5fd32/heads-up-moving-to-gcc-10-primary>.
+
+<br>
+
+---
+
 ## r151038cw (2023-04-07)
 Weekly release for w/c 3rd of April 2023.
 > This update requires a reboot
