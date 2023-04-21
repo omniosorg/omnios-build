@@ -635,10 +635,7 @@ reset_configure_opts() {
 }
 
 clear_archflags() {
-    CFLAGS=()
-    CPPFLAGS=()
-    CXXFLAGS=()
-    LDFLAGS=()
+    flatten_variables CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
 }
 
 set_standard() {
