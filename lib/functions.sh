@@ -2955,30 +2955,40 @@ python_build() {
     popd > /dev/null
 }
 
-pyvenv_build() {
-    typeset venv=$DESTDIR/$PREFIX
-    typeset pkg=${1:?pkg}
-    typeset ver=${2:?ver}
+pyvenv_install() {
+    typeset pkg=${1:?pkg}; shift
+    typeset ver=${1:?ver}; shift
+    typeset venv=${1:?venv}; shift
 
-    logmsg "Preparing virtual python environment"
-    logcmd $PYTHON -mvenv --system-site-packages --without-pip $venv \
-        || logerr "python venv set up failed"
+    if [ ! -d "$venv" ]; then
+        logmsg "Preparing virtual python environment"
+        logcmd $PYTHON -mvenv --system-site-packages --without-pip $venv \
+            || logerr "python venv set up failed"
 
-    logcmd rm -f $venv/bin/[aA]ctivate*
+        logcmd rm -f $venv/bin/[aA]ctivate*
+    fi
 
     ((EXTRACT_MODE >= 1)) && exit
-
-    typeset constrain=
-    [ -f $SRCDIR/files/constraints -a -z "$REBASE_PATCHES" ] \
-        && constrain="-c $SRCDIR/files/constraints"
 
     logmsg "-- installing $pkg"
     VIRTUAL_ENV=$venv logcmd $venv/bin/python$PYTHONVER -mpip \
         --disable-pip-version-check \
         --require-virtualenv \
         --no-input \
-        install $constrain $pkg==$ver \
+        install "$@" $pkg==$ver \
         || logerr "pip install $pkg ($ver) failed"
+}
+
+pyvenv_build() {
+    typeset venv=$DESTDIR/$PREFIX
+    typeset pkg=${1:?pkg}
+    typeset ver=${2:?ver}
+
+    typeset constrain=
+    [ -f $SRCDIR/files/constraints -a -z "$REBASE_PATCHES" ] \
+        && constrain="-c $SRCDIR/files/constraints"
+
+    pyvenv_install $pkg $ver $venv $constrain
 
     if [ -n "$REBASE_PATCHES" ]; then
         VIRTUAL_ENV=$venv logcmd -p $venv/bin/python$PYTHONVER -mpip freeze \
