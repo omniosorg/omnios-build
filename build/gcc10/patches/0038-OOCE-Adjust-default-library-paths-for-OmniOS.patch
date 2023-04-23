@@ -1,4 +1,4 @@
-From b1e8a5c361a97625976663dfc42e7851121f163f Mon Sep 17 00:00:00 2001
+From 7a58f1f7f6dabf47a9b5f8e539f00f3293a1c451 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 9 May 2019 13:43:30 +0000
 Subject: OOCE: Adjust default library paths for OmniOS
@@ -8,7 +8,7 @@ Subject: OOCE: Adjust default library paths for OmniOS
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index a945e96d4a2..8770553f123 100644
+index a945e96d4a2..c9aa026430b 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -308,8 +308,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -17,7 +17,7 @@ index a945e96d4a2..8770553f123 100644
     %{R*} \
 -   %{!YP,*:%{p|pg:-Y P,%R/usr/lib/libp%R/lib:%R/usr/lib} \
 -	   %{!p:%{!pg:-Y P,%R/lib:%R/usr/lib}}}"
-+   %{!YP,*:-Y P,%R/usr/gcc/10/lib:%R/lib:%R/usr/lib -R %R/usr/gcc/10/lib}"
++   %{!YP,*:-Y P,%R/usr/gcc/10/lib:%R/lib:%R/usr/lib -L %R/usr/gcc/10/lib -R %R/usr/gcc/10/lib}"
  
  #undef LINK_ARCH32_SPEC
  #define LINK_ARCH32_SPEC LINK_ARCH32_SPEC_BASE
@@ -27,7 +27,7 @@ index a945e96d4a2..8770553f123 100644
     %{R*} \
 -   %{!YP,*:%{p|pg:-Y P,%R/usr/lib/libp/" ARCH64_SUBDIR ":%R/lib/" ARCH64_SUBDIR ":%R/usr/lib/" ARCH64_SUBDIR "}	\
 -	   %{!p:%{!pg:-Y P,%R/lib/" ARCH64_SUBDIR ":%R/usr/lib/" ARCH64_SUBDIR "}}}"
-+   %{!YP,*:-Y P,%R/usr/gcc/10/lib/" ARCH64_SUBDIR ":%R/lib/" ARCH64_SUBDIR ":%R/usr/lib/" ARCH64_SUBDIR " -R %R/usr/gcc/10/lib/" ARCH64_SUBDIR "}"
++   %{!YP,*:-Y P,%R/usr/gcc/10/lib/" ARCH64_SUBDIR ":%R/lib/" ARCH64_SUBDIR ":%R/usr/lib/" ARCH64_SUBDIR " -L %R/usr/gcc/10/lib/" ARCH64_SUBDIR " -R %R/usr/gcc/10/lib/" ARCH64_SUBDIR "}"
  
  #undef LINK_ARCH64_SPEC
  #ifndef USE_GLD
