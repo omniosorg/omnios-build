@@ -573,7 +573,7 @@ omnios service/network/network-servers
 omnios service/network/nis
 omnios service/network/ntp r
 omnios service/network/ntpsec
-omnios service/network/slp
+omnios service/network/slp o
 omnios service/network/smtp/dma
 omnios service/network/smtp/sendmail
 omnios service/network/snmp/mibiisa o
