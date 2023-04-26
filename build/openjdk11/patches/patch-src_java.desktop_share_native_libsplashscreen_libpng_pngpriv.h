@@ -2,7 +2,7 @@ $NetBSD$
 
 Fix build on SunOS in C99 mode.
 
-diff -wpruN '--exclude=*.orig' a~/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h a/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h a/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h
 --- a~/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h	1970-01-01 00:00:00
 +++ a/src/java.desktop/share/native/libsplashscreen/libpng/pngpriv.h	1970-01-01 00:00:00
 @@ -63,7 +63,7 @@

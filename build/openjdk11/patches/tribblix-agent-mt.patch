@@ -1,13 +1,13 @@
-diff -wpruN '--exclude=*.orig' a~/make/lib/Lib-jdk.hotspot.agent.gmk a/make/lib/Lib-jdk.hotspot.agent.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/lib/Lib-jdk.hotspot.agent.gmk a/make/lib/Lib-jdk.hotspot.agent.gmk
 --- a~/make/lib/Lib-jdk.hotspot.agent.gmk	1970-01-01 00:00:00
 +++ a/make/lib/Lib-jdk.hotspot.agent.gmk	1970-01-01 00:00:00
 @@ -32,9 +32,6 @@ $(eval $(call IncludeCustomExtension, ho
- ifeq ($(OPENJDK_TARGET_OS), linux)
+ ifeq ($(call isTargetOs, linux), true)
    SA_CFLAGS := -D_FILE_OFFSET_BITS=64
  
--else ifeq ($(OPENJDK_TARGET_OS), solaris)
+-else ifeq ($(call isTargetOs, solaris), true)
 -  SA_LDFLAGS := -mt
 -
- else ifeq ($(OPENJDK_TARGET_OS), macosx)
-   SA_CFLAGS := -Damd64 -D_GNU_SOURCE -mno-omit-leaf-frame-pointer \
+ else ifeq ($(call isTargetOs, macosx), true)
+   SA_CFLAGS := -D_GNU_SOURCE -mno-omit-leaf-frame-pointer \
        -mstack-alignment=16 -fPIC
