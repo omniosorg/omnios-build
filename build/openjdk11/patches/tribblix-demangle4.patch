@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp a/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp a/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp
 --- a~/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp	1970-01-01 00:00:00
 +++ a/src/jdk.hotspot.agent/solaris/native/libsaproc/saproc.cpp	1970-01-01 00:00:00
 @@ -27,7 +27,7 @@
