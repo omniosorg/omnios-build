@@ -2,7 +2,7 @@ $NetBSD$
 
 Support for SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-cflags.m4 a/make/autoconf/flags-cflags.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/flags-cflags.m4 a/make/autoconf/flags-cflags.m4
 --- a~/make/autoconf/flags-cflags.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/flags-cflags.m4	1970-01-01 00:00:00
 @@ -41,8 +41,13 @@ AC_DEFUN([FLAGS_SETUP_SHARED_LIBS],
@@ -19,7 +19,7 @@ diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-cflags.m4 a/make/autoconf/
  
    elif test "x$TOOLCHAIN_TYPE" = xclang; then
      C_FLAG_REORDER=''
-@@ -472,6 +477,7 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_HELPER],
+@@ -467,6 +472,7 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_HELPER],
  
    if test "x$TOOLCHAIN_TYPE" = xgcc; then
      ALWAYS_DEFINES_JVM="-D_GNU_SOURCE -D_REENTRANT"

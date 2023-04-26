@@ -4,7 +4,7 @@ The problem is that we want a guard based on platform, but
 _GNU_SOURCE is a per-toolchain define for the gcc toolchain.
 It "fixes" AIX because that's using the xlc toolchain.
 
-diff -wpruN '--exclude=*.orig' a~/src/hotspot/share/runtime/os.cpp a/src/hotspot/share/runtime/os.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/hotspot/share/runtime/os.cpp a/src/hotspot/share/runtime/os.cpp
 --- a~/src/hotspot/share/runtime/os.cpp	1970-01-01 00:00:00
 +++ a/src/hotspot/share/runtime/os.cpp	1970-01-01 00:00:00
 @@ -154,7 +154,7 @@ char* os::iso8601_time(char* buffer, siz

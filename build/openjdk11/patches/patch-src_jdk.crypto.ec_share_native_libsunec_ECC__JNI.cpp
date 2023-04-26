@@ -2,7 +2,7 @@ $NetBSD$
 
 Support SunOS/gcc. XXX!
 
-diff -wpruN '--exclude=*.orig' a~/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp a/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp a/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp
 --- a~/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp	1970-01-01 00:00:00
 +++ a/src/jdk.crypto.ec/share/native/libsunec/ECC_JNI.cpp	1970-01-01 00:00:00
 @@ -39,6 +39,8 @@
