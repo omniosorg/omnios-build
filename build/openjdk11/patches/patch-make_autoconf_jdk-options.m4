@@ -2,7 +2,7 @@ $NetBSD$
 
 Shell portability.
 
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/jdk-options.m4 a/make/autoconf/jdk-options.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/jdk-options.m4 a/make/autoconf/jdk-options.m4
 --- a~/make/autoconf/jdk-options.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/jdk-options.m4	1970-01-01 00:00:00
 @@ -207,7 +207,7 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_JDK_OPTIONS]

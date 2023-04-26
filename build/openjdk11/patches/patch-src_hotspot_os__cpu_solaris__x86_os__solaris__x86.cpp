@@ -2,7 +2,7 @@ $NetBSD$
 
 Support SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp a/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp a/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp
 --- a~/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp	1970-01-01 00:00:00
 +++ a/src/hotspot/os_cpu/solaris_x86/os_solaris_x86.cpp	1970-01-01 00:00:00
 @@ -296,13 +296,27 @@ frame os::get_sender_for_C_frame(frame*
