@@ -2,7 +2,7 @@ $NetBSD: patch-Makefile.SH,v 1.6 2017/06/06 12:37:50 jperkin Exp $
 
 Fix DTrace object generation.
 
-diff -wpruN '--exclude=*.orig' a~/Makefile.SH a/Makefile.SH
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.SH a/Makefile.SH
 --- a~/Makefile.SH	1970-01-01 00:00:00
 +++ a/Makefile.SH	1970-01-01 00:00:00
 @@ -289,6 +289,7 @@ LNS = $lns
