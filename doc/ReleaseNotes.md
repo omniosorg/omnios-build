@@ -3,9 +3,10 @@
 </a>
 
 # Release Notes for OmniOSce v11 r1510XX
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-Stable Release, TBC of May 20XX
++## $\color{red}{\textit{These are DRAFT release notes}}$
+
+Stable `?and Long-Term-Supported (LTS)?` Release, TBC of May/Nov 20XX
 
 `uname -a` shows `omnios-r1510XX-XXX`
 
@@ -45,17 +46,24 @@ table at <https://omnios.org/upgrade>.
 
 ### Deprecated features
 
-* OpenSSH in OmniOS no longer provides support for GSSAPI key exchange.
-  This was removed in release r151038.
+* The `grub` boot loader is deprecated and has been removed in the r151048
+  release. It will be supported in r151046 for the full LTS time frame, up to
+  May 2026. If you have not yet migrated to the new boot loader, and would like
+  assistance, please
+  [get in touch](https://omnios.org/about/contact).
+
+* OpenSSL 1.0.x and 1.1.1 are deprecated and reached end-of-support at the end
+  of 2019 and in September 2023 respectively.
+  OmniOS has transitioned to OpenSSL 3 and still ships older versions for
+  backwards compatibility, but these are maintained solely on a best-efforts
+  basis. If possible, recompile software to use OpenSSL 3.
 
 * Python 2 is now end-of-life and will not receive any further updates. The
   `python-27` package is still available for backwards compatibility but will
   be maintained only on a best-efforts basis.
 
-* OpenSSL 1.0.x is deprecated and reached end-of-support at the end of 2019.
-  OmniOS has transitioned to OpenSSL 3 and still ships OpenSSL 1.1.1 for
-  compatibility. The OpenSSL 1.0.2 libraries are also retained for
-  backwards compatibility but are maintained solely on a best-efforts basis.
+* OpenSSH in OmniOS no longer provides support for GSSAPI key exchange.
+  This was removed in release r151038.
 
 ### Package changes
 
