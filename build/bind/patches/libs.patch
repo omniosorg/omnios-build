@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/m4/ax_pthread.m4 a/m4/ax_pthread.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/m4/ax_pthread.m4 a/m4/ax_pthread.m4
 --- a~/m4/ax_pthread.m4	1970-01-01 00:00:00
 +++ a/m4/ax_pthread.m4	1970-01-01 00:00:00
 @@ -204,7 +204,7 @@ case $target_os in
