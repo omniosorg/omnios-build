@@ -603,7 +603,7 @@ omnios source/demo/mdb-examples
 omnios source/demo/system
 omnios source/network/pppdump o
 omnios source/security/tcp-wrapper o
-omnios source/system/grub
+omnios source/system/grub l
 omnios storage/avs o
 omnios storage/avs/point-in-time-copy o
 omnios storage/avs/remote-mirror o
@@ -617,7 +617,7 @@ omnios system/accounting/legacy
 omnios system/bhyve
 omnios system/bhyve/firmware
 omnios system/bhyve/tests
-omnios system/boot/grub
+omnios system/boot/grub l
 omnios system/boot/loader
 omnios system/boot/network
 omnios system/boot/real-mode
