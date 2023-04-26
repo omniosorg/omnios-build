@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/make/data/fontconfig/solaris.fontconfig.properties a/make/data/fontconfig/solaris.fontconfig.properties
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/data/fontconfig/solaris.fontconfig.properties a/make/data/fontconfig/solaris.fontconfig.properties
 --- a~/make/data/fontconfig/solaris.fontconfig.properties	1970-01-01 00:00:00
 +++ a/make/data/fontconfig/solaris.fontconfig.properties	1970-01-01 00:00:00
 @@ -433,18 +433,18 @@ sequence.fallback=latin-1,latin-2,latin-
