@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
 --- a~/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
-@@ -148,6 +148,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+@@ -146,6 +146,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
  
    # Setup LDFLAGS for linking executables
    if test "x$TOOLCHAIN_TYPE" = xgcc; then
@@ -9,8 +9,8 @@ diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf
      EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -Wl,--allow-shlib-undefined"
      # Enabling pie on 32 bit builds prevents the JVM from allocating a continuous
      # java heap.
-@@ -155,6 +156,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
-       EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -pie"
+@@ -159,6 +160,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+       REPRODUCIBLE_LDFLAGS="-experimental:deterministic"
      fi
    fi
 +  fi

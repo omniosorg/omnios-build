@@ -2,7 +2,7 @@ $NetBSD$
 
 Ensure java libraries can be found during build.
 
-diff -wpruN '--exclude=*.orig' a~/make/GenerateLinkOptData.gmk a/make/GenerateLinkOptData.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/GenerateLinkOptData.gmk a/make/GenerateLinkOptData.gmk
 --- a~/make/GenerateLinkOptData.gmk	1970-01-01 00:00:00
 +++ a/make/GenerateLinkOptData.gmk	1970-01-01 00:00:00
 @@ -61,6 +61,7 @@ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/

@@ -67,17 +67,17 @@
 | library/zlib				| 1.2.13		| https://www.zlib.net/
 | meta/data/microcode/amd		| 20230210		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230214		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.13		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.14		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.3p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.7.4.4		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.1.3			| https://iperf.fr/iperf-download.php#source
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
-| runtime/java/openjdk11		| 11.0.18+10		| https://github.com/openjdk/jdk11u/tags
-| runtime/java/openjdk17		| 17.0.6+10		| https://github.com/openjdk/jdk17u/tags
-| runtime/java/openjdk8			| 1.8.362-09		| https://github.com/openjdk/jdk8u/tags
-| runtime/perl				| 5.36.0		| https://www.cpan.org/src/README.html
+| runtime/java/openjdk11		| 11.0.19+7		| https://github.com/openjdk/jdk11u/tags
+| runtime/java/openjdk17		| 17.0.7+7		| https://github.com/openjdk/jdk17u/tags
+| runtime/java/openjdk8			| 1.8.372-07		| https://github.com/openjdk/jdk8u/tags
+| runtime/perl				| 5.36.1		| https://www.cpan.org/src/README.html
 | runtime/python-27			| 2.7.18		| https://www.python.org/downloads/source/
 | runtime/python-39			| 3.9.16		| https://www.python.org/downloads/source/
 | runtime/python-310			| 3.10.11		| https://www.python.org/downloads/source/

@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/java.base/share/conf/security/java.security a/src/java.base/share/conf/security/java.security
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/java.base/share/conf/security/java.security a/src/java.base/share/conf/security/java.security
 --- a~/src/java.base/share/conf/security/java.security	1970-01-01 00:00:00
 +++ a/src/java.base/share/conf/security/java.security	1970-01-01 00:00:00
 @@ -62,7 +62,6 @@

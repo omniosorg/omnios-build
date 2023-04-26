@@ -2820,5 +2820,5 @@ t/porting/ss_dup ................................................. ok
 t/porting/test_bootstrap ......................................... ok
 t/porting/utils .................................................. skipped
 All tests successful.
-Elapsed: 1121 sec
-u=11.44  s=7.89  cu=642.32  cs=115.08  scripts=2613  tests=1218402
+Elapsed: 1202 sec
+u=10.42  s=7.98  cu=665.58  cs=132.07  scripts=2613  tests=1218397
