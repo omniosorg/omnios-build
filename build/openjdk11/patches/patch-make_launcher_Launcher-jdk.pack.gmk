@@ -2,7 +2,7 @@ $NetBSD$
 
 Support for SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/make/launcher/Launcher-jdk.pack.gmk a/make/launcher/Launcher-jdk.pack.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/launcher/Launcher-jdk.pack.gmk a/make/launcher/Launcher-jdk.pack.gmk
 --- a~/make/launcher/Launcher-jdk.pack.gmk	1970-01-01 00:00:00
 +++ a/make/launcher/Launcher-jdk.pack.gmk	1970-01-01 00:00:00
 @@ -43,7 +43,9 @@ $(eval $(call SetupBuildLauncher, pack20
@@ -13,5 +13,5 @@ diff -wpruN '--exclude=*.orig' a~/make/launcher/Launcher-jdk.pack.gmk a/make/lau
    LDFLAGS_JDKEXE += -Wl,--exclude-libs,ALL
 + endif
  else ifeq ($(TOOLCHAIN_TYPE), clang)
-   ifneq ($(OPENJDK_TARGET_OS), macosx)
+   ifeq ($(call isTargetOs, macosx), false)
      CXXFLAGS_JDKEXE += -fvisibility=hidden

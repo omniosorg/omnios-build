@@ -2,20 +2,20 @@ $NetBSD$
 
 Support SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/make/lib/Lib-jdk.crypto.ucrypto.gmk a/make/lib/Lib-jdk.crypto.ucrypto.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/lib/Lib-jdk.crypto.ucrypto.gmk a/make/lib/Lib-jdk.crypto.ucrypto.gmk
 --- a~/make/lib/Lib-jdk.crypto.ucrypto.gmk	1970-01-01 00:00:00
 +++ a/make/lib/Lib-jdk.crypto.ucrypto.gmk	1970-01-01 00:00:00
 @@ -27,7 +27,8 @@ include LibCommon.gmk
  
  ################################################################################
  
--ifeq ($(OPENJDK_TARGET_OS), solaris)
-+ifeq ($(OPENJDK_TARGET_OS), notsolaris)
+-ifeq ($(call isTargetOs, solaris), true)
++ifeq ($(call isTargetOs, solaris), false)
 + ifeq ($(TOOLCHAIN_TYPE), solstudio)
  
    $(eval $(call SetupJdkLibrary, BUILD_LIBJ2UCRYPTO, \
        NAME := j2ucrypto, \
-@@ -42,5 +43,6 @@ ifeq ($(OPENJDK_TARGET_OS), solaris)
+@@ -42,5 +43,6 @@ ifeq ($(call isTargetOs, solaris), true)
    TARGETS += $(BUILD_LIBJ2UCRYPTO)
  
  endif
