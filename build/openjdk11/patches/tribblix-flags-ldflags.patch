@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
 --- a~/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
-@@ -72,9 +72,12 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+@@ -70,9 +70,12 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
      fi
  
      # Add -z defs, to forbid undefined symbols in object files.

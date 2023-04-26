@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/make/launcher/Launcher-jdk.pack.gmk a/make/launcher/Launcher-jdk.pack.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/launcher/Launcher-jdk.pack.gmk a/make/launcher/Launcher-jdk.pack.gmk
 --- a~/make/launcher/Launcher-jdk.pack.gmk	1970-01-01 00:00:00
 +++ a/make/launcher/Launcher-jdk.pack.gmk	1970-01-01 00:00:00
 @@ -86,7 +86,7 @@ $(eval $(call SetupJdkExecutable, BUILD_

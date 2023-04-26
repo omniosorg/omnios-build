@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/make/launcher/LauncherCommon.gmk a/make/launcher/LauncherCommon.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/launcher/LauncherCommon.gmk a/make/launcher/LauncherCommon.gmk
 --- a~/make/launcher/LauncherCommon.gmk	1970-01-01 00:00:00
 +++ a/make/launcher/LauncherCommon.gmk	1970-01-01 00:00:00
 @@ -178,7 +178,7 @@ define SetupBuildLauncherBody

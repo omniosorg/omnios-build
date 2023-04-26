@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
 --- a~/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
-@@ -83,7 +83,11 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+@@ -81,7 +81,11 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
        BASIC_LDFLAGS="$BASIC_LDFLAGS -Wl,--gc-sections"
      fi
  

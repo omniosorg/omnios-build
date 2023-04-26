@@ -2,7 +2,7 @@ $NetBSD$
 
 Support SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/make/autoconf/libraries.m4 a/make/autoconf/libraries.m4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/libraries.m4 a/make/autoconf/libraries.m4
 --- a~/make/autoconf/libraries.m4	1970-01-01 00:00:00
 +++ a/make/autoconf/libraries.m4	1970-01-01 00:00:00
 @@ -204,6 +204,7 @@ AC_DEFUN_ONCE([LIB_SETUP_MISC_LIBS],

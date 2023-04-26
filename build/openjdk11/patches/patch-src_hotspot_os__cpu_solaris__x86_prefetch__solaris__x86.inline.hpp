@@ -2,7 +2,7 @@ $NetBSD$
 
 Support SunOS/gcc.
 
-diff -wpruN '--exclude=*.orig' a~/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp a/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp a/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp
 --- a~/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp	1970-01-01 00:00:00
 +++ a/src/hotspot/os_cpu/solaris_x86/prefetch_solaris_x86.inline.hpp	1970-01-01 00:00:00
 @@ -34,14 +34,22 @@ extern "C" {
