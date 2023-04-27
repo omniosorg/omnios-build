@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151044
 
+## r151044y (2023-04-27)
+Weekly release for w/c 24th of April 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* `git` has been updated to version 2.37.7, fixing
+  [CVE-2023-25652](https://nvd.nist.gov/vuln/detail/CVE-2023-25652),
+  [CVE-2023-25815](https://nvd.nist.gov/vuln/detail/CVE-2023-25815),
+  [CVE-2023-29007](https://nvd.nist.gov/vuln/detail/CVE-2023-29007).
+
+* The `openjdk` packages have been updated to versions 17.0.7+7, 11.0.19+7
+  and 1.8.372-07.
+
+### Other Changes
+
+* Perl has been updated to version 5.36.1
+
+<br>
+
+---
+
 ## r151044x (2023-04-21)
 Weekly release for w/c 17th of April 2023.
 > This update requires a reboot
@@ -16,7 +38,8 @@ Weekly release for w/c 17th of April 2023.
 
 * python 3.10 has been updated to 3.10.11.
 
-* `pkg` has been patched, fixing [CVE-2023-21928](https://nvd.nist.gov/vuln/detail/CVE-2023-21928).
+* `pkg` has been patched, fixing
+  [CVE-2023-21928](https://nvd.nist.gov/vuln/detail/CVE-2023-21928).
 
 ### Other Changes
 
