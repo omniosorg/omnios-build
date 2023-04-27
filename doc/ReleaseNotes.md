@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038cz (2023-04-27)
+Weekly release for w/c 24th of April 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* `git` has been updated to version 2.31.8, fixing
+  [CVE-2023-25652](https://nvd.nist.gov/vuln/detail/CVE-2023-25652),
+  [CVE-2023-25815](https://nvd.nist.gov/vuln/detail/CVE-2023-25815),
+  [CVE-2023-29007](https://nvd.nist.gov/vuln/detail/CVE-2023-29007).
+
+* The `openjdk` packages have been updated to versions 11.0.19+7 and 1.8.372-07.
+
+<br>
+
+---
+
 ## r151038cy (2023-04-21)
 Weekly release for w/c 17th of April 2023.
 > This update requires a reboot
