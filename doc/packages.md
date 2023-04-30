@@ -20,7 +20,6 @@
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc7			| 7.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc10			| 10.4			| https://ftp.gnu.org/gnu/gcc/
-| developer/gcc11			| 11.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc12			| 12.2			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc13			| 13.1			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases

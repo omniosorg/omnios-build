@@ -53,7 +53,6 @@
 #EXPENSIVE="
 #	developer/gcc7
 #	developer/gcc10
-#	developer/gcc11
 #	developer/gcc12
 #	developer/gcc13
 #	developer/java/openjdk8
