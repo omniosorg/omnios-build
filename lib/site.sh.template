@@ -55,6 +55,7 @@
 #	developer/gcc10
 #	developer/gcc11
 #	developer/gcc12
+#	developer/gcc13
 #	developer/java/openjdk8
 #	runtime/java/openjdk8
 #	runtime/java/openjdk11
