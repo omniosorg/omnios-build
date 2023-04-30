@@ -1,3 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-310@1.5.2,$(SUNOSVER)-$(PVER)
-set name=pkg.obsolete value=true
-set name=publisher value=$(PKGPUBEMAIL)

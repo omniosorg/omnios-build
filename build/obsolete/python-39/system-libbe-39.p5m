@@ -1,3 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/system/library/python/libbe-39@0.5.11,$(SUNOSVER)-$(PVER)
-set name=publisher value=$(PKGPUBEMAIL)
-set name=pkg.obsolete value=true

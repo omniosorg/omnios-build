@@ -1,5 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/runtime/python-39@3.9.99,$(SUNOSVER)-$(PVER)
-set name=pkg.summary value="Python 3.9"
-set name=pkg.renamed value=true
-set name=publisher value=$(PKGPUBEMAIL)
-depend type=require fmri=pkg:/runtime/python-310

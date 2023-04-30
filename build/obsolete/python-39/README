@@ -1,5 +1,0 @@
-The Python 3.9 packages were made obsolete in r151041.
-
-These obsolete package entries can be removed in the r151047 cycle,
-after r151046 (next LTS) has been released.
-
