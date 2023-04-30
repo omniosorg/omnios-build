@@ -44,7 +44,7 @@ ARCH=${TRIPLETS[amd64]}
 # building and putting the 32/64 objects in the right places. We also want
 # to unset all of the flags that we usually pass for a 64-bit object so that
 # gcc can properly create the multilib targets.
-CONFIGURE_OPTS[amd64]="$CONFIGURE_OPTS[i386]"
+CONFIGURE_OPTS[amd64]="${CONFIGURE_OPTS[i386]}"
 clear_archflags
 
 # Use bash for all shells - some corruption occurs in libstdc++-v3/config.status
