@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151042
 
+## r151042az (2023-04-27)
+Weekly release for w/c 01st of May 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+### Other Changes
+
+<br>
+
+---
+
 ## r151042ay (2023-04-21)
 Weekly release for w/c 17th of April 2023.
 > This update requires a reboot
