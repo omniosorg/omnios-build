@@ -64,7 +64,7 @@ LC_TIME=C;      export LC_TIME
 SUNOSVER=`uname -r`
 
 # Default branch
-RELVER=151045
+RELVER=151047
 DASHREV=0
 PVER=$RELVER.$DASHREV
 
