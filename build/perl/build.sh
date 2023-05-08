@@ -24,7 +24,7 @@ MAJVER=${VER%.*}
 SUMMARY="Perl $MAJVER Programming Language"
 DESC="A highly capable, feature-rich programming language"
 
-CROSSVER=1.4
+CROSSVER=1.4.1
 
 set_arch 64
 CTF_FLAGS+=" -s"
