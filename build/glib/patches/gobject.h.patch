@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/gobject/gobject.h a/gobject/gobject.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/gobject/gobject.h a/gobject/gobject.h
 --- a~/gobject/gobject.h	1970-01-01 00:00:00
 +++ a/gobject/gobject.h	1970-01-01 00:00:00
 @@ -761,7 +761,7 @@ static inline gboolean
