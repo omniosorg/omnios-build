@@ -96,7 +96,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.14.6		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.112			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/pcap			| 1.10.3		| http://www.tcpdump.org/#latest-releases
+| system/library/pcap			| 1.10.4		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 23.1.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.3			| https://github.com/net-snmp/net-snmp/tags
