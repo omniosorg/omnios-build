@@ -44,8 +44,8 @@ omnios developer/dtrace
 omnios developer/dtrace/toolkit
 omnios developer/exuberant-ctags
 omnios developer/gcc10
-omnios developer/gcc11
 omnios developer/gcc12
+omnios developer/gcc13
 omnios developer/gcc7
 omnios developer/gnu-binutils
 omnios developer/illumos-closed

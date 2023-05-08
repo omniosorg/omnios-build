@@ -13,14 +13,14 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
-PKG=developer/gcc10
+PKG=developer/gcc13
 PROG=gcc
-VER=10.4.0
-ILVER=il-1
+VER=13.1
+ILVER=il-0
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"
 
@@ -54,7 +54,7 @@ export MAKESHELL=$SHELL
 # Place the GNU utilities first in the path
 export PATH=$GNUBIN:$PATH
 
-LANGUAGES="c,c++,fortran,lto,go,objc"
+LANGUAGES="c,c++,fortran,lto,objc"
 
 RUN_DEPENDS_IPS="
     developer/linker
@@ -63,7 +63,6 @@ RUN_DEPENDS_IPS="
     system/library/c-runtime
     system/library/g++-runtime
     system/library/gcc-runtime
-    system/library/gccgo-runtime
     system/library/gfortran-runtime
     system/library/gobjc-runtime
 "
@@ -87,7 +86,6 @@ HARDLINK_TARGETS="
     ${PREFIX/#\/}/bin/$ARCH-c++
     ${PREFIX/#\/}/bin/$ARCH-g++
     ${PREFIX/#\/}/bin/$ARCH-gfortran
-    ${PREFIX/#\/}/bin/$ARCH-gccgo
 "
 
 PKGDIFF_HELPER="
@@ -124,6 +122,13 @@ CONFIGURE_OPTS[WS]="
 "
 LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
+
+# gcc uses posix_fallocate() to extend temporary files on disk.
+# Although OmniOS has the posix_fallocate() function, ZFS does not support it.
+# Even though the function properly returns EINVAL, gcc does not handle that
+# and fall back to something else (like ftruncate()).
+# Filed upstream at https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100358
+export ac_cv_func_posix_fallocate=no
 
 # If the selected compiler is the same version as the one we're building
 # then the three-stage bootstrap is unecessary and some build time can be
@@ -164,15 +169,14 @@ tests() {
     ulimit -Ss 16385
     # Lots of tests create core files via assertions
     ulimit -c 0
+    # Running tests in parallel leads to inconsistent results
+    MAKE_TESTSUITE_ARGS+=" -j$MJOBS"
     # This causes the testsuite to be run three times, once with -m32, once
     # with -m64 and once with -m64 and -msave-args
     MAKE_TESTSUITE_ARGS+=" RUNTESTFLAGS=--target_board=unix/\{-m32,-m64,-m64/-msave-args\}"
-    # Limit the number of parallel tests. Too many seems to produce
-    # inconsistent results.
-    MAKE_TESTSUITE_ARGS+=" -j8"
     # If not in batch mode, we've already asked whether this should be run
     # above, so set BATCH
-    BATCH=1 run_testsuite "check check-target" "" build.log.testsuite
+    BATCH=1 run_testsuite "-k check" "" build.log.testsuite
     pushd $TMPDIR/$BUILDDIR >/dev/null
     # Sort the test results in the individual summary files
     find $TMPDIR/$BUILDDIR -name '*.sum' -type f | while read s; do
