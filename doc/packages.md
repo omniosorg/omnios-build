@@ -65,7 +65,7 @@
 | library/unixodbc			| 2.3.11		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.1			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.2.13		| https://www.zlib.net/
-| meta/data/microcode/amd		| 20230210		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20230418		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230214		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.14		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.3p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
@@ -101,7 +101,7 @@
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.3			| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
-| system/pciutils			| 3.10.0			| https://www.kernel.org/pub/software/utils/pciutils/
+| system/pciutils			| 3.10.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2304.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/fio			| 3.34			| https://github.com/axboe/fio/tags
@@ -136,7 +136,7 @@
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
 | library/python-3/meson-311		| 1.0.2			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.8.12			| https://github.com/ijl/orjson/releases
+| library/python-3/orjson-311		| 3.8.12		| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.1.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
