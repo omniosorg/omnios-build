@@ -1,4 +1,4 @@
-From 25bd46ce7ecf20e1ea44a002aeb13fc7c00dbd42 Mon Sep 17 00:00:00 2001
+From fa44ef9d6bb7dc67efaa6f04cd0b242f10d3975c Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sat, 23 Jan 2016 22:14:56 -0500
 Subject: i386: Save integer-passed arguments to the stack, to
@@ -44,7 +44,7 @@ Originally implemented in:
  create mode 100644 gcc/testsuite/gcc.target/i386/msave-args-push.c
 
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index 706be5a60b8..c6092685585 100644
+index 099cec4b610..a26cb878b68 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
 @@ -2460,6 +2460,9 @@ ix86_option_override_internal (bool main_args_p,
@@ -58,7 +58,7 @@ index 706be5a60b8..c6092685585 100644
       PREFERRED_STACK_BOUNDARY_DEFAULT.  */
    ix86_preferred_stack_boundary = PREFERRED_STACK_BOUNDARY_DEFAULT;
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 40c34b58f6b..26d10e06ce8 100644
+index ce156c3be3a..a3e4787dfb8 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -421,6 +421,9 @@ static bool i386_asm_output_addr_const_extra (FILE *, rtx);
@@ -131,7 +131,7 @@ index 40c34b58f6b..26d10e06ce8 100644
        || (TARGET_64BIT && to_allocate >= HOST_WIDE_INT_C (0x80000000))
         /* If static stack checking is enabled and done with probes,
  	  the registers need to be saved before allocating the frame.  */
-@@ -6831,7 +6846,11 @@ ix86_compute_frame_layout (void)
+@@ -6833,7 +6848,11 @@ ix86_compute_frame_layout (void)
      {
        frame->red_zone_size = to_allocate;
        if (frame->save_regs_using_mov)
@@ -143,7 +143,7 @@ index 40c34b58f6b..26d10e06ce8 100644
        if (frame->red_zone_size > RED_ZONE_SIZE - RED_ZONE_RESERVE)
  	frame->red_zone_size = RED_ZONE_SIZE - RED_ZONE_RESERVE;
      }
-@@ -6889,6 +6908,22 @@ ix86_compute_frame_layout (void)
+@@ -6891,6 +6910,22 @@ ix86_compute_frame_layout (void)
        else
  	frame->hard_frame_pointer_offset = frame->hfp_save_offset;
      }
@@ -166,7 +166,7 @@ index 40c34b58f6b..26d10e06ce8 100644
  }
  
  /* This is semi-inlined memory_address_length, but simplified
-@@ -7104,6 +7139,23 @@ ix86_emit_save_regs (void)
+@@ -7106,6 +7141,23 @@ ix86_emit_save_regs (void)
    unsigned int regno;
    rtx_insn *insn;
  
@@ -190,7 +190,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    for (regno = FIRST_PSEUDO_REGISTER - 1; regno-- > 0; )
      if (GENERAL_REGNO_P (regno) && ix86_save_reg (regno, true, true))
        {
-@@ -7190,9 +7242,30 @@ ix86_emit_save_reg_using_mov (machine_mode mode, unsigned int regno,
+@@ -7192,9 +7244,30 @@ ix86_emit_save_reg_using_mov (machine_mode mode, unsigned int regno,
  /* Emit code to save registers using MOV insns.
     First register is stored at CFA - CFA_OFFSET.  */
  static void
@@ -222,7 +222,7 @@ index 40c34b58f6b..26d10e06ce8 100644
  
    for (regno = 0; regno < FIRST_PSEUDO_REGISTER; regno++)
      if (GENERAL_REGNO_P (regno) && ix86_save_reg (regno, true, true))
-@@ -8547,7 +8620,7 @@ ix86_expand_prologue (void)
+@@ -8549,7 +8622,7 @@ ix86_expand_prologue (void)
  	}
      }
  
@@ -231,7 +231,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    sse_registers_saved = (frame.nsseregs == 0);
    save_stub_call_needed = (m->call_ms2sysv);
    gcc_assert (sse_registers_saved || !save_stub_call_needed);
-@@ -8589,7 +8662,7 @@ ix86_expand_prologue (void)
+@@ -8591,7 +8664,7 @@ ix86_expand_prologue (void)
  	       && (! TARGET_STACK_PROBE
  		   || frame.stack_pointer_offset < CHECK_STACK_LIMIT))
  	{
@@ -240,7 +240,7 @@ index 40c34b58f6b..26d10e06ce8 100644
  	  cfun->machine->red_zone_used = true;
  	  int_registers_saved = true;
  	}
-@@ -8886,7 +8959,7 @@ ix86_expand_prologue (void)
+@@ -8891,7 +8964,7 @@ ix86_expand_prologue (void)
      }
  
    if (!int_registers_saved)
@@ -249,7 +249,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    if (!sse_registers_saved)
      ix86_emit_save_sse_regs_using_mov (frame.sse_reg_save_offset);
    else if (save_stub_call_needed)
-@@ -8921,6 +8994,7 @@ ix86_expand_prologue (void)
+@@ -8926,6 +8999,7 @@ ix86_expand_prologue (void)
       relative to the value of the stack pointer at the end of the function
       prologue, and moving instructions that access redzone area via frame
       pointer inside push sequence violates this assumption.  */
@@ -257,7 +257,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    if (frame_pointer_needed && frame.red_zone_size)
      emit_insn (gen_memory_blockage ());
  
-@@ -9305,6 +9379,7 @@ ix86_expand_epilogue (int style)
+@@ -9310,6 +9384,7 @@ ix86_expand_epilogue (int style)
  
    /* See the comment about red zone and frame
       pointer usage in ix86_expand_prologue.  */
@@ -265,7 +265,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    if (frame_pointer_needed && frame.red_zone_size)
      emit_insn (gen_memory_blockage ());
  
-@@ -9544,6 +9619,35 @@ ix86_expand_epilogue (int style)
+@@ -9549,6 +9624,35 @@ ix86_expand_epilogue (int style)
        ix86_emit_restore_regs_using_pop ();
      }
  
@@ -301,7 +301,7 @@ index 40c34b58f6b..26d10e06ce8 100644
    /* If we used a stack pointer and haven't already got rid of it,
       then do so now.  */
    if (m->fs.fp_valid)
-@@ -10669,6 +10773,18 @@ ix86_cannot_force_const_mem (machine_mode mode, rtx x)
+@@ -10674,6 +10778,18 @@ ix86_cannot_force_const_mem (machine_mode mode, rtx x)
    return !ix86_legitimate_constant_p (mode, x);
  }
  
@@ -321,10 +321,10 @@ index 40c34b58f6b..26d10e06ce8 100644
      otherwise zero.  */
  
 diff --git a/gcc/config/i386/i386.h b/gcc/config/i386/i386.h
-index 363082ba47b..4de31b8a1be 100644
+index fce0b3564a8..f92a00f4a3d 100644
 --- a/gcc/config/i386/i386.h
 +++ b/gcc/config/i386/i386.h
-@@ -2493,6 +2493,11 @@ enum avx_u128_state
+@@ -2511,6 +2511,11 @@ enum avx_u128_state
  
     saved frame pointer			if frame_pointer_needed
  					<- HARD_FRAME_POINTER
@@ -336,7 +336,7 @@ index 363082ba47b..4de31b8a1be 100644
     [saved regs]
  					<- reg_save_offset
     [padding0]
-@@ -2526,6 +2531,7 @@ enum avx_u128_state
+@@ -2544,6 +2549,7 @@ enum avx_u128_state
    */
  struct GTY(()) ix86_frame
  {
@@ -344,7 +344,7 @@ index 363082ba47b..4de31b8a1be 100644
    int nsseregs;
    int nregs;
    int va_arg_size;
-@@ -2537,6 +2543,7 @@ struct GTY(()) ix86_frame
+@@ -2555,6 +2561,7 @@ struct GTY(()) ix86_frame
    HOST_WIDE_INT hard_frame_pointer_offset;
    HOST_WIDE_INT stack_pointer_offset;
    HOST_WIDE_INT hfp_save_offset;
@@ -353,7 +353,7 @@ index 363082ba47b..4de31b8a1be 100644
    HOST_WIDE_INT stack_realign_allocate;
    HOST_WIDE_INT stack_realign_offset;
 diff --git a/gcc/config/i386/i386.opt b/gcc/config/i386/i386.opt
-index a6b0e28f238..9869e2c606c 100644
+index a3675e515bc..62944030337 100644
 --- a/gcc/config/i386/i386.opt
 +++ b/gcc/config/i386/i386.opt
 @@ -518,6 +518,16 @@ mtls-direct-seg-refs
@@ -374,10 +374,10 @@ index a6b0e28f238..9869e2c606c 100644
  Target RejectNegative Negative(mtune=) Joined Var(ix86_tune_string)
  Schedule code for given CPU.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 4fd745b1c22..13af8925504 100644
+index f003f8ce480..6529ed54965 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
-@@ -19043,6 +19043,10 @@ addresses and sizes of sections.  Programs can be statically linked only.  The
+@@ -19050,6 +19050,10 @@ addresses and sizes of sections.  Programs can be statically linked only.  The
  @option{-mcmodel=large} option is incompatible with @option{-mabi=ilp32},
  @option{-fpic} and @option{-fPIC}.
  
@@ -389,10 +389,10 @@ index 4fd745b1c22..13af8925504 100644
  @itemx -mno-strict-align
  @opindex mstrict-align
 diff --git a/gcc/dwarf2out.cc b/gcc/dwarf2out.cc
-index c333c595026..dd933ae2e82 100644
+index 0a5c081d85e..6c1d8c57939 100644
 --- a/gcc/dwarf2out.cc
 +++ b/gcc/dwarf2out.cc
-@@ -24035,6 +24035,11 @@ gen_subprogram_die (tree decl, dw_die_ref context_die)
+@@ -24036,6 +24036,11 @@ gen_subprogram_die (tree decl, dw_die_ref context_die)
      /* Add the calling convention attribute if requested.  */
      add_calling_convention_attribute (subr_die, decl);
  

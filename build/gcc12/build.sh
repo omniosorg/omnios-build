@@ -13,13 +13,13 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PKG=developer/gcc12
 PROG=gcc
-VER=12.2.0
+VER=12.3.0
 ILVER=il-0
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"

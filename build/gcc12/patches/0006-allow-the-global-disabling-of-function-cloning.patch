@@ -1,4 +1,4 @@
-From 45c99a852643750605acd7168df5d13989285d92 Mon Sep 17 00:00:00 2001
+From 41bd15156e4b103ba00aeeea8665a262e341134c Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sun, 30 Sep 2012 16:44:14 -0400
 Subject: allow the global disabling of function cloning
@@ -54,7 +54,7 @@ index 314c1c6a478..9dad568d6e6 100644
  Common Var(flag_combine_stack_adjustments) Optimization
  Looks for opportunities to reduce stack adjustments and stack references.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 4771dbdabc6..4fd745b1c22 100644
+index 348df5caf1d..f003f8ce480 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -509,6 +509,7 @@ Objective-C and Objective-C++ Dialects}.
@@ -65,7 +65,7 @@ index 4771dbdabc6..4fd745b1c22 100644
  -fcombine-stack-adjustments  -fconserve-stack @gol
  -fcompare-elim  -fcprop-registers  -fcrossjumping @gol
  -fcse-follow-jumps  -fcse-skip-blocks  -fcx-fortran-rules @gol
-@@ -11805,6 +11806,15 @@ and then tries to find ways to combine them.
+@@ -11812,6 +11813,15 @@ and then tries to find ways to combine them.
  
  Enabled by default at @option{-O1} and higher.
  

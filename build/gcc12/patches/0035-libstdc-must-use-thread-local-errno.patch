@@ -1,4 +1,4 @@
-From cb0509ab4b84268932ea8307285f41db4e2f5e68 Mon Sep 17 00:00:00 2001
+From f295fca507f6faa6b690befc4d7c14f632656cb6 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 31 Aug 2021 21:40:48 +0000
 Subject: libstdc++ must use thread-local errno
@@ -9,7 +9,7 @@ Subject: libstdc++ must use thread-local errno
  2 files changed, 11 insertions(+)
 
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index eac60392121..a7a7ad01836 100755
+index c07e2756974..41564ad22b3 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -78308,6 +78308,12 @@ done

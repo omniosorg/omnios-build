@@ -1,4 +1,4 @@
-From afcd0d85390a154ac57960f4c281bf89d8e6e34e Mon Sep 17 00:00:00 2001
+From 2fcc96443510231eea1da5ac5606db14118a36a9 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 00:56:45 +0000
 Subject: i386: don't assert the FP is valid during epilogue
@@ -15,10 +15,10 @@ While here, make the code more readable and conventional.
  1 file changed, 32 insertions(+), 36 deletions(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 26d10e06ce8..dc5bd9ddb91 100644
+index a3e4787dfb8..7f58b53d566 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
-@@ -7137,21 +7137,21 @@ static void
+@@ -7139,21 +7139,21 @@ static void
  ix86_emit_save_regs (void)
  {
    unsigned int regno;
@@ -43,7 +43,7 @@ index 26d10e06ce8..dc5bd9ddb91 100644
  	pro_epilogue_adjust_stack (stack_pointer_rtx, stack_pointer_rtx,
  				   GEN_INT (-UNITS_PER_WORD), -1, false);
      }
-@@ -7242,22 +7242,21 @@ ix86_emit_save_reg_using_mov (machine_mode mode, unsigned int regno,
+@@ -7244,22 +7244,21 @@ ix86_emit_save_reg_using_mov (machine_mode mode, unsigned int regno,
  /* Emit code to save registers using MOV insns.
     First register is stored at CFA - CFA_OFFSET.  */
  static void
@@ -70,7 +70,7 @@ index 26d10e06ce8..dc5bd9ddb91 100644
  	{
  	  regno = x86_64_int_parameter_registers[i];
  	  ix86_emit_save_reg_using_mov(word_mode, regno, cfa_offset);
-@@ -7265,7 +7264,7 @@ ix86_emit_save_regs_using_mov (const struct ix86_frame *frame)
+@@ -7267,7 +7266,7 @@ ix86_emit_save_regs_using_mov (const struct ix86_frame *frame)
  	}
      }
  
@@ -79,7 +79,7 @@ index 26d10e06ce8..dc5bd9ddb91 100644
  
    for (regno = 0; regno < FIRST_PSEUDO_REGISTER; regno++)
      if (GENERAL_REGNO_P (regno) && ix86_save_reg (regno, true, true))
-@@ -8662,7 +8661,7 @@ ix86_expand_prologue (void)
+@@ -8664,7 +8663,7 @@ ix86_expand_prologue (void)
  	       && (! TARGET_STACK_PROBE
  		   || frame.stack_pointer_offset < CHECK_STACK_LIMIT))
  	{
@@ -88,7 +88,7 @@ index 26d10e06ce8..dc5bd9ddb91 100644
  	  cfun->machine->red_zone_used = true;
  	  int_registers_saved = true;
  	}
-@@ -8959,7 +8958,7 @@ ix86_expand_prologue (void)
+@@ -8964,7 +8963,7 @@ ix86_expand_prologue (void)
      }
  
    if (!int_registers_saved)
@@ -97,7 +97,7 @@ index 26d10e06ce8..dc5bd9ddb91 100644
    if (!sse_registers_saved)
      ix86_emit_save_sse_regs_using_mov (frame.sse_reg_save_offset);
    else if (save_stub_call_needed)
-@@ -9619,33 +9618,30 @@ ix86_expand_epilogue (int style)
+@@ -9624,33 +9623,30 @@ ix86_expand_epilogue (int style)
        ix86_emit_restore_regs_using_pop ();
      }
  
