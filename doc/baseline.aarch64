@@ -17,6 +17,7 @@ omnios consolidation/l10n/l10n-incorporation
 omnios consolidation/man/man-incorporation o
 omnios consolidation/osnet/osnet-incorporation
 omnios consolidation/osnet/osnet-message-files
+omnios consolidation/osnet/osnet-redistributable
 omnios consolidation/sunpro/sunpro-incorporation
 omnios data/iso-codes
 omnios database/sqlite-3
@@ -127,7 +128,6 @@ omnios driver/network/rtw
 omnios driver/network/rum
 omnios driver/network/rwd
 omnios driver/network/rwn
-omnios driver/network/sdp
 omnios driver/network/sfe
 omnios driver/network/sfxge
 omnios driver/network/srpt
@@ -364,7 +364,7 @@ omnios print/lp/print-manager/legacy
 omnios release/name
 omnios release/notices
 omnios runtime/perl
-omnios runtime/perl-536/module/sun-solaris
+omnios runtime/perl/module/sun-solaris
 omnios runtime/python-311
 omnios security/bart
 omnios security/sudo
@@ -536,7 +536,6 @@ omnios system/network/ppp/pppdump
 omnios system/network/ppp/tunnel
 omnios system/network/routing
 omnios system/network/routing/vrrp
-omnios system/network/spdadm
 omnios system/network/udapl
 omnios system/network/udapl/udapl-tavor
 omnios system/network/wificonfig
