@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/mesonbuild/compilers/compilers.py a/mesonbuild/compilers/compilers.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/mesonbuild/compilers/compilers.py a/mesonbuild/compilers/compilers.py
 --- a~/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
 +++ a/mesonbuild/compilers/compilers.py	1970-01-01 00:00:00
 @@ -1067,7 +1067,7 @@ class Compiler(HoldableObject, metaclass
@@ -10,7 +10,7 @@ diff -wpruN '--exclude=*.orig' a~/mesonbuild/compilers/compilers.py a/mesonbuild
              # Enable large-file support unconditionally on all platforms other
              # than macOS and MSVC. macOS is now 64-bit-only so it doesn't
              # need anything special, and MSVC doesn't have automatic LFS.
-diff -wpruN '--exclude=*.orig' a~/mesonbuild/linkers/detect.py a/mesonbuild/linkers/detect.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/mesonbuild/linkers/detect.py a/mesonbuild/linkers/detect.py
 --- a~/mesonbuild/linkers/detect.py	1970-01-01 00:00:00
 +++ a/mesonbuild/linkers/detect.py	1970-01-01 00:00:00
 @@ -45,7 +45,7 @@ if T.TYPE_CHECKING:
