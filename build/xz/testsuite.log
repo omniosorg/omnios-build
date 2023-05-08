@@ -27,7 +27,7 @@ PASS: test_compress_generated_random
 PASS: test_compress_generated_text
 PASS: test_scripts.sh
 ============================================================================
-Testsuite summary for XZ Utils 5.4.2
+Testsuite summary for XZ Utils 5.4.3
 ============================================================================
 # TOTAL: 19
 # PASS:  19
