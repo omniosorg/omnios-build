@@ -1,6 +1,6 @@
 # Derived from https://github.com/oracle/solaris-userland/blob/master/components/rsyslog/patches/
 
-diff -wpruN '--exclude=*.orig' a~/tools/rsyslog.conf.5 a/tools/rsyslog.conf.5
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tools/rsyslog.conf.5 a/tools/rsyslog.conf.5
 --- a~/tools/rsyslog.conf.5	1970-01-01 00:00:00
 +++ a/tools/rsyslog.conf.5	1970-01-01 00:00:00
 @@ -17,7 +17,7 @@
@@ -22,7 +22,7 @@ diff -wpruN '--exclude=*.orig' a~/tools/rsyslog.conf.5 a/tools/rsyslog.conf.5
  .I omsnmp
  SNMP trap output module
  .TP
-diff -wpruN '--exclude=*.orig' a~/tools/rsyslogd.8 a/tools/rsyslogd.8
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tools/rsyslogd.8 a/tools/rsyslogd.8
 --- a~/tools/rsyslogd.8	1970-01-01 00:00:00
 +++ a/tools/rsyslogd.8	1970-01-01 00:00:00
 @@ -1,7 +1,7 @@

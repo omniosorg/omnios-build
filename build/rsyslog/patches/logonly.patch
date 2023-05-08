@@ -3,7 +3,7 @@ From: Alexander Eremin <aeremin@tintri.com>
 Date: Mon, 7 Jun 2021 12:09:48 +0000
 Subject: Port SL_LOGONLY flag
 
-diff -wpruN '--exclude=*.orig' a~/plugins/imsolaris/imsolaris.c a/plugins/imsolaris/imsolaris.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/plugins/imsolaris/imsolaris.c a/plugins/imsolaris/imsolaris.c
 --- a~/plugins/imsolaris/imsolaris.c	1970-01-01 00:00:00
 +++ a/plugins/imsolaris/imsolaris.c	1970-01-01 00:00:00
 @@ -93,6 +93,24 @@ MODULE_CNFNAME("imsolaris")
@@ -40,7 +40,7 @@ diff -wpruN '--exclude=*.orig' a~/plugins/imsolaris/imsolaris.c a/plugins/imsola
  
  		/* Construct timestamp from msg ctl struct */
  		tim.tv_usec = 0;
-diff -wpruN '--exclude=*.orig' a~/runtime/msg.h a/runtime/msg.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/msg.h a/runtime/msg.h
 --- a~/runtime/msg.h	1970-01-01 00:00:00
 +++ a/runtime/msg.h	1970-01-01 00:00:00
 @@ -158,6 +158,10 @@ struct msg {
@@ -54,7 +54,7 @@ diff -wpruN '--exclude=*.orig' a~/runtime/msg.h a/runtime/msg.h
  
  /* (syslog) protocol types */
  #define MSG_LEGACY_PROTOCOL 0
-diff -wpruN '--exclude=*.orig' a~/runtime/ruleset.c a/runtime/ruleset.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/ruleset.c a/runtime/ruleset.c
 --- a~/runtime/ruleset.c	1970-01-01 00:00:00
 +++ a/runtime/ruleset.c	1970-01-01 00:00:00
 @@ -586,6 +586,11 @@ scriptExec(struct cnfstmt *const root, s
