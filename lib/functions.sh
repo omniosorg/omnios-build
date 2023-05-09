@@ -2658,6 +2658,7 @@ check_buildlog() {
     logmsg "--- Checking logfile for errors (expect $expected)"
 
     errs="`$GREP 'error: ' $LOGFILE | \
+        $EGREP -v -- '-Werror' | \
         $EGREP -cv 'pathspec.*did not match any file'`"
 
     [ "$errs" -ne "$expected" ] \
