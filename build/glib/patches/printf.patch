@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/glib/tests/test-printf.c a/glib/tests/test-printf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/test-printf.c a/glib/tests/test-printf.c
 --- a~/glib/tests/test-printf.c	1970-01-01 00:00:00
 +++ a/glib/tests/test-printf.c	1970-01-01 00:00:00
-@@ -897,7 +897,7 @@ test_upper_bound (void)
+@@ -899,7 +899,7 @@ test_upper_bound (void)
    g_assert_cmpint (res, ==, 20);
  }
  
@@ -10,7 +10,7 @@ diff -wpruN '--exclude=*.orig' a~/glib/tests/test-printf.c a/glib/tests/test-pri
  static gint test_vasprintf_va (gchar       **string,
                                 const gchar  *format,
                                 ...) G_GNUC_PRINTF (2, 3);
-@@ -917,19 +917,19 @@ test_vasprintf_va (gchar       **string,
+@@ -919,19 +919,19 @@ test_vasprintf_va (gchar       **string,
  
    return len;
  }

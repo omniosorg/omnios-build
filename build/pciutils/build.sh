@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=pciutils
-VER=3.9.0
+VER=3.10.0
 PKG=system/pciutils
 SUMMARY="PCI device utilities"
 DESC="Programs (lspci, setpci) for inspecting and manipulating configuration "

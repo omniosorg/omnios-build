@@ -1,4 +1,4 @@
-From c0a2bd660275a0f6357e52391366c7ea23e7d2af Mon Sep 17 00:00:00 2001
+From 0c9aef2bfddbd3fc5e856baa4dc2967c5a0c5af3 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sat, 27 Oct 2012 02:44:09 +0100
 Subject: Implement -fstrict-calling-conventions
@@ -36,7 +36,7 @@ index 8a0dafc522d..314c1c6a478 100644
  Common
  Treat signed overflow as undefined.  Negated as -fwrapv -fwrapv-pointer.
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 9dd9fa68722..40c34b58f6b 100644
+index 9a9ff3b34b8..ce156c3be3a 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -1147,6 +1147,7 @@ ix86_function_regparm (const_tree type, const_tree decl)
@@ -56,7 +56,7 @@ index 9dd9fa68722..40c34b58f6b 100644
      {
        if (target->local && target->can_change_signature)
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index ff6c338bedb..4771dbdabc6 100644
+index cb83dd8a1cc..348df5caf1d 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -7296,6 +7296,12 @@ with multiple statement cases using flow-sensitive points-to information.

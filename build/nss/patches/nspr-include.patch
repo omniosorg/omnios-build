@@ -12,7 +12,7 @@ always come first.
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1819024
 
-diff -wpruN '--exclude=*.orig' a~/coreconf/config.gypi a/coreconf/config.gypi
+diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreconf/config.gypi
 --- a~/coreconf/config.gypi	1970-01-01 00:00:00
 +++ a/coreconf/config.gypi	1970-01-01 00:00:00
 @@ -155,7 +155,6 @@
@@ -23,7 +23,7 @@ diff -wpruN '--exclude=*.orig' a~/coreconf/config.gypi a/coreconf/config.gypi
        '<(nss_dist_dir)/private/<(module)',
      ],
      'conditions': [
-diff -wpruN '--exclude=*.orig' a~/exports.gyp a/exports.gyp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/exports.gyp a/exports.gyp
 --- a~/exports.gyp	1970-01-01 00:00:00
 +++ a/exports.gyp	1970-01-01 00:00:00
 @@ -14,6 +14,7 @@
@@ -34,7 +34,7 @@ diff -wpruN '--exclude=*.orig' a~/exports.gyp a/exports.gyp
              ]
            },
            'dependencies': [
-diff -wpruN '--exclude=*.orig' a~/lib/dbm/src/src.gyp a/lib/dbm/src/src.gyp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/dbm/src/src.gyp a/lib/dbm/src/src.gyp
 --- a~/lib/dbm/src/src.gyp	1970-01-01 00:00:00
 +++ a/lib/dbm/src/src.gyp	1970-01-01 00:00:00
 @@ -20,6 +20,9 @@
@@ -47,7 +47,7 @@ diff -wpruN '--exclude=*.orig' a~/lib/dbm/src/src.gyp a/lib/dbm/src/src.gyp
        'dependencies': [
          '<(DEPTH)/exports.gyp:dbm_exports'
        ]
-diff -wpruN '--exclude=*.orig' a~/lib/util/util.gyp a/lib/util/util.gyp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/util/util.gyp a/lib/util/util.gyp
 --- a~/lib/util/util.gyp	1970-01-01 00:00:00
 +++ a/lib/util/util.gyp	1970-01-01 00:00:00
 @@ -39,6 +39,9 @@

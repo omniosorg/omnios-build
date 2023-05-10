@@ -3,7 +3,7 @@
 Solaris specific patch to add syslog compatibility.
 Not for community.
 
-diff -wpruN '--exclude=*.orig' a~/runtime/rsyslog.h a/runtime/rsyslog.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/rsyslog.h a/runtime/rsyslog.h
 --- a~/runtime/rsyslog.h	1970-01-01 00:00:00
 +++ a/runtime/rsyslog.h	1970-01-01 00:00:00
 @@ -222,6 +222,8 @@

@@ -1,10 +1,10 @@
 
 /dev/null _is_ pollable on illumos
 
-diff -wpruN '--exclude=*.orig' a~/gio/tests/pollable.c a/gio/tests/pollable.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/pollable.c a/gio/tests/pollable.c
 --- a~/gio/tests/pollable.c	1970-01-01 00:00:00
 +++ a/gio/tests/pollable.c	1970-01-01 00:00:00
-@@ -397,7 +397,9 @@ main (int   argc,
+@@ -395,7 +395,9 @@ main (int   argc,
    g_test_add_func ("/pollable/unix/pipe", test_pollable_unix_pipe);
    g_test_add_func ("/pollable/unix/pty", test_pollable_unix_pty);
    g_test_add_func ("/pollable/unix/file", test_pollable_unix_file);

@@ -1,330 +1,351 @@
-glib:fuzzing / fuzz_bookmark                            OK
-glib:fuzzing / fuzz_canonicalize_filename               OK
-glib:fuzzing / fuzz_date_parse                          OK
-glib:fuzzing / fuzz_date_time_new_from_iso8601          OK
-glib:fuzzing / fuzz_dbus_message                        OK
-glib:fuzzing / fuzz_inet_address_mask_new_from_string   OK
-glib:fuzzing / fuzz_inet_address_new_from_string        OK
-glib:fuzzing / fuzz_inet_socket_address_new_from_string OK
-glib:fuzzing / fuzz_key                                 OK
-glib:fuzzing / fuzz_network_address_parse               OK
-glib:fuzzing / fuzz_network_address_parse_uri           OK
-glib:fuzzing / fuzz_paths                               OK
-glib:fuzzing / fuzz_resolver                            OK
-glib:fuzzing / fuzz_uri_escape                          OK
-glib:fuzzing / fuzz_uri_parse                           OK
-glib:fuzzing / fuzz_uri_parse_params                    OK
-glib:fuzzing / fuzz_uuid_string_is_valid                OK
-glib:fuzzing / fuzz_variant_binary                      OK
-glib:fuzzing / fuzz_variant_text                        OK
-glib:gio / appinfo                                      FAIL   killed by signal 5 SIGTRAP
-glib:gio / application-command-line                     OK
-glib:gio / appmonitor                                   FAIL   killed by signal 6 SIGABRT
-glib:gio / async-close-output-stream                    OK
-glib:gio / async-splice-output-stream                   OK
-glib:gio / autoptr-gio                                  OK
-glib:gio / buffered-input-stream                        OK
-glib:gio / buffered-output-stream                       OK
-glib:gio / cancellable                                  OK
-glib:gio / contenttype                                  FAIL   killed by signal 6 SIGABRT
-glib:gio / contexts                                     OK
-glib:gio / converter-stream                             FAIL   killed by signal 11 SIGSEGV
-glib:gio / credentials                                  OK
-glib:gio / data-input-stream                            OK
-glib:gio / data-output-stream                           OK
-glib:gio / desktop-app-info                             FAIL   killed by signal 5 SIGTRAP
-glib:gio / error                                        OK
-glib:gio / file                                         FAIL   killed by signal 5 SIGTRAP
-glib:gio / file-thumbnail                               OK
-glib:gio / fileattributematcher                         OK
-glib:gio / filter-streams                               OK
-glib:gio / g-file                                       OK
-glib:gio / g-file-info                                  FAIL   killed by signal 6 SIGABRT
-glib:gio / g-file-info-filesystem-readonly              OK
-glib:gio / g-icon                                       OK
-glib:gio / gdbus-address-get-session                    OK
-glib:gio / gdbus-addresses                              OK
-glib:gio / gdbus-connection-flush                       OK
-glib:gio / gdbus-message                                OK
-glib:gio / gdbus-non-socket                             OK
-glib:gio / gdbus-peer                                   OK
-glib:gio / gdbus-peer-object-manager                    OK
-glib:gio / gdbus-sasl                                   OK
-glib:gio / gdbus-serialization                          OK
-glib:gio / gdbus-server-auth                            OK
-glib:gio / giomodule                                    OK
-glib:gio / glistmodel                                   OK
-glib:gio / gschema-compile                              OK
-glib:gio / gsettings                                    FAIL   killed by signal 5 SIGTRAP
-glib:gio / gsocketclient-slow                           OK
-glib:gio / gsubprocess                                  OK
-glib:gio / inet-address                                 OK
-glib:gio / io-stream                                    OK
-glib:gio / live-g-file                                  OK
-glib:gio / memory-input-stream                          OK
-glib:gio / memory-monitor                               OK
-glib:gio / memory-output-stream                         OK
-glib:gio / memory-settings-backend                      OK
-glib:gio / mimeapps                                     OK
-glib:gio / mount-operation                              OK
-glib:gio / network-address                              OK
-glib:gio / network-monitor                              OK
-glib:gio / network-monitor-race                         OK
-glib:gio / null-settings-backend                        OK
-glib:gio / permission                                   OK
-glib:gio / pollable                                     OK
-glib:gio / power-profile-monitor                        OK
-glib:gio / proxy-test                                   OK
-glib:gio / readwrite                                    OK
-glib:gio / resolver-parsing                             OK
-glib:gio / resources                                    OK
-glib:gio / simple-async-result                          OK
-glib:gio / simple-proxy                                 OK
-glib:gio / sleepy-stream                                OK
-glib:gio / socket                                       OK
-glib:gio / socket-address                               OK
-glib:gio / socket-listener                              OK
-glib:gio / socket-service                               OK
-glib:gio / srvtarget                                    OK
-glib:gio / stream-rw_all                                OK
-glib:gio / task                                         OK
-glib:gio / thumbnail-verification                       OK
-glib:gio / tls-bindings                                 OK
-glib:gio / tls-certificate                              OK
-glib:gio / tls-database                                 OK
-glib:gio / tls-interaction                              OK
-glib:gio / trash                                        OK
-glib:gio / unix-fd                                      OK
-glib:gio / unix-mounts                                  OK
-glib:gio / unix-streams                                 OK
-glib:gio / vfs                                          OK
-glib:gio / volumemonitor                                OK
-glib:gio / win32-appinfo                                OK
-glib:gio+C++ / cxx                                      OK
-glib:gio+cpp / cxx-03                                   OK
-glib:gio+cpp / cxx-11                                   OK
-glib:gio+cpp / cxx-14                                   OK
-glib:gio+cpp / cxx-17                                   OK
-glib:gio+cpp / cxx-20                                   OK
-glib:gio+cpp / cxx-2b                                   OK
-glib:gio+cpp / cxx-98                                   OK
-glib:gio+no-valgrind / codegen.py                       OK
-glib:gio+slow+flaky / testfilemonitor                   FAIL   killed by signal 6 SIGABRT
-glib:glib / 1bit-mutex                                  OK
-glib:glib / array-test                                  OK
-glib:glib / asyncqueue                                  OK
-glib:glib / atomic                                      OK
-glib:glib / autoptr                                     OK
-glib:glib / base64                                      OK
-glib:glib / bitlock                                     OK
-glib:glib / bookmarkfile                                OK
-glib:glib / bytes                                       OK
-glib:glib / cache                                       OK
-glib:glib / charset                                     OK
-glib:glib / checksum                                    OK
-glib:glib / collate                                     OK
-glib:glib / completion                                  OK
-glib:glib / cond                                        OK
-glib:glib / convert                                     FAIL   killed by signal 6 SIGABRT
-glib:glib / dataset                                     OK
-glib:glib / date                                        OK
-glib:glib / dir                                         OK
-glib:glib / environment                                 OK
-glib:glib / error                                       OK
-glib:glib / fileutils                                   OK
-glib:glib / gtester-xmllint-check                       OK
-glib:glib / gutils-user-database                        OK
-glib:glib / guuid                                       OK
-glib:glib / gwakeup                                     OK
-glib:glib / gwakeup-fallback                            OK
-glib:glib / hash                                        OK
-glib:glib / hmac                                        OK
-glib:glib / hook                                        OK
-glib:glib / hostutils                                   OK
-glib:glib / include                                     OK
-glib:glib / io-channel                                  OK
-glib:glib / io-channel-basic                            OK
-glib:glib / keyfile                                     OK
-glib:glib / list                                        OK
-glib:glib / logging                                     OK
-glib:glib / macros                                      OK
-glib:glib / mainloop                                    OK
-glib:glib / mappedfile                                  OK
-glib:glib / mapping                                     FAIL   killed by signal 16 SIGUSR1
-glib:glib / markup                                      OK
-glib:glib / markup-collect                              OK
-glib:glib / markup-escape                               OK
-glib:glib / markup-parse                                OK
-glib:glib / markup-subparser                            OK
-glib:glib / mem-overflow                                OK
-glib:glib / memchunk                                    OK
-glib:glib / mutex                                       OK
-glib:glib / node                                        OK
-glib:glib / once                                        OK
-glib:glib / onceinit                                    OK
-glib:glib / option-argv0                                OK
-glib:glib / option-context                              OK
-glib:glib / overflow                                    OK
-glib:glib / overflow-fallback                           OK
-glib:glib / pattern                                     OK
-glib:glib / private                                     OK
-glib:glib / protocol                                    OK
-glib:glib / queue                                       OK
-glib:glib / rand                                        OK
-glib:glib / rcbox                                       OK
-glib:glib / rec-mutex                                   OK
-glib:glib / refcount                                    OK
-glib:glib / refcount-macro                              OK
-glib:glib / refstring                                   OK
-glib:glib / regex                                       OK
-glib:glib / relation                                    OK
-glib:glib / rwlock                                      OK
-glib:glib / scannerapi                                  OK
-glib:glib / search-utils                                OK
-glib:glib / shell                                       OK
-glib:glib / slice                                       OK
-glib:glib / slice-color                                 OK
-glib:glib / slice-concurrent                            OK
-glib:glib / slice-eager-freeing                         OK
-glib:glib / slice-glib                                  OK
-glib:glib / slice-malloc                                OK
-glib:glib / slice-memchunk                              OK
-glib:glib / slice-slab                                  OK
-glib:glib / slist                                       OK
-glib:glib / sort                                        OK
-glib:glib / spawn-multithreaded                         OK
-glib:glib / spawn-path-search                           OK
-glib:glib / spawn-singlethread                          OK
-glib:glib / spawn-test                                  OK
-glib:glib / strfuncs                                    OK
-glib:glib / string                                      OK
-glib:glib / strvbuilder                                 OK
-glib:glib / test-printf                                 OK
-glib:glib / testing                                     OK
-glib:glib / thread                                      OK
-glib:glib / thread-deprecated                           OK
-glib:glib / thread-pool                                 OK
-glib:glib / timeout                                     OK
-glib:glib / timer                                       OK
-glib:glib / tree                                        OK
-glib:glib / types                                       OK
-glib:glib / unicode                                     OK
-glib:glib / unicode-encoding                            FAIL   killed by signal 6 SIGABRT
-glib:glib / unicode-normalize                           OK
-glib:glib / unix                                        OK
-glib:glib / uri                                         OK
-glib:glib / utf8-misc                                   OK
-glib:glib / utf8-performance                            OK
-glib:glib / utf8-pointer                                OK
-glib:glib / utf8-validate                               OK
-glib:glib / utils                                       OK
-glib:glib+cpp / cxx                                     OK
-glib:glib+cpp / cxx-03                                  OK
-glib:glib+cpp / cxx-11                                  OK
-glib:glib+cpp / cxx-14                                  OK
-glib:glib+cpp / cxx-17                                  OK
-glib:glib+cpp / cxx-20                                  OK
-glib:glib+cpp / cxx-2b                                  OK
-glib:glib+cpp / cxx-98                                  OK
-glib:glib+no-valgrind / assert-msg-test.py              OK
-glib:glib+no-valgrind / slice-known-pages               OK
-glib:glib+slow / 1bit-emufutex                          OK
-glib:glib+slow / 642026                                 OK
-glib:glib+slow / 642026-ec                              OK
-glib:glib+slow / gdatetime                              OK
-glib:glib+slow / gvariant                               OK
-glib:glib+slow / sequence                               OK
-glib:glib+slow / thread-pool-slow                       OK
-glib:gmodule / module-test-library                      OK
-glib:gmodule / module-test-plugin                       OK
-glib:gmodule+cpp / cxx                                  OK
-glib:gmodule+cpp / cxx-03                               OK
-glib:gmodule+cpp / cxx-11                               OK
-glib:gmodule+cpp / cxx-14                               OK
-glib:gmodule+cpp / cxx-17                               OK
-glib:gmodule+cpp / cxx-20                               OK
-glib:gmodule+cpp / cxx-2b                               OK
-glib:gmodule+cpp / cxx-98                               OK
-glib:gobject / accumulator                              OK
-glib:gobject / autoptr                                  OK
-glib:gobject / basic-signals                            OK
-glib:gobject / basics-gobject                           OK
-glib:gobject / binding                                  OK
-glib:gobject / bindinggroup                             OK
-glib:gobject / boxed                                    OK
-glib:gobject / closure                                  OK
-glib:gobject / custom-dispatch                          OK
-glib:gobject / defaultiface                             OK
-glib:gobject / deftype                                  OK
-glib:gobject / deprecated-properties                    OK
-glib:gobject / dynamictests                             OK
-glib:gobject / dynamictype                              OK
-glib:gobject / enums                                    OK
-glib:gobject / flags                                    OK
-glib:gobject / gobject-private                          OK
-glib:gobject / ifaceproperties                          OK
-glib:gobject / notify-init                              OK
-glib:gobject / notify-init2                             OK
-glib:gobject / object                                   OK
-glib:gobject / objects-refcount1                        OK
-glib:gobject / override                                 OK
-glib:gobject / param                                    OK
-glib:gobject / properties                               OK
-glib:gobject / properties-refcount1                     OK
-glib:gobject / properties-refcount4                     OK
-glib:gobject / qdata                                    OK
-glib:gobject / reference                                OK
-glib:gobject / references                               OK
-glib:gobject / signal-handler                           OK
-glib:gobject / signalgroup                              OK
-glib:gobject / signals                                  OK
-glib:gobject / signals-refcount1                        OK
-glib:gobject / signals-refcount2                        OK
-glib:gobject / signals-refcount3                        OK
-glib:gobject / signals-refcount4                        OK
-glib:gobject / singleton                                OK
-glib:gobject / testing                                  OK
-glib:gobject / threadtests                              OK
-glib:gobject / type                                     OK
-glib:gobject / type-flags                               OK
-glib:gobject / value                                    OK
-glib:gobject+cpp / cxx                                  OK
-glib:gobject+cpp / cxx-03                               OK
-glib:gobject+cpp / cxx-11                               OK
-glib:gobject+cpp / cxx-14                               OK
-glib:gobject+cpp / cxx-17                               OK
-glib:gobject+cpp / cxx-20                               OK
-glib:gobject+cpp / cxx-2b                               OK
-glib:gobject+cpp / cxx-98                               OK
-glib:gobject+no-valgrind / genmarshal.py                OK
-glib:gobject+no-valgrind / gobject-query.py             OK
-glib:gobject+no-valgrind / mkenums.py                   OK
-glib:gobject+performance / performance                  OK
-glib:gobject+performance / performance-threaded         OK
-glib:gobject+slow / closure-refcount                    OK
-glib:gobject+slow / objects-refcount2                   OK
-glib:gobject+slow / properties-refcount2                OK
-glib:gobject+slow / properties-refcount3                OK
+glib:fuzzing / fuzz_bookmark                                    OK
+glib:fuzzing / fuzz_canonicalize_filename                       OK
+glib:fuzzing / fuzz_date_parse                                  OK
+glib:fuzzing / fuzz_date_time_new_from_iso8601                  OK
+glib:fuzzing / fuzz_dbus_message                                OK
+glib:fuzzing / fuzz_inet_address_mask_new_from_string           OK
+glib:fuzzing / fuzz_inet_address_new_from_string                OK
+glib:fuzzing / fuzz_inet_socket_address_new_from_string         OK
+glib:fuzzing / fuzz_key                                         OK
+glib:fuzzing / fuzz_network_address_parse                       OK
+glib:fuzzing / fuzz_network_address_parse_uri                   OK
+glib:fuzzing / fuzz_paths                                       OK
+glib:fuzzing / fuzz_resolver                                    OK
+glib:fuzzing / fuzz_uri_escape                                  OK
+glib:fuzzing / fuzz_uri_parse                                   OK
+glib:fuzzing / fuzz_uri_parse_params                            OK
+glib:fuzzing / fuzz_utf8_validate                               OK
+glib:fuzzing / fuzz_uuid_string_is_valid                        OK
+glib:fuzzing / fuzz_variant_binary                              OK
+glib:fuzzing / fuzz_variant_binary_byteswap                     OK
+glib:fuzzing / fuzz_variant_text                                OK
+glib:gio / appinfo                                              ERROR   killed by signal 5 SIGTRAP
+glib:gio / application-command-line                             OK   1 subtests passed
+glib:gio / appmonitor                                           ERROR   killed by signal 6 SIGABRT
+glib:gio / async-close-output-stream                            OK   3 subtests passed
+glib:gio / async-splice-output-stream                           OK   5 subtests passed
+glib:gio / autoptr-gio                                          OK   1 subtests passed
+glib:gio / buffered-input-stream                                OK   10 subtests passed
+glib:gio / buffered-output-stream                               OK   5 subtests passed
+glib:gio / cancellable                                          OK   9 subtests passed
+glib:gio / contenttype                                          ERROR   killed by signal 6 SIGABRT
+glib:gio / contexts                                             OK   5 subtests passed
+glib:gio / converter-stream                                     ERROR   killed by signal 11 SIGSEGV
+glib:gio / credentials                                          OK   1 subtests passed
+glib:gio / data-input-stream                                    OK   10 subtests passed
+glib:gio / data-output-stream                                   OK   7 subtests passed
+glib:gio / desktop-app-info                                     ERROR   killed by signal 5 SIGTRAP
+glib:gio / error                                                OK   2 subtests passed
+glib:gio / file                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio / file-thumbnail                                       OK   7 subtests passed
+glib:gio / fileattributematcher                                 OK   3 subtests passed
+glib:gio / filter-streams                                       OK   4 subtests passed
+glib:gio / g-file                                               OK   8 subtests passed
+glib:gio / g-file-info                                          OK   3 subtests passed
+glib:gio / g-file-info-filesystem-readonly                      SKIP   0 subtests passed
+glib:gio / g-icon                                               OK   6 subtests passed
+glib:gio / gdbus-address-get-session                            OK   2 subtests passed
+glib:gio / gdbus-addresses                                      OK   9 subtests passed
+glib:gio / gdbus-connection-flush                               OK   2 subtests passed
+glib:gio / gdbus-message                                        OK   3 subtests passed
+glib:gio / gdbus-non-socket                                     OK   1 subtests passed
+glib:gio / gdbus-peer                                           OK   12 subtests passed
+glib:gio / gdbus-peer-object-manager                            OK   2 subtests passed
+glib:gio / gdbus-sasl                                           OK   1 subtests passed
+glib:gio / gdbus-serialization                                  OK   15 subtests passed
+glib:gio / gdbus-server-auth                                    OK   9 subtests passed
+glib:gio / giomodule                                            OK   3 subtests passed
+glib:gio / glistmodel                                           OK   18 subtests passed
+glib:gio / gschema-compile                                      OK   82 subtests passed
+glib:gio / gsettings                                            ERROR   killed by signal 5 SIGTRAP
+glib:gio / gsocketclient-slow                                   OK   3 subtests passed
+glib:gio / gsubprocess                                          OK   82 subtests passed
+glib:gio / inet-address                                         OK   11 subtests passed
+glib:gio / io-stream                                            OK   3 subtests passed
+glib:gio / live-g-file                                          OK   12 subtests passed
+glib:gio / max-version                                          OK   1 subtests passed
+glib:gio / memory-input-stream                                  OK   6 subtests passed
+glib:gio / memory-monitor                                       OK   1 subtests passed
+glib:gio / memory-output-stream                                 OK   10 subtests passed
+glib:gio / memory-settings-backend                              OK   1 subtests passed
+glib:gio / mimeapps                                             OK   7 subtests passed
+glib:gio / mount-operation                                      OK   2 subtests passed
+glib:gio / network-address                                      OK   69 subtests passed
+glib:gio / network-monitor                                      OK   4 subtests passed
+glib:gio / network-monitor-race                                 OK   1 subtests passed
+glib:gio / null-settings-backend                                OK   1 subtests passed
+glib:gio / permission                                           OK   1 subtests passed
+glib:gio / pollable                                             OK   4 subtests passed
+glib:gio / power-profile-monitor                                OK   1 subtests passed
+glib:gio / proxy-test                                           OK   11 subtests passed
+glib:gio / readwrite                                            OK   3 subtests passed
+glib:gio / resolver-parsing                                     OK   1 subtests passed
+glib:gio / resources                                            OK   16 subtests passed
+glib:gio / sandbox                                              OK   4 subtests passed
+glib:gio / simple-async-result                                  OK   2 subtests passed
+glib:gio / simple-proxy                                         OK   3 subtests passed
+glib:gio / sleepy-stream                                        OK   2 subtests passed
+glib:gio / socket                                               OK   23 subtests passed
+glib:gio / socket-address                                       OK   2 subtests passed
+glib:gio / socket-listener                                      OK   1 subtests passed
+glib:gio / socket-service                                       OK   4 subtests passed
+glib:gio / srvtarget                                            OK   1 subtests passed
+glib:gio / stream-rw_all                                        OK   3 subtests passed
+glib:gio / task                                                 OK   33 subtests passed
+glib:gio / thumbnail-verification                               OK   1 subtests passed
+glib:gio / tls-bindings                                         OK   2 subtests passed
+glib:gio / tls-certificate                                      OK   19 subtests passed
+glib:gio / tls-database                                         OK   1 subtests passed
+glib:gio / tls-interaction                                      OK   42 subtests passed
+glib:gio / trash                                                OK   2 subtests passed
+glib:gio / unix-fd                                              OK   2 subtests passed
+glib:gio / unix-mounts                                          OK   2 subtests passed
+glib:gio / unix-streams                                         OK   5 subtests passed
+glib:gio / vfs                                                  OK   2 subtests passed
+glib:gio / volumemonitor                                        OK   3 subtests passed
+glib:gio / win32-appinfo                                        OK   5 subtests passed
+glib:gio+cpp / cxx                                              OK
+glib:gio+cpp / cxx-03                                           OK
+glib:gio+cpp / cxx-11                                           OK
+glib:gio+cpp / cxx-14                                           OK
+glib:gio+cpp / cxx-17                                           OK
+glib:gio+cpp / cxx-20                                           OK
+glib:gio+cpp / cxx-2b                                           OK
+glib:gio+cpp / cxx-98                                           OK
+glib:gio+no-valgrind / codegen.py                               OK   20 subtests passed
+glib:gio+portal-support / portal-support-env-var                OK   1 subtests passed
+glib:gio+portal-support / portal-support-flatpak-full           OK   1 subtests passed
+glib:gio+portal-support / portal-support-flatpak-gsettings-only OK   1 subtests passed
+glib:gio+portal-support / portal-support-flatpak-network-only   OK   1 subtests passed
+glib:gio+portal-support / portal-support-flatpak-none           OK   1 subtests passed
+glib:gio+portal-support / portal-support-none                   OK   1 subtests passed
+glib:gio+portal-support / portal-support-snap                   OK   7 subtests passed
+glib:gio+portal-support / portal-support-snap-classic           OK   3 subtests passed
+glib:glib+core / 1bit-mutex                                     OK   2 subtests passed
+glib:glib+core / array-test                                     OK   109 subtests passed
+glib:glib+core / asyncqueue                                     OK   7 subtests passed
+glib:glib+core / atomic                                         OK   2 subtests passed
+glib:glib+core / autoptr                                        OK   56 subtests passed
+glib:glib+core / base64                                         OK   28 subtests passed
+glib:glib+core / bitlock                                        OK   1 subtests passed
+glib:glib+core / bookmarkfile                                   OK   96 subtests passed
+glib:glib+core / bytes                                          OK   21 subtests passed
+glib:glib+core / cache                                          OK   1 subtests passed
+glib:glib+core / charset                                        OK   2 subtests passed
+glib:glib+core / checksum                                       OK   1851 subtests passed
+glib:glib+core / collate                                        SKIP   0 subtests passed
+glib:glib+core / completion                                     OK   1 subtests passed
+glib:glib+core / cond                                           OK   3 subtests passed
+glib:glib+core / convert                                        ERROR   killed by signal 6 SIGABRT
+glib:glib+core / dataset                                        OK   12 subtests passed
+glib:glib+core / date                                           OK   118 subtests passed
+glib:glib+core / dir                                            OK   2 subtests passed
+glib:glib+core / environment                                    OK   6 subtests passed
+glib:glib+core / error                                          OK   10 subtests passed
+glib:glib+core / fileutils                                      OK   26 subtests passed
+glib:glib+core / gtester-xmllint-check                          OK
+glib:glib+core / gutils-user-database                           OK   1 subtests passed
+glib:glib+core / guuid                                          OK   2 subtests passed
+glib:glib+core / gwakeup                                        OK   2 subtests passed
+glib:glib+core / gwakeup-fallback                               OK   2 subtests passed
+glib:glib+core / hash                                           OK   34 subtests passed
+glib:glib+core / hmac                                           OK   37 subtests passed
+glib:glib+core / hook                                           OK   2 subtests passed
+glib:glib+core / hostutils                                      OK   3 subtests passed
+glib:glib+core / include                                        OK   1 subtests passed
+glib:glib+core / io-channel                                     OK   2 subtests passed
+glib:glib+core / io-channel-basic                               OK   1 subtests passed
+glib:glib+core / keyfile                                        OK   36 subtests passed
+glib:glib+core / list                                           OK   20 subtests passed
+glib:glib+core / logging                                        OK   17 subtests passed
+glib:glib+core / macros                                         OK   3 subtests passed
+glib:glib+core / mainloop                                       OK   43 subtests passed
+glib:glib+core / mappedfile                                     OK   7 subtests passed
+glib:glib+core / mapping                                        ERROR   killed by signal 16 SIGUSR1
+glib:glib+core / markup                                         OK   1 subtests passed
+glib:glib+core / markup-collect                                 OK   21 subtests passed
+glib:glib+core / markup-escape                                  OK   41 subtests passed
+glib:glib+core / markup-parse                                   OK   71 subtests passed
+glib:glib+core / markup-subparser                               OK   14 subtests passed
+glib:glib+core / max-version                                    OK   1 subtests passed
+glib:glib+core / mem-overflow                                   OK   2 subtests passed
+glib:glib+core / memchunk                                       OK   1 subtests passed
+glib:glib+core / mutex                                          OK   16 subtests passed
+glib:glib+core / node                                           OK   6 subtests passed
+glib:glib+core / once                                           OK   5 subtests passed
+glib:glib+core / onceinit                                       OK   1 subtests passed
+glib:glib+core / option-argv0                                   OK   1 subtests passed
+glib:glib+core / option-context                                 OK   57 subtests passed
+glib:glib+core / overflow                                       OK   6 subtests passed
+glib:glib+core / overflow-fallback                              OK   6 subtests passed
+glib:glib+core / pathbuf                                        OK   3 subtests passed
+glib:glib+core / pattern                                        OK   90 subtests passed
+glib:glib+core / private                                        OK   8 subtests passed
+glib:glib+core / protocol                                       OK   9 subtests passed
+glib:glib+core / queue                                          OK   12 subtests passed
+glib:glib+core / rand                                           OK   2 subtests passed
+glib:glib+core / rcbox                                          OK   8 subtests passed
+glib:glib+core / rec-mutex                                      OK   29 subtests passed
+glib:glib+core / refcount                                       OK   4 subtests passed
+glib:glib+core / refcount-macro                                 OK   4 subtests passed
+glib:glib+core / refstring                                      OK   5 subtests passed
+glib:glib+core / regex                                          OK   843 subtests passed
+glib:glib+core / relation                                       OK   1 subtests passed
+glib:glib+core / rwlock                                         OK   8 subtests passed
+glib:glib+core / scannerapi                                     OK   4 subtests passed
+glib:glib+core / search-utils                                   OK   6 subtests passed
+glib:glib+core / shell                                          OK   51 subtests passed
+glib:glib+core / slice                                          OK   3 subtests passed
+glib:glib+core / slist                                          OK   14 subtests passed
+glib:glib+core / sort                                           OK   4 subtests passed
+glib:glib+core / spawn-multithreaded                            OK   4 subtests passed
+glib:glib+core / spawn-path-search                              OK   7 subtests passed
+glib:glib+core / spawn-singlethread                             OK   9 subtests passed
+glib:glib+core / spawn-test                                     OK   2 subtests passed
+glib:glib+core / strfuncs                                       OK   50 subtests passed
+glib:glib+core / string                                         OK   21 subtests passed
+glib:glib+core / string-macro                                   OK   21 subtests passed
+glib:glib+core / strvbuilder                                    OK   5 subtests passed
+glib:glib+core / test-printf                                    OK   20 subtests passed
+glib:glib+core / testing                                        OK   42 subtests passed
+glib:glib+core / thread                                         OK   6 subtests passed
+glib:glib+core / thread-deprecated                              OK   6 subtests passed
+glib:glib+core / thread-pool                                    OK   5 subtests passed
+glib:glib+core / timeout                                        OK   4 subtests passed
+glib:glib+core / timer                                          OK   9 subtests passed
+glib:glib+core / tree                                           OK   7 subtests passed
+glib:glib+core / types                                          OK   1 subtests passed
+glib:glib+core / unicode                                        OK   38 subtests passed
+glib:glib+core / unicode-encoding                               ERROR   killed by signal 6 SIGABRT
+glib:glib+core / unicode-normalize                              OK   1 subtests passed
+glib:glib+core / unix                                           OK   12 subtests passed
+glib:glib+core / uri                                            OK   24 subtests passed
+glib:glib+core / utf8-misc                                      OK   6 subtests passed
+glib:glib+core / utf8-performance                               OK   36 subtests passed
+glib:glib+core / utf8-pointer                                   OK   3 subtests passed
+glib:glib+core / utf8-validate                                  OK   216 subtests passed
+glib:glib+core / utils                                          OK   40 subtests passed
+glib:glib+core / utils-isolated                                 OK   9 subtests passed
+glib:glib+core+cc / atomic-c-11                                 OK   2 subtests passed
+glib:glib+core+cc / atomic-c-17                                 OK   2 subtests passed
+glib:glib+core+cc / atomic-c-90                                 OK   2 subtests passed
+glib:glib+core+cc / atomic-c-99                                 OK   2 subtests passed
+glib:glib+core+cc / macros-c-11                                 OK   4 subtests passed
+glib:glib+core+cc / macros-c-17                                 OK   4 subtests passed
+glib:glib+core+cc / macros-c-90                                 OK   4 subtests passed
+glib:glib+core+cc / macros-c-99                                 OK   4 subtests passed
+glib:glib+core+cc / utils-c-11                                  OK   40 subtests passed
+glib:glib+core+cc / utils-c-17                                  OK   40 subtests passed
+glib:glib+core+cc / utils-c-90                                  OK   40 subtests passed
+glib:glib+core+cc / utils-c-99                                  OK   40 subtests passed
+glib:glib+core+cpp / cxx                                        OK   21 subtests passed
+glib:glib+core+cpp / cxx-03                                     OK   22 subtests passed
+glib:glib+core+cpp / cxx-11                                     OK   22 subtests passed
+glib:glib+core+cpp / cxx-14                                     OK   22 subtests passed
+glib:glib+core+cpp / cxx-17                                     OK   22 subtests passed
+glib:glib+core+cpp / cxx-20                                     OK   22 subtests passed
+glib:glib+core+cpp / cxx-2b                                     OK   21 subtests passed
+glib:glib+core+cpp / cxx-98                                     OK   22 subtests passed
+glib:glib+core+no-valgrind / assert-msg-test.py                 OK   2 subtests passed
+glib:glib+core+no-valgrind / messages-low-memory.py             OK   1 subtests passed
+glib:glib+core+slow / 1bit-emufutex                             OK   2 subtests passed
+glib:glib+core+slow / 642026                                    OK   1 subtests passed
+glib:glib+core+slow / 642026-ec                                 OK   1 subtests passed
+glib:glib+core+slow / gdatetime                                 OK   56 subtests passed
+glib:glib+core+slow / gvariant                                  OK   64 subtests passed
+glib:glib+core+slow / sequence                                  OK   16 subtests passed
+glib:glib+core+slow / thread-pool-slow                          OK   1 subtests passed
+glib:gmodule / max-version                                      OK   1 subtests passed
+glib:gmodule / module-test-library                              OK   2 subtests passed
+glib:gmodule / module-test-plugin                               OK   2 subtests passed
+glib:gmodule+cpp / cxx                                          OK
+glib:gmodule+cpp / cxx-03                                       OK
+glib:gmodule+cpp / cxx-11                                       OK
+glib:gmodule+cpp / cxx-14                                       OK
+glib:gmodule+cpp / cxx-17                                       OK
+glib:gmodule+cpp / cxx-20                                       OK
+glib:gmodule+cpp / cxx-2b                                       OK
+glib:gmodule+cpp / cxx-98                                       OK
+glib:gobject / accumulator                                      OK   1 subtests passed
+glib:gobject / autoptr                                          OK   6 subtests passed
+glib:gobject / basic-signals                                    OK   1 subtests passed
+glib:gobject / basics-gobject                                   OK   1 subtests passed
+glib:gobject / binding                                          OK   19 subtests passed
+glib:gobject / bindinggroup                                     OK   11 subtests passed
+glib:gobject / boxed                                            OK   26 subtests passed
+glib:gobject / closure                                          OK   6 subtests passed
+glib:gobject / custom-dispatch                                  OK   2 subtests passed
+glib:gobject / defaultiface                                     OK   2 subtests passed
+glib:gobject / deftype                                          OK
+glib:gobject / deprecated-properties                            OK   3 subtests passed
+glib:gobject / dynamictests                                     OK   2 subtests passed
+glib:gobject / dynamictype                                      OK   1 subtests passed
+glib:gobject / enums                                            OK   4 subtests passed
+glib:gobject / flags                                            OK   1 subtests passed
+glib:gobject / gobject-private                                  OK   3 subtests passed
+glib:gobject / ifaceproperties                                  OK   7 subtests passed
+glib:gobject / max-version                                      OK   1 subtests passed
+glib:gobject / notify-init                                      OK   1 subtests passed
+glib:gobject / notify-init2                                     OK   1 subtests passed
+glib:gobject / object                                           OK   1 subtests passed
+glib:gobject / objects-refcount1                                OK   1 subtests passed
+glib:gobject / override                                         OK   1 subtests passed
+glib:gobject / param                                            OK   30 subtests passed
+glib:gobject / properties                                       OK   13 subtests passed
+glib:gobject / properties-refcount1                             OK   1 subtests passed
+glib:gobject / properties-refcount4                             OK   1 subtests passed
+glib:gobject / qdata                                            OK   2 subtests passed
+glib:gobject / reference                                        OK   25 subtests passed
+glib:gobject / references                                       OK   1 subtests passed
+glib:gobject / signal-handler                                   OK   7 subtests passed
+glib:gobject / signalgroup                                      OK   9 subtests passed
+glib:gobject / signals                                          OK   29 subtests passed
+glib:gobject / signals-refcount1                                OK   1 subtests passed
+glib:gobject / signals-refcount2                                OK   1 subtests passed
+glib:gobject / signals-refcount3                                OK   1 subtests passed
+glib:gobject / signals-refcount4                                OK   1 subtests passed
+glib:gobject / singleton                                        OK   2 subtests passed
+glib:gobject / testing                                          OK   1 subtests passed
+glib:gobject / threadtests                                      OK   4 subtests passed
+glib:gobject / type                                             OK   5 subtests passed
+glib:gobject / type-flags                                       OK   4 subtests passed
+glib:gobject / value                                            OK   8 subtests passed
+glib:gobject+cpp / cxx                                          OK
+glib:gobject+cpp / cxx-03                                       OK
+glib:gobject+cpp / cxx-11                                       OK
+glib:gobject+cpp / cxx-14                                       OK
+glib:gobject+cpp / cxx-17                                       OK
+glib:gobject+cpp / cxx-20                                       OK
+glib:gobject+cpp / cxx-2b                                       OK
+glib:gobject+cpp / cxx-98                                       OK
+glib:gobject+no-valgrind / genmarshal.py                        OK   8 subtests passed
+glib:gobject+no-valgrind / gobject-query.py                     OK   4 subtests passed
+glib:gobject+no-valgrind / mkenums.py                           OK   32 subtests passed
+glib:gobject+performance+no-valgrind / performance              OK
+glib:gobject+performance+no-valgrind / performance-threaded     OK
+glib:gobject+slow / closure-refcount                            OK   1 subtests passed
+glib:gobject+slow / objects-refcount2                           OK   1 subtests passed
+glib:gobject+slow / properties-refcount2                        OK   1 subtests passed
+glib:gobject+slow / properties-refcount3                        OK   1 subtests passed
+glib:gthread / init                                             OK   2 subtests passed
 
 Summary of Failures:
 
-glib:glib / convert                                     FAIL   killed by signal 6 SIGABRT
-glib:glib / mapping                                     FAIL   killed by signal 16 SIGUSR1
-glib:glib / unicode-encoding                            FAIL   killed by signal 6 SIGABRT
-glib:gio / contenttype                                  FAIL   killed by signal 6 SIGABRT
-glib:gio / converter-stream                             FAIL   killed by signal 11 SIGSEGV
-glib:gio / g-file-info                                  FAIL   killed by signal 6 SIGABRT
-glib:gio / appmonitor                                   FAIL   killed by signal 6 SIGABRT
-glib:gio / desktop-app-info                             FAIL   killed by signal 5 SIGTRAP
-glib:gio / appinfo                                      FAIL   killed by signal 5 SIGTRAP
-glib:gio / file                                         FAIL   killed by signal 5 SIGTRAP
-glib:gio+slow+flaky / testfilemonitor                   FAIL   killed by signal 6 SIGABRT
-glib:gio / gsettings                                    FAIL   killed by signal 5 SIGTRAP
+glib:glib+core / convert                                        ERROR   killed by signal 6 SIGABRT
+glib:glib+core / mapping                                        ERROR   killed by signal 16 SIGUSR1
+glib:glib+core / unicode-encoding                               ERROR   killed by signal 6 SIGABRT
+glib:gio / contenttype                                          ERROR   killed by signal 6 SIGABRT
+glib:gio / converter-stream                                     ERROR   killed by signal 11 SIGSEGV
+glib:gio / appmonitor                                           ERROR   killed by signal 6 SIGABRT
+glib:gio / file                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio / appinfo                                              ERROR   killed by signal 5 SIGTRAP
+glib:gio / desktop-app-info                                     ERROR   killed by signal 5 SIGTRAP
+glib:gio / gsettings                                            ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 295 
+Ok:                 318 
 Expected Fail:      0   
-Fail:               12  
+Fail:               10  
 Unexpected Pass:    0   
-Skipped:            0   
+Skipped:            2   
 Timeout:            0   
 

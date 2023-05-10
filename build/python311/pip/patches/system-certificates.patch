@@ -4,7 +4,7 @@ PIP on OmniOS should not use its bundled cacert.pem file, it should instead
 use system certificates file which is more likely to be updated in a timely
 manner when a CA cert is added/removed/modified.
 
-diff -wpruN '--exclude=*.orig' a~/src/pip/_vendor/certifi/core.py a/src/pip/_vendor/certifi/core.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_vendor/certifi/core.py a/src/pip/_vendor/certifi/core.py
 --- a~/src/pip/_vendor/certifi/core.py	1970-01-01 00:00:00
 +++ a/src/pip/_vendor/certifi/core.py	1970-01-01 00:00:00
 @@ -6,103 +6,10 @@ This module returns the installation loc

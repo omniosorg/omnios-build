@@ -1,4 +1,4 @@
-From 95f915728129d788100a45a96442fc0b1f17e286 Mon Sep 17 00:00:00 2001
+From 6627831da214544482f40afe1c34b804240c7bc8 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 28 Apr 2021 12:29:31 +0000
 Subject: Fix cp/module.cc build - use posix_madvise()

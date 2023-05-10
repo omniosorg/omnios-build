@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/glib/tests/date.c a/glib/tests/date.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/date.c a/glib/tests/date.c
 --- a~/glib/tests/date.c	1970-01-01 00:00:00
 +++ a/glib/tests/date.c	1970-01-01 00:00:00
 @@ -725,7 +725,7 @@ test_strftime (void)

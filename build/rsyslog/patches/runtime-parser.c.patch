@@ -5,7 +5,7 @@
 # Should be sent upstream, but hasn't been.
 # Bug has existed a long time (probably since rsyslog implemented compression),
 # last noticed in 8.4.0
-diff -wpruN '--exclude=*.orig' a~/runtime/parser.c a/runtime/parser.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/parser.c a/runtime/parser.c
 --- a~/runtime/parser.c	1970-01-01 00:00:00
 +++ a/runtime/parser.c	1970-01-01 00:00:00
 @@ -310,6 +310,15 @@ static rsRetVal uncompressMessage(smsg_t

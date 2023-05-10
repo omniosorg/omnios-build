@@ -1,4 +1,4 @@
-From 445af812993bfca24c08e80fb93dd7e7661f2201 Mon Sep 17 00:00:00 2001
+From e695ccf394f87927da6b3591ce85aa6ad7c20619 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 26 Jan 2016 14:24:11 -0500
 Subject: compare_tests: Use nawk(1) on illumos, since awk(1) is
