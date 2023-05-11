@@ -278,7 +278,7 @@ omnios library/mpfr
 omnios library/ncurses
 omnios library/nghttp2
 omnios library/nspr
-omnios library/nspr/header-nspr
+omnios library/nspr/header-nspr r
 omnios library/pcre
 omnios library/pcre2
 omnios library/perl-5/xml-parser
