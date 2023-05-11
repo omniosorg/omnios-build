@@ -621,7 +621,7 @@ omnios system/library/libutempter
 omnios system/library/math
 omnios system/library/math/header-math r
 omnios system/library/mozilla-nss
-omnios system/library/mozilla-nss/header-nss
+omnios system/library/mozilla-nss/header-nss r
 omnios system/library/mtsk
 omnios system/library/pcap
 omnios system/library/platform

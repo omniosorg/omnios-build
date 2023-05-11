@@ -24,7 +24,7 @@ DESC="Network Security Services (NSS) is a set of libraries designed to "
 DESC+="support cross-platform development of security-enabled client and "
 DESC+="server applications."
 
-BUILD_DEPENDS_IPS="library/nspr library/nspr/header-nspr"
+BUILD_DEPENDS_IPS="library/nspr"
 
 set_ssp none
 # required for getopt
@@ -144,32 +144,13 @@ make_install() {
     hook post_install $arch
 }
 
-post_install() {
-    manifest_start $TMPDIR/manifest.nss.header
-    manifest_add_dir $PREFIX/include mps
-    manifest_finalise $TMPDIR/manifest.nss.header $PREFIX
-
-    manifest_uniq $TMPDIR/manifest.nss{,.header}
-    manifest_finalise $TMPDIR/manifest.nss $PREFIX
-}
-
 init
 download_source $PROG $PROG $VER
 append_builddir /nss
 patch_source
 prep_build gyp+ninja
 build
-
-###########################################################################
-
-make_package -seed $TMPDIR/manifest.nss
-
-PKG=system/library/mozilla-nss/header-nss
-SUMMARY+=" (headers)"
-make_package -seed $TMPDIR/manifest.nss.header
-
-###########################################################################
-
+make_package
 clean_up
 
 # Vim hints
