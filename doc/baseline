@@ -263,7 +263,7 @@ omnios library/expat
 omnios library/glib2
 omnios library/gmp
 omnios library/idnkit
-omnios library/idnkit/header-idnkit
+omnios library/idnkit/header-idnkit r
 omnios library/libadt_jni
 omnios library/libedit
 omnios library/libffi

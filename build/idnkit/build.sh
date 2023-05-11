@@ -46,6 +46,17 @@ post_install() {
             done
             ;;
     esac
+
+    [ $arch = i386 ] && return
+
+    make_isa_stub
+
+    manifest_start $TMPDIR/manifest.idnkit.bin
+    manifest_add_dir $PREFIX/bin i386 amd64
+    manifest_finalise $TMPDIR/manifest.idnkit.bin $PREFIX
+
+    manifest_uniq $TMPDIR/manifest.idnkit{,.bin}
+    manifest_finalise $TMPDIR/manifest.idnkit $PREFIX
 }
 
 init
@@ -53,20 +64,18 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-make_isa_stub
-make_package lib.mog
 
-PKG=library/idnkit/header-idnkit
-DEPENDS_IPS=""
-SUMMARY="Internationalized Domain Name Support Developer Files"
-DESC="Internationalized Domain Name Support Developer Files"
-make_package headers.mog
+###########################################################################
+
+make_package -seed $TMPDIR/manifest.idnkit
 
 PKG=network/dns/idnconv
-DEPENDS_IPS="library/idnkit"
 SUMMARY="Internationalized Domain Name Support Utilities"
 DESC="Internationalized Domain Name Support Utilities"
-[ "$FLAVOR" != libsandheaders ] && make_package bin.mog
+[ "$FLAVOR" != libsandheaders ] \
+    && make_package -seed $TMPDIR/manifest.idnkit.bin bin.mog
+
+###########################################################################
 
 clean_up
 
