@@ -58,13 +58,6 @@ post_install() {
         logmsg "-- fixing up ${a##*/}"
         logcmd sed -i -E 's^-L/([^ ]*)^& -R/\1^' $a
     done
-
-    manifest_start $TMPDIR/manifest.nspr.header
-    manifest_add_dir $PREFIX/include/mps md obsolete private
-    manifest_finalise $TMPDIR/manifest.nspr.header $PREFIX
-
-    manifest_uniq $TMPDIR/manifest.nspr{,.header}
-    manifest_finalise $TMPDIR/manifest.nspr $PREFIX
 }
 
 init
@@ -73,18 +66,7 @@ append_builddir $PROG
 patch_source
 prep_build
 build
-
-###########################################################################
-
-make_package -seed $TMPDIR/manifest.nspr
-
-PKG=library/nspr/header-nspr
-SUMMARY+=" (headers)"
-DESC+=" (headers)"
-make_package -seed $TMPDIR/manifest.nspr.header
-
-###########################################################################
-
+make_package
 clean_up
 
 # Vim hints
