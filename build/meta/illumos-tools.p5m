@@ -17,10 +17,8 @@ depend fmri=developer/parser/bison type=require
 depend fmri=developer/versioning/git type=require
 depend fmri=library/glib2 type=require
 depend fmri=library/idnkit type=require
-depend fmri=library/idnkit/header-idnkit type=require
 depend fmri=library/libxml2 type=require
 depend fmri=library/libxslt type=require
-depend fmri=library/nspr/header-nspr type=require
 depend fmri=library/perl-5/xml-parser type=require
 depend fmri=library/security/trousers type=require
 depend fmri=runtime/java/openjdk11 type=require
@@ -30,7 +28,7 @@ depend fmri=system/library/math type=require
 depend fmri=system/library/dbus type=require
 depend fmri=system/library/libdbus type=require
 depend fmri=system/library/libdbus-glib type=require
-depend fmri=system/library/mozilla-nss/header-nss type=require
+depend fmri=system/library/mozilla-nss type=require
 depend fmri=system/header type=require
 depend fmri=system/management/snmp/net-snmp type=require
 depend fmri=text/gnu-gettext type=require
