@@ -39,7 +39,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/gmp type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libffi type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libidn type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/lzlib type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/nspr/header-nspr type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/nspr type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/pcre2 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-311 type=require
