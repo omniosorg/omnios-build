@@ -91,6 +91,7 @@ web/wget
 web/wget2
 ###############################################################################
 .SYSROOT
+developer/gcc10
 developer/versioning/git
 security/sudo
 system/library/libdbus -f libsandheaders
