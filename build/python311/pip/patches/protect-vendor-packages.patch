@@ -43,11 +43,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdopti
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uninstall.py a/src/pip/_internal/req/req_uninstall.py
 --- a~/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
-@@ -327,6 +327,16 @@ class UninstallPathSet:
-         # aka is_local, but caching normalized sys.prefix
-         if not running_under_virtualenv():
-             return True
-+
+@@ -324,6 +324,15 @@ class UninstallPathSet:
+         remove/modify, False otherwise.
+ 
+         """
 +        # Omit the vendor-packages augmentation to site-packages
 +        # only when uninstalling. We want OmniOS IPS delivered packages
 +        # in vendor-packages to be able to satisfy install dependencies
@@ -57,10 +56,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
 +        if normalize_path(path).startswith(vendor_packages_path):
 +            return False
 +
-         return path.startswith(self._normalize_path_cached(sys.prefix))
- 
-     def add(self, path: str) -> None:
-@@ -511,9 +521,8 @@ class UninstallPathSet:
+         # aka is_local, but caching normalized sys.prefix
+         if not running_under_virtualenv():
+             return True
+@@ -511,9 +520,8 @@ class UninstallPathSet:
  
          elif dist.installed_by_distutils:
              raise UninstallationError(
