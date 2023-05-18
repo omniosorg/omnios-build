@@ -6,7 +6,7 @@ it's inconsistent with our native egrep and fgrep utilities.
 
 Index: grep/src/egrep.sh
 ===================================================================
-diff -wpruN '--exclude=*.orig' a~/src/egrep.sh a/src/egrep.sh
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/egrep.sh a/src/egrep.sh
 --- a~/src/egrep.sh	1970-01-01 00:00:00
 +++ a/src/egrep.sh	1970-01-01 00:00:00
 @@ -1,4 +1,3 @@
