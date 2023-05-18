@@ -90,6 +90,7 @@ exitval2
 exitval3
 fcall_exit
 fcall_exit2
+fieldassign
 fldchg
 fldchgnf
 fldterm
@@ -321,6 +322,7 @@ backw
 badargs
 beginfile1
 beginfile2
+asortsymtab
 binmode1
 charasbytes
 clos1way
@@ -344,6 +346,9 @@ devfd1
 devfd2
 dfacheck1
 dumpvars
+elemnew1
+elemnew2
+elemnew3
 errno
 exit
 fieldwdth
@@ -641,10 +646,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 1 TESTS FAILED
-make[3]: *** [Makefile:5550: pass-fail] Error 1
+make[3]: *** [Makefile:5588: pass-fail] Error 1
 ============== _localenl =============
 --- localenl.ok	Thu Dec 14 17:49:00 2017
-+++ _localenl	Wed Nov 23 15:38:45 2022
++++ _localenl	Thu May 18 23:36:12 2023
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -652,6 +657,6 @@ make[3]: *** [Makefile:5550: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2149: check] Error 1
+make[2]: *** [Makefile:2162: check] Error 1
 make[1]: *** [Makefile:808: check-recursive] Error 1
 make: *** [Makefile:1107: check] Error 2
