@@ -5,7 +5,7 @@ The fuzz tests for wget do not work on OmniOS for two reasons:
 
 The fuzzing tests are therefore disabled.
 
-diff -wpruN '--exclude=*.orig' a~/Makefile.am a/Makefile.am
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.am a/Makefile.am
 --- a~/Makefile.am	1970-01-01 00:00:00
 +++ a/Makefile.am	1970-01-01 00:00:00
 @@ -40,7 +40,7 @@ distuninstallcheck_listfiles = find . -t
@@ -17,10 +17,10 @@ diff -wpruN '--exclude=*.orig' a~/Makefile.am a/Makefile.am
  
  EXTRA_DIST = MAILING-LIST \
               msdos/config.h msdos/Makefile.DJ \
-diff -wpruN '--exclude=*.orig' a~/Makefile.in a/Makefile.in
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -1691,7 +1691,7 @@ distuninstallcheck_listfiles = find . -t
+@@ -1895,7 +1895,7 @@ distuninstallcheck_listfiles = find . -t
  ACLOCAL_AMFLAGS = -I m4
  
  # subdirectories in the distribution

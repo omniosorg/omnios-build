@@ -2,7 +2,7 @@
 recent autoconf does not have AX_CODE_COVERATE and, although wget tries to
 compensate, it doesn't allow enough.
 
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
 @@ -34,6 +34,7 @@ dnl Error if AX_CODE_COVERAGE if missing
