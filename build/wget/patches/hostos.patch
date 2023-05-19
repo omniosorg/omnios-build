@@ -1,10 +1,10 @@
 Change wget to identify itself as running on OmniOS. Without this it will
 report 'solaris2.11'
 
-diff -wpruN '--exclude=*.orig' a~/configure a/configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -7960,7 +7960,7 @@ case $host_os in *\ *) host_os=`echo "$h
+@@ -8148,7 +8148,7 @@ case $host_os in *\ *) host_os=`echo "$h
  
  
  
@@ -13,7 +13,7 @@ diff -wpruN '--exclude=*.orig' a~/configure a/configure
  
  
  # Check whether --enable-silent-rules was given.
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
 @@ -60,7 +60,7 @@ dnl
