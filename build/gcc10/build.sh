@@ -15,6 +15,7 @@
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
+. ../../lib/arch.sh
 . ../../lib/build.sh
 
 PKG=developer/gcc10

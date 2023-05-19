@@ -14,25 +14,48 @@
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 Richard Lowe <richlowe@richlowe.net>
 
-. ../../lib/arch.sh
 . ../../lib/build.sh
 
 PROG=binutils
-VER=2.40
+VER=2.39
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "
 DESC+="object files, libraries, etc."
 
+REPO=$GITHUB/richlowe/binutils-gdb
+BRANCH=illumos-arm64
+ARCH=aarch64
+
+[ "$CLIBUILDARCH" = $ARCH ] || logerr "Incorrect arch selected, use -a $ARCH"
+
 set_arch 64
+set_patchdir patches.$ARCH
 CTF_FLAGS+=" -s"
+
+TRIPLET=${TRIPLETS[$ARCH]}
+NATIVE_TRIPLET=${TRIPLETS[$BUILD_ARCH]}
+clear_archflags
+
+export LD=/bin/ld
+export LD_FOR_HOST=/bin/ld
+export CC_FOR_BUILD=$GCC
+export CXX_FOR_BUILD=$GXX
+export LD_FOR_BUILD=/opt/cross/$ARCH/bin/ld
+export AS_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-as
+export AR_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-ar
+export LD_FOR_TARGET=/bin/ld
+export CFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
+export CXXFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
+export STRIP="/usr/bin/strip -x"
+export STRIP_FOR_TARGET="$STRIP"
 
 HARDLINK_TARGETS="
     usr/bin/gar
     usr/bin/gas
     usr/bin/gld
-    usr/bin/gld.gold
     usr/bin/gnm
     usr/bin/gobjcopy
     usr/bin/gobjdump
@@ -42,41 +65,42 @@ HARDLINK_TARGETS="
 "
 
 CONFIGURE_OPTS="
+    --build $NATIVE_TRIPLET
+    --host $TRIPLET
+    --target $TRIPLET
     --exec-prefix=/usr/gnu
     --program-prefix=g
-    --enable-gold=yes
     --enable-largefile
     --with-system-zlib
 "
 
+# gdb doesn't currently build for aarch64 due to an issue in the bison
+# generated code that narrows int to char, which is unsigned.
+CONFIGURE_OPTS+=" --disable-gdb"
+
+build_init() {
+    typeset d=${SYSROOT[$ARCH]}/usr
+
+    CONFIGURE_OPTS+="
+        --with-libgmp-prefix=$d
+    "
+}
+
 # Program header data segments are RWX on illumos for at least 32-bit
 CONFIGURE_OPTS+=" --enable-warn-rwx-segments=no"
 
-XFORM_ARGS="-D GNU_ARCH=${TRIPLETS[amd64]}"
+XFORM_ARGS="-D GNU_ARCH=${TRIPLETS[$ARCH]}"
 
 # stop binutils 2.34 from building info files
 MAKE_ARGS="MAKEINFO=/usr/bin/true"
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 
-basic_tests() {
-    logmsg "--- basic tests"
-    # Limited sanity checks
-    [ `$DESTDIR/usr/bin/gld --print-output-format` = elf64-x86-64-sol2 ] \
-        || logerr "gld output format test failed"
-    # These targets are required for the ilumos-omnios UEFI build.
-    # https://illumos.topicbox.com/groups/developer/T5f37e8c8f0687062-Mcec43129fb017b70a035e5fd
-    for target in pei-i386 pei-x86-64; do
-        $DESTDIR$USRBIN/gobjdump -i | grep -qw "$target" \
-            || logerr "output format $target not supported."
-    done
-}
-
 init
-download_source $PROG $PROG $VER
+clone_github_source $PROG $REPO $BRANCH
+append_builddir $PROG
 patch_source
 prep_build autoconf -oot
-build
-basic_tests
+build -noctf
 make_package
 clean_up
 
