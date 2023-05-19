@@ -57,7 +57,7 @@ export MAKESHELL=$SHELL
 # Place the GNU utilities first in the path
 export PATH=$GNUBIN:$PATH
 
-LANGUAGES="c"
+LANGUAGES="c,c++"
 
 RUN_DEPENDS_IPS="
     developer/linker
@@ -85,6 +85,8 @@ HARDLINK_TARGETS="
     ${PREFIX/#\/}/bin/$TRIPLET-gcc-ar
     ${PREFIX/#\/}/bin/$TRIPLET-gcc-nm
     ${PREFIX/#\/}/bin/$TRIPLET-gcc-ranlib
+    ${PREFIX/#\/}/bin/$TRIPLET-c++
+    ${PREFIX/#\/}/bin/$TRIPLET-g++
 "
 
 PKGDIFF_HELPER="
@@ -124,6 +126,9 @@ CONFIGURE_OPTS[WS]="
 "
 LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
+
+export glibcxx_cv_math11_int_overload=no
+export glibcxx_cv_math11_fp_overload=no
 
 make_install() {
     logmsg "--- make install"
