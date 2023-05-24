@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=cloud-init
-VER=23.1.1
+VER=23.1.2
 DASHREV=0
 PKG=system/management/cloud-init
 SUMMARY="Cloud instance initialisation tools"
