@@ -128,7 +128,7 @@
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-311		| 23.1.0		| https://pypi.org/project/attrs
 | library/python-3/cffi-311		| 1.15.1		| https://pypi.org/project/cffi
-| library/python-3/coverage-311		| 7.2.5			| https://pypi.org/project/coverage
+| library/python-3/coverage-311		| 7.2.6			| https://pypi.org/project/coverage
 | library/python-3/crossenv-311		| 1.4.0			| https://pypi.org/project/crossenv
 | library/python-3/cryptography-311	| 40.0.2		| https://pypi.org/project/cryptography
 | library/python-3/idna-311		| 3.4			| https://pypi.org/project/idna
