@@ -1,7 +1,7 @@
 
 Prevent unecessary linking with old filter libraries.
 
-diff -wpruN '--exclude=*.orig' a~/Makefile a/Makefile
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
 --- a~/Makefile	1970-01-01 00:00:00
 +++ a/Makefile	1970-01-01 00:00:00
 @@ -260,7 +260,7 @@ endif
@@ -13,10 +13,10 @@ diff -wpruN '--exclude=*.orig' a~/Makefile a/Makefile
    CPPFLAGS += -D__EXTENSIONS__
  endif
  ifeq ($(CONFIG_TARGET_OS), FreeBSD)
-diff -wpruN '--exclude=*.orig' a~/configure a/configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -889,7 +889,7 @@ int main(void)
+@@ -894,7 +894,7 @@ int main(void)
  EOF
  if compile_prog "" "-laio" "solarisaio" ; then
    solaris_aio=yes
