@@ -46,7 +46,7 @@
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
-| library/libuv				| 1.44.2		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.45.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.11.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
@@ -67,7 +67,7 @@
 | library/zlib				| 1.2.13		| https://www.zlib.net/
 | meta/data/microcode/amd		| 20230418		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230214		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.5		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.15		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.3p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -104,22 +104,22 @@
 | system/pciutils			| 3.10.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2304.0		| https://www.rsyslog.com/downloads/download-v8-stable/
-| system/test/fio			| 3.34			| https://github.com/axboe/fio/tags
+| system/test/fio			| 3.35			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.0			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.2.2			| https://ftp.gnu.org/gnu/gawk/
-| text/gnu-diffutils			| 3.9			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
+| text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.21.1		| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.22.4		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 633			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.1.0			| https://curl.haxx.se/download.html
+| web/curl				| 8.1.1			| https://curl.haxx.se/download.html
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.0.1			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.76.2		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.76.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.40			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.4.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.2.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
@@ -128,15 +128,15 @@
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-311		| 23.1.0		| https://pypi.org/project/attrs
 | library/python-3/cffi-311		| 1.15.1		| https://pypi.org/project/cffi
-| library/python-3/coverage-311		| 7.2.5			| https://pypi.org/project/coverage
+| library/python-3/coverage-311		| 7.2.6			| https://pypi.org/project/coverage
 | library/python-3/crossenv-311		| 1.4.0			| https://pypi.org/project/crossenv
 | library/python-3/cryptography-311	| 40.0.2		| https://pypi.org/project/cryptography
 | library/python-3/idna-311		| 3.4			| https://pypi.org/project/idna
 | library/python-3/js-regex-311		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
-| library/python-3/meson-311		| 1.0.2			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.8.12		| https://github.com/ijl/orjson/releases
+| library/python-3/meson-311		| 1.1.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/orjson-311		| 3.8.14		| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.1.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
@@ -146,9 +146,9 @@
 | library/python-3/pyyaml-311		| 6.0			| https://pypi.org/project/PyYAML
 | library/python-3/rapidjson-311	| 1.10			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-311	| 2.10.0		| https://pypi.org/project/semantic-version
-| library/python-3/setuptools-311	| 67.7.2		| https://pypi.org/project/setuptools
+| library/python-3/setuptools-311	| 67.8.0		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-311	| 1.6.0			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-311		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-311		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-311| 4.5.0			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-311| 4.6.2			| https://pypi.org/project/typing-extensions
 

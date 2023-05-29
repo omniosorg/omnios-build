@@ -338,8 +338,8 @@ glib:gio / contenttype                                          ERROR   killed b
 glib:gio / converter-stream                                     ERROR   killed by signal 11 SIGSEGV
 glib:gio / appmonitor                                           ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                 ERROR   killed by signal 6 SIGABRT
-glib:gio / appinfo                                              ERROR   killed by signal 5 SIGTRAP
 glib:gio / desktop-app-info                                     ERROR   killed by signal 5 SIGTRAP
+glib:gio / appinfo                                              ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsettings                                            ERROR   killed by signal 5 SIGTRAP
 
 Ok:                 318 

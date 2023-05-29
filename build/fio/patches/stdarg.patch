@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/oslib/asprintf.h a/oslib/asprintf.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/oslib/asprintf.h a/oslib/asprintf.h
 --- a~/oslib/asprintf.h	1970-01-01 00:00:00
 +++ a/oslib/asprintf.h	1970-01-01 00:00:00
 @@ -4,6 +4,7 @@

@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/Makefile a/Makefile
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
 --- a~/Makefile	1970-01-01 00:00:00
 +++ a/Makefile	1970-01-01 00:00:00
 @@ -500,11 +500,11 @@ endif
