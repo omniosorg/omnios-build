@@ -120,6 +120,7 @@
 ../test/recipes/80-test_dtlsv1listen.t ............. ok
 ../test/recipes/80-test_ocsp.t ..................... ok
 ../test/recipes/80-test_pkcs12.t ................... ok
+../test/recipes/80-test_policy_tree.t .............. ok
 ../test/recipes/80-test_ssl_new.t .................. ok
 ../test/recipes/80-test_ssl_old.t .................. ok
 ../test/recipes/80-test_ssl_test_ctx.t ............. ok
@@ -157,5 +158,5 @@
 ../test/recipes/99-test_ecstress.t ................. ok
 ../test/recipes/99-test_fuzz.t ..................... ok
 All tests successful.
-Files=158, Tests=2646, 309 wallclock secs ( 3.70 usr  1.09 sys + 159.69 cusr 116.93 csys = 281.41 CPU)
+Files=159, Tests=2650, 302 wallclock secs ( 3.59 usr  1.03 sys + 151.15 cusr 106.31 csys = 262.08 CPU)
 Result: PASS
