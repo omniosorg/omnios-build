@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038de (2023-05-31)
+Weekly release for w/c 29th of May 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Curl has been updated to version 8.1.2, fixing
+  [CVE-2023-28319](https://curl.se/docs/CVE-2023-28319.html),
+  [CVE-2023-28320](https://curl.se/docs/CVE-2023-28320.html),
+  [CVE-2023-28321](https://curl.se/docs/CVE-2023-28321.html),
+  [CVE-2023-28322](https://curl.se/docs/CVE-2023-28322.html).
+
+* OpenSSL has been updated to version 1.1.1u, fixing
+  [CVE-2023-2650](https://www.openssl.org/news/secadv/20230530.txt).
+  OpenSSL 1.0.2 has also been patched against this.
+
+<br>
+
+---
+
 ## r151038cz (2023-04-27)
 Weekly release for w/c 24th of April 2023.
 > This update requires a reboot
