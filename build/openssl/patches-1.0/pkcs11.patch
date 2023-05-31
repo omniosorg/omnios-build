@@ -2,7 +2,7 @@
 # This patch file adds the Solaris's pkcs11 engine.
 # This is Solaris-specific (developed in house): not suitable for upstream.
 #
-diff -wpruN '--exclude=*.orig' a~/Configure a/Configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Configure a/Configure
 --- a~/Configure	1970-01-01 00:00:00
 +++ a/Configure	1970-01-01 00:00:00
 @@ -11,7 +11,7 @@ use File::Compare;
@@ -76,7 +76,7 @@ diff -wpruN '--exclude=*.orig' a~/Configure a/Configure
  	s/^SHLIB_VERSION_NUMBER=.*/SHLIB_VERSION_NUMBER=$shlib_version_number/;
  	s/^SHLIB_VERSION_HISTORY=.*/SHLIB_VERSION_HISTORY=$shlib_version_history/;
  	s/^SHLIB_MAJOR=.*/SHLIB_MAJOR=$shlib_major/;
-diff -wpruN '--exclude=*.orig' a~/Makefile.org a/Makefile.org
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.org a/Makefile.org
 --- a~/Makefile.org	1970-01-01 00:00:00
 +++ a/Makefile.org	1970-01-01 00:00:00
 @@ -26,6 +26,9 @@ HERE=.
@@ -89,7 +89,7 @@ diff -wpruN '--exclude=*.orig' a~/Makefile.org a/Makefile.org
  # Do not edit this manually. Use Configure --openssldir=DIR do change this!
  OPENSSLDIR=/usr/local/ssl
  
-diff -wpruN '--exclude=*.orig' a~/crypto/dso/dso_lib.c a/crypto/dso/dso_lib.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/crypto/dso/dso_lib.c a/crypto/dso/dso_lib.c
 --- a~/crypto/dso/dso_lib.c	1970-01-01 00:00:00
 +++ a/crypto/dso/dso_lib.c	1970-01-01 00:00:00
 @@ -397,6 +397,24 @@ char *DSO_convert_filename(DSO *dso, con
@@ -117,7 +117,7 @@ diff -wpruN '--exclude=*.orig' a~/crypto/dso/dso_lib.c a/crypto/dso/dso_lib.c
      if ((dso->flags & DSO_FLAG_NO_NAME_TRANSLATION) == 0) {
          if (dso->name_converter != NULL)
              result = dso->name_converter(dso, filename);
-diff -wpruN '--exclude=*.orig' a~/crypto/engine/eng_all.c a/crypto/engine/eng_all.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/crypto/engine/eng_all.c a/crypto/engine/eng_all.c
 --- a~/crypto/engine/eng_all.c	1970-01-01 00:00:00
 +++ a/crypto/engine/eng_all.c	1970-01-01 00:00:00
 @@ -60,6 +60,16 @@
@@ -137,7 +137,7 @@ diff -wpruN '--exclude=*.orig' a~/crypto/engine/eng_all.c a/crypto/engine/eng_al
  void ENGINE_load_builtin_engines(void)
  {
      /* Some ENGINEs need this */
-diff -wpruN '--exclude=*.orig' a~/crypto/engine/engine.h a/crypto/engine/engine.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/crypto/engine/engine.h a/crypto/engine/engine.h
 --- a~/crypto/engine/engine.h	1970-01-01 00:00:00
 +++ a/crypto/engine/engine.h	1970-01-01 00:00:00
 @@ -413,6 +413,7 @@ void ENGINE_load_gost(void);
@@ -148,7 +148,7 @@ diff -wpruN '--exclude=*.orig' a~/crypto/engine/engine.h a/crypto/engine/engine.
  void ENGINE_load_rdrand(void);
  void ENGINE_load_builtin_engines(void);
  
-diff -wpruN '--exclude=*.orig' a~/engines/Makefile a/engines/Makefile
+diff -wpruN --no-dereference '--exclude=*.orig' a~/engines/Makefile a/engines/Makefile
 --- a~/engines/Makefile	1970-01-01 00:00:00
 +++ a/engines/Makefile	1970-01-01 00:00:00
 @@ -26,7 +26,8 @@ TEST=

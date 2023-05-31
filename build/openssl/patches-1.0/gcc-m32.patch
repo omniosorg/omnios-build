@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/Configure a/Configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Configure a/Configure
 --- a~/Configure	1970-01-01 00:00:00
 +++ a/Configure	1970-01-01 00:00:00
 @@ -245,7 +245,7 @@ my %table=(
