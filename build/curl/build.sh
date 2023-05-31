@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=curl
-VER=8.1.1
+VER=8.1.2
 PKG=web/curl
 SUMMARY="Command line tool for transferring data with URL syntax"
 DESC="Curl is a command line tool for transferring data with URL syntax, "
