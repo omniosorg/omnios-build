@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/Configure a/Configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Configure a/Configure
 --- a~/Configure	1970-01-01 00:00:00
 +++ a/Configure	1970-01-01 00:00:00
 @@ -245,7 +245,7 @@ my %table=(
@@ -19,7 +19,7 @@ diff -wpruN '--exclude=*.orig' a~/Configure a/Configure
   
  #### Solaris x86 with Sun C setups
  "solaris-x86-cc","cc:-fast -xarch=generic -O -Xa::-D_REENTRANT::-lsocket -lnsl -ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_PTR DES_UNROLL BF_PTR:${no_asm}:dlfcn:solaris-shared:-KPIC:-G -dy -z text:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
-diff -wpruN '--exclude=*.orig' a~/Makefile.org a/Makefile.org
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.org a/Makefile.org
 --- a~/Makefile.org	1970-01-01 00:00:00
 +++ a/Makefile.org	1970-01-01 00:00:00
 @@ -323,7 +323,7 @@ libcrypto$(SHLIB_EXT): libcrypto.a fips_
