@@ -1,0 +1,26 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/gdb/configure a/gdb/configure
+--- a~/gdb/configure	1970-01-01 00:00:00
++++ a/gdb/configure	1970-01-01 00:00:00
+@@ -10087,7 +10087,7 @@ if test "${with_libgmp_prefix+set}" = se
+   prefix="$acl_save_prefix"
+ 
+       else
+-        additional_includedir="$withval/include"
++        additional_includedir="$withval/include/gmp"
+         additional_libdir="$withval/lib"
+       fi
+     fi
+@@ -10263,11 +10263,11 @@ fi
+             case "$found_dir" in
+               */lib | */lib/)
+                 basedir=`echo "X$found_dir" | sed -e 's,^X,,' -e 's,/lib/*$,,'`
+-                additional_includedir="$basedir/include"
++                additional_includedir="$basedir/include/gmp"
+                 ;;
+             esac
+             if test "X$additional_includedir" != "X"; then
+-                                                                                                                if test "X$additional_includedir" != "X/usr/include"; then
++                                                                                                                if test "X$additional_includedir" != "X/usr/include/gmp"; then
+                 haveit=
+                 if test "X$additional_includedir" = "X/usr/local/include"; then
+                   if test -n "$GCC"; then
