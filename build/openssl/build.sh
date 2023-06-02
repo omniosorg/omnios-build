@@ -23,8 +23,8 @@ SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
 DESC+="and general purpose cryptographic library"
 
-# Use the version of the openssl 1.1 package for this meta package
-inherit_ver openssl build-1.1.sh
+# Use the version of the openssl 3 package for this meta package
+inherit_ver openssl build-3.sh
 
 create_manifest()
 {
@@ -38,7 +38,7 @@ set name=pkg.summary value="$SUMMARY"
 set name=pkg.description value="$DESC"
 set name=pkg.human-version value="$VER"
 
-depend fmri=library/security/openssl-11 type=require
+depend fmri=library/security/openssl-3 type=require
 
 EOM
 }

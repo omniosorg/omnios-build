@@ -75,7 +75,7 @@ Result: NOTESTS
 05-test_rc4.t ...................... ok
 05-test_rc5.t ...................... skipped: rc5 is not supported by this OpenSSL build
 06-test_algorithmid.t .............. ok
-06-test_rdrand_sanity.t ............ ok
+06-test_rdcpu_sanity.t ............. ok
 10-test_bn.t ....................... ok
 10-test_exp.t ...................... ok
 15-test_dh.t ....................... ok
@@ -236,7 +236,9 @@ Result: NOTESTS
 91-test_pkey_check.t ............... ok
 95-test_external_gost_engine.t ..... skipped: No external tests in this configuration
 95-test_external_krb5.t ............ skipped: No external tests in this configuration
+95-test_external_oqsprovider.t ..... skipped: No external tests in this configuration
 95-test_external_pyca.t ............ skipped: No external tests in this configuration
+95-test_external_tlsfuzzer.t ....... skipped: No external tests in this configuration
 99-test_ecstress.t ................. ok
 99-test_fuzz_asn1.t ................ ok
 99-test_fuzz_asn1parse.t ........... ok
@@ -251,5 +253,5 @@ Result: NOTESTS
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=249, Tests=3317, 
+Files=251, Tests=3336, 
 Result: PASS
