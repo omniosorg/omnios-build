@@ -15,43 +15,20 @@
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
-. ../../lib/arch.sh
 . ../../lib/build.sh
 
-# The following lines starting with PKG= let buildctl spot the packages that
-# are actually built by the makefiles in the pkg source. Also build a package
-# list to use later when showing package differences.
 PKG=package/pkg
 PKGLIST=$PKG
-PKG=system/zones/brand/ipkg
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/lipkg
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/illumos
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/sparse
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/pkgsrc
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/bhyve
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/kvm
-PKGLIST+=" $PKG"
-PKG=system/zones/brand/lx/platform
-PKGLIST+=" $PKG"
 SUMMARY="This isn't used"
 DESC="$SUMMARY"
+
+ARCH=aarch64
+[ "$CLIBUILDARCH" = $ARCH ] || logerr "Incorrect arch selected, use -a $ARCH"
 
 PROG=pkg
 VER=omni
 BUILDNUM=$RELVER
 [ -n "$PKGPUBLISHER" ] || logerr "No PKGPUBLISHER specified. Check lib/site.sh"
-
-BUILD_DEPENDS_IPS="
-    developer/versioning/git
-    system/zones/internal
-    text/intltool
-"
 
 # Respect environmental overrides for these to ease development.
 : ${PKG_SOURCE_REPO:=$OOCEGITHUB/pkg5}
@@ -66,23 +43,29 @@ clone_source() {
 
 build() {
     pushd $TMPDIR/$BUILDDIR/pkg/src > /dev/null || logerr "Cannot chdir"
+    python_cross_setup $ARCH
+    logmsg "--- generate CFFI source"
+    logcmd make cffi_src
     logmsg "--- build"
-    logcmd make clean
-    logcmd make || logerr "make failed"
-    logmsg "--- install"
-    logcmd make install || logerr "install failed"
+    logcmd python setup.py install
+    logmsg "--- modules"
+    logcmd make -e MACH=$ARCH TARGET=install modules/$PYTHON3VER
     popd > /dev/null
 }
 
 package() {
     pushd $TMPDIR/$BUILDDIR/pkg/src/pkg > /dev/null
     logmsg "--- packaging"
-    logcmd make check publish-pkgs \
+    logcmd make publish-pkgs \
         BUILDNUM=$BUILDNUM \
         PKGSEND_OPTS="" \
         PKGPUBLISHER=$PKGPUBLISHER \
         PKGREPOTGT="" \
-        PKGREPOLOC="$PKGSRVR" \
+        PKGREPOLOC="${REPOS[$ARCH]}" \
+		ARCH=$ARCH \
+		PKGCMDENV=/usr/bin \
+		MANIFESTS='package\:pkg.p5m' \
+		PKG_IMAGE=${SYSROOT[$ARCH]} \
         || logerr "publish failed"
     popd > /dev/null
 }
@@ -91,12 +74,6 @@ init
 clone_source
 build
 package
-
-if [ -z "$SKIP_PKG_DIFF" ]; then
-    for pkg in $PKGLIST; do
-        diff_latest $pkg
-    done
-fi
 
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

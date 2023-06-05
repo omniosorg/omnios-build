@@ -131,6 +131,7 @@ library/python-3/pyopenssl-311
 ###############################################################################
 .SYSROOT
 illumos-gate
+package/pkg
 #
 ###############################################################################
 # TO DO
@@ -158,7 +159,6 @@ illumos-gate
 # library/unixodbc
 # network/service/isc-dhcp
 # network/test/netperf
-# package/pkg
 # runtime/java/jexec
 # runtime/java/openjdk17
 # service/network/chrony
