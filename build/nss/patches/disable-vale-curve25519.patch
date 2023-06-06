@@ -1,0 +1,16 @@
+
+Enabling vale curve 25519 adds BMI instructions to libfreebl, which do not
+work on pre-Haswell CPUs.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/freebl.gyp a/lib/freebl/freebl.gyp
+--- a~/lib/freebl/freebl.gyp	1970-01-01 00:00:00
++++ a/lib/freebl/freebl.gyp	1970-01-01 00:00:00
+@@ -934,7 +934,7 @@
+   'variables': {
+     'module': 'nss',
+     'conditions': [
+-      [ 'target_arch=="x64" and cc_is_gcc==1', {
++      [ 'target_arch=="x64" and cc_is_gcc==1 and OS!="solaris"', {
+         'supports_vale_curve25519%': 1,
+       }, {
+         'supports_vale_curve25519%': 0,
