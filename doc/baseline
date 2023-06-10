@@ -717,6 +717,7 @@ omnios system/xopen/xcu6
 omnios system/xvm/ipagent
 omnios system/zones
 omnios system/zones/brand/bhyve
+omnios system/zones/brand/emu
 omnios system/zones/brand/illumos
 omnios system/zones/brand/ipkg
 omnios system/zones/brand/kvm

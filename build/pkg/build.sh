@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/arch.sh
 . ../../lib/build.sh
@@ -34,6 +34,8 @@ PKGLIST+=" $PKG"
 PKG=system/zones/brand/pkgsrc
 PKGLIST+=" $PKG"
 PKG=system/zones/brand/bhyve
+PKGLIST+=" $PKG"
+PKG=system/zones/brand/emu
 PKGLIST+=" $PKG"
 PKG=system/zones/brand/kvm
 PKGLIST+=" $PKG"
