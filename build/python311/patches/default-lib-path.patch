@@ -1,7 +1,7 @@
 This patch was developed in-house.  It has been submitted upstream:
 http://bugs.python.org/issue23287
 
-diff -wpruN '--exclude=*.orig' a~/Lib/ctypes/util.py a/Lib/ctypes/util.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/ctypes/util.py a/Lib/ctypes/util.py
 --- a~/Lib/ctypes/util.py	1970-01-01 00:00:00
 +++ a/Lib/ctypes/util.py	1970-01-01 00:00:00
 @@ -226,34 +226,15 @@ elif os.name == "posix":

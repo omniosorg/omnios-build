@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.3
+VER=3.11.4
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
@@ -102,6 +102,8 @@ CONFIGURE_OPTS+=" ac_cv_func_getentropy=no "
 # https://github.com/python/cpython/issues/89886#issuecomment-1106100113
 CONFIGURE_OPTS+=" ac_cv_func_hstrerror=no"
 
+export DTRACE_CPP=$GCCPATH/bin/cpp
+
 build_init() {
     typeset s=${SYSROOT[aarch64]}
 
@@ -137,11 +139,7 @@ launch_testsuite() {
     EXTRATESTOPTS+=" -j 1"
     export EXTRATESTOPTS
     if [ -z "$SKIP_TESTSUITE" ] && ( [ -n "$BATCH" ] || ask_to_testsuite ); then
-        # Some tests have non-ASCII characters
-        _LC_ALL=$LC_ALL
-        export LC_ALL=en_US.UTF-8
-        BATCH=1 LC_ALL=$LC_ALL run_testsuite "$@" < /dev/null
-        export LC_ALL=$_LC_ALL
+        BATCH=1 run_testsuite "$@" < /dev/null
     else
         SKIP_TESTSUITE=1    # skip the dtrace tests too
     fi

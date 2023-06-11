@@ -3,7 +3,7 @@ Running some sub-tests in process groups causes tests to hang - the reason it
 not yet known.
 Disable the use of process groups for now.
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/libregrtest/runtest_mp.py a/Lib/test/libregrtest/runtest_mp.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/libregrtest/runtest_mp.py a/Lib/test/libregrtest/runtest_mp.py
 --- a~/Lib/test/libregrtest/runtest_mp.py	1970-01-01 00:00:00
 +++ a/Lib/test/libregrtest/runtest_mp.py	1970-01-01 00:00:00
 @@ -38,7 +38,8 @@ assert MAIN_PROCESS_TIMEOUT >= PROGRESS_

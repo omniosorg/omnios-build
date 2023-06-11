@@ -1,7 +1,7 @@
 This patch provides Python ucred support.  It may be contributed upstream at
 some point, but the suitability (or lack thereof) has not yet been determined.
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/ucredtest.py a/Lib/test/ucredtest.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/ucredtest.py a/Lib/test/ucredtest.py
 --- a~/Lib/test/ucredtest.py	1970-01-01 00:00:00
 +++ a/Lib/test/ucredtest.py	1970-01-01 00:00:00
 @@ -0,0 +1,45 @@
@@ -50,7 +50,7 @@ diff -wpruN '--exclude=*.orig' a~/Lib/test/ucredtest.py a/Lib/test/ucredtest.py
 +    uc.getpid()
 +except OSError as e:
 +    print(e)
-diff -wpruN '--exclude=*.orig' a~/Modules/ucred.c a/Modules/ucred.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/ucred.c a/Modules/ucred.c
 --- a~/Modules/ucred.c	1970-01-01 00:00:00
 +++ a/Modules/ucred.c	1970-01-01 00:00:00
 @@ -0,0 +1,405 @@
@@ -459,7 +459,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/ucred.c a/Modules/ucred.c
 +
 +	return m;
 +}
-diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
 @@ -1385,6 +1385,7 @@ class PyBuildExt(build_ext):

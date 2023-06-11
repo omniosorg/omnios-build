@@ -5,7 +5,7 @@ slightly tweaked form at some point in the future.
 Note that this can also have wrong inpact on other tests (e.g., imap which
 tries to allocate huge chunks of virtual memory).
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/libregrtest/setup.py a/Lib/test/libregrtest/setup.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/libregrtest/setup.py a/Lib/test/libregrtest/setup.py
 --- a~/Lib/test/libregrtest/setup.py	1970-01-01 00:00:00
 +++ a/Lib/test/libregrtest/setup.py	1970-01-01 00:00:00
 @@ -66,6 +66,19 @@ def setup_tests(ns):

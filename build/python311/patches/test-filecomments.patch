@@ -1,7 +1,7 @@
 
 Support comments in the test ignore file (see ../files/test.exclude)
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/libregrtest/cmdline.py a/Lib/test/libregrtest/cmdline.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/libregrtest/cmdline.py a/Lib/test/libregrtest/cmdline.py
 --- a~/Lib/test/libregrtest/cmdline.py	1970-01-01 00:00:00
 +++ a/Lib/test/libregrtest/cmdline.py	1970-01-01 00:00:00
 @@ -436,6 +436,7 @@ def _parse_args(args, **kwargs):
