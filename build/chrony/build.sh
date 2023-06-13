@@ -39,6 +39,7 @@ prep_build
 save_buildenv
 
 CONFIGURE_OPTS="--disable-shared"
+CONFIGURE_OPTS[aarch64]+=" HOST_CC=/opt/gcc-$DEFAULT_GCC_VER/bin/gcc"
 CPPFLAGS="-I/usr/include/gmp"
 
 build_dependency nettle nettle-$NETTLEVER \
@@ -46,9 +47,13 @@ build_dependency nettle nettle-$NETTLEVER \
 
 restore_buildenv
 
-CPPFLAGS="-I$DEPROOT$PREFIX/include"
+CPPFLAGS[amd64]="-I$DEPROOT$PREFIX/include"
 LDFLAGS[amd64]+=" -L$DEPROOT$PREFIX/lib/amd64"
 addpath PKG_CONFIG_PATH[amd64] $DEPROOT$PREFIX/lib/amd64/pkgconfig
+
+CPPFLAGS[aarch64]="-I$DEPROOT.aarch64$PREFIX/include"
+LDFLAGS[aarch64]+=" -L$DEPROOT.aarch64$PREFIX/lib"
+addpath PKG_CONFIG_PATH[aarch64] $DEPROOT.aarch64$PREFIX/lib/pkgconfig
 
 #########################################################################
 
@@ -56,6 +61,10 @@ post_configure() {
     for flag in $EXPECTED_OPTIONS; do
         $EGREP -s "$flag 1" config.h || logerr "$flag not set"
     done
+}
+
+post_install() {
+    install_smf network chrony.xml
 }
 
 CONFIGURE_OPTS="
@@ -73,7 +82,6 @@ download_source $PROG $PROG $VER
 patch_source
 build
 run_testsuite check
-install_smf network chrony.xml
 make_package
 clean_up
 
