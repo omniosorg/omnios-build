@@ -1,16 +1,16 @@
-GNU xorriso 1.5.4.pl02 : RockRidge filesystem manipulator, libburnia project.
+GNU xorriso 1.5.6.pl01 : RockRidge filesystem manipulator, libburnia project.
 
-GNU xorriso 1.5.4.pl02
+GNU xorriso 1.5.6.pl01
 ISO 9660 Rock Ridge filesystem manipulator and CD/DVD/BD burn program
-Copyright (C) 2019, Thomas Schmitt <scdbackup@gmx.net>, libburnia project.
-xorriso version   :  1.5.4.pl02
-Version timestamp :  2021.02.06.123001
+Copyright (C) 2023, Thomas Schmitt <scdbackup@gmx.net>, libburnia project.
+xorriso version   :  1.5.6.pl01
+Version timestamp :  2023.06.12.080001
 Build timestamp   :  -none-given-
-libisofs   in use :  1.5.4  (min. 1.5.4)
+libisofs   in use :  1.5.6  (min. 1.5.6)
 libjte     in use :  2.0.0  (min. 2.0.0)
-libburn    in use :  1.5.4  (min. 1.5.4)
+libburn    in use :  1.5.6  (min. 1.5.6)
 libburn OS adapter:  internal Solaris uscsi adapter sg-solaris
-libisoburn in use :  1.5.4  (min. 1.5.4)
+libisoburn in use :  1.5.6  (min. 1.5.6)
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.

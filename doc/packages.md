@@ -28,7 +28,7 @@
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.40.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.4.3			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 6.4.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.0			| http://ftp.vim.org/pub/vim/unix
@@ -51,7 +51,7 @@
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.53.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nghttp2			| 1.54.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nss				| 3.90			| https://ftp.mozilla.org/pub/security/nss/releases/ https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Releases
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
@@ -94,7 +94,7 @@
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
-| system/library/dbus			| 1.14.6		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
+| system/library/dbus			| 1.14.8		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.112			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/pcap			| 1.10.4		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 23.1.2		| https://github.com/canonical/cloud-init/releases
@@ -121,8 +121,8 @@
 | web/wget2				| 2.0.1			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.76.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.40			| https://ftp.gnu.org/gnu/binutils
-| media/xorriso				| 1.5.4.pl02		| https://www.gnu.org/software/xorriso/
-| system/virtualization/open-vm-tools	| 12.2.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
+| media/xorriso				| 1.5.6.pl01		| https://www.gnu.org/software/xorriso/
+| system/virtualization/open-vm-tools	| 12.2.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.1.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
