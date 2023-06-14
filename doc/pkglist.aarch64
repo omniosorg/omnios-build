@@ -81,6 +81,7 @@ library/mpc
 media/xorriso
 network/dns/bind
 runtime/python-311
+service/network/chrony
 shell/zsh
 system/library/mozilla-nss
 text/gawk
@@ -161,7 +162,6 @@ package/pkg
 # network/test/netperf
 # runtime/java/jexec
 # runtime/java/openjdk17
-# service/network/chrony
 # shell/tcsh
 # system/data/urxvt-terminfo
 # system/library/mtsk
