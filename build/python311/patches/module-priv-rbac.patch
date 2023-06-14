@@ -1,7 +1,7 @@
 This patch provides Python RBAC support.  It may be contributed upstream at
 some point, but the suitability (or lack thereof) has not yet been determined.
 
-diff -wpruN '--exclude=*.orig' a~/Modules/authattr.c a/Modules/authattr.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/authattr.c a/Modules/authattr.c
 --- a~/Modules/authattr.c	1970-01-01 00:00:00
 +++ a/Modules/authattr.c	1970-01-01 00:00:00
 @@ -0,0 +1,254 @@
@@ -259,7 +259,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/authattr.c a/Modules/authattr.c
 +	0,                            /* tp_free */
 +	0,                            /* tp_is_gc */
 +};
-diff -wpruN '--exclude=*.orig' a~/Modules/execattr.c a/Modules/execattr.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/execattr.c a/Modules/execattr.c
 --- a~/Modules/execattr.c	1970-01-01 00:00:00
 +++ a/Modules/execattr.c	1970-01-01 00:00:00
 @@ -0,0 +1,305 @@
@@ -568,7 +568,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/execattr.c a/Modules/execattr.c
 +	0,                            /* tp_free */
 +	0,                            /* tp_is_gc */
 +};
-diff -wpruN '--exclude=*.orig' a~/Modules/privileges.c a/Modules/privileges.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/privileges.c a/Modules/privileges.c
 --- a~/Modules/privileges.c	1970-01-01 00:00:00
 +++ a/Modules/privileges.c	1970-01-01 00:00:00
 @@ -0,0 +1,269 @@
@@ -841,7 +841,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/privileges.c a/Modules/privileges.c
 +
 +       return m;
 +}
-diff -wpruN '--exclude=*.orig' a~/Modules/pyrbac.c a/Modules/pyrbac.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/pyrbac.c a/Modules/pyrbac.c
 --- a~/Modules/pyrbac.c	1970-01-01 00:00:00
 +++ a/Modules/pyrbac.c	1970-01-01 00:00:00
 @@ -0,0 +1,81 @@
@@ -926,7 +926,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/pyrbac.c a/Modules/pyrbac.c
 +	return m;
 +
 +}
-diff -wpruN '--exclude=*.orig' a~/Modules/pyrbac.h a/Modules/pyrbac.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/pyrbac.h a/Modules/pyrbac.h
 --- a~/Modules/pyrbac.h	1970-01-01 00:00:00
 +++ a/Modules/pyrbac.h	1970-01-01 00:00:00
 @@ -0,0 +1,45 @@
@@ -975,7 +975,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/pyrbac.h a/Modules/pyrbac.h
 +extern PyTypeObject UserattrType;
 +
 +#endif
-diff -wpruN '--exclude=*.orig' a~/Modules/userattr.c a/Modules/userattr.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/userattr.c a/Modules/userattr.c
 --- a~/Modules/userattr.c	1970-01-01 00:00:00
 +++ a/Modules/userattr.c	1970-01-01 00:00:00
 @@ -0,0 +1,301 @@
@@ -1280,7 +1280,7 @@ diff -wpruN '--exclude=*.orig' a~/Modules/userattr.c a/Modules/userattr.c
 +	0,                            /* tp_free */
 +	0,                            /* tp_is_gc */
 +};
-diff -wpruN '--exclude=*.orig' a~/setup.py a/setup.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
 @@ -1387,6 +1387,7 @@ class PyBuildExt(build_ext):

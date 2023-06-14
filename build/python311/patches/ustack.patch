@@ -1,25 +1,54 @@
-commit 0a6845622b191a67a362b5eb42e652e27361f573
-Author: Andy Fiddaman <illumos@fiddaman.net>
-Date:   Sat Nov 26 22:54:03 2022 +0000
+From 8182ad22301ac90900c25afd85596894c209260a Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sat, 26 Nov 2022 22:54:03 +0000
+Subject: [PATCH] Python: Add dtrace ustack helper
 
-    Python: Add dtrace ustack helper
-    
-    Python acquired native dtrace support in version 3.6, but without the
-    ustack helper that annotates stack traces with information about the
-    python function being called.
-    
-    This restores the ustack helper and is based on Sun's original dtrace
-    patches.
-    
-    Some more information on the original work can be found at:
-    https://movementarian.org/blog/posts/2007-05-24-python-and-dtrace-in-build-65
+Python acquired native dtrace support in version 3.6, but without the
+ustack helper that annotates stack traces with information about the
+python function being called.
+
+This restores the ustack helper and is based on Sun's original dtrace
+patches.
+
+Some more information on the original work can be found at:
+https://movementarian.org/blog/posts/2007-05-24-python-and-dtrace-in-build-65
+---
+ Include/dtrace.cpp.sh                         |  28 ++++
+ Include/object.h                              |   2 +
+ Include/pydtrace.d                            | 124 ++++++++++++++++++
+ Include/pydtrace.h                            |  12 +-
+ Include/pydtrace_offsets.c                    |  34 +++++
+ Include/pydtrace_symbols.sh                   |  15 +++
+ Include/pyport.h                              |   1 +
+ Lib/test/dtracedata/jstack.d                  |  18 +++
+ Lib/test/dtracedata/jstack.d.expected         |  21 +++
+ Lib/test/dtracedata/jstack.py                 |  25 ++++
+ Lib/test/dtracedata/unicode-jstack.d          |  18 +++
+ Lib/test/dtracedata/unicode-jstack.d.expected |  18 +++
+ Lib/test/dtracedata/unicode-jstack.py         |  15 +++
+ Lib/test/test_dtrace.py                       |  31 +++++
+ Makefile.pre.in                               |  35 ++++-
+ Objects/codeobject.c                          |   4 +
+ Python/ceval.c                                |  35 ++++-
+ Python/import.c                               |   4 +-
+ Python/sysmodule.c                            |   2 +-
+ 19 files changed, 427 insertions(+), 15 deletions(-)
+ create mode 100755 Include/dtrace.cpp.sh
+ create mode 100644 Include/pydtrace_offsets.c
+ create mode 100755 Include/pydtrace_symbols.sh
+ create mode 100644 Lib/test/dtracedata/jstack.d
+ create mode 100644 Lib/test/dtracedata/jstack.d.expected
+ create mode 100644 Lib/test/dtracedata/jstack.py
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.d
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.d.expected
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.py
 
 diff --git a/Include/dtrace.cpp.sh b/Include/dtrace.cpp.sh
 new file mode 100755
-index 0000000000..5ec7c3c94f
+index 0000000000..e982abb2e4
 --- /dev/null
 +++ b/Include/dtrace.cpp.sh
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,28 @@
 +#!/bin/bash
 +
 +# A cpp wrapper used by the dtrace compiler that strips //-style comments
@@ -28,12 +57,25 @@ index 0000000000..5ec7c3c94f
 +op=${@: -1}
 +args=${@:1:$#-1}
 +
-+/usr/lib/cpp $args | sed '
++# Our native cpp cannot cope with this, and we still need to remove some
++# pieces to keep the dtrace compiler happy.
++: "${DTRACE_CPP:=/opt/gcc-10/bin/cpp}"
++
++$DTRACE_CPP $args \
++	-D'__attribute__(x)=' \
++	-D'__alignof__(x)=' \
++	-D'__aligned(x)=' \
++	-D__builtin_va_list='void *' \
++	-D_Bool=char \
++	-D_Noreturn= \
++	-Dself=_self \
++	-Dstring=_string \
++	| sed '
 +	s^//.*^^
 +	/^.*static inline .*/,/^}/d
++	/^.*static inline *$/,/^}/d
 +	/^$/d
-+	/PYGEN_NEXT = 1,/s/,//
-+' >> $op
++' | tee dtrace.out >> $op
 +
 diff --git a/Include/object.h b/Include/object.h
 index f2af428e2b..f7c8da28e7 100644
@@ -52,10 +94,10 @@ index f2af428e2b..f7c8da28e7 100644
  #define PyVarObject_HEAD_INIT(type, size)       \
      { PyObject_HEAD_INIT(type) size },
 diff --git a/Include/pydtrace.d b/Include/pydtrace.d
-index 5e6a626b01..ccf22b8fac 100644
+index 5e6a626b01..ef152f641f 100644
 --- a/Include/pydtrace.d
 +++ b/Include/pydtrace.d
-@@ -20,3 +20,138 @@ provider python {
+@@ -20,3 +20,127 @@ provider python {
  #pragma D attributes Evolving/Evolving/Common provider python function
  #pragma D attributes Evolving/Evolving/Common provider python name
  #pragma D attributes Evolving/Evolving/Common provider python args
@@ -83,16 +125,8 @@ index 5e6a626b01..ccf22b8fac 100644
 +#define Py_EXPORTED_SYMBOL
 +#define Py_LOCAL_SYMBOL
 +
-+#define string	stringDTRACE
-+
-+#include "pyport.h"
-+#include "pymacro.h"
-+#include "pytypedefs.h"
-+#include "pybuffer.h"
-+#include "object.h"
-+
-+#undef self
-+#undef string
++#include "Python.h"
++#include "internal/pycore_frame.h"
 +
 +#include "pydtrace_offsets.h"
 +#include "pydtrace_symbols.h"
@@ -111,9 +145,9 @@ index 5e6a626b01..ccf22b8fac 100644
 +#define copyin_obj(addr, obj) ((obj *)copyin((uintptr_t)(addr), sizeof(obj)))
 +
 +/*
-+** Check if the string is ASCII. Don't use bitfields, because the
-+** packing in GCC and D are different. BEWARE!!!.
-+*/
++ * Check if the string is ASCII. Don't use bitfields, because the
++ * packing in GCC and D are different. BEWARE!!!.
++ */
 +#define pystr_isascii(addr) \
 +    ((*(((char *)addr) + PYDTRACE_ASCII_OFFSET)) & PYDTRACE_ASCII_MASK)
 +#define pystr_len(addr) \
@@ -133,24 +167,21 @@ index 5e6a626b01..ccf22b8fac 100644
 +dtrace:helper:ustack: /at_evalframe(arg0)/
 +{
 +	this->framep = *(uintptr_t *)copyin(frame_ptr_addr, sizeof(uintptr_t));
-+	this->frameo = copyin_obj(this->framep, struct _frame);
++	this->frameo = copyin_obj(this->framep, struct _PyInterpreterFrame);
 +	this->codep = this->frameo->f_code;
 +	this->codeo = copyin_obj(this->codep, PyCodeObject);
-+	this->addr = this->frameo->f_lasti;
++	this->addr = this->frameo->prev_instr;
 +
 +	/* See pycode_code.h:_PyCode_LineNumberFromArray */
++	this->line16 = copyin_obj(
++	    ((int16_t *)this->codeo->_co_linearray)[(int16_t)this->addr],
++	    int16_t);
++	this->line32 = copyin_obj(
++	    ((int32_t *)this->codeo->_co_linearray)[(int32_t)this->addr],
++	    int32_t);
 +	this->lineno = this->codeo->_co_linearray_entry_size == 2 ?
-+	    *copyin_obj(((int16_t *)this->codeo->_co_linearray)[addr], int16_t)
-+	    :
-+	    *copyin_obj(((int32_t *)this->codeo->_co_linearray)[addr], int32_t)
-+	    ;
++	    *this->line16 : *this->line32;
 +
-+/*
-+	this->lineno = this->codeo->co_firstlineno +
-+	    (this->frameo->f_lasti == -1 ? 0 :
-+	        *copyin_obj(this->codeo->co_linenos + this->frameo->f_lasti,
-+		unsigned short));
-+*/
 +	this->filenameo = copyin_obj(this->codeo->co_filename,
 +	    PyCompactUnicodeObject);
 +	this->nameo = copyin_obj(this->codeo->co_name, PyCompactUnicodeObject);
@@ -491,10 +522,10 @@ index 4b971deacc..c64a61231d 100644
  class DTraceNormalTests(TraceTests, unittest.TestCase):
      backend = DTraceBackend()
 diff --git a/Makefile.pre.in b/Makefile.pre.in
-index 8fbcd7ac17..edf95c6653 100644
+index 3ea8653de0..e9b219c4ce 100644
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1447,17 +1447,46 @@ Python/frozen.o: $(FROZEN_FILES_OUT)
+@@ -1448,17 +1448,46 @@ Python/frozen.o: $(FROZEN_FILES_OUT)
  # an include guard, so we can't use a pipeline to transform its output.
  Include/pydtrace_probes.h: $(srcdir)/Include/pydtrace.d
  	$(MKDIR_P) Include
@@ -543,7 +574,7 @@ index 8fbcd7ac17..edf95c6653 100644
  
  Objects/typeobject.o: Objects/typeslots.inc
  
-@@ -2418,7 +2447,7 @@ profile-removal:
+@@ -2457,7 +2486,7 @@ profile-removal:
  	rm -rf $(COVERAGE_REPORT)
  	rm -f profile-run-stamp
  
@@ -553,7 +584,7 @@ index 8fbcd7ac17..edf95c6653 100644
  		rm -f profile-gen-stamp profile-clean-stamp; \
  		$(MAKE) profile-removal; \
 diff --git a/Objects/codeobject.c b/Objects/codeobject.c
-index d7434ddefb..bb157b177b 100644
+index 32938b52ab..3fe9989690 100644
 --- a/Objects/codeobject.c
 +++ b/Objects/codeobject.c
 @@ -347,6 +347,10 @@ init_code(PyCodeObject *co, struct _PyCodeConstructor *con)
@@ -568,10 +599,10 @@ index d7434ddefb..bb157b177b 100644
  
  static int
 diff --git a/Python/ceval.c b/Python/ceval.c
-index 478ecd8e92..94dac92cf0 100644
+index 47df353197..1e5af7abff 100644
 --- a/Python/ceval.c
 +++ b/Python/ceval.c
-@@ -1639,7 +1639,13 @@ typedef struct {
+@@ -1632,7 +1632,13 @@ typedef struct {
      (call_shape.kwnames == NULL ? 0 : ((int)PyTuple_GET_SIZE(call_shape.kwnames)))
  
  PyObject* _Py_HOT_FUNCTION
@@ -585,7 +616,7 @@ index 478ecd8e92..94dac92cf0 100644
  {
      _Py_EnsureTstateNotNULL(tstate);
      CALL_STAT_INC(pyeval_calls);
-@@ -5832,6 +5838,29 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int
+@@ -5841,6 +5847,29 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int
  
  }
  
@@ -615,7 +646,7 @@ index 478ecd8e92..94dac92cf0 100644
  static void
  format_missing(PyThreadState *tstate, const char *kind,
                 PyCodeObject *co, PyObject *names, PyObject *qualname)
-@@ -7884,7 +7913,7 @@ dtrace_function_entry(_PyInterpreterFrame *frame)
+@@ -7891,7 +7920,7 @@ dtrace_function_entry(_PyInterpreterFrame *frame)
      funcname = PyUnicode_AsUTF8(code->co_name);
      lineno = _PyInterpreterFrame_GetLine(frame);
  
@@ -624,7 +655,7 @@ index 478ecd8e92..94dac92cf0 100644
  }
  
  static void
-@@ -7899,7 +7928,7 @@ dtrace_function_return(_PyInterpreterFrame *frame)
+@@ -7906,7 +7935,7 @@ dtrace_function_return(_PyInterpreterFrame *frame)
      funcname = PyUnicode_AsUTF8(code->co_name);
      lineno = _PyInterpreterFrame_GetLine(frame);
  
@@ -633,7 +664,7 @@ index 478ecd8e92..94dac92cf0 100644
  }
  
  /* DTrace equivalent of maybe_call_line_trace. */
-@@ -7930,7 +7959,7 @@ maybe_dtrace_line(_PyInterpreterFrame *frame,
+@@ -7937,7 +7966,7 @@ maybe_dtrace_line(_PyInterpreterFrame *frame,
              if (!co_name) {
                  co_name = "?";
              }
@@ -643,10 +674,10 @@ index 478ecd8e92..94dac92cf0 100644
      }
  }
 diff --git a/Python/import.c b/Python/import.c
-index ca728c4247..5a88d5ec7d 100644
+index 07a8b90092..7817dc9de4 100644
 --- a/Python/import.c
 +++ b/Python/import.c
-@@ -1730,13 +1730,13 @@ import_find_and_load(PyThreadState *tstate, PyObject *abs_name)
+@@ -1731,13 +1731,13 @@ import_find_and_load(PyThreadState *tstate, PyObject *abs_name)
      }
  
      if (PyDTrace_IMPORT_FIND_LOAD_START_ENABLED())
@@ -663,7 +694,7 @@ index ca728c4247..5a88d5ec7d 100644
  
      if (import_time) {
 diff --git a/Python/sysmodule.c b/Python/sysmodule.c
-index dca97f21a2..e2132fa6f7 100644
+index 8bab703713..042ec7e828 100644
 --- a/Python/sysmodule.c
 +++ b/Python/sysmodule.c
 @@ -220,7 +220,7 @@ sys_audit_tstate(PyThreadState *ts, const char *event,
@@ -675,3 +706,6 @@ index dca97f21a2..e2132fa6f7 100644
      }
  
      /* Call interpreter hooks */
+-- 
+2.40.1
+

@@ -1,6 +1,6 @@
 Python does not expect the build system to already have a 'pkg' module
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/test_pkgutil.py a/Lib/test/test_pkgutil.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_pkgutil.py a/Lib/test/test_pkgutil.py
 --- a~/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
 @@ -520,7 +520,7 @@ class NestedNamespacePackageTest(unittes

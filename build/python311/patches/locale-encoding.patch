@@ -9,7 +9,7 @@ breaks on Solaris when non UTF-8 locale is used. See bug 31790476.
 To fix this, we have to convert given wchar_t to utf32 each time locale is not
 UTF-8 encoded (or ASCII, which can safely be ignored).
 
-diff -wpruN '--exclude=*.orig' a~/Include/unicodeobject.h a/Include/unicodeobject.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Include/unicodeobject.h a/Include/unicodeobject.h
 --- a~/Include/unicodeobject.h	1970-01-01 00:00:00
 +++ a/Include/unicodeobject.h	1970-01-01 00:00:00
 @@ -97,6 +97,11 @@ Copyright (c) Corporation for National R
@@ -24,7 +24,7 @@ diff -wpruN '--exclude=*.orig' a~/Include/unicodeobject.h a/Include/unicodeobjec
  /* Py_UCS4 and Py_UCS2 are typedefs for the respective
     unicode representations. */
  typedef uint32_t Py_UCS4;
-diff -wpruN '--exclude=*.orig' a~/Objects/unicodeobject.c a/Objects/unicodeobject.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Objects/unicodeobject.c
 --- a~/Objects/unicodeobject.c	1970-01-01 00:00:00
 +++ a/Objects/unicodeobject.c	1970-01-01 00:00:00
 @@ -2161,6 +2161,15 @@ PyUnicode_FromUnicode(const Py_UNICODE *

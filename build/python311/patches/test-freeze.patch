@@ -9,7 +9,7 @@ This patch:
    lines used to build the new perl tree, since these override the temporary
    --prefix being used for the test.
 
-diff -wpruN '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/test/freeze.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/test/freeze.py
 --- a~/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
 +++ a/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
 @@ -10,7 +10,7 @@ TESTS_DIR = os.path.dirname(__file__)
@@ -21,7 +21,7 @@ diff -wpruN '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/tes
  FREEZE = os.path.join(TOOL_ROOT, 'freeze.py')
  OUTDIR = os.path.join(TESTS_DIR, 'outdir')
  
-@@ -93,8 +93,6 @@
+@@ -93,8 +93,6 @@ def copy_source_tree(newroot, oldroot):
          return subdirs_to_skip
  
      shutil.copytree(oldroot, newroot, ignore=ignore_non_src)
@@ -30,7 +30,7 @@ diff -wpruN '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/tes
  
  
  def get_makefile_var(builddir, name):
-@@ -153,6 +153,7 @@ def prepare(script=None, outdir=None):
+@@ -155,6 +153,7 @@ def prepare(script=None, outdir=None):
          os.path.join(srcdir, 'configure'),
          *shlex.split(get_config_var(srcdir, 'CONFIG_ARGS') or ''),
      ]

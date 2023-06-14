@@ -3,7 +3,7 @@ This test tries to set a file date to 2108-12-30.
 On illumos, the os.utime() call raises:
 	OSError: [Errno 79] Value too large for defined data type
 
-diff -wpruN '--exclude=*.orig' a~/Lib/test/test_zipfile.py a/Lib/test/test_zipfile.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_zipfile.py a/Lib/test/test_zipfile.py
 --- a~/Lib/test/test_zipfile.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_zipfile.py	1970-01-01 00:00:00
 @@ -624,7 +624,7 @@ class StoredTestsWithSourceFile(Abstract

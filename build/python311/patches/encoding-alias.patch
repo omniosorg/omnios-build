@@ -1,7 +1,7 @@
 Add missing encoding aliases.  It may be contributed upstream at some point,
 but the suitability (or lack thereof) has not yet been determined.
 
-diff -wpruN '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Lib/encodings/aliases.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Lib/encodings/aliases.py
 --- a~/Lib/encodings/aliases.py	1970-01-01 00:00:00
 +++ a/Lib/encodings/aliases.py	1970-01-01 00:00:00
 @@ -79,6 +79,7 @@ aliases = {

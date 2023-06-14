@@ -13,7 +13,7 @@ For reference:
 [1] https://bugs.python.org/issue19930
 [2] https://bugs.python.org/issue42367
 
-diff -wpruN '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
 --- a~/Lib/os.py	1970-01-01 00:00:00
 +++ a/Lib/os.py	1970-01-01 00:00:00
 @@ -212,7 +212,7 @@ def makedirs(name, mode=0o777, exist_ok=
@@ -25,7 +25,7 @@ diff -wpruN '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
          except FileExistsError:
              # Defeats race condition when another thread created the path
              pass
-diff -wpruN '--exclude=*.orig' a~/Lib/test/test_os.py a/Lib/test/test_os.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_os.py a/Lib/test/test_os.py
 --- a~/Lib/test/test_os.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_os.py	1970-01-01 00:00:00
 @@ -1600,12 +1600,12 @@ class MakedirTests(unittest.TestCase):

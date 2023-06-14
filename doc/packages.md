@@ -79,9 +79,9 @@
 | runtime/java/openjdk8			| 1.8.372-07		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.36.1		| https://www.cpan.org/src/README.html
 | runtime/python-27			| 2.7.18		| https://www.python.org/downloads/source/
-| runtime/python-39			| 3.9.16		| https://www.python.org/downloads/source/
-| runtime/python-310			| 3.10.11		| https://www.python.org/downloads/source/
-| runtime/python-311			| 3.11.3		| https://www.python.org/downloads/source/
+| runtime/python-39			| 3.9.17		| https://www.python.org/downloads/source/
+| runtime/python-310			| 3.10.12		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.4		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.13p3		| https://www.sudo.ws/
 | service/network/chrony		| 4.3			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.2			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
@@ -128,20 +128,20 @@
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-311		| 23.1.0		| https://pypi.org/project/attrs
 | library/python-3/cffi-311		| 1.15.1		| https://pypi.org/project/cffi
-| library/python-3/coverage-311		| 7.2.6			| https://pypi.org/project/coverage
+| library/python-3/coverage-311		| 7.2.7			| https://pypi.org/project/coverage
 | library/python-3/crossenv-311		| 1.4.0			| https://pypi.org/project/crossenv
-| library/python-3/cryptography-311	| 40.0.2		| https://pypi.org/project/cryptography
+| library/python-3/cryptography-311	| 41.0.1		| https://pypi.org/project/cryptography
 | library/python-3/idna-311		| 3.4			| https://pypi.org/project/idna
 | library/python-3/js-regex-311		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
 | library/python-3/meson-311		| 1.1.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.8.14		| https://github.com/ijl/orjson/releases
+| library/python-3/orjson-311		| 3.9.1		| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.1.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-311		| 7.44.1		| https://pypi.org/project/pycurl
-| library/python-3/pyopenssl-311	| 23.1.1		| https://pypi.org/project/pyOpenSSL
+| library/python-3/pyopenssl-311	| 23.2.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-311	| 0.19.3		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-311		| 6.0			| https://pypi.org/project/PyYAML
 | library/python-3/rapidjson-311	| 1.10			| https://pypi.org/project/python-rapidjson
@@ -150,5 +150,5 @@
 | library/python-3/setuptools-rust-311	| 1.6.0			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-311		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-311		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-311| 4.6.2			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-311| 4.6.3			| https://pypi.org/project/typing-extensions
 

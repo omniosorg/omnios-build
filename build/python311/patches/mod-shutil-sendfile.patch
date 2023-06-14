@@ -3,7 +3,7 @@ Without this patch, shutil.copyfile() will only use sendfile() on Linux
 It works on illumos too, and this fixes a problem with tests that rely
 on sendfile being involved.
 
-diff -wpruN '--exclude=*.orig' a~/Lib/shutil.py a/Lib/shutil.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/shutil.py a/Lib/shutil.py
 --- a~/Lib/shutil.py	1970-01-01 00:00:00
 +++ a/Lib/shutil.py	1970-01-01 00:00:00
 @@ -42,7 +42,8 @@ elif _WINDOWS:

@@ -6,7 +6,7 @@ https://bugs.python.org/issue16258
 This is not for upstream as the idea is from the bug itself and was rejected
 for use on all platforms.
 
-diff -wpruN '--exclude=*.orig' a~/Modules/_localemodule.c a/Modules/_localemodule.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/_localemodule.c a/Modules/_localemodule.c
 --- a~/Modules/_localemodule.c	1970-01-01 00:00:00
 +++ a/Modules/_localemodule.c	1970-01-01 00:00:00
 @@ -392,7 +392,7 @@ _locale_strxfrm_impl(PyObject *module, P
