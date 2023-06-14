@@ -30,7 +30,7 @@ SKIP_LICENCES="*.licence"
 set_arch 32
 
 configure_i386() {
-    export CFLAGS+=" $CFLAGS32"
+    subsume_arch i386 CFLAGS
 }
 
 init
