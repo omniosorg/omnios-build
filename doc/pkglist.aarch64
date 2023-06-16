@@ -66,6 +66,7 @@ network/rsync
 network/socat
 service/network/smtp/dma
 shell/bash
+system/rsyslog
 system/watch
 terminal/resize
 terminal/screen
@@ -171,7 +172,6 @@ package/pkg
 # system/pciutils
 # system/pciutils/pci.ids
 # system/pkgtree
-# system/rsyslog
 # system/test/fio
 # terminal/tmux
 # text/gnu-gettext

@@ -31,6 +31,8 @@ XFORM_ARGS+=" -DESTR=$ESTRVER"
 set_arch 64
 set_standard XPG6
 
+export MAKE
+
 init
 prep_build autoconf -autoreconf
 
@@ -46,15 +48,20 @@ build_dependency estr libestr-$ESTRVER $PROG/estr v$ESTRVER
 
 restore_buildenv
 
-export LIBFASTJSON_CFLAGS="-I$DEPROOT/usr/include/libfastjson"
-export LIBFASTJSON_LIBS="-L$DEPROOT/usr/lib/amd64 -lfastjson"
-export LIBESTR_CFLAGS="-I$DEPROOT/usr/include"
-export LIBESTR_LIBS="-L$DEPROOT/usr/lib/amd64 -lestr"
-addpath PKG_CONFIG_PATH64 $DEPROOT$PREFIX/lib/amd64/pkgconfig
-
 #########################################################################
 
 note -n "-- Building $PROG"
+
+pre_build() {
+    typeset arch=$1
+
+    export LIBFASTJSON_CFLAGS="-I$DEPROOT/usr/include/libfastjson"
+    export LIBFASTJSON_LIBS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lfastjson"
+    export LIBESTR_CFLAGS="-I$DEPROOT/usr/include"
+    export LIBESTR_LIBS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lestr"
+    addpath PKG_CONFIG_PATH[$arch] \
+        $DEPROOT$PREFIX/${LIBDIRS[$arch]}/pkgconfig
+}
 
 CONFIGURE_OPTS="
     --enable-inet
@@ -97,11 +104,14 @@ CONFIGURE_OPTS[amd64]+="
 # The testsuite output is quite noisy - clean it up
 TESTSUITE_FILTER="(PASS|SKIP|FAIL|ERROR|TOTAL|summary|====)"
 
+post_install() {
+    install_smf system rsyslog.xml rsyslog
+}
+
 download_source $PROG $PROG $VER
 patch_source
 build
 PATH=$GNUBIN:$PATH run_testsuite check
-install_smf system rsyslog.xml rsyslog
 make_package
 clean_up
 
