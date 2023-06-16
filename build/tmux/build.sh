@@ -54,7 +54,7 @@ CPPFLAGS=" \
     -I$DEPROOT/usr/include -I$DEPROOT/usr/include/event2 \
     -I/usr/include/ncurses \
 "
-LDFLAGS="-L$DEPROOT/usr/lib/amd64 -lsocket -lnsl -lsendfile"
+LDFLAGS="-L$DEPROOT/usr/${LIBDIRS[$BUILDARCH]} -lsocket -lnsl -lsendfile"
 CONFIGURE_OPTS+=" --enable-utempter"
 
 download_source $PROG $PROG $VER

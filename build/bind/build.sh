@@ -81,22 +81,21 @@ build_dependency libuv libuv-$LIBUVVER libuv v$LIBUVVER
 unset -f pre_configure
 restore_buildenv
 
-export LIBUV_CFLAGS="-I$DEPROOT$PREFIX/include"
-export LIBUV_LIBS="-L$DEPROOT$PREFIX/lib/amd64 -luv"
-
 #########################################################################
+
+note -n "-- Building $PROG"
 
 pre_configure() {
     typeset arch=$1
+
+    export LIBUV_CFLAGS="-I$DEPROOT$PREFIX/include"
+    export LIBUV_LIBS="-L$DEPROOT$PREFIX/${LIBDIRS[$arch]} -luv"
 
     ! cross_arch $arch && return
 
     CONFIGURE_OPTS[$arch]+="
         --build=${TRIPLETS[$BUILD_ARCH]}
     "
-
-    LIBUV_CFLAGS="-I$DEPROOT.$arch$PREFIX/include"
-    LIBUV_LIBS="-L$DEPROOT.$arch$PREFIX/lib -luv"
 
     # configure tries to find the build triplet prefixed gcc
     PATH+=":/opt/gcc-$DEFAULT_GCC_VER/bin"

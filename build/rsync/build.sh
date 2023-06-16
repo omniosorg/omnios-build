@@ -44,13 +44,13 @@ restore_buildenv
 
 # We want rsync to link statically with xxhash, rather than bundling the
 # .so files
-logcmd rm -f $DEPROOT{,.aarch64}/usr/lib/*.so*
-LDFLAGS[amd64]+=" -L$DEPROOT/usr/lib"
-CPPFLAGS[amd64]+=" -I$DEPROOT/usr/include"
-LDFLAGS[aarch64]+=" -L$DEPROOT.aarch64/usr/lib"
-CPPFLAGS[aarch64]+=" -I$DEPROOT.aarch64/usr/include"
+logcmd rm -f $DEPROOT/usr/lib/*.so*
+LDFLAGS+=" -L$DEPROOT/usr/lib"
+CPPFLAGS+=" -I$DEPROOT/usr/include"
 
 #########################################################################
+
+note -n "-- Building $PROG"
 
 CONFIGURE_OPTS="
     --with-included-popt
