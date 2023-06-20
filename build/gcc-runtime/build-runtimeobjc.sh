@@ -41,7 +41,7 @@ libs="libobjc"
 
 mkdir -p usr/lib/amd64
 
-for v in `seq 9 $VER`; do
+for v in `seq 9 12`; do
     install_lib $v "$libs" amd64
 done
 

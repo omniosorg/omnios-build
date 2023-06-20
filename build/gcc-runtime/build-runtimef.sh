@@ -41,7 +41,7 @@ libs="libgfortran libquadmath"
 
 mkdir -p usr/lib/amd64
 
-for v in `seq 5 $VER`; do
+for v in 7 10 12; do
     install_lib $v "$libs" amd64
 done
 

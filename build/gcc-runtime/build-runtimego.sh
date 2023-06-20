@@ -23,9 +23,7 @@ VER=11
 SUMMARY="GNU go runtime dependencies"
 DESC="$SUMMARY"
 
-# These libraries only came in with gcc 9 so use this as the baseline for
-# the unversioned links in usr/lib
-SHARED_GCC_VER=9
+SHARED_GCC_VER=10
 
 init
 prep_build
@@ -41,7 +39,7 @@ libs="libgo"
 
 mkdir -p usr/lib/amd64
 
-for v in `seq 9 $VER`; do
+for v in $SHARED_GCC_VER; do
     install_lib $v "$libs" amd64
 done
 
