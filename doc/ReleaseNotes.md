@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038dh (2023-06-20)
+Weekly release for w/c 19th of June 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* Python has been updated to version 3.9.17.
+
+### Other Changes
+
+* SMB NetLogon Client Seal support.
+
+<br>
+
+---
+
 ## r151038de (2023-05-31)
 Weekly release for w/c 29th of May 2023.
 > This is a non-reboot update
