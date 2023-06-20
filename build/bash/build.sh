@@ -98,9 +98,6 @@ note -n "Building $PROG"
 
 export CC_FOR_BUILD="/opt/gcc-$DEFAULT_GCC_VER/bin/gcc"
 
-CFLAGS+=" -I/usr/include/ncurses"
-LDFLAGS+=" -lncurses"
-
 # "let's shrink the SHT_SYMTAB as much as we can"
 # When last checked, this option shrinks the symbol table size by a third, but
 # it removes the information that ctfconvert uses to detect objects built from
