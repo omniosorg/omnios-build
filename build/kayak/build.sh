@@ -22,8 +22,9 @@
 PROG=kayak
 VER=1.1
 PKG=system/install/kayak
-SUMMARY="Kayak - OmniOS media generator and server"
-DESC="Kayak generates install media for OmniOS: either ISO/USB or network installation using PXE, DHCP, and HTTP"
+SUMMARY="Kayak - $DISTRO media generator and server"
+DESC="Kayak generates install media for $DISTRO: "
+DESC+="either ISO/USB or network installation using PXE, DHCP, and HTTP"
 
 BUILD_DEPENDS_IPS="developer/versioning/git"
 RUN_DEPENDS_IPS="

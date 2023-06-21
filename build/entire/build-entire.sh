@@ -21,7 +21,7 @@ PROG=entire
 PKG=entire
 VER=0.5.11
 SUMMARY="Minimal set of core system packages"
-DESC="Meta package to specify the minimum OmniOS software set"
+DESC="Meta package to specify the minimum $DISTRO software set"
 
 create_manifest_header()
 {

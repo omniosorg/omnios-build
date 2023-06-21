@@ -20,8 +20,8 @@
 PROG=tuntap
 VER=1.3.3
 PKG=driver/tuntap
-SUMMARY="TUN/TAP driver for OmniOS"
-DESC="TUN/TAP driver for OmniOS based on the Universal TUN/TAP Driver"
+SUMMARY="TUN/TAP driver for $DISTRO"
+DESC="TUN/TAP driver for $DISTRO based on the Universal TUN/TAP Driver"
 
 set_arch 64
 

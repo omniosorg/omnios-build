@@ -19,7 +19,7 @@
 PROG=system
 VER=0.5.11
 PKG=system/defaults
-SUMMARY="OmniOS default system parameters"
+SUMMARY="$DISTRO default system parameters"
 DESC="$SUMMARY"
 
 pre_build() {

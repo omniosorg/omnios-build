@@ -19,8 +19,8 @@
 PROG=notices
 VER=0.5.11
 PKG=release/notices
-SUMMARY="OmniOS licensing information"
-DESC="OmniOS /etc/notices files"
+SUMMARY="$DISTRO licensing information"
+DESC="$DISTRO /etc/notices files"
 
 set_arch 64
 

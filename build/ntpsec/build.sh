@@ -50,7 +50,7 @@ CONFIGURE_OPTS="
     --enable-debug-gdb
 "
 CONFIGURE_OPTS[WS]="
-    --build-desc=\"OmniOS $RELVER\"
+    --build-desc=\"$DISTRO $RELVER\"
 "
 
 # NTPsec uses the 'waf' build system

@@ -120,7 +120,7 @@ CONFIGURE_OPTS="
 CONFIGURE_OPTS[WS]="
     --with-boot-ldflags=\"-R$OPT/lib\"
     --with-boot-cflags=\"-O2\"
-    --with-pkgversion=\"OmniOS $RELVER/$VER-$ILVER\"
+    --with-pkgversion=\"$DISTRO $RELVER/$VER-$ILVER\"
     --with-bugurl=$HOMEURL/about/contact
 "
 LDFLAGS="-R$OPT/lib"
