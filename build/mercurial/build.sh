@@ -23,7 +23,7 @@ PKG=developer/versioning/mercurial
 SUMMARY="Mercurial source control management"
 DESC="Free, distributed source control management tool"
 
-RUN_DEPENDS_IPS="web/curl library/security/openssl"
+RUN_DEPENDS_IPS="web/curl library/security/openssl-3"
 
 # Mercurial bundles a zstd python module which is a fat binary supporting
 # different architectures.

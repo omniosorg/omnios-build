@@ -34,7 +34,7 @@ RUN_DEPENDS_IPS="
     library/libxml2
     library/ncurses
     library/readline
-    library/security/openssl
+    library/security/openssl-3
     library/zlib
     system/library/gcc-runtime
     developer/object-file

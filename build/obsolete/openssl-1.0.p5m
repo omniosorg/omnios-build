@@ -1,0 +1,2 @@
+set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/library/security/openssl-10@1.0.2.21,$(SUNOSVER)-$(PVER)
+set name=pkg.obsolete value=true

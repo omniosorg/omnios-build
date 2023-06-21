@@ -1,7 +1,0 @@
-
-The "hw_pk11" engine was written by Sun for OpenSSL 0.9.x and supports
-various hardware accelerators.
-
-This is not widely used and may not be carried forward to future OpenSSL
-versions shipped with OmniOS.
-
