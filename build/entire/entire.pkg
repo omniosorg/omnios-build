@@ -50,6 +50,7 @@ driver/network/bnx					S
 driver/network/bnxe					S
 driver/network/bpf					S
 driver/network/chxge					S
+driver/network/cxgbe					S
 driver/network/dmfe					S
 driver/network/e1000g					S
 driver/network/emlxs					S
