@@ -50,12 +50,22 @@ build_dependency libevent $LIBEVENT_DIR \
 
 note -n "-- Building $PROG"
 
-CPPFLAGS=" \
-    -I$DEPROOT/usr/include -I$DEPROOT/usr/include/event2 \
-    -I/usr/include/ncurses \
-"
-LDFLAGS="-L$DEPROOT/usr/lib/amd64 -lsocket -lnsl -lsendfile"
 CONFIGURE_OPTS+=" --enable-utempter"
+
+pre_build() {
+    typeset arch=$1
+
+    CPPFLAGS=" \
+        -I$DEPROOT/usr/include -I$DEPROOT/usr/include/event2 \
+        -I/usr/include/ncurses \
+    "
+    LDFLAGS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lsocket -lnsl -lsendfile"
+
+    cross_arch $arch && addpath PKG_CONFIG_PATH \
+        ${SYSROOT[$arch]}/$PREFIX/${LIBDIRS[$arch]}/pkgconfig
+
+    true
+}
 
 download_source $PROG $PROG $VER
 patch_source

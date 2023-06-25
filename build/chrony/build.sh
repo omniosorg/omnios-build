@@ -47,15 +47,19 @@ build_dependency nettle nettle-$NETTLEVER \
 
 restore_buildenv
 
-CPPFLAGS[amd64]="-I$DEPROOT$PREFIX/include"
-LDFLAGS[amd64]+=" -L$DEPROOT$PREFIX/lib/amd64"
-addpath PKG_CONFIG_PATH[amd64] $DEPROOT$PREFIX/lib/amd64/pkgconfig
-
-CPPFLAGS[aarch64]="-I$DEPROOT.aarch64$PREFIX/include"
-LDFLAGS[aarch64]+=" -L$DEPROOT.aarch64$PREFIX/lib"
-addpath PKG_CONFIG_PATH[aarch64] $DEPROOT.aarch64$PREFIX/lib/pkgconfig
-
 #########################################################################
+
+note -n "-- Building $PROG"
+
+pre_build() {
+    typeset arch=$1
+
+    CPPFLAGS[$arch]="-I$DEPROOT$PREFIX/include"
+    LDFLAGS[$arch]+=" -L$DEPROOT$PREFIX/${LIBDIRS[$arch]}"
+    addpath PKG_CONFIG_PATH[$arch] \
+        $DEPROOT$PREFIX/${LIBDIRS[$arch]}/pkgconfig
+    true
+}
 
 post_configure() {
     for flag in $EXPECTED_OPTIONS; do
