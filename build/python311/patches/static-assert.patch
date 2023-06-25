@@ -1,0 +1,18 @@
+
+In C++11, static_assert is a keyword, redefining is undefined, but the
+macro guards in python are not quite correct since g++ 12/13 defines
+__STDC_VERSION to 201112L. Explicitly skip this for C++.
+
+diff --git a/Include/pymacro.h b/Include/pymacro.h
+index 5840966..551ad9f 100644
+--- a/Include/pymacro.h
++++ b/Include/pymacro.h
+@@ -19,7 +19,7 @@
+ // not C++, and only for C11-17.
+ #if !defined(static_assert) && (defined(__GNUC__) || defined(__clang__)) \
+      && defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L \
+-     && __STDC_VERSION__ <= 201710L
++     && __STDC_VERSION__ <= 201710L && !defined(__cplusplus)
+ #  define static_assert _Static_assert
+ #endif
+ 

@@ -9,6 +9,7 @@ strxfrm-fix.patch
 encoding-alias.patch
 locale-encoding.patch
 cgiserver.patch
+static-assert.patch
 #
 # Additional modules
 module-ucred.patch
