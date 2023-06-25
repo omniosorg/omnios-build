@@ -28,7 +28,7 @@ NSSVER="`grep '^VER=' $nsbuild | sed 's/.*=//;q'`"
 MAKECAVER=0.6
 
 DESC="Root CA certificates extracted from mozilla-nss $NSSVER source"
-DESC+=", plus OmniOS CA cert."
+DESC+=", plus $DISTRO CA cert."
 
 # Continue using the JDK 1.8 keytool to generate the java key store, as long
 # as we continue to ship Java 1.8
@@ -100,7 +100,7 @@ make_install() {
     popd >/dev/null
 
     # Install the OmniOS CA certs, to be used by pkg(1)
-    logmsg "Installing OmniOS CA certs"
+    logmsg "Installing $DISTRO CA certs"
 
     logcmd mkdir -p $DESTDIR/etc/ssl/pkg
 

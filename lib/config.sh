@@ -68,6 +68,9 @@ RELVER=151047
 DASHREV=0
 PVER=$RELVER.$DASHREV
 
+DISTRO=OmniOS
+DISTRO_LONG="OmniOS Community Edition"
+HOMEURL=https://omnios.org
 # Default package publisher
 PKGPUBLISHER=omnios
 
@@ -79,8 +82,6 @@ DEFAULT_ARCH="i386 amd64"
 # building a package for amd64, or both i386 and amd64.
 NATIVE_ARCH="i386"
 BUILD_ARCH="amd64"
-
-HOMEURL=https://omnios.org
 
 # Default repository
 PKGSRVR=file://$ROOTDIR/tmp.repo/

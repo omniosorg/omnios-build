@@ -20,7 +20,7 @@
 PROG=as
 VER=0.5.11
 PKG=developer/as
-SUMMARY="OmniOS Bundled Assembler (aka DevPro)"
+SUMMARY="$DISTRO Bundled Assembler (aka DevPro)"
 DESC="$SUMMARY"
 
 set_builddir as

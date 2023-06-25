@@ -46,7 +46,7 @@ CONFIGURE_OPTS="
     --disable-gtktest
 "
 CONFIGURE_OPTS[WS]="
-    --with-compiledby=\"OmniOS $RELVER\"
+    --with-compiledby=\"$DISTRO $RELVER\"
 "
 MAKE_INSTALL_ARGS="STRIP=/bin/true"
 CPPFLAGS+=" -DSYS_VIMRC_FILE='\"/etc/vimrc\"'"
