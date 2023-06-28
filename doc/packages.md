@@ -110,7 +110,7 @@
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.2.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.21.1		| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.22			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
@@ -136,7 +136,7 @@
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
 | library/python-3/meson-311		| 1.1.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.9.1		| https://github.com/ijl/orjson/releases
+| library/python-3/orjson-311		| 3.9.1			| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.1.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
