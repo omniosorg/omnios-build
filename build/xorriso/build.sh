@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=xorriso
-VER=1.5.6.pl01
+VER=1.5.6.pl02
 PKG=media/xorriso
 SUMMARY="GNU xorriso"
 DESC="$SUMMARY - ISO 9660 Rock Ridge Filesystem Manipulator"
