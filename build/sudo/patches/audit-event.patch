@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/plugins/sudoers/bsm_audit.c a/plugins/sudoers/bsm_audit.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/plugins/sudoers/bsm_audit.c a/plugins/sudoers/bsm_audit.c
 --- a~/plugins/sudoers/bsm_audit.c	1970-01-01 00:00:00
 +++ a/plugins/sudoers/bsm_audit.c	1970-01-01 00:00:00
 @@ -40,6 +40,8 @@

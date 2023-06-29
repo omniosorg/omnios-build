@@ -28,7 +28,7 @@
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.40.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.4.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 6.4.5			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.0			| http://ftp.vim.org/pub/vim/unix
@@ -67,7 +67,7 @@
 | library/zlib				| 1.2.13		| https://www.zlib.net/
 | meta/data/microcode/amd		| 20230418		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230214		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.15		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.16		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.3p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -82,7 +82,7 @@
 | runtime/python-39			| 3.9.17		| https://www.python.org/downloads/source/
 | runtime/python-310			| 3.10.12		| https://www.python.org/downloads/source/
 | runtime/python-311			| 3.11.4		| https://www.python.org/downloads/source/
-| security/sudo				| 1.9.13p3		| https://www.sudo.ws/
+| security/sudo				| 1.9.14		| https://www.sudo.ws/
 | service/network/chrony		| 4.3			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.2			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
@@ -103,14 +103,14 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.10.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2304.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2306.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/fio			| 3.35			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.0			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.2.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.21.1		| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.22			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
@@ -121,7 +121,7 @@
 | web/wget2				| 2.0.1			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.76.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.40			| https://ftp.gnu.org/gnu/binutils
-| media/xorriso				| 1.5.6.pl01		| https://www.gnu.org/software/xorriso/
+| media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.2.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.1.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
@@ -136,7 +136,7 @@
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
 | library/python-3/meson-311		| 1.1.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.9.1		| https://github.com/ijl/orjson/releases
+| library/python-3/orjson-311		| 3.9.1			| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.1.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
