@@ -39,7 +39,10 @@ add_target()
 	typeset build=$2
 	typeset dir="`dirname $build`"
 
-	if [[ $build = *.sh ]]; then
+	if [[ $build = */build-arch*.sh ]]; then
+		# Ignore arch-specific scripts
+		:
+	elif [[ $build = *.sh ]]; then
 		set -- `grep '^inherit_ver' $build`
 		if [ $# -gt 1 ]; then
 			shift
