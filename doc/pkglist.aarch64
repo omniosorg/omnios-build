@@ -135,6 +135,7 @@ library/python-3/pyopenssl-311
 .SYSROOT
 illumos-gate
 package/pkg
+entire
 #
 ###############################################################################
 # TO DO
@@ -152,7 +153,6 @@ package/pkg
 # developer/swig
 # developer/versioning/mercurial
 # developer/versioning/sccs
-# entire
 # incorporation/jeos/illumos-gate
 # incorporation/jeos/omnios-userland
 # library/c++/sigcpp

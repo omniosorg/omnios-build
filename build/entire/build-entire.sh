@@ -13,7 +13,7 @@
 #
 # }}}
 #
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -64,12 +64,15 @@ add_constraints()
     done
 }
 
+template=entire-$BUILDARCH.pkg
+[ -f "$template" ] || template=entire.pkg
+
 init
 prep_build
 
 manifest=$TMPDIR/$PKGE.p5m
 create_manifest_header $manifest
-add_constraints $manifest $SRCDIR/entire.pkg
+add_constraints $manifest $SRCDIR/$template
 
 publish_manifest $PKG $manifest
 clean_up
