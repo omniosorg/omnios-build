@@ -19,11 +19,11 @@
 # for different ARCHs. If we see `-a` in the options string, we look for such
 # a helper and invoke that instead.
 
-if getopts ":a:" opt; then
+while getopts ":a:" opt; do
     if [ "$opt" = a -a -x build-arch-$OPTARG.sh ]; then
         ./build-arch-$OPTARG.sh "$@"
         exit 0
     fi
-fi
+done
 OPTIND=1
 
