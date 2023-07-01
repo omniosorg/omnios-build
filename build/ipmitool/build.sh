@@ -21,12 +21,12 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=ipmitool
-VER=1.8.18
+VER=1.8.19
 PKG=system/management/ipmitool
 SUMMARY="IPMI management tool"
 DESC="A utility for managing and configuring devices that support the "
@@ -35,6 +35,9 @@ DESC+="Intelligent Platform Management Interface"
 BUILD_DEPENDS_IPS="driver/ipmi developer/build/libtool"
 
 set_arch 64
+
+set_builddir $PROG-${PROG^^}_${VER//./_}
+
 CONFIGURE_OPTS_64+=" --bindir=/usr/sbin --sbindir=/usr/lib"
 CONFIGURE_OPTS+="
     --mandir=/usr/share/man
@@ -43,8 +46,10 @@ CONFIGURE_OPTS+="
     --enable-solaris-opt
 "
 
+CPPFLAGS+=" -D_PATH_RUN='\"/var/run/\"'"
+
 init
-download_source $PROG $PROG $VER
+download_source $PROG ${PROG^^}_${VER//./_}
 patch_source
 run_autoreconf -fi
 prep_build

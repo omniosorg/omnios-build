@@ -3,6 +3,4 @@ configure.patch
 ipmievd.local4.patch
 v6-noaddr16.patch
 fix-MAX.patch
-POSIX.patch
-openssl11.patch
-multiple_symbols.patch
+iana-pen.patch

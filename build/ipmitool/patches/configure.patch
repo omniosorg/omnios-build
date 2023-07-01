@@ -1,7 +1,7 @@
 diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -78,7 +78,7 @@ solaris*)
+@@ -100,7 +100,7 @@ solaris*)
  	# disable the linux-specific interfaces
  	xenable_intf_bmc=yes
  	xenable_intf_imb=no
