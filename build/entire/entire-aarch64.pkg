@@ -1,0 +1,251 @@
+#
+# The format of this file is tab-separated fields as follows:
+#
+#	<pkg>	<flags>
+#
+# where flags can include:
+#
+#	F	- Add a facet to allow this line to be selectively disabled.
+#	S	- Do not include this package in entire for sparse zones.
+#	Z	- Do not include this package in entire for non-global zones.
+#	O	- This is an optional package.
+#		  Optional packages will be installed by default on new systems
+#		  (i.e. will be part of the ZFS installation stream), but can
+#		  be subsequently uninstalled. They will also be installed into
+#		  newly created non-global zones iff they are installed in the
+#		  GZ.
+#
+SUNWcs
+SUNWcsd
+compatibility/ucb					O
+compress/bzip2						O
+compress/gzip						O
+compress/unzip						O
+compress/xz						O
+compress/zip						O
+compress/zstd						O
+developer/debug/mdb					O
+developer/dtrace					O
+developer/linker					O
+diagnostic/diskinfo					O
+driver/crypto/dca					S
+driver/crypto/tpm					S
+driver/network/afe					S
+driver/network/atge					S
+driver/network/bfe					S
+driver/network/bge					S
+driver/network/bnx					S
+driver/network/bnxe					S
+driver/network/bpf					S
+driver/network/chxge					S
+driver/network/dmfe					S
+driver/network/e1000g					S
+driver/network/emlxs					S
+driver/network/ena					S
+driver/network/eoib					S
+driver/network/fcip					S
+driver/network/hermon					S
+driver/network/hme					S
+driver/network/ibdma					S
+driver/network/ibp					S
+driver/network/igb					S
+driver/network/ixgbe					S
+driver/network/mxfe					S
+driver/network/nge					S
+driver/network/ntxn					S
+driver/network/nxge					S
+driver/network/qlc					S
+driver/network/rds					S
+driver/network/rdsv3					S
+driver/network/rge					S
+driver/network/rpcib					S
+driver/network/rtls					S
+driver/network/sdp					S
+driver/network/sfe					S
+driver/network/sfxge					S
+driver/network/tavor					S
+driver/network/usbecm					S
+driver/network/vioif					S
+driver/network/vr					S
+driver/network/xge					S
+driver/network/yge					S
+driver/serial/usbftdi					S
+driver/serial/usbsacm					S
+driver/serial/usbsksp					S
+driver/serial/usbsprl					S
+driver/storage/aac					S
+driver/storage/ahci					S
+driver/storage/mega_sas					S
+driver/storage/mpt_sas					S
+driver/storage/mr_sas					S
+driver/storage/nvme					S
+driver/storage/scsa1394					S
+driver/storage/sdcard					S
+driver/storage/ses					S
+driver/storage/si3124					S
+driver/storage/smp					S
+driver/storage/vioblk					S
+driver/usb/ugen						S
+editor/vim						O
+file/gnu-coreutils					O
+file/gnu-findutils					O
+library/security/tcp-wrapper				O
+locale/af						OS
+locale/ar						OS
+locale/as						OS
+locale/az						OS
+locale/be						OS
+locale/bg						OS
+locale/bg-extra						OS
+locale/bn						OS
+locale/bo						OS
+locale/bs						OS
+locale/ca						OS
+locale/ca-extra						OS
+locale/cs						OS
+locale/cs-extra						OS
+locale/da						OS
+locale/da-extra						OS
+locale/de						OS
+locale/de-extra						OS
+locale/el						OS
+locale/el-extra						OS
+locale/en						OS
+locale/en-extra						OS
+locale/es						OS
+locale/es-extra						OS
+locale/et						OS
+locale/fi						OS
+locale/fi-extra						OS
+locale/fil						OS
+locale/fr						OS
+locale/fr-extra						OS
+locale/ga						OS
+locale/gu						OS
+locale/he						OS
+locale/hi						OS
+locale/hr						OS
+locale/hr-extra						OS
+locale/hu						OS
+locale/hu-extra						OS
+locale/hy						OS
+locale/id						OS
+locale/ii						OS
+locale/is						OS
+locale/is-extra						OS
+locale/it						OS
+locale/it-extra						OS
+locale/ja						OS
+locale/ka						OS
+locale/kk						OS
+locale/km						OS
+locale/kn						OS
+locale/ko						OS
+locale/kok						OS
+locale/lt						OS
+locale/lt-extra						OS
+locale/lv						OS
+locale/lv-extra						OS
+locale/mk						OS
+locale/mk-extra						OS
+locale/ml						OS
+locale/mn						OS
+locale/mr						OS
+locale/ms						OS
+locale/mt						OS
+locale/nb						OS
+locale/ne						OS
+locale/nl						OS
+locale/nl-extra						OS
+locale/nn						OS
+locale/or						OS
+locale/pa						OS
+locale/pl						OS
+locale/pl-extra						OS
+locale/pt						OS
+locale/pt-extra						OS
+locale/ro						OS
+locale/ru						OS
+locale/ru-extra						OS
+locale/sa						OS
+locale/si						OS
+locale/sk						OS
+locale/sl						OS
+locale/sq						OS
+locale/sq-extra						OS
+locale/sr						OS
+locale/sv						OS
+locale/sv-extra						OS
+locale/ta						OS
+locale/te						OS
+locale/th						OS
+locale/th-extra						OS
+locale/tr						OS
+locale/tr-extra						OS
+locale/ug						OS
+locale/uk						OS
+locale/ur						OS
+locale/vi						OS
+locale/zh_cn						OS
+locale/zh_cn-extra					OS
+locale/zh_hk						OS
+locale/zh_mo						OS
+locale/zh_sg						OS
+locale/zh_tw						OS
+naming/ldap						O
+network/dns/bind					O
+network/ftp						O
+network/ipfilter					O
+network/openssh-server					O
+network/telnet						O
+package/pkg
+release/name
+release/notices
+security/sudo						O
+service/file-system/nfs
+service/hal						F
+service/network/chrony					O
+service/network/network-clients
+service/network/smtp/dma				F
+service/storage/removable-media				OSZ
+shell/bash						O
+shell/pipe-viewer					O
+system/accounting/legacy
+system/boot/grub					OS
+system/boot/real-mode
+system/data/hardware-registry
+system/extended-system-utilities			O
+system/file-system/autofs				O
+system/file-system/udfs					O
+system/flash/fwflash					OS
+system/fru-id
+system/fru-id/platform
+system/ipc
+system/kernel/dtrace/providers				O
+system/kernel/suspend-resume
+system/library/platform
+system/library/storage/ima/header-ima
+system/library/storage/libmpapi
+system/network
+system/network/nis
+system/network/routing
+system/network/udapl/udapl-tavor
+system/rsyslog						O
+system/scheduler/fss					O
+system/storage/fibre-channel/port-utility		O
+system/defaults						SZ
+system/watch						O
+system/xopen/xcu4					O
+terminal/resize						O
+terminal/screen						O
+text/doctools
+text/gawk						O
+text/gnu-diffutils					O
+text/gnu-grep						O
+text/gnu-patch						O
+text/gnu-sed						O
+text/locale
+web/ca-bundle
+web/curl						O
+web/wget						O
+web/wget2						O
