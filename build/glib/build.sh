@@ -118,8 +118,6 @@ pre_configure() {
 
     CONFIGURE_CMD+=" --cross-file $SRCDIR/files/aarch64-gcc.txt"
 
-    export PKG_CONFIG_SYSROOT_DIR=${SYSROOT[$arch]}
-
     # use GNU msgfmt; otherwise the build fails
     PATH="$GNUBIN:$PATH:$OOCEBIN"
 }

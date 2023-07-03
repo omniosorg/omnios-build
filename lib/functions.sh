@@ -462,6 +462,15 @@ set_crossgcc() {
         || CFLAGS[$arch]+=" --sysroot=${SYSROOT[$arch]}"
     [[ ${CXXFLAGS[$arch]} =~ *--sysroot* ]] \
         || CXXFLAGS[$arch]+=" --sysroot=${SYSROOT[$arch]}"
+
+    export PKG_CONFIG_SYSROOT_DIR=${SYSROOT[$arch]}
+
+    [[ $CONFIGURE_CMD =~ $CMAKE* ]] && CONFIGURE_OPTS[$arch]+="
+        -DCMAKE_FIND_ROOT_PATH=${SYSROOT[$arch]}
+        -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
+        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY
+    "
 }
 
 set_clangver() {
