@@ -192,6 +192,7 @@ locale/zh_hk						OS
 locale/zh_mo						OS
 locale/zh_sg						OS
 locale/zh_tw						OS
+media/xorriso
 naming/ldap						O
 network/dns/bind					O
 network/ftp						O
