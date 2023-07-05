@@ -49,6 +49,10 @@ CONFIGURE_OPTS[amd64]+="
     --with-kerberos5=$PREFIX
     --with-libedit=$PREFIX
 "
+CONFIGURE_OPTS[aarch64]+="
+    --enable-etc-default-login
+    ac_cv_file__etc_default_login=yes
+"
 
 CFLAGS+=" -fstack-check "
 CFLAGS+="-DPAM_ENHANCEMENT -DSET_USE_PAM -DPAM_BUGFIX "
