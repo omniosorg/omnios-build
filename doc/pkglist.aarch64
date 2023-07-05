@@ -22,6 +22,7 @@ compress/lzip
 compress/unzip
 compress/xz
 data/iso-codes
+developer/build/libtool
 developer/exuberant-ctags
 developer/macro/gnu-m4
 developer/nasm
