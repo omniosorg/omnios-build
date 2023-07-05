@@ -19,11 +19,14 @@
 # for different ARCHs. If we see `-a` in the options string, we look for such
 # a helper and invoke that instead.
 
-while getopts ":a:" opt; do
+while getopts ":f:a:d:r:" opt; do
     if [ "$opt" = a -a -x build-arch-$OPTARG.sh ]; then
+        echo "--- Switching to arch-specific build script"
         ./build-arch-$OPTARG.sh "$@"
         exit 0
     fi
 done
 OPTIND=1
 
+# Vim hints
+# vim:ts=4:sw=4:et:fdm=marker
