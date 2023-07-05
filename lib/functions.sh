@@ -463,7 +463,9 @@ set_crossgcc() {
     [[ ${CXXFLAGS[$arch]} =~ *--sysroot* ]] \
         || CXXFLAGS[$arch]+=" --sysroot=${SYSROOT[$arch]}"
 
-    export PKG_CONFIG_SYSROOT_DIR=${SYSROOT[$arch]}
+    PKG_CONFIG_SYSROOT_DIR=${SYSROOT[$arch]}
+    PKG_CONFIG_LIBDIR="${SYSROOT[$arch]}/usr/${LIBDIRS[$arch]}/pkgconfig"
+    export PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_LIBDIR
 
     [[ $CONFIGURE_CMD =~ $CMAKE* ]] && CONFIGURE_OPTS[$arch]+="
         -DCMAKE_FIND_ROOT_PATH=${SYSROOT[$arch]}
