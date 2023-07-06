@@ -80,6 +80,7 @@ text/gnu-sed
 archiver/gnu-tar
 compress/gzip
 library/glib2
+library/libxslt
 library/mpc
 media/xorriso
 network/dns/bind
@@ -144,7 +145,6 @@ entire
 # developer/build-essential
 # developer/build/autoconf
 # developer/build/automake
-# developer/build/libtool
 # developer/gcc10
 # developer/gcc12
 # developer/gnu-binutils
@@ -157,8 +157,6 @@ entire
 # incorporation/jeos/illumos-gate
 # incorporation/jeos/omnios-userland
 # library/c++/sigcpp
-# library/libtool/libltdl
-# library/libxslt
 # library/perl-5/xml-parser
 # library/unixodbc
 # network/service/isc-dhcp
