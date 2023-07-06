@@ -60,7 +60,6 @@ driver/network/rdsv3					S
 driver/network/rge					S
 driver/network/rpcib					S
 driver/network/rtls					S
-driver/network/sdp					S
 driver/network/sfe					S
 driver/network/sfxge					S
 driver/network/tavor					S
