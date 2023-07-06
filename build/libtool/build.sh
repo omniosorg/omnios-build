@@ -36,11 +36,17 @@ CONFIGURE_OPTS="
 # The libltdl library encodes a search path for library files that is correct
 # for 32-bit processes, but needs to be amended for 64-bit processes so that it
 # matches the system default.
-CONFIGURE_OPTS[amd64]+="
-    LT_SYS_LIBRARY_PATH=/lib/amd64:/usr/lib/amd64
-"
+pre_configure() {
+    typeset arch=$1
 
-build_manifests() {
+    CONFIGURE_OPTS[$arch]+="
+        LT_SYS_LIBRARY_PATH=/${LIBDIRS[$arch]}:/usr/${LIBDIRS[$arch]}
+    "
+}
+
+post_install() {
+    [ $1 = i386 ] && return
+
     manifest_start $TMPDIR/manifest.libltdl
     manifest_add_dir $PREFIX/lib amd64
     manifest_finalise $TMPDIR/manifest.libltdl $PREFIX
@@ -53,7 +59,6 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-build_manifests
 
 PKG=developer/build/libtool
 SUMMARY="GNU libtool utility"
