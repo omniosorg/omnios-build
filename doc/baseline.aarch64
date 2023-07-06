@@ -25,14 +25,15 @@ omnios developer/appcert
 omnios developer/apptrace
 omnios developer/astdev
 omnios developer/build/gnu-make
-omnios developer/build/make
 omnios developer/build/libtool
+omnios developer/build/make
 omnios developer/debug/ctf
 omnios developer/debug/mdb
 omnios developer/debug/mdb/module/module-fibre-channel
 omnios developer/driver/ftsafe
 omnios developer/dtrace
 omnios developer/exuberant-ctags
+omnios developer/gnu-binutils
 omnios developer/library/lint o
 omnios developer/library/profiled-libc o
 omnios developer/linker
@@ -176,6 +177,7 @@ omnios driver/usb/ugen
 omnios driver/usb/usbgem
 omnios driver/x11/winlock
 omnios editor/vim
+omnios entire
 omnios file/gnu-coreutils
 omnios file/gnu-findutils
 omnios install/beadm
@@ -184,7 +186,6 @@ omnios library/expat
 omnios library/glib2
 omnios library/gmp
 omnios library/idnkit
-omnios library/idnkit/header-idnkit
 omnios library/libedit
 omnios library/libffi
 omnios library/libidn
@@ -197,7 +198,6 @@ omnios library/mpfr
 omnios library/ncurses
 omnios library/nghttp2
 omnios library/nspr
-omnios library/nspr/header-nspr
 omnios library/pcre
 omnios library/pcre2
 omnios library/print/open-printing
@@ -356,6 +356,7 @@ omnios network/ssh o
 omnios network/ssh/ssh-key o
 omnios network/telnet
 omnios network/test/iperf
+omnios package/pkg
 omnios package/svr4
 omnios print/lp
 omnios print/lp/filter/postscript-lp-filter
@@ -375,6 +376,7 @@ omnios service/fault-management/smtp-notify
 omnios service/file-system/nfs
 omnios service/file-system/smb
 omnios service/hal
+omnios service/network/chrony
 omnios service/network/dhcp o
 omnios service/network/dhcp/datastore/binfiles o
 omnios service/network/dns/mdns
@@ -494,14 +496,16 @@ omnios system/library/libutempter
 omnios system/library/math
 omnios system/library/math/header-math r
 omnios system/library/mozilla-nss
-omnios system/library/mozilla-nss/header-nss
 omnios system/library/pcap
 omnios system/library/platform
 omnios system/library/policykit
 omnios system/library/processor o
 omnios system/library/python/libbe-27 o
+omnios system/library/python/libbe-311
 omnios system/library/python/solaris-27 o
+omnios system/library/python/solaris-311
 omnios system/library/python/zfs-27 o
+omnios system/library/python/zfs-311
 omnios system/library/security/crypto/pkcs11_kms o
 omnios system/library/security/gss
 omnios system/library/security/gss/diffie-hellman
@@ -543,6 +547,7 @@ omnios system/network/udapl/udapl-tavor
 omnios system/network/wificonfig
 omnios system/prerequisite/gnu
 omnios system/remote-shared-memory
+omnios system/rsyslog
 omnios system/scheduler/fss
 omnios system/security/kerberos-5
 omnios system/storage/fibre-channel/port-utility
@@ -571,6 +576,7 @@ omnios system/zones/brand/sn1
 omnios system/zones/internal
 omnios terminal/resize
 omnios terminal/screen
+omnios terminal/tmux
 omnios text/doctools
 omnios text/gawk
 omnios text/gnu-diffutils
