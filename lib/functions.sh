@@ -815,6 +815,8 @@ update_sysroot() {
     for arch in ${!SYSROOT[@]}; do
         logmsg "--- updating sysroot for $arch"
         logcmd $PKGCLIENT -R ${SYSROOT[$arch]} install '*'
+        # Exit status 4 means "nothing to do", so we accept that as success.
+        (($? == 0 || $? == 4)) || logerr "--- sysroot update failed"
     done
 }
 
