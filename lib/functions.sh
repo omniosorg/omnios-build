@@ -815,6 +815,8 @@ update_sysroot() {
     for arch in ${!SYSROOT[@]}; do
         logmsg "--- updating sysroot for $arch"
         logcmd $PKGCLIENT -R ${SYSROOT[$arch]} install '*'
+        # Exit status 4 means "nothing to do", so we accept that as success.
+        (($? == 0 || $? == 4)) || logerr "--- sysroot update failed"
     done
 }
 
@@ -2733,6 +2735,7 @@ run_testsuite() {
             pushd $TMPDIR/$MULTI_BUILD_LAST/$dir > /dev/null
         fi
         logmsg "Running testsuite"
+        hook pre_test
         op=`$MKTEMP`
         eval set -- $MAKE_TESTSUITE_ARGS_WS
         $TESTSUITE_MAKE $target $MAKE_TESTSUITE_ARGS "$@" 2>&1 | $TEE $op
@@ -2744,6 +2747,7 @@ run_testsuite() {
             $CP $op $SRCDIR/$output
         fi
         logcmd $RM -f $op
+        hook post_test
         popd > /dev/null
     fi
 }
@@ -2758,14 +2762,16 @@ build_dependency() {
     typeset merge=0
     typeset oot=0
     typeset meson=0
+    typeset cmake=0
     typeset buildargs=
     while [[ "$1" = -* ]]; do
         case $1 in
             -merge)     merge=1 ;;
             -ctf)       buildargs+=" -ctf" ;;
             -noctf)     buildargs+=" -noctf" ;;
-            -meson)     meson=1 ;& #FALLTHROUGH
             -oot)       oot=1 ;;
+            -meson)     meson=1 ; oot=1 ;;
+            -cmake)     cmake=1; oot=1 ;;
             -multi)     buildargs+=" -multi" ;;
         esac
         shift
@@ -2801,6 +2807,10 @@ build_dependency() {
         if ((meson)); then
             MAKE=$NINJA
             CONFIGURE_CMD="/usr/lib/python$PYTHONVER/bin/meson setup"
+            CONFIGURE_CMD+=" $TMPDIR/$BUILDDIR"
+        elif ((cmake)); then
+            MAKE=$NINJA
+            CONFIGURE_CMD="$CMAKE -GNinja"
             CONFIGURE_CMD+=" $TMPDIR/$BUILDDIR"
         else
             CONFIGURE_CMD=$TMPDIR/$BUILDDIR/$CONFIGURE_CMD
