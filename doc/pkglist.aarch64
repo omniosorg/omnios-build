@@ -53,6 +53,8 @@ web/ca-bundle
 compress/zip
 compress/zstd
 database/sqlite-3
+developer/build/autoconf
+developer/build/automake
 developer/build/gnu-make
 editor/vim
 file/gnu-coreutils
@@ -144,8 +146,6 @@ entire
 # TO DO
 # compress/p7zip
 # developer/build-essential
-# developer/build/autoconf
-# developer/build/automake
 # developer/gcc10
 # developer/gcc12
 # developer/gnu-binutils
