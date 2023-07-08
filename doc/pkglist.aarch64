@@ -146,9 +146,6 @@ entire
 ###############################################################################
 # TO DO
 # compress/p7zip
-# developer/gcc10
-# developer/gcc12
-# developer/gnu-binutils
 # developer/macro/cpp
 # developer/pkg-config
 # developer/swig
