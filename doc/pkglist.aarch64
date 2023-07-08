@@ -22,6 +22,7 @@ compress/lzip
 compress/unzip
 compress/xz
 data/iso-codes
+developer/build-essential
 developer/build/libtool
 developer/exuberant-ctags
 developer/lexer/flex
@@ -145,7 +146,6 @@ entire
 ###############################################################################
 # TO DO
 # compress/p7zip
-# developer/build-essential
 # developer/gcc10
 # developer/gcc12
 # developer/gnu-binutils
