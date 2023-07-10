@@ -1,4 +1,4 @@
-From 1f8c6b1d90dd69d36e9de7c1962b42e349561085 Mon Sep 17 00:00:00 2001
+From 46a2efeb7f64d23161d860fa9e531e9596a0fd7b Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 31 Aug 2021 21:40:48 +0000
 Subject: libstdc++ must use thread-local errno
@@ -9,7 +9,7 @@ Subject: libstdc++ must use thread-local errno
  2 files changed, 11 insertions(+)
 
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index 1aa657d443f..81db3929c69 100755
+index 1aa657d443ff..81db3929c693 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -76833,6 +76833,12 @@ CPU_OPT_BITS_RANDOM=config/${cpu_opt_bits_random}
@@ -26,7 +26,7 @@ index 1aa657d443f..81db3929c69 100755
   # Check whether --enable-cet was given.
  if test "${enable_cet+set}" = set; then :
 diff --git a/libstdc++-v3/configure.ac b/libstdc++-v3/configure.ac
-index 07cf05b6856..7dbe0fc446c 100644
+index 07cf05b6856a..7dbe0fc446c7 100644
 --- a/libstdc++-v3/configure.ac
 +++ b/libstdc++-v3/configure.ac
 @@ -528,6 +528,11 @@ AC_SUBST(CPU_OPT_EXT_RANDOM)
