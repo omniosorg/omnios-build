@@ -21,8 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
-# Use is subject to license terms.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -39,6 +38,7 @@ CONFIGURE_OPTS="
 	--infodir=$PREFIX/share/info
 "
 CONFIGURE_OPTS[amd64]+=" --includedir=/usr/include"
+CONFIGURE_OPTS[aarch64]+=" CC_FOR_BUILD=$GCC"
 
 MAKE_ARGS+=' dist_doc_DATA= '
 MAKE_INSTALL_ARGS+=' dist_doc_DATA= '

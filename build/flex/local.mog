@@ -7,10 +7,12 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=BSD-LLNL
 
 dir group=bin mode=0755 owner=root path=usr/sfw/bin
 link path=usr/sfw/bin/flex target=../../bin/flex
+
+<transform file path=.*\.a$ -> drop>
 

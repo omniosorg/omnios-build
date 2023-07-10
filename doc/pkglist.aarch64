@@ -22,8 +22,10 @@ compress/lzip
 compress/unzip
 compress/xz
 data/iso-codes
+developer/build-essential
 developer/build/libtool
 developer/exuberant-ctags
+developer/lexer/flex
 developer/macro/gnu-m4
 developer/nasm
 developer/parser/bison
@@ -52,6 +54,8 @@ web/ca-bundle
 compress/zip
 compress/zstd
 database/sqlite-3
+developer/build/autoconf
+developer/build/automake
 developer/build/gnu-make
 editor/vim
 file/gnu-coreutils
@@ -142,13 +146,6 @@ entire
 ###############################################################################
 # TO DO
 # compress/p7zip
-# developer/build-essential
-# developer/build/autoconf
-# developer/build/automake
-# developer/gcc10
-# developer/gcc12
-# developer/gnu-binutils
-# developer/lexer/flex
 # developer/macro/cpp
 # developer/pkg-config
 # developer/swig
