@@ -1,4 +1,4 @@
-From 69cc0dd93adce92802a8fe2972eb604e5ff7000b Mon Sep 17 00:00:00 2001
+From 83ba88fdb343def9306e413bf2819a55ff9ba024 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 28 Apr 2021 11:40:25 +0000
 Subject: Add __illumos__ preprocessor definition
@@ -8,7 +8,7 @@ Subject: Add __illumos__ preprocessor definition
  1 file changed, 1 insertion(+)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index 72b41ec5e1a..a945e96d4a2 100644
+index 72b41ec5e1a6..a945e96d4a24 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -85,6 +85,7 @@ along with GCC; see the file COPYING3.  If not see

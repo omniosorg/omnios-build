@@ -1,4 +1,4 @@
-From b241f6633bcde54386011fffb956458fe550c648 Mon Sep 17 00:00:00 2001
+From 9be5d95f7d5dc249071da77578706dc6d1c0e3cb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Aur=C3=A9lien=20Larcher?= <aurelien.larcher@gmail.com>
 Date: Thu, 25 Oct 2018 20:54:55 +0200
 Subject: Address fixincludes failure
@@ -8,7 +8,7 @@ Subject: Address fixincludes failure
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fixincludes/fixinc.in b/fixincludes/fixinc.in
-index de5a37f6acc..4bf2bc78784 100755
+index de5a37f6acc4..4bf2bc78784a 100755
 --- a/fixincludes/fixinc.in
 +++ b/fixincludes/fixinc.in
 @@ -212,7 +212,7 @@ search_dirs=""

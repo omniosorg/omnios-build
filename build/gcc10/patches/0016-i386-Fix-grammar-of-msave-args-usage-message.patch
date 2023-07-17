@@ -1,4 +1,4 @@
-From d4707f0cf4bc2f3d424e73dce15ffe8d8fe59bab Mon Sep 17 00:00:00 2001
+From 89ffd02756f2c214fc9e261678e80a194299fdab Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 26 Apr 2019 03:05:14 +0000
 Subject: i386: Fix grammar of -msave-args usage message
@@ -10,7 +10,7 @@ so this fixes a low-hanging test failure
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386.opt b/gcc/config/i386/i386.opt
-index 259ad8e16b9..71c635fa2d4 100644
+index 259ad8e16b99..71c635fa2d47 100644
 --- a/gcc/config/i386/i386.opt
 +++ b/gcc/config/i386/i386.opt
 @@ -516,7 +516,7 @@ Use direct references against %gs when accessing tls data.

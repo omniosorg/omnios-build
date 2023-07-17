@@ -1,4 +1,4 @@
-From 7a58f1f7f6dabf47a9b5f8e539f00f3293a1c451 Mon Sep 17 00:00:00 2001
+From 28faf43be064f62ab42667a25bd626ba6f123d6a Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 9 May 2019 13:43:30 +0000
 Subject: OOCE: Adjust default library paths for OmniOS
@@ -8,7 +8,7 @@ Subject: OOCE: Adjust default library paths for OmniOS
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index a945e96d4a2..c9aa026430b 100644
+index a945e96d4a24..c9aa026430b2 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -308,8 +308,7 @@ along with GCC; see the file COPYING3.  If not see

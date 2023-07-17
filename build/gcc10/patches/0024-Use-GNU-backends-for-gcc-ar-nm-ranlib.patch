@@ -1,4 +1,4 @@
-From 6e04441a5ad3e91797501f701ffd8a446f9d8819 Mon Sep 17 00:00:00 2001
+From 56d381c11aa950add63896c032793ce854763716 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Fri, 19 Jul 2019 11:42:58 +0000
 Subject: Use GNU backends for gcc-{ar,nm,ranlib}
@@ -8,7 +8,7 @@ Subject: Use GNU backends for gcc-{ar,nm,ranlib}
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/gcc/gcc-ar.c b/gcc/gcc-ar.c
-index 3e1c9fe8569..a6355ea43df 100644
+index 3e1c9fe85690..a6355ea43dff 100644
 --- a/gcc/gcc-ar.c
 +++ b/gcc/gcc-ar.c
 @@ -190,12 +190,12 @@ main (int ac, char **av)

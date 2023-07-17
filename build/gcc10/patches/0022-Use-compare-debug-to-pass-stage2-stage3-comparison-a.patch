@@ -1,4 +1,4 @@
-From 79f0947a54425182c9f05031f7904ecc284a98ce Mon Sep 17 00:00:00 2001
+From ddb524733ae558b6187263be3616ad22c59802cf Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Aur=C3=A9lien=20Larcher?= <aurelien.larcher@gmail.com>
 Date: Thu, 25 Oct 2018 20:59:37 +0200
 Subject: Use compare-debug to pass stage2/stage3 comparison as
@@ -9,7 +9,7 @@ Subject: Use compare-debug to pass stage2/stage3 comparison as
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 0b06ac57c27..c738830bb77 100644
+index 0b06ac57c279..c738830bb77c 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -583,7 +583,7 @@ STAGEautoprofile_TFLAGS = $(STAGE2_TFLAGS)
