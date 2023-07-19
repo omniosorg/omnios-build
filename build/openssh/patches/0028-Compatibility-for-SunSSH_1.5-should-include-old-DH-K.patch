@@ -11,7 +11,7 @@ dh-group14 and -group1 algorithms.
 Without this, an old SunSSH client cannot connect to our
 new daemon.
 
-diff -wpruN '--exclude=*.orig' a~/compat.c a/compat.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/compat.c a/compat.c
 --- a~/compat.c	1970-01-01 00:00:00
 +++ a/compat.c	1970-01-01 00:00:00
 @@ -51,8 +51,12 @@ compat_banner(struct ssh *ssh, const cha
