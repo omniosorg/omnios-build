@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
 --- a~/auth-pam.c	1970-01-01 00:00:00
 +++ a/auth-pam.c	1970-01-01 00:00:00
-@@ -683,6 +683,66 @@ sshpam_cleanup(void)
+@@ -687,6 +687,66 @@ sshpam_cleanup(void)
  	sshpam_handle = NULL;
  }
  
@@ -68,7 +68,7 @@ diff -wpruN '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
  static int
  sshpam_init(struct ssh *ssh, Authctxt *authctxt)
  {
-@@ -695,23 +755,76 @@ sshpam_init(struct ssh *ssh, Authctxt *a
+@@ -700,23 +760,76 @@ sshpam_init(struct ssh *ssh, Authctxt *a
  		fatal("Username too long from %s port %d",
  		    ssh_remote_ipaddr(ssh), ssh_remote_port(ssh));
  #endif
@@ -145,10 +145,10 @@ diff -wpruN '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
  	sshpam_authctxt = authctxt;
  
  	if (sshpam_err != PAM_SUCCESS) {
-diff -wpruN '--exclude=*.orig' a~/auth.h a/auth.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/auth.h a/auth.h
 --- a~/auth.h	1970-01-01 00:00:00
 +++ a/auth.h	1970-01-01 00:00:00
-@@ -93,6 +93,9 @@ struct Authctxt {
+@@ -95,6 +95,9 @@ struct Authctxt {
  
  	/* Information exposed to session */
  	struct sshbuf	*session_info;	/* Auth info for environment */
@@ -158,10 +158,10 @@ diff -wpruN '--exclude=*.orig' a~/auth.h a/auth.h
  };
  
  /*
-diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2.c a/auth2.c
 --- a~/auth2.c	1970-01-01 00:00:00
 +++ a/auth2.c	1970-01-01 00:00:00
-@@ -297,9 +297,17 @@ input_userauth_request(int type, u_int32
+@@ -294,9 +294,17 @@ input_userauth_request(int type, u_int32
  #endif
  		}
  #ifdef USE_PAM
@@ -180,7 +180,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
  		ssh_packet_set_log_preamble(ssh, "%suser %s",
  		    authctxt->valid ? "authenticating " : "invalid ", user);
  		setproctitle("%s%s", authctxt->valid ? user : "unknown",
-@@ -334,6 +342,18 @@ input_userauth_request(int type, u_int32
+@@ -331,6 +339,18 @@ input_userauth_request(int type, u_int32
  	/* try to authenticate user */
  	m = authmethod_lookup(authctxt, method);
  	if (m != NULL && authctxt->failures < options.max_authtries) {
@@ -199,7 +199,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
  		debug2("input_userauth_request: try method %s", method);
  		authenticated =	m->userauth(ssh, method);
  	}
-@@ -359,6 +379,10 @@ userauth_finish(struct ssh *ssh, int aut
+@@ -356,6 +376,10 @@ userauth_finish(struct ssh *ssh, int aut
  	char *methods;
  	int r, partial = 0;
  
@@ -210,7 +210,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
  	if (authenticated) {
  		if (!authctxt->valid) {
  			fatal("INTERNAL ERROR: authenticated invalid user %s",
-@@ -382,6 +406,25 @@ userauth_finish(struct ssh *ssh, int aut
+@@ -379,6 +403,25 @@ userauth_finish(struct ssh *ssh, int aut
  	}
  
  	if (authenticated && options.num_auth_methods != 0) {
@@ -236,7 +236,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
  		if (!auth2_update_methods_lists(authctxt, method, submethod)) {
  			authenticated = 0;
  			partial = 1;
-@@ -399,7 +442,19 @@ userauth_finish(struct ssh *ssh, int aut
+@@ -396,7 +439,19 @@ userauth_finish(struct ssh *ssh, int aut
  		return;
  
  #ifdef USE_PAM
@@ -256,7 +256,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2.c a/auth2.c
  		int r, success = PRIVSEP(do_pam_account());
  
  		/* If PAM returned a message, send it to the user. */
-diff -wpruN '--exclude=*.orig' a~/monitor.c a/monitor.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor.c a/monitor.c
 --- a~/monitor.c	1970-01-01 00:00:00
 +++ a/monitor.c	1970-01-01 00:00:00
 @@ -117,6 +117,9 @@ int mm_answer_sign(struct ssh *, int, st
@@ -375,7 +375,7 @@ diff -wpruN '--exclude=*.orig' a~/monitor.c a/monitor.c
  int
  mm_answer_authserv(struct ssh *ssh, int sock, struct sshbuf *m)
  {
-diff -wpruN '--exclude=*.orig' a~/monitor.h a/monitor.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor.h a/monitor.h
 --- a~/monitor.h	1970-01-01 00:00:00
 +++ a/monitor.h	1970-01-01 00:00:00
 @@ -63,6 +63,9 @@ enum monitor_reqtype {
@@ -388,10 +388,10 @@ diff -wpruN '--exclude=*.orig' a~/monitor.h a/monitor.h
  };
  
  struct ssh;
-diff -wpruN '--exclude=*.orig' a~/monitor_wrap.c a/monitor_wrap.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor_wrap.c a/monitor_wrap.c
 --- a~/monitor_wrap.c	1970-01-01 00:00:00
 +++ a/monitor_wrap.c	1970-01-01 00:00:00
-@@ -395,6 +395,24 @@ mm_inform_authserv(char *service, char *
+@@ -396,6 +396,24 @@ mm_inform_authserv(char *service, char *
  	sshbuf_free(m);
  }
  
@@ -416,13 +416,13 @@ diff -wpruN '--exclude=*.orig' a~/monitor_wrap.c a/monitor_wrap.c
  /* Do the password authentication */
  int
  mm_auth_password(struct ssh *ssh, char *password)
-diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -195,6 +195,18 @@ initialize_server_options(ServerOptions
- 	options->fingerprint_hash = -1;
- 	options->disable_forwarding = -1;
- 	options->expose_userauth_info = -1;
+@@ -198,6 +198,18 @@ initialize_server_options(ServerOptions
+ 	options->channel_timeouts = NULL;
+ 	options->num_channel_timeouts = 0;
+ 	options->unused_connection_timeout = -1;
 +#ifdef PAM_ENHANCEMENT
 +	options->pam_service_name = NULL;
 +	options->pam_service_prefix = NULL;
@@ -438,7 +438,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  }
  
  /* Returns 1 if a string option is unset or set to "none" or 0 otherwise. */
-@@ -434,6 +446,12 @@ fill_default_server_options(ServerOption
+@@ -437,6 +449,12 @@ fill_default_server_options(ServerOption
  		options->ip_qos_bulk = IPTOS_DSCP_CS1;
  	if (options->version_addendum == NULL)
  		options->version_addendum = xstrdup("");
@@ -451,7 +451,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	if (options->fwd_opts.streamlocal_bind_mask == (mode_t)-1)
  		options->fwd_opts.streamlocal_bind_mask = 0177;
  	if (options->fwd_opts.streamlocal_bind_unlink == -1)
-@@ -514,6 +532,9 @@ typedef enum {
+@@ -528,6 +546,9 @@ typedef enum {
  	sMatch, sPermitOpen, sPermitListen, sForceCommand, sChrootDirectory,
  	sUsePrivilegeSeparation, sAllowAgentForwarding,
  	sHostCertificate, sInclude,
@@ -461,7 +461,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	sRevokedKeys, sTrustedUserCAKeys, sAuthorizedPrincipalsFile,
  	sAuthorizedPrincipalsCommand, sAuthorizedPrincipalsCommandUser,
  	sKexAlgorithms, sCASignatureAlgorithms, sIPQoS, sVersionAddendum,
-@@ -664,6 +685,10 @@ static struct {
+@@ -679,6 +700,10 @@ static struct {
  	{ "forcecommand", sForceCommand, SSHCFG_ALL },
  	{ "chrootdirectory", sChrootDirectory, SSHCFG_ALL },
  	{ "hostcertificate", sHostCertificate, SSHCFG_GLOBAL },
@@ -472,9 +472,9 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "revokedkeys", sRevokedKeys, SSHCFG_ALL },
  	{ "trustedusercakeys", sTrustedUserCAKeys, SSHCFG_ALL },
  	{ "authorizedprincipalsfile", sAuthorizedPrincipalsFile, SSHCFG_ALL },
-@@ -2450,6 +2475,37 @@ process_server_config_line_depth(ServerO
- 			*charptr = xstrdup(arg);
- 		break;
+@@ -2569,6 +2594,37 @@ process_server_config_line_depth(ServerO
+ 		}
+ 		goto parse_time;
  
 +	case sPAMServicePrefix:
 +		arg = strdelim(&str);
@@ -510,7 +510,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	case sDeprecated:
  	case sIgnore:
  	case sUnsupported:
-diff -wpruN '--exclude=*.orig' a~/servconf.h a/servconf.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
 @@ -73,6 +73,10 @@ struct listenaddr {
@@ -537,10 +537,10 @@ diff -wpruN '--exclude=*.orig' a~/servconf.h a/servconf.h
  	int	fingerprint_hash;
  	int	expose_userauth_info;
  	u_int64_t timing_secret;
-diff -wpruN '--exclude=*.orig' a~/sshd.8 a/sshd.8
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.8 a/sshd.8
 --- a~/sshd.8	1970-01-01 00:00:00
 +++ a/sshd.8	1970-01-01 00:00:00
-@@ -1001,6 +1001,33 @@ concurrently for different ports, this c
+@@ -1017,6 +1017,33 @@ concurrently for different ports, this c
  started last).
  The content of this file is not sensitive; it can be world-readable.
  .El
@@ -574,10 +574,10 @@ diff -wpruN '--exclude=*.orig' a~/sshd.8 a/sshd.8
  .Sh SEE ALSO
  .Xr scp 1 ,
  .Xr sftp 1 ,
-diff -wpruN '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
 --- a~/sshd_config.5	1970-01-01 00:00:00
 +++ a/sshd_config.5	1970-01-01 00:00:00
-@@ -1276,6 +1276,35 @@ and
+@@ -1359,6 +1359,35 @@ and
  key exchange methods.
  The default is
  .Pa /etc/moduli .
@@ -613,7 +613,7 @@ diff -wpruN '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  .It Cm PasswordAuthentication
  Specifies whether password authentication is allowed.
  The default is
-@@ -1774,8 +1803,7 @@ If
+@@ -1894,8 +1923,7 @@ If
  is enabled, you will not be able to run
  .Xr sshd 8
  as a non-root user.
