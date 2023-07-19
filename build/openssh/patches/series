@@ -20,6 +20,5 @@ sshd_config.patch
 0028-Compatibility-for-SunSSH_1.5-should-include-old-DH-K.patch
 0029-Accept-LANG-and-LC_-environment-variables-from-clien.patch
 0031-Restore-tcpwrappers-libwrap-support.patch
-revert-dscp.patch
 test.patch
-CVE-2021-41617.patch
+sk-dummy-openssl.patch
