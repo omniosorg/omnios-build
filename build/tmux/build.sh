@@ -52,6 +52,12 @@ note -n "-- Building $PROG"
 
 CONFIGURE_OPTS+=" --enable-utempter"
 
+# Provide an explicit default TERM value, rather than depending on the
+# automatic detection attempted by configure. The autodetection uses ncurses,
+# not the system curses, and is thus confused about what values are useful for
+# software that uses the system curses; e.g., mdb.
+CONFIGURE_OPTS+=" --with-TERM=screen-256color"
+
 pre_build() {
     typeset arch=$1
 
