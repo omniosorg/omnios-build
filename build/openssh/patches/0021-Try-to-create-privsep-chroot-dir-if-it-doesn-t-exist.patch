@@ -7,7 +7,7 @@ Subject: [PATCH 21/34] Try to create privsep chroot dir if it doesn't exist
 diff -wpruN '--exclude=*.orig' a~/sshd.c a/sshd.c
 --- a~/sshd.c	1970-01-01 00:00:00
 +++ a/sshd.c	1970-01-01 00:00:00
-@@ -1926,11 +1926,30 @@ main(int ac, char **av)
+@@ -1980,11 +1980,30 @@ main(int ac, char **av)
  
  	if (privsep_chroot) {
  		struct stat st;
