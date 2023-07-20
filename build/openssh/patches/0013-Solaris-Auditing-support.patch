@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/INSTALL a/INSTALL
+diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
 --- a~/INSTALL	1970-01-01 00:00:00
 +++ a/INSTALL	1970-01-01 00:00:00
 @@ -107,9 +107,13 @@ http://www.gnu.org/software/automake/
@@ -30,7 +30,7 @@ diff -wpruN '--exclude=*.orig' a~/INSTALL a/INSTALL
  
  --with-pam enables PAM support. If PAM support is compiled in, it must
  also be enabled in sshd_config (refer to the UsePAM directive).
-diff -wpruN '--exclude=*.orig' a~/Makefile.in a/Makefile.in
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
 @@ -120,7 +120,7 @@ SSHOBJS= ssh.o readconf.o clientloop.o s
@@ -42,7 +42,7 @@ diff -wpruN '--exclude=*.orig' a~/Makefile.in a/Makefile.in
  	sshpty.o sshlogin.o servconf.o serverloop.o \
  	auth.o auth2.o auth-options.o session.o \
  	auth2-chall.o groupaccess.o \
-diff -wpruN '--exclude=*.orig' a~/README.platform a/README.platform
+diff -wpruN --no-dereference '--exclude=*.orig' a~/README.platform a/README.platform
 --- a~/README.platform	1970-01-01 00:00:00
 +++ a/README.platform	1970-01-01 00:00:00
 @@ -71,10 +71,10 @@ zlib-devel and pam-devel, on Debian base
@@ -70,7 +70,7 @@ diff -wpruN '--exclude=*.orig' a~/README.platform a/README.platform
  
  Platforms using PAM
  -------------------
-diff -wpruN '--exclude=*.orig' a~/audit-bsm.c a/audit-bsm.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-bsm.c a/audit-bsm.c
 --- a~/audit-bsm.c	1970-01-01 00:00:00
 +++ a/audit-bsm.c	1970-01-01 00:00:00
 @@ -348,7 +348,7 @@ bsm_audit_bad_login(const char *what)
@@ -82,7 +82,7 @@ diff -wpruN '--exclude=*.orig' a~/audit-bsm.c a/audit-bsm.c
  {
  	AuditInfoTermID *tid = &ssh_bsm_tid;
  	char buf[1024];
-diff -wpruN '--exclude=*.orig' a~/audit-linux.c a/audit-linux.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-linux.c a/audit-linux.c
 --- a~/audit-linux.c	1970-01-01 00:00:00
 +++ a/audit-linux.c	1970-01-01 00:00:00
 @@ -71,7 +71,7 @@ linux_audit_record_event(int uid, const
@@ -94,7 +94,7 @@ diff -wpruN '--exclude=*.orig' a~/audit-linux.c a/audit-linux.c
  {
  	/* not implemented */
  }
-diff -wpruN '--exclude=*.orig' a~/audit-solaris.c a/audit-solaris.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solaris.c
 --- a~/audit-solaris.c	1970-01-01 00:00:00
 +++ a/audit-solaris.c	1970-01-01 00:00:00
 @@ -0,0 +1,574 @@
@@ -672,7 +672,7 @@ diff -wpruN '--exclude=*.orig' a~/audit-solaris.c a/audit-solaris.c
 +	(void) adt_end_session(ah);
 +}
 +#endif	/* USE_SOLARIS_AUDIT */
-diff -wpruN '--exclude=*.orig' a~/audit.c a/audit.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.c a/audit.c
 --- a~/audit.c	1970-01-01 00:00:00
 +++ a/audit.c	1970-01-01 00:00:00
 @@ -120,7 +120,7 @@ audit_event_lookup(ssh_audit_event_t ev)
@@ -684,7 +684,7 @@ diff -wpruN '--exclude=*.orig' a~/audit.c a/audit.c
  {
  	debug("audit connection from %s port %d euid %d", host, port,
  	    (int)geteuid());
-diff -wpruN '--exclude=*.orig' a~/audit.h a/audit.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.h a/audit.h
 --- a~/audit.h	1970-01-01 00:00:00
 +++ a/audit.h	1970-01-01 00:00:00
 @@ -47,7 +47,7 @@ enum ssh_audit_event_type {
@@ -696,7 +696,7 @@ diff -wpruN '--exclude=*.orig' a~/audit.h a/audit.h
  void	audit_event(struct ssh *, ssh_audit_event_t);
  void	audit_session_open(struct logininfo *);
  void	audit_session_close(struct logininfo *);
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
 @@ -1751,7 +1751,7 @@ AC_ARG_WITH([libedit],
@@ -722,7 +722,7 @@ diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
  	  debug)
  		AUDIT_MODULE=debug
  		AC_MSG_RESULT([debug])
-diff -wpruN '--exclude=*.orig' a~/defines.h a/defines.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
 --- a~/defines.h	1970-01-01 00:00:00
 +++ a/defines.h	1970-01-01 00:00:00
 @@ -715,6 +715,11 @@ struct winsize {
@@ -737,7 +737,7 @@ diff -wpruN '--exclude=*.orig' a~/defines.h a/defines.h
  #if !defined(HAVE___func__) && defined(HAVE___FUNCTION__)
  #  define __func__ __FUNCTION__
  #elif !defined(HAVE___func__)
-diff -wpruN '--exclude=*.orig' a~/sshd.c a/sshd.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.c a/sshd.c
 --- a~/sshd.c	1970-01-01 00:00:00
 +++ a/sshd.c	1970-01-01 00:00:00
 @@ -2197,7 +2197,7 @@ main(int ac, char **av)

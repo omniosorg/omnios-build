@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/sshd_config a/sshd_config
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config a/sshd_config
 --- a~/sshd_config	1970-01-01 00:00:00
 +++ a/sshd_config	1970-01-01 00:00:00
 @@ -29,7 +29,7 @@

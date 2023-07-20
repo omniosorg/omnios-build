@@ -7,7 +7,7 @@ This adds the PubKeyPlugin directive and associated code from
 SunSSH, allowing an in-process shared library to be called
 into to check public keys for authentication.
 
-diff -wpruN '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey.c
 --- a~/auth2-pubkey.c	1970-01-01 00:00:00
 +++ a/auth2-pubkey.c	1970-01-01 00:00:00
 @@ -23,6 +23,11 @@
@@ -188,7 +188,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey.c
  	if ((success = user_key_command_allowed2(pw, key, remote_ip,
  	    remote_host, &opts)) != 0)
  		goto out;
-diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
 @@ -210,6 +210,7 @@ initialize_server_options(ServerOptions
@@ -234,7 +234,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	case sDeprecated:
  	case sIgnore:
  	case sUnsupported:
-diff -wpruN '--exclude=*.orig' a~/servconf.h a/servconf.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
 @@ -237,6 +237,7 @@ typedef struct {
