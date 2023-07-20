@@ -14,11 +14,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/make/lib/Awt2dLibraries.gmk a
      EXTRA_HEADER_DIRS := \
          common/awt/debug \
 @@ -554,8 +553,12 @@ else
-     HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+     HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
    endif
    ifeq ($(call isTargetOs, solaris), true)
 +   ifeq ($(TOOLCHAIN_TYPE), gcc)
-+    HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
++    HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
 +   else
      HARFBUZZ_CFLAGS += -DHAVE_SOLARIS_ATOMIC_OPS
    endif
