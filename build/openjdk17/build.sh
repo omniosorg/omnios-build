@@ -18,7 +18,7 @@
 
 PROG=openjdk
 VER=17
-UPDATE=7
+UPDATE=8
 BUILD=7
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk $VER"
