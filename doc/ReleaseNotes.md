@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038dl (2023-07-20)
+Weekly release for w/c 17th of July 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSH updated to version 9.3p2, fixing
+  [CVE-2023-38408](https://blog.qualys.com/vulnerabilities-threat-research/2023/07/19/cve-2023-38408-remote-code-execution-in-opensshs-forwarded-ssh-agent).
+
+* The prgetsecflags() interface leaked a small (4 byte) portion of kernel stack
+  memory - [illumos 15788](https://www.illumos.org/issues/15788).
+
+* OpenJDK 11 has been updated to 11.0.20+8.
+
+### Other Changes
+
+* Various improvements to the SMB idmap service have been backported:
+  * [illumos 14306](https://www.illumos.org/issues/14306)
+  * [illumos 15556](https://www.illumos.org/issues/15556)
+  * [illumos 15564](https://www.illumos.org/issues/15564)
+  Most notably, it was previously possible to get flurries of log messages
+  of the form `Can't get SID for ID=0 type=0` and this is now resolved.
+
+* The UUID generation library could produce invalid V4 UUIDs.
+
+* `ipmitool` has been updated to version 1.8.19.
+
+<br>
+
+---
+
 ## r151038dh (2023-06-20)
 Weekly release for w/c 19th of June 2023.
 > This update requires a reboot
