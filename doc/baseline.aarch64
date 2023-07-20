@@ -24,6 +24,9 @@ omnios database/sqlite-3
 omnios developer/appcert
 omnios developer/apptrace
 omnios developer/astdev
+omnios developer/build-essential
+omnios developer/build/autoconf
+omnios developer/build/automake
 omnios developer/build/gnu-make
 omnios developer/build/libtool
 omnios developer/build/make
@@ -33,7 +36,9 @@ omnios developer/debug/mdb/module/module-fibre-channel
 omnios developer/driver/ftsafe
 omnios developer/dtrace
 omnios developer/exuberant-ctags
+omnios developer/gcc10
 omnios developer/gnu-binutils
+omnios developer/lexer/flex
 omnios developer/library/lint o
 omnios developer/library/profiled-libc o
 omnios developer/linker
