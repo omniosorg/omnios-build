@@ -7,7 +7,7 @@ Subject: [PATCH 29/34] Accept LANG and LC_* environment variables from clients
 This preserves most of the old SunSSH locale negotiation
 behaviour (at least the parts that are most commonly used).
 
-diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
 @@ -174,7 +174,7 @@ initialize_server_options(ServerOptions
@@ -75,7 +75,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  		for (i = 0; i < dst->num_s; i++) \
  			free(dst->s[i]); \
  		free(dst->s); \
-diff -wpruN '--exclude=*.orig' a~/session.c a/session.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
 --- a~/session.c	1970-01-01 00:00:00
 +++ a/session.c	1970-01-01 00:00:00
 @@ -842,6 +842,18 @@ check_quietlogin(Session *s, const char
@@ -124,7 +124,7 @@ diff -wpruN '--exclude=*.orig' a~/session.c a/session.c
  	if (s->term)
  		child_set_env(&env, &envsize, "TERM", s->term);
  	if (s->display)
-diff -wpruN '--exclude=*.orig' a~/sshd_config a/sshd_config
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config a/sshd_config
 --- a~/sshd_config	1970-01-01 00:00:00
 +++ a/sshd_config	1970-01-01 00:00:00
 @@ -26,6 +26,10 @@
@@ -138,7 +138,7 @@ diff -wpruN '--exclude=*.orig' a~/sshd_config a/sshd_config
  # Authentication:
  
  #LoginGraceTime 2m
-diff -wpruN '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
 --- a~/sshd_config.5	1970-01-01 00:00:00
 +++ a/sshd_config.5	1970-01-01 00:00:00
 @@ -86,7 +86,20 @@ directives.

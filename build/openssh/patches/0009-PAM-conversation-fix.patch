@@ -3,7 +3,7 @@ From: oracle <solaris@oracle.com>
 Date: Mon, 3 Aug 2015 14:36:13 -0700
 Subject: [PATCH 09/34] PAM conversation fix
 
-diff -wpruN '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
 --- a~/auth-pam.c	1970-01-01 00:00:00
 +++ a/auth-pam.c	1970-01-01 00:00:00
 @@ -1279,11 +1279,13 @@ free_pam_environment(char **env)

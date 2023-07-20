@@ -3,7 +3,7 @@ From: Alex Wilson <alex.wilson@joyent.com>
 Date: Fri, 21 Aug 2015 18:47:46 -0700
 Subject: [PATCH 26/34] Don't use krb5-config to check for GSSAPI on illumos
 
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
 @@ -4732,6 +4732,11 @@ AC_ARG_WITH([kerberos5],

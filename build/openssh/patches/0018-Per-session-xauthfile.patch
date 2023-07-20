@@ -11,7 +11,7 @@ more information, see https://bugzilla.mindrot.org/show_bug.cgi?id=2440
 In the future, if this fix is accepted by the upsteam in a later release, we
 will remove this patch when we upgrade to that release.
 
-diff -wpruN '--exclude=*.orig' a~/session.c a/session.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
 --- a~/session.c	1970-01-01 00:00:00
 +++ a/session.c	1970-01-01 00:00:00
 @@ -62,6 +62,10 @@
@@ -217,7 +217,7 @@ diff -wpruN '--exclude=*.orig' a~/session.c a/session.c
  	/*
  	 * Cleanup ptys/utmp only if privsep is disabled,
  	 * or if running in monitor.
-diff -wpruN '--exclude=*.orig' a~/session.h a/session.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/session.h a/session.h
 --- a~/session.h	1970-01-01 00:00:00
 +++ a/session.h	1970-01-01 00:00:00
 @@ -50,6 +50,9 @@ struct Session {
