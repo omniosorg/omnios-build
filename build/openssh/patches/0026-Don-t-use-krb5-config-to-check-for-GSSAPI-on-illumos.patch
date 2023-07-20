@@ -3,10 +3,10 @@ From: Alex Wilson <alex.wilson@joyent.com>
 Date: Fri, 21 Aug 2015 18:47:46 -0700
 Subject: [PATCH 26/34] Don't use krb5-config to check for GSSAPI on illumos
 
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -4706,6 +4706,11 @@ AC_ARG_WITH([kerberos5],
+@@ -4732,6 +4732,11 @@ AC_ARG_WITH([kerberos5],
  			AC_PATH_TOOL([KRB5CONF], [krb5-config],
  				     [$KRB5ROOT/bin/krb5-config],
  				     [$KRB5ROOT/bin:$PATH])
@@ -18,7 +18,7 @@ diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
  			if test -x $KRB5CONF ; then
  				K5CFLAGS="`$KRB5CONF --cflags`"
  				K5LIBS="`$KRB5CONF --libs`"
-@@ -4747,7 +4752,7 @@ AC_ARG_WITH([kerberos5],
+@@ -4773,7 +4778,7 @@ AC_ARG_WITH([kerberos5],
  						 AC_CHECK_LIB([des], [des_cbc_encrypt],
  						   [K5LIBS="$K5LIBS -ldes"])
  					       ], [ AC_MSG_RESULT([no])

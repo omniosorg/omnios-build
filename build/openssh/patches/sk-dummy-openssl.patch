@@ -7,7 +7,7 @@ This backs out:
 Since the way that it works around a conflict between libc and openssl's
 SHA256/512 functions only works with openssl 1.0
 
-diff -wpruN '--exclude=*.orig' a~/regress/misc/sk-dummy/sk-dummy.c a/regress/misc/sk-dummy/sk-dummy.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/regress/misc/sk-dummy/sk-dummy.c a/regress/misc/sk-dummy/sk-dummy.c
 --- a~/regress/misc/sk-dummy/sk-dummy.c	1970-01-01 00:00:00
 +++ a/regress/misc/sk-dummy/sk-dummy.c	1970-01-01 00:00:00
 @@ -24,9 +24,6 @@
