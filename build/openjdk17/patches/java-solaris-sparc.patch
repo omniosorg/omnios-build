@@ -940,7 +940,7 @@
     endif
 +   ifeq ($(call isTargetOs, linux macosx), true)
 -   ifeq ($(call isTargetOs, solaris linux macosx), true)
-      HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+      HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
     endif
  
 @@ -608,10 +606,7 @@
@@ -28718,3 +28718,31 @@
 -{
 -    return -1;
 -}
+--- old/make/data/charsetmapping/stdcs-solaris	Wed Jul 19 17:51:02 2023
++++ /dev/null	Wed Jul 19 17:36:26 2023
+@@ -1,25 +0,0 @@
+-#
+-#   generate these charsets into sun.nio.cs
+-#
+-Big5
+-Big5_Solaris
+-Big5_HKSCS        # always together with Big5
+-EUC_CN
+-EUC_KR
+-EUC_JP
+-EUC_JP_LINUX
+-EUC_JP_Open
+-EUC_TW
+-GBK
+-ISO_8859_11
+-ISO_8859_3
+-ISO_8859_6
+-ISO_8859_8
+-Johab
+-PCK
+-TIS_620
+-JIS_X_0201
+-JIS_X_0208
+-JIS_X_0212
+-JIS_X_0208_Solaris
+-JIS_X_0212_Solaris
