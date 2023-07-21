@@ -9,7 +9,7 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 
 <transform path=var/db -> drop>
@@ -25,6 +25,9 @@
 <transform file path=.*logsrvd -> drop>
 <transform path=usr/share/doc/sudo -> drop>
 <transform dir path=var/run -> drop>
+
+file files/_omnios_nopty path=etc/sudoers.d/_omnios_nopty \
+    owner=root group=root mode=0440 preserve=true
 
 license LICENSE.md license=Various
 
