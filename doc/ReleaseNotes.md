@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038dm (2023-07-25)
+Weekly release for w/c 24th of July 2023.
+> This update requires a reboot
+
+### Changes
+
+* AMD CPU microcode updated to 20230719, mitigating
+  [CVE-2023-20593]https://www.amd.com/en/resources/product-security/bulletin/amd-sb-7008.html)
+  on some Zen2 processors.
+
+* Intel CPU microcode updated to 20230512, refer to Intel's
+  [release notes](https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases)
+  for details.
+
+<br>
+
+---
+
 ## r151038dl (2023-07-20)
 Weekly release for w/c 17th of July 2023.
 > This update requires a reboot
