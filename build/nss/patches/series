@@ -5,4 +5,3 @@ shadowing.patch
 pkcs11v3.patch
 aarch64.patch
 werror.patch
-disable-vale-curve25519.patch

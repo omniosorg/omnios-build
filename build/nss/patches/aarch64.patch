@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/freebl/blinit.c
 --- a~/lib/freebl/blinit.c	1970-01-01 00:00:00
 +++ a/lib/freebl/blinit.c	1970-01-01 00:00:00
-@@ -131,7 +131,7 @@ CheckX86CPUSupport()
+@@ -137,7 +137,7 @@ CheckX86CPUSupport()
  #endif /* NSS_X86_OR_X64 */
  
  /* clang-format off */
@@ -10,7 +10,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/fre
  #ifndef __has_include
  #define __has_include(x) 0
  #endif
-@@ -169,7 +169,7 @@ static unsigned long getauxval(unsigned
+@@ -175,7 +175,7 @@ static unsigned long getauxval(unsigned
  #define AT_HWCAP 16
  #endif
  
@@ -19,7 +19,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/fre
  /* clang-format on */
  
  #if defined(__aarch64__)
-@@ -544,7 +544,7 @@ FreeblInit(void)
+@@ -555,7 +555,7 @@ FreeblInit(void)
  {
  #ifdef NSS_X86_OR_X64
      CheckX86CPUSupport();
