@@ -21,13 +21,13 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/build.sh
 
 PROG=pv
-VER=1.6.20
+VER=1.7.0
 PKG=shell/pipe-viewer
 SUMMARY="Pipe Viewer"
 DESC="pv - a terminal-based tool for monitoring the progress of data through a pipeline."
