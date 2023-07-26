@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=groff
-VER=1.22.4
+VER=1.23.0
 PKG=text/groff
 SUMMARY="GNU troff"
 DESC="GNU Troff typesetting package"
@@ -30,11 +30,13 @@ RUN_DEPENDS_IPS="
 set_arch 64
 CONFIGURE_OPTS="--without-x"
 
+PKGDIFF_HELPER="
+    s:$PROG/[0-9]\.[0-9][0-9]*\.[0-9][0-9]*:$PROG/VERSION:
+"
+
 init
 download_source $PROG $PROG $VER
 patch_source
-# Stop configure complaining about missing texinfo package
-touch $TMPDIR/$BUILDDIR/doc/groff.info
 prep_build
 build
 make_package
