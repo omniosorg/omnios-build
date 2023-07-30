@@ -15,14 +15,9 @@ strtonum_test: 25 tests run, 0 errors, 100% success rate
 uuid_test: 16 tests run, 0 errors, 100% success rate
 sudo_conf: 14 tests run, 0 errors, 100% success rate
 sudo_parseln: 12 tests run, 0 errors, 100% success rate
-ld: warning: file /data/omnios-build/omniosorg/bloody/_build/sudo-1.9.14/sudo-1.9.14/lib/util/.libs/libsudo_util.so: linked to ../../lib/util/.libs/libsudo_util.so: attempted multiple inclusion of file
-ld: warning: file /data/omnios-build/omniosorg/bloody/_build/sudo-1.9.14/sudo-1.9.14/lib/util/.libs/libsudo_util.so: linked to ../../lib/util/.libs/libsudo_util.so: attempted multiple inclusion of file
 check_parse_json: 3 tests run, 0 errors, 100% success rate
 store_json_test: 4 tests run, 0 errors, 100% success rate
 store_sudo_test: 4 tests run, 0 errors, 100% success rate
-ld: warning: file ../../lib/util/.libs/libsudo_util.so: linked to /data/omnios-build/omniosorg/bloody/_build/sudo-1.9.14/sudo-1.9.14/lib/util/.libs/libsudo_util.so: attempted multiple inclusion of file
-ld: warning: file ../../lib/util/.libs/libsudo_util.so: linked to /data/omnios-build/omniosorg/bloody/_build/sudo-1.9.14/sudo-1.9.14/lib/util/.libs/libsudo_util.so: attempted multiple inclusion of file
-ld: warning: file ../../lib/util/.libs/libsudo_util.so: linked to /data/omnios-build/omniosorg/bloody/_build/sudo-1.9.14/sudo-1.9.14/lib/util/.libs/libsudo_util.so: attempted multiple inclusion of file
 fuzz_iolog_legacy: verifying corpus
 fuzz_iolog_json: verifying corpus
 fuzz_iolog_timing: verifying corpus

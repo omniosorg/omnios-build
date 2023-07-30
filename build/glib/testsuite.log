@@ -41,7 +41,7 @@ glib:gio / file-thumbnail                                       OK   7 subtests 
 glib:gio / fileattributematcher                                 OK   3 subtests passed
 glib:gio / filter-streams                                       OK   4 subtests passed
 glib:gio / g-file                                               OK   8 subtests passed
-glib:gio / g-file-info                                          OK   3 subtests passed
+glib:gio / g-file-info                                          ERROR   killed by signal 6 SIGABRT
 glib:gio / g-file-info-filesystem-readonly                      SKIP   0 subtests passed
 glib:gio / g-icon                                               OK   6 subtests passed
 glib:gio / gdbus-address-get-session                            OK   2 subtests passed
@@ -170,7 +170,7 @@ glib:glib+core / markup-subparser                               OK   14 subtests
 glib:glib+core / max-version                                    OK   1 subtests passed
 glib:glib+core / mem-overflow                                   OK   2 subtests passed
 glib:glib+core / memchunk                                       OK   1 subtests passed
-glib:glib+core / mutex                                          OK   16 subtests passed
+glib:glib+core / mutex                                          OK   17 subtests passed
 glib:glib+core / node                                           OK   6 subtests passed
 glib:glib+core / once                                           OK   5 subtests passed
 glib:glib+core / onceinit                                       OK   1 subtests passed
@@ -336,15 +336,16 @@ glib:glib+core / mapping                                        ERROR   killed b
 glib:glib+core / unicode-encoding                               ERROR   killed by signal 6 SIGABRT
 glib:gio / contenttype                                          ERROR   killed by signal 6 SIGABRT
 glib:gio / converter-stream                                     ERROR   killed by signal 11 SIGSEGV
+glib:gio / g-file-info                                          ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                           ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / desktop-app-info                                     ERROR   killed by signal 5 SIGTRAP
 glib:gio / appinfo                                              ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsettings                                            ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 318 
+Ok:                 317 
 Expected Fail:      0   
-Fail:               10  
+Fail:               11  
 Unexpected Pass:    0   
 Skipped:            2   
 Timeout:            0   

@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=nss
-VER=3.90
+VER=3.91
 PKG=system/library/mozilla-nss
 SUMMARY="Network Security Services"
 DESC="Network Security Services (NSS) is a set of libraries designed to "

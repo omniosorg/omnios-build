@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=sudo
-VER=1.9.14p2
+VER=1.9.14p3
 PKG=security/sudo
 SUMMARY="Authority delegation tool"
 DESC="Provide limited super-user privileges to specific users"
@@ -50,6 +50,7 @@ TESTSUITE_SED="
     /^libtool:/d
     /^check_ttyname:/s/ *(.*//
     /^check_net_ifs:/s/ *(.*//
+    /attempted multiple inclusion/d
 "
 
 build_init() {

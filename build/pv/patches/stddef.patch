@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/pv/number.c a/src/pv/number.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pv/number.c a/src/pv/number.c
 --- a~/src/pv/number.c	1970-01-01 00:00:00
 +++ a/src/pv/number.c	1970-01-01 00:00:00
 @@ -7,6 +7,7 @@
