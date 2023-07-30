@@ -1,0 +1,51 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+
+<transform file path=.*/src.zip$ -> drop>
+<transform path=$(IFULL)/demo -> drop>
+
+<transform file path=$(IFULL)/conf -> set preserve renamenew>
+<transform file path=$(IFULL)/conf -> set overlay allow>
+
+<transform file path=.*/cacerts$ -> drop>
+link path=$(IFULL)/jre/lib/security/cacerts target=/etc/ssl/java/cacerts
+link path=$(IFULL)/lib/security/cacerts target=/etc/ssl/java/cacerts
+
+<transform file path=$(IFULL)/lib/[^/]+$ \
+    -> set pkg.depend.bypass-generate libjvm\.so>
+# stop pulling in X11 stuff from omnios-extra
+<transform file path=$(IFULL)/lib/libjawt\.so$ \
+    -> add pkg.depend.bypass-generate .*/lib[xX].*>
+
+# Mediated binaries
+<transform file path=$(IFULL)/bin/(.*) -> emit \
+    link path=usr/bin/%<1> target=../java/bin/%<1> \
+    mediator=openjdk mediator-version=$(VER)>
+
+# Mediated man pages
+<transform file path=$(IFULL)/man/man1/(.*) -> emit \
+    link path=usr/share/man/man1/%<1> target=../../../java/man/man1/%<1> \
+    mediator=openjdk mediator-version=$(VER)>
+
+# Add mediated link for /usr/java
+link path=usr/java target=jdk/openjdk$(IVER) \
+    mediator=openjdk mediator-version=$(VER)
+
+link path=usr/jdk/openjdk$(IVER) target=instances/openjdk$(IVER)
+
+license $(IFULL)/legal/java.base/LICENSE \
+    license="GPLv2/with Classpath Exception"
+
+license ../liberation-fonts-ttf-$(LFVER)/LICENSE license=SILv1.1
+
+<transform file path=$(IFULL)/conf -> set preserve renamenew>
+
