@@ -9,6 +9,7 @@ Result: NOTESTS
 02-test_errstr.t ................... ok
 02-test_internal_context.t ......... ok
 02-test_internal_ctype.t ........... ok
+02-test_internal_exts.t ............ ok
 02-test_internal_keymgmt.t ......... ok
 02-test_internal_provider.t ........ ok
 02-test_lhash.t .................... ok
@@ -50,6 +51,7 @@ Result: NOTESTS
 04-test_encoder_decoder_legacy.t ... ok
 04-test_err.t ...................... ok
 04-test_hexstring.t ................ ok
+04-test_nodefltctx.t ............... ok
 04-test_param_build.t .............. ok
 04-test_params.t ................... ok
 04-test_params_conversion.t ........ ok
@@ -59,6 +61,7 @@ Result: NOTESTS
 04-test_provider.t ................. ok
 04-test_provider_fallback.t ........ ok
 04-test_provider_pkey.t ............ ok
+04-test_punycode.t ................. ok
 04-test_upcalls.t .................. ok
 05-test_bf.t ....................... ok
 05-test_cast.t ..................... ok
@@ -100,6 +103,7 @@ Result: NOTESTS
 20-test_enc.t ...................... ok
 20-test_enc_more.t ................. ok
 20-test_kdf.t ...................... ok
+20-test_legacy_okay.t .............. ok
 20-test_mac.t ...................... ok
 20-test_passwd.t ................... ok
 20-test_pkeyutl.t .................. ok
@@ -185,11 +189,8 @@ Result: NOTESTS
 80-test_cipherbytes.t .............. ok
 80-test_cipherlist.t ............... ok
 80-test_ciphername.t ............... ok
-
-# 
-Killing mock server with pid=-test_cmp_http.t ................. ok
-
-# 80-test_cms.t ...................... ok
+80-test_cmp_http.t ................. ok
+80-test_cms.t ...................... ok
 80-test_cmsapi.t ................... ok
 80-test_ct.t ....................... ok
 80-test_dane.t ..................... ok
@@ -198,6 +199,7 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 80-test_dtlsv1listen.t ............. ok
 80-test_ocsp.t ..................... ok
 80-test_pkcs12.t ................... ok
+80-test_policy_tree.t .............. ok
 80-test_ssl_new.t .................. ok
 80-test_ssl_old.t .................. ok
 80-test_ssl_test_ctx.t ............. ok
@@ -223,12 +225,14 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 90-test_sslapi.t ................... ok
 90-test_sslbuffers.t ............... ok
 90-test_store.t .................... ok
+90-test_store_cases.t .............. ok
 90-test_sysdefault.t ............... ok
 90-test_threads.t .................. ok
 90-test_time_offset.t .............. ok
 90-test_tls13ccs.t ................. ok
 90-test_tls13encryption.t .......... ok
 90-test_tls13secrets.t ............. ok
+90-test_traceapi.t ................. ok
 90-test_v3name.t ................... ok
 91-test_pkey_check.t ............... ok
 95-test_external_gost_engine.t ..... skipped: No external tests in this configuration
@@ -248,5 +252,5 @@ Killing mock server with pid=-test_cmp_http.t ................. ok
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=243, Tests=3276, 
+Files=250, Tests=3322, 
 Result: PASS
