@@ -1,0 +1,29 @@
+From 596b075591c4b2fe01bee7142f4d0a5f892647ed Mon Sep 17 00:00:00 2001
+From: Magnus Ihse Bursie <ihse@openjdk.org>
+Date: Fri, 27 Aug 2021 13:13:36 +0000
+Subject: [PATCH] 8258465: Headless build fails due to missing X11 headers on
+ linux
+
+Reviewed-by: shade
+---
+ make/autoconf/libraries.m4 | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/make/autoconf/libraries.m4 b/make/autoconf/libraries.m4
+index a65d91ee974b..8e4012910d89 100644
+--- a/make/autoconf/libraries.m4
++++ b/make/autoconf/libraries.m4
+@@ -43,11 +43,9 @@ AC_DEFUN_ONCE([LIB_DETERMINE_DEPENDENCIES],
+   if test "x$OPENJDK_TARGET_OS" = xwindows || test "x$OPENJDK_TARGET_OS" = xmacosx; then
+     # No X11 support on windows or macosx
+     NEEDS_LIB_X11=false
+-  elif test "x$ENABLE_HEADLESS_ONLY" = xtrue; then
+-    # No X11 support needed when building headless only
+-    NEEDS_LIB_X11=false
+   else
+-    # All other instances need X11
++    # All other instances need X11, even if building headless only, libawt still
++    # needs X11 headers.
+     NEEDS_LIB_X11=true
+   fi
+ 
