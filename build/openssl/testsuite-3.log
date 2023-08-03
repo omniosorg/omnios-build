@@ -225,6 +225,7 @@ Result: NOTESTS
 90-test_sslapi.t ................... ok
 90-test_sslbuffers.t ............... ok
 90-test_store.t .................... ok
+90-test_store_cases.t .............. ok
 90-test_sysdefault.t ............... ok
 90-test_threads.t .................. ok
 90-test_time_offset.t .............. ok
@@ -253,5 +254,5 @@ Result: NOTESTS
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=251, Tests=3336, 
+Files=252, Tests=3341, 
 Result: PASS
