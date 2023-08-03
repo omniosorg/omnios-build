@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038dn (2023-08-03)
+Weekly release for w/c 31st of July 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+- OpenSSL packages updated to versions 3.0.10 / 1.1.1v / 1.0.2u-4, resolving
+  [CVE-2023-3817](https://www.openssl.org/news/secadv/20230731.txt),
+  [CVE-2023-3446](https://www.openssl.org/news/secadv/20230719.txt),
+  [CVE-2023-2975](https://www.openssl.org/news/secadv/20230714.txt).
+
+- OpenJDK 8 has been updated to version 1.8.0u382-b05.
+
+### Other Changes
+
+- OpenJDK 17 is now available for this release via the `openjdk17` package.
+
+<br>
+
+---
+
 ## r151038dm (2023-07-25)
 Weekly release for w/c 24th of July 2023.
 > This update requires a reboot
