@@ -2872,7 +2872,7 @@ python_pep518() {
     logmsg "-- PEP518 build"
     logcmd $PYTHON -mpip install -vvv \
         --no-deps --isolated --no-input --exists-action=a \
-        --disable-pip-version-check --root=$DESTDIR . \
+        --disable-pip-version-check --root=$DESTDIR $PEP518OPTS . \
         || logerr "--- build failed"
 }
 
@@ -2912,13 +2912,8 @@ python_build_arch() {
         LDFLAGS="${LDFLAGS[0]} ${LDFLAGS[$arch]}" \
         PYBUILDOPTS="${PYBUILDOPTS[0]} ${PYBUILDOPTS[$arch]}" \
         PYINSTOPTS="${PYINSTOPTS[0]} ${PYINSTOPTS[$arch]}" \
+        PEP518OPTS="${PEP518OPTS[0]} ${PEP518OPTS[$arch]}" \
         python_backend
-
-    # XXX - can do better
-    if [ -d $DESTDIR/$TMPDIR/venv/cross ]; then
-        logcmd $MV $DESTDIR/$TMPDIR/venv/cross $DESTDIR/usr
-        logcmd $RM -rf $DESTDIR/data
-    fi
 
     python_vendor_relocate
     python_compile
@@ -2949,6 +2944,11 @@ python_build_aarch64() {
     typeset arch=aarch64
 
     python_cross_setup $arch
+
+    # This overrides the files being installed alongside the 'venv' in the
+    # destination directory.
+    PYINSTOPTS[$arch]+=" --prefix=$PREFIX"
+    PEP518OPTS[$arch]+=" --prefix=$PREFIX"
 
     PYTHON=$TMPDIR/venv/cross/bin/python \
         DESTDIR+=.$arch \
