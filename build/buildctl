@@ -372,15 +372,21 @@ baseline() {
 
 diffpkg() {
     typeset filter="${1:-.}"
-    typeset repo="$PKGSRVR"
     typeset op=$TMPDIR/batch.diff
+
+    init_repos
 
     [ -d "$TMPDIR" ] || mkdir -p "$TMPDIR"
     : > $TMPDIR/pkg.diff
 
+    if [ -n "$CLIBUILDARCH" ]; then
+       PKGSRVR=${REPOS[$CLIBUILDARCH]}
+       IPS_REPO=${IPS_REPOS[$CLIBUILDARCH]}
+    fi
+
     cp /dev/null $op
 
-    pkgrepo -s $repo list | nawk '
+    pkgrepo -s $PKGSRVR list | nawk '
         $1 == "PUBLISHER" { next }
         $2 in seen { next }
         {

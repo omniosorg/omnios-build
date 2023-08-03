@@ -787,7 +787,7 @@ init_sysroot() {
         case $arch in
             aarch64)
                 logcmd $PKGCLIENT -R $tmpsysroot set-publisher \
-                    -g ${IPS_REPO/core/braich} $PKGPUBLISHER
+                    -g ${IPS_REPOS[$arch]} $PKGPUBLISHER
                 logcmd -p $PKGCLIENT -R $tmpsysroot install '*'
                 logcmd cp /etc/zones/SUNWdefault.xml $tmpsysroot/etc/zones/
                 ;;
@@ -1791,6 +1791,7 @@ make_package() {
         DESTDIR+=.$carch \
             PKGSRVR=${REPOS[$carch]} \
             PKG_IMAGE=${SYSROOT[$carch]} \
+            IPS_REPO=${IPS_REPOS[$carch]} \
             XFORM_ARGS+=" `build_archmog $carch`" \
             make_package_impl "$@"
         hook post_package $carch

@@ -110,6 +110,10 @@ if [ $((RELVER % 2)) == 0 ]; then
     IPS_REPO=https://pkg.omnios.org/r$RELVER/core
 else
     IPS_REPO=https://pkg.omnios.org/bloody/core
+    IPS_REPOS=(
+        [$NATIVE_ARCH]=$IPS_REPO
+        [aarch64]=https://pkg.omnios.org/bloody/braich
+    )
 fi
 
 ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.lz tar.gz tgz tar zip"
