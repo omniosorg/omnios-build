@@ -19,8 +19,7 @@ license COPYING3.LIB license=LGPLv3
 # Mediated symlinks
 <transform link target=$(OPT)/ -> default mediator gcc>
 <transform link target=$(OPT)/ -> default mediator-version $(MAJOR)>
-# gcc13 is not yet the default
-#<transform link target=$(OPT)/ -> default mediator-priority vendor>
+<transform link target=$(OPT)/ -> default mediator-priority vendor>
 
 link path=usr/bin/g++                   target=$(OPT)/bin/g++
 link path=usr/bin/gcc                   target=$(OPT)/bin/gcc
