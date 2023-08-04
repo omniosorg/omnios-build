@@ -112,6 +112,11 @@ add_target()
 			network/rsync:*)
 				targets["library/xxhash"]=`pver XXHASHVER`
 				;;
+
+			service/network/chrony:*)
+				targets["library/nettle"]=`pver NETTLEVER`
+				;;
+
 			network/dns/bind:*)
 				targets["library/libuv"]=`pver LIBUVVER`
 				;;
