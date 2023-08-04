@@ -1,3 +1,4 @@
+ /opt/gcc-13/bin/gcc -c -DHAVE_CONFIG_H -I. -I.. -I.. -O2 -fno-omit-frame-pointer -fno-aggressive-loop-optimizations -fstack-protector-strong -fexceptions -gdwarf-2 -gstrict-dwarf -m64 tmp-amd64call.s -fPIC -DPIC -o .libs/amd64call.o
 PASS: t-bswap
 PASS: t-constants
 PASS: t-count_zeros
@@ -7,7 +8,7 @@ PASS: t-popc
 PASS: t-parity
 PASS: t-sub
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 8
 # PASS:  8
@@ -54,6 +55,9 @@ PASS: t-sqrlo
 PASS: t-mulmod_bnm1
 PASS: t-sqrmod_bnm1
 PASS: t-mulmid
+PASS: t-mulmod_bknp1
+PASS: t-sqrmod_bknp1
+SKIP: t-addaddmul
 PASS: t-hgcd
 PASS: t-hgcd_appr
 PASS: t-matrix22
@@ -68,11 +72,11 @@ PASS: t-gcd_11
 PASS: t-gcd_22
 PASS: t-gcdext_1
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
-# TOTAL: 50
-# PASS:  50
-# SKIP:  0
+# TOTAL: 53
+# PASS:  52
+# SKIP:  1
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
@@ -143,7 +147,7 @@ PASS: t-nextprime
 PASS: t-remove
 PASS: t-limbs
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 64
 # PASS:  64
@@ -169,7 +173,7 @@ PASS: io
 PASS: reuse
 PASS: t-cmp_z
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 15
 # PASS:  15
@@ -208,7 +212,7 @@ PASS: t-ui_div
 PASS: t-eq
 PASS: t-pow_ui
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 28
 # PASS:  28
@@ -226,7 +230,7 @@ PASS: t-urbui
 PASS: t-urmui
 PASS: t-urndmm
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 7
 # PASS:  7
@@ -240,7 +244,7 @@ PASS: t-printf
 PASS: t-scanf
 PASS: t-locale
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 3
 # PASS:  3
@@ -273,7 +277,7 @@ PASS: t-assign
 PASS: t-constr
 PASS: t-rand
 ============================================================================
-Testsuite summary for GNU MP 6.2.1
+Testsuite summary for GNU MP 6.3.0
 ============================================================================
 # TOTAL: 22
 # PASS:  22

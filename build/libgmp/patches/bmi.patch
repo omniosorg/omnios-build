@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/longlong.h a/longlong.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/longlong.h a/longlong.h
 --- a~/longlong.h	1970-01-01 00:00:00
 +++ a/longlong.h	1970-01-01 00:00:00
-@@ -1068,10 +1068,7 @@ extern UWtype __MPN(udiv_qrnnd) (UWtype
+@@ -1062,10 +1062,7 @@ extern UWtype __MPN(udiv_qrnnd) (UWtype
  	   : "=a" (q), "=d" (r)						\
  	   : "0" ((UDItype)(n0)), "1" ((UDItype)(n1)), "rm" ((UDItype)(dx)))
  
@@ -13,7 +13,7 @@ diff -wpruN '--exclude=*.orig' a~/longlong.h a/longlong.h
  #define count_leading_zeros(count, x)					\
    do {									\
      /* This is lzcnt, spelled for older assemblers.  Destination and */	\
-@@ -1089,8 +1086,7 @@ extern UWtype __MPN(udiv_qrnnd) (UWtype
+@@ -1083,8 +1080,7 @@ extern UWtype __MPN(udiv_qrnnd) (UWtype
    } while (0)
  #endif
  

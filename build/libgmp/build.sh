@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=gmp
-VER=6.2.1
+VER=6.3.0
 PKG=library/gmp
 SUMMARY="GNU MP"
 DESC="The GNU Multiple Precision (Bignum) Library"
