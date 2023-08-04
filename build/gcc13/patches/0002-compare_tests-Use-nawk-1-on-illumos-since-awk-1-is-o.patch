@@ -1,4 +1,4 @@
-From def33d006c7e2f464250ae1a7ddd7f29a49591d9 Mon Sep 17 00:00:00 2001
+From 976216172721d886fbbb6ec469e4366aedfd7616 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 26 Jan 2016 14:24:11 -0500
 Subject: compare_tests: Use nawk(1) on illumos, since awk(1) is
@@ -9,7 +9,7 @@ Subject: compare_tests: Use nawk(1) on illumos, since awk(1) is
  1 file changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/contrib/compare_tests b/contrib/compare_tests
-index 2dfa8640756..6616a201f23 100755
+index 2dfa8640756a..6616a201f23b 100755
 --- a/contrib/compare_tests
 +++ b/contrib/compare_tests
 @@ -108,8 +108,15 @@ elif [ -d "$1" -o -d "$2" ] ; then

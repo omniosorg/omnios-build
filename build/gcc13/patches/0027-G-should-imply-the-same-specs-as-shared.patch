@@ -1,4 +1,4 @@
-From 866b3fb144b60356e19acef6da15b54fd3d0addf Mon Sep 17 00:00:00 2001
+From a6c5b9d7b48601a8a4e6bde6c4c48880caf0ec78 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 19 Feb 2020 21:30:23 +0000
 Subject: -G should imply the same specs as -shared
@@ -8,7 +8,7 @@ Subject: -G should imply the same specs as -shared
  1 file changed, 18 insertions(+), 20 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index f4cbf3e1eb1..dd6d25a534a 100644
+index f4cbf3e1eb1c..dd6d25a534a7 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -200,7 +200,7 @@ along with GCC; see the file COPYING3.  If not see

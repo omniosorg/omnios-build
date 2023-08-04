@@ -1,4 +1,4 @@
-From 09a4be3546f17bfaa2cb9d09a6f5d6f902b80dcc Mon Sep 17 00:00:00 2001
+From 1dfe9b28e617dcc705aaaae922417e2783f870f2 Mon Sep 17 00:00:00 2001
 From: Keith Marshall <keith.marshall@mailinator.com>
 Date: Fri, 15 Nov 2019 12:21:51 +0000
 Subject: Make install-strip target work for libobjc
@@ -10,7 +10,7 @@ See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=54720
  1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/libobjc/Makefile.in b/libobjc/Makefile.in
-index 8375f6f9951..be2e4d22236 100644
+index 8375f6f99510..be2e4d222367 100644
 --- a/libobjc/Makefile.in
 +++ b/libobjc/Makefile.in
 @@ -308,14 +308,16 @@ $(srcdir)/configure: @MAINT@ configure.ac $(srcdir)/aclocal.m4

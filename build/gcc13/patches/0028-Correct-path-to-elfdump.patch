@@ -1,4 +1,4 @@
-From 436d0f322f7d6d6d4b6a3fb56552519bf0d450e1 Mon Sep 17 00:00:00 2001
+From e305d25a2662fe9c9118505a37658647cda99373 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Fri, 10 Apr 2020 16:00:43 +0000
 Subject: Correct path to elfdump
@@ -9,7 +9,7 @@ Not all illumos distributions have elfdump available as /usr/ccs/bin/elfdump
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/contrib/make_sunver.pl b/contrib/make_sunver.pl
-index 32e639ed873..8c9ff74a8f0 100644
+index 32e639ed8732..8c9ff74a8f0e 100644
 --- a/contrib/make_sunver.pl
 +++ b/contrib/make_sunver.pl
 @@ -55,7 +55,7 @@

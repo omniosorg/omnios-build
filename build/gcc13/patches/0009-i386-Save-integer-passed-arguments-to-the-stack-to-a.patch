@@ -1,4 +1,4 @@
-From 40128ef90d011239ccac18e7aaaf91a4933d1b68 Mon Sep 17 00:00:00 2001
+From 1be0ff5f8b7c6868fe453ad6810edba3aa385520 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sat, 23 Jan 2016 22:14:56 -0500
 Subject: i386: Save integer-passed arguments to the stack, to
@@ -44,10 +44,10 @@ Originally implemented in:
  create mode 100644 gcc/testsuite/gcc.target/i386/msave-args-push.c
 
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index 2cb0bddcd35..a375e16da20 100644
+index 37cb5a0dcc43..e45478d606bb 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
-@@ -2511,6 +2511,9 @@ ix86_option_override_internal (bool main_args_p,
+@@ -2515,6 +2515,9 @@ ix86_option_override_internal (bool main_args_p,
        &= ~((OPTION_MASK_ISA_BMI | OPTION_MASK_ISA_BMI2 | OPTION_MASK_ISA_TBM)
  	   & ~opts->x_ix86_isa_flags_explicit);
  
@@ -58,7 +58,7 @@ index 2cb0bddcd35..a375e16da20 100644
       PREFERRED_STACK_BOUNDARY_DEFAULT.  */
    ix86_preferred_stack_boundary = PREFERRED_STACK_BOUNDARY_DEFAULT;
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 032a4fbcb61..cb668347c61 100644
+index e51b4fa1c0ed..25ae3371a45f 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -422,6 +422,9 @@ static bool i386_asm_output_addr_const_extra (FILE *, rtx);
@@ -321,10 +321,10 @@ index 032a4fbcb61..cb668347c61 100644
      otherwise zero.  */
  
 diff --git a/gcc/config/i386/i386.h b/gcc/config/i386/i386.h
-index 1da6dce8e0b..926a2f40b70 100644
+index 27b9783cae84..383c55a66f30 100644
 --- a/gcc/config/i386/i386.h
 +++ b/gcc/config/i386/i386.h
-@@ -2523,6 +2523,11 @@ enum avx_u128_state
+@@ -2525,6 +2525,11 @@ enum avx_u128_state
  
     saved frame pointer			if frame_pointer_needed
  					<- HARD_FRAME_POINTER
@@ -336,7 +336,7 @@ index 1da6dce8e0b..926a2f40b70 100644
     [saved regs]
  					<- reg_save_offset
     [padding0]
-@@ -2556,6 +2561,7 @@ enum avx_u128_state
+@@ -2558,6 +2563,7 @@ enum avx_u128_state
    */
  struct GTY(()) ix86_frame
  {
@@ -344,7 +344,7 @@ index 1da6dce8e0b..926a2f40b70 100644
    int nsseregs;
    int nregs;
    int va_arg_size;
-@@ -2567,6 +2573,7 @@ struct GTY(()) ix86_frame
+@@ -2569,6 +2575,7 @@ struct GTY(()) ix86_frame
    HOST_WIDE_INT hard_frame_pointer_offset;
    HOST_WIDE_INT stack_pointer_offset;
    HOST_WIDE_INT hfp_save_offset;
@@ -353,7 +353,7 @@ index 1da6dce8e0b..926a2f40b70 100644
    HOST_WIDE_INT stack_realign_allocate;
    HOST_WIDE_INT stack_realign_offset;
 diff --git a/gcc/config/i386/i386.opt b/gcc/config/i386/i386.opt
-index d74f6b1f8fc..2daaabdcc85 100644
+index d74f6b1f8fc3..2daaabdcc859 100644
 --- a/gcc/config/i386/i386.opt
 +++ b/gcc/config/i386/i386.opt
 @@ -522,6 +522,16 @@ mtls-direct-seg-refs
@@ -374,10 +374,10 @@ index d74f6b1f8fc..2daaabdcc85 100644
  Target RejectNegative Negative(mtune=) Joined Var(ix86_tune_string)
  Schedule code for given CPU.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index f7d2d33c1f9..d381d07d047 100644
+index cadce96a0f5b..a27334f8b3a8 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
-@@ -20150,6 +20150,10 @@ addresses and sizes of sections.  Programs can be statically linked only.  The
+@@ -20154,6 +20154,10 @@ addresses and sizes of sections.  Programs can be statically linked only.  The
  @option{-mcmodel=large} option is incompatible with @option{-mabi=ilp32},
  @option{-fpic} and @option{-fPIC}.
  
@@ -389,7 +389,7 @@ index f7d2d33c1f9..d381d07d047 100644
  @opindex mno-strict-align
  @item -mstrict-align
 diff --git a/gcc/dwarf2out.cc b/gcc/dwarf2out.cc
-index 1a0015ce00f..24471bed6d4 100644
+index 4ab625498c98..957165a4b0a0 100644
 --- a/gcc/dwarf2out.cc
 +++ b/gcc/dwarf2out.cc
 @@ -24054,6 +24054,11 @@ gen_subprogram_die (tree decl, dw_die_ref context_die)
@@ -406,7 +406,7 @@ index 1a0015ce00f..24471bed6d4 100644
  
 diff --git a/gcc/testsuite/gcc.target/i386/msave-args-mov.c b/gcc/testsuite/gcc.target/i386/msave-args-mov.c
 new file mode 100644
-index 00000000000..a2ca76752a9
+index 000000000000..a2ca76752a96
 --- /dev/null
 +++ b/gcc/testsuite/gcc.target/i386/msave-args-mov.c
 @@ -0,0 +1,26 @@
@@ -438,7 +438,7 @@ index 00000000000..a2ca76752a9
 +/* { dg-final { cleanup-saved-temps } } */
 diff --git a/gcc/testsuite/gcc.target/i386/msave-args-push.c b/gcc/testsuite/gcc.target/i386/msave-args-push.c
 new file mode 100644
-index 00000000000..fbe053dadc8
+index 000000000000..fbe053dadc8b
 --- /dev/null
 +++ b/gcc/testsuite/gcc.target/i386/msave-args-push.c
 @@ -0,0 +1,26 @@
@@ -469,7 +469,7 @@ index 00000000000..fbe053dadc8
 +/* { dg-final { scan-assembler "pushq\t%r8" } } */
 +/* { dg-final { cleanup-saved-temps } } */
 diff --git a/include/dwarf2.def b/include/dwarf2.def
-index 7ab3ee611fd..d5f8c6b7dec 100644
+index 7ab3ee611fd4..d5f8c6b7dece 100644
 --- a/include/dwarf2.def
 +++ b/include/dwarf2.def
 @@ -467,6 +467,8 @@ DW_TAG (DW_AT_GNU_denominator, 0x2304)

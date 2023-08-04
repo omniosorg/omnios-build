@@ -1,4 +1,4 @@
-From c1abc89ddcb74907988f5314044d1bf4e90cb6b7 Mon Sep 17 00:00:00 2001
+From 6f08c211bda1e86402b7d8aead900845bf245f9b Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Mon, 28 Nov 2022 11:52:58 +0000
 Subject: cmn_err() supports 'h' and 'hh'
@@ -9,7 +9,7 @@ Subject: cmn_err() supports 'h' and 'hh'
  2 files changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/gcc/config/sol2-c.cc b/gcc/config/sol2-c.cc
-index 45d083c2ce0..0b3e88809a2 100644
+index 45d083c2ce00..0b3e88809a22 100644
 --- a/gcc/config/sol2-c.cc
 +++ b/gcc/config/sol2-c.cc
 @@ -31,11 +31,13 @@ along with GCC; see the file COPYING3.  If not see
@@ -52,7 +52,7 @@ index 45d083c2ce0..0b3e88809a2 100644
  };
  
 diff --git a/gcc/testsuite/gcc.dg/format/cmn-err-1.c b/gcc/testsuite/gcc.dg/format/cmn-err-1.c
-index aea7779a2c3..f6833c1723a 100644
+index aea7779a2c3b..f6833c1723ad 100644
 --- a/gcc/testsuite/gcc.dg/format/cmn-err-1.c
 +++ b/gcc/testsuite/gcc.dg/format/cmn-err-1.c
 @@ -17,12 +17,17 @@ int main()

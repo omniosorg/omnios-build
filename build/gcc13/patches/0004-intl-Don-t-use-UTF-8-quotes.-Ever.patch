@@ -1,4 +1,4 @@
-From 9e5c37ce0a8d139af065560353aee158585cd03e Mon Sep 17 00:00:00 2001
+From e6fd28ba37bd8a5468c81290be8a9a174488f0e2 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 11 Mar 2014 21:50:30 +0000
 Subject: intl: Don't use UTF-8 quotes.  Ever.
@@ -8,7 +8,7 @@ Subject: intl: Don't use UTF-8 quotes.  Ever.
  1 file changed, 4 insertions(+), 13 deletions(-)
 
 diff --git a/gcc/intl.cc b/gcc/intl.cc
-index 15bbb1acd9b..f3a681dbaba 100644
+index 15bbb1acd9b1..f3a681dbabaf 100644
 --- a/gcc/intl.cc
 +++ b/gcc/intl.cc
 @@ -74,17 +74,11 @@ gcc_init_libintl (void)

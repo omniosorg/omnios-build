@@ -1,4 +1,4 @@
-From c1c3fc7a780739d6ffe27c4cd87edf4e86321be9 Mon Sep 17 00:00:00 2001
+From 806395b291b257d2608cc711857806379edb1e58 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 28 Apr 2021 12:29:31 +0000
 Subject: Fix cp/module.cc build - use posix_madvise()
@@ -8,7 +8,7 @@ Subject: Fix cp/module.cc build - use posix_madvise()
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/cp/module.cc b/gcc/cp/module.cc
-index ac2fe66b080..515faca9b2b 100644
+index ac2fe66b080c..515faca9b2b0 100644
 --- a/gcc/cp/module.cc
 +++ b/gcc/cp/module.cc
 @@ -1643,7 +1643,7 @@ elf_in::defrost (const char *name)

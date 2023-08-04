@@ -1,4 +1,4 @@
-From 7a4138ef910313ae3ba37531634b744cb18d6768 Mon Sep 17 00:00:00 2001
+From 5f81f0a0fc40d9b2b49da96abe152f75ddb20ed1 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Wed, 5 Mar 2014 04:12:52 +0000
 Subject: gcc: enable the .eh_frame based unwinder
@@ -9,7 +9,7 @@ Subject: gcc: enable the .eh_frame based unwinder
  2 files changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/gcc/configure b/gcc/configure
-index c7b26d1927d..6d06fe9226d 100755
+index c7b26d1927de..6d06fe9226d7 100755
 --- a/gcc/configure
 +++ b/gcc/configure
 @@ -24292,11 +24292,12 @@ if test $in_tree_ld != yes ; then
@@ -38,7 +38,7 @@ index c7b26d1927d..6d06fe9226d 100755
          ;;
      esac
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 09082e8ccae..4a3f1692475 100644
+index 09082e8ccae3..4a3f16924759 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
 @@ -3096,11 +3096,12 @@ if test $in_tree_ld != yes ; then
