@@ -52,7 +52,7 @@
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.55.1		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.91			| https://ftp.mozilla.org/pub/security/nss/releases/ https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_Releases
+| library/nss				| 3.92			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.46			| https://metacpan.org/pod/XML::Parser
