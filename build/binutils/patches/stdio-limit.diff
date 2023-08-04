@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/bfd/cache.c a/bfd/cache.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/bfd/cache.c a/bfd/cache.c
 --- a~/bfd/cache.c	1970-01-01 00:00:00
 +++ a/bfd/cache.c	1970-01-01 00:00:00
 @@ -97,7 +97,24 @@ bfd_cache_max_open (void)

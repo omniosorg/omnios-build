@@ -16,10 +16,10 @@ Upstream issue opened at https://sourceware.org/bugzilla/show_bug.cgi?id=28143
 
 For now, revert the portion of this change which breaks the illumos build.
 
-diff -wpruN '--exclude=*.orig' a~/bfd/elflink.c a/bfd/elflink.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/bfd/elflink.c a/bfd/elflink.c
 --- a~/bfd/elflink.c	1970-01-01 00:00:00
 +++ a/bfd/elflink.c	1970-01-01 00:00:00
-@@ -13724,7 +13724,7 @@ _bfd_elf_gc_mark_rsec (struct bfd_link_i
+@@ -13760,7 +13760,7 @@ _bfd_elf_gc_mark_rsec (struct bfd_link_i
  	  hw->mark = 1;
  	}
  
@@ -28,7 +28,7 @@ diff -wpruN '--exclude=*.orig' a~/bfd/elflink.c a/bfd/elflink.c
  	{
  	  if (info->start_stop_gc)
  	    return NULL;
-@@ -15317,7 +15317,6 @@ bfd_elf_define_start_stop (struct bfd_li
+@@ -15353,7 +15353,6 @@ bfd_elf_define_start_stop (struct bfd_li
  			    false, false, true);
    /* NB: Common symbols will be turned into definition later.  */
    if (h != NULL
@@ -36,10 +36,10 @@ diff -wpruN '--exclude=*.orig' a~/bfd/elflink.c a/bfd/elflink.c
        && (h->root.type == bfd_link_hash_undefined
  	  || h->root.type == bfd_link_hash_undefweak
  	  || ((h->ref_regular || h->def_dynamic)
-diff -wpruN '--exclude=*.orig' a~/bfd/linker.c a/bfd/linker.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/bfd/linker.c a/bfd/linker.c
 --- a~/bfd/linker.c	1970-01-01 00:00:00
 +++ a/bfd/linker.c	1970-01-01 00:00:00
-@@ -3184,7 +3184,6 @@ bfd_generic_define_start_stop (struct bf
+@@ -3195,7 +3195,6 @@ bfd_generic_define_start_stop (struct bf
  
    h = bfd_link_hash_lookup (info->hash, symbol, false, false, true);
    if (h != NULL
