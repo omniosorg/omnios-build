@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/gmp-h.in a/gmp-h.in
+diff -wpruN --no-dereference '--exclude=*.orig' a~/gmp-h.in a/gmp-h.in
 --- a~/gmp-h.in	1970-01-01 00:00:00
 +++ a/gmp-h.in	1970-01-01 00:00:00
-@@ -40,8 +40,12 @@ see https://www.gnu.org/licenses/.  */
+@@ -41,8 +41,12 @@ see https://www.gnu.org/licenses/.  */
  #if ! defined (__GMP_WITHIN_CONFIGURE)
  #define __GMP_HAVE_HOST_CPU_FAMILY_power   @HAVE_HOST_CPU_FAMILY_power@
  #define __GMP_HAVE_HOST_CPU_FAMILY_powerpc @HAVE_HOST_CPU_FAMILY_powerpc@
@@ -15,7 +15,7 @@ diff -wpruN '--exclude=*.orig' a~/gmp-h.in a/gmp-h.in
  #endif
  #define GMP_NUMB_BITS     (GMP_LIMB_BITS - GMP_NAIL_BITS)
  #define GMP_NUMB_MASK     ((~ __GMP_CAST (mp_limb_t, 0)) >> GMP_NAIL_BITS)
-@@ -368,6 +372,10 @@ typedef __mpq_struct *mpq_ptr;
+@@ -372,6 +376,10 @@ typedef const __gmp_randstate_struct *gm
  #define __GMP_EXTERN_INLINE      extern __inline__
  #endif
  #define __GMP_INLINE_PROTOTYPES  1
