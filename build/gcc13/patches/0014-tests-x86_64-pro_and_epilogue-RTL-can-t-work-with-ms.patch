@@ -1,4 +1,4 @@
-From 25460f8f5c7afee6c956a4125e8e24de482b381b Mon Sep 17 00:00:00 2001
+From ad56d8723708528a6e0c4bd8f43184ce94e8a83a Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Thu, 2 May 2019 17:54:20 +0000
 Subject: tests: x86_64 pro_and_epilogue RTL can't work with
@@ -14,7 +14,7 @@ adjustments think there are saved parameters where there are not.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c b/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
-index b6f723a6e60..ed5db9cace3 100644
+index b6f723a6e602..ed5db9cace3b 100644
 --- a/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
 +++ b/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
 @@ -1,5 +1,6 @@

@@ -1,4 +1,4 @@
-From 65a68cf10a89b2aae8061d2f9452a2467fa00305 Mon Sep 17 00:00:00 2001
+From 4cc09b9d53f045c063bc97833d7fd0ba3112f132 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 25 Oct 2018 18:19:36 +0000
 Subject: We never want to omit the frame pointer, regardless of
@@ -11,10 +11,10 @@ Subject: We never want to omit the frame pointer, regardless of
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index a375e16da20..5b42392bc5c 100644
+index e45478d606bb..d1f1e7c5067a 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
-@@ -2965,6 +2965,15 @@ ix86_option_override_internal (bool main_args_p,
+@@ -2971,6 +2971,15 @@ ix86_option_override_internal (bool main_args_p,
        free (str);
      }
  
@@ -31,7 +31,7 @@ index a375e16da20..5b42392bc5c 100644
       options.  */
    if (main_args_p)
 diff --git a/gcc/opts.cc b/gcc/opts.cc
-index fb2e5388ab1..bf4275621eb 100644
+index fb2e5388ab19..bf4275621eba 100644
 --- a/gcc/opts.cc
 +++ b/gcc/opts.cc
 @@ -577,7 +577,7 @@ static const struct default_options default_options_table[] =

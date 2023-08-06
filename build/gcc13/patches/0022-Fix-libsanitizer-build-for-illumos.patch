@@ -1,4 +1,4 @@
-From 7ade47c003bddc5653a1887d58058e17f1f253c7 Mon Sep 17 00:00:00 2001
+From fc34ac853984f2cbf6845ff41930ddc9b7af8acb Mon Sep 17 00:00:00 2001
 From: Aurelien Larcher <aurelien.larcher@gmail.com>
 Date: Tue, 12 Nov 2019 15:01:57 +0000
 Subject: Fix libsanitizer build for illumos
@@ -8,7 +8,7 @@ Subject: Fix libsanitizer build for illumos
  1 file changed, 11 insertions(+)
 
 diff --git a/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h b/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
-index 84a81265162..f9c9b84dcad 100644
+index 84a81265162c..f9c9b84dcadd 100644
 --- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
 +++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
 @@ -19,6 +19,9 @@

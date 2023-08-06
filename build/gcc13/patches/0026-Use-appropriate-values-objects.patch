@@ -1,4 +1,4 @@
-From 7f47bfb22e937106e016fcc4469a2bca54d1351c Mon Sep 17 00:00:00 2001
+From 5a44411388ea837c1af35e070f240fa2880df5bf Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 7 Jan 2020 15:08:43 +0000
 Subject: Use appropriate values objects
@@ -8,7 +8,7 @@ Subject: Use appropriate values objects
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index d05e27aad98..f4cbf3e1eb1 100644
+index d05e27aad989..f4cbf3e1eb1c 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -201,8 +201,14 @@ along with GCC; see the file COPYING3.  If not see

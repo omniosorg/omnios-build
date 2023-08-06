@@ -1,4 +1,4 @@
-From 604c8647f1e042094fb42688426bda1c808b9765 Mon Sep 17 00:00:00 2001
+From 2099f003ab3ae04597e3bf215ddfa02b992bbd1b Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 01:02:08 +0000
 Subject: gcc.target/i386/retarg: skip if msave-args
@@ -10,7 +10,7 @@ argument registers are untouched, so saving them will ruin that.
  1 file changed, 1 insertion(+)
 
 diff --git a/gcc/testsuite/gcc.target/i386/retarg.c b/gcc/testsuite/gcc.target/i386/retarg.c
-index a69b60feaf4..3967ef76b1f 100644
+index a69b60feaf4e..3967ef76b1f2 100644
 --- a/gcc/testsuite/gcc.target/i386/retarg.c
 +++ b/gcc/testsuite/gcc.target/i386/retarg.c
 @@ -1,5 +1,6 @@

@@ -19,7 +19,7 @@
 
 PKG=developer/gcc13
 PROG=gcc
-VER=13.1.0
+VER=13.2.0
 ILVER=il-0
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"

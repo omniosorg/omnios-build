@@ -21,7 +21,7 @@
 | developer/gcc7			| 7.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc12			| 12.3			| https://ftp.gnu.org/gnu/gcc/
-| developer/gcc13			| 13.1			| https://ftp.gnu.org/gnu/gcc/
+| developer/gcc13			| 13.2			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.19		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
 | developer/nasm			| 2.16.01		| http://www.nasm.us/pub/nasm/releasebuilds
