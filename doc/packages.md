@@ -47,7 +47,7 @@
 | library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
 | library/libuv				| 1.46.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.11.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.11.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -63,11 +63,11 @@
 | library/readline8-patchlvl		| 002			| https://ftp.gnu.org/gnu/readline/readline-8.1-patches/
 | library/security/openssl-11		| 1.1.1v		| https://www.openssl.org/source/
 | library/security/openssl-3		| 3.1.2			| https://www.openssl.org/source/
-| library/unixodbc			| 2.3.11		| http://www.unixodbc.org/download.html
+| library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.2.13		| https://www.zlib.net/
-| meta/data/microcode/amd		| 20230724		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20230613		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode/amd		| 20230809		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/intel		| 20230808		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.17		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.3p2			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
@@ -84,7 +84,7 @@
 | runtime/python-310			| 3.10.12		| https://www.python.org/downloads/source/
 | runtime/python-311			| 3.11.4		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.14p3		| https://www.sudo.ws/
-| service/network/chrony		| 4.3			| https://download.tuxfamily.org/chrony/
+| service/network/chrony		| 4.4			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.2			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.2.15		| https://ftp.gnu.org/gnu/bash/

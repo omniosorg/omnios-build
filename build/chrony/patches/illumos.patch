@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/configure a/configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -207,6 +207,11 @@ get_features () {
+@@ -208,6 +208,11 @@ get_features () {
  
  
  OPERATINGSYSTEM=`uname -s`
@@ -13,7 +13,7 @@ diff -wpruN '--exclude=*.orig' a~/configure a/configure
  VERSION=`uname -r`
  MACHINE=`uname -m`
  
-@@ -467,7 +472,7 @@ case $OPERATINGSYSTEM in
+@@ -472,7 +477,7 @@ case $OPERATINGSYSTEM in
          fi
          echo "Configuring for macOS (" $SYSTEM "macOS version" $VERSION ")"
      ;;
@@ -22,7 +22,7 @@ diff -wpruN '--exclude=*.orig' a~/configure a/configure
          EXTRA_OBJECTS="sys_generic.o sys_solaris.o sys_timex.o sys_posix.o"
          LIBS="$LIBS -lsocket -lnsl -lkvm -lelf -lresolv"
          try_setsched=1
-@@ -483,6 +488,21 @@ case $OPERATINGSYSTEM in
+@@ -488,6 +493,21 @@ case $OPERATINGSYSTEM in
          fi
          echo "Configuring for illumos (" $SYSTEM "SunOS version" $VERSION ")"
      ;;                                                                        
@@ -44,7 +44,7 @@ diff -wpruN '--exclude=*.orig' a~/configure a/configure
      * )
          echo "error: $SYSTEM is not supported (yet?)"
          exit 1
-diff -wpruN '--exclude=*.orig' a~/privops.c a/privops.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/privops.c a/privops.c
 --- a~/privops.c	1970-01-01 00:00:00
 +++ a/privops.c	1970-01-01 00:00:00
 @@ -34,6 +34,7 @@
@@ -64,7 +64,7 @@ diff -wpruN '--exclude=*.orig' a~/privops.c a/privops.c
      helper_main(sock_fd2);
  
    } else {
-diff -wpruN '--exclude=*.orig' a~/sys.h a/sys.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sys.h a/sys.h
 --- a~/sys.h	1970-01-01 00:00:00
 +++ a/sys.h	1970-01-01 00:00:00
 @@ -38,6 +38,7 @@ extern void SYS_Finalise(void);
@@ -75,7 +75,7 @@ diff -wpruN '--exclude=*.orig' a~/sys.h a/sys.h
  } SYS_ProcessContext;
  
  /* Switch to the specified user and group in given context */
-diff -wpruN '--exclude=*.orig' a~/sys_solaris.c a/sys_solaris.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sys_solaris.c a/sys_solaris.c
 --- a~/sys_solaris.c	1970-01-01 00:00:00
 +++ a/sys_solaris.c	1970-01-01 00:00:00
 @@ -34,41 +34,13 @@

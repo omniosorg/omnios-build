@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=unixODBC
-VER=2.3.11
+VER=2.3.12
 PKG=library/unixodbc
 SUMMARY="The UnixODBC Subsystem and SDK"
 DESC="UnixODBC - The UnixODBC Subsystem and SDK"
