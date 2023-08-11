@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
 --- a~/INSTALL	1970-01-01 00:00:00
 +++ a/INSTALL	1970-01-01 00:00:00
-@@ -107,9 +107,13 @@ http://www.gnu.org/software/automake/
+@@ -103,9 +103,13 @@ http://www.gnu.org/software/automake/
  
  Basic Security Module (BSM):
  
@@ -18,7 +18,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
  
  makedepend:
  
-@@ -175,8 +179,9 @@ name).
+@@ -171,8 +175,9 @@ name).
  There are a few other options to the configure script:
  
  --with-audit=[module] enable additional auditing via the specified module.
