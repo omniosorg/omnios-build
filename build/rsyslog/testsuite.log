@@ -318,6 +318,7 @@ PASS: incltest_dir_wildcard.sh
 PASS: incltest_dir_empty_wildcard.sh
 PASS: linkedlistqueue.sh
 PASS: lookup_table.sh
+PASS: lookup_table-hup-backgrounded.sh
 PASS: lookup_table_no_hup_reload.sh
 PASS: key_dereference_on_uninitialized_variable_space.sh
 PASS: array_lookup_table.sh
@@ -399,6 +400,7 @@ PASS: sndrcv_tls_ossl_certvalid_action_level.sh
 PASS: sndrcv_tls_ossl_certvalid_expired.sh
 PASS: sndrcv_tls_ossl_certvalid_tlscommand.sh
 PASS: sndrcv_tls_ossl_certvalid_ciphers.sh
+PASS: sndrcv_tls_ossl_certvalid_revoked.sh
 PASS: imtcp-tls-ossl-x509valid.sh
 PASS: imtcp-tls-ossl-x509name.sh
 PASS: imtcp-tls-ossl-x509fingerprint.sh
@@ -408,10 +410,10 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2306.0
+Testsuite summary for rsyslog 8.2308.0
 ============================================================================
-# TOTAL: 410
-# PASS:  370
+# TOTAL: 412
+# PASS:  372
 # SKIP:  40
 # XFAIL: 0
 # FAIL:  0
