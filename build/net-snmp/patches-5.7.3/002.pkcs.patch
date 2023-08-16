@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/snmplib/pkcs.c a/snmplib/pkcs.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/snmplib/pkcs.c a/snmplib/pkcs.c
 --- a~/snmplib/pkcs.c	1970-01-01 00:00:00
 +++ a/snmplib/pkcs.c	1970-01-01 00:00:00
 @@ -1,5 +1,5 @@

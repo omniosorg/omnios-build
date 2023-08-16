@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/snmplib/keytools.c a/snmplib/keytools.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/snmplib/keytools.c a/snmplib/keytools.c
 --- a~/snmplib/keytools.c	1970-01-01 00:00:00
 +++ a/snmplib/keytools.c	1970-01-01 00:00:00
 @@ -152,9 +152,7 @@ generate_Ku(const oid * hashtype, u_int
@@ -22,7 +22,7 @@ diff -wpruN '--exclude=*.orig' a~/snmplib/keytools.c a/snmplib/keytools.c
  #endif
      }
  #endif
-diff -wpruN '--exclude=*.orig' a~/snmplib/scapi.c a/snmplib/scapi.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/snmplib/scapi.c a/snmplib/scapi.c
 --- a~/snmplib/scapi.c	1970-01-01 00:00:00
 +++ a/snmplib/scapi.c	1970-01-01 00:00:00
 @@ -489,12 +489,7 @@ sc_hash(const oid * hashtype, size_t has

@@ -20,7 +20,7 @@ function called from the Init_HR_FileSys() function.
 Developed in-house. Bug submitted upstream
 https://sourceforge.net/p/net-snmp/bugs/2588/
 
-diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
 --- a~/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 +++ a/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 @@ -46,6 +46,10 @@
@@ -32,7 +32,7 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgr
 +#endif
 +
  #include <ctype.h>
- #if HAVE_STRING_H
+ #ifdef HAVE_STRING_H
  #include <string.h>
 @@ -111,8 +115,14 @@ netsnmp_feature_require(ctime_to_timet);
  

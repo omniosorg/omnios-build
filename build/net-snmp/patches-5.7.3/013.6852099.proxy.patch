@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/ucd-snmp/proxy.c a/agent/mibgroup/ucd-snmp/proxy.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/mibgroup/ucd-snmp/proxy.c a/agent/mibgroup/ucd-snmp/proxy.c
 --- a~/agent/mibgroup/ucd-snmp/proxy.c	1970-01-01 00:00:00
 +++ a/agent/mibgroup/ucd-snmp/proxy.c	1970-01-01 00:00:00
 @@ -487,6 +487,8 @@ proxy_handler(netsnmp_mib_handler *handl

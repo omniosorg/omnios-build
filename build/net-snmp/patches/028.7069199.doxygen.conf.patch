@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/doxygen.conf a/doxygen.conf
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doxygen.conf a/doxygen.conf
 --- a~/doxygen.conf	1970-01-01 00:00:00
 +++ a/doxygen.conf	1970-01-01 00:00:00
 @@ -422,6 +422,12 @@ HTML_FOOTER            =

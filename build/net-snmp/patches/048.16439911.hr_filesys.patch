@@ -4,7 +4,7 @@
 # https://sourceforge.net/p/net-snmp/patches/1287/.
 # This patch has not been accepted yet.
 #
-diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/mibgroup/host/hr_filesys.c a/agent/mibgroup/host/hr_filesys.c
 --- a~/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 +++ a/agent/mibgroup/host/hr_filesys.c	1970-01-01 00:00:00
 @@ -743,20 +743,25 @@ static const char *HRFS_ignores[] = {

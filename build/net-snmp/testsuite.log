@@ -1,6 +1,7 @@
 Checking the Net-SNMP configure script validity ......................... ok
 SNMPv1 support .......................................................... ok
 SNMPv2c set of system.sysContact.0 ...................................... ok
+SNMPv2c set of system.sysContact.0 with NULL varbind .................... ok
 SNMPv2c get of system.sysUpTime.0 ....................................... ok
 SNMPv2c getnext of system.sysUpTime ..................................... ok
 SNMPv2c bulkget of system components .................................... ok
@@ -145,7 +146,7 @@ Agent uses clientaddr for trapsess source                             (Wstat: 25
 Agent uses -s argument for trapsess source                            (Wstat: 256 (exited 1) Tests: 2 Failed: 1)
   Failed test:  1
   Non-zero exit status: 1
-Files=86, Tests=332, 158 wallclock secs ( 0.60 usr  0.50 sys + 21.75 cusr 20.87 csys = 43.72 CPU)
+Files=87, Tests=335, 161 wallclock secs ( 0.63 usr  0.59 sys + 21.89 cusr 21.91 csys = 45.02 CPU)
 Result: FAIL
 
 We failed these 8 tests:
@@ -157,3 +158,5 @@ We failed these 8 tests:
   Agent uses clientaddr for trapsink source 
   Agent uses clientaddr for trapsess source 
   Agent uses -s argument for trapsess source 
+make[1]: *** [Makefile:158: test] Error 1
+make: *** [Makefile:279: test] Error 2
