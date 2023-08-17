@@ -68,7 +68,7 @@
 | library/zlib				| 1.2.13		| https://www.zlib.net/
 | meta/data/microcode/amd		| 20230809		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230808		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.17		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.18		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.4p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -100,11 +100,11 @@
 | system/library/pcap			| 1.10.4		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 23.1.2		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
-| system/management/snmp/net-snmp	| 5.9.3			| https://github.com/net-snmp/net-snmp/tags
+| system/management/snmp/net-snmp	| 5.9.4			| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.10.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2306.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2308.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/fio			| 3.35			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.0			| https://ftp.gnu.org/gnu/screen/
@@ -116,7 +116,7 @@
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
-| text/less				| 633			| http://www.greenwoodsoftware.com/less/download.html
+| text/less				| 643			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.2.1			| https://curl.haxx.se/download.html
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.0.1			| https://ftp.gnu.org/gnu/wget/

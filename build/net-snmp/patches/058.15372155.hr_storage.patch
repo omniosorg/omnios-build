@@ -8,7 +8,7 @@ This patch is taken from the below link.
 
 https://bugs.launchpad.net/ubuntu/+source/net-snmp/+bug/865268
 
-diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_storage.c a/agent/mibgroup/host/hr_storage.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/mibgroup/host/hr_storage.c a/agent/mibgroup/host/hr_storage.c
 --- a~/agent/mibgroup/host/hr_storage.c	1970-01-01 00:00:00
 +++ a/agent/mibgroup/host/hr_storage.c	1970-01-01 00:00:00
 @@ -527,6 +527,7 @@ var_hrstore(struct variable *vp,
@@ -35,7 +35,7 @@ diff -wpruN '--exclude=*.orig' a~/agent/mibgroup/host/hr_storage.c a/agent/mibgr
 @@ -604,9 +611,9 @@ really_try_next:
      case HRSTORE_UNITS:
          if (store_idx > NETSNMP_MEM_TYPE_MAX)
- #if HRFS_HAS_FRSIZE
+ #ifdef HRFS_HAS_FRSIZE
 -            long_return = stat_buf.f_frsize;
 +            long_return = stat_buf.f_frsize << factor;
  #else

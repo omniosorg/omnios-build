@@ -5,7 +5,7 @@ not been accepted yet.
 The details can be found in the following location
 https://sourceforge.net/p/net-snmp/bugs/2607
 
-diff -wpruN '--exclude=*.orig' a~/net-snmp-create-v3-user.in a/net-snmp-create-v3-user.in
+diff -wpruN --no-dereference '--exclude=*.orig' a~/net-snmp-create-v3-user.in a/net-snmp-create-v3-user.in
 --- a~/net-snmp-create-v3-user.in	1970-01-01 00:00:00
 +++ a/net-snmp-create-v3-user.in	1970-01-01 00:00:00
 @@ -5,7 +5,7 @@

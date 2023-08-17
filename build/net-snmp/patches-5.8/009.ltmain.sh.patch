@@ -2,7 +2,7 @@
 #
 # Developed in-house. Solaris-specific; not suitable for upstream
 
-diff -wpruN '--exclude=*.orig' a~/ltmain.sh a/ltmain.sh
+diff -wpruN --no-dereference '--exclude=*.orig' a~/ltmain.sh a/ltmain.sh
 --- a~/ltmain.sh	1970-01-01 00:00:00
 +++ a/ltmain.sh	1970-01-01 00:00:00
 @@ -5406,7 +5406,9 @@ func_mode_link ()

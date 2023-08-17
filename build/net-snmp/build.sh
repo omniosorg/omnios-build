@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=net-snmp
-VER=5.9.3
+VER=5.9.4
 PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
@@ -114,6 +114,13 @@ post_install() {
 }
 
 note -n "Building current version: $VER"
+
+# As of 5.9.4, the configure script tries to determine the type of the bits
+# element of `fd_set`. It tries a few types, but not the correct 'long' type.
+# However, it does try `__int32_t` which is undefined on illumos. We take
+# advantage of this to override the test and derived type, and avoid having
+# to patch -- and regenerate -- configure.
+CPPFLAGS+=" -D__int32_t=long"
 
 download_source $PROG $PROG $VER
 patch_source
