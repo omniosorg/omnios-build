@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=screen
-VER=4.8.0
+VER=4.9.1
 PKG=terminal/screen
 SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
