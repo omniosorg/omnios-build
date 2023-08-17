@@ -128,6 +128,7 @@ XFORM_ARGS+=" -D CSMTAG=$tag"
         export GCC GXX GCCPATH PATH
 
         download_source bhyve-fw uefi-edk2 $tag
+        patch_source patches-csm
         ((EXTRACT_MODE)) && exit
         pushd $TMPDIR/$BUILDDIR >/dev/null
 
