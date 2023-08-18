@@ -1,5 +1,3 @@
 Makefile.in.patch
-xnet-hack.patch
 ncurses.patch
 unneededlibs.patch
-CVE-2021-26937.patch
