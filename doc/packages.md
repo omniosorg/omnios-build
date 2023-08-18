@@ -107,7 +107,7 @@
 | system/rsyslog			| 8.2308.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/fio			| 3.35			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
-| terminal/screen			| 4.9.0			| https://ftp.gnu.org/gnu/screen/
+| terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.2.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
