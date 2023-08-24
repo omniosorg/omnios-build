@@ -4,6 +4,43 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046q (2023-08-24)
+Weekly release for w/c 21st of August 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+- bhyve: fully reset the fwctl state if the guest requests it
+  [CVE-2023-3494](https://www.cve.org/CVERecord?id=CVE-2023-3494).
+
+- Update Intel CPU microcode to 20230808. Contains mitigations for
+  [CVE-2022-40982](https://www.cve.org/CVERecord?id=CVE-2022-40982),
+  [CVE-2022-41804](https://www.cve.org/CVERecord?id=CVE-2022-41804),
+  [CVE-2023-23908](https://www.cve.org/CVERecord?id=CVE-2023-23908).
+
+- Update AMD CPU microcode to 20230808. Contains mitigations for
+  [CVE-2023-20569](https://www.amd.com/en/resources/product-security/bulletin/amd-sb-7005.html).
+
+- `screen` has been updated to version 4.9.1 which includes a fix for
+  [CVE-2023-24626](https://www.cve.org/CVERecord?id=CVE-2023-24626). Note that
+  this exploit required that `screen` be installed set-uid, which it is not be
+  default on OmniOS.
+
+### Other Changes
+
+- bhyve: take more care around `VM_MAXCPU`. A priviliged user could trigger a
+  kernel panic.
+
+- LX: always set the `AT_SECURE` auxval to better emulate Linux and fix
+  problems with recent `dconf` [OS-8480](https://smartos.org/bugview/OS-8480).
+
+- The version of the nettle cryptography library bundled with chrony has been
+  updated.
+
+<br>
+
+---
+
 ## r151046n (2023-08-03)
 Weekly release for w/c 31st of July 2023.
 > This is a non-reboot update
