@@ -25,6 +25,8 @@ DESC="A full-screen window manager that multiplexes a physical "
 DESC+="terminal between several processes"
 
 set_arch 64
+# msg_controllen member of struct msghdr
+set_standard XPG4v2
 
 CONFIGURE_OPTS_WS="
     --with-sys-screenrc=/etc/screenrc
