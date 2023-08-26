@@ -1,0 +1,95 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2.3 a/doc/pcre2.3
+--- a~/doc/pcre2.3	1970-01-01 00:00:00
++++ a/doc/pcre2.3	1970-01-01 00:00:00
+@@ -150,39 +150,9 @@ be used to restrict the amount of memory
+ .rs
+ .sp
+ The user documentation for PCRE2 comprises a number of different sections. In
+-the "man" format, each of these is a separate "man page". In the HTML format,
+-each is a separate page, linked from the index page. In the plain text format,
+-the descriptions of the \fBpcre2grep\fP and \fBpcre2test\fP programs are in
+-files called \fBpcre2grep.txt\fP and \fBpcre2test.txt\fP, respectively. The
+-remaining sections, except for the \fBpcre2demo\fP section (which is a program
+-listing), and the short pages for individual functions, are concatenated in
+-\fBpcre2.txt\fP, for ease of searching. The sections are as follows:
++the "man" format, each of these is a separate "man page".
+ .sp
+-  pcre2              this document
+-  pcre2-config       show PCRE2 installation configuration information
+-  pcre2api           details of PCRE2's native C API
+-  pcre2build         building PCRE2
+-  pcre2callout       details of the pattern callout feature
+-  pcre2compat        discussion of Perl compatibility
+-  pcre2convert       details of pattern conversion functions
+-  pcre2demo          a demonstration C program that uses PCRE2
+-  pcre2grep          description of the \fBpcre2grep\fP command (8-bit only)
+-  pcre2jit           discussion of just-in-time optimization support
+-  pcre2limits        details of size and other limits
+-  pcre2matching      discussion of the two matching algorithms
+-  pcre2partial       details of the partial matching facility
+-.\" JOIN
+-  pcre2pattern       syntax and semantics of supported regular
+-                       expression patterns
+-  pcre2perform       discussion of performance issues
+-  pcre2posix         the POSIX-compatible C API for the 8-bit library
+-  pcre2sample        discussion of the pcre2demo program
+-  pcre2serialize     details of pattern serialization
+-  pcre2syntax        quick syntax reference
+-  pcre2test          description of the \fBpcre2test\fP command
+-  pcre2unicode       discussion of Unicode and UTF support
+-.sp
+-In the "man" and HTML formats, there is also a short page for each C library
++In the "man" format, there is also a short page for each C library
+ function, listing its arguments and results.
+ .
+ .
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2api.3 a/doc/pcre2api.3
+--- a~/doc/pcre2api.3	1970-01-01 00:00:00
++++ a/doc/pcre2api.3	1970-01-01 00:00:00
+@@ -395,18 +395,7 @@ against a non-dll PCRE2 library, you mus
+ \fBpcre2.h\fP.
+ .P
+ The functions \fBpcre2_compile()\fP and \fBpcre2_match()\fP are used for
+-compiling and matching regular expressions in a Perl-compatible manner. A
+-sample program that demonstrates the simplest way of using them is provided in
+-the file called \fIpcre2demo.c\fP in the PCRE2 source distribution. A listing
+-of this program is given in the
+-.\" HREF
+-\fBpcre2demo\fP
+-.\"
+-documentation, and the
+-.\" HREF
+-\fBpcre2sample\fP
+-.\"
+-documentation describes how to compile and run it.
++compiling and matching regular expressions in a Perl-compatible manner.
+ .P
+ The compiling and matching functions recognize various options that are passed
+ as bits in an options argument. There are also some more complicated parameters
+@@ -2663,12 +2652,8 @@ Finding all the matches in a subject is
+ empty string. It is possible to emulate Perl's /g behaviour by first trying the
+ match again at the same offset, with the PCRE2_NOTEMPTY_ATSTART and
+ PCRE2_ANCHORED options, and then if that fails, advancing the starting offset
+-and trying an ordinary match again. There is some code that demonstrates how to
+-do this in the
+-.\" HREF
+-\fBpcre2demo\fP
+-.\"
+-sample program. In the most general case, you have to check to see if the
++and trying an ordinary match again.
++In the most general case, you have to check to see if the
+ newline convention recognizes CRLF as a newline, and if so, and the current
+ character is CR followed by LF, advance the starting offset by two characters
+ instead of one.
+@@ -4010,9 +3995,8 @@ fail, this error is given.
+ .SH "SEE ALSO"
+ .rs
+ .sp
+-\fBpcre2build\fP(3), \fBpcre2callout\fP(3), \fBpcre2demo(3)\fP,
+-\fBpcre2matching\fP(3), \fBpcre2partial\fP(3), \fBpcre2posix\fP(3),
+-\fBpcre2sample\fP(3), \fBpcre2unicode\fP(3).
++\fBpcre2build\fP(3), \fBpcre2callout\fP(3), \fBpcre2matching\fP(3),
++\fBpcre2partial\fP(3), \fBpcre2posix\fP(3), \fBpcre2unicode\fP(3).
+ .
+ .
+ .SH AUTHOR
