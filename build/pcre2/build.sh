@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -42,7 +42,7 @@ CONFIGURE_OPTS="
 
 # This option cannot be used when cross-compiling
 CONFIGURE_OPTS[i386]+=" --enable-rebuild-chartables"
-CONFIGURE_OPTS[amd64]+=" --enable-rebuild-chartables"
+CONFIGURE_OPTS[amd64]+=" --bindir=$PREFIX/bin --enable-rebuild-chartables"
 
 init
 prep_build
@@ -67,12 +67,23 @@ CONFIGURE_OPTS+="
     --enable-pcre2-32
 "
 
+# Make ISA binaries for pcre2-config, to allow software to find the
+# right settings for 32/64-bit when pkg-config is not used.
+post_install() {
+    [ $1 != amd64 ] && return
+
+    pushd $DESTDIR$PREFIX/bin >/dev/null
+    logcmd $MKDIR -p amd64
+    logcmd $MV pcre2-config amd64/ || logerr "mv pcre2-config"
+    make_isaexec_stub_arch amd64 $PREFIX/bin
+    popd >/dev/null
+}
+
 note -n "Building current version: $VER"
 download_source pcre $PROG $VER
 patch_source
 build
 run_testsuite check
-make_isa_stub
 make_package
 clean_up
 
