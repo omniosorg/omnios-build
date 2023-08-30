@@ -116,6 +116,8 @@ CONFIGURE_OPTS="
     --disable-nls
     --enable-c99
     --enable-long-long
+    --enable-tls
+    gcc_cv_have_tls=yes
     enable_frame_pointer=yes
 "
 CONFIGURE_OPTS[WS]="
@@ -136,6 +138,19 @@ make_install() {
         logerr "--- Make install failed"
 }
 
+tests() {
+    # Specific tests to ensure that certain features are properly detected
+    $EGREP -s gcc_cv_as_eh_frame=yes $TMPDIR/$BUILDDIR/gcc/config.log \
+        || logerr "The .eh_frame based unwinder is not enabled"
+
+    $EGREP -s gcc_cv_use_emutls=no \
+        $TMPDIR/$BUILDDIR/$TRIPLET/libgcc/config.log \
+        || logerr "Emulated TLS is enabled"
+
+    $EGREP -s gcc_cv_libc_provides_ssp=yes $TMPDIR/$BUILDDIR/gcc/config.log \
+        || logerr "libc support for SSP was not detected"
+}
+
 init
 clone_github_source $PROG $REPO $BRANCH
 append_builddir $PROG
@@ -143,6 +158,7 @@ patch_source
 # gcc should be built out-of-tree
 prep_build autoconf -oot
 build -noctf
+tests
 logcmd cp $TMPDIR/$SRC_BUILDDIR/COPYING* $TMPDIR/$BUILDDIR
 make_package
 clean_up
