@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/sys.h a/src/sys.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/sys.h a/src/sys.h
 --- a~/src/sys.h	1970-01-01 00:00:00
 +++ a/src/sys.h	1970-01-01 00:00:00
 @@ -123,7 +123,7 @@ typedef unsigned int	u_int32_t;
@@ -6,11 +6,23 @@ diff -wpruN '--exclude=*.orig' a~/src/sys.h a/src/sys.h
  #undef	REGEXP		/* Use UNIX V8 regular expression functions */
  
 -#if defined(__sun)
-+#if defined(__sun_NOT_REQUIRED)
++#if defined(__sun) && !defined(__illumos__)
  extern int tgetent(char *, const char *);
  extern int tgetflag(char *);
  extern int tgetnum(char *);
-diff -wpruN '--exclude=*.orig' a~/src/terminal.h a/src/terminal.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/terminal.c a/src/terminal.c
+--- a~/src/terminal.c	1970-01-01 00:00:00
++++ a/src/terminal.c	1970-01-01 00:00:00
+@@ -68,7 +68,7 @@ __RCSID("$NetBSD: terminal.c,v 1.46 2023
+ #include <term.h>
+ #endif
+ 
+-#if defined(__sun)
++#if defined(__sun) && !defined(__illumos__)
+ extern int tgetent(char *, const char *);
+ extern int tgetflag(char *);
+ extern int tgetnum(char *);
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/terminal.h a/src/terminal.h
 --- a~/src/terminal.h	1970-01-01 00:00:00
 +++ a/src/terminal.h	1970-01-01 00:00:00
 @@ -80,7 +80,7 @@ typedef struct {
@@ -18,7 +30,7 @@ diff -wpruN '--exclude=*.orig' a~/src/terminal.h a/src/terminal.h
  #define	A_K_NKEYS	7
  
 -#ifdef __sun
-+#ifdef __sun_NOT_REQUIRED
++#if defined(__sun) && !defined(__illumos__)
  extern int tgetent(char *, const char *);
  extern int tgetflag(char *);
  extern int tgetnum(char *);
