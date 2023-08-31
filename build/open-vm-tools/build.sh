@@ -19,11 +19,11 @@
 
 PKG=system/virtualization/open-vm-tools
 PROG=open-vm-tools
-VER=12.2.5
+VER=12.3.0
 # The open-vm-tools have been inconsistent in the past in regard to whether
 # the filenames and extracted directories contain the build number. If they
 # do, set the build number.
-BUILD=21855600
+BUILD=22234872
 SUMMARY="Open Virtual Machine Tools"
 DESC="The Open Virtual Machine Tools project aims to provide a suite of open "
 DESC+="source virtualisation utilities and drivers to improve the "
@@ -93,7 +93,7 @@ post_install() {
     logcmd cp $SRCDIR/files/tools.conf $DESTDIR/etc/vmware-tools/ \
         || logerr "cp fail"
 
-    install_smf $SRCDIR/system/virtualization open-vm-tools.xml
+    install_smf system/virtualization open-vm-tools.xml
 }
 
 init
