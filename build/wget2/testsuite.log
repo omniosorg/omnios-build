@@ -37,4 +37,4 @@ PASS: test-dl
 # FAIL:  1
 # XPASS: 0
 # ERROR: 0
-ERROR: 1 out of 172180 basic tests failed
+ERROR: 1 out of 172184 basic tests failed
