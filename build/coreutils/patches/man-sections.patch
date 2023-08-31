@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/man/mkfifo.x a/man/mkfifo.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/mkfifo.x a/man/mkfifo.x
 --- a~/man/mkfifo.x	1970-01-01 00:00:00
 +++ a/man/mkfifo.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ mkfifo \- make FIFOs (named pipes)
@@ -7,7 +7,7 @@ diff -wpruN '--exclude=*.orig' a~/man/mkfifo.x a/man/mkfifo.x
  [SEE ALSO]
 -mkfifo(3)
 +mkfifo(3C)
-diff -wpruN '--exclude=*.orig' a~/man/mktemp.x a/man/mktemp.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/mktemp.x a/man/mktemp.x
 --- a~/man/mktemp.x	1970-01-01 00:00:00
 +++ a/man/mktemp.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ mktemp \- create a temporary file or dir
@@ -16,7 +16,7 @@ diff -wpruN '--exclude=*.orig' a~/man/mktemp.x a/man/mktemp.x
  [SEE ALSO]
 -mkstemp(3), mkdtemp(3), mktemp(3)
 +mkstemp(3C), mkdtemp(3C), mktemp(3C)
-diff -wpruN '--exclude=*.orig' a~/man/printf.x a/man/printf.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/printf.x a/man/printf.x
 --- a~/man/printf.x	1970-01-01 00:00:00
 +++ a/man/printf.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ printf \- format and print data
@@ -25,7 +25,7 @@ diff -wpruN '--exclude=*.orig' a~/man/printf.x a/man/printf.x
  [SEE ALSO]
 -printf(3)
 +printf(3C)
-diff -wpruN '--exclude=*.orig' a~/man/pwd.x a/man/pwd.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/pwd.x a/man/pwd.x
 --- a~/man/pwd.x	1970-01-01 00:00:00
 +++ a/man/pwd.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ pwd \- print name of current/working dir
@@ -34,7 +34,7 @@ diff -wpruN '--exclude=*.orig' a~/man/pwd.x a/man/pwd.x
  [SEE ALSO]
 -getcwd(3)
 +getcwd(3C)
-diff -wpruN '--exclude=*.orig' a~/man/rm.x a/man/rm.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/rm.x a/man/rm.x
 --- a~/man/rm.x	1970-01-01 00:00:00
 +++ a/man/rm.x	1970-01-01 00:00:00
 @@ -28,4 +28,4 @@ prompts the user for whether to remove t
@@ -43,7 +43,7 @@ diff -wpruN '--exclude=*.orig' a~/man/rm.x a/man/rm.x
  [SEE ALSO]
 -unlink(1), unlink(2), chattr(1), shred(1)
 +unlink(1), unlink(2), shred(1)
-diff -wpruN '--exclude=*.orig' a~/man/sleep.x a/man/sleep.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/sleep.x a/man/sleep.x
 --- a~/man/sleep.x	1970-01-01 00:00:00
 +++ a/man/sleep.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ sleep \- delay for a specified amount of
@@ -52,7 +52,7 @@ diff -wpruN '--exclude=*.orig' a~/man/sleep.x a/man/sleep.x
  [SEE ALSO]
 -sleep(3)
 +sleep(3C)
-diff -wpruN '--exclude=*.orig' a~/man/truncate.x a/man/truncate.x
+diff -wpruN --no-dereference '--exclude=*.orig' a~/man/truncate.x a/man/truncate.x
 --- a~/man/truncate.x	1970-01-01 00:00:00
 +++ a/man/truncate.x	1970-01-01 00:00:00
 @@ -3,4 +3,4 @@ truncate \- shrink or extend the size of

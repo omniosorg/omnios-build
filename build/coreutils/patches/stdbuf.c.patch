@@ -10,7 +10,7 @@ ie. we don't use full path names for the preload names.
 This change has been passed upstream, but the GNU coreutils maintainer
 turned it into a comment explaining why it's not included by default.
 
-diff -wpruN '--exclude=*.orig' a~/src/stdbuf.c a/src/stdbuf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/stdbuf.c a/src/stdbuf.c
 --- a~/src/stdbuf.c	1970-01-01 00:00:00
 +++ a/src/stdbuf.c	1970-01-01 00:00:00
 @@ -216,7 +216,7 @@ set_LD_PRELOAD (void)
@@ -19,6 +19,6 @@ diff -wpruN '--exclude=*.orig' a~/src/stdbuf.c a/src/stdbuf.c
      program_path,
 -    PKGLIBEXECDIR,
 +    "",			/* System default */
-     NULL
+     nullptr
    };
  

@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/tests/df/no-mtab-status.sh a/tests/df/no-mtab-status.sh
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/df/no-mtab-status.sh a/tests/df/no-mtab-status.sh
 --- a~/tests/df/no-mtab-status.sh	1970-01-01 00:00:00
 +++ a/tests/df/no-mtab-status.sh	1970-01-01 00:00:00
 @@ -35,9 +35,13 @@ cat > k.c <<EOF || framework_failure_
