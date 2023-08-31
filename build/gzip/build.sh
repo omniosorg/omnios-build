@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=gzip
-VER=1.12
+VER=1.13
 PKG=compress/gzip
 SUMMARY="GNU zip"
 DESC="The GNU Zip (gzip) compression utility"
@@ -51,7 +51,8 @@ patch_source
 rename_in_docs
 prep_build autoconf -oot
 build -multi
-run_testsuite check
+# The pipe-output test depends on using GNU cat
+PATH=$GNUBIN:$PATH run_testsuite check
 make_package
 clean_up
 

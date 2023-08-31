@@ -1,10 +1,10 @@
-diff -wpruN '--exclude=*.orig' a~/src/vis.c a/src/vis.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/vis.c a/src/vis.c
 --- a~/src/vis.c	1970-01-01 00:00:00
 +++ a/src/vis.c	1970-01-01 00:00:00
 @@ -66,6 +66,7 @@ __FBSDID("$FreeBSD$");
  
- #include <sys/types.h>
  #include <sys/param.h>
+ #include <sys/types.h>
 +#include <sys/sysmacros.h>	/* for MIN() */
  
  #include <stdint.h>
