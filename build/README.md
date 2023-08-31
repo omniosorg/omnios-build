@@ -16,6 +16,3 @@ The following packages are currently stuck:
   dependencies, or move jsonschema to bundled with pkg5, but we also need to
   come up with a strategy for aarch64 since that does not yet have rust.
 
-- git
-  stuck on 2.41.0 - many new test failures.
-

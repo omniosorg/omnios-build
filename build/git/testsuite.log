@@ -15,7 +15,7 @@
 *** t0006-date.sh ***
 # passed all 94 test(s)
 *** t0007-git-var.sh ***
-# passed all 18 test(s)
+# passed all 26 test(s)
 *** t0008-ignores.sh ***
 # passed all 396 test(s)
 *** t0009-prio-queue.sh ***
@@ -55,7 +55,7 @@
 *** t0026-eol-config.sh ***
 # passed all 6 test(s)
 *** t0027-auto-crlf.sh ***
-# passed all 1466 test(s)
+# passed all 2600 test(s)
 *** t0028-working-tree-encoding.sh ***
 # passed all 22 test(s)
 *** t0029-core-unsetenvvars.sh ***
@@ -67,7 +67,7 @@
 # passed all 12 test(s)
 *** t0034-root-safe-directory.sh ***
 *** t0035-safe-bare-repository.sh ***
-# passed all 7 test(s)
+# passed all 8 test(s)
 *** t0040-parse-options.sh ***
 # passed all 86 test(s)
 *** t0041-usage.sh ***
@@ -88,7 +88,7 @@
 *** t0062-revision-walking.sh ***
 # passed all 2 test(s)
 *** t0063-string-list.sh ***
-# passed all 9 test(s)
+# passed all 14 test(s)
 *** t0064-oid-array.sh ***
 # passed all 8 test(s)
 *** t0065-strcmp-offset.sh ***
@@ -98,7 +98,7 @@
 *** t0067-parse_pathspec_file.sh ***
 # passed all 8 test(s)
 *** t0068-for-each-repo.sh ***
-# passed all 2 test(s)
+# passed all 4 test(s)
 *** t0069-oidtree.sh ***
 # passed all 2 test(s)
 *** t0070-fundamental.sh ***
@@ -108,7 +108,7 @@
 *** t0090-cache-tree.sh ***
 # passed all 22 test(s)
 *** t0091-bugreport.sh ***
-# passed all 10 test(s)
+# passed all 12 test(s)
 *** t0092-diagnose.sh ***
 # passed all 4 test(s)
 *** t0095-bloom.sh ***
@@ -153,4 +153,4 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 # failed 2 among 8 test(s)
 make[2]: *** [Makefile:66: t0204-gettext-reencode-sanity.sh] Error 1
 make[1]: *** [Makefile:53: test] Error 2
-make: *** [Makefile:3193: test] Error 2
+make: *** [Makefile:3197: test] Error 2
