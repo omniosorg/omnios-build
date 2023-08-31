@@ -52,7 +52,7 @@ glib:gio / gdbus-non-socket                                     OK   1 subtests 
 glib:gio / gdbus-peer                                           OK   12 subtests passed
 glib:gio / gdbus-peer-object-manager                            OK   2 subtests passed
 glib:gio / gdbus-sasl                                           OK   1 subtests passed
-glib:gio / gdbus-serialization                                  OK   15 subtests passed
+glib:gio / gdbus-serialization                                  OK   17 subtests passed
 glib:gio / gdbus-server-auth                                    OK   9 subtests passed
 glib:gio / giomodule                                            OK   3 subtests passed
 glib:gio / glistmodel                                           OK   18 subtests passed
@@ -101,7 +101,7 @@ glib:gio / trash                                                OK   2 subtests 
 glib:gio / unix-fd                                              OK   2 subtests passed
 glib:gio / unix-mounts                                          OK   2 subtests passed
 glib:gio / unix-streams                                         OK   5 subtests passed
-glib:gio / vfs                                                  OK   2 subtests passed
+glib:gio / vfs                                                  OK   3 subtests passed
 glib:gio / volumemonitor                                        OK   3 subtests passed
 glib:gio / win32-appinfo                                        OK   5 subtests passed
 glib:gio+cpp / cxx                                              OK
