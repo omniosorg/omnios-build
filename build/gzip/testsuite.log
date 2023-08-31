@@ -1,10 +1,7 @@
-  GEN      public-submodule-commit
 Making check in lib
 Making check in doc
 Making check in .
-  GEN      gzip.doc
-  GEN      gzip.doc.gz
-  GEN      check-local
+gtroff:/usr/lib/amd64/groff/site-tmac/an.tmac:1: fatal error: input stack limit exceeded (probable infinite loop)
 Making check in tests
 PASS: gzip-env
 PASS: helin-segv
@@ -16,6 +13,7 @@ PASS: list-big
 PASS: memcpy-abuse
 PASS: mixed
 PASS: null-suffix-clobber
+PASS: pipe-output
 PASS: reproducible
 PASS: stdin
 PASS: timestamp
@@ -24,6 +22,7 @@ PASS: trailing-nul
 PASS: unpack-invalid
 PASS: unpack-valid
 PASS: upper-suffix
+PASS: write-error
 PASS: z-suffix
 PASS: zdiff
 PASS: zgrep-f
@@ -33,10 +32,10 @@ PASS: zgrep-context
 PASS: zgrep-signal
 PASS: znew-k
 ============================================================================
-Testsuite summary for gzip 1.12
+Testsuite summary for gzip 1.13
 ============================================================================
-# TOTAL: 26
-# PASS:  26
+# TOTAL: 28
+# PASS:  28
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0
