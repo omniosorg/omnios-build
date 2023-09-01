@@ -18,7 +18,7 @@
 
 PKG=library/python-3/orjson-311
 PROG=orjson
-VER=3.9.2
+VER=3.9.5
 SUMMARY="orjson"
 DESC="A fast, correct JSON library for Python."
 
