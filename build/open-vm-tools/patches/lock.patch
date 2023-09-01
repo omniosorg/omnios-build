@@ -23,7 +23,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
        goto corrupt;
     }
  
-@@ -1100,8 +1100,8 @@ FileLockWaitForPossession(const char *lo
+@@ -1101,8 +1101,8 @@ FileLockWaitForPossession(const char *lo
         ((memberValues->lamportNumber == myValues->lamportNumber) &&
            (Unicode_Compare(memberValues->memberName,
                             myValues->memberName) < 0))) &&
@@ -34,7 +34,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
        Bool thisMachine = FileLockMachineIDMatch(myValues->machineID,
                                                  memberValues->machineID);
        char *path = Unicode_Join(lockDir, DIRSEPS, fileName, NULL);
-@@ -1697,7 +1697,7 @@ FileLockIntrinsicPortable(const char *pa
+@@ -1698,7 +1698,7 @@ FileLockIntrinsicPortable(const char *pa
            */
  
           Warning(LGPFX" %s implicit %s lock succeeded on '%s'.\n",
@@ -43,7 +43,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
  
           *err = 0;
           memberFilePath = &implicitReadToken;
-@@ -1861,7 +1861,7 @@ FileLockIntrinsic(const char *pathName,
+@@ -1862,7 +1862,7 @@ FileLockIntrinsic(const char *pathName,
     /* Construct the locking directory path */
     lockBase = Unicode_Append(pathName, FILELOCK_SUFFIX);
  

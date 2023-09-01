@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/fuzz/libwget_http_client_fuzzer.c a/fuzz/libwget_http_client_fuzzer.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/fuzz/libwget_http_client_fuzzer.c a/fuzz/libwget_http_client_fuzzer.c
 --- a~/fuzz/libwget_http_client_fuzzer.c	1970-01-01 00:00:00
 +++ a/fuzz/libwget_http_client_fuzzer.c	1970-01-01 00:00:00
 @@ -113,7 +113,7 @@ int connect(int sockfd, const struct soc

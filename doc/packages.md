@@ -42,7 +42,7 @@
 | library/mpc				| 1.3.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.1			| http://www.mpfr.org/mpfr-current/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
-| library/libedit			| 20230827-3.1		| https://thrysoee.dk/editline/
+| library/libedit			| 20230828-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
@@ -118,11 +118,11 @@
 | text/less				| 643			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.2.1			| https://curl.haxx.se/download.html
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
-| web/wget2				| 2.0.1			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.76.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
+| library/glib2				| 2.76.5		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.41			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
-| system/virtualization/open-vm-tools	| 12.2.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
+| system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.1.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto

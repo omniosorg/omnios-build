@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=wget2
-VER=2.0.1
+VER=2.1.0
 PKG=web/wget2
 SUMMARY="GNU Wget2"
 DESC="Retrieving files using HTTP, HTTPS, FTP and FTPS "
@@ -38,14 +38,10 @@ prep_build autoconf
 # The testsuite uses libmicrohttpd
 
 if [ -z "$SKIP_TESTSUITE" ]; then
-    save_variable BUILDARCH
-    BUILDARCH=64
-    CONFIGURE_OPTS="
-        --with-ssl=openssl
-    "
-    build_dependency libmicrohttpd libmicrohttpd-$LMHTTPD_VER \
+    BUILDARCH=$BUILD_ARCH \
+        CONFIGURE_OPTS="--with-ssl=openssl" \
+        build_dependency libmicrohttpd libmicrohttpd-$LMHTTPD_VER \
         libmicrohttpd libmicrohttpd $LMHTTPD_VER
-    restore_variable BUILDARCH
 
     CPPFLAGS="-I$DEPROOT$PREFIX/include"
     LDFLAGS[amd64]+=" -L$DEPROOT$PREFIX/lib/amd64"
