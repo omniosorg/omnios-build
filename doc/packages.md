@@ -138,7 +138,7 @@
 | library/python-3/meson-311		| 1.2.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-311		| 3.9.5			| https://github.com/ijl/orjson/releases
 | library/python-3/pip-311		| 23.2.1		| https://pypi.org/project/pip
-| library/python-3/pycodestyle-311	| 2.10.0		| https://pypi.org/project/pycodestyle/
+| library/python-3/pycodestyle-311	| 2.11.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-311		| 7.44.1		| https://pypi.org/project/pycurl
 | library/python-3/pyopenssl-311	| 23.2.0		| https://pypi.org/project/pyOpenSSL
