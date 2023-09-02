@@ -1,1 +1,2 @@
 testsuite-fuzz-recvfrom.patch
+getaddrinfo.patch
