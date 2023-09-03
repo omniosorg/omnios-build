@@ -49,7 +49,10 @@ build() {
     logmsg "--- build"
     logcmd python setup.py install
     logmsg "--- modules"
-    logcmd make -e MACH=$ARCH TARGET=install modules/$PYTHON3VER
+    logcmd make -e \
+        MACH=$ARCH \
+        REQUIREMENTS=requirements-aarch64.txt \
+        TARGET=install modules/$PYTHON3VER
     popd > /dev/null
 }
 
