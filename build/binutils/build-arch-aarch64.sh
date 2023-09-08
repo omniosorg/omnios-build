@@ -48,7 +48,7 @@ export AS_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-as
 export AR_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-ar
 export LD_FOR_TARGET=/bin/ld
 export CFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
-export CXXFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
+export CXXFLAGS_FOR_TARGET="$CFLAGS_FOR_TARGET"
 export STRIP="/usr/bin/strip -x"
 export STRIP_FOR_TARGET="$STRIP"
 
@@ -74,9 +74,8 @@ CONFIGURE_OPTS="
     --with-system-zlib
 "
 
-# gdb doesn't currently build for aarch64 due to an issue in the bison
-# generated code that narrows int to char, which is unsigned.
-CONFIGURE_OPTS+=" --disable-gdb"
+CFLAGS+=" $CFLAGS_FOR_TARGET"
+CXXFLAGS+=" $CFLAGS_FOR_TARGET"
 
 build_init() {
     typeset d=${SYSROOT[$ARCH]}/usr
