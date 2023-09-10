@@ -21,5 +21,7 @@ dir group=bin mode=0755 owner=root path=usr/sfw/bin
 <transform file path=usr/bin/g(.*)$ -> emit \
     link path=usr/gnu/bin/%<1> target=../../bin/g%<1> >
 
+$(aarch64_ONLY)link path=usr/bin/gdb target=ggdb
+
 <transform file path=.*\.a$ -> drop>
 
