@@ -216,6 +216,7 @@ SKIP: test-uid-permissions 1 /uid-permissions/uae/other # SKIP cannot use altern
 SKIP: test-uid-permissions 2 /uid-permissions/monitor/root # SKIP cannot use alternative uid when not uid 0
 SKIP: test-uid-permissions 3 /uid-permissions/monitor/messagebus # SKIP cannot use alternative uid when not uid 0
 SKIP: test-uid-permissions 4 /uid-permissions/monitor/other # SKIP cannot use alternative uid when not uid 0
+PASS: test-userdb 1 /userdb/groups_from_uid
 PASS: test-variant 1 /variant/simple
 PASS: test-variant 2 /variant/oom
 PASS: test-containers 1 /containers/get-supported-arguments
@@ -244,10 +245,10 @@ PASS: test-sd-activation 6 /sd-activation/deny-receive/com.example.ReceiveDenied
 PASS: test-sd-activation 7 /sd-activation/transient-services/later
 PASS: test-sd-activation 8 /sd-activation/transient-services/in-advance
 ============================================================================
-Testsuite summary for dbus 1.14.8
+Testsuite summary for dbus 1.14.10
 ============================================================================
-# TOTAL: 239
-# PASS:  202
+# TOTAL: 240
+# PASS:  203
 # SKIP:  37
 # XFAIL: 0
 # FAIL:  0
@@ -256,7 +257,7 @@ Testsuite summary for dbus 1.14.8
 ============================================================================
 Making check in name-test
 ============================================================================
-Testsuite summary for dbus 1.14.8
+Testsuite summary for dbus 1.14.10
 ============================================================================
 # TOTAL: 0
 # PASS:  0
