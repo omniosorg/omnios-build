@@ -17,13 +17,26 @@
 . ../../lib/functions.sh
 
 PROG=openjdk
-VER=11
-UPDATE=20
-BUILD=8
+VER=11.0.20.1+1
 PKG=runtime/java/openjdk11
-SUMMARY="openjdk $VER"
+SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the eleventh edition of the "
 DESC+="Java SE Platform"
+
+# The full jdk version string is:
+#   feature.interim.update.patch.extra1.extra2.extra3-pre+build-opt
+# We pass 'opt' explicitly to configure (see below) and currently don't parse
+# the 'extra' values out of the version string.
+if [[ $VER =~ ^([0-9]+)(\.([0-9]+))?(\.([0-9]+))?(\.([0-9]+))?\+([0-9]+)$ ]]
+then
+    V_FEATURE=${BASH_REMATCH[1]}
+    V_INTERIM=${BASH_REMATCH[3]}
+    V_UPDATE=${BASH_REMATCH[5]}
+    V_PATCH=${BASH_REMATCH[7]}
+    V_BUILD=${BASH_REMATCH[8]}
+else
+    logerr "Could not parse openjdk version $VER"
+fi
 
 # check ooce/fonts/liberation for current version
 LIBERATIONFONTSVER=2.1.5
@@ -31,7 +44,7 @@ SKIP_LICENCES="SILv1.1"
 
 set_arch 64
 
-set_builddir "jdk${VER}u-jdk-$VER.0.$UPDATE-$BUILD"
+set_builddir "jdk${V_FEATURE}u-jdk-${VER//+/-}"
 
 BMI_EXPECTED=1
 SKIP_RTIME_CHECK=1
@@ -44,8 +57,8 @@ BUILD_DEPENDS_IPS="
     ooce/print/cups
 "
 
-VERHUMAN=jdk${VER}u${UPDATE}-b$BUILD
-IVER=${VER}.0
+VERHUMAN="jdk${V_FEATURE}u${V_UPDATE}${V_PATCH:+.}$V_PATCH-b$V_BUILD"
+IVER="$V_FEATURE.$V_INTERIM"
 
 IROOT=usr/jdk/instances
 IFULL=$IROOT/$PROG$IVER
@@ -53,7 +66,7 @@ IFULL=$IROOT/$PROG$IVER
 OOCEPREFIX=/opt/ooce
 
 XFORM_ARGS="
-    -DVER=$VER
+    -DVER=$V_FEATURE
     -DIVER=$IVER
     -DIROOT=$IROOT
     -DIFULL=$IFULL
@@ -64,9 +77,7 @@ XFORM_ARGS="
 NO_PARALLEL_MAKE=1
 
 CONFIGURE_OPTS="
-    --with-version-update=$UPDATE
-    --with-version-build=$BUILD
-    --with-version-pre=
+    --with-version-string=$VER
     --with-version-opt=omnios-$RELVER
     --with-toolchain-type=gcc
     --with-boot-jdk=/$IFULL
@@ -103,7 +114,7 @@ make_install() {
 }
 
 init
-download_source $PROG "jdk-$VER.0.$UPDATE+$BUILD"
+download_source $PROG "jdk-$VER"
 patch_source
 
 # Also download the liberation fonts archive. Fonts from here will be
@@ -114,7 +125,7 @@ BUILDDIR=$LFDIR download_source liberation-fonts $LFDIR
 prep_build autoconf -oot
 chmod +x $CONFIGURE_CMD
 build -noctf
-VER=$IVER.$UPDATE DASHREV=$BUILD make_package
+VER=${VER%%+*} DASHREV=$V_BUILD make_package
 clean_up
 
 # Vim hints
