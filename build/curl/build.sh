@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=curl
-VER=8.2.1
+VER=8.3.0
 PKG=web/curl
 SUMMARY="Command line tool for transferring data with URL syntax"
 DESC="Curl is a command line tool for transferring data with URL syntax, "
@@ -32,6 +32,7 @@ CONFIGURE_OPTS="
     --with-ca-bundle=/etc/ssl/cacert.pem
     --with-ca-path=/etc/ssl/certs
     --with-openssl
+    --disable-manual
 "
 
 # Build backwards so that the 32-bit version is available for the test-suite.

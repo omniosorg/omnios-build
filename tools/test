@@ -78,16 +78,6 @@ add_target()
 				bld=`pver BUILD`
 				ver="$ver.$update-$bld"
 				;;
-			*/openjdk11:*)
-				update=`pver UPDATE`
-				bld=`pver BUILD`
-				ver="$ver.0.$update+$bld"
-				;;
-			*/openjdk17:*)
-				update=`pver UPDATE`
-				bld=`pver BUILD`
-				ver="$ver.0.$update+$bld"
-				;;
 			system/library/mozilla-nss:*)
 				targets["library/nss"]=$ver
 				;;
