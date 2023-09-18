@@ -60,6 +60,9 @@ BUILD_DEPENDS_IPS="
 : ${PKG_SOURCE_BRANCH:=r$RELVER}
 VER+="-$PKG_SOURCE_BRANCH"
 
+# some python modules require rust to be built
+PATH+=:$OOCEBIN
+
 clone_source() {
     clone_github_source pkg \
         "$PKG_SOURCE_REPO" "$PKG_SOURCE_BRANCH" "$PKG5_CLONE"
