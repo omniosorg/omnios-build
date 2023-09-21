@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038du (2023-09-20)
+Weekly release for w/c 18th of September 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Curl has been updated to version 8.3.0
+
+* OpenJDK has has been updated to 11.0.20.1+1 and 17.0.8.1+1
+
+* Python has been updated to version 3.9.18
+
+<br>
+
+---
+
 ## r151038dq (2023-08-24)
 Weekly release for w/c 21st of August 2023.
 > This update requires a reboot
