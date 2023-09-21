@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151044
 
+## r151044at (2023-09-20)
+Weekly release for w/c 18th of September 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Curl has been updated to version 8.3.0
+
+* OpenJDK has has been updated to 11.0.20.1+1 and 17.0.8.1+1
+
+* Python has been updated to version 3.10.13
+
+* OpenSSL has been updated to version 3.0.11
+
+<br>
+
+---
+
 ## r151044ap (2023-08-24)
 Weekly release for w/c 21st of August 2023.
 > This update requires a reboot
