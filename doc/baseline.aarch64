@@ -379,6 +379,7 @@ omnios security/bart
 omnios security/sudo
 omnios service/fault-management
 omnios service/fault-management/smtp-notify
+omnios service/fault-management/snmp-notify
 omnios service/file-system/nfs
 omnios service/file-system/smb
 omnios service/hal
