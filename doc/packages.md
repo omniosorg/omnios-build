@@ -144,7 +144,7 @@
 | library/python-3/pyopenssl-311	| 23.2.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-311	| 0.19.3		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-311		| 6.0.1			| https://pypi.org/project/PyYAML
-| library/python-3/rapidjson-311	| 1.10			| https://pypi.org/project/python-rapidjson
+| library/python-3/rapidjson-311	| 1.11			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-311	| 2.10.0		| https://pypi.org/project/semantic-version
 | library/python-3/setuptools-311	| 68.1.2		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-311	| 1.7.0			| https://pypi.org/project/setuptools-rust

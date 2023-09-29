@@ -2,10 +2,10 @@
 For compatibility with simplejson, output lower case hex digits for dump[s]()
 with ensure_ascii=True
 
-diff -wpruN '--exclude=*.orig' a~/rapidjson/include/rapidjson/writer.h a/rapidjson/include/rapidjson/writer.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/rapidjson/include/rapidjson/writer.h a/rapidjson/include/rapidjson/writer.h
 --- a~/rapidjson/include/rapidjson/writer.h	1970-01-01 00:00:00
 +++ a/rapidjson/include/rapidjson/writer.h	1970-01-01 00:00:00
-@@ -375,7 +375,7 @@ protected:
+@@ -381,7 +381,7 @@ protected:
      }
  
      bool WriteString(const Ch* str, SizeType length)  {
