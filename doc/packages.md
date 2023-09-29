@@ -65,10 +65,10 @@
 | library/security/openssl-3		| 3.1.3			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
-| library/zlib				| 1.3		| https://www.zlib.net/
-| meta/data/microcode/amd		| 20230809		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| library/zlib				| 1.3			| https://www.zlib.net/
+| meta/data/microcode/amd		| 20230918		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20230808		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.18		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.19		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.4p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -89,7 +89,7 @@
 | shell/bash				| 5.2.15		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 015			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.11			| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.7.24			| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.8.0			| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.10		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
@@ -110,7 +110,7 @@
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.2.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.22			| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.22.2		| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
@@ -144,7 +144,7 @@
 | library/python-3/pyopenssl-311	| 23.2.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-311	| 0.19.3		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-311		| 6.0.1			| https://pypi.org/project/PyYAML
-| library/python-3/rapidjson-311	| 1.10			| https://pypi.org/project/python-rapidjson
+| library/python-3/rapidjson-311	| 1.11			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-311	| 2.10.0		| https://pypi.org/project/semantic-version
 | library/python-3/setuptools-311	| 68.1.2		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-311	| 1.7.0			| https://pypi.org/project/setuptools-rust
