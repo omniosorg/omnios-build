@@ -10,6 +10,7 @@ encoding-alias.patch
 locale-encoding.patch
 cgiserver.patch
 static-assert.patch
+pyc-timestamp.patch
 #
 # Additional modules
 module-ucred.patch
