@@ -1062,10 +1062,21 @@ prep_build() {
 
     # Generate timestamps
     typeset now=`TZ=UTC $DATE +%s`
+    typeset TS_SRC_EPOCH=$((now - 60))
+    typeset TS_OBJ_EPOCH=$((now - 30))
     typeset TS_FMT="%Y%m%dT%H%M%SZ"
-    typeset TS_SRC=`$DATE -r $((now - 60)) +$TS_FMT`
-    typeset TS_OBJ=`$DATE -r $((now - 30)) +$TS_FMT`
+    typeset TS_SRC=`$DATE -r $TS_SRC_EPOCH +$TS_FMT`
+    typeset TS_OBJ=`$DATE -r $TS_OBJ_EPOCH +$TS_FMT`
 
+    # Python is patched to use the value of this variable as the timestamp that
+    # it embeds in .pyc files. We need to make sure that this embedded
+    # timestamp matches the timestamp that the packaging system will apply to
+    # the corresponding source .py file.
+    export FORCE_PYC_TIMESTAMP=$TS_SRC_EPOCH
+
+    # These tokens are used by rules in lib/mog/global-transforms.mog to
+    # automatically apply timestamp attributes to python modules and their
+    # compiled form. They can also be used by other packages in their local.mog
     SYS_XFORM_ARGS+=" -DTS_SRC=$TS_SRC -DTS_OBJ=$TS_OBJ"
 
     logmsg "--- Creating temporary installation directory"
