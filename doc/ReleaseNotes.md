@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046x (2023-10-11)
+Weekly release for w/c 09th of October 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `curl` updated to version 8.4.0, fixing
+  [CVE-2023-38545](https://curl.se/docs/CVE-2023-38545.html),
+  [CVE-2023-38546](https://curl.se/docs/CVE-2023-38546.html).
+
+### Other Changes
+
+* [pkgdepend(1)](https://man.omnios.org/pkgdepend) used an excessive amount of
+  memory when performing the resolution step.
+
+<br>
+
+---
+
 ## r151046u (2023-09-20)
 Weekly release for w/c 18th of September 2023.
 > This is a non-reboot update
