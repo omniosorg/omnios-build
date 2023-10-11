@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038dx (2023-10-11)
+Weekly release for w/c 09th of October 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `curl` updated to version 8.4.0, fixing
+  [CVE-2023-38545](https://curl.se/docs/CVE-2023-38545.html),
+  [CVE-2023-38546](https://curl.se/docs/CVE-2023-38546.html).
+
+<br>
+
+---
+
 ## r151038du (2023-09-20)
 Weekly release for w/c 18th of September 2023.
 > This is a non-reboot update
