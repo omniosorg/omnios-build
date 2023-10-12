@@ -162,6 +162,7 @@ omnios driver/serial/usbsprl
 omnios driver/storage/aac
 omnios driver/storage/ahci
 omnios driver/storage/blkdev
+omnios driver/storage/lmrc
 omnios driver/storage/mega_sas
 omnios driver/storage/mpt_sas
 omnios driver/storage/mr_sas
@@ -173,6 +174,7 @@ omnios driver/storage/sdcard
 omnios driver/storage/ses
 omnios driver/storage/si3124
 omnios driver/storage/skd
+omnios driver/storage/smartpqi
 omnios driver/storage/smp
 omnios driver/storage/sv o
 omnios driver/storage/vio9p
