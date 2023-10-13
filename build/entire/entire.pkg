@@ -81,7 +81,6 @@ driver/network/rge					S
 driver/network/rpcib					S
 driver/network/rtls					S
 driver/network/sdp					S
-driver/storage/smrt					S
 driver/network/sfe					S
 driver/network/sfxge					S
 driver/network/tavor					S
@@ -106,6 +105,7 @@ driver/storage/ata					S
 driver/storage/bcm_sata					S
 driver/storage/cpqary3					S
 driver/storage/glm					S
+driver/storage/lmrc					S
 driver/storage/lsimega					S
 driver/storage/marvell88sx				S
 driver/storage/mega_sas					S
@@ -118,7 +118,9 @@ driver/storage/scsa1394					S
 driver/storage/sdcard					S
 driver/storage/ses					S
 driver/storage/si3124					S
+driver/storage/smartpqi					S
 driver/storage/smp					S
+driver/storage/smrt					S
 driver/storage/vioblk					S
 driver/usb/ugen						S
 driver/xvm/pv						S
