@@ -220,6 +220,7 @@ omnios driver/storage/bcm_sata
 omnios driver/storage/blkdev
 omnios driver/storage/cpqary3
 omnios driver/storage/glm
+omnios driver/storage/lmrc
 omnios driver/storage/lsimega
 omnios driver/storage/marvell88sx
 omnios driver/storage/mega_sas
@@ -236,6 +237,7 @@ omnios driver/storage/sdcard
 omnios driver/storage/ses
 omnios driver/storage/si3124
 omnios driver/storage/skd
+omnios driver/storage/smartpqi
 omnios driver/storage/smp
 omnios driver/storage/smrt
 omnios driver/storage/sv o
