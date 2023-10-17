@@ -215,7 +215,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "securitykeyprovider", sSecurityKeyProvider, SSHCFG_GLOBAL },
  	{ "requiredrsasize", sRequiredRSASize, SSHCFG_ALL },
  	{ "channeltimeout", sChannelTimeout, SSHCFG_ALL },
-@@ -2631,6 +2634,18 @@ process_server_config_line_depth(ServerO
+@@ -2646,6 +2649,18 @@ process_server_config_line_depth(ServerO
  		}
  		break;
  
@@ -237,7 +237,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
-@@ -237,6 +237,7 @@ typedef struct {
+@@ -235,6 +235,7 @@ typedef struct {
  
  	int	fingerprint_hash;
  	int	expose_userauth_info;
