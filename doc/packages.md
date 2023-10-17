@@ -81,7 +81,7 @@
 | runtime/perl				| 5.36.1		| https://www.cpan.org/src/README.html
 | runtime/python-39			| 3.9.18		| https://www.python.org/downloads/source/
 | runtime/python-310			| 3.10.13		| https://www.python.org/downloads/source/
-| runtime/python-311			| 3.11.5		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.6		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.14p3		| https://www.sudo.ws/
 | service/network/chrony		| 4.4			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.2			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/

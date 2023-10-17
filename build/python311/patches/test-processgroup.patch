@@ -6,7 +6,7 @@ Disable the use of process groups for now.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/libregrtest/runtest_mp.py a/Lib/test/libregrtest/runtest_mp.py
 --- a~/Lib/test/libregrtest/runtest_mp.py	1970-01-01 00:00:00
 +++ a/Lib/test/libregrtest/runtest_mp.py	1970-01-01 00:00:00
-@@ -38,7 +38,8 @@ assert MAIN_PROCESS_TIMEOUT >= PROGRESS_
+@@ -41,7 +41,8 @@ assert MAIN_PROCESS_TIMEOUT >= PROGRESS_
  # Time to wait until a worker completes: should be immediate
  JOIN_TIMEOUT = 30.0   # seconds
  
