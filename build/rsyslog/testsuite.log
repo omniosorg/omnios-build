@@ -410,7 +410,7 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2308.0
+Testsuite summary for rsyslog 8.2310.0
 ============================================================================
 # TOTAL: 412
 # PASS:  372
