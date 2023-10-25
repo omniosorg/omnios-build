@@ -17,7 +17,7 @@ debug information which can be converted to CTF.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Configurations/10-main.conf a/Configurations/10-main.conf
 --- a~/Configurations/10-main.conf	1970-01-01 00:00:00
 +++ a/Configurations/10-main.conf	1970-01-01 00:00:00
-@@ -210,7 +210,7 @@ my %targets = (
+@@ -213,7 +213,7 @@ my %targets = (
          inherit_from     => [ "BASE_unix" ],
          template         => 1,
          lib_cppflags     => "-DFILIO_H",
@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Configurations/10-main.conf a
          dso_scheme       => "dlfcn",
          thread_scheme    => "pthreads",
      },
-@@ -238,7 +238,7 @@ my %targets = (
+@@ -241,7 +241,7 @@ my %targets = (
          CC               => "gcc",
          CFLAGS           => add_before(picker(default => "-Wall",
                                                debug   => "-O0 -g",
@@ -35,7 +35,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Configurations/10-main.conf a
          cflags           => add(threads("-pthread")),
          lib_cppflags     => add("-DL_ENDIAN"),
          ex_libs          => add(threads("-pthread")),
-@@ -261,7 +261,7 @@ my %targets = (
+@@ -264,7 +264,7 @@ my %targets = (
          CC               => "gcc",
          CFLAGS           => add_before(picker(default => "-Wall",
                                                debug   => "-O0 -g",
