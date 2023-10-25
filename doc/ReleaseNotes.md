@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046z (2023-10-26)
+Weekly release for w/c 23rd of October 2023.
+> This is a non-reboot update
+
+### Security Fixes
+
+- `openssl` updated to version 3.0.12, fixing
+  [CVE-2023-5363](https://www.openssl.org/news/secadv/20231024.txt)
+
+<br>
+
+---
+
 ## r151046x (2023-10-11)
 Weekly release for w/c 09th of October 2023.
 > This is a non-reboot update
