@@ -4,11 +4,9 @@
 
 # Release Notes for OmniOS v11 r151048
 
-## $`\color{red}{\textit{These are DRAFT release notes}}`$
+Stable Release, 6th of Nov 2023
 
-Stable Release, TBC of Nov 2023
-
-`uname -a` shows `omnios-r151048-XXX`
+`uname -a` shows `omnios-r151048-24333ee74c`
 
 r151048 release repository: https://pkg.omnios.org/r151048/core
 
@@ -173,6 +171,9 @@ earlier version, upgrade in stages, referring to the table at
 * The performance of the warning check phase of `nightly` has been
   significantly improved.
 
+* The `header-nspr`, `header-nss` and `header-idnkit` packages have been merged
+  into `library/nspr`, `library/nss` and `library/idnkit` respectively.
+
 ### Deprecated features
 
 * The `grub` boot loader is deprecated and will be removed in a future
@@ -199,3 +200,77 @@ earlier version, upgrade in stages, referring to the table at
 
 ### Package changes
 
+| Package | Old Version | New Version |
+| :------ | :---------- | :---------- |
+| archiver/gnu-tar | 1.34 | 1.35
+| compress/brotli | 1.0.9 | 1.1.0
+| compress/gzip | 1.12 | 1.13
+| compress/xz | 5.4.2 | 5.4.4
+| data/iso-codes | 4.13.0 | 4.15.0
+| database/sqlite-3 | 3.41.2 | 3.43.1
+| developer/gcc10 | 10.4.0 | 10.5.0
+| ~~developer/gcc11~~ | 11.3.0 | _Removed_
+| developer/gcc12 | 12.2.0 | 12.3.0
+| **developer/gcc13** | _New_ | 13.2.0
+| developer/gnu-binutils | 2.40 | 2.41
+| developer/versioning/git | 2.40.1 | 2.42.0
+| developer/versioning/mercurial | 6.3.3 | 6.5.2
+| file/gnu-coreutils | 9.3 | 9.4
+| library/glib2 | 2.74.6 | 2.78.0
+| library/gmp | 6.2.1 | 6.3.0
+| ~~library/idnkit/header-idnkit~~ | 2.3 | _Removed_
+| library/libxml2 | 2.10.4 | 2.11.5
+| library/mpfr | 4.2.0 | 4.2.1
+| library/nghttp2 | 1.52.0 | 1.56.0
+| ~~library/nspr/header-nspr~~ | 4.35 | _Removed_
+| library/python-3/attrs-311 | 22.2.0 | 23.1.0
+| library/python-3/coverage-311 | 7.2.2 | 7.3.0
+| library/python-3/cryptography-311 | 39.0.2 | 41.0.3
+| library/python-3/meson-311 | 1.0.1 | 1.2.1
+| library/python-3/orjson-311 | 3.8.8 | 3.9.5
+| library/python-3/pip-311 | 23.0.1 | 23.2.1
+| library/python-3/pycodestyle-311 | 2.10.0 | 2.11.0
+| library/python-3/pyopenssl-311 | 23.0.0 | 23.2.0
+| library/python-3/pyyaml-311 | 6.0 | 6.0.1
+| library/python-3/rapidjson-311 | 1.10 | 1.11
+| library/python-3/setuptools-311 | 67.6.0 | 68.1.2
+| library/python-3/setuptools-rust-311 | 1.5.2 | 1.7.0
+| library/python-3/typing-extensions-311 | 4.5.0 | 4.7.1
+| library/security/openssl-11 | 1.1.1.22 | 1.1.1.23
+| library/security/openssl-3 | 3.0.12 | 3.1.4
+| library/unixodbc | 2.3.11 | 2.3.12
+| library/zlib | 1.2.13 | 1.3
+| media/xorriso | 1.5.4.2 | 1.5.6.2
+| network/dns/bind | 9.18.14 | 9.18.19
+| network/openssh | 9.3.2 | 9.4.1
+| network/openssh-server | 9.3.2 | 9.4.1
+| security/sudo | 1.9.13.3 | 1.9.14.3
+| service/network/chrony | 4.3 | 4.4
+| shell/pipe-viewer | 1.6.20 | 1.8.0
+| shell/tcsh | 6.24.7 | 6.24.10
+| system/data/hardware-registry | 2023.2.23 | 2023.8.24
+| system/library/dbus | 1.14.6 | 1.14.10
+| system/library/g++-runtime | 12 | 13
+| system/library/gcc-runtime | 12 | 13
+| system/library/gfortran-runtime | 12 | 13
+| system/library/gobjc-runtime | 12 | 13
+| system/library/libdbus | 1.14.6 | 1.14.10
+| system/library/mozilla-nss | 3.89 | 3.93
+| ~~system/library/mozilla-nss/header-nss~~ | 3.89 | _Removed_
+| system/library/pcap | 1.10.3 | 1.10.4
+| system/management/cloud-init | 23.1.1 | 23.1.2
+| system/management/snmp/net-snmp | 5.9.3 | 5.9.4
+| system/pciutils | 3.9.0 | 3.10.0
+| system/pciutils/pci.ids | 2.2.20230223 | 2.2.20230812
+| system/rsyslog | 8.2302.0 | 8.2308.0
+| system/test/fio | 3.34 | 3.35
+| system/virtualization/open-vm-tools | 12.2.0 | 12.3.0
+| **system/zones/brand/emu** | _New_ | 0.5.11
+| text/gawk | 5.2.1 | 5.2.2
+| text/gnu-diffutils | 3.9 | 3.10
+| text/gnu-gettext | 0.21.1 | 0.22.2
+| text/gnu-grep | 3.10 | 3.11
+| text/groff | 1.22.4 | 1.23.0
+| text/less | 608 | 643
+| web/wget | 1.21.3 | 1.21.4
+| web/wget2 | 2.0.1 | 2.1.0
