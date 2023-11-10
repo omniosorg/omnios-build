@@ -141,7 +141,7 @@
 | library/python-3/pycodestyle-311	| 2.11.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-311		| 7.44.1		| https://pypi.org/project/pycurl
-| library/python-3/pyopenssl-311	| 23.2.0		| https://pypi.org/project/pyOpenSSL
+| library/python-3/pyopenssl-311	| 23.3.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-311	| 0.19.3		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-311		| 6.0.1			| https://pypi.org/project/PyYAML
 | library/python-3/rapidjson-311	| 1.11			| https://pypi.org/project/python-rapidjson
