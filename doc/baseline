@@ -679,7 +679,7 @@ omnios system/network/ppp/pppdump
 omnios system/network/ppp/tunnel
 omnios system/network/routing
 omnios system/network/routing/vrrp
-omnios system/network/spdadm
+omnios system/network/spdadm r
 omnios system/network/tests r
 omnios system/network/udapl
 omnios system/network/udapl/udapl-tavor
