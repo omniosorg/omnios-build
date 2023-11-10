@@ -58,9 +58,12 @@ badbuild
 callparam
 childin
 clobber
-closebad
 close_status
+closebad
 clsflnam
+cmdlinefsbacknl
+cmdlinefsbacknl2
+./cmdlinefsbacknl2.ok _cmdlinefsbacknl2 differ: char 8, line 2
 compare
 compare2
 concat1
@@ -122,6 +125,7 @@ getlnfa
 getnr2tb
 getnr2tm
 gsubasgn
+gsubnulli18n
 gsubtest
 gsubtst2
 gsubtst3
@@ -219,6 +223,7 @@ rebuild
 redfilnm
 regeq
 regex3minus
+regexpbad
 regexpbrack
 regexpbrack2
 regexprange
@@ -318,11 +323,11 @@ arraysort
 arraysort2
 arraytype
 asortbool
+asortsymtab
 backw
 badargs
 beginfile1
 beginfile2
-asortsymtab
 binmode1
 charasbytes
 clos1way
@@ -334,6 +339,10 @@ clos1way6
 colonwarn
 commas
 crlf
+csv1
+csv2
+csv3
+csvodd
 dbugeval
 dbugeval2
 dbugeval3
@@ -381,6 +390,7 @@ genpot
 gensub
 gensub2
 gensub3
+gensub4
 getlndir
 gnuops2
 gnuops3
@@ -417,6 +427,8 @@ lintint
 lintlength
 lintold
 lintplus
+lintplus2
+lintplus3
 lintset
 lintwarn
 manyfiles
@@ -472,14 +484,6 @@ printhuge
 procinfs
 profile0
 profile1
-profile2
-profile3
-profile4
-profile5
-profile6
-profile7
-profile8
-profile9
 profile10
 profile11
 profile12
@@ -488,6 +492,14 @@ profile14
 profile15
 profile16
 profile17
+profile2
+profile3
+profile4
+profile5
+profile6
+profile7
+profile8
+profile9
 pty1
 pty2
 rebuf
@@ -548,6 +560,7 @@ typeof3
 typeof4
 typeof5
 typeof6
+unicode1
 watchpoint1
 gawk is not compiled to support the array debug tests
 ======== Done with gawk extension tests ========
@@ -576,6 +589,7 @@ mbprintf3
 mbprintf4
 mbprintf5
 mtchi18n
+mtchi18n2
 nlstringtest
 rebt8b2
 rtlenmb
@@ -602,8 +616,8 @@ ordchr
 ordchr2
 readall
 readdir
-readdir_test
 readdir_retest
+readdir_test
 readfile
 readfile2
 revout
@@ -645,11 +659,34 @@ double2
 inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
-1 TESTS FAILED
-make[3]: *** [Makefile:5588: pass-fail] Error 1
+2 TESTS FAILED
+make[3]: *** [Makefile:5687: pass-fail] Error 1
+============== _cmdlinefsbacknl2 =============
+--- cmdlinefsbacknl2.ok	Mon Oct  9 15:38:09 2023
++++ _cmdlinefsbacknl2	Fri Nov 10 11:00:13 2023
+@@ -1,12 +1,19 @@
+  5c 0a
++
+  5c 0a
++
+  5c 0a
++
+  5c 0a
++
+  5c 0a
++
+  5c 0a
++
+ gawk: cmd. line:2: warning: invalid `\u' escape sequence
+ gawk: cmd. line:3: warning: invalid `\u' escape sequence
+  3f 0a 3f 0a
++
+ gawk: cmd. line:2: warning: invalid `\u' escape sequence
+ right: literal ? is literal
+ gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
 --- localenl.ok	Thu Dec 14 17:49:00 2017
-+++ _localenl	Thu May 18 23:36:12 2023
++++ _localenl	Fri Nov 10 11:00:26 2023
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -657,6 +694,6 @@ make[3]: *** [Makefile:5588: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2162: check] Error 1
-make[1]: *** [Makefile:808: check-recursive] Error 1
-make: *** [Makefile:1107: check] Error 2
+make[2]: *** [Makefile:2189: check] Error 1
+make[1]: *** [Makefile:803: check-recursive] Error 1
+make: *** [Makefile:1102: check] Error 2
