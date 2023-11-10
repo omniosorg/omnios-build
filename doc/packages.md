@@ -150,5 +150,5 @@
 | library/python-3/setuptools-rust-311	| 1.8.1			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-311		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-311		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-311| 4.7.1			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-311| 4.8.0			| https://pypi.org/project/typing-extensions
 
