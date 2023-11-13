@@ -211,6 +211,7 @@ glib:glib+core / string-macro                                          OK   23 s
 glib:glib+core / strvbuilder                                           OK   5 subtests passed
 glib:glib+core / test-printf                                           OK   20 subtests passed
 glib:glib+core / testing                                               OK   42 subtests passed
+glib:glib+core / testing-macro                                         OK   42 subtests passed
 glib:glib+core / thread                                                OK   6 subtests passed
 glib:glib+core / thread-deprecated                                     OK   6 subtests passed
 glib:glib+core / thread-pool                                           OK   5 subtests passed
@@ -348,11 +349,11 @@ glib:gio / converter-stream                                            ERROR   k
 glib:gio / g-file-info                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                        ERROR   killed by signal 5 SIGTRAP
-glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
 glib:gio / appinfo                                                     ERROR   killed by signal 5 SIGTRAP
+glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 324 
+Ok:                 325 
 Expected Fail:      0   
 Fail:               12  
 Unexpected Pass:    0   

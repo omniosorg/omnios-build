@@ -2,47 +2,55 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/plugins/sudoers/bsm_audit.c a
 --- a~/plugins/sudoers/bsm_audit.c	1970-01-01 00:00:00
 +++ a/plugins/sudoers/bsm_audit.c	1970-01-01 00:00:00
 @@ -40,6 +40,8 @@
- #include "sudoers.h"
- #include "bsm_audit.h"
+ #include <sudoers.h>
+ #include <bsm_audit.h>
  
 +#define  AUE_sudo 6650
 +
  /*
   * Solaris auditon() returns EINVAL if BSM audit not configured.
   * OpenBSM returns ENOSYS for unimplemented options.
-@@ -143,7 +145,7 @@ bsm_audit_success(char *const exec_args[
- 	pid = getpid();
+@@ -141,8 +143,8 @@ bsm_audit_success(const struct sudoers_c
+ 	}
  	if (getaudit_addr(&ainfo_addr, sizeof(ainfo_addr)) == 0) {
- 		tok = au_to_subject_ex(auid, geteuid(), getegid(), getuid(),
--		    getuid(), pid, pid, &ainfo_addr.ai_termid);
-+		    getuid(), pid, ainfo_addr.ai_asid, &ainfo_addr.ai_termid);
+ 		tok = au_to_subject_ex(auid, ctx->user.euid, ctx->user.egid,
+-		    ctx->user.uid, ctx->user.gid, ctx->user.pid, ctx->user.pid,
+-		    &ainfo_addr.ai_termid);
++		    ctx->user.uid, ctx->user.gid, ctx->user.pid,
++		    ainfo_addr.ai_asid, &ainfo_addr.ai_termid);
  #ifdef BSM_AUDIT_COMPAT
  	} else if (errno == ENOSYS) {
  		auditinfo_t ainfo;
-@@ -156,7 +158,7 @@ bsm_audit_success(char *const exec_args[
+@@ -155,8 +157,8 @@ bsm_audit_success(const struct sudoers_c
  			debug_return_int(-1);
  		}
- 		tok = au_to_subject(auid, geteuid(), getegid(), getuid(),
--		    getuid(), pid, pid, &ainfo.ai_termid);
-+		    getuid(), pid, ainfo_addr.ai_asid, &ainfo.ai_termid);
+ 		tok = au_to_subject(auid, ctx->user.euid, ctx->user.egid,
+-		    ctx->user.uid, ctx->user.gid, ctx->user.pid, ctx->user.pid,
+-		    &ainfo.ai_termid);
++		    ctx->user.uid, ctx->user.gid, ctx->user.pid,
++		    ainfo_addr.ai_asid, &ainfo.ai_termid);
  #endif /* BSM_AUDIT_COMPAT */
  	} else {
  		sudo_warn("getaudit_addr");
-@@ -229,7 +231,7 @@ bsm_audit_failure(char *const exec_args[
- 	pid = getpid();
+@@ -228,8 +230,8 @@ bsm_audit_failure(const struct sudoers_c
+ 	}
  	if (getaudit_addr(&ainfo_addr, sizeof(ainfo_addr)) == 0) { 
- 		tok = au_to_subject_ex(auid, geteuid(), getegid(), getuid(),
--		    getuid(), pid, pid, &ainfo_addr.ai_termid);
-+		    getuid(), pid, ainfo_addr.ai_asid, &ainfo_addr.ai_termid);
+ 		tok = au_to_subject_ex(auid, ctx->user.euid, ctx->user.egid,
+-		    ctx->user.uid, ctx->user.gid, ctx->user.pid, ctx->user.pid,
+-		    &ainfo_addr.ai_termid);
++		    ctx->user.uid, ctx->user.gid, ctx->user.pid,
++		    ainfo_addr.ai_asid, &ainfo_addr.ai_termid);
  #ifdef BSM_AUDIT_COMPAT
  	} else if (errno == ENOSYS) {
  		auditinfo_t ainfo;
-@@ -239,7 +241,7 @@ bsm_audit_failure(char *const exec_args[
+@@ -239,8 +241,8 @@ bsm_audit_failure(const struct sudoers_c
  			debug_return_int(-1);
  		}
- 		tok = au_to_subject(auid, geteuid(), getegid(), getuid(),
--		    getuid(), pid, pid, &ainfo.ai_termid);
-+		    getuid(), pid, ainfo_addr.ai_asid, &ainfo.ai_termid);
+ 		tok = au_to_subject(auid, ctx->user.euid, ctx->user.egid,
+-		    ctx->user.uid, ctx->user.gid, ctx->user.pid, ctx->user.pid,
+-		    &ainfo.ai_termid);
++		    ctx->user.uid, ctx->user.gid, ctx->user.pid,
++		    ainfo_addr.ai_asid, &ainfo.ai_termid);
  #endif /* BSM_AUDIT_COMPAT */
  	} else {
  		sudo_warn("getaudit_addr");
