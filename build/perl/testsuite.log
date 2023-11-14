@@ -1,9 +1,3 @@
-makefile:258: warning: ignoring prerequisites on suffix rule definition
-makefile:254: warning: ignoring prerequisites on suffix rule definition
-makefile:258: warning: ignoring prerequisites on suffix rule definition
-makefile:258: warning: ignoring prerequisites on suffix rule definition
-makefile:254: warning: ignoring prerequisites on suffix rule definition
-makefile:258: warning: ignoring prerequisites on suffix rule definition
 Manifying 2 pod documents
 ppport.h in cpan/DB_File is up-to-date
 ppport.h in cpan/IPC-SysV is up-to-date
@@ -22,6 +16,10 @@ ppport.h in dist/Unicode-Normalize is up-to-date
 	Making utilities
 lib/unicore/mktables: Files seem to be ok, not bothering to rebuild.  Add '-w' option to force build
 Extracting runtests (with variable substitutions)
+t/test_pl/_num_to_alpha .......................................... ok
+t/test_pl/can_isa_ok ............................................. ok
+t/test_pl/plan_skip_all .......................................... skipped
+t/test_pl/tempfile ............................................... ok
 t/base/cond ...................................................... ok
 t/base/if ........................................................ ok
 t/base/lex ....................................................... ok
@@ -64,6 +62,7 @@ t/run/locale ..................................................... ok
 t/run/noswitch ................................................... ok
 t/run/runenv ..................................................... ok
 t/run/runenv_hashseed ............................................ ok
+t/run/runenv_randseed ............................................ ok
 t/run/script ..................................................... ok
 t/run/switch0 .................................................... ok
 t/run/switchC .................................................... ok
@@ -179,6 +178,7 @@ t/re/regex_sets_compat ........................................... ok
 t/re/regexp ...................................................... ok
 t/re/regexp_noamp ................................................ ok
 t/re/regexp_nonull ............................................... ok
+t/re/regexp_normal ............................................... ok
 t/re/regexp_notrie ............................................... ok
 t/re/regexp_qr ................................................... ok
 t/re/regexp_qr_embed ............................................. ok
@@ -191,6 +191,7 @@ t/re/rxcode ...................................................... ok
 t/re/script_run .................................................. ok
 t/re/speed ....................................................... ok
 t/re/speed_thr ................................................... ok
+t/re/stclass_threads ............................................. ok
 t/re/subst ....................................................... ok
 t/re/substT ...................................................... ok
 t/re/subst_amp ................................................... ok
@@ -295,6 +296,7 @@ t/op/hashassign .................................................. ok
 t/op/hashwarn .................................................... ok
 t/op/heredoc ..................................................... ok
 t/op/hexfp ....................................................... ok
+t/op/hook/require ................................................ ok
 t/op/inc ......................................................... ok
 t/op/inccode-tie ................................................. ok
 t/op/inccode ..................................................... ok
@@ -361,6 +363,7 @@ t/op/ref ......................................................... ok
 t/op/repeat ...................................................... ok
 t/op/require_37033 ............................................... ok
 t/op/require_errors .............................................. ok
+t/op/require_gh20577 ............................................. ok
 t/op/require_override ............................................ ok
 t/op/reset ....................................................... ok
 t/op/reverse ..................................................... ok
@@ -533,6 +536,14 @@ t/mro/vulcan_c3 .................................................. ok
 t/mro/vulcan_c3_utf8 ............................................. ok
 t/mro/vulcan_dfs ................................................. ok
 t/mro/vulcan_dfs_utf8 ............................................ ok
+t/class/class .................................................... ok
+t/class/construct ................................................ ok
+t/class/destruct ................................................. ok
+t/class/field .................................................... ok
+t/class/inherit .................................................. ok
+t/class/method ................................................... ok
+t/class/phasers .................................................. ok
+t/class/threads .................................................. ok
 t/lib/commonsense ................................................ ok
 t/lib/croak ...................................................... ok
 t/lib/cygwin ..................................................... skipped
@@ -616,6 +627,7 @@ lib/Tie/Scalar ................................................... ok
 lib/Tie/SubstrHash ............................................... ok
 lib/Time/gmtime .................................................. ok
 lib/Time/localtime ............................................... ok
+lib/Unicode/testnorm ............................................. skipped
 lib/Unicode/UCD .................................................. ok
 lib/User/grent ................................................... ok
 lib/User/pwent ................................................... ok
@@ -625,6 +637,7 @@ lib/vars_carp .................................................... ok
 lib/vmsish ....................................................... ok
 lib/warnings ..................................................... ok
 ext/B/t/b ........................................................ ok
+ext/B/t/bool ..................................................... ok
 ext/B/t/concise .................................................. ok
 ext/B/t/concise-xs ............................................... ok
 ext/B/t/f_map .................................................... ok
@@ -656,6 +669,7 @@ ext/Fcntl/t/fcntl ................................................ ok
 ext/Fcntl/t/mode ................................................. ok
 ext/Fcntl/t/syslfs ............................................... skipped
 ext/File-DosGlob/t/DosGlob ....................................... ok
+ext/File-Find/t/correct-absolute-path-with-follow ................ ok
 ext/File-Find/t/find ............................................. ok
 ext/File-Find/t/taint ............................................ ok
 ext/File-Glob/t/basic ............................................ ok
@@ -699,7 +713,6 @@ ext/PerlIO-via/t/thread .......................................... ok
 ext/PerlIO-via/t/via ............................................. ok
 ext/Pod-Functions/t/Functions .................................... ok
 ext/Pod-Html/t/anchorify ......................................... ok
-ext/Pod-Html/t/anchorify-536 ..................................... ok
 ext/Pod-Html/t/cache ............................................. ok
 ext/Pod-Html/t/crossref .......................................... ok
 ext/Pod-Html/t/crossref2 ......................................... ok
@@ -734,6 +747,7 @@ ext/POSIX/t/unimplemented ........................................ ok
 ext/POSIX/t/usage ................................................ ok
 ext/POSIX/t/waitpid .............................................. ok
 ext/POSIX/t/wrappers ............................................. ok
+ext/re/t/intflags ................................................ ok
 ext/re/t/lexical_debug ........................................... ok
 ext/re/t/qr ...................................................... ok
 ext/re/t/re ...................................................... ok
@@ -771,6 +785,7 @@ ext/XS-APItest/t/copstash ........................................ ok
 ext/XS-APItest/t/copyhints ....................................... ok
 ext/XS-APItest/t/customop ........................................ ok
 ext/XS-APItest/t/cv_name ......................................... ok
+ext/XS-APItest/t/cv_refcounted_anysv ............................. ok
 ext/XS-APItest/t/delimcpy ........................................ ok
 ext/XS-APItest/t/eval-filter ..................................... ok
 ext/XS-APItest/t/exception ....................................... ok
@@ -810,11 +825,13 @@ ext/XS-APItest/t/looprest ........................................ ok
 ext/XS-APItest/t/lvalue .......................................... ok
 ext/XS-APItest/t/magic ........................................... ok
 ext/XS-APItest/t/magic_chain ..................................... ok
+ext/XS-APItest/t/mortal_destructor ............................... ok
 ext/XS-APItest/t/mro ............................................. ok
 ext/XS-APItest/t/multicall ....................................... ok
 ext/XS-APItest/t/my_cxt .......................................... ok
 ext/XS-APItest/t/my_exit ......................................... ok
 ext/XS-APItest/t/my_strtod ....................................... ok
+ext/XS-APItest/t/newAV ........................................... ok
 ext/XS-APItest/t/newCONSTSUB ..................................... ok
 ext/XS-APItest/t/newDEFSVOP ...................................... ok
 ext/XS-APItest/t/op .............................................. ok
@@ -832,6 +849,7 @@ ext/XS-APItest/t/refs ............................................ ok
 ext/XS-APItest/t/rmagical ........................................ ok
 ext/XS-APItest/t/rv2cv_op_cv ..................................... ok
 ext/XS-APItest/t/savehints ....................................... ok
+ext/XS-APItest/t/savestack ....................................... ok
 ext/XS-APItest/t/scopelessblock .................................. ok
 ext/XS-APItest/t/sort ............................................ ok
 ext/XS-APItest/t/stmtasexpr ...................................... ok
@@ -1046,6 +1064,9 @@ dist/Locale-Maketext/t/92_blacklist .............................. ok
 dist/Locale-Maketext/t/93_whitelist .............................. ok
 dist/Locale-Maketext/t/94_denylist ............................... ok
 dist/Locale-Maketext/t/95_allowlist .............................. ok
+dist/Math-Complex/t/Complex ...................................... ok
+dist/Math-Complex/t/Trig ......................................... ok
+dist/Math-Complex/t/underbar ..................................... ok
 dist/Module-CoreList/t/corelist .................................. ok
 dist/Module-CoreList/t/deprecated ................................ ok
 dist/Module-CoreList/t/find_modules .............................. ok
@@ -1104,6 +1125,7 @@ dist/Storable/t/attach ........................................... ok
 dist/Storable/t/attach_errors .................................... ok
 dist/Storable/t/attach_singleton ................................. ok
 dist/Storable/t/blessed .......................................... ok
+dist/Storable/t/boolean .......................................... ok
 dist/Storable/t/canonical ........................................ ok
 dist/Storable/t/circular_hook .................................... ok
 dist/Storable/t/code ............................................. ok
@@ -1200,6 +1222,7 @@ dist/threads/t/stress_re ......................................... ok
 dist/threads/t/stress_string ..................................... ok
 dist/threads/t/thread ............................................ ok
 dist/threads/t/unique ............................................ skipped
+dist/threads/t/version ........................................... ok
 dist/threads-shared/t/0nothread .................................. ok
 dist/threads-shared/t/av_refs .................................... ok
 dist/threads-shared/t/av_simple .................................. ok
@@ -1282,24 +1305,7 @@ dist/Unicode-Normalize/t/proto ................................... ok
 dist/Unicode-Normalize/t/split ................................... ok
 dist/Unicode-Normalize/t/test .................................... ok
 dist/Unicode-Normalize/t/tie ..................................... ok
-dist/XSLoader/t/XSLoader ......................................... Subroutine Time::HiRes::constant redefined at (eval 37) line 1.
-Subroutine Time::HiRes::usleep redefined at (eval 37) line 1.
-Subroutine Time::HiRes::nanosleep redefined at (eval 37) line 1.
-Subroutine Time::HiRes::sleep redefined at (eval 37) line 1.
-Subroutine Time::HiRes::ualarm redefined at (eval 37) line 1.
-Subroutine Time::HiRes::alarm redefined at (eval 37) line 1.
-Subroutine Time::HiRes::gettimeofday redefined at (eval 37) line 1.
-Subroutine Time::HiRes::time redefined at (eval 37) line 1.
-Subroutine Time::HiRes::setitimer redefined at (eval 37) line 1.
-Subroutine Time::HiRes::getitimer redefined at (eval 37) line 1.
-Subroutine Time::HiRes::utime redefined at (eval 37) line 1.
-Subroutine Time::HiRes::clock_gettime redefined at (eval 37) line 1.
-Subroutine Time::HiRes::clock_getres redefined at (eval 37) line 1.
-Subroutine Time::HiRes::clock_nanosleep redefined at (eval 37) line 1.
-Subroutine Time::HiRes::clock redefined at (eval 37) line 1.
-Subroutine Time::HiRes::lstat redefined at (eval 37) line 1.
-Subroutine Time::HiRes::stat redefined at (eval 37) line 1.
-ok
+dist/XSLoader/t/XSLoader ......................................... ok
 cpan/Archive-Tar/t/01_use ........................................ ok
 cpan/Archive-Tar/t/02_methods .................................... ok
 cpan/Archive-Tar/t/03_file ....................................... ok
@@ -1401,7 +1407,8 @@ cpan/bignum/t/import-bigrat ...................................... ok
 cpan/bignum/t/in_effect .......................................... ok
 cpan/bignum/t/infnan-bigfloat .................................... ok
 cpan/bignum/t/infnan-bigint ...................................... ok
-cpan/bignum/t/infnan-bignum ...................................... ok
+cpan/bignum/t/infnan-bignum-mbf .................................. ok
+cpan/bignum/t/infnan-bignum-mbr .................................. ok
 cpan/bignum/t/infnan-bigrat ...................................... ok
 cpan/bignum/t/option_a ........................................... ok
 cpan/bignum/t/option_a-bignum .................................... ok
@@ -1424,29 +1431,7 @@ cpan/Compress-Raw-Bzip2/t/01bzip2 ................................ ok
 cpan/Compress-Raw-Bzip2/t/09limitoutput .......................... ok
 cpan/Compress-Raw-Bzip2/t/19nonpv ................................ ok
 cpan/Compress-Raw-Bzip2/t/99pod .................................. skipped
-cpan/Compress-Raw-Zlib/t/01version ............................... # 
-# 
-# Compress::Raw::Zlib::VERSION        2.105
-# 
-# ZLIB_VERSION (from zlib.h)          1.2.12
-# zlib_version (from zlib library)    1.2.12
-# 
-# ZLIB_VERNUM                         0x12C0
-# BUILD_ZLIB                          1
-# GZIP_OS_CODE                        3
-# 
-# zlibCompileFlags                    169
-#   Type Sizes
-#     size of uInt                    32 bit
-#     size of uLong                   64 bit
-#     size of pointer                 64 bit
-#     size of z_off_t                 64 bit
-#   Compiler Options                  None
-#   One-time table building           None
-#   Library content                   None
-#   Operation variations              None
-# 
-ok
+cpan/Compress-Raw-Zlib/t/01version ............................... ok
 cpan/Compress-Raw-Zlib/t/02zlib .................................. ok
 cpan/Compress-Raw-Zlib/t/07bufsize ............................... skipped
 cpan/Compress-Raw-Zlib/t/09limitoutput ........................... ok
@@ -1476,6 +1461,11 @@ cpan/Config-Perl-V/t/35_plv52910g ................................ ok
 cpan/Config-Perl-V/t/36_plv5300 .................................. ok
 cpan/Config-Perl-V/t/37_plv53111qm ............................... ok
 cpan/Config-Perl-V/t/38_plv5320tld ............................... ok
+cpan/Config-Perl-V/t/39_plv5340tqm ............................... ok
+cpan/Config-Perl-V/t/40_plv5358dnqm .............................. ok
+cpan/Config-Perl-V/t/41_plv5360dnqm .............................. ok
+cpan/Config-Perl-V/t/42_plv5373tld ............................... ok
+cpan/Config-Perl-V/t/43_plv53710rcs .............................. ok
 cpan/CPAN/t/01loadme ............................................. ok
 cpan/CPAN/t/02nox ................................................ ok
 cpan/CPAN/t/03pkgs ............................................... ok
@@ -1727,6 +1717,7 @@ cpan/HTTP-Tiny/t/160_cookies ..................................... ok
 cpan/HTTP-Tiny/t/161_basic_auth .................................. ok
 cpan/HTTP-Tiny/t/162_proxy_auth .................................. ok
 cpan/HTTP-Tiny/t/170_keepalive ................................... ok
+cpan/HTTP-Tiny/t/180_verify_SSL .................................. ok
 cpan/IO-Compress/t/000prereq ..................................... ok
 cpan/IO-Compress/t/001bzip2 ...................................... ok
 cpan/IO-Compress/t/001zlib-generic-deflate ....................... ok
@@ -1881,7 +1872,22 @@ cpan/JSON-PP/t/020_unknown ....................................... ok
 cpan/JSON-PP/t/021_evans ......................................... ok
 cpan/JSON-PP/t/022_comment_at_eof ................................ ok
 cpan/JSON-PP/t/052_object ........................................ ok
-cpan/JSON-PP/t/099_binary ........................................ ok
+cpan/JSON-PP/t/099_binary00 ...................................... ok
+cpan/JSON-PP/t/099_binary01 ...................................... ok
+cpan/JSON-PP/t/099_binary02 ...................................... ok
+cpan/JSON-PP/t/099_binary03 ...................................... ok
+cpan/JSON-PP/t/099_binary04 ...................................... ok
+cpan/JSON-PP/t/099_binary05 ...................................... ok
+cpan/JSON-PP/t/099_binary06 ...................................... ok
+cpan/JSON-PP/t/099_binary07 ...................................... ok
+cpan/JSON-PP/t/099_binary08 ...................................... ok
+cpan/JSON-PP/t/099_binary09 ...................................... ok
+cpan/JSON-PP/t/099_binary10 ...................................... ok
+cpan/JSON-PP/t/099_binary11 ...................................... ok
+cpan/JSON-PP/t/099_binary12 ...................................... ok
+cpan/JSON-PP/t/099_binary13 ...................................... ok
+cpan/JSON-PP/t/099_binary14 ...................................... ok
+cpan/JSON-PP/t/099_binary15 ...................................... ok
 cpan/JSON-PP/t/104_sortby ........................................ ok
 cpan/JSON-PP/t/105_esc_slash ..................................... ok
 cpan/JSON-PP/t/106_allow_barekey ................................. ok
@@ -1896,9 +1902,13 @@ cpan/JSON-PP/t/115_tie_ixhash .................................... ok
 cpan/JSON-PP/t/116_incr_parse_fixed .............................. ok
 cpan/JSON-PP/t/117_numbers ....................................... ok
 cpan/JSON-PP/t/118_boolean_values ................................ ok
+cpan/JSON-PP/t/119_incr_parse_utf8 ............................... ok
+cpan/JSON-PP/t/120_incr_parse_truncated .......................... ok
+cpan/JSON-PP/t/core_bools ........................................ ok
 cpan/JSON-PP/t/gh_28_json_test_suite ............................. ok
 cpan/JSON-PP/t/gh_29_trailing_false_value ........................ ok
 cpan/JSON-PP/t/rt_116998_wrong_character_offset .................. ok
+cpan/JSON-PP/t/rt_122270_old_xs_boolean .......................... ok
 cpan/JSON-PP/t/rt_90071_incr_parse ............................... ok
 cpan/JSON-PP/t/zero-mojibake ..................................... ok
 cpan/libnet/t/config ............................................. ok
@@ -1920,23 +1930,9 @@ cpan/Locale-Maketext-Simple/t/0-signature ........................ ok
 cpan/Locale-Maketext-Simple/t/1-basic ............................ ok
 cpan/Locale-Maketext-Simple/t/2-load_po_without_i_default ........ skipped
 cpan/Locale-Maketext-Simple/t/3-load_po_with_i_default ........... skipped
-cpan/Math-BigInt/t/_bin_parts_to_lib_parts ....................... ok
-cpan/Math-BigInt/t/_bin_str_to_str_parts ......................... ok
-cpan/Math-BigInt/t/_dec_parts_to_lib_parts ....................... ok
-cpan/Math-BigInt/t/_dec_str_to_str_parts ......................... ok
-cpan/Math-BigInt/t/_e_math ....................................... ok
-cpan/Math-BigInt/t/_hex_str_to_str_parts ......................... ok
-cpan/Math-BigInt/t/_oct_str_to_str_parts ......................... ok
-cpan/Math-BigInt/t/backermann-mbi ................................ ok
 cpan/Math-BigInt/t/bare_mbf ...................................... ok
 cpan/Math-BigInt/t/bare_mbi ...................................... ok
 cpan/Math-BigInt/t/bare_mif ...................................... ok
-cpan/Math-BigInt/t/bdigitsum-mbi ................................. ok
-cpan/Math-BigInt/t/bdstr-mbf ..................................... ok
-cpan/Math-BigInt/t/bdstr-mbi ..................................... ok
-cpan/Math-BigInt/t/bestr-mbf ..................................... ok
-cpan/Math-BigInt/t/bestr-mbi ..................................... ok
-cpan/Math-BigInt/t/bfib-mbi ...................................... ok
 cpan/Math-BigInt/t/big_pi_e ...................................... ok
 cpan/Math-BigInt/t/bigfltpm ...................................... ok
 cpan/Math-BigInt/t/bigintc ....................................... ok
@@ -1945,58 +1941,21 @@ cpan/Math-BigInt/t/bigintpm ...................................... ok
 cpan/Math-BigInt/t/bigints ....................................... ok
 cpan/Math-BigInt/t/biglog ........................................ ok
 cpan/Math-BigInt/t/bigroot ....................................... ok
-cpan/Math-BigInt/t/blucas-mbi .................................... ok
-cpan/Math-BigInt/t/bnok-mbf ...................................... ok
-cpan/Math-BigInt/t/bnok-mbi ...................................... ok
-cpan/Math-BigInt/t/bnstr-mbf ..................................... ok
-cpan/Math-BigInt/t/bnstr-mbi ..................................... ok
-cpan/Math-BigInt/t/bpi-mbf ....................................... ok
-cpan/Math-BigInt/t/bpi-mbi ....................................... ok
-cpan/Math-BigInt/t/bpow-mbf ...................................... ok
-cpan/Math-BigInt/t/bpow-mbi ...................................... ok
-cpan/Math-BigInt/t/bsstr-mbf ..................................... ok
-cpan/Math-BigInt/t/bsstr-mbi ..................................... ok
-cpan/Math-BigInt/t/buparrow-mbi .................................. ok
 cpan/Math-BigInt/t/calling-class-methods ......................... ok
 cpan/Math-BigInt/t/calling-constant .............................. ok
 cpan/Math-BigInt/t/calling-instance-methods ...................... ok
 cpan/Math-BigInt/t/calling-lib1 .................................. ok
 cpan/Math-BigInt/t/calling-lib2 .................................. ok
 cpan/Math-BigInt/t/config ........................................ ok
-cpan/Math-BigInt/t/const-mbf ..................................... ok
-cpan/Math-BigInt/t/const-mbi ..................................... ok
 cpan/Math-BigInt/t/downgrade ..................................... ok
-cpan/Math-BigInt/t/dparts-mbf .................................... ok
-cpan/Math-BigInt/t/dparts-mbi .................................... ok
-cpan/Math-BigInt/t/eparts-mbf .................................... ok
-cpan/Math-BigInt/t/eparts-mbi .................................... ok
-cpan/Math-BigInt/t/fparts-mbf .................................... ok
-cpan/Math-BigInt/t/fparts-mbi .................................... ok
-cpan/Math-BigInt/t/from_base-mbi ................................. ok
-cpan/Math-BigInt/t/from_base_num-mbi ............................. ok
-cpan/Math-BigInt/t/from_bin-mbf .................................. ok
-cpan/Math-BigInt/t/from_bin-mbi .................................. ok
-cpan/Math-BigInt/t/from_hex-mbf .................................. ok
-cpan/Math-BigInt/t/from_hex-mbi .................................. ok
-cpan/Math-BigInt/t/from_ieee754-mbf .............................. ok
-cpan/Math-BigInt/t/from_oct-mbf .................................. ok
-cpan/Math-BigInt/t/from_oct-mbi .................................. ok
 cpan/Math-BigInt/t/inf_nan ....................................... ok
 cpan/Math-BigInt/t/isa ........................................... ok
-cpan/Math-BigInt/t/lib_load-mbf-mbi .............................. ok
-cpan/Math-BigInt/t/lib_load-mbi-mbf .............................. ok
 cpan/Math-BigInt/t/mbf_ali ....................................... ok
 cpan/Math-BigInt/t/mbi_ali ....................................... ok
 cpan/Math-BigInt/t/mbi_rand ...................................... ok
 cpan/Math-BigInt/t/mbimbf ........................................ ok
 cpan/Math-BigInt/t/nan_cmp ....................................... ok
-cpan/Math-BigInt/t/new-mbf ....................................... ok
-cpan/Math-BigInt/t/new-mbi ....................................... ok
 cpan/Math-BigInt/t/new_overloaded ................................ ok
-cpan/Math-BigInt/t/nparts-mbf .................................... ok
-cpan/Math-BigInt/t/nparts-mbi .................................... ok
-cpan/Math-BigInt/t/objectify_mbf ................................. ok
-cpan/Math-BigInt/t/objectify_mbi ................................. ok
 cpan/Math-BigInt/t/req_mbf0 ...................................... ok
 cpan/Math-BigInt/t/req_mbf1 ...................................... ok
 cpan/Math-BigInt/t/req_mbfa ...................................... ok
@@ -2006,15 +1965,10 @@ cpan/Math-BigInt/t/req_mbfw ...................................... ok
 cpan/Math-BigInt/t/require ....................................... ok
 cpan/Math-BigInt/t/round ......................................... ok
 cpan/Math-BigInt/t/rt-16221 ...................................... ok
-cpan/Math-BigInt/t/sparts-mbf .................................... ok
-cpan/Math-BigInt/t/sparts-mbi .................................... ok
 cpan/Math-BigInt/t/sub_ali ....................................... ok
 cpan/Math-BigInt/t/sub_mbf ....................................... ok
 cpan/Math-BigInt/t/sub_mbi ....................................... ok
 cpan/Math-BigInt/t/sub_mif ....................................... ok
-cpan/Math-BigInt/t/to_base-mbi ................................... ok
-cpan/Math-BigInt/t/to_base_num-mbi ............................... ok
-cpan/Math-BigInt/t/to_ieee754-mbf ................................ ok
 cpan/Math-BigInt/t/trap .......................................... ok
 cpan/Math-BigInt/t/upgrade ....................................... ok
 cpan/Math-BigInt/t/upgrade2 ...................................... ok
@@ -2052,27 +2006,21 @@ cpan/Math-BigRat/t/new-mbr ....................................... ok
 cpan/Math-BigRat/t/requirer ...................................... ok
 cpan/Math-BigRat/t/rt121139 ...................................... ok
 cpan/Math-BigRat/t/trap .......................................... ok
-cpan/Math-Complex/t/Complex ...................................... ok
-cpan/Math-Complex/t/Trig ......................................... ok
-cpan/Math-Complex/t/underbar ..................................... ok
-cpan/Memoize/t/array ............................................. ok
-cpan/Memoize/t/array_confusion ................................... ok
+cpan/Memoize/t/basic ............................................. ok
+cpan/Memoize/t/cache ............................................. ok
 cpan/Memoize/t/correctness ....................................... ok
-cpan/Memoize/t/errors ............................................ ok
-cpan/Memoize/t/expfile ........................................... ok
-cpan/Memoize/t/expire ............................................ ok
-cpan/Memoize/t/expmod_n .......................................... ok
+cpan/Memoize/t/expmod ............................................ ok
 cpan/Memoize/t/expmod_t .......................................... ok
 cpan/Memoize/t/flush ............................................. ok
 cpan/Memoize/t/normalize ......................................... ok
-cpan/Memoize/t/prototype ......................................... ok
-cpan/Memoize/t/speed ............................................. ok
+cpan/Memoize/t/threadsafe ........................................ ok
 cpan/Memoize/t/tie ............................................... ok
+cpan/Memoize/t/tie_db ............................................ skipped
 cpan/Memoize/t/tie_gdbm .......................................... skipped
 cpan/Memoize/t/tie_ndbm .......................................... ok
+cpan/Memoize/t/tie_odbm .......................................... ok
 cpan/Memoize/t/tie_sdbm .......................................... ok
 cpan/Memoize/t/tie_storable ...................................... ok
-cpan/Memoize/t/tiefeatures ....................................... ok
 cpan/Memoize/t/unmemoize ......................................... ok
 cpan/MIME-Base64/t/base64 ........................................ ok
 cpan/MIME-Base64/t/base64url ..................................... ok
@@ -2200,6 +2148,7 @@ cpan/Pod-Usage/t/pod/pod2usage ................................... ok
 cpan/Pod-Usage/t/pod/pod2usage2 .................................. ok
 cpan/Pod-Usage/t/pod/selectheaders ............................... ok
 cpan/Pod-Usage/t/pod/selectsections .............................. ok
+cpan/podlators/t/docs/changes .................................... skipped
 cpan/podlators/t/docs/pod ........................................ skipped
 cpan/podlators/t/docs/pod-spelling ............................... skipped
 cpan/podlators/t/docs/spdx-license ............................... skipped
@@ -2210,12 +2159,15 @@ cpan/podlators/t/general/pod-parser .............................. ok
 cpan/podlators/t/man/devise-date ................................. ok
 cpan/podlators/t/man/devise-title ................................ ok
 cpan/podlators/t/man/empty ....................................... ok
+cpan/podlators/t/man/encoding .................................... ok
 cpan/podlators/t/man/heading ..................................... ok
 cpan/podlators/t/man/iso-8859-1 .................................. ok
 cpan/podlators/t/man/no-encode ................................... ok
 cpan/podlators/t/man/snippets .................................... ok
 cpan/podlators/t/man/utf8-io ..................................... ok
 cpan/podlators/t/parselink/basic ................................. ok
+cpan/podlators/t/style/critic .................................... skipped
+cpan/podlators/t/style/kwalitee .................................. skipped
 cpan/podlators/t/style/minimum-version ........................... skipped
 cpan/podlators/t/style/module-version ............................ skipped
 cpan/podlators/t/style/obsolete-strings .......................... skipped
@@ -2231,7 +2183,8 @@ cpan/Scalar-List-Utils/t/00version ............................... ok
 cpan/Scalar-List-Utils/t/any-all ................................. ok
 cpan/Scalar-List-Utils/t/blessed ................................. ok
 cpan/Scalar-List-Utils/t/dualvar ................................. ok
-cpan/Scalar-List-Utils/t/exotic_names ............................ ok
+cpan/Scalar-List-Utils/t/exotic_names ............................ Old package separator "'" deprecated at (eval 285) line 1.
+ok
 cpan/Scalar-List-Utils/t/first ................................... ok
 cpan/Scalar-List-Utils/t/getmagic-once ........................... ok
 cpan/Scalar-List-Utils/t/head-tail ............................... ok
@@ -2433,7 +2386,7 @@ cpan/Test-Simple/t/Legacy/Regression/683_thread_todo ............. ok
 cpan/Test-Simple/t/Legacy/Regression/6_cmp_ok .................... ok
 cpan/Test-Simple/t/Legacy/Regression/736_use_ok .................. ok
 cpan/Test-Simple/t/Legacy/Regression/789-read-only ............... skipped
-cpan/Test-Simple/t/Legacy/Regression/870-experimental-warnings ... ok
+cpan/Test-Simple/t/Legacy/Regression/870-experimental-warnings ... skipped
 cpan/Test-Simple/t/Legacy/Regression/is_capture .................. ok
 cpan/Test-Simple/t/Legacy/require_ok ............................. ok
 cpan/Test-Simple/t/Legacy/run_test ............................... ok
@@ -2800,16 +2753,17 @@ t/porting/cmp_version ............................................ skipped
 t/porting/copyright .............................................. ok
 t/porting/corelist ............................................... ok
 t/porting/customized ............................................. ok
+t/porting/deprecation ............................................ ok
 t/porting/diag ................................................... ok
 t/porting/dual-life .............................................. ok
 t/porting/exec-bit ............................................... ok
 t/porting/extrefs ................................................ ok
 t/porting/filenames .............................................. ok
-t/porting/globvar ................................................ skipped
+t/porting/globvar ................................................ ok
+t/porting/header_parser .......................................... ok
 t/porting/libperl ................................................ skipped
 t/porting/maintainers ............................................ ok
 t/porting/manifest ............................................... ok
-t/porting/pending-author ......................................... skipped
 t/porting/perlfunc ............................................... ok
 t/porting/pod_rules .............................................. ok
 t/porting/podcheck ............................................... ok
@@ -2818,7 +2772,9 @@ t/porting/readme ................................................. ok
 t/porting/regen .................................................. ok
 t/porting/ss_dup ................................................. ok
 t/porting/test_bootstrap ......................................... ok
+t/porting/test_testlist .......................................... ok
+t/porting/update_authors ......................................... skipped
 t/porting/utils .................................................. skipped
 All tests successful.
-Elapsed: 1202 sec
-u=10.42  s=7.98  cu=665.58  cs=132.07  scripts=2613  tests=1218397
+Elapsed: 1075 sec
+u=10.31  s=7.49  cu=601.88  cs=123.70  scripts=2607  tests=1195964
