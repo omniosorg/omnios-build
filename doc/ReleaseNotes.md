@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046ac (2023-11-15)
+Weekly release for w/c 13th of November 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode updated to 20231114, including a security update for
+  [INTEL-SA-00950](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00950.html).
+
+* AMD CPU microcode updated to 20231019.
+
+### Other Changes
+
+* The `pgrep` utility could print out the wrong process name and arguments when
+  the `-o` or `-n` option was used in conjunction with `-f` or `-v`.
+
+<br>
+
+---
+
 ## r151046z (2023-10-26)
 Weekly release for w/c 23rd of October 2023.
 > This is a non-reboot update
