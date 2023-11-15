@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048b (2023-11-15)
+Weekly release for w/c 13th of November 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode updated to 20231114, including a security update for
+  [INTEL-SA-00950](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00950.html).
+
+* AMD CPU microcode updated to 20231019.
+
+### Other Changes
+
+* The UUID of a bhyve VM was changing on every zone restart. For VMs using
+  cloud-init, this caused them to be considered as a new host on each cold
+  boot.
+
+<br>
+
+---
+
 Stable Release, 6th of Nov 2023
 
 `uname -a` shows `omnios-r151048-24333ee74c`
