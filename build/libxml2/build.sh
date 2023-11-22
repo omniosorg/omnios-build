@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=libxml2
-VER=2.11.5
+VER=2.12.0
 PKG=library/libxml2
 SUMMARY="XML C parser and toolkit"
 DESC="Portable XML parser and toolkit library"
@@ -28,6 +28,7 @@ RUN_DEPENDS_IPS="compress/xz library/zlib"
 CONFIGURE_OPTS+="
     --disable-static
     --without-python
+    --with-legacy
 "
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"

@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -277,17 +277,6 @@ AM_CONDITIONAL([HAVE_PYMOD_DNS], [test "
+@@ -254,17 +254,6 @@ AM_CONDITIONAL([HAVE_PYTEST], [test -n "
  #
  AC_PATH_PROG([XSLTPROC], [xsltproc])
  

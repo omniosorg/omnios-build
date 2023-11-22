@@ -47,7 +47,7 @@
 | library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
 | library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.11.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.12.0		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -67,12 +67,12 @@
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20231019		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20230808		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.19		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| meta/data/microcode/intel		| 20231114		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| network/dns/bind			| 9.18.20		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.5p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
-| network/socat				| 1.7.4.4		| http://www.dest-unreach.org/socat/download/
+| network/socat				| 1.8.0.0		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.1.3			| https://iperf.fr/iperf-download.php#source
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.20.1+1		| https://github.com/openjdk/jdk11u/tags
@@ -89,7 +89,7 @@
 | shell/bash				| 5.2.21		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 021			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.11			| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.8.0			| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.8.5			| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.10		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
@@ -110,7 +110,7 @@
 | terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.0			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.22.3		| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.22.4		| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
