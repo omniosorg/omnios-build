@@ -1,21 +1,13 @@
-diff -wpruN '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/OpenSSL/crypto.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/OpenSSL/crypto.py
 --- a~/src/OpenSSL/crypto.py	1970-01-01 00:00:00
 +++ a/src/OpenSSL/crypto.py	1970-01-01 00:00:00
-@@ -3257,8 +3257,7 @@ utils.deprecated(
-         "PKCS#7 support in pyOpenSSL is deprecated. You should use the APIs "
-         "in cryptography."
-     ),
--    DeprecationWarning,
--    name="load_pkcs7_data",
-+    DeprecationWarning
- )
- 
- 
-@@ -3356,6 +3355,5 @@ utils.deprecated(
+@@ -2840,8 +2840,7 @@ utils.deprecated(
          "PKCS#12 support in pyOpenSSL is deprecated. You should use the APIs "
          "in cryptography."
      ),
 -    DeprecationWarning,
--    name="load_pkcs12",
+-    name="PKCS12",
 +    DeprecationWarning
  )
+ 
+ 
