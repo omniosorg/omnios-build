@@ -33,6 +33,8 @@ CONFIGURE_OPTS+="
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
 
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
+
 init
 download_source $PROG $PROG $VER
 patch_source
