@@ -1,3 +1,4 @@
 t_op_getppid.t.patch
 dtrace.patch
 CVE-2021-36770.patch
+CVE-2023-47038.patch
