@@ -12,7 +12,7 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.15.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3440000		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3440200		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.71			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.16.5		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -27,7 +27,7 @@
 | developer/nasm			| 2.16.01		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.42.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.43.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 6.5.3			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -47,13 +47,13 @@
 | library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
 | library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.12.0		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.12.1		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.58.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.94			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.95			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.46			| https://metacpan.org/pod/XML::Parser
@@ -78,7 +78,7 @@
 | runtime/java/openjdk11		| 11.0.20.1+1		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.8.1+1		| https://github.com/openjdk/jdk17u/tags
 | runtime/java/openjdk8			| 1.8.382-05		| https://github.com/openjdk/jdk8u/tags
-| runtime/perl				| 5.38.1		| https://www.cpan.org/src/README.html
+| runtime/perl				| 5.38.2		| https://www.cpan.org/src/README.html
 | runtime/python-39			| 3.9.18		| https://www.python.org/downloads/source/
 | runtime/python-310			| 3.10.13		| https://www.python.org/downloads/source/
 | runtime/python-311			| 3.11.6		| https://www.python.org/downloads/source/
