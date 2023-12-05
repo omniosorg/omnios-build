@@ -1,18 +1,25 @@
-448 tests OK.
+== Tests result: FAILURE ==
+
+22 tests skipped:
+    test.test_asyncio.test_windows_events
+    test.test_asyncio.test_windows_utils test.test_gdb.test_backtrace
+    test.test_gdb.test_cfunction test.test_gdb.test_cfunction_full
+    test.test_gdb.test_misc test.test_gdb.test_pretty_print
+    test_dbm_gnu test_epoll test_idle test_kqueue test_launcher
+    test_msilib test_startfile test_tcl test_tix test_tk
+    test_ttk_guionly test_ttk_textonly test_turtle test_winconsoleio
+    test_winreg
+
+8 tests skipped (resource denied):
+    test_ossaudiodev test_smtpnet test_socketserver test_urllib2net
+    test_urllibnet test_winsound test_xmlrpc_net test_zipfile64
 
 4 tests failed:
     test_compileall test_dtrace test_import test_importlib
 
-26 tests skipped:
-    test.test_asyncio.test_windows_events
-    test.test_asyncio.test_windows_utils test_dbm_gnu test_epoll
-    test_gdb test_idle test_kqueue test_launcher test_msilib
-    test_ossaudiodev test_smtpnet test_socketserver test_startfile
-    test_tcl test_tix test_tk test_ttk_guionly test_ttk_textonly
-    test_turtle test_urllib2net test_urllibnet test_winconsoleio
-    test_winreg test_winsound test_xmlrpc_net test_zipfile64
+450 tests OK.
 
-Total tests: run=39,619 failures=26 skipped=1,402
-Total test files: success=448 failed=4 skipped=26 resource_denied=8
+Total tests: run=39,761 (filtered) failures=26 skipped=1,408
+Total test files: run=476/484 (filtered) failed=4 skipped=22 resource_denied=8
 Result: FAILURE
-make: *** [Makefile:1814: test] Error 2
+make: *** [Makefile:1815: test] Error 2
