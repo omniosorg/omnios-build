@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.6
+VER=3.11.7
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
@@ -124,8 +124,8 @@ post_configure() {
 }
 
 TESTSUITE_SED="
-    1,/tests* OK/ {
-        /tests* OK/p
+    1,/Tests result:/ {
+        /Tests result:/p
         d
     }
     /Total duration/d

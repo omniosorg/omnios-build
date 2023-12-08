@@ -2,9 +2,6 @@
 This patch:
 
  - updates the test to run GNU make;
- - Prevents running "make clean" in the copy of the source tree as that removes
-   the platform-specific sysconfig module, breaking the built python which is
-   in newroot.
  - Strips all configure arguments of the form `--XXXdir=YYY` from the configure
    lines used to build the new perl tree, since these override the temporary
    --prefix being used for the test.
@@ -21,16 +18,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a
  FREEZE = os.path.join(TOOL_ROOT, 'freeze.py')
  OUTDIR = os.path.join(TESTS_DIR, 'outdir')
  
-@@ -90,8 +90,6 @@ def copy_source_tree(newroot, oldroot):
-         shutil.rmtree(newroot)
- 
-     shutil.copytree(oldroot, newroot, ignore=support.copy_python_src_ignore)
--    if os.path.exists(os.path.join(newroot, 'Makefile')):
--        _run_quiet([MAKE, 'clean'], newroot)
- 
- 
- ##################################
-@@ -122,6 +120,7 @@ def prepare(script=None, outdir=None):
+@@ -129,6 +129,7 @@ def prepare(script=None, outdir=None):
      print(f'configuring python in {builddir}...')
      config_args = shlex.split(sysconfig.get_config_var('CONFIG_ARGS') or '')
      cmd = [os.path.join(srcdir, 'configure'), *config_args]
