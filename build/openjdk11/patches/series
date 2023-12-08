@@ -36,6 +36,7 @@ tribblix-flags-ldflags2.patch
 tribblix-flags-ldflags3.patch
 tribblix-Launcher-jdk.patch
 tribblix-LauncherCommon.patch
+tribblix-thrstat001.patch
 omnios-headless.patch
 security-pkcs11.patch
 fontpath.patch
