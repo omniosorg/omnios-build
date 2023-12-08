@@ -17,7 +17,7 @@
 . ../../lib/functions.sh
 
 PROG=openjdk
-VER=11.0.20.1+1
+VER=11.0.21+9
 PKG=runtime/java/openjdk11
 SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the eleventh edition of the "
