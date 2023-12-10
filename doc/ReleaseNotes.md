@@ -4,6 +4,31 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046ag (2023-12-10)
+Weekly release for w/c 11th of December 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* `curl` has been updated to version 8.5.0.
+
+* The OpenJDK packages have been upgraded to versions 1.8.392-08, 11.0.21+9
+  and 17.0.9+9.
+
+* `perl` has been upgraded to version 5.63.3.
+
+### Other Changes
+
+* A race condition in ZFS could cause a very recently written file to appear to
+  contain holes if inspected with `lseek(SEEK_DATA)`. This is very hard to hit
+  in practice, although the GNU `cp` command can trigger it and produce empty
+  target files. The native illumos/OmniOS `cp` does not use lseek in this way
+  and is unaffected.
+
+<br>
+
+---
+
 ## r151046ac (2023-11-15)
 Weekly release for w/c 13th of November 2023.
 > This update requires a reboot
