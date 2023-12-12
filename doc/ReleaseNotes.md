@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038eg (2023-12-10)
+Weekly release for w/c 11th of December 2023.
+> This update requires a reboot
+
+### Security Fixes
+
+* `curl` has been updated to version 8.5.0.
+
+* The OpenJDK packages have been upgraded to versions 1.8.392-08, 11.0.21+9
+  and 17.0.9+9.
+
+* `perl` has been updated to address
+  [CVE-2023-47038](https://www.cve.org/CVERecord?id=CVE-2023-47038).
+
+### Other Changes
+
+* A race condition in ZFS could cause a very recently written file to appear to
+  contain holes if inspected with `lseek(SEEK_DATA)`. This is very hard to hit
+  in practice, although the GNU `cp` command can trigger it and produce empty
+  target files. The native illumos/OmniOS `cp` does not use lseek in this way
+  and is unaffected.
+
+<br>
+
+---
+
 ## r151038ec (2023-11-15)
 Weekly release for w/c 13th of November 2023.
 > This update requires a reboot
