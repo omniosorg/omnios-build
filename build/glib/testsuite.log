@@ -221,7 +221,7 @@ glib:glib+core / tree                                                  OK   7 su
 glib:glib+core / types                                                 OK   1 subtests passed
 glib:glib+core / unicode                                               OK   38 subtests passed
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
-glib:glib+core / unicode-normalize                                     OK   2 subtests passed
+glib:glib+core / unicode-normalize                                     OK   3 subtests passed
 glib:glib+core / unix                                                  OK   14 subtests passed
 glib:glib+core / uri                                                   OK   24 subtests passed
 glib:glib+core / utf8-misc                                             OK   7 subtests passed
