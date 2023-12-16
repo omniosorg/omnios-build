@@ -20,5 +20,6 @@ Testing regress                        PASS
 Testing samplefilt                     PASS
 Testing siv                            SKIP (on line 421)
 Testing smooth                         PASS
+Testing socket                         PASS
 Testing sources                        PASS
 Testing util                           PASS
