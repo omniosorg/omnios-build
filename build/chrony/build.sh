@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=chrony
-VER=4.4
+VER=4.5
 PKG=service/network/chrony
 SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
