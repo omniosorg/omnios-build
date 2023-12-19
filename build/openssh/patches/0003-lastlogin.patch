@@ -17,7 +17,7 @@ diff -wpruN '--exclude=*.orig' a~/sshd_config.4 a/sshd_config.4
  .It Cm PrintMotd
  Specifies whether
  .Xr sshd 8
-@@ -2074,7 +2074,8 @@ This file should be writable by root onl
+@@ -2078,7 +2078,8 @@ This file should be writable by root onl
  .El
  .Sh SEE ALSO
  .Xr sftp-server 8 ,

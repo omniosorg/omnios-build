@@ -17,7 +17,7 @@ diff -wpruN '--exclude=*.orig' a~/pathnames.h a/pathnames.h
 diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -37,6 +37,7 @@
+@@ -36,6 +36,7 @@
  #include <unistd.h>
  #include <limits.h>
  #include <stdarg.h>
@@ -25,7 +25,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  #include <errno.h>
  #ifdef HAVE_UTIL_H
  #include <util.h>
-@@ -220,6 +221,64 @@ option_clear_or_none(const char *o)
+@@ -219,6 +220,64 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -90,7 +90,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  static void
  assemble_algorithms(ServerOptions *o)
  {
-@@ -300,6 +359,8 @@ fill_default_server_options(ServerOption
+@@ -299,6 +358,8 @@ fill_default_server_options(ServerOption
  		options->use_pam = 0;
  #endif
  

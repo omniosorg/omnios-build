@@ -52,7 +52,7 @@ diff -wpruN '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey.c
  static int
  userauth_pubkey(struct ssh *ssh, const char *method)
  {
-@@ -741,6 +757,124 @@ user_key_command_allowed2(struct passwd
+@@ -745,6 +761,124 @@ user_key_command_allowed2(struct passwd
  	return found_key;
  }
  
@@ -177,21 +177,21 @@ diff -wpruN '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey.c
  /*
   * Check whether key authenticates and authorises the user.
   */
-@@ -786,6 +920,10 @@ user_key_allowed(struct ssh *ssh, struct
+@@ -796,6 +930,10 @@ user_key_allowed(struct ssh *ssh, struct
  	sshauthopt_free(opts);
  	opts = NULL;
  
 +	success = user_key_allowed_from_plugin(pw, key);
 +	if (success > 0)
-+		return success;
++		goto out;
 +
  	if ((success = user_key_command_allowed2(pw, key, remote_ip,
- 	    remote_host, &opts)) != 0)
+ 	    remote_host, conn_id, rdomain, &opts)) != 0)
  		goto out;
 diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -210,6 +210,7 @@ initialize_server_options(ServerOptions
+@@ -209,6 +209,7 @@ initialize_server_options(ServerOptions
  	 */
  	options->pam_service_per_authmethod = 1;
  #endif
@@ -199,7 +199,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  }
  
  /* Returns 1 if a string option is unset or set to "none" or 0 otherwise. */
-@@ -558,6 +559,7 @@ typedef enum {
+@@ -557,6 +558,7 @@ typedef enum {
  	sAllowStreamLocalForwarding, sFingerprintHash, sDisableForwarding,
  	sExposeAuthInfo, sRDomain, sPubkeyAuthOptions, sSecurityKeyProvider,
  	sRequiredRSASize, sChannelTimeout, sUnusedConnectionTimeout,
@@ -207,7 +207,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	sDeprecated, sIgnore, sUnsupported
  } ServerOpCodes;
  
-@@ -724,6 +726,7 @@ static struct {
+@@ -723,6 +725,7 @@ static struct {
  	{ "exposeauthinfo", sExposeAuthInfo, SSHCFG_ALL },
  	{ "rdomain", sRDomain, SSHCFG_ALL },
  	{ "casignaturealgorithms", sCASignatureAlgorithms, SSHCFG_ALL },
@@ -215,7 +215,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "securitykeyprovider", sSecurityKeyProvider, SSHCFG_GLOBAL },
  	{ "requiredrsasize", sRequiredRSASize, SSHCFG_ALL },
  	{ "channeltimeout", sChannelTimeout, SSHCFG_ALL },
-@@ -2625,6 +2628,18 @@ process_server_config_line_depth(ServerO
+@@ -2614,6 +2617,18 @@ process_server_config_line_depth(ServerO
  		}
  		break;
  
@@ -237,7 +237,7 @@ diff -wpruN '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
-@@ -237,6 +237,7 @@ typedef struct {
+@@ -235,6 +235,7 @@ typedef struct {
  
  	int	fingerprint_hash;
  	int	expose_userauth_info;
