@@ -196,7 +196,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  static char *
  sig2name(int sig)
  {
-@@ -2446,6 +2569,9 @@ session_close(struct ssh *ssh, Session *
+@@ -2453,6 +2576,9 @@ session_close(struct ssh *ssh, Session *
  	free(s->auth_display);
  	free(s->auth_data);
  	free(s->auth_proto);
@@ -206,7 +206,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	free(s->subsys);
  	if (s->env != NULL) {
  		for (i = 0; i < s->num_env; i++) {
-@@ -2701,6 +2827,10 @@ do_cleanup(struct ssh *ssh, Authctxt *au
+@@ -2708,6 +2834,10 @@ do_cleanup(struct ssh *ssh, Authctxt *au
  		auth_info_file = NULL;
  	}
  
