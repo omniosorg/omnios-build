@@ -123,6 +123,12 @@ post_configure() {
     restore_variable CC
 }
 
+post_install() {
+    python_compile \
+        -o0 -o1 -o2 \
+        -x 'bad_coding|badsyntax|site-packages|lib2to3/tests/data'
+}
+
 TESTSUITE_SED="
     1,/tests* OK/ {
         /tests* OK/p
