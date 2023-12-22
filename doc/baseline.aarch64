@@ -407,7 +407,6 @@ omnios service/network/wpa
 omnios service/picl
 omnios service/resource-cap
 omnios service/resource-pools
-omnios service/resource-pools/poold
 omnios service/security/gss
 omnios service/security/kerberos-5
 omnios service/storage/avs/cache-management o
