@@ -1,0 +1,21 @@
+== Tests result: SUCCESS ==
+
+25 tests skipped:
+    test.test_asyncio.test_windows_events
+    test.test_asyncio.test_windows_utils test.test_gdb.test_backtrace
+    test.test_gdb.test_cfunction test.test_gdb.test_cfunction_full
+    test.test_gdb.test_misc test.test_gdb.test_pretty_print
+    test_dbm_gnu test_epoll test_idle test_kqueue test_launcher
+    test_msilib test_perf_profiler test_perfmaps test_startfile
+    test_tcl test_tix test_tkinter test_ttk test_ttk_textonly
+    test_turtle test_winconsoleio test_winreg test_wmi
+
+8 tests skipped (resource denied):
+    test_ossaudiodev test_smtpnet test_socketserver test_urllib2net
+    test_urllibnet test_winsound test_xmlrpc_net test_zipfile64
+
+455 tests OK.
+
+Total tests: run=41,249 (filtered) skipped=1,407
+Total test files: run=480/488 (filtered) skipped=25 resource_denied=8
+Result: SUCCESS

@@ -301,6 +301,7 @@ omnios library/python-3/jsonschema-311
 omnios library/python-3/meson-311
 omnios library/python-3/orjson-311
 omnios library/python-3/pip-311
+omnios library/python-3/pip-312
 omnios library/python-3/pycodestyle-311
 omnios library/python-3/pycparser-311
 omnios library/python-3/pycurl-311
@@ -310,6 +311,7 @@ omnios library/python-3/pyyaml-311
 omnios library/python-3/rapidjson-311
 omnios library/python-3/semantic-version-311
 omnios library/python-3/setuptools-311
+omnios library/python-3/setuptools-312
 omnios library/python-3/setuptools-rust-311
 omnios library/python-3/six-311
 omnios library/python-3/tomli-311
@@ -476,6 +478,7 @@ omnios runtime/perl/manual o
 omnios runtime/perl/module/sun-solaris
 omnios runtime/python-27 l
 omnios runtime/python-311
+omnios runtime/python-312
 omnios security/bart
 omnios security/sudo
 omnios service/fault-management

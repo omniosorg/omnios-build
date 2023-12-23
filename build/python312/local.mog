@@ -43,8 +43,9 @@ link path=usr/lib/amd64/libpython3.so target=libpython$(PYTHONVER)-stub.so
 
 <transform link mediator=python3 -> set mediator-version $(PYTHONVER)>
 
-# Python 3.11 is currently the default
-<transform link mediator=python3 -> set mediator-priority vendor>
+# Let the default mediator priority take effect while the highest version is
+# the default.
+#<transform link mediator=python3 -> set mediator-priority vendor>
 
 # Add mediated link for /usr/bin/python and python-config
 link path=usr/bin/python target=python3
