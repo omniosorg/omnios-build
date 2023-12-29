@@ -17,24 +17,21 @@
 . ../../lib/build.sh
 
 PROG=cloud-init
-VER=23.1.2
+VER=23.4.1
 DASHREV=0
 PKG=system/management/cloud-init
 SUMMARY="Cloud instance initialisation tools"
 DESC="Cloud-init is the industry standard multi-distribution method for "
 DESC+="cross-platform cloud instance initialisation"
 
-PYMVER=${PYTHONVER%%.*}    # 3
-SPYVER=${PYTHONVER//./}    # 39
-
 set_builddir $PROG-illumos-$VER-$DASHREV
 
 RUN_DEPENDS_IPS+="
-    library/python-$PYMVER/idna-$SPYVER
-    library/python-$PYMVER/jsonschema-$SPYVER
-    library/python-$PYMVER/pyrsistent-$SPYVER
-    library/python-$PYMVER/six-$SPYVER
-    library/python-$PYMVER/pyyaml-$SPYVER
+    library/python-$PYTHONMAJVER/idna-$PYTHONPKGVER
+    library/python-$PYTHONMAJVER/jsonschema-$PYTHONPKGVER
+    library/python-$PYTHONMAJVER/pyrsistent-$PYTHONPKGVER
+    library/python-$PYTHONMAJVER/six-$PYTHONPKGVER
+    library/python-$PYTHONMAJVER/pyyaml-$PYTHONPKGVER
 "
 
 # Force using the legacy setup.py backend as the PEP518 build ends up putting
@@ -53,7 +50,7 @@ function install_deps {
 
     logmsg "--- installing python dependencies"
     logcmd mkdir -p $DESTDIR/$_site || logerr "mkdir $DESTDIR/$_site"
-    logcmd $_pip -r $TMPDIR/$BUILDDIR/requirements.txt
+    logcmd $_pip -r $TMPDIR/$BUILDDIR/frozen-requirements.txt
     logcmd $_pip pyserial
 
     export PYTHONPATH=$DESTDIR/$_site
