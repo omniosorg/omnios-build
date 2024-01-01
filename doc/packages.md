@@ -13,7 +13,7 @@
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.15.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
 | database/sqlite-3			| 3440200		| https://www.sqlite.org/download.html
-| developer/build/autoconf		| 2.71			| https://ftp.gnu.org/gnu/autoconf/
+| developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.16.5		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.4.6			| https://www.gnu.org/software/libtool/
@@ -53,7 +53,7 @@
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.58.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.95			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.96.1		| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.46			| https://metacpan.org/pod/XML::Parser
@@ -66,9 +66,9 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20231019		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20231205		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20231114		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.20		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.21		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.6p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -82,7 +82,7 @@
 | runtime/python-39			| 3.9.18		| https://www.python.org/downloads/source/
 | runtime/python-310			| 3.10.13		| https://www.python.org/downloads/source/
 | runtime/python-311			| 3.11.7		| https://www.python.org/downloads/source/
-| security/sudo				| 1.9.15p3		| https://www.sudo.ws/
+| security/sudo				| 1.9.15p4		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.2			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
@@ -128,27 +128,27 @@
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-311		| 23.1.0		| https://pypi.org/project/attrs
 | library/python-3/cffi-311		| 1.16.0		| https://pypi.org/project/cffi
-| library/python-3/coverage-311		| 7.3.2			| https://pypi.org/project/coverage
+| library/python-3/coverage-311		| 7.4.0			| https://pypi.org/project/coverage
 | library/python-3/crossenv-311		| 1.4.0			| https://pypi.org/project/crossenv
-| library/python-3/cryptography-311	| 41.0.5		| https://pypi.org/project/cryptography
-| library/python-3/idna-311		| 3.4			| https://pypi.org/project/idna
+| library/python-3/cryptography-311	| 41.0.7		| https://pypi.org/project/cryptography
+| library/python-3/idna-311		| 3.6			| https://pypi.org/project/idna
 | library/python-3/js-regex-311		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-311	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-311	| 4.17.3		| https://pypi.org/project/jsonschema
-| library/python-3/meson-311		| 1.2.3			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-311		| 3.9.10			| https://github.com/ijl/orjson/releases
-| library/python-3/pip-311		| 23.3.1		| https://pypi.org/project/pip
+| library/python-3/meson-311		| 1.3.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/orjson-311		| 3.9.10		| https://github.com/ijl/orjson/releases
+| library/python-3/pip-311		| 23.3.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-311	| 2.11.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-311	| 2.21			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-311		| 7.44.1		| https://pypi.org/project/pycurl
 | library/python-3/pyopenssl-311	| 23.3.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-311	| 0.20.0		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-311		| 6.0.1			| https://pypi.org/project/PyYAML
-| library/python-3/rapidjson-311	| 1.13			| https://pypi.org/project/python-rapidjson
+| library/python-3/rapidjson-311	| 1.14			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-311	| 2.10.0		| https://pypi.org/project/semantic-version
-| library/python-3/setuptools-311	| 68.2.2		| https://pypi.org/project/setuptools
+| library/python-3/setuptools-311	| 69.0.3		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-311	| 1.8.1			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-311		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-311		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-311| 4.8.0			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-311| 4.9.0			| https://pypi.org/project/typing-extensions
 
