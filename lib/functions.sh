@@ -1286,6 +1286,7 @@ patch_source() {
     [ -n "$SKIP_PATCH_SOURCE" ] && return
     [ -n "$REBASE_PATCHES" ] && rebase_patches "$@"
     apply_patches "$@"
+    hook post_patch "$TMPDIR/$EXTRACTED_SRC"
     [ -z "$*" -a $EXTRACT_MODE -ge 1 ] && exit
 }
 
