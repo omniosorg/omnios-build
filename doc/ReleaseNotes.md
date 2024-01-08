@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ej (2024-01-08)
+Weekly release for w/c 1st of January 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU microcode has been updated to 20231205.
+
+* OpenSSH has been updated to version 9.6p1, containing mitigations for
+  [CVE-2023-48795](https://www.cve.org/CVERecord?id=CVE-2023-48795),
+  [CVE-2023-46445](https://www.cve.org/CVERecord?id=CVE-2023-46445),
+  [CVE-2023-46446](https://www.cve.org/CVERecord?id=CVE-2023-46446),
+  collectively known as the [Terrapin attack](https://terrapin-attack.com).
+
+### Other Changes
+
+* A problem that could result in
+  [TCP data being lost](https://www.illumos.org/issues/16060)
+  during connection shutdown has been resolved.
+
+* Timezone data has been updated to 2023d.
+
+<br>
+
+---
+
 ## r151038eg (2023-12-10)
 Weekly release for w/c 11th of December 2023.
 > This update requires a reboot
