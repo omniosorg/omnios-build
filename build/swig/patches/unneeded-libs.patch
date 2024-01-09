@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -465,7 +465,7 @@ case $host in
+@@ -457,7 +457,7 @@ case $host in
  esac
  
  # Check for specific libraries.   Used for SWIG examples
@@ -10,7 +10,7 @@ diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
  AC_CHECK_LIB(dld, shl_load)	# Dynamic linking for HP-UX
  
  dnl The following three libraries (nsl,inet,socket) are needed on Sequent,
-@@ -475,9 +475,9 @@ dnl
+@@ -467,9 +467,9 @@ dnl
  dnl Most SVR4 platforms will need -lsocket and -lnsl.  However on SGI IRIX 5,
  dnl these exist but are broken, so we use AC_SEARCH_LIBS which will only try
  dnl the library if the function isn't already available without it.
@@ -22,7 +22,7 @@ diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
  
  # check for --with-libm=...
  AC_SUBST(LIBM)
-@@ -487,7 +487,7 @@ if test "$withval" != yes
+@@ -479,7 +479,7 @@ if test "$withval" != yes
  then LIBM=$withval
  else AC_MSG_ERROR([proper usage is --with-libm=STRING])
  fi])
