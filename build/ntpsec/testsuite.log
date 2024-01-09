@@ -335,11 +335,13 @@ TEST(macencrypt, Encrypt) PASS
 TEST(macencrypt, DecryptValid) PASS
 TEST(macencrypt, DecryptInvalid) PASS
 TEST(macencrypt, CMAC_Encrypt) PASS
+TEST(macencrypt, CMAC_Encrypt) PASS
 TEST(macencrypt, DecryptValidCMAC) PASS
 TEST(macencrypt, DecryptInvalidCMAC) PASS
 TEST(macencrypt, IPv4AddressToRefId) PASS
 TEST(macencrypt, IPv6AddressToRefId) PASS
 TEST(macencrypt, null_trunc) PASS
+TEST(macencrypt, CMAC_TestVectors) PASS
 TEST(numtoa, RefidStr) PASS
 TEST(prettydate, ConstantDate) PASS
 TEST(prettydate, Rfc3339Date1) PASS
@@ -361,13 +363,6 @@ TEST(statestr, PeerRestart) PASS
 TEST(statestr, SysUnspecified) PASS
 TEST(statestr, ClockCodeExists) PASS
 TEST(statestr, ClockCodeUnknown) PASS
-TEST(strtolfp, PositiveInteger) PASS
-TEST(strtolfp, NegativeInteger) PASS
-TEST(strtolfp, PositiveFraction) PASS
-TEST(strtolfp, NegativeFraction) PASS
-TEST(strtolfp, PositiveMsFraction) PASS
-TEST(strtolfp, NegativeMsFraction) PASS
-TEST(strtolfp, InvalidChars) PASS
 TEST(timespecops, Helpers1) PASS
 TEST(timespecops, Normalise) PASS
 TEST(timespecops, SignNoFrac) PASS
@@ -411,7 +406,7 @@ TEST(ymd2yd, LeapYearFebruary) PASS
 TEST(ymd2yd, LeapYearDecember) PASS
 
 -----------------------
-155 Tests 0 Failures 0 Ignored 
+150 Tests 0 Failures 0 Ignored 
 OK
 
 *** stderr ***
@@ -493,9 +488,9 @@ RETURN VALUE: 0
 *** stdout ***
 
 *** stderr ***
-...
+....
 ----------------------------------------------------------------------
-Ran 3 tests
+Ran 4 tests
 
 OK
 

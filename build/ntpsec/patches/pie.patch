@@ -2,12 +2,12 @@
 Support for position independent executable is detected but then GCC fails
 to link the NTP daemon. Disable the PIE test for now.
 
-diff -wpruN '--exclude=*.orig' a~/wscript a/wscript
+diff -wpruN --no-dereference '--exclude=*.orig' a~/wscript a/wscript
 --- a~/wscript	1970-01-01 00:00:00
 +++ a/wscript	1970-01-01 00:00:00
-@@ -300,7 +300,7 @@ def configure(ctx):
+@@ -299,7 +299,7 @@ def configure(ctx):
+ 
      cc_test_flags = [
-         ('f_stack_protector_all', '-fstack-protector-all'),
          ('PIC', '-fPIC'),
 -        ('PIE', '-pie -fPIE'),
 +        #('PIE', '-pie -fPIE'),

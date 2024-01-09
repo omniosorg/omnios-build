@@ -1,7 +1,7 @@
 
 Re-locate the default configuration file from /etc/ to /etc/inet/
 
-diff -wpruN '--exclude=*.orig' a~/docs/includes/ntp-conf-body.adoc a/docs/includes/ntp-conf-body.adoc
+diff -wpruN --no-dereference '--exclude=*.orig' a~/docs/includes/ntp-conf-body.adoc a/docs/includes/ntp-conf-body.adoc
 --- a~/docs/includes/ntp-conf-body.adoc	1970-01-01 00:00:00
 +++ a/docs/includes/ntp-conf-body.adoc	1970-01-01 00:00:00
 @@ -3,14 +3,14 @@
@@ -30,7 +30,7 @@ diff -wpruN '--exclude=*.orig' a~/docs/includes/ntp-conf-body.adoc a/docs/includ
    the default name of the configuration file
  `ntp.keys`::
    private keys
-diff -wpruN '--exclude=*.orig' a~/docs/ntpsec.adoc a/docs/ntpsec.adoc
+diff -wpruN --no-dereference '--exclude=*.orig' a~/docs/ntpsec.adoc a/docs/ntpsec.adoc
 --- a~/docs/ntpsec.adoc	1970-01-01 00:00:00
 +++ a/docs/ntpsec.adoc	1970-01-01 00:00:00
 @@ -213,7 +213,7 @@ to the security-critical core.
@@ -55,7 +55,7 @@ diff -wpruN '--exclude=*.orig' a~/docs/ntpsec.adoc a/docs/ntpsec.adoc
    more configuration declarations. Only files with the extension
    ".conf" are interpreted; others are ignored.  This feature is
    intended to make assembling configuration easier for administration
-diff -wpruN '--exclude=*.orig' a~/include/ntp_config.h a/include/ntp_config.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/include/ntp_config.h a/include/ntp_config.h
 --- a~/include/ntp_config.h	1970-01-01 00:00:00
 +++ a/include/ntp_config.h	1970-01-01 00:00:00
 @@ -18,7 +18,7 @@
@@ -67,7 +67,7 @@ diff -wpruN '--exclude=*.orig' a~/include/ntp_config.h a/include/ntp_config.h
  #endif /* not CONFIG_FILE */
  #define CONFIG_DIR	"ntp.d"
  
-diff -wpruN '--exclude=*.orig' a~/ntpclients/ntpleapfetch a/ntpclients/ntpleapfetch
+diff -wpruN --no-dereference '--exclude=*.orig' a~/ntpclients/ntpleapfetch a/ntpclients/ntpleapfetch
 --- a~/ntpclients/ntpleapfetch	1970-01-01 00:00:00
 +++ a/ntpclients/ntpleapfetch	1970-01-01 00:00:00
 @@ -28,7 +28,7 @@ MAXTRIES=6
@@ -79,10 +79,10 @@ diff -wpruN '--exclude=*.orig' a~/ntpclients/ntpleapfetch a/ntpclients/ntpleapfe
  
  # How long before expiration to get updated file
  PREFETCH="60 days"
-diff -wpruN '--exclude=*.orig' a~/pylib/packet.py a/pylib/packet.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/pylib/packet.py a/pylib/packet.py
 --- a~/pylib/packet.py	1970-01-01 00:00:00
 +++ a/pylib/packet.py	1970-01-01 00:00:00
-@@ -1728,7 +1728,7 @@ class Authenticator:
+@@ -1723,7 +1723,7 @@ class Authenticator:
                  return (keyid,) + self.passwords[keyid]
              else:
                  return (keyid, None, None)

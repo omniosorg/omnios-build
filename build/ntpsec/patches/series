@@ -3,3 +3,4 @@ conf.patch
 nonet.patch
 unneeded_libs.patch
 asciidoc.patch
+clockwork.patch

@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=ntpsec
-VER=1.2.2
+VER=1.2.3
 PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
@@ -47,7 +47,6 @@ CONFIGURE_OPTS="
     --libdir=$PYTHONVENDOR/ntp
     --enable-manpage --disable-doc
     --nopyc --nopyo --nopycache
-    --enable-debug-gdb
 "
 CONFIGURE_OPTS[WS]="
     --build-desc=\"$DISTRO $RELVER\"

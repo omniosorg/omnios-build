@@ -1,0 +1,13 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/libntp/clockwork.c a/libntp/clockwork.c
+--- a~/libntp/clockwork.c	1970-01-01 00:00:00
++++ a/libntp/clockwork.c	1970-01-01 00:00:00
+@@ -39,8 +39,8 @@
+  */
+ int ntp_adjtime_ns(struct timex *ntx)
+ {
+-#ifdef STA_NANO
+ 	static bool nanoseconds = false;
++#ifdef STA_NANO
+ 	static bool initial_call = true;
+ 	if (initial_call)
+ 	{
