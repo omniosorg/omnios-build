@@ -8,13 +8,17 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
-license LICENSES/BSD-2 license=simplified-BSD
-license LICENSES/BSD-3 license=modified-BSD
-license LICENSES/MIT license=MIT
-license LICENSES/CC-BY-4.0 license=skipCC
-license LICENSES/NTP license=skipNTP
+license LICENSES/Apache-2.0.txt license=Apache2
+license LICENSES/BSD-2-Clause.txt license=simplified-BSD
+license LICENSES/BSD-3-Clause.txt license=modified-BSD
+license LICENSES/BSD-4-Clause.txt license=modified-BSD
+license LICENSES/ISC.txt license=ISC
+license LICENSES/MIT.txt license=MIT
+license LICENSES/Beerware.txt license=skip/beerware
+license LICENSES/CC-BY-4.0.txt license=skip/CC
+license LICENSES/NTP.txt license=skip/NTP
 
 # Skip dependency detection for python programs that break the dependency
 # checker - more investigation required here.

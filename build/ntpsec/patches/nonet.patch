@@ -1,7 +1,7 @@
 Always pass --nonet to xsltproc to avoid it checking for updated
 stylesheets.
 
-diff -wpruN '--exclude=*.orig' a~/wafhelpers/asciidoc.py a/wafhelpers/asciidoc.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/wafhelpers/asciidoc.py a/wafhelpers/asciidoc.py
 --- a~/wafhelpers/asciidoc.py	1970-01-01 00:00:00
 +++ a/wafhelpers/asciidoc.py	1970-01-01 00:00:00
 @@ -120,6 +120,7 @@ def configure(ctx):

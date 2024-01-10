@@ -9,6 +9,7 @@ partialchecking perl5 testcase abstract_access
 partialchecking perl5 testcase abstract_basecast
 partialchecking perl5 testcase abstract_inherit
 partialchecking perl5 testcase abstract_inherit_ok
+partialchecking perl5 testcase abstract_inherit_using
 partialchecking perl5 testcase abstract_signature
 partialchecking perl5 testcase abstract_typedef
 partialchecking perl5 testcase abstract_typedef2
@@ -31,7 +32,10 @@ partialchecking perl5 testcase arrays_dimensionless
 partialchecking perl5 testcase arrays_global
 partialchecking perl5 testcase arrays_global_twodim
 partialchecking perl5 testcase arrays_scope
+partialchecking perl5 testcase assign_const
+partialchecking perl5 testcase assign_reference
 partialchecking perl5 testcase autodoc
+partialchecking perl5 testcase begin_code
 partialchecking perl5 testcase bloody_hell
 partialchecking perl5 testcase bools
 partialchecking perl5 testcase catches
@@ -53,6 +57,7 @@ partialchecking perl5 testcase constant_expr
 partialchecking perl5 testcase constant_pointers
 partialchecking perl5 testcase constover
 partialchecking perl5 testcase constructor_copy
+partialchecking perl5 testcase constructor_copy_non_const
 partialchecking perl5 testcase constructor_exception
 partialchecking perl5 testcase constructor_explicit
 partialchecking perl5 testcase constructor_ignore
@@ -63,6 +68,7 @@ partialchecking perl5 testcase conversion
 partialchecking perl5 testcase conversion_namespace
 partialchecking perl5 testcase conversion_ns_template
 partialchecking perl5 testcase conversion_operators
+partialchecking perl5 testcase copyctor
 partialchecking perl5 testcase cplusplus_throw
 partialchecking perl5 testcase cpp_basic
 partialchecking perl5 testcase cpp_enum
@@ -128,6 +134,7 @@ partialchecking perl5 testcase director_void
 partialchecking perl5 testcase director_wombat (with run test)
 partialchecking perl5 testcase disown (with run test)
 partialchecking perl5 testcase duplicate_class_name_in_ns
+partialchecking perl5 testcase duplicate_parm_names
 partialchecking perl5 testcase dynamic_cast (with run test)
 partialchecking perl5 testcase empty
 partialchecking perl5 testcase enum_ignore
@@ -249,6 +256,7 @@ partialchecking perl5 testcase nested_workaround
 partialchecking perl5 testcase newobject1
 partialchecking perl5 testcase newobject3
 partialchecking perl5 testcase null_pointer
+partialchecking perl5 testcase numeric_bounds_checking
 partialchecking perl5 testcase operator_overload (with run test)
 partialchecking perl5 testcase operator_overload_break (with run test)
 partialchecking perl5 testcase operator_pointer_ref
@@ -271,6 +279,8 @@ partialchecking perl5 testcase overload_template
 partialchecking perl5 testcase overload_template_fast
 partialchecking perl5 testcase pointer_reference
 partialchecking perl5 testcase preproc_constants
+partialchecking perl5 testcase preproc_cpp
+partialchecking perl5 testcase preproc_predefined_stdcpp
 partialchecking perl5 testcase primitive_ref (with run test)
 partialchecking perl5 testcase private_assign
 partialchecking perl5 testcase proxycode
@@ -361,10 +371,12 @@ partialchecking perl5 testcase template_enum
 partialchecking perl5 testcase template_enum_ns_inherit
 partialchecking perl5 testcase template_enum_typedef
 partialchecking perl5 testcase template_explicit
+partialchecking perl5 testcase template_expr
 partialchecking perl5 testcase template_extend1
 partialchecking perl5 testcase template_extend2
 partialchecking perl5 testcase template_extend_overload
 partialchecking perl5 testcase template_extend_overload_2
+partialchecking perl5 testcase template_function_parm
 partialchecking perl5 testcase template_forward
 partialchecking perl5 testcase template_inherit
 partialchecking perl5 testcase template_inherit_abstract
@@ -372,8 +384,10 @@ partialchecking perl5 testcase template_int_const
 partialchecking perl5 testcase template_keyword_in_type
 partialchecking perl5 testcase template_methods
 partialchecking perl5 testcase template_namespace_forward_declaration
+partialchecking perl5 testcase template_private_assignment
 partialchecking perl5 testcase template_using_directive_and_declaration_forward
 partialchecking perl5 testcase template_using_directive_typedef
+partialchecking perl5 testcase template_using_member_default_arg
 partialchecking perl5 testcase template_nested
 partialchecking perl5 testcase template_nested_flat
 partialchecking perl5 testcase template_nested_typemaps
@@ -388,6 +402,7 @@ partialchecking perl5 testcase template_ns_scope
 partialchecking perl5 testcase template_parameters_global_scope
 partialchecking perl5 testcase template_partial_arg
 partialchecking perl5 testcase template_partial_specialization
+partialchecking perl5 testcase template_partial_specialization_more
 partialchecking perl5 testcase template_partial_specialization_typedef
 partialchecking perl5 testcase template_qualifier
 partialchecking perl5 testcase template_ref_type (with run test)
@@ -396,9 +411,12 @@ partialchecking perl5 testcase template_retvalue
 partialchecking perl5 testcase template_specialization
 partialchecking perl5 testcase template_specialization_defarg
 partialchecking perl5 testcase template_specialization_enum
+partialchecking perl5 testcase template_specialization_using_declaration
 partialchecking perl5 testcase template_static
 partialchecking perl5 testcase template_tbase_template
 partialchecking perl5 testcase template_template_parameters
+partialchecking perl5 testcase template_template_template_parameters
+partialchecking perl5 testcase template_type_collapse
 partialchecking perl5 testcase template_typedef
 partialchecking perl5 testcase template_typedef_class_template
 partialchecking perl5 testcase template_typedef_cplx (with run test)
@@ -462,6 +480,7 @@ partialchecking perl5 testcase using_directive_and_declaration_forward
 partialchecking perl5 testcase using_extend
 partialchecking perl5 testcase using_inherit
 partialchecking perl5 testcase using_member
+partialchecking perl5 testcase using_member_multiple_inherit
 partialchecking perl5 testcase using_member_scopes
 partialchecking perl5 testcase using_namespace
 partialchecking perl5 testcase using_namespace_loop
@@ -507,12 +526,18 @@ partialchecking perl5 testcase template_opaque
 partialchecking perl5 testcase cpp11_alias_nested_template_scoping
 partialchecking perl5 testcase cpp11_alignment
 partialchecking perl5 testcase cpp11_alternate_function_syntax
+partialchecking perl5 testcase cpp11_assign_delete
+partialchecking perl5 testcase cpp11_assign_rvalue_reference
 partialchecking perl5 testcase cpp11_attribute_specifiers
+partialchecking perl5 testcase cpp11_auto_variable
+partialchecking perl5 testcase cpp11_brackets_expression
 partialchecking perl5 testcase cpp11_constexpr
+partialchecking perl5 testcase cpp11_copyctor_delete
 partialchecking perl5 testcase cpp11_decltype
 partialchecking perl5 testcase cpp11_default_delete
 partialchecking perl5 testcase cpp11_delegating_constructors
 partialchecking perl5 testcase cpp11_director_enums
+partialchecking perl5 testcase cpp11_director_using_constructor
 partialchecking perl5 testcase cpp11_directors
 partialchecking perl5 testcase cpp11_explicit_conversion_operators
 partialchecking perl5 testcase cpp11_final_class
@@ -545,18 +570,28 @@ partialchecking perl5 testcase cpp11_strongly_typed_enumerations (with run test)
 partialchecking perl5 testcase cpp11_thread_local
 partialchecking perl5 testcase cpp11_template_double_brackets
 partialchecking perl5 testcase cpp11_template_explicit
+partialchecking perl5 testcase cpp11_template_parameters_decltype
 partialchecking perl5 testcase cpp11_template_typedefs
 partialchecking perl5 testcase cpp11_type_traits
 partialchecking perl5 testcase cpp11_type_aliasing
 partialchecking perl5 testcase cpp11_uniform_initialization
 partialchecking perl5 testcase cpp11_unrestricted_unions
 partialchecking perl5 testcase cpp11_userdefined_literals
+partialchecking perl5 testcase cpp11_using_constructor
+partialchecking perl5 testcase cpp11_using_typedef_struct
+partialchecking perl5 testcase cpp11_variadic_function_templates
+partialchecking perl5 testcase cpp11_variadic_templates
+partialchecking perl5 testcase cpp14_auto_return_type
 partialchecking perl5 testcase cpp14_binary_integer_literals
+partialchecking perl5 testcase cpp17_director_string_view (with run test)
 partialchecking perl5 testcase cpp17_enable_if_t
 partialchecking perl5 testcase cpp17_hex_floating_literals
+partialchecking perl5 testcase cpp17_map_no_default_ctor
 partialchecking perl5 testcase cpp17_nested_namespaces
 partialchecking perl5 testcase cpp17_nspace_nested_namespaces
+partialchecking perl5 testcase cpp17_string_view (with run test)
 partialchecking perl5 testcase cpp17_u8_char_literals
+partialchecking perl5 testcase cpp20_constexpr_destructor
 partialchecking perl5 testcase cpp20_lambda_template
 partialchecking perl5 testcase cpp20_spaceship_operator
 partialchecking perl5 testcase li_cstring
@@ -592,7 +627,7 @@ partialchecking perl5 testcase lextype
 partialchecking perl5 testcase li_carrays (with run test)
 partialchecking perl5 testcase li_cdata
 partialchecking perl5 testcase li_cmalloc
-partialchecking perl5 testcase li_constraints
+partialchecking perl5 testcase li_constraints (with run test)
 partialchecking perl5 testcase li_cpointer
 partialchecking perl5 testcase li_math
 partialchecking perl5 testcase long_long
@@ -613,6 +648,7 @@ partialchecking perl5 testcase preproc_gcc_output
 partialchecking perl5 testcase preproc_include
 partialchecking perl5 testcase preproc_line_file
 partialchecking perl5 testcase preproc_predefined
+partialchecking perl5 testcase preproc_predefined_stdc
 partialchecking perl5 testcase register_par
 partialchecking perl5 testcase ret_by_value (with run test)
 partialchecking perl5 testcase simple_array
@@ -633,7 +669,7 @@ partialchecking perl5 testcase mod
 partialchecking perl5 testcase multi_import
 partialchecking perl5 testcase packageoption (with run test)
 partialchecking perl5 testcase template_typedef_import
-634 perl5 tests passed
+670 perl5 tests passed
 partialchecking python test-suite
 partialchecking python testcase callback (with run test)
 partialchecking python testcase complextest (with run test)
@@ -680,6 +716,7 @@ partialchecking python testcase python_pythoncode (with run test)
 partialchecking python testcase python_richcompare (with run test)
 partialchecking python testcase python_strict_unicode (with run test)
 partialchecking python testcase python_threads (with run test)
+partialchecking python testcase python_typemap_macro (with run test)
 partialchecking python testcase simutry
 partialchecking python testcase std_containers (with run test)
 partialchecking python testcase swigobject (with run test)
@@ -688,6 +725,7 @@ partialchecking python testcase abstract_access (with run test)
 partialchecking python testcase abstract_basecast (with run test)
 partialchecking python testcase abstract_inherit
 partialchecking python testcase abstract_inherit_ok
+partialchecking python testcase abstract_inherit_using
 partialchecking python testcase abstract_signature
 partialchecking python testcase abstract_typedef (with run test)
 partialchecking python testcase abstract_typedef2 (with run test)
@@ -710,7 +748,10 @@ partialchecking python testcase arrays_dimensionless
 partialchecking python testcase arrays_global (with run test)
 partialchecking python testcase arrays_global_twodim
 partialchecking python testcase arrays_scope
+partialchecking python testcase assign_const
+partialchecking python testcase assign_reference
 partialchecking python testcase autodoc (with run test)
+partialchecking python testcase begin_code
 partialchecking python testcase bloody_hell
 partialchecking python testcase bools
 partialchecking python testcase catches
@@ -732,6 +773,7 @@ partialchecking python testcase constant_expr
 partialchecking python testcase constant_pointers
 partialchecking python testcase constover (with run test)
 partialchecking python testcase constructor_copy (with run test)
+partialchecking python testcase constructor_copy_non_const (with run test)
 partialchecking python testcase constructor_exception
 partialchecking python testcase constructor_explicit
 partialchecking python testcase constructor_ignore
@@ -742,6 +784,7 @@ partialchecking python testcase conversion
 partialchecking python testcase conversion_namespace
 partialchecking python testcase conversion_ns_template
 partialchecking python testcase conversion_operators
+partialchecking python testcase copyctor (with run test)
 partialchecking python testcase cplusplus_throw
 partialchecking python testcase cpp_basic
 partialchecking python testcase cpp_enum (with run test)
@@ -807,6 +850,7 @@ partialchecking python testcase director_void
 partialchecking python testcase director_wombat
 partialchecking python testcase disown (with run test)
 partialchecking python testcase duplicate_class_name_in_ns
+partialchecking python testcase duplicate_parm_names
 partialchecking python testcase dynamic_cast (with run test)
 partialchecking python testcase empty (with run test)
 partialchecking python testcase enum_ignore
@@ -928,6 +972,7 @@ partialchecking python testcase nested_workaround (with run test)
 partialchecking python testcase newobject1
 partialchecking python testcase newobject3
 partialchecking python testcase null_pointer
+partialchecking python testcase numeric_bounds_checking
 partialchecking python testcase operator_overload (with run test)
 partialchecking python testcase operator_overload_break
 partialchecking python testcase operator_pointer_ref
@@ -950,6 +995,8 @@ partialchecking python testcase overload_template (with run test)
 partialchecking python testcase overload_template_fast (with run test)
 partialchecking python testcase pointer_reference (with run test)
 partialchecking python testcase preproc_constants
+partialchecking python testcase preproc_cpp (with run test)
+partialchecking python testcase preproc_predefined_stdcpp
 partialchecking python testcase primitive_ref (with run test)
 partialchecking python testcase private_assign
 partialchecking python testcase proxycode
@@ -1022,7 +1069,7 @@ partialchecking python testcase template_classes (with run test)
 partialchecking python testcase template_class_reuse_name (with run test)
 partialchecking python testcase template_const_ref
 partialchecking python testcase template_construct (with run test)
-partialchecking python testcase template_templated_constructors
+partialchecking python testcase template_templated_constructors (with run test)
 partialchecking python testcase template_default
 partialchecking python testcase template_default2
 partialchecking python testcase template_default_arg (with run test)
@@ -1040,10 +1087,12 @@ partialchecking python testcase template_enum
 partialchecking python testcase template_enum_ns_inherit
 partialchecking python testcase template_enum_typedef
 partialchecking python testcase template_explicit
+partialchecking python testcase template_expr
 partialchecking python testcase template_extend1 (with run test)
 partialchecking python testcase template_extend2 (with run test)
 partialchecking python testcase template_extend_overload
 partialchecking python testcase template_extend_overload_2
+partialchecking python testcase template_function_parm
 partialchecking python testcase template_forward
 partialchecking python testcase template_inherit (with run test)
 partialchecking python testcase template_inherit_abstract
@@ -1051,8 +1100,10 @@ partialchecking python testcase template_int_const
 partialchecking python testcase template_keyword_in_type
 partialchecking python testcase template_methods
 partialchecking python testcase template_namespace_forward_declaration
+partialchecking python testcase template_private_assignment
 partialchecking python testcase template_using_directive_and_declaration_forward
 partialchecking python testcase template_using_directive_typedef (with run test)
+partialchecking python testcase template_using_member_default_arg (with run test)
 partialchecking python testcase template_nested
 partialchecking python testcase template_nested_flat
 partialchecking python testcase template_nested_typemaps
@@ -1067,6 +1118,7 @@ partialchecking python testcase template_ns_scope
 partialchecking python testcase template_parameters_global_scope
 partialchecking python testcase template_partial_arg
 partialchecking python testcase template_partial_specialization
+partialchecking python testcase template_partial_specialization_more
 partialchecking python testcase template_partial_specialization_typedef
 partialchecking python testcase template_qualifier
 partialchecking python testcase template_ref_type (with run test)
@@ -1075,9 +1127,12 @@ partialchecking python testcase template_retvalue
 partialchecking python testcase template_specialization
 partialchecking python testcase template_specialization_defarg
 partialchecking python testcase template_specialization_enum
+partialchecking python testcase template_specialization_using_declaration
 partialchecking python testcase template_static (with run test)
 partialchecking python testcase template_tbase_template (with run test)
 partialchecking python testcase template_template_parameters (with run test)
+partialchecking python testcase template_template_template_parameters
+partialchecking python testcase template_type_collapse
 partialchecking python testcase template_typedef (with run test)
 partialchecking python testcase template_typedef_class_template
 partialchecking python testcase template_typedef_cplx (with run test)
@@ -1141,6 +1196,7 @@ partialchecking python testcase using_directive_and_declaration_forward
 partialchecking python testcase using_extend (with run test)
 partialchecking python testcase using_inherit (with run test)
 partialchecking python testcase using_member (with run test)
+partialchecking python testcase using_member_multiple_inherit (with run test)
 partialchecking python testcase using_member_scopes
 partialchecking python testcase using_namespace
 partialchecking python testcase using_namespace_loop
@@ -1211,19 +1267,25 @@ partialchecking python testcase cpp11_std_unordered_set
 partialchecking python testcase cpp11_alias_nested_template_scoping
 partialchecking python testcase cpp11_alignment
 partialchecking python testcase cpp11_alternate_function_syntax (with run test)
+partialchecking python testcase cpp11_assign_delete
+partialchecking python testcase cpp11_assign_rvalue_reference
 partialchecking python testcase cpp11_attribute_specifiers
+partialchecking python testcase cpp11_auto_variable
+partialchecking python testcase cpp11_brackets_expression
 partialchecking python testcase cpp11_constexpr
+partialchecking python testcase cpp11_copyctor_delete
 partialchecking python testcase cpp11_decltype (with run test)
 partialchecking python testcase cpp11_default_delete
 partialchecking python testcase cpp11_delegating_constructors
 partialchecking python testcase cpp11_director_enums
+partialchecking python testcase cpp11_director_using_constructor (with run test)
 partialchecking python testcase cpp11_directors
 partialchecking python testcase cpp11_explicit_conversion_operators
 partialchecking python testcase cpp11_final_class (with run test)
 partialchecking python testcase cpp11_final_directors (with run test)
 partialchecking python testcase cpp11_final_override
 partialchecking python testcase cpp11_function_objects (with run test)
-partialchecking python testcase cpp11_inheriting_constructors
+partialchecking python testcase cpp11_inheriting_constructors (with run test)
 partialchecking python testcase cpp11_initializer_list (with run test)
 partialchecking python testcase cpp11_initializer_list_extend (with run test)
 partialchecking python testcase cpp11_lambda_functions
@@ -1249,18 +1311,28 @@ partialchecking python testcase cpp11_strongly_typed_enumerations (with run test
 partialchecking python testcase cpp11_thread_local (with run test)
 partialchecking python testcase cpp11_template_double_brackets
 partialchecking python testcase cpp11_template_explicit (with run test)
+partialchecking python testcase cpp11_template_parameters_decltype
 partialchecking python testcase cpp11_template_typedefs (with run test)
 partialchecking python testcase cpp11_type_traits (with run test)
 partialchecking python testcase cpp11_type_aliasing (with run test)
 partialchecking python testcase cpp11_uniform_initialization (with run test)
 partialchecking python testcase cpp11_unrestricted_unions
 partialchecking python testcase cpp11_userdefined_literals
+partialchecking python testcase cpp11_using_constructor (with run test)
+partialchecking python testcase cpp11_using_typedef_struct
+partialchecking python testcase cpp11_variadic_function_templates (with run test)
+partialchecking python testcase cpp11_variadic_templates (with run test)
+partialchecking python testcase cpp14_auto_return_type (with run test)
 partialchecking python testcase cpp14_binary_integer_literals (with run test)
+partialchecking python testcase cpp17_std_filesystem (with run test)
+partialchecking python testcase cpp17_director_string_view (with run test)
 partialchecking python testcase cpp17_enable_if_t
 partialchecking python testcase cpp17_hex_floating_literals (with run test)
 partialchecking python testcase cpp17_nested_namespaces (with run test)
 partialchecking python testcase cpp17_nspace_nested_namespaces
+partialchecking python testcase cpp17_string_view (with run test)
 partialchecking python testcase cpp17_u8_char_literals (with run test)
+partialchecking python testcase cpp20_constexpr_destructor
 partialchecking python testcase cpp20_lambda_template
 partialchecking python testcase cpp20_spaceship_operator (with run test)
 partialchecking python testcase ccomplextest (with run test)
@@ -1299,7 +1371,7 @@ partialchecking python testcase lextype
 partialchecking python testcase li_carrays (with run test)
 partialchecking python testcase li_cdata (with run test)
 partialchecking python testcase li_cmalloc (with run test)
-partialchecking python testcase li_constraints
+partialchecking python testcase li_constraints (with run test)
 partialchecking python testcase li_cpointer (with run test)
 partialchecking python testcase li_math
 partialchecking python testcase long_long
@@ -1320,6 +1392,7 @@ partialchecking python testcase preproc_gcc_output (with run test)
 partialchecking python testcase preproc_include (with run test)
 partialchecking python testcase preproc_line_file
 partialchecking python testcase preproc_predefined
+partialchecking python testcase preproc_predefined_stdc
 partialchecking python testcase register_par
 partialchecking python testcase ret_by_value (with run test)
 partialchecking python testcase simple_array
@@ -1341,4 +1414,4 @@ partialchecking python testcase mod (with run test)
 partialchecking python testcase multi_import (with run test)
 partialchecking python testcase packageoption
 partialchecking python testcase template_typedef_import (with run test)
-706 python tests passed
+743 python tests passed
