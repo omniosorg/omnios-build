@@ -3112,7 +3112,7 @@ buildperl() {
     if [ -f Makefile.PL ]; then
         make_clean
         makefilepl $PERL_MAKEFILE_OPTS
-        make_prog
+        make_arch $BUILDARCH
         [ -n "$PERL_MAKE_TEST" ] && make_param test
         make_pure_install
     elif [ -f Build.PL ]; then
