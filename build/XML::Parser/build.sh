@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PKG=library/perl-5/xml-parser
 PROG=XML-Parser
-VER=2.46
+VER=2.47
 SUMMARY="XML::Parser perl module"
 DESC="A perl module for parsing XML documents"
 
