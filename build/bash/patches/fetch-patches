@@ -5,7 +5,7 @@ if [ ! -f series -o ! -f ../build.sh ]; then
 	exit 1
 fi
 
-VER=`grep '^VER=' ../build.sh | cut -d= -f2`
+VER=`grep '^VER=' ../build.sh | cut -d= -f2 | cut -d. -f1-2`
 
 rsync -avr --exclude=*.sig rsync://ftp.gnu.org/ftp/bash/bash-$VER-patches/ \
        ./bash-$VER-patches/
