@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=libidn
-VER=1.41
+VER=1.42
 PKG=library/libidn
 SUMMARY="The Internationalized Domains Library"
 DESC="IDN - The Internationalized Domains Library"

@@ -11,8 +11,8 @@
 | compress/xz				| 5.4.5			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
-| data/iso-codes			| 4.15.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3440200		| https://www.sqlite.org/download.html
+| data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
+| database/sqlite-3			| 3450000		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.16.5		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -44,10 +44,10 @@
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
 | library/libedit			| 20230828-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
-| library/libidn			| 1.41			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
+| library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
 | library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.12.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.12.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -87,7 +87,7 @@
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.2.21		| https://ftp.gnu.org/gnu/bash/
-| shell/bash5-patchlvl			| 021			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
+| shell/bash5-patchlvl			| 026			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.11			| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.8.5			| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.10		| https://github.com/tcsh-org/tcsh/tags

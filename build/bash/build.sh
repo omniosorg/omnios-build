@@ -28,6 +28,7 @@
 
 PROG=bash
 VER=5.2.21
+PATCHLVL=26
 PKG=shell/bash
 SUMMARY="GNU Bash"
 DESC="GNU Bourne-Again shell (bash)"
@@ -152,7 +153,7 @@ CONFIGURE_OPTS[amd64]+=" --enable-separate-helpfiles"
 download_source $PROG $PROG $VER
 patch_source
 build
-make_package
+VER="${VER%.*}.$PATCHLVL" make_package
 clean_up
 
 # Vim hints

@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=sqlite-autoconf
-VER=3440200
+VER=3450000
 PKG=database/sqlite-3
 SUMMARY="SQL database engine library"
 DESC="SQLite is a self-contained, high-reliability, embedded, full-featured, "
