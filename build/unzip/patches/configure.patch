@@ -1,0 +1,14 @@
+--- a/unix/configure~	2024-01-23 18:53:07.146124861 +0000
++++ a/unix/configure	2024-01-23 18:53:51.665682899 +0000
+@@ -588,9 +588,9 @@
+ # bzip2
+ 
+ echo "Check bzip2 support"
+-D_USE_BZ2=""
++D_USE_BZ2="-DUSE_BZIP2"
+ LIBBZ2=""
+-L_BZ2=""
++L_BZ2="-lbz2"
+ CC_BZ="${CC}"
+ 
+ if test -n "${IZ_BZIP2}" -a "${IZ_BZIP2}" != "bzip2" ; then
