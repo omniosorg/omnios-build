@@ -3,9 +3,10 @@ Subject: Fix lame code in fileio.c
 Bug-Debian: https://bugs.debian.org/929502
 X-Debian-version: 6.0-23
 
---- a/fileio.c
-+++ b/fileio.c
-@@ -2477,6 +2477,7 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/fileio.c a/fileio.c
+--- a~/fileio.c	1970-01-01 00:00:00
++++ a/fileio.c	1970-01-01 00:00:00
+@@ -2470,6 +2470,7 @@ zusz_t makeint64(sig)
       */
      return (((zusz_t)sig[7]) << 56)
          + (((zusz_t)sig[6]) << 48)

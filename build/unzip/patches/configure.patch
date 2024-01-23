@@ -1,6 +1,7 @@
---- a/unix/configure~	2024-01-23 18:53:07.146124861 +0000
-+++ a/unix/configure	2024-01-23 18:53:51.665682899 +0000
-@@ -588,9 +588,9 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/unix/configure a/unix/configure
+--- a~/unix/configure	1970-01-01 00:00:00
++++ a/unix/configure	1970-01-01 00:00:00
+@@ -588,9 +588,9 @@ rm -f a.out conftest.c conftest.o confte
  # bzip2
  
  echo "Check bzip2 support"

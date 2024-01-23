@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/unix/Makefile a/unix/Makefile
+diff -wpruN --no-dereference '--exclude=*.orig' a~/unix/Makefile a/unix/Makefile
 --- a~/unix/Makefile	1970-01-01 00:00:00
 +++ a/unix/Makefile	1970-01-01 00:00:00
 @@ -52,7 +52,7 @@ CF_NOOPT = -I. -I$(IZ_BZIP2) -DUNIX $(LO
@@ -19,7 +19,7 @@ diff -wpruN '--exclude=*.orig' a~/unix/Makefile a/unix/Makefile
  E =
  O = .o
  M = unix
-diff -wpruN '--exclude=*.orig' a~/unix/configure a/unix/configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/unix/configure a/unix/configure
 --- a~/unix/configure	1970-01-01 00:00:00
 +++ a/unix/configure	1970-01-01 00:00:00
 @@ -17,7 +17,7 @@ CFLAGSR=${CFLAGS}
