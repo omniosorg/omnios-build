@@ -6,7 +6,7 @@ than 16GB, e.g. due to process limits, scale this down. Even unused
 pages waste system resources and the default limit can stop the JVM
 from starting with ulimit -v 2G.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/share/vm/runtime/arguments.cpp a/hotspot/src/share/vm/runtime/arguments.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/share/vm/runtime/arguments.cpp a/hotspot/src/share/vm/runtime/arguments.cpp
 --- a~/hotspot/src/share/vm/runtime/arguments.cpp	1970-01-01 00:00:00
 +++ a/hotspot/src/share/vm/runtime/arguments.cpp	1970-01-01 00:00:00
 @@ -1887,6 +1887,12 @@ void Arguments::set_heap_size() {
