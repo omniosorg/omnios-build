@@ -988,11 +988,11 @@
 @@ -36,7 +36,6 @@
        LDFLAGS := $(LDFLAGS_JDKLIB) \
            $(call SET_SHARED_LIBRARY_ORIGIN), \
-       LIBS := -ljava, \
+       LIBS_unix := -ljava, \
 -      LIBS_solaris := -lsocket, \
        LIBS_linux := -ljvm, \
+       LIBS_windows := jvm.lib ws2_32.lib $(WIN_JAVA_LIB), \
    ))
- 
 --- old/make/modules/jdk.sctp/Lib.gmk	2020-05-20 17:59:26.921438651 -0700
 +++ new/make/modules/jdk.sctp/Lib.gmk	2020-05-20 17:59:26.541431354 -0700
 @@ -44,7 +44,6 @@
@@ -1488,10 +1488,10 @@
 -
 -#define CURRENT_PC ((MemTracker::tracking_level() == NMT_detail && NMT_stack_walkable) ? \
 +#define CURRENT_PC ((MemTracker::tracking_level() == NMT_detail) ? \
-                     NativeCallStack(0) : NativeCallStack::empty_stack())
+                     NativeCallStack(0) : FAKE_CALLSTACK)
 -#define CALLER_PC  ((MemTracker::tracking_level() == NMT_detail && NMT_stack_walkable) ?  \
 +#define CALLER_PC  ((MemTracker::tracking_level() == NMT_detail) ?  \
-                     NativeCallStack(1) : NativeCallStack::empty_stack())
+                     NativeCallStack(1) : FAKE_CALLSTACK)
  
  class MemBaseline;
 --- old/src/hotspot/share/utilities/debug.cpp	2020-05-20 18:00:41.782876045 -0700
