@@ -2,7 +2,7 @@ $NetBSD: patch-jdk_src_solaris_native_java_net_NetworkInterface.c,v 1.4 2017/11/
 
 Zones support.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/solaris/native/java/net/NetworkInterface.c a/jdk/src/solaris/native/java/net/NetworkInterface.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/solaris/native/java/net/NetworkInterface.c a/jdk/src/solaris/native/java/net/NetworkInterface.c
 --- a~/jdk/src/solaris/native/java/net/NetworkInterface.c	1970-01-01 00:00:00
 +++ a/jdk/src/solaris/native/java/net/NetworkInterface.c	1970-01-01 00:00:00
 @@ -39,6 +39,7 @@

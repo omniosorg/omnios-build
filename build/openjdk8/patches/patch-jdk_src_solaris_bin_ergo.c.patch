@@ -4,7 +4,7 @@ No _SC_PHYS_PAGES on NetBSD < 6.
 we could use the hw.physmem64 sysctl instead of returning 0,
 although I don't think this code is actually used.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/solaris/bin/ergo.c a/jdk/src/solaris/bin/ergo.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/solaris/bin/ergo.c a/jdk/src/solaris/bin/ergo.c
 --- a~/jdk/src/solaris/bin/ergo.c	1970-01-01 00:00:00
 +++ a/jdk/src/solaris/bin/ergo.c	1970-01-01 00:00:00
 @@ -100,7 +100,11 @@ ServerClassMachineImpl(void) {

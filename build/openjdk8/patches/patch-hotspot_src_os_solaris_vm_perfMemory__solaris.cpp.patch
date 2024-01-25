@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_src_os_solaris_vm_perfMemory__solaris.cpp,v 1.1 2015/07/0
 
 dirent->dd_fd is legacy, dirent->d_fd is POSIX, dirfd(dirent) is better.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp a/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp a/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp
 --- a~/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp	1970-01-01 00:00:00
 +++ a/hotspot/src/os/solaris/vm/perfMemory_solaris.cpp	1970-01-01 00:00:00
 @@ -334,7 +334,7 @@ static DIR *open_directory_secure(const

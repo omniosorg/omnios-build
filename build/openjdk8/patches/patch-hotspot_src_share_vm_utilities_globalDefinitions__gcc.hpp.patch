@@ -1,6 +1,6 @@
 $NetBSD: patch-hotspot_src_share_vm_utilities_globalDefinitions__gcc.hpp,v 1.4 2016/08/15 19:09:38 ryoon Exp $
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp a/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp a/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp
 --- a~/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp	1970-01-01 00:00:00
 +++ a/hotspot/src/share/vm/utilities/globalDefinitions_gcc.hpp	1970-01-01 00:00:00
 @@ -68,7 +68,7 @@

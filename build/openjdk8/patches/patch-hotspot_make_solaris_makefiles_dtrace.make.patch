@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_make_solaris_makefiles_dtrace.make,v 1.1 2015/07/03 20:40
 
 Enable DTrace support with GCC.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/dtrace.make a/hotspot/make/solaris/makefiles/dtrace.make
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/dtrace.make a/hotspot/make/solaris/makefiles/dtrace.make
 --- a~/hotspot/make/solaris/makefiles/dtrace.make	1970-01-01 00:00:00
 +++ a/hotspot/make/solaris/makefiles/dtrace.make	1970-01-01 00:00:00
 @@ -29,13 +29,6 @@
