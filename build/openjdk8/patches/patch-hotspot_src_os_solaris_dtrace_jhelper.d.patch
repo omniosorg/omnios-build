@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_src_os_solaris_dtrace_jhelper.d,v 1.1 2015/07/03 20:40:59
 
 GCC support.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/os/solaris/dtrace/jhelper.d a/hotspot/src/os/solaris/dtrace/jhelper.d
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/os/solaris/dtrace/jhelper.d a/hotspot/src/os/solaris/dtrace/jhelper.d
 --- a~/hotspot/src/os/solaris/dtrace/jhelper.d	1970-01-01 00:00:00
 +++ a/hotspot/src/os/solaris/dtrace/jhelper.d	1970-01-01 00:00:00
 @@ -43,12 +43,33 @@

@@ -2,7 +2,7 @@ $NetBSD: patch-jdk_test_java_beans_Introspector_4168475_Test4168475.java,v 1.1 2
 
 Test fixes.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/test/java/beans/Introspector/4168475/Test4168475.java a/jdk/test/java/beans/Introspector/4168475/Test4168475.java
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/test/java/beans/Introspector/4168475/Test4168475.java a/jdk/test/java/beans/Introspector/4168475/Test4168475.java
 --- a~/jdk/test/java/beans/Introspector/4168475/Test4168475.java	1970-01-01 00:00:00
 +++ a/jdk/test/java/beans/Introspector/4168475/Test4168475.java	1970-01-01 00:00:00
 @@ -41,6 +41,8 @@ public class Test4168475 {
