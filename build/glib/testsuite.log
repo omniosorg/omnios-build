@@ -113,7 +113,7 @@ glib:gio+cpp / cxx-17                                                  OK
 glib:gio+cpp / cxx-20                                                  OK
 glib:gio+cpp / cxx-2b                                                  OK
 glib:gio+cpp / cxx-98                                                  OK
-glib:gio+no-valgrind+gdbus-codegen+slow / codegen.py                   OK   34 subtests passed
+glib:gio+no-valgrind+gdbus-codegen+slow / codegen.py                   OK   37 subtests passed
 glib:gio+no-valgrind+pkg-config / gio-2.0-pkg-config                   OK
 glib:gio+no-valgrind+pkg-config / gio-unix-2.0-pkg-config              OK
 glib:gio+portal-support / portal-support-env-var                       OK   1 subtests passed
@@ -192,7 +192,7 @@ glib:glib+core / rec-mutex                                             OK   29 s
 glib:glib+core / refcount                                              OK   4 subtests passed
 glib:glib+core / refcount-macro                                        OK   4 subtests passed
 glib:glib+core / refstring                                             OK   5 subtests passed
-glib:glib+core / regex                                                 OK   847 subtests passed
+glib:glib+core / regex                                                 OK   848 subtests passed
 glib:glib+core / relation                                              OK   1 subtests passed
 glib:glib+core / rwlock                                                OK   8 subtests passed
 glib:glib+core / scannerapi                                            OK   4 subtests passed
@@ -349,8 +349,8 @@ glib:gio / converter-stream                                            ERROR   k
 glib:gio / g-file-info                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                        ERROR   killed by signal 5 SIGTRAP
-glib:gio / appinfo                                                     ERROR   killed by signal 5 SIGTRAP
 glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
+glib:gio / appinfo                                                     ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
 Ok:                 325 
