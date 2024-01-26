@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_src_share_vm_utilities_hashtable.cpp,v 1.1 2015/07/03 20:
 
 Delete obsolete (and now harmful) SunOS code.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/share/vm/utilities/hashtable.cpp a/hotspot/src/share/vm/utilities/hashtable.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/share/vm/utilities/hashtable.cpp a/hotspot/src/share/vm/utilities/hashtable.cpp
 --- a~/hotspot/src/share/vm/utilities/hashtable.cpp	1970-01-01 00:00:00
 +++ a/hotspot/src/share/vm/utilities/hashtable.cpp	1970-01-01 00:00:00
 @@ -391,7 +391,7 @@ template class RehashableHashtable<oopDe
