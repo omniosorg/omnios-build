@@ -1,4 +1,6 @@
+configure.patch
 unix_Makefile.patch
+nostrip.patch
 CVE-2014-8139-crc-overflow.patch
 CVE-2014-8140-test-compr-eb.patch
 CVE-2014-8141-getzip64data.patch
@@ -9,4 +11,11 @@ CVE-2015-7697-infinite-loop.patch
 integer-underflow-csiz_decrypted.patch
 CVE-2016-9844-zipinfo-buffer-overflow.patch
 CVE-2018-1000035-overflow-password-protect.patch
-nostrip.patch
+fileio-big-files.patch
+CVE-2019-13232a.patch
+CVE-2019-13232b.patch
+CVE-2019-13232c.patch
+CVE-2019-13232d.patch
+CVE-2019-13232e.patch
+CVE-2021-4217.patch
+CVE-2022-0529-0530.patch

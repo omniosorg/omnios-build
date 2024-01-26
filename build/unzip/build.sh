@@ -19,6 +19,7 @@
 
 PROG=unzip
 VER=6.0
+DASHREV=1
 PKG=compress/unzip
 SUMMARY="The Info-Zip (unzip) compression utility"
 DESC="$SUMMARY"
@@ -31,8 +32,10 @@ HARDLINK_TARGETS="
 "
 SKIP_LICENCES="*"
 
-# Copied from upstream's pkg makefile
-export LOCAL_UNZIP="-DUNICODE_SUPPORT -DNO_WORKING_ISPRINT -DUNICODE_WCHAR"
+CONFIGURE_OPTS="
+    -DWILD_STOP_AT_DIR
+"
+export LOCAL_UNZIP="${CONFIGURE_OPTS[0]//$'\n'/}"
 
 configure_amd64() {
     export i386
@@ -48,6 +51,7 @@ configure_aarch64() {
 }
 
 pre_install() {
+    ldd $PROG | $EGREP -s libbz2 || logerr "unzip was built without bzip2"
     save_variable MAKE_INSTALL_ARGS
     MAKE_INSTALL_ARGS+=" prefix=$DESTDIR$PREFIX"
 }
@@ -58,7 +62,7 @@ post_install() {
 
 
 BASE_MAKE_ARGS="-f unix/Makefile"
-MAKE_ARGS="$BASE_MAKE_ARGS generic IZ_BZIP2=bzip2"
+MAKE_ARGS="$BASE_MAKE_ARGS generic"
 MAKE_INSTALL_ARGS="$BASE_MAKE_ARGS install"
 
 init
