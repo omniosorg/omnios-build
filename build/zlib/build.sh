@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=zlib
-VER=1.3
+VER=1.3.1
 PKG=library/zlib
 SUMMARY="$PROG compression library"
 DESC="A patent-free compression library"
@@ -35,6 +35,10 @@ CONFIGURE_OPTS[i386]="--libdir=$PREFIX/lib"
 CONFIGURE_OPTS[amd64]="--libdir=$PREFIX/lib/amd64"
 CONFIGURE_OPTS[aarch64]="--libdir=$PREFIX/lib"
 LDFLAGS[i386]+=" -lssp_ns"
+
+TESTSUITE_SED="
+    s/version [0-9\.]* = 0x[0-9a-z]*/VERSION/g
+"
 
 pre_configure() {
     export cc=$CC
