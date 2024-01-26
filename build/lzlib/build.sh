@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=lzlib
 PKG=library/lzlib
-VER=1.13
+VER=1.14
 SUMMARY="Data compression library"
 DESC="$SUMMARY providing in-memory LZMA (de-)compression functions"
 

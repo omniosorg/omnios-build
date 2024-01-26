@@ -49,11 +49,11 @@
 | library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.12.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
-| library/lzlib				| 1.13			| https://download.savannah.gnu.org/releases/lzip/lzlib/
+| library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.58.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.96.1		| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nghttp2			| 1.59.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nss				| 3.97			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
@@ -65,7 +65,7 @@
 | library/security/openssl-3		| 3.1.4			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
-| library/zlib				| 1.3			| https://www.zlib.net/
+| library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20231205		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20231114		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.21		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
@@ -119,7 +119,7 @@
 | web/curl				| 8.5.0			| https://curl.haxx.se/download.html
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.78.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.78.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.41			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
