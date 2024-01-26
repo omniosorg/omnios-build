@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_src_os_solaris_vm_os__solaris.cpp,v 1.1 2015/07/03 20:40:
 
 Misc SunOS casts.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/src/os/solaris/vm/os_solaris.cpp a/hotspot/src/os/solaris/vm/os_solaris.cpp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/src/os/solaris/vm/os_solaris.cpp a/hotspot/src/os/solaris/vm/os_solaris.cpp
 --- a~/hotspot/src/os/solaris/vm/os_solaris.cpp	1970-01-01 00:00:00
 +++ a/hotspot/src/os/solaris/vm/os_solaris.cpp	1970-01-01 00:00:00
 @@ -478,7 +478,7 @@ static bool assign_distribution(processo

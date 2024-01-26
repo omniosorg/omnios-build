@@ -2,7 +2,7 @@ $NetBSD: patch-jdk_test_java_beans_Introspector_Test4144543.java,v 1.1 2015/02/0
 
 Test fixes.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/test/java/beans/Introspector/Test4144543.java a/jdk/test/java/beans/Introspector/Test4144543.java
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/test/java/beans/Introspector/Test4144543.java a/jdk/test/java/beans/Introspector/Test4144543.java
 --- a~/jdk/test/java/beans/Introspector/Test4144543.java	1970-01-01 00:00:00
 +++ a/jdk/test/java/beans/Introspector/Test4144543.java	1970-01-01 00:00:00
 @@ -34,7 +34,8 @@ import java.beans.PropertyDescriptor;

@@ -1,6 +1,6 @@
 $NetBSD: patch-jdk_src_solaris_native_java_net_net__util__md.c,v 1.2 2015/09/29 14:55:45 ryoon Exp $
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/solaris/native/java/net/net_util_md.c a/jdk/src/solaris/native/java/net/net_util_md.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/solaris/native/java/net/net_util_md.c a/jdk/src/solaris/native/java/net/net_util_md.c
 --- a~/jdk/src/solaris/native/java/net/net_util_md.c	1970-01-01 00:00:00
 +++ a/jdk/src/solaris/native/java/net/net_util_md.c	1970-01-01 00:00:00
 @@ -86,9 +86,9 @@ void setDefaultScopeID(JNIEnv *env, stru

@@ -1,8 +1,9 @@
 Local definition of wait() conflicts with wait(3C).
 
---- a/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp	Fri Oct  6 06:33:33 2023
-+++ b/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp	Thu Oct 19 09:25:58 2023
-@@ -70,7 +70,7 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp a/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp
+--- a~/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp	1970-01-01 00:00:00
++++ a/test/hotspot/jtreg/vmTestbase/nsk/jvmti/GetThreadState/thrstat001/thrstat001.cpp	1970-01-01 00:00:00
+@@ -70,7 +70,7 @@ unlock(const char* func_name, jrawMonito
  }
  
  static void
@@ -11,7 +12,7 @@ Local definition of wait() conflicts with wait(3C).
      jvmtiError err = jvmti->RawMonitorWait(lock, (jlong)millis);
      if (err != JVMTI_ERROR_NONE) {
          printf("%s: unexpected error in RawMonitorWait: %s (%d)\n",
-@@ -229,7 +229,7 @@
+@@ -229,7 +229,7 @@ Java_nsk_jvmti_GetThreadState_thrstat001
              break;
          }
          lock("checkStatus", wait_lock);
