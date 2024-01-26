@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_make_solaris_makefiles_mapfile-vers-COMPILER2.gcc,v 1.1 2
 
 GCC support.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc a/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc a/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc
 --- a~/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc	1970-01-01 00:00:00
 +++ a/hotspot/make/solaris/makefiles/mapfile-vers-COMPILER2.gcc	1970-01-01 00:00:00
 @@ -0,0 +1,49 @@

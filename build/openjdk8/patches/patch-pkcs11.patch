@@ -1,6 +1,6 @@
 $OpenIndiana: Fix https://www.illumos.org/issues/7227 - Franklin Ronald <franklin@wiselabs.com.br>$
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/share/classes/sun/security/jca/ProviderConfig.java a/jdk/src/share/classes/sun/security/jca/ProviderConfig.java
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/share/classes/sun/security/jca/ProviderConfig.java a/jdk/src/share/classes/sun/security/jca/ProviderConfig.java
 --- a~/jdk/src/share/classes/sun/security/jca/ProviderConfig.java	1970-01-01 00:00:00
 +++ a/jdk/src/share/classes/sun/security/jca/ProviderConfig.java	1970-01-01 00:00:00
 @@ -102,15 +102,14 @@ final class ProviderConfig {

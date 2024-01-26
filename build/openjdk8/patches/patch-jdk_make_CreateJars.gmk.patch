@@ -2,7 +2,7 @@ $NetBSD: patch-jdk_make_CreateJars.gmk,v 1.2 2015/02/20 09:38:00 tnn Exp $
 
 Ensure global tool arguments are used.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/make/CreateJars.gmk a/jdk/make/CreateJars.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/make/CreateJars.gmk a/jdk/make/CreateJars.gmk
 --- a~/jdk/make/CreateJars.gmk	1970-01-01 00:00:00
 +++ a/jdk/make/CreateJars.gmk	1970-01-01 00:00:00
 @@ -301,7 +301,7 @@ $(IMAGES_OUTPUTDIR)/lib$(PROFILE)/_the.r
