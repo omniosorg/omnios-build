@@ -1,0 +1,16 @@
+From: "Steven M. Schweda" <sms@antinode.info>
+Subject: Fix lame code in fileio.c
+Bug-Debian: https://bugs.debian.org/929502
+X-Debian-version: 6.0-23
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/fileio.c a/fileio.c
+--- a~/fileio.c	1970-01-01 00:00:00
++++ a/fileio.c	1970-01-01 00:00:00
+@@ -2470,6 +2470,7 @@ zusz_t makeint64(sig)
+      */
+     return (((zusz_t)sig[7]) << 56)
+         + (((zusz_t)sig[6]) << 48)
++        + (((zusz_t)sig[5]) << 40)
+         + (((zusz_t)sig[4]) << 32)
+         + (zusz_t)((((ulg)sig[3]) << 24)
+                  + (((ulg)sig[2]) << 16)
