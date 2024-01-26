@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/jdk/make/CompileLaunchers.gmk a/jdk/make/CompileLaunchers.gmk
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/make/CompileLaunchers.gmk a/jdk/make/CompileLaunchers.gmk
 --- a~/jdk/make/CompileLaunchers.gmk	1970-01-01 00:00:00
 +++ a/jdk/make/CompileLaunchers.gmk	1970-01-01 00:00:00
 @@ -163,7 +163,7 @@ define SetupLauncher
@@ -10,7 +10,7 @@ diff -wpruN '--exclude=*.orig' a~/jdk/make/CompileLaunchers.gmk a/jdk/make/Compi
        LDFLAGS := $(LDFLAGS_JDKEXE) \
            $(ORIGIN_ARG) \
            $$($1_LDFLAGS), \
-@@ -516,7 +516,7 @@ $(eval $(call SetupNativeCompilation,BUI
+@@ -523,7 +523,7 @@ $(eval $(call SetupNativeCompilation,BUI
          -DFULL, \
      CFLAGS_release := -DPRODUCT, \
      CFLAGS_linux := -fPIC, \
@@ -19,7 +19,7 @@ diff -wpruN '--exclude=*.orig' a~/jdk/make/CompileLaunchers.gmk a/jdk/make/Compi
      CFLAGS_macosx := -fPIC, \
      MAPFILE := $(UNPACK_MAPFILE),\
      LDFLAGS := $(UNPACKEXE_ZIPOBJS), \
-@@ -626,7 +626,7 @@ ifneq ($(BUILD_JEXEC_SRC), )
+@@ -633,7 +633,7 @@ ifneq ($(BUILD_JEXEC_SRC), )
        CFLAGS := $(CFLAGS_JDKEXE) \
            $(BUILD_JEXEC_INC), \
        CFLAGS_linux := -fPIC, \

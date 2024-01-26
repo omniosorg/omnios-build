@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_make_solaris_makefiles_gcc.make,v 1.2 2015/07/18 07:07:42
 
 GCC support.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/gcc.make a/hotspot/make/solaris/makefiles/gcc.make
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/gcc.make a/hotspot/make/solaris/makefiles/gcc.make
 --- a~/hotspot/make/solaris/makefiles/gcc.make	1970-01-01 00:00:00
 +++ a/hotspot/make/solaris/makefiles/gcc.make	1970-01-01 00:00:00
 @@ -70,11 +70,23 @@ VM_PICFLAG/LIBJVM = $(PICFLAG)

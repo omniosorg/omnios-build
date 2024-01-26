@@ -1,6 +1,6 @@
 $NetBSD: patch-at,v 1.1 2015/02/08 08:41:25 tnn Exp $
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/share/classes/sun/applet/AppletPanel.java a/jdk/src/share/classes/sun/applet/AppletPanel.java
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/share/classes/sun/applet/AppletPanel.java a/jdk/src/share/classes/sun/applet/AppletPanel.java
 --- a~/jdk/src/share/classes/sun/applet/AppletPanel.java	1970-01-01 00:00:00
 +++ a/jdk/src/share/classes/sun/applet/AppletPanel.java	1970-01-01 00:00:00
 @@ -61,7 +61,7 @@ abstract class AppletPanel extends Panel

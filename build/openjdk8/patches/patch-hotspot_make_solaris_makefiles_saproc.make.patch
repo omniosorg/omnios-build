@@ -1,7 +1,7 @@
 
 Use illumos libdemangle-sys.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/saproc.make a/hotspot/make/solaris/makefiles/saproc.make
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/saproc.make a/hotspot/make/solaris/makefiles/saproc.make
 --- a~/hotspot/make/solaris/makefiles/saproc.make	1970-01-01 00:00:00
 +++ a/hotspot/make/solaris/makefiles/saproc.make	1970-01-01 00:00:00
 @@ -107,7 +107,7 @@ $(LIBSAPROC): $(SASRCFILES) $(SADISOBJ)
