@@ -1,5 +1,16 @@
-# Build System for OmniOS
+# Helios fork of [omnios-build](https://github.com/omniosorg/omnios-build) (Build System for OmniOS)
 
-These scripts and tools are used to build new versions of OmniOS.
+This repository contains build scripts derived from OmniOS.  Packages for
+Helios 3 are based on upstream OmniOS r151054 LTS at this time, with local
+Helios-specific changes as required.
 
-Please see [the build instructions](https://omnios.org/dev/build_instructions.html) for details on how to use these tools.
+See also: [`README.upstream.md`](./README.upstream.md).
+
+## Licence
+
+Unless otherwise noted, local changes are supplied under the terms of the
+[Common Development and Distribution License ("CDDL"), version 1.0](./LICENSE)
+for compatibility with the upstream OmniOS project.  You may only use these
+files in accordance with the terms of version 1.0 of the CDDL.
+
+Copyright 2025 Oxide Computer Company
