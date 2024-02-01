@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038en (2024-02-01)
+Weekly release for w/c 29th of January 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* The `openssl` 1.0 and 1.1 packages have been updated with backported security
+  fixes.
+
+* `unzip` has been updated with a number of security fixes.
+
+* OpenJDK packages have been updated to 1.8.402-06, 11.0.22+7 and 17.0.10+7.
+
+### Other Changes
+
+* `unzip` now supports newer compression versions by virtue of being linked
+  to libbz2.
+
+<br>
+
+---
+
 ## r151038ej (2024-01-08)
 Weekly release for w/c 1st of January 2024.
 > This update requires a reboot
