@@ -4,6 +4,33 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048m (2024-02-02)
+Weekly release for w/c 29th of January 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `openssl` has been updated to version 3.1.5. Security fixes have been
+  back-ported to the legacy 1.1 and 1.0 openssl packages.
+
+* `unzip` has been updated with a number of security fixes.
+
+* OpenJDK packages have been updated to 1.8.402-06, 11.0.22+7 and 17.0.10+7.
+
+### Other Changes
+
+* `unzip` now supports newer compression versions by virtue of being linked
+  to libbz2.
+
+* The virtio-scsi driver is now included in installation media and images to
+  support installation in virtual environments with virtio-scsi boot disks.
+
+* The `zlib` package has been updated to version 1.3.1.
+
+<br>
+
+---
+
 ## r151048i (2024-01-08)
 Weekly release for w/c 1st of January 2024.
 > This update requires a reboot
