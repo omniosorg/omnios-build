@@ -119,6 +119,7 @@ driver/storage/ses					S
 driver/storage/si3124					S
 driver/storage/smp					S
 driver/storage/vioblk					S
+driver/storage/vioscsi					S
 driver/usb/ugen						S
 driver/xvm/pv						S
 editor/vim						O
