@@ -122,6 +122,7 @@ driver/storage/smartpqi					S
 driver/storage/smp					S
 driver/storage/smrt					S
 driver/storage/vioblk					S
+driver/storage/vioscsi					S
 driver/usb/ugen						S
 driver/xvm/pv						S
 editor/vim						O
