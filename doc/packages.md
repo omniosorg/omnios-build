@@ -120,7 +120,7 @@
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.78.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
-| developer/gnu-binutils		| 2.41			| https://ftp.gnu.org/gnu/binutils
+| developer/gnu-binutils		| 2.42			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.2.0			| http://www.swig.org/download.html
