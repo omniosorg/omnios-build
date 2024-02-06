@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=curl
-VER=8.5.0
+VER=8.6.0
 PKG=web/curl
 SUMMARY="Command line tool for transferring data with URL syntax"
 DESC="Curl is a command line tool for transferring data with URL syntax, "
@@ -31,6 +31,8 @@ CONFIGURE_OPTS="
     --with-ca-bundle=/etc/ssl/cacert.pem
     --with-ca-path=/etc/ssl/certs
     --with-openssl
+    --disable-manual
+    --without-libpsl
 "
 
 # Build backwards so that the 32-bit version is available for the test-suite.
