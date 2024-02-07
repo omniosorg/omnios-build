@@ -13,13 +13,13 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/arch.sh
 . ../../lib/build.sh
 
 PROG=binutils
-VER=2.41
+VER=2.42
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "

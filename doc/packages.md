@@ -5,14 +5,14 @@
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.9.4			| https://github.com/lz4/lz4/releases
-| compress/lzip				| 1.23			| https://download.savannah.gnu.org/releases/lzip/
+| compress/lzip				| 1.24			| https://download.savannah.gnu.org/releases/lzip/
 | compress/p7zip			| 16.02			| https://sourceforge.net/projects/p7zip/files/p7zip
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.4.5			| https://tukaani.org/xz/
+| compress/xz				| 5.4.6			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3450000		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3450100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.16.5		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -35,7 +35,7 @@
 | file/gnu-coreutils			| 9.4			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.9.0			| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.5.0			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.6.0			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
@@ -47,7 +47,7 @@
 | library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.4			| https://sourceware.org/libffi/
 | library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.12.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.12.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -61,7 +61,6 @@
 | library/readline6-patchlvl		| 008			| https://ftp.gnu.org/gnu/readline/readline-6.3-patches/
 | library/readline7-patchlvl		| 005			| https://ftp.gnu.org/gnu/readline/readline-7.0-patches/
 | library/readline8-patchlvl		| 002			| https://ftp.gnu.org/gnu/readline/readline-8.1-patches/
-| library/security/openssl-11		| 1.1.1w		| https://www.openssl.org/source/
 | library/security/openssl-3		| 3.1.5			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
@@ -116,11 +115,11 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 643			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.5.0			| https://curl.haxx.se/download.html
+| web/curl				| 8.6.0			| https://curl.haxx.se/download.html
 | web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.78.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
-| developer/gnu-binutils		| 2.41			| https://ftp.gnu.org/gnu/binutils
+| developer/gnu-binutils		| 2.42			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.2.0			| http://www.swig.org/download.html
