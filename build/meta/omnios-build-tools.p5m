@@ -53,6 +53,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-3 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/zlib type=require
 depend fmri=pkg://$(PKGPUBLISHER)/network/rsync type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk17 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk21 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-311 type=require
