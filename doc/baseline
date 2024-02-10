@@ -93,6 +93,7 @@ omnios driver/cpu/sensor
 omnios driver/crypto/dca
 omnios driver/crypto/dprov
 omnios driver/crypto/tpm
+omnios driver/crypto/viorand
 omnios driver/developer/amd/zen
 omnios driver/firewire
 omnios driver/graphics/agpgart
