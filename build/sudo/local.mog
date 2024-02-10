@@ -9,7 +9,7 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 
 <transform path=var/db -> drop>
@@ -17,6 +17,8 @@
 <transform file dir path=etc/sudoers -> set group root>
 <transform file path=etc/sudoers$ -> set preserve renamenew>
 <transform file path=etc/sudo.conf -> set preserve renamenew>
+<transform file path=etc/sudoers -> set mode 0440>
+<transform dir path=etc/sudoers.d -> set mode 0750>
 
 <transform file path=usr/bin/sudo$ -> set mode 4511>
 <transform file path=usr/bin/sudoreplay$ -> set mode 0511>
