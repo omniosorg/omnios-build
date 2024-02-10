@@ -16,22 +16,14 @@
 
 . ../../../lib/build.sh
 
-PKG=library/python-3/setuptools-312
-PROG=setuptools
-inherit_ver python311/setuptools
-SUMMARY="Python package management"
-DESC="Easily download, build, install, upgrade, and uninstall Python packages"
+PKG=library/python-3/semantic-version-312
+PROG=semantic_version
+inherit_ver python311/semantic-version
+SUMMARY="A library implementing the 'SemVer' scheme."
+DESC="This small python library provides a few tools to handle SemVer in "
+DESC+="Python. It follows strictly the 2.0.0 version of the SemVer scheme."
 
 . $SRCDIR/../common.sh
-
-if [ "$FLAVOR" = bootstrap ]; then
-    # When bootstrapping a new python version, we need to break the cyclic
-    # dependency between setuptools and pip. Build without pip and do not add
-    # the dependency.
-    PYTHON_BUILD_BACKEND=setuppy
-else
-    RUN_DEPENDS_IPS+=" library/python-$PYMVER/pip-$SPYVER"
-fi
 
 init
 download_source pymodules/$PROG $PROG $VER

@@ -1,0 +1,73 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/OpenSSL/crypto.py
+--- a~/src/OpenSSL/crypto.py	1970-01-01 00:00:00
++++ a/src/OpenSSL/crypto.py	1970-01-01 00:00:00
+@@ -950,7 +950,6 @@ utils.deprecated(
+         "APIs in cryptography."
+     ),
+     DeprecationWarning,
+-    name="X509Extension",
+ )
+ 
+ 
+@@ -2397,7 +2396,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="Revoked",
+ )
+ 
+ 
+@@ -2642,7 +2640,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="CRL",
+ )
+ 
+ 
+@@ -2841,7 +2838,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="PKCS12",
+ )
+ 
+ 
+@@ -2940,7 +2936,6 @@ utils.deprecated(
+     __name__,
+     "NetscapeSPKI support in pyOpenSSL is deprecated.",
+     DeprecationWarning,
+-    name="NetscapeSPKI",
+ )
+ 
+ 
+@@ -3193,7 +3188,6 @@ utils.deprecated(
+     __name__,
+     "sign() is deprecated. Use the equivilant APIs in cryptography.",
+     DeprecationWarning,
+-    name="sign",
+ )
+ 
+ 
+@@ -3240,7 +3234,6 @@ utils.deprecated(
+     __name__,
+     "verify() is deprecated. Use the equivilant APIs in cryptography.",
+     DeprecationWarning,
+-    name="verify",
+ )
+ 
+ 
+@@ -3282,7 +3275,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="dump_crl",
+ )
+ 
+ 
+@@ -3325,5 +3317,4 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="load_crl",
+ )

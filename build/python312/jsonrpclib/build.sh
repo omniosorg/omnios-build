@@ -16,29 +16,20 @@
 
 . ../../../lib/build.sh
 
-PKG=library/python-3/setuptools-312
-PROG=setuptools
-inherit_ver python311/setuptools
-SUMMARY="Python package management"
-DESC="Easily download, build, install, upgrade, and uninstall Python packages"
+PKG=library/python-3/jsonrpclib-312
+PROG=jsonrpclib
+inherit_ver python311/jsonrpclib
+SUMMARY="A Python JSON-RPC over HTTP that mirrors xmlrpclib syntax"
+DESC="$SUMMARY"
 
 . $SRCDIR/../common.sh
 
-if [ "$FLAVOR" = bootstrap ]; then
-    # When bootstrapping a new python version, we need to break the cyclic
-    # dependency between setuptools and pip. Build without pip and do not add
-    # the dependency.
-    PYTHON_BUILD_BACKEND=setuppy
-else
-    RUN_DEPENDS_IPS+=" library/python-$PYMVER/pip-$SPYVER"
-fi
-
 init
-download_source pymodules/$PROG $PROG $VER
+download_source pymodules/$PROG v$VER
 patch_source
 prep_build
 python_build
-make_package $SRCDIR/../common.mog
+make_package
 clean_up
 
 # Vim hints

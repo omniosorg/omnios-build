@@ -16,29 +16,22 @@
 
 . ../../../lib/build.sh
 
-PKG=library/python-3/setuptools-312
-PROG=setuptools
-inherit_ver python311/setuptools
-SUMMARY="Python package management"
-DESC="Easily download, build, install, upgrade, and uninstall Python packages"
+PKG=library/python-3/asn1crypto-312
+PROG=asn1crypto
+inherit_ver python311/asn1crypto
+SUMMARY="asn1crypto - Fast ASN.1 parser..."
+DESC="$SUMMARY"
 
 . $SRCDIR/../common.sh
 
-if [ "$FLAVOR" = bootstrap ]; then
-    # When bootstrapping a new python version, we need to break the cyclic
-    # dependency between setuptools and pip. Build without pip and do not add
-    # the dependency.
-    PYTHON_BUILD_BACKEND=setuppy
-else
-    RUN_DEPENDS_IPS+=" library/python-$PYMVER/pip-$SPYVER"
-fi
+BUILD_DEPENDS_IPS+="library/python-$PYMVER/setuptools-$SPYVER"
 
 init
 download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
-make_package $SRCDIR/../common.mog
+make_package
 clean_up
 
 # Vim hints

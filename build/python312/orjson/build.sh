@@ -13,32 +13,38 @@
 # }}}
 #
 # Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
-
+#
 . ../../../lib/build.sh
 
-PKG=library/python-3/setuptools-312
-PROG=setuptools
-inherit_ver python311/setuptools
-SUMMARY="Python package management"
-DESC="Easily download, build, install, upgrade, and uninstall Python packages"
+PKG=library/python-3/orjson-312
+PROG=orjson
+inherit_ver python311/orjson
+SUMMARY="orjson"
+DESC="A fast, correct JSON library for Python."
 
 . $SRCDIR/../common.sh
 
-if [ "$FLAVOR" = bootstrap ]; then
-    # When bootstrapping a new python version, we need to break the cyclic
-    # dependency between setuptools and pip. Build without pip and do not add
-    # the dependency.
-    PYTHON_BUILD_BACKEND=setuppy
-else
-    RUN_DEPENDS_IPS+=" library/python-$PYMVER/pip-$SPYVER"
-fi
+PATH+=:$OOCEBIN
+
+install() {
+    logmsg "Installing"
+    pushd $TMPDIR/$BUILDDIR >/dev/null
+
+    logcmd mkdir -p $DESTDIR/$PYTHONVENDOR || logerr "mkdir"
+    logcmd cp target/release/lib$PROG.so \
+        $DESTDIR/$PYTHONVENDOR/$PROG.cpython-$PYTHONPKGVER.so \
+        || logerr "cp failed"
+
+    popd >/dev/null
+}
 
 init
-download_source pymodules/$PROG $PROG $VER
+download_source pymodules/$PROG $VER
 patch_source
 prep_build
-python_build
-make_package $SRCDIR/../common.mog
+build_rust
+install
+make_package
 clean_up
 
 # Vim hints
