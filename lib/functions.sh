@@ -751,7 +751,7 @@ init_repo() {
 
     if [[ "$repo" == file:/* ]]; then
         typeset rpath="`echo $repo | $SED 's^file:/*^/^'`"
-        if [ ! -d "$rpath" ]; then
+        if [ ! -f "$rpath/pkg5.repository" ]; then
             logmsg "-- Initialising local repo at $rpath"
             $PKGREPO create $rpath || logerr "Could not create local repo"
             $PKGREPO add-publisher -s $rpath $PKGPUBLISHER || \
