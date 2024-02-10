@@ -32,5 +32,5 @@ depend fmri=system/library/mozilla-nss type=require
 depend fmri=system/header type=require
 depend fmri=system/management/snmp/net-snmp type=require
 depend fmri=text/gnu-gettext type=require
-depend fmri=runtime/python-27 type=require
 depend fmri=runtime/python-311 type=require
+depend fmri=runtime/python-312 type=require
