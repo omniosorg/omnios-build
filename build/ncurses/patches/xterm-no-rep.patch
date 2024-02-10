@@ -7,7 +7,7 @@ the xterm terminal definition in OmniOS.
 
 See also http://invisible-island.net/ncurses/ncurses.faq.html#xterm_generic
 
-diff -wpruN '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
+diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
 @@ -4985,14 +4985,14 @@ xterm-xfree86|xterm terminal emulator (X

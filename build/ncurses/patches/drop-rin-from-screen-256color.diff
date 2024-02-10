@@ -7,7 +7,7 @@ Description: Remove "rin" from screen-256color
 Bug-Debian: https://bugs.debian.org/933572
 Last-Update: 2019-08-07
 
-diff -wpruN '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
+diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
 @@ -8245,6 +8245,7 @@ screen-16color-bce-s|GNU Screen with 16
