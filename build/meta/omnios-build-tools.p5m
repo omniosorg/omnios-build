@@ -56,6 +56,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk17 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-311 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/service/network/tftp type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/header/header-audio type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library type=require
