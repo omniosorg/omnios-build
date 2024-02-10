@@ -1733,8 +1733,26 @@ generate_manifest() {
             GENERATE_ARGS+="--target $f "
         done
     fi
-    logcmd -p $PKGSEND generate $GENERATE_ARGS $DESTDIR > $outf \
-        || logerr "------ Failed to generate manifest"
+    # `pkgsend generate` will produce a manifest based on the files it
+    # finds under $DESTDIR. It will set the ownership and group in generated
+    # lines to root:bin, but will copy the mode attribute from the file it
+    # finds. The modes of files in this directory do generally accurately
+    # reflect executability, but other bits may be set depending on how the
+    # temporary directory is set up. For example, in a shared build workspace
+    # there could be extended ACLs to maintain writeability by the owning
+    # group, or the sticky group attribute may be set on directories.
+    # Rather than implicitly trusting the mode that is found, we normalise it
+    # to something more generic.
+    logcmd -p $PKGSEND generate $GENERATE_ARGS $DESTDIR | sed  -E '
+        # Strip off any special attributes such as setuid or sticky group
+        s/\<mode=0[[:digit:]]+([[:digit:]]{3})\>/mode=0\1/
+        # Reduce group/other permissions
+        s/\<mode=0([75])[[:digit:]]{2}\>/mode=0\155/
+        s/\<mode=0([64])[[:digit:]]{2}\>/mode=0\144/
+        # Convert unexpected modes to something reasonable
+        s/\<mode=02[[:digit:]]{2}\>/mode=0644/
+        s/\<mode=0[13][[:digit:]]{2}\>/mode=0755/
+    ' > $outf || logerr "------ Failed to generate manifest"
 }
 
 convert_version() {
