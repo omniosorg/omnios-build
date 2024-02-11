@@ -33,6 +33,7 @@ driver/cpu/mc						S
 driver/cpu/sensor					S
 driver/crypto/dca					S
 driver/crypto/tpm					S
+driver/crypto/viorand					S
 driver/firewire						S
 driver/graphics/atiatom					S
 driver/graphics/drm					S
