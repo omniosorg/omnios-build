@@ -8,7 +8,7 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 #
-# Copyright 2017 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 user username=dma uid=26 group=mail gcos-field="DragonFly Mail Agent" \
     home-dir=/ password=NP
@@ -16,6 +16,7 @@ user username=dma uid=26 group=mail gcos-field="DragonFly Mail Agent" \
 <transform dir path=var/mail$ -> drop>
 <transform file path=etc/dma/ -> set preserve renamenew>
 <transform file dir path=etc/dma -> set group mail>
+<transform file path=etc/dma/auth.conf -> set mode 0640>
 <transform file path=usr/lib/smtp/dma -> set group mail>
 <transform file path=usr/lib/smtp/dma/dma -> set mode 2755>
 <transform file path=usr/lib/smtp/dma/dma-mbox-create -> set mode 4754>
