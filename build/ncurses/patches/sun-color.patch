@@ -5,7 +5,7 @@ to sun-color, and upped the number of supported colours to 256.
 See: https://www.illumos.org/issues/10359
      https://www.illumos.org/issues/10360
 
-diff -wpruN '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
+diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
 @@ -8848,9 +8848,9 @@ sun-type4|Sun Workstation console with t

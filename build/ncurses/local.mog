@@ -8,7 +8,7 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=MIT
 
@@ -21,4 +21,7 @@ license COPYING license=MIT
 
 # Drop the legacy ABI config binaries
 <transform path=.*ncurses5-config -> drop>
+
+# Drop static libraries
+<transform file path=.*\.a$ -> drop>
 

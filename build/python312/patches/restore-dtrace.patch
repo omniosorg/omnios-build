@@ -1,0 +1,253 @@
+See https://github.com/python/cpython/issues/98894
+
+Author: Bill Sommerfeld <sommerfeld@hamachi.org>
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_dtrace.py a/Lib/test/test_dtrace.py
+--- a~/Lib/test/test_dtrace.py	1970-01-01 00:00:00
++++ a/Lib/test/test_dtrace.py	1970-01-01 00:00:00
+@@ -126,7 +126,7 @@ class TraceTests:
+     def test_verify_call_opcodes(self):
+         """Ensure our call stack test hits all function call opcodes"""
+ 
+-        opcodes = set(["CALL_FUNCTION", "CALL_FUNCTION_EX", "CALL_FUNCTION_KW"])
++        opcodes = set(["CALL", "CALL_FUNCTION_EX"])
+ 
+         with open(abspath("call_stack.py")) as f:
+             code_string = f.read()
+@@ -183,6 +183,8 @@ class CheckDtraceProbes(unittest.TestCas
+                 print(f"readelf version: {readelf_major_version}.{readelf_minor_version}")
+         else:
+             raise unittest.SkipTest("CPython must be configured with the --with-dtrace option.")
++        # These checks are only relevant with the SystemTap backend
++        SystemTapBackend().assert_usable()
+ 
+ 
+     @staticmethod
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/bytecodes.c a/Python/bytecodes.c
+--- a~/Python/bytecodes.c	1970-01-01 00:00:00
++++ a/Python/bytecodes.c	1970-01-01 00:00:00
+@@ -643,6 +643,7 @@ dummy_func(
+             STACK_SHRINK(1);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -662,6 +663,7 @@ dummy_func(
+             STACK_SHRINK(1);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -678,6 +680,7 @@ dummy_func(
+             Py_INCREF(retval);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -698,6 +701,7 @@ dummy_func(
+             Py_INCREF(retval);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -894,6 +898,7 @@ dummy_func(
+             PyGenObject *gen = _PyFrame_GetGenerator(frame);
+             gen->gi_frame_state = FRAME_SUSPENDED;
+             _PyFrame_SetStackPointer(frame, stack_pointer - 1);
++	    DTRACE_FUNCTION_EXIT();
+             int err = _Py_call_instrumentation_arg(
+                     tstate, PY_MONITORING_EVENT_PY_YIELD,
+                     frame, next_instr-1, retval);
+@@ -916,6 +921,7 @@ dummy_func(
+             PyGenObject *gen = _PyFrame_GetGenerator(frame);
+             gen->gi_frame_state = FRAME_SUSPENDED;
+             _PyFrame_SetStackPointer(frame, stack_pointer - 1);
++	    DTRACE_FUNCTION_EXIT();
+             tstate->exc_info = gen->gi_exc_state.previous_item;
+             gen->gi_exc_state.previous_item = NULL;
+             _Py_LeaveRecursiveCallPy(tstate);
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval.c a/Python/ceval.c
+--- a~/Python/ceval.c	1970-01-01 00:00:00
++++ a/Python/ceval.c	1970-01-01 00:00:00
+@@ -182,6 +182,12 @@ lltrace_resume_frame(_PyInterpreterFrame
+ }
+ #endif
+ 
++#if 0
++static void maybe_dtrace_line(_PyInterpreterFrame *, PyTraceInfo *, int);
++#endif
++static void dtrace_function_entry(_PyInterpreterFrame *);
++static void dtrace_function_return(_PyInterpreterFrame *);
++
+ static void monitor_raise(PyThreadState *tstate,
+                  _PyInterpreterFrame *frame,
+                  _Py_CODEUNIT *instr);
+@@ -716,6 +722,7 @@ _PyEval_EvalFrameDefault(PyThreadState *
+         if (_Py_EnterRecursivePy(tstate)) {
+             goto exit_unwind;
+         }
++	DTRACE_FUNCTION_ENTRY();
+         /* Because this avoids the RESUME,
+          * we need to update instrumentation */
+         _Py_Instrument(frame->f_code, tstate->interp);
+@@ -742,6 +749,7 @@ start_frame:
+         goto exit_unwind;
+     }
+ 
++    DTRACE_FUNCTION_ENTRY();
+ resume_frame:
+     SET_LOCALS_FROM_FRAME();
+ 
+@@ -957,6 +965,7 @@ exception_unwind:
+                 }
+                 assert(STACK_LEVEL() == 0);
+                 _PyFrame_SetStackPointer(frame, stack_pointer);
++		DTRACE_FUNCTION_EXIT();
+                 monitor_unwind(tstate, frame, next_instr-1);
+                 goto exit_unwind;
+             }
+@@ -2781,6 +2790,70 @@ PyUnstable_Eval_RequestCodeExtraIndex(fr
+     return new_index;
+ }
+ 
++static void
++dtrace_function_entry(_PyInterpreterFrame *frame)
++{
++    const char *filename;
++    const char *funcname;
++    int lineno;
++
++    PyCodeObject *code = frame->f_code;
++    filename = PyUnicode_AsUTF8(code->co_filename);
++    funcname = PyUnicode_AsUTF8(code->co_name);
++    lineno = PyUnstable_InterpreterFrame_GetLine(frame),
++
++    PyDTrace_FUNCTION_ENTRY(filename, funcname, lineno);
++}
++
++static void
++dtrace_function_return(_PyInterpreterFrame *frame)
++{
++    const char *filename;
++    const char *funcname;
++    int lineno;
++
++    PyCodeObject *code = frame->f_code;
++    filename = PyUnicode_AsUTF8(code->co_filename);
++    funcname = PyUnicode_AsUTF8(code->co_name);
++    lineno = PyUnstable_InterpreterFrame_GetLine(frame),
++
++    PyDTrace_FUNCTION_RETURN(filename, funcname, lineno);
++}
++#if 0
++/* DTrace equivalent of maybe_call_line_trace. */
++static void
++maybe_dtrace_line(_PyInterpreterFrame *frame,
++                  PyTraceInfo *trace_info,
++                  int instr_prev)
++{
++    const char *co_filename, *co_name;
++
++    /* If the last instruction executed isn't in the current
++       instruction window, reset the window.
++    */
++    initialize_trace_info(trace_info, frame);
++    int lastline = _PyCode_CheckLineNumber(instr_prev*sizeof(_Py_CODEUNIT), &trace_info->bounds);
++    int addr = _PyInterpreterFrame_LASTI(frame) * sizeof(_Py_CODEUNIT);
++    int line = _PyCode_CheckLineNumber(addr, &trace_info->bounds);
++    if (line != -1) {
++        /* Trace backward edges or first instruction of a new line */
++        if (_PyInterpreterFrame_LASTI(frame) < instr_prev ||
++            (line != lastline && addr == trace_info->bounds.ar_start))
++        {
++            co_filename = PyUnicode_AsUTF8(frame->f_code->co_filename);
++            if (!co_filename) {
++                co_filename = "?";
++            }
++            co_name = PyUnicode_AsUTF8(frame->f_code->co_name);
++            if (!co_name) {
++                co_name = "?";
++            }
++            PyDTrace_LINE(co_filename, co_name, line);
++        }
++    }
++}
++#endif
++
+ /* Implement Py_EnterRecursiveCall() and Py_LeaveRecursiveCall() as functions
+    for the limited API. */
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval_macros.h a/Python/ceval_macros.h
+--- a~/Python/ceval_macros.h	1970-01-01 00:00:00
++++ a/Python/ceval_macros.h	1970-01-01 00:00:00
+@@ -281,6 +281,11 @@ GETITEM(PyObject *v, Py_ssize_t i) {
+ #define BUILTINS() frame->f_builtins
+ #define LOCALS() frame->f_locals
+ 
++#define DTRACE_FUNCTION_EXIT() \
++    if (PyDTrace_FUNCTION_RETURN_ENABLED()) { \
++        dtrace_function_return(frame); \
++    }
++
+ #define DTRACE_FUNCTION_ENTRY()  \
+     if (PyDTrace_FUNCTION_ENTRY_ENABLED()) { \
+         dtrace_function_entry(frame); \
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/Python/generated_cases.c.h
+--- a~/Python/generated_cases.c.h	1970-01-01 00:00:00
++++ a/Python/generated_cases.c.h	1970-01-01 00:00:00
+@@ -933,6 +933,7 @@
+             STACK_SHRINK(1);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -955,6 +956,7 @@
+             STACK_SHRINK(1);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -973,6 +975,7 @@
+             Py_INCREF(retval);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -995,6 +998,7 @@
+             Py_INCREF(retval);
+             assert(EMPTY());
+             _PyFrame_SetStackPointer(frame, stack_pointer);
++	    DTRACE_FUNCTION_EXIT();
+             _Py_LeaveRecursiveCallPy(tstate);
+             assert(frame != &entry_frame);
+             // GH-99729: We need to unlink the frame *before* clearing it:
+@@ -1229,6 +1233,7 @@
+             PyGenObject *gen = _PyFrame_GetGenerator(frame);
+             gen->gi_frame_state = FRAME_SUSPENDED;
+             _PyFrame_SetStackPointer(frame, stack_pointer - 1);
++	    DTRACE_FUNCTION_EXIT();
+             int err = _Py_call_instrumentation_arg(
+                     tstate, PY_MONITORING_EVENT_PY_YIELD,
+                     frame, next_instr-1, retval);
+@@ -1254,6 +1259,7 @@
+             PyGenObject *gen = _PyFrame_GetGenerator(frame);
+             gen->gi_frame_state = FRAME_SUSPENDED;
+             _PyFrame_SetStackPointer(frame, stack_pointer - 1);
++	    DTRACE_FUNCTION_EXIT();
+             tstate->exc_info = gen->gi_exc_state.previous_item;
+             gen->gi_exc_state.previous_item = NULL;
+             _Py_LeaveRecursiveCallPy(tstate);

@@ -31,6 +31,10 @@ if ((UID == 0)); then
     else
         logerr "--- You should not run this as root"
     fi
+else
+    # Ensure that this process does not have any special privileges, such as
+    # permission to use dtrace.
+    ppriv -s EIP=basic $$
 fi
 
 set_coredir $TMPDIR
