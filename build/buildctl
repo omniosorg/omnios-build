@@ -494,30 +494,28 @@ clear_slots() {
 
 nextslot=
 wait_for_slot() {
-    # Check for any idle slots
-    for i in `seq 0 $threads`; do
-        [ -z "${slots[$i]}" ] && nextslot=$i && return
-    done
-
-    typeset slot=
     typeset -i stat=0
+    typeset slot=
+    typeset pid=
 
     # Wait for a slot to terminate
     while :; do
         wait -fn -p pid ${slots[*]}
         stat=$?
-        (( stat == 169 )) && continue               # SIGINFO
-        (( stat == 141 )) && continue               # SIGPIPE
-        (( stat == 144 )) && nextslot= && return    # SIGUSR1
-        if (( stat == 127 )); then                  # No jobs left
-            clear_slots $stat
-            nextslot=0
-            return
-        fi
+        case $stat in
+            169)    continue ;;                         # SIGINFO
+            141)    continue ;;                         # SIGPIPE
+            144)    nextslot=; return ;;                # SIGUSR1
+            127)                                        # No jobs left
+                clear_slots $stat
+                nextslot=0
+                return ;;
+        esac
+
         [ -n "$pid" ] || continue
         slot=${slotpid[$pid]}
         [ -n "$slot" ] && break
-        logmsg -n "Unknown pid $pid terminated $s"
+        logmsg -n "Unknown pid $pid terminated $stat"
     done
 
     if reap_slot $slot $stat; then
@@ -527,6 +525,21 @@ wait_for_slot() {
     else
         nextslot=
     fi
+}
+
+find_slot() {
+    # Check for any idle slots
+    for i in `seq 0 $threads`; do
+        [ -z "${slots[$i]}" ] && nextslot=$i && return
+    done
+
+    wait_for_slot
+}
+
+wait_for_expensive_slot() {
+    while (( `count_expensive` > ETHROTTLE )); do
+        wait_for_slot
+    done
 }
 
 wait_for_jobs() {
@@ -717,9 +730,7 @@ parallel_build() {
                 # number of expensive jobs has dropped low enough.
                 if [ $newloc -le 0 -o ${#queue[@]} -le ${#expensive[@]} ]; then
                     logmsg -n "-- $tgt, waiting for number of jobs to drop"
-                    while [ `count_expensive` -gt $ETHROTTLE ]; do
-                        wait_for_slot
-                    done
+                    wait_for_expensive_slot
                 else
                     logmsg -n "-- $tgt, relocating to $newloc/${#queue[@]}"
                     _queue=("${queue[@]:0:newloc}")
@@ -735,7 +746,7 @@ parallel_build() {
 
         if [ -z "$nextslot" ]; then
             logmsg "-- Waiting for spare job slot for $tgt"
-            wait_for_slot
+            find_slot
             [ -n "$nextslot" ] || break
         fi
 
