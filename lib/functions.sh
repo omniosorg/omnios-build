@@ -1297,11 +1297,24 @@ patch_source() {
 #   $1 - resource to get
 #
 get_resource() {
-    local RESOURCE=$1
-    case ${MIRROR:0:1} in
-        /)  logcmd $CP $MIRROR/$RESOURCE . ;;
+    typeset RESOURCE="$1"
+
+    if [ -n "$MIRRORCACHE" -a -f "$MIRRORCACHE/$RESOURCE" ]; then
+        logcmd $CP $MIRRORCACHE/$RESOURCE . && return
+    fi
+
+    case $MIRROR in
+        /*)  logcmd $CP $MIRROR/$RESOURCE . ;;
         *)  $WGET -a $LOGFILE $MIRROR/$RESOURCE ;;
     esac
+    typeset -i stat=$?
+
+    if ((stat == 0)) && [ -n "$MIRRORCACHE" ]; then
+        logcmd $MKDIR -p $MIRRORCACHE/${RESOURCE%/*}
+        logcmd $CP ${RESOURCE##*/} $MIRRORCACHE/${RESOURCE%/*}
+    fi
+
+    return $stat
 }
 
 set_checksum() {
