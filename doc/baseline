@@ -315,8 +315,6 @@ omnios library/python-3/orjson-311
 omnios library/python-3/orjson-312
 omnios library/python-3/pip-311
 omnios library/python-3/pip-312
-omnios library/python-3/pip-312
-omnios library/python-3/pip-312
 omnios library/python-3/pycodestyle-311
 omnios library/python-3/pycodestyle-312
 omnios library/python-3/pycparser-311
@@ -334,8 +332,6 @@ omnios library/python-3/rapidjson-312
 omnios library/python-3/semantic-version-311
 omnios library/python-3/semantic-version-312
 omnios library/python-3/setuptools-311
-omnios library/python-3/setuptools-312
-omnios library/python-3/setuptools-312
 omnios library/python-3/setuptools-312
 omnios library/python-3/setuptools-rust-311
 omnios library/python-3/setuptools-rust-312
