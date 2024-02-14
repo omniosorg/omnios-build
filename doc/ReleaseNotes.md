@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ep (2024-02-15)
+Weekly release for w/c 12th of February 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* `curl` updated to version 8.6.0 fixing
+  [CVE-2024-0853](https://curl.se/docs/CVE-2024-0853.html).
+
+* `libxml2` updated to version 2.11.7, fixing
+  [CVE-2024-25062](https://www.cve.org/CVERecord?id=CVE-2024-25062).
+
+<br>
+
+---
+
 ## r151038en (2024-02-01)
 Weekly release for w/c 29th of January 2024.
 > This is a non-reboot update
