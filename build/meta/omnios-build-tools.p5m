@@ -48,7 +48,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-311 type=require
-#depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-312 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pycurl-312 type=require

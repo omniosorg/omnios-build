@@ -8,12 +8,15 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=Apache2
 
 <transform file path=usr/bin -> set pkg.depend.bypass-generate .* >
-<transform file path=$(PYTHONLIB)/vendor-packages/mesonbuild/rewriter.py$ \
+<transform file path=$(PYTHONLIB)/vendor-packages/mesonbuild/rewriter\.py$ \
+    -> set pkg.depend.bypass-generate .* >
+<transform file \
+    path=$(PYTHONLIB)/vendor-packages/mesonbuild/scripts/python_info\.py$ \
     -> set pkg.depend.bypass-generate .* >
 <transform file path=usr/bin \
     -> edit path usr/bin usr/lib/python$(PYTHONVER)/bin>
