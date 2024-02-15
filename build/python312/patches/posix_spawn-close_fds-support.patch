@@ -1,0 +1,141 @@
+From https://github.com/oracle/solaris-userland
+
+Implement support for posix_spawn being called with close_fds argument.
+
+This was offered and merged upstream; it will be available in Python 3.13:
+https://github.com/python/cpython/issues/113117
+https://github.com/python/cpython/pull/113118
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subprocess.py
+--- a~/Lib/subprocess.py	1970-01-01 00:00:00
++++ a/Lib/subprocess.py	1970-01-01 00:00:00
+@@ -744,6 +744,7 @@ def _use_posix_spawn():
+ # guarantee the given libc/syscall API will be used.
+ _USE_POSIX_SPAWN = _use_posix_spawn()
+ _USE_VFORK = True
++_HAVE_POSIX_SPAWN_CLOSEFROM = hasattr(os, 'POSIX_SPAWN_CLOSEFROM')
+ 
+ 
+ class Popen:
+@@ -1747,7 +1748,7 @@ class Popen:
+                     errread, errwrite)
+ 
+ 
+-        def _posix_spawn(self, args, executable, env, restore_signals,
++        def _posix_spawn(self, args, executable, env, restore_signals, close_fds,
+                          p2cread, p2cwrite,
+                          c2pread, c2pwrite,
+                          errread, errwrite):
+@@ -1776,6 +1777,10 @@ class Popen:
+             ):
+                 if fd != -1:
+                     file_actions.append((os.POSIX_SPAWN_DUP2, fd, fd2))
++
++            if close_fds:
++                file_actions.append((os.POSIX_SPAWN_CLOSEFROM, 3))
++
+             if file_actions:
+                 kwargs['file_actions'] = file_actions
+ 
+@@ -1823,7 +1828,7 @@ class Popen:
+             if (_USE_POSIX_SPAWN
+                     and os.path.dirname(executable)
+                     and preexec_fn is None
+-                    and not close_fds
++                    and (not close_fds or _HAVE_POSIX_SPAWN_CLOSEFROM)
+                     and not pass_fds
+                     and cwd is None
+                     and (p2cread == -1 or p2cread > 2)
+@@ -1835,7 +1840,7 @@ class Popen:
+                     and gids is None
+                     and uid is None
+                     and umask < 0):
+-                self._posix_spawn(args, executable, env, restore_signals,
++                self._posix_spawn(args, executable, env, restore_signals, close_fds,
+                                   p2cread, p2cwrite,
+                                   c2pread, c2pwrite,
+                                   errread, errwrite)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_subprocess.py a/Lib/test/test_subprocess.py
+--- a~/Lib/test/test_subprocess.py	1970-01-01 00:00:00
++++ a/Lib/test/test_subprocess.py	1970-01-01 00:00:00
+@@ -1610,6 +1610,7 @@ class ProcessTestCase(BaseTestCase):
+     @unittest.skipIf(not sysconfig.get_config_var("HAVE_VFORK"),
+                      "vfork() not enabled by configure.")
+     @mock.patch("subprocess._fork_exec")
++    @mock.patch("subprocess._USE_POSIX_SPAWN", new=False)
+     def test__use_vfork(self, mock_fork_exec):
+         self.assertTrue(subprocess._USE_VFORK)  # The default value regardless.
+         mock_fork_exec.side_effect = RuntimeError("just testing args")
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modules/posixmodule.c
+--- a~/Modules/posixmodule.c	1970-01-01 00:00:00
++++ a/Modules/posixmodule.c	1970-01-01 00:00:00
+@@ -6745,6 +6745,9 @@ enum posix_spawn_file_actions_identifier
+     POSIX_SPAWN_OPEN,
+     POSIX_SPAWN_CLOSE,
+     POSIX_SPAWN_DUP2
++#ifdef HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSEFROM_NP
++    ,POSIX_SPAWN_CLOSEFROM
++#endif
+ };
+ 
+ #if defined(HAVE_SCHED_SETPARAM) || defined(HAVE_SCHED_SETSCHEDULER) || defined(POSIX_SPAWN_SETSCHEDULER) || defined(POSIX_SPAWN_SETSCHEDPARAM)
+@@ -6985,6 +6988,24 @@ parse_file_actions(PyObject *file_action
+                 }
+                 break;
+             }
++#ifdef HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSEFROM_NP
++            case POSIX_SPAWN_CLOSEFROM: {
++                int fd;
++                if (!PyArg_ParseTuple(file_action, "Oi"
++                        ";A closefrom file_action tuple must have 2 elements",
++                        &tag_obj, &fd))
++                {
++                    goto fail;
++                }
++                errno = posix_spawn_file_actions_addclosefrom_np(file_actionsp,
++                                                                 fd);
++                if (errno) {
++                    posix_error();
++                    goto fail;
++                }
++                break;
++            }
++#endif
+             default: {
+                 PyErr_SetString(PyExc_TypeError,
+                                 "Unknown file_actions identifier");
+@@ -16412,6 +16433,9 @@ all_ins(PyObject *m)
+     if (PyModule_AddIntConstant(m, "POSIX_SPAWN_OPEN", POSIX_SPAWN_OPEN)) return -1;
+     if (PyModule_AddIntConstant(m, "POSIX_SPAWN_CLOSE", POSIX_SPAWN_CLOSE)) return -1;
+     if (PyModule_AddIntConstant(m, "POSIX_SPAWN_DUP2", POSIX_SPAWN_DUP2)) return -1;
++#ifdef HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSEFROM_NP
++    if (PyModule_AddIntMacro(m, POSIX_SPAWN_CLOSEFROM)) return -1;
++#endif
+ #endif
+ 
+ #if defined(HAVE_SPAWNV) || defined (HAVE_RTPSPAWN)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -4896,6 +4896,7 @@ AC_CHECK_FUNCS([ \
+   lockf lstat lutimes madvise mbrtowc memrchr mkdirat mkfifo mkfifoat \
+   mknod mknodat mktime mmap mremap nice openat opendir pathconf pause pipe \
+   pipe2 plock poll posix_fadvise posix_fallocate posix_spawn posix_spawnp \
++  posix_spawn_file_actions_addclosefrom_np \
+   pread preadv preadv2 pthread_condattr_setclock pthread_init pthread_kill \
+   pwrite pwritev pwritev2 readlink readlinkat readv realpath renameat \
+   rtpSpawn sched_get_priority_max sched_rr_get_interval sched_setaffinity \
+diff -wpruN --no-dereference '--exclude=*.orig' a~/pyconfig.h.in a/pyconfig.h.in
+--- a~/pyconfig.h.in	1970-01-01 00:00:00
++++ a/pyconfig.h.in	1970-01-01 00:00:00
+@@ -908,6 +908,10 @@
+ /* Define to 1 if you have the `posix_spawnp' function. */
+ #undef HAVE_POSIX_SPAWNP
+ 
++/* Define to 1 if you have the `posix_spawn_file_actions_addclosefrom_np'
++   function. */
++#undef HAVE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSEFROM_NP
++
+ /* Define to 1 if you have the `pread' function. */
+ #undef HAVE_PREAD
+ 
