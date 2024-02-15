@@ -13,6 +13,8 @@ pyc-timestamp.patch
 asyncio-watcher.patch
 py_db.patch
 restore-dtrace.patch
+posix_spawn-close_fds-support.patch
+posix_spawn-environment-fix.patch
 #
 # Additional modules
 module-ucred.patch
