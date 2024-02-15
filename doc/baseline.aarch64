@@ -68,6 +68,7 @@ omnios driver/audio/audiovia823x
 omnios driver/crypto/dca
 omnios driver/crypto/dprov
 omnios driver/crypto/tpm
+omnios driver/crypto/viorand
 omnios driver/firewire
 omnios driver/graphics/av1394
 omnios driver/graphics/dcam1394
