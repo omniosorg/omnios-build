@@ -8,6 +8,10 @@
 # The web server or local directory from which source files are fetched.
 #MIRROR=https://mirrors.omnios.org
 
+# A directory used to cache files downloaded from the $MIRROR for use in
+# subsequent builds.
+#MIRRORCACHE=/tmp/mirror.cache
+
 # Package publisher
 #PKGPUBLISHER=omnios
 
