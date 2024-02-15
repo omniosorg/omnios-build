@@ -1,0 +1,37 @@
+Making check in po
+Making check in include
+Making check in src
+Making check in tools
+Making check in fuzz
+PASS: libpsl_fuzzer
+PASS: libpsl_load_fuzzer
+PASS: libpsl_load_dafsa_fuzzer
+============================================================================
+Testsuite summary for libpsl 0.21.5
+============================================================================
+# TOTAL: 3
+# PASS:  3
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
+Making check in tests
+PASS: test-is-public
+PASS: test-is-public-all
+PASS: test-is-cookie-domain-acceptable
+PASS: test-is-public-builtin
+PASS: test-registrable-domain
+============================================================================
+Testsuite summary for libpsl 0.21.5
+============================================================================
+# TOTAL: 5
+# PASS:  5
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
+Making check in msvc

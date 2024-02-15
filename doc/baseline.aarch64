@@ -196,6 +196,7 @@ omnios library/idnkit
 omnios library/libedit
 omnios library/libffi
 omnios library/libidn
+omnios library/libpsl
 omnios library/libtecla
 omnios library/libtool/libltdl
 omnios library/libxml2
