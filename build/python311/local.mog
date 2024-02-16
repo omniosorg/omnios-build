@@ -8,7 +8,7 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 license LICENSE license=PSFv2
 
@@ -30,15 +30,16 @@ license LICENSE license=PSFv2
 # Prevent pkgdepend from reporting an error
 <transform file path=. -> set pkg.depend.bypass-generate .*>
 
-# Move /usr/lib/amd64/libpython3.so and replace with a symlink
-<transform file path=usr/lib/amd64/libpython3.so$ \
+# Move libpython3.so and replace with a symlink
+<transform file path=(usr/lib/(?:amd64/)?libpython3\.so)$ -> emit \
+    link path=%<1> target=libpython$(PYTHONVER)-stub.so >
+<transform file path=usr/lib/(?:amd64/)?libpython3\.so$ \
     -> edit path 3 $(PYTHONVER)-stub>
-link path=usr/lib/amd64/libpython3.so target=libpython$(PYTHONVER)-stub.so
 
 # Set mediators on links in shared directories
 
 <transform link path=usr/(bin|share) -> set mediator python3>
-<transform link path=usr/lib/amd64/.*3m?\.so -> set mediator python3>
+<transform link path=usr/lib/(?:amd64/)?.*3m?\.so -> set mediator python3>
 <transform link path=.*/pkgconfig/.+\.pc$ -> set mediator python3>
 
 <transform link mediator=python3 -> set mediator-version $(PYTHONVER)>

@@ -60,7 +60,6 @@ CFLAGS+=" -msave-args"
 
 export CCSHARED="-fPIC"
 CPPFLAGS+=" -I/usr/include/ncurses"
-CPPFLAGS+=" `pkg-config --cflags libffi`"
 export DFLAGS=-64
 MAKE_ARGS="
     DFLAGS=-64
@@ -81,7 +80,7 @@ CONFIGURE_OPTS[amd64]+="
 "
 
 CONFIGURE_OPTS[aarch64]+="
-    --build=${TRIPLETS[amd64]}
+    --build=${TRIPLETS[amd64]%.*}
     --with-build-python=$PYTHON
     ac_cv_file__dev_ptmx=yes
     ac_cv_file__dev_ptc=no
