@@ -34,6 +34,7 @@ library/gmp
 library/idnkit -f libsandheaders
 library/libffi
 library/libidn
+library/libpsl
 library/lzlib
 library/ncurses
 library/nspr

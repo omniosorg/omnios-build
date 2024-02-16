@@ -28,7 +28,6 @@ LMHTTPD_VER=0.9.73
 
 RUN_DEPENDS_IPS="web/ca-bundle"
 
-# - could bundle libpsl
 # - could bundle libhsts (and add hsts.dafsa to web/ca-bundle?)
 
 init

@@ -33,7 +33,6 @@ CONFIGURE_OPTS="
     --with-ca-path=/etc/ssl/certs
     --with-openssl
     --disable-manual
-    --without-libpsl
 "
 
 # Build backwards so that the 32-bit version is available for the test-suite.
