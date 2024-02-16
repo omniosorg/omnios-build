@@ -113,6 +113,10 @@ build_aarch64() {
         PKGPUBLISHER_REDIST=$PKGPUBLISHER
         DMAKE_MAX_JOBS=$MJOBS
         PYTHON3_VERSION=$PYTHONVER
+        BUILDPY3b=
+        PYTHON3b_VERSION=3.11
+        PYTHON3b_PKGVERS=-311
+        PYTHON3b_SUFFIX=
         PERL_VERSION=$SPERLVER
         DTC=$OOCEBIN/dtc
         MKIMAGE=$OOCEOPT/u-boot/tools/mkimage
@@ -126,7 +130,11 @@ build_aarch64() {
     # Allow dropping into the build environment with everything set up
     # for manual builds via '-f bldenv'
     if [ "$action" = bldenv ]; then
-        env - $env TERM=$TERM SHELL=$SHELL $bldenv
+        env - $env \
+            TERM=$TERM \
+            SHELL=$SHELL \
+            HOME=`git rev-parse --show-toplevel` \
+            $bldenv
         return
     fi
 

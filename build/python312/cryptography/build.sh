@@ -49,8 +49,9 @@ PATH+=:$OOCEBIN
 # This package uses cffi as part of the build, and so the usual python cross
 # compilation method (using the `crossenv` module) does not work.
 # Somewhat surprisingly, this simple workaround does, although we have to
-# use a compiler wrapper to strip the `-m64` that is otherwise picked by
-# cffi from the native system info.
+# use a compiler wrapper to strip options that are not applicable to
+# the cross compiler and are otherwise picked by cffi from the native system
+# info.
 python_build_aarch64() {
     typeset arch=aarch64
 
