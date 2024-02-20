@@ -117,7 +117,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -4896,6 +4896,7 @@ AC_CHECK_FUNCS([ \
+@@ -4904,6 +4904,7 @@ AC_CHECK_FUNCS([ \
    lockf lstat lutimes madvise mbrtowc memrchr mkdirat mkfifo mkfifoat \
    mknod mknodat mktime mmap mremap nice openat opendir pathconf pause pipe \
    pipe2 plock poll posix_fadvise posix_fallocate posix_spawn posix_spawnp \

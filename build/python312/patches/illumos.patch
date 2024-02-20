@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	    ac_sys_system=WASI
  	    ;;
 +	*-*-solaris*)
-+            ac_sys_system=SunOS
++	    ac_sys_system=SunOS
 +	    ac_sys_release=5.11
 +	    ;;
  	*)
@@ -42,3 +42,18 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	*)
  		# for now, limit cross builds to known configurations
  		MACHDEP="unknown"
+@@ -1102,6 +1115,14 @@ cat > conftest.c <<EOF
+ #  else
+ #    error unknown wasm64 platform
+ #  endif
++#elif defined(__illumos__)
++#  if defined(__x86_64__)
++	x86_64-pc-solaris2
++#  elif defined(__aarch64__)
++	aarch64-unknown-solaris2
++#  else
++#    error unknown illumos platform
++#  endif
+ #else
+ # error unknown platform triplet
+ #endif
