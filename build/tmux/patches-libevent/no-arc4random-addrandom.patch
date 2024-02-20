@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/evutil_rand.c a/evutil_rand.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/evutil_rand.c a/evutil_rand.c
 --- a~/evutil_rand.c	1970-01-01 00:00:00
 +++ a/evutil_rand.c	1970-01-01 00:00:00
 @@ -194,8 +194,15 @@ evutil_secure_rng_get_bytes(void *buf, s
