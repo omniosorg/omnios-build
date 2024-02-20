@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/configure a/configure
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
 @@ -17396,7 +17396,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu

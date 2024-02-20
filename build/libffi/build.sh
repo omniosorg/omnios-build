@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=libffi
-VER=3.4.4
+VER=3.4.5
 PKG=library/libffi
 SUMMARY="A Portable Foreign Function Interface Library"
 DESC="$PROG - $SUMMARY"
