@@ -13,17 +13,17 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=bind
-VER=9.18.21
+VER=9.18.24
 PKG=network/dns/bind
 SUMMARY="BIND DNS tools"
 DESC="Client utilities for DNS lookups"
 
-LIBUVVER=1.47.0
+LIBUVVER=1.48.0
 XFORM_ARGS+=" -DLIBUV=$LIBUVVER"
 
 # This package ships private shared libraries in $PREFIX/lib/dns that are only

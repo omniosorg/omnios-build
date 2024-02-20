@@ -27,8 +27,8 @@
 | developer/nasm			| 2.16.01		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.43.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.6.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/git		| 2.43.2		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/mercurial	| 6.6.3			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.0			| http://ftp.vim.org/pub/vim/unix
@@ -45,18 +45,18 @@
 | library/libedit			| 20230828-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
-| library/libffi			| 3.4.4			| https://sourceware.org/libffi/
+| library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.47.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.48.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.12.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.59.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.97			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.98			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
-| library/pcre2				| 10.42			| https://github.com/PhilipHazel/pcre2/releases
+| library/pcre2				| 10.43			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.2			| https://ftp.gnu.org/gnu/readline/
 | library/readline6-patchlvl		| 008			| https://ftp.gnu.org/gnu/readline/readline-6.3-patches/
@@ -68,7 +68,7 @@
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20231205		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20231114		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.21		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.24		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.6p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -109,7 +109,7 @@
 | system/test/fio			| 3.36			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
-| terminal/tmux				| 3.3			| https://github.com/tmux/tmux/releases http://tmux.github.io/
+| terminal/tmux				| 3.4			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.0			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.22.4		| https://ftp.gnu.org/pub/gnu/gettext/

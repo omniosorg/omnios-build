@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/src/aarch64/sysv.S a/src/aarch64/sysv.S
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/aarch64/sysv.S a/src/aarch64/sysv.S
 --- a~/src/aarch64/sysv.S	1970-01-01 00:00:00
 +++ a/src/aarch64/sysv.S	1970-01-01 00:00:00
-@@ -531,6 +531,8 @@ CNAME(ffi_go_closure_SYSV):
+@@ -675,6 +675,8 @@ CNAME(ffi_go_closure_SYSV):
  #endif /* FFI_CLOSURES */
  #endif /* __arm64__ */
  
@@ -9,4 +9,4 @@ diff -wpruN '--exclude=*.orig' a~/src/aarch64/sysv.S a/src/aarch64/sysv.S
 +
  #if defined __ELF__ && defined __linux__
  	.section .note.GNU-stack,"",%progbits
- #endif
+ 

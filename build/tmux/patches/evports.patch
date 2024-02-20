@@ -7,7 +7,7 @@ See:	https://github.com/tmux/tmux/issues/2702
 We would rather use event ports than poll, and given that we cannot replicate
 the original bug, we re-enable them.
 
-diff -wpruN '--exclude=*.orig' a~/osdep-sunos.c a/osdep-sunos.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/osdep-sunos.c a/osdep-sunos.c
 --- a~/osdep-sunos.c	1970-01-01 00:00:00
 +++ a/osdep-sunos.c	1970-01-01 00:00:00
 @@ -96,17 +96,5 @@ osdep_get_cwd(int fd)

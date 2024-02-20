@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/job.c a/job.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/job.c a/job.c
 --- a~/job.c	1970-01-01 00:00:00
 +++ a/job.c	1970-01-01 00:00:00
 @@ -28,6 +28,7 @@
