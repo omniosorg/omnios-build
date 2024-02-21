@@ -20,7 +20,7 @@ PROG=openjdk
 VER=21.0.2+13
 PKG=runtime/java/openjdk21
 SUMMARY="openjdk ${VER%%.*}"
-DESC="Open-source implementation of the seventeenth edition of the "
+DESC="Open-source implementation of the twenty-first edition of the "
 DESC+="Java SE Platform"
 
 # The full jdk version string is:
