@@ -3044,9 +3044,12 @@ python_cross_setup() {
     # Prepare a cross compilation environment
     logmsg "--- Preparing cross compilation environment"
     set_crossgcc $arch
-    logcmd $PYTHON -mcrossenv ${SYSROOT[$arch]}$PYTHON $TMPDIR/venv \
+    logcmd $PYTHON -mcrossenv -vvv \
+        ${SYSROOT[$arch]}$PYTHON \
+        $TMPDIR/venv \
         || logerr "Failed to set up crossenv"
     source $TMPDIR/venv/bin/activate
+    logcmd $TMPDIR/venv/cross/bin/pip3 install setuptools
 }
 
 python_build_aarch64() {

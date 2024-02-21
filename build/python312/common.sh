@@ -45,5 +45,8 @@ TMPDIR+="/python$PYVER"
 DTMPDIR+="/python$PYVER"
 BASE_TMPDIR=$TMPDIR
 
+# Use the same python version for dependency resolution
+PKGDEPEND="/usr/bin/python$PYTHONVER -Es $PKGDEPEND"
+
 # Vim hints
 # vim:ts=4:sw=4:et:fdm=marker

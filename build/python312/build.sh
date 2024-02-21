@@ -56,7 +56,8 @@ set_arch 64
 set_standard XPG6
 
 # Save arguments to the stack so that the mdb/pstack plugin can find them.
-CFLAGS+=" -msave-args"
+CFLAGS[amd64]+=" -msave-args"
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
 export CCSHARED="-fPIC"
 CPPFLAGS+=" -I/usr/include/ncurses"
@@ -104,11 +105,7 @@ export DTRACE_CPP=$GCCPATH/bin/cpp
 
 CURSES_CFLAGS="-DHAVE_NCURSESW -D_XOPEN_SOURCE_EXTENDED"
 LIBREADLINE_LIBS="-zrecord -lreadline -lncurses"
-PANEL_LIBS=`pkg-config --libs panel`
-export CURSES_CFLAGS LIBREADLINE_LIBS PANEL_LIBS
-
-#export LIBREADLINE_CFLAGS
-#export CURSES_LIBS
+export CURSES_CFLAGS LIBREADLINE_LIBS
 
 build_init() {
     typeset s=${SYSROOT[aarch64]}
@@ -118,11 +115,17 @@ build_init() {
 }
 
 pre_configure() {
+    typeset arch="$1"
+
     save_variable CC
 
-    ! cross_arch $1 && return
+    PKG_CONFIG_PATH="${PKG_CONFIG_PATH[$arch]}" \
+        PANEL_LIBS=`pkg-config --libs panel`
+    export PANEL_LIBS
 
-    CC+=" --sysroot=${SYSROOT[$1]}"
+    ! cross_arch $arch && return
+
+    CC+=" --sysroot=${SYSROOT[$arch]}"
 }
 
 post_configure() {
