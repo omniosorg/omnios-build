@@ -56,6 +56,7 @@ TESTSUITE_SED="
 build_init() {
     for arch in $CROSS_ARCH; do
         CPPFLAGS[$arch]+=" -I${SYSROOT[$arch]}/usr/include"
+        LDFLAGS[$arch]+=" -L${SYSROOT[$arch]}/lib"
         LDFLAGS[$arch]+=" -L${SYSROOT[$arch]}/usr/lib"
         LDFLAGS[$arch]+=" -L${SYSROOT[$arch]}/usr/lib/mps"
     done
