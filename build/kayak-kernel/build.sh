@@ -14,7 +14,7 @@
 
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 
 . ../../lib/build.sh
@@ -35,12 +35,27 @@ fi
 # the build will still work but will use bits from the running system.
 check_for_prebuilt
 
-# pfexec will always work as a nop for root
-[ "$UID" = 0 ] && PFEXEC=pfexec
+if [ -n "$KAYAK_BUILDSEND" ]; then
+    # This is a special case for running in CI. Privileges will not be
+    # escalated and it is expected that the user has sufficient zfs grants
+    # to be able to manipulate the $KAYAK_BUILDSEND filesystem.
+    # The necessary grants are:
+    #     create,destroy,mount,snapshot,rollback,mountpoint,compression
+    PFEXEC=
+    export BUILDSEND="$KAYAK_BUILDSEND"
+    export BUILDSEND_MP="$KAYAK_BUILDSEND_MP"
+elif [ "$UID" = 0 ]; then
+    PFEXEC=
+else
+    # Check if privilege escalation is working
+    logmsg -n "-- escalating privileges with $PFEXEC"
+    [ "`$PFEXEC id -u`" = "0" ] \
+        || logerr "Cannot escalate privileges with $PFEXEC"
 
-# Check if privilege escalation is working
-logmsg -n "-- escalating privileges with $PFEXEC"
-[ "`$PFEXEC id -u`" = "0" ] || logerr "Cannot escalate privileges with $PFEXEC"
+    BUILDSEND_MP=/kayak_image
+    BUILDSEND="/rpool/kayak_image"
+    [ `zonename` = global ] || BUILDSEND="`zfs list -Ho name /`/kayak_image"
+fi
 
 # If PKGURL is specified, allow it to be different than the destination
 # PKGSRVR. PKGURL is the repository from which kayak-kernel takes its bits,
@@ -74,7 +89,7 @@ clobber() {
 
 reset_owner() {
     # Reset ownership on files copied as root.
-    logcmd $PFEXEC chown -R `id -un` $DESTDIR
+    [ -n "$PFEXEC" ] && logcmd $PFEXEC chown -R `id -un` $DESTDIR
 }
 
 build() {
@@ -85,6 +100,8 @@ build() {
         DESTDIR=$DESTDIR \
         VERSION=r$RELVER \
         PKGURL=$PKGURL \
+        BUILDSEND=$BUILDSEND \
+        BUILDSEND_MP=$BUILDSEND_MP \
         install-tftp; then
             reset_owner
             logerr "miniroot build failed"
