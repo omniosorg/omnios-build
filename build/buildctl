@@ -363,6 +363,15 @@ baseline() {
         echo "Created baseline in $baselinef"
         return
     fi
+
+    # If we skipped the kayak kernel package, add it to the generated baseline
+    # file so that the baseline check will succeed.
+    if [ -n "$SKIP_KAYAK_KERNEL" ]; then
+        echo "$PKGPUBLISHER system/install/kayak-kernel" >> $TMPDIR/baseline.$$
+        sort $TMPDIR/baseline.$$ > $TMPDIR/baseline.$$.sorted
+        mv $TMPDIR/baseline.$$.sorted $TMPDIR/baseline.$$
+    fi
+
     note "Checking baseline"
     if ! diff -U0 $baselinef $TMPDIR/baseline.$$; then
         logerr "Package list does not match baseline"
