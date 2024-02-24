@@ -105,7 +105,6 @@ web/wget2
 developer/gcc10
 developer/gnu-binutils
 developer/versioning/git
-security/sudo
 system/library/libdbus -f libsandheaders
 ###############################################################################
 .SYSROOT
@@ -166,6 +165,9 @@ library/python-3/pyopenssl-312
 illumos-gate
 package/pkg
 entire
+###############################################################################
+.SYSROOT
+security/sudo
 #
 ###############################################################################
 # TO DO
