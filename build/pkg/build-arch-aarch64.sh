@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -43,22 +43,31 @@ clone_source() {
 
 build() {
     pushd $TMPDIR/$BUILDDIR/pkg/src > /dev/null || logerr "Cannot chdir"
-    python_cross_setup $ARCH
+
     logmsg "--- generate CFFI source"
-    logcmd make cffi_src
-    logmsg "--- build"
-    logcmd python setup.py install
-    logmsg "--- modules"
-    logcmd make -e \
-        MACH=$ARCH \
-        REQUIREMENTS=requirements-aarch64.txt \
-        TARGET=install modules/$PYTHON3VER
+    logcmd make cffi_src || logerr "Failed to build cffi_src"
+
+    versions=`grep '^PYVERSIONS' Makefile.com | tr -s ' ' | cut -d\  -f3-`
+    for v in $versions; do
+        note -n "Building python version $v"
+        set_python_version $v
+        python_cross_setup $ARCH
+        logmsg "--- build"
+        logcmd python setup.py install
+        logmsg "--- modules"
+        logcmd make -e \
+            MACH=$ARCH \
+            REQUIREMENTS=requirements-aarch64.txt \
+            TARGET=install modules/$PYTHONVER
+        python_cross_end
+    done
     popd > /dev/null
+    set_python_version $PYTHON3VER
 }
 
 package() {
     pushd $TMPDIR/$BUILDDIR/pkg/src/pkg > /dev/null
-    logmsg "--- packaging"
+    note -n "Packaging"
     logcmd make publish-pkgs \
         BUILDNUM=$BUILDNUM \
         PKGSEND_OPTS="" \
@@ -69,7 +78,7 @@ package() {
 		PKGCMDENV=/usr/bin \
 		MANIFESTS='package\:pkg.p5m' \
 		PKG_IMAGE=${SYSROOT[$ARCH]} \
-        || logerr "publish failed"
+        || logerr "publication failed"
     popd > /dev/null
 }
 
