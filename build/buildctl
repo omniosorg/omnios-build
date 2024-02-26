@@ -315,8 +315,12 @@ build() {
             LOGFILE="$_LOGFILE"
             built_packages_p5m $SCRIPT
         else
-            PATH=$PATH:. $SCRIPT -r $PKGSRVR $build_flags $extra_flags || \
+            PATH=$PATH:. $SCRIPT -r $PKGSRVR $build_flags $extra_flags
+            if (($? != 0)); then
+                typeset log="`ls -1tr *.log | tail -1`"
+                [ -n "$log" ] && cp "$log" ../last-failure.log
                 logerr "Unable to run $SCRIPT"
+            fi
             [ -z "$extra_flags" ] && built_packages_sh $SCRIPT
         fi
         popd >/dev/null

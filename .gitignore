@@ -2,6 +2,7 @@ build.log
 build-*.log
 build.log.*
 build-*.log.*
+last-failure.log
 tmp.repo/
 *.p5m.final
 *.p5m.i386.final
