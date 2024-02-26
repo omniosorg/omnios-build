@@ -14,7 +14,7 @@
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 
 #############################################################################
@@ -3044,12 +3044,18 @@ python_cross_setup() {
     # Prepare a cross compilation environment
     logmsg "--- Preparing cross compilation environment"
     set_crossgcc $arch
+    export PKG_CROSS_DEPEND=${TRIPLETS[$arch]%.*}
     logcmd $PYTHON -mcrossenv -vvv \
         ${SYSROOT[$arch]}$PYTHON \
         $TMPDIR/venv \
         || logerr "Failed to set up crossenv"
     source $TMPDIR/venv/bin/activate
     logcmd $TMPDIR/venv/cross/bin/pip3 install setuptools
+}
+
+python_cross_end() {
+    deactivate
+    logcmd $RM -rf $TMPDIR/venv
 }
 
 python_build_aarch64() {
