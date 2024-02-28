@@ -22,7 +22,7 @@
 #
 # Copyright 2011-2013 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright (c) 2013 by Delphix. All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -34,7 +34,7 @@ SUMMARY="GNU Bash"
 DESC="GNU Bourne-Again shell (bash)"
 
 # bash-completion version
-BCVER=2.11
+BCVER=2.12.0
 
 BUILD_DEPENDS_IPS="library/readline"
 RUN_DEPENDS_IPS="system/prerequisite/gnu system/library"

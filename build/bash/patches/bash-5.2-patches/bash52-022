@@ -16,38 +16,31 @@ terminated, leading to a memory fault.
 Patch (apply with `patch -p0'):
 
 *** ../bash-5.2-patched/lib/readline/display.c	2022-04-05 10:47:31.000000000 -0400
---- lib/readline/display.c	2022-12-13 13:11:22.000000000 -0500
-***************
-*** 2684,2692 ****
-  
-    if (visible_line)
-!     {
-!       temp = visible_line;
-!       while (*temp)
-! 	*temp++ = '\0';
-!     }
-    rl_on_new_line ();
-    forced_display++;
---- 2735,2740 ----
-  
-    if (visible_line)
-!     memset (visible_line, 0, line_size);
-! 
-    rl_on_new_line ();
-    forced_display++;
-
-*** ../bash-5.2/patchlevel.h	2020-06-22 14:51:03.000000000 -0400
---- patchlevel.h	2020-10-01 11:01:28.000000000 -0400
-***************
-*** 26,30 ****
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 21
-  
-  #endif /* _PATCHLEVEL_H_ */
---- 26,30 ----
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 22
-  
-  #endif /* _PATCHLEVEL_H_ */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/readline/display.c a/lib/readline/display.c
+--- a~/lib/readline/display.c	1970-01-01 00:00:00
++++ a/lib/readline/display.c	1970-01-01 00:00:00
+@@ -2683,11 +2683,8 @@ rl_forced_update_display (void)
+   register char *temp;
+ 
+   if (visible_line)
+-    {
+-      temp = visible_line;
+-      while (*temp)
+-	*temp++ = '\0';
+-    }
++    memset (visible_line, 0, line_size);
++
+   rl_on_new_line ();
+   forced_display++;
+   (*rl_redisplay_function) ();
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patchlevel.h a/patchlevel.h
+--- a~/patchlevel.h	1970-01-01 00:00:00
++++ a/patchlevel.h	1970-01-01 00:00:00
+@@ -25,6 +25,6 @@
+    regexp `^#define[ 	]*PATCHLEVEL', since that's what support/mkversion.sh
+    looks for to find the patch level (for the sccs version string). */
+ 
+-#define PATCHLEVEL 21
++#define PATCHLEVEL 22
+ 
+ #endif /* _PATCHLEVEL_H_ */

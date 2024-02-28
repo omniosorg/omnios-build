@@ -1,6 +1,6 @@
 memalloc.patch
-bash-5.2-patches/bash52-022 -p0
-bash-5.2-patches/bash52-023 -p0
-bash-5.2-patches/bash52-024 -p0
-bash-5.2-patches/bash52-025 -p0
-bash-5.2-patches/bash52-026 -p0
+bash-5.2-patches/bash52-022
+bash-5.2-patches/bash52-023
+bash-5.2-patches/bash52-024
+bash-5.2-patches/bash52-025
+bash-5.2-patches/bash52-026

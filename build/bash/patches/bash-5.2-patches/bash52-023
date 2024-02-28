@@ -16,49 +16,38 @@ original saved set of options.
 Patch (apply with `patch -p0'):
 
 *** ../bash-5.2-patched/builtins/declare.def	2023-01-04 20:40:28.000000000 -0500
---- builtins/declare.def	2023-02-08 15:36:49.000000000 -0500
-***************
-*** 421,429 ****
-        if (local_var && variable_context && STREQ (name, "-"))
-  	{
-  	  var = make_local_variable ("-", 0);
-! 	  FREE (value_cell (var));		/* just in case */
-! 	  value = get_current_options ();
-! 	  var_setvalue (var, value);
-! 	  VSETATTR (var, att_invisible);
-  	  NEXT_VARIABLE ();
-  	}
---- 421,437 ----
-        if (local_var && variable_context && STREQ (name, "-"))
-  	{
-+ 	  int o;
-+ 
-+ 	  o = localvar_inherit;
-+ 	  localvar_inherit = 0;
-  	  var = make_local_variable ("-", 0);
-! 	  localvar_inherit = o;
-! 
-! 	  if (value_cell (var) == NULL)		/* no duplicate instances */
-! 	    {
-! 	      value = get_current_options ();
-! 	      var_setvalue (var, value);
-! 	      VSETATTR (var, att_invisible);
-! 	    }
-  	  NEXT_VARIABLE ();
-  	}
-
-*** ../bash-5.2/patchlevel.h	2020-06-22 14:51:03.000000000 -0400
---- patchlevel.h	2020-10-01 11:01:28.000000000 -0400
-***************
-*** 26,30 ****
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 22
-  
-  #endif /* _PATCHLEVEL_H_ */
---- 26,30 ----
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 23
-  
-  #endif /* _PATCHLEVEL_H_ */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/builtins/declare.def a/builtins/declare.def
+--- a~/builtins/declare.def	1970-01-01 00:00:00
++++ a/builtins/declare.def	1970-01-01 00:00:00
+@@ -420,11 +420,19 @@ declare_internal (list, local_var)
+ 
+       if (local_var && variable_context && STREQ (name, "-"))
+ 	{
++	  int o;
++
++	  o = localvar_inherit;
++	  localvar_inherit = 0;
+ 	  var = make_local_variable ("-", 0);
+-	  FREE (value_cell (var));		/* just in case */
++	  localvar_inherit = o;
++
++	  if (value_cell (var) == NULL)		/* no duplicate instances */
++	    {
+ 	  value = get_current_options ();
+ 	  var_setvalue (var, value);
+ 	  VSETATTR (var, att_invisible);
++	    }
+ 	  NEXT_VARIABLE ();
+ 	}
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patchlevel.h a/patchlevel.h
+--- a~/patchlevel.h	1970-01-01 00:00:00
++++ a/patchlevel.h	1970-01-01 00:00:00
+@@ -25,6 +25,6 @@
+    regexp `^#define[ 	]*PATCHLEVEL', since that's what support/mkversion.sh
+    looks for to find the patch level (for the sccs version string). */
+ 
+-#define PATCHLEVEL 22
++#define PATCHLEVEL 23
+ 
+ #endif /* _PATCHLEVEL_H_ */

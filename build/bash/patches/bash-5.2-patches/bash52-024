@@ -16,73 +16,59 @@ in values.
 Patch (apply with `patch -p0'):
 
 *** ../bash-20230105/arrayfunc.c	Thu Jan  5 14:23:28 2023
---- arrayfunc.c	Wed Feb  8 16:27:48 2023
-***************
-*** 651,655 ****
-  	}	      
-  
-!       aval = expand_subscript_string (v, 0);
-        if (aval == 0)
-  	{
---- 651,655 ----
-  	}	      
-  
-!       aval = expand_assignment_string_to_string (v, 0);
-        if (aval == 0)
-  	{
-***************
-*** 843,847 ****
-        if (assoc_p (var))
-  	{
-! 	  val = expand_subscript_string (val, 0);
-  	  if (val == 0)
-  	    {
---- 843,847 ----
-        if (assoc_p (var))
-  	{
-! 	  val = expand_assignment_string_to_string (val, 0);
-  	  if (val == 0)
-  	    {
-***************
-*** 1031,1035 ****
-    nword[i++] = w[ind++];
-  
-!   t = expand_subscript_string (w+ind, 0);
-    s = (t && strchr (t, CTLESC)) ? quote_escapes (t) : t;
-    value = sh_single_quote (s ? s : "");
---- 1031,1035 ----
-    nword[i++] = w[ind++];
-  
-!   t = expand_assignment_string_to_string (w+ind, 0);
-    s = (t && strchr (t, CTLESC)) ? quote_escapes (t) : t;
-    value = sh_single_quote (s ? s : "");
-*** ../bash-20230201/subst.c	Mon Jan 30 16:19:46 2023
---- subst.c	Mon Feb  6 16:25:22 2023
-***************
-*** 10803,10807 ****
---- 10803,10811 ----
-    ret = (char *)NULL;
-  
-+ #if 0
-    td.flags = W_NOPROCSUB|W_NOTILDE|W_NOSPLIT2;	/* XXX - W_NOCOMSUB? */
-+ #else
-+   td.flags = W_NOPROCSUB|W_NOSPLIT2;	/* XXX - W_NOCOMSUB? */
-+ #endif
-    td.word = savestring (string);		/* in case it's freed on error */
-  
-
-*** ../bash-5.2/patchlevel.h	2020-06-22 14:51:03.000000000 -0400
---- patchlevel.h	2020-10-01 11:01:28.000000000 -0400
-***************
-*** 26,30 ****
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 23
-  
-  #endif /* _PATCHLEVEL_H_ */
---- 26,30 ----
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 24
-  
-  #endif /* _PATCHLEVEL_H_ */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/arrayfunc.c a/arrayfunc.c
+--- a~/arrayfunc.c	1970-01-01 00:00:00
++++ a/arrayfunc.c	1970-01-01 00:00:00
+@@ -650,7 +650,7 @@ assign_assoc_from_kvlist (var, nlist, h,
+ 	  continue;
+ 	}	      
+ 
+-      aval = expand_subscript_string (v, 0);
++      aval = expand_assignment_string_to_string (v, 0);
+       if (aval == 0)
+ 	{
+ 	  aval = (char *)xmalloc (1);
+@@ -842,7 +842,7 @@ assign_compound_array_list (var, nlist,
+       /* See above; we need to expand the value here */
+       if (assoc_p (var))
+ 	{
+-	  val = expand_subscript_string (val, 0);
++	  val = expand_assignment_string_to_string (val, 0);
+ 	  if (val == 0)
+ 	    {
+ 	      val = (char *)xmalloc (1);
+@@ -1030,7 +1030,7 @@ expand_and_quote_assoc_word (w, type)
+     nword[i++] = w[ind++];
+   nword[i++] = w[ind++];
+ 
+-  t = expand_subscript_string (w+ind, 0);
++  t = expand_assignment_string_to_string (w+ind, 0);
+   s = (t && strchr (t, CTLESC)) ? quote_escapes (t) : t;
+   value = sh_single_quote (s ? s : "");
+   if (s != t)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patchlevel.h a/patchlevel.h
+--- a~/patchlevel.h	1970-01-01 00:00:00
++++ a/patchlevel.h	1970-01-01 00:00:00
+@@ -25,6 +25,6 @@
+    regexp `^#define[ 	]*PATCHLEVEL', since that's what support/mkversion.sh
+    looks for to find the patch level (for the sccs version string). */
+ 
+-#define PATCHLEVEL 23
++#define PATCHLEVEL 24
+ 
+ #endif /* _PATCHLEVEL_H_ */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/subst.c a/subst.c
+--- a~/subst.c	1970-01-01 00:00:00
++++ a/subst.c	1970-01-01 00:00:00
+@@ -10802,7 +10802,11 @@ expand_subscript_string (string, quoted)
+   oe = expand_no_split_dollar_star;
+   ret = (char *)NULL;
+ 
++#if 0
+   td.flags = W_NOPROCSUB|W_NOTILDE|W_NOSPLIT2;	/* XXX - W_NOCOMSUB? */
++#else
++  td.flags = W_NOPROCSUB|W_NOSPLIT2;	/* XXX - W_NOCOMSUB? */
++#endif
+   td.word = savestring (string);		/* in case it's freed on error */
+ 
+   expand_no_split_dollar_star = 1;
