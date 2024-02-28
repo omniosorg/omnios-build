@@ -167,6 +167,7 @@ partialchecking perl5 testcase expressions
 partialchecking perl5 testcase features
 partialchecking perl5 testcase fragments
 partialchecking perl5 testcase friends
+partialchecking perl5 testcase friends_operator_overloading
 partialchecking perl5 testcase friends_template
 partialchecking perl5 testcase funcptr_cpp
 partialchecking perl5 testcase functors
@@ -366,6 +367,7 @@ partialchecking perl5 testcase template_default_class_parms_typedef
 partialchecking perl5 testcase template_default_inherit
 partialchecking perl5 testcase template_default_qualify
 partialchecking perl5 testcase template_default_vw
+partialchecking perl5 testcase template_duplicate
 partialchecking perl5 testcase template_empty_inherit
 partialchecking perl5 testcase template_enum
 partialchecking perl5 testcase template_enum_ns_inherit
@@ -571,6 +573,7 @@ partialchecking perl5 testcase cpp11_thread_local
 partialchecking perl5 testcase cpp11_template_double_brackets
 partialchecking perl5 testcase cpp11_template_explicit
 partialchecking perl5 testcase cpp11_template_parameters_decltype
+partialchecking perl5 testcase cpp11_template_templated_methods
 partialchecking perl5 testcase cpp11_template_typedefs
 partialchecking perl5 testcase cpp11_type_traits
 partialchecking perl5 testcase cpp11_type_aliasing
@@ -669,7 +672,7 @@ partialchecking perl5 testcase mod
 partialchecking perl5 testcase multi_import
 partialchecking perl5 testcase packageoption (with run test)
 partialchecking perl5 testcase template_typedef_import
-670 perl5 tests passed
+673 perl5 tests passed
 partialchecking python test-suite
 partialchecking python testcase callback (with run test)
 partialchecking python testcase complextest (with run test)
@@ -883,6 +886,7 @@ partialchecking python testcase expressions
 partialchecking python testcase features
 partialchecking python testcase fragments
 partialchecking python testcase friends (with run test)
+partialchecking python testcase friends_operator_overloading (with run test)
 partialchecking python testcase friends_template
 partialchecking python testcase funcptr_cpp (with run test)
 partialchecking python testcase functors (with run test)
@@ -1082,6 +1086,7 @@ partialchecking python testcase template_default_class_parms_typedef
 partialchecking python testcase template_default_inherit
 partialchecking python testcase template_default_qualify
 partialchecking python testcase template_default_vw
+partialchecking python testcase template_duplicate
 partialchecking python testcase template_empty_inherit
 partialchecking python testcase template_enum
 partialchecking python testcase template_enum_ns_inherit
@@ -1256,6 +1261,7 @@ partialchecking python testcase template_type_namespace (with run test)
 partialchecking python testcase template_opaque (with run test)
 partialchecking python testcase cpp11_hash_tables (with run test)
 partialchecking python testcase cpp11_shared_ptr_const
+partialchecking python testcase cpp11_shared_ptr_crtp_upcast
 partialchecking python testcase cpp11_shared_ptr_nullptr_in_containers
 partialchecking python testcase cpp11_shared_ptr_overload (with run test)
 partialchecking python testcase cpp11_shared_ptr_template_upcast (with run test)
@@ -1312,6 +1318,7 @@ partialchecking python testcase cpp11_thread_local (with run test)
 partialchecking python testcase cpp11_template_double_brackets
 partialchecking python testcase cpp11_template_explicit (with run test)
 partialchecking python testcase cpp11_template_parameters_decltype
+partialchecking python testcase cpp11_template_templated_methods
 partialchecking python testcase cpp11_template_typedefs (with run test)
 partialchecking python testcase cpp11_type_traits (with run test)
 partialchecking python testcase cpp11_type_aliasing (with run test)
@@ -1414,4 +1421,4 @@ partialchecking python testcase mod (with run test)
 partialchecking python testcase multi_import (with run test)
 partialchecking python testcase packageoption
 partialchecking python testcase template_typedef_import (with run test)
-743 python tests passed
+747 python tests passed
