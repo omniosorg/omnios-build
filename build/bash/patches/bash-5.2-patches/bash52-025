@@ -17,30 +17,27 @@ and any EXIT trap will see the correct value for $?.
 Patch (apply with `patch -p0'):
 
 *** ../bash-5.2.9/execute_cmd.c	2022-11-02 10:36:54.000000000 -0400
---- execute_cmd.c	2022-10-27 16:52:55.000000000 -0400
-***************
-*** 1726,1729 ****
---- 1726,1732 ----
-  						     : EXECUTION_SUCCESS;
-  
-+   /* Check for terminating signals before we return to our caller, which we
-+      expect to exit immediately anyway. */
-+   CHECK_TERMSIG;
-  
-    /* If we were explicitly placed in a subshell with (), we need
-
-*** ../bash-5.2/patchlevel.h	2020-06-22 14:51:03.000000000 -0400
---- patchlevel.h	2020-10-01 11:01:28.000000000 -0400
-***************
-*** 26,30 ****
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 24
-  
-  #endif /* _PATCHLEVEL_H_ */
---- 26,30 ----
-     looks for to find the patch level (for the sccs version string). */
-  
-! #define PATCHLEVEL 25
-  
-  #endif /* _PATCHLEVEL_H_ */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/execute_cmd.c a/execute_cmd.c
+--- a~/execute_cmd.c	1970-01-01 00:00:00
++++ a/execute_cmd.c	1970-01-01 00:00:00
+@@ -1725,6 +1725,9 @@ execute_in_subshell (command, asynchrono
+     return_code = (return_code == EXECUTION_SUCCESS) ? EXECUTION_FAILURE
+ 						     : EXECUTION_SUCCESS;
+ 
++  /* Check for terminating signals before we return to our caller, which we
++     expect to exit immediately anyway. */
++  CHECK_TERMSIG;
+ 
+   /* If we were explicitly placed in a subshell with (), we need
+      to do the `shell cleanup' things, such as running traps[0]. */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patchlevel.h a/patchlevel.h
+--- a~/patchlevel.h	1970-01-01 00:00:00
++++ a/patchlevel.h	1970-01-01 00:00:00
+@@ -25,6 +25,6 @@
+    regexp `^#define[ 	]*PATCHLEVEL', since that's what support/mkversion.sh
+    looks for to find the patch level (for the sccs version string). */
+ 
+-#define PATCHLEVEL 24
++#define PATCHLEVEL 25
+ 
+ #endif /* _PATCHLEVEL_H_ */

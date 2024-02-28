@@ -8,7 +8,7 @@
 | compress/lzip				| 1.24			| https://download.savannah.gnu.org/releases/lzip/
 | compress/p7zip			| 16.02			| https://sourceforge.net/projects/p7zip/files/p7zip
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.4.6			| https://tukaani.org/xz/
+| compress/xz				| 5.6.0			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
@@ -27,7 +27,7 @@
 | developer/nasm			| 2.16.01		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.43.2		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.44.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 6.6.3			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -90,7 +90,7 @@
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.2.21		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 026			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
-| shell/bash5-completions		| 2.11			| https://github.com/scop/bash-completion/releases
+| shell/bash5-completions		| 2.12.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.8.5			| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.10		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
@@ -103,16 +103,16 @@
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.4			| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
-| system/pciutils			| 3.10.0		| https://www.kernel.org/pub/software/utils/pciutils/
+| system/pciutils			| 3.11.1		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2312.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2402.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/fio			| 3.36			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.4			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.0			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.22.4		| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.22.5		| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
@@ -125,7 +125,7 @@
 | developer/gnu-binutils		| 2.42			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
-| developer/swig			| 4.2.0			| http://www.swig.org/download.html
+| developer/swig			| 4.2.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-311	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-311		| 23.2.0		| https://pypi.org/project/attrs

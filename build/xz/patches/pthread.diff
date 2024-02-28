@@ -5,7 +5,7 @@ libc these days.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/m4/ax_pthread.m4 a/m4/ax_pthread.m4
 --- a~/m4/ax_pthread.m4	1970-01-01 00:00:00
 +++ a/m4/ax_pthread.m4	1970-01-01 00:00:00
-@@ -202,7 +202,7 @@ case $host_os in
+@@ -204,7 +204,7 @@ case $host_os in
          # that too in a future libc.)  So we'll check first for the
          # standard Solaris way of linking pthreads (-mt -lpthread).
  
@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/m4/ax_pthread.m4 a/m4/ax_pthr
          ;;
  esac
  
-@@ -236,7 +236,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
+@@ -238,7 +238,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
  # To solve this, first try -pthread together with -lpthread for GCC
  
  AS_IF([test "x$GCC" = "xyes"],

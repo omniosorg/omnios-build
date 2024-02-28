@@ -48,7 +48,6 @@ PASS: dnscache-TTL-0.sh
 PASS: invalid_nested_include.sh
 PASS: omfwd-tls-invalid-permitExpiredCerts.sh
 PASS: omfwd-keepalive.sh
-PASS: omusrmsg-noabort-legacy.sh
 PASS: omusrmsg-errmsg-no-params.sh
 PASS: omusrmsg-noabort.sh
 PASS: omfile-module-params.sh
@@ -410,10 +409,10 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2312.0
+Testsuite summary for rsyslog 8.2402.0
 ============================================================================
-# TOTAL: 412
-# PASS:  372
+# TOTAL: 411
+# PASS:  371
 # SKIP:  40
 # XFAIL: 0
 # FAIL:  0
