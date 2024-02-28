@@ -460,6 +460,7 @@ PASS: xgettext-vala-2
 PASS: xgettext-vala-3
 PASS: xgettext-vala-4
 PASS: xgettext-vala-5
+PASS: xgettext-vala-6
 PASS: xgettext-vala-stackovfl-1
 PASS: xgettext-vala-stackovfl-2
 PASS: xgettext-ycp-1
@@ -568,8 +569,8 @@ PASS: autopoint-1
 PASS: autopoint-2
 PASS: autopoint-3
 PASS: cldr-plurals-1
-# TOTAL: 552
-# PASS:  524
+# TOTAL: 553
+# PASS:  525
 # SKIP:  27
 # XFAIL: 0
 # FAIL:  1
