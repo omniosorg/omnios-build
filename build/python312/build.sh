@@ -185,6 +185,8 @@ test_dtrace() {
 }
 
 multi_build() {
+    typeset arch="$1"
+
     logcmd rsync -ac --delete $TMPDIR/$BUILDDIR{,.debug}/ \
         || logerr "Failed to create debug copy of build directory"
 
@@ -196,7 +198,8 @@ multi_build() {
     [ -n "$FLAVOR" -a "$FLAVOR" != "debug" ] && return
 
     note -n "Building debug $PROG"
-    CONFIGURE_OPTS=${CONFIGURE_OPTS/enable-optimizations/disable-optimizations}
+    CONFIGURE_OPTS[$arch]=${CONFIGURE_OPTS[$arch]/enable-optimizations/disable-optimizations}
+    CFLAGS[$arch]+=" -fno-reorder-functions -fno-clone-functions"
     pushd $TMPDIR/$BUILDDIR.debug >/dev/null
     patch_file patches ustack.patch
     popd >/dev/null
@@ -236,11 +239,10 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build autoconf -autoreconf
 if [[ $BUILDARCH = *amd64* ]]; then
-    # multi build is currently disabled until the ustack helper patch is ready
-    build           #multi_build
+    multi_build "$BUILDARCH"
     launch_testsuite
     test_dtrace
-    make_package    #merged_package
+    merged_package
 else
     build
     make_package

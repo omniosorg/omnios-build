@@ -1,0 +1,668 @@
+From 91e13cc2104fc0dae396d59341ee8f23de2c3db5 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sat, 2 Mar 2024 17:38:00 +0000
+Subject: [PATCH] Python: Add dtrace ustack helper
+
+Python acquired native dtrace support in version 3.6, but without the
+ustack helper that annotates stack traces with information about the
+python function being called.
+
+This partially restores the ustack helper and is based on Sun's original dtrace
+patches.
+
+Some more information on the original work can be found at:
+https://movementarian.org/blog/posts/2007-05-24-python-and-dtrace-in-build-65
+---
+ Include/dtrace.cpp.sh                         |  33 ++++
+ Include/pydtrace.d                            | 149 ++++++++++++++++++
+ Include/pydtrace.h                            |  12 +-
+ Include/pydtrace_offsets.c                    |  34 ++++
+ Include/pydtrace_symbols.sh                   |  15 ++
+ Lib/test/dtracedata/jstack.d                  |  18 +++
+ Lib/test/dtracedata/jstack.d.expected         |  21 +++
+ Lib/test/dtracedata/jstack.py                 |  25 +++
+ Lib/test/dtracedata/unicode-jstack.d          |  18 +++
+ Lib/test/dtracedata/unicode-jstack.d.expected |  18 +++
+ Lib/test/dtracedata/unicode-jstack.py         |  15 ++
+ Lib/test/test_dtrace.py                       |  31 ++++
+ Makefile.pre.in                               |  35 +++-
+ Python/ceval.c                                |  29 ++++
+ Python/import.c                               |   4 +-
+ Python/sysmodule.c                            |   2 +-
+ 16 files changed, 447 insertions(+), 12 deletions(-)
+ create mode 100755 Include/dtrace.cpp.sh
+ create mode 100644 Include/pydtrace_offsets.c
+ create mode 100755 Include/pydtrace_symbols.sh
+ create mode 100644 Lib/test/dtracedata/jstack.d
+ create mode 100644 Lib/test/dtracedata/jstack.d.expected
+ create mode 100644 Lib/test/dtracedata/jstack.py
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.d
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.d.expected
+ create mode 100644 Lib/test/dtracedata/unicode-jstack.py
+
+diff --git a/Include/dtrace.cpp.sh b/Include/dtrace.cpp.sh
+new file mode 100755
+index 0000000000..9a3fc3eed2
+--- /dev/null
++++ b/Include/dtrace.cpp.sh
+@@ -0,0 +1,33 @@
++#!/bin/bash
++
++# A cpp wrapper used by the dtrace compiler that strips //-style comments
++# and static inline functions
++
++op=${@: -1}
++args=${@:1:$#-1}
++
++# Our native cpp cannot cope with this, and we still need to remove some
++# pieces to keep the dtrace compiler happy.
++: "${DTRACE_CPP:=/opt/gcc-10/bin/cpp}"
++
++$DTRACE_CPP $args \
++	-D'__attribute__(x)=' \
++	-D'__alignof__(x)=' \
++	-D'__aligned(x)=' \
++	-D__builtin_va_list='void *' \
++	-D_Bool=char \
++	-D_Noreturn= \
++	-Dstring=_string \
++	-Dcounter=_counter \
++	| sed '
++	s^//.*^^
++	/^.*static inline .*/,/^}/d
++	/^.*static inline *$/,/^}/d
++	/\* *self\>/s/self/_&/
++	/ob_refcnt_split/,/};/ {
++		s/};/} _u;/
++	}
++	/__gnuc_va_list va_list\;/s/va_list;/_x_&/
++	/^$/d
++' | tee dtrace.out >> $op
++
+diff --git a/Include/pydtrace.d b/Include/pydtrace.d
+index 5e6a626b01..b45f5bb8c0 100644
+--- a/Include/pydtrace.d
++++ b/Include/pydtrace.d
+@@ -20,3 +20,152 @@ provider python {
+ #pragma D attributes Evolving/Evolving/Common provider python function
+ #pragma D attributes Evolving/Evolving/Common provider python name
+ #pragma D attributes Evolving/Evolving/Common provider python args
++
++#ifdef PYDTRACE_STACK_HELPER
++/*
++ * Python ustack helper. This relies on the first argument (PyFrame *) being
++ * on the stack; see Python/ceval.c for the contortions we go through to ensure
++ * this is the case.
++ *
++ * On x86, the PyFrame * is two slots up from the frame pointer.
++ *
++ * Some details about this in "Python and DTrace in build 65":
++ * https://movementarian.org/blog/posts/2007-05-24-python-and-dtrace-in-build-65
++ */
++
++#include "pyconfig.h"
++#undef _POSIX_PTHREAD_SEMANTICS
++
++#include <stdio.h>
++#include <sys/types.h>
++
++#define Py_EXPORTS_H
++#define Py_IMPORTED_SYMBOL
++#define Py_EXPORTED_SYMBOL
++#define Py_LOCAL_SYMBOL
++
++#include "Python.h"
++#include "internal/pycore_frame.h"
++
++#include "pydtrace_offsets.h"
++#include "pydtrace_symbols.h"
++
++#define startframe _PyEval_EvalFrameDefaultReal
++#define endframe PYDTRACE_AFTER__PyEval_EvalFrameDefaultReal
++
++extern uintptr_t startframe;
++extern uintptr_t endframe;
++
++#define at_evalframe(addr) \
++    ((uintptr_t)addr >= ((uintptr_t)&``startframe) && \
++     (uintptr_t)addr < ((uintptr_t)&``endframe))
++
++#define frame_ptr_addr ((uintptr_t)arg1 + sizeof(uintptr_t) * 2)
++#define copyin_obj(addr, obj) ((obj *)copyin((uintptr_t)(addr), sizeof(obj)))
++
++/*
++ * Check if the string is ASCII. Don't use bitfields, because the
++ * packing in GCC and D are different. BEWARE!!!.
++ */
++#define pystr_isascii(addr) \
++    ((*(((char *)addr) + PYDTRACE_ASCII_OFFSET)) & PYDTRACE_ASCII_MASK)
++#define pystr_len(addr) \
++    (pystr_isascii(addr) ? (addr)->_base.length : \
++    *(Py_ssize_t *)(((char *)(addr)) + PYDTRACE_UTF8_LENGTH_OFFSET))
++#define pystr_addr(addr, addr2) \
++    (pystr_isascii(addr) ? \
++    (char *)(((char *)(addr2)) + PYDTRACE_PyASCIIObject_SIZE) : \
++    (char *)*(uintptr_t *)(((char *)(addr)) + PYDTRACE_UTF8_OFFSET))
++
++#define add_digit(nr, div) (((nr) / div) ? \
++    (this->result[this->pos++] = '0' + (((nr) / div) % 10)) : \
++    (this->result[this->pos] = '\0'))
++#define add_char(c) \
++    (this->result[this->pos++] = c)
++#define add_hex(d) \
++    add_char((d) < 10 ? '0' + (d) : 'a' - 10 + (d))
++
++#define add_number(i) \
++	add_digit((i), 100000);  \
++	add_digit((i), 10000); \
++	add_digit((i), 1000);  \
++	add_digit((i), 100); \
++	add_digit((i), 10);  \
++	add_digit((i), 1)
++
++#define add_pointer32(p) \
++	add_hex((p >> 28) & 0xf);  \
++	add_hex((p >> 24) & 0xf);  \
++	add_hex((p >> 20) & 0xf);  \
++	add_hex((p >> 16) & 0xf);  \
++	add_hex((p >> 12) & 0xf);  \
++	add_hex((p >> 8) & 0xf); \
++	add_hex((p >> 4) & 0xf); \
++	add_hex((p) & 0xf)
++
++#define add_pointer(p) \
++	add_pointer32(p >> 32); \
++	add_pointer32(p)
++
++dtrace:helper:ustack:
++{
++	this->framep = *(uintptr_t *)copyin(frame_ptr_addr, sizeof(uintptr_t));
++	this->frameo = copyin_obj(this->framep, struct _PyInterpreterFrame);
++
++	/*
++	 * Unfortunately for this ustack helper, python manages its own frames
++	 * and in order to print them all we would have to walk the list at
++	 * this->frameo->previous. We don't have a way of doing that yet - some
++	 * inventive attempts have failed due to the lack of 'self' in this
++	 * context - so we make do with printing the most recent stack frame.
++	 */
++
++	this->codep = this->frameo->f_code;
++	this->codeo = copyin_obj(this->codep, PyCodeObject);
++
++	this->filenameo = copyin_obj(this->codeo->co_filename,
++	    PyCompactUnicodeObject);
++	this->nameo = copyin_obj(this->codeo->co_name, PyCompactUnicodeObject);
++	this->len_filename = pystr_len(this->filenameo);
++	this->len_name = pystr_len(this->nameo);
++
++#if 0
++	/* Line number determination still needs work */
++	this->addr = this->frameo->prev_instr;
++	this->line = copyin_obj(
++	((int32_t *)this->codeo->co_linetable)[(int32_t)this->addr],
++	int32_t);
++	this->lineno = *this->line;
++#else
++	this->lineno = 0;
++#endif
++
++	this->len = 1 + this->len_filename + 1 + 5 + 2 + this->len_name + 1 + 1;
++
++	this->result = (char *)alloca(this->len);
++	this->pos = 0;
++	add_char('@');
++
++	copyinto((uintptr_t)pystr_addr(this->filenameo,
++	    this->codeo->co_filename), this->len_filename,
++	    this->result + this->pos);
++	this->pos += this->len_filename;
++
++	add_char(':');
++	add_number(this->lineno);
++	add_char(' ');
++	add_char('(');
++
++	copyinto((uintptr_t)pystr_addr(this->nameo,
++	    this->codeo->co_name), this->len_name,
++	    this->result + this->pos);
++	this->pos += this->len_name;
++
++	add_char(')');
++	this->result[this->pos] = '\0';
++
++	stringof(this->result)
++}
++
++#endif  /* PYDTRACE_STACK_HELPER */
++
+diff --git a/Include/pydtrace.h b/Include/pydtrace.h
+index e197d36694..35f01f7ddc 100644
+--- a/Include/pydtrace.h
++++ b/Include/pydtrace.h
+@@ -25,18 +25,18 @@ extern "C" {
+ 
+ /* Without DTrace, compile to nothing. */
+ 
+-static inline void PyDTrace_LINE(const char *arg0, const char *arg1, int arg2) {}
+-static inline void PyDTrace_FUNCTION_ENTRY(const char *arg0, const char *arg1, int arg2)  {}
+-static inline void PyDTrace_FUNCTION_RETURN(const char *arg0, const char *arg1, int arg2) {}
++static inline void PyDTrace_LINE(char *arg0, char *arg1, int arg2) {}
++static inline void PyDTrace_FUNCTION_ENTRY(char *arg0, char *arg1, int arg2)  {}
++static inline void PyDTrace_FUNCTION_RETURN(char *arg0, char *arg1, int arg2) {}
+ static inline void PyDTrace_GC_START(int arg0) {}
+ static inline void PyDTrace_GC_DONE(Py_ssize_t arg0) {}
+ static inline void PyDTrace_INSTANCE_NEW_START(int arg0) {}
+ static inline void PyDTrace_INSTANCE_NEW_DONE(int arg0) {}
+ static inline void PyDTrace_INSTANCE_DELETE_START(int arg0) {}
+ static inline void PyDTrace_INSTANCE_DELETE_DONE(int arg0) {}
+-static inline void PyDTrace_IMPORT_FIND_LOAD_START(const char *arg0) {}
+-static inline void PyDTrace_IMPORT_FIND_LOAD_DONE(const char *arg0, int arg1) {}
+-static inline void PyDTrace_AUDIT(const char *arg0, void *arg1) {}
++static inline void PyDTrace_IMPORT_FIND_LOAD_START(char *arg0) {}
++static inline void PyDTrace_IMPORT_FIND_LOAD_DONE(char *arg0, int arg1) {}
++static inline void PyDTrace_AUDIT(char *arg0, void *arg1) {}
+ 
+ static inline int PyDTrace_LINE_ENABLED(void) { return 0; }
+ static inline int PyDTrace_FUNCTION_ENTRY_ENABLED(void) { return 0; }
+diff --git a/Include/pydtrace_offsets.c b/Include/pydtrace_offsets.c
+new file mode 100644
+index 0000000000..8cad556c84
+--- /dev/null
++++ b/Include/pydtrace_offsets.c
+@@ -0,0 +1,34 @@
++#include "Python.h"
++#include "unicodeobject.h"
++#include <stdlib.h>
++#include <stdio.h>
++
++int
++main(int argc, const char **argv)
++{
++	PyCompactUnicodeObject o;
++	unsigned char *p = (unsigned char *)(&o);
++
++	memset(&o, '\0', sizeof(o));
++	o._base.state.ascii = 1;
++	while (*p == '\0')
++		p++;
++
++	printf("/* File auto-generated. DO NOT MODIFY MANUALLY */\n");
++	printf("\n");
++	printf("#ifndef PYDTRACE_OFFSETS_H\n");
++	printf("#define PYDTRACE_OFFSETS_H\n");
++	printf("\n");
++	printf("#define PYDTRACE_ASCII_OFFSET %ld\n",
++	    p - (unsigned char *)(&o));
++	printf("#define PYDTRACE_ASCII_MASK %d\n", *p);
++	printf("#define PYDTRACE_PyASCIIObject_SIZE %ld\n",
++	    sizeof(PyASCIIObject));
++	printf("#define PYDTRACE_UTF8_LENGTH_OFFSET %ld\n",
++	    offsetof(PyCompactUnicodeObject, utf8_length));
++	printf("#define PYDTRACE_UTF8_OFFSET %ld\n",
++	    offsetof(PyCompactUnicodeObject, utf8));
++	printf("\n");
++	printf("#endif\n");
++}
++
+diff --git a/Include/pydtrace_symbols.sh b/Include/pydtrace_symbols.sh
+new file mode 100755
+index 0000000000..5672c2bb18
+--- /dev/null
++++ b/Include/pydtrace_symbols.sh
+@@ -0,0 +1,15 @@
++#!/bin/ksh
++
++obj=${1:?obj}
++
++# Find the function directly after the one that we want to annotate with
++# the dtrace ustack helper
++
++func=_PyEval_EvalFrameDefaultReal
++sym=`/usr/bin/nm -hgp $obj \
++    | grep ' T ' \
++    | sort -n \
++    | sed -n "/$func\$/{n;s/.* //;p;}"`
++
++echo "#define PYDTRACE_AFTER_$func $sym"
++
+diff --git a/Lib/test/dtracedata/jstack.d b/Lib/test/dtracedata/jstack.d
+new file mode 100644
+index 0000000000..46855b407c
+--- /dev/null
++++ b/Lib/test/dtracedata/jstack.d
+@@ -0,0 +1,18 @@
++
++python$target:::function-entry
++/copyinstr(arg1)=="test_stack"/
++{
++    self->trace = 1;
++}
++python$target:::function-entry
++/self->trace/
++{
++    printf("[x]");
++    jstack();
++}
++python$target:::function-return
++/copyinstr(arg1)=="test_stack"/
++{
++    self->trace = 0;
++}
++
+diff --git a/Lib/test/dtracedata/jstack.d.expected b/Lib/test/dtracedata/jstack.d.expected
+new file mode 100644
+index 0000000000..9f1f389df7
+--- /dev/null
++++ b/Lib/test/dtracedata/jstack.d.expected
+@@ -0,0 +1,21 @@
++[x]
++[PyFile:17(test_stack)]
++[x]
++[PyFile:2(function_1)]
++[PyFile:17(test_stack)]
++[x]
++[PyFile:5(function_2)]
++[PyFile:17(test_stack)]
++[x]
++[PyFile:2(function_1)]
++[PyFile:5(function_2)]
++[PyFile:17(test_stack)]
++[x]
++[PyFile:8(function_3)]
++[PyFile:18(test_stack)]
++[x]
++[PyFile:11(function_4)]
++[PyFile:19(test_stack)]
++[x]
++[PyFile:14(function_5)]
++[PyFile:20(test_stack)]
+\ No newline at end of file
+diff --git a/Lib/test/dtracedata/jstack.py b/Lib/test/dtracedata/jstack.py
+new file mode 100644
+index 0000000000..a1584ddf6f
+--- /dev/null
++++ b/Lib/test/dtracedata/jstack.py
+@@ -0,0 +1,25 @@
++
++def function_1():
++    pass
++
++def function_2():
++    function_1()
++
++def function_3(dummy, dummy2):
++    pass
++
++def function_4(**dummy):
++    pass
++
++def function_5(dummy, dummy2, **dummy3):
++    pass
++
++def test_stack():
++    function_1()
++    function_2()
++    function_3(*(1,2))
++    function_4(**{"test":42})
++    function_5(*(1,2), **{"test":42})
++
++test_stack()
++
+diff --git a/Lib/test/dtracedata/unicode-jstack.d b/Lib/test/dtracedata/unicode-jstack.d
+new file mode 100644
+index 0000000000..c50a8d6785
+--- /dev/null
++++ b/Lib/test/dtracedata/unicode-jstack.d
+@@ -0,0 +1,18 @@
++
++python$target:::function-entry
++/copyinstr(arg1)=="test_unicode_stack"/
++{
++    self->trace = 1;
++}
++python$target:::function-entry
++/self->trace/
++{
++    printf("[x]");
++    jstack();
++}
++python$target:::function-return
++/copyinstr(arg1)=="test_unicode_stack"/
++{
++    self->trace = 0;
++}
++
+diff --git a/Lib/test/dtracedata/unicode-jstack.d.expected b/Lib/test/dtracedata/unicode-jstack.d.expected
+new file mode 100644
+index 0000000000..9e71506738
+--- /dev/null
++++ b/Lib/test/dtracedata/unicode-jstack.d.expected
+@@ -0,0 +1,18 @@
++[x]
++[PyFile:8(test_unicode_stack)]
++[x]
++[PyFile:2(function_1)]
++[PyFile:8(test_unicode_stack)]
++[x]
++[PyFile:9(únícódé)]
++[PyFile:9(test_unicode_stack)]
++[x]
++[PyFile:5(function_2)]
++[PyFile:9(únícódé)]
++[PyFile:9(test_unicode_stack)]
++[x]
++[PyFile:2(function_1)]
++[PyFile:5(function_2)]
++[PyFile:9(únícódé)]
++[PyFile:9(test_unicode_stack)]
++
+diff --git a/Lib/test/dtracedata/unicode-jstack.py b/Lib/test/dtracedata/unicode-jstack.py
+new file mode 100644
+index 0000000000..d93e3d76b9
+--- /dev/null
++++ b/Lib/test/dtracedata/unicode-jstack.py
+@@ -0,0 +1,15 @@
++
++def function_1():
++    pass
++
++def function_2():
++    function_1()
++
++def test_unicode_stack():
++    def únícódé():
++        function_2()
++    function_1()
++    únícódé()
++
++test_unicode_stack()
++
+diff --git a/Lib/test/test_dtrace.py b/Lib/test/test_dtrace.py
+index 6f4c2313dd..fb8ba69209 100644
+--- a/Lib/test/test_dtrace.py
++++ b/Lib/test/test_dtrace.py
+@@ -154,6 +154,37 @@ def test_gc(self):
+     def test_line(self):
+         self.run_case("line")
+ 
++    def _jstack(self, name):
++        def _jstack_decode(str):
++            # When compiling with '--with-pydebug'
++            str = "".join(re.split(r'\[[0-9]+ refs\]', str))
++
++            str = [i for i in str.split("\n") \
++                if (("[" in i) and not i.endswith(" (<module>) ]"))]
++            str = "\n".join(str)
++            str = str.replace("\r", "").replace(" ", "")
++            return str
++
++        df = abspath(name + self.backend.EXTENSION)
++        pyf = abspath(name + ".py")
++
++        output = self.backend.trace_python(script_file=df, python_file=pyf,
++            optimize_python=self.optimize_python)
++
++        actual_result = _jstack_decode(output).replace(pyf, 'PyFile')
++
++        with open(abspath(name + self.backend.EXTENSION + ".expected")) as f:
++            expected_result = f.read().rstrip()
++
++        expected_result = expected_result.replace("\r", "").replace(" ", "")
++
++        self.assertEqual(actual_result, expected_result)
++
++    def test_jstack(self):
++        self._jstack("jstack")
++
++    def test_unicode_jstack(self):
++        self._jstack("unicode-jstack")
+ 
+ class DTraceNormalTests(TraceTests, unittest.TestCase):
+     backend = DTraceBackend()
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index dd5e69f7ab..81e738cf9d 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -1572,17 +1572,46 @@ Python/frozen.o: $(FROZEN_FILES_OUT)
+ # an include guard, so we can't use a pipeline to transform its output.
+ Include/pydtrace_probes.h: $(srcdir)/Include/pydtrace.d
+ 	$(MKDIR_P) Include
+-	$(DTRACE) $(DFLAGS) -o $@ -h -s $<
++	$(DTRACE) $(DFLAGS) -C -o $@ -h -s $<
+ 	: sed in-place edit with POSIX-only tools
+ 	sed 's/PYTHON_/PyDTrace_/' $@ > $@.tmp
+ 	mv $@.tmp $@
+ 
++Include/pydtrace_offsets: $(srcdir)/Include/pydtrace_offsets.c
++	$(MKDIR_P) Include
++	$(CC) $(PY_CORE_CFLAGS) -o $@ $<
++
++Include/pydtrace_offsets.h: Include/pydtrace_offsets
++	$< > $@
++
++Include/pydtrace_symbols: $(srcdir)/Include/pydtrace_symbols.sh
++	$(MKDIR_P) Include
++	cp $< $@
++	chmod +x $@
++
++Include/pydtrace_symbols.h: Include/pydtrace_symbols Python/ceval.o
++	$^ > $@
++
++Include/dtrace.cpp: $(srcdir)/Include/dtrace.cpp.sh
++	$(MKDIR_P) Include
++	cp $< $@
++	chmod +x $@
++
++clean-dtrace:
++	rm -f Include/dtrace.cpp Include/pydtrace_symbols
++	rm -f Include/pydtrace_offsets Include/pydtrace_offsets.h
++	rm -f Include/pydtrace_symbols.h
++
+ Python/ceval.o: $(srcdir)/Include/pydtrace.h
+ Python/import.o: $(srcdir)/Include/pydtrace.h
+ Modules/gcmodule.o: $(srcdir)/Include/pydtrace.h
+ 
++Python/pydtrace.o: Include/dtrace.cpp
++Python/pydtrace.o: Include/pydtrace_offsets.h Include/pydtrace_symbols.h
+ Python/pydtrace.o: $(srcdir)/Include/pydtrace.d $(DTRACE_DEPS)
+-	$(DTRACE) $(DFLAGS) -o $@ -G -s $< $(DTRACE_DEPS)
++	$(DTRACE) $(DFLAGS) -DPYDTRACE_STACK_HELPER $(PY_CPPFLAGS) \
++	    -C -xcpppath=./Include/dtrace.cpp \
++	    -o $@ -G -s $< $(DTRACE_DEPS)
+ 
+ Objects/typeobject.o: Objects/typeslots.inc
+ 
+@@ -2681,7 +2710,7 @@ profile-removal:
+ 	rm -f profile-bolt-stamp
+ 
+ .PHONY: clean
+-clean: clean-retain-profile clean-bolt
++clean: clean-retain-profile clean-bolt clean-dtrace
+ 	@if test @DEF_MAKE_ALL_RULE@ = profile-opt -o @DEF_MAKE_ALL_RULE@ = bolt-opt; then \
+ 		rm -f profile-gen-stamp profile-clean-stamp; \
+ 		$(MAKE) profile-removal; \
+diff --git a/Python/ceval.c b/Python/ceval.c
+index b44ad31929..5fe0193f62 100644
+--- a/Python/ceval.c
++++ b/Python/ceval.c
+@@ -657,7 +657,13 @@ static inline void _Py_LeaveRecursiveCallPy(PyThreadState *tstate)  {
+ #define PY_EVAL_C_STACK_UNITS 2
+ 
+ PyObject* _Py_HOT_FUNCTION
++#ifdef WITH_DTRACE
++_PyEval_EvalFrameDefaultReal(
++    long a1, long a2, long a3, long a4, PyThreadState *tstate, int throwflag,
++    _PyInterpreterFrame *frame)
++#else
+ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int throwflag)
++#endif
+ {
+     _Py_EnsureTstateNotNULL(tstate);
+     CALL_STAT_INC(pyeval_calls);
+@@ -1028,6 +1034,29 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int
+ #  pragma warning(pop)
+ #endif
+ 
++#ifdef WITH_DTRACE
++
++/*
++ * These shenanigans look like utter madness, but what we're actually doing is
++ * making sure that the ustack helper will see the PyFrameObject pointer on the
++ * stack.
++ *
++ * We use up the six registers for passing arguments, meaning the call can't
++ * use a register for passing 'f', and has to push it onto the stack in a known
++ * location.
++ */
++
++PyObject* __attribute__((noinline))
++_PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *f,
++    int throwflag)
++{
++    volatile PyObject *f2;
++    f2 = _PyEval_EvalFrameDefaultReal(0, 0, 0, 0, tstate, throwflag, f);
++    return (PyObject *)f2;
++}
++#endif
++
++
+ static void
+ format_missing(PyThreadState *tstate, const char *kind,
+                PyCodeObject *co, PyObject *names, PyObject *qualname)
+diff --git a/Python/import.c b/Python/import.c
+index db70909982..c3faef09f5 100644
+--- a/Python/import.c
++++ b/Python/import.c
+@@ -2774,13 +2774,13 @@ import_find_and_load(PyThreadState *tstate, PyObject *abs_name)
+     }
+ 
+     if (PyDTrace_IMPORT_FIND_LOAD_START_ENABLED())
+-        PyDTrace_IMPORT_FIND_LOAD_START(PyUnicode_AsUTF8(abs_name));
++        PyDTrace_IMPORT_FIND_LOAD_START((char *)PyUnicode_AsUTF8(abs_name));
+ 
+     mod = PyObject_CallMethodObjArgs(IMPORTLIB(interp), &_Py_ID(_find_and_load),
+                                      abs_name, IMPORT_FUNC(interp), NULL);
+ 
+     if (PyDTrace_IMPORT_FIND_LOAD_DONE_ENABLED())
+-        PyDTrace_IMPORT_FIND_LOAD_DONE(PyUnicode_AsUTF8(abs_name),
++        PyDTrace_IMPORT_FIND_LOAD_DONE((char *)PyUnicode_AsUTF8(abs_name),
+                                        mod != NULL);
+ 
+     if (import_time) {
+diff --git a/Python/sysmodule.c b/Python/sysmodule.c
+index 7874920a16..d0ff239743 100644
+--- a/Python/sysmodule.c
++++ b/Python/sysmodule.c
+@@ -237,7 +237,7 @@ sys_audit_tstate(PyThreadState *ts, const char *event,
+ 
+     /* Dtrace USDT point */
+     if (dtrace) {
+-        PyDTrace_AUDIT(event, (void *)eventArgs);
++        PyDTrace_AUDIT((char *)event, (void *)eventArgs);
+     }
+ 
+     /* Call interpreter hooks */
+-- 
+2.42.0
+
