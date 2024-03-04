@@ -148,6 +148,7 @@ omnios driver/network/ib
 omnios driver/network/ibdma
 omnios driver/network/ibp
 omnios driver/network/igb
+omnios driver/network/igc
 omnios driver/network/iprb
 omnios driver/network/ipw
 omnios driver/network/iwh
@@ -736,6 +737,7 @@ omnios system/test/ksh93
 omnios system/test/libctest
 omnios system/test/libmlrpctest
 omnios system/test/nettest
+omnios system/test/nvmetest
 omnios system/test/ostest
 omnios system/test/smbclient
 omnios system/test/smbsrvtest
