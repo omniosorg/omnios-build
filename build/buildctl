@@ -15,6 +15,8 @@ build_flags=
 basic_build_requirements
 export _BUILDCTL_CHECKED_REQUIREMENTS=1
 
+KAYAK_PKG=system/install/kayak-kernel
+
 # targets maps any valid package name to its full package name.
 declare -A targets
 # fulltargets maps full package names to their build script.
@@ -108,7 +110,7 @@ buildorder() {
         mapfile -t -O ${#list[@]} list \
             < <( printf '%s\n' ${!fulltargets[@]} | sort | \
            egrep -v 'kayak-kernel|net-snmp')
-        list+=(system/install/kayak-kernel)
+        list+=($KAYAK_PKG)
     fi
 }
 
@@ -370,8 +372,8 @@ baseline() {
 
     # If we skipped the kayak kernel package, add it to the generated baseline
     # file so that the baseline check will succeed.
-    if [ -n "$SKIP_KAYAK_KERNEL" ]; then
-        echo "$PKGPUBLISHER system/install/kayak-kernel" >> $TMPDIR/baseline.$$
+    if [ -n "$SKIP_KAYAK_KERNEL" ] && egrep -s "$KAYAK_PKG" $baselinef; then
+        echo "$PKGPUBLISHER $KAYAK_PKG" >> $TMPDIR/baseline.$$
         sort $TMPDIR/baseline.$$ > $TMPDIR/baseline.$$.sorted
         mv $TMPDIR/baseline.$$.sorted $TMPDIR/baseline.$$
     fi
