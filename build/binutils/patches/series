@@ -1,4 +1,3 @@
 gold-fallocate.patch
 ld64so.patch
 stdio-limit.diff
-startstop.patch
