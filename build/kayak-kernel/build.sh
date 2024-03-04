@@ -53,7 +53,7 @@ else
         || logerr "Cannot escalate privileges with $PFEXEC"
 
     BUILDSEND_MP=/kayak_image
-    BUILDSEND="/rpool/kayak_image"
+    BUILDSEND="rpool/kayak_image"
     [ `zonename` = global ] || BUILDSEND="`zfs list -Ho name /`/kayak_image"
 fi
 
