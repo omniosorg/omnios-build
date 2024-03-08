@@ -53,6 +53,7 @@ driver/network/bpf					S
 driver/network/chxge					S
 driver/network/cxgbe					S
 driver/network/dmfe					S
+driver/network/dnet					S
 driver/network/e1000g					S
 driver/network/emlxs					S
 driver/network/ena					S
@@ -74,7 +75,6 @@ driver/network/myri10ge					S
 driver/network/nge					S
 driver/network/ntxn					S
 driver/network/nxge					S
-driver/network/platform					S
 driver/network/qlc					S
 driver/network/rds					S
 driver/network/rdsv3					S
