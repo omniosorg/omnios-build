@@ -127,6 +127,7 @@ omnios driver/network/bpf
 omnios driver/network/chxge
 omnios driver/network/cxgbe
 omnios driver/network/dmfe
+omnios driver/network/dnet
 omnios driver/network/e1000g
 omnios driver/network/efe
 omnios driver/network/elxl
@@ -170,7 +171,7 @@ omnios driver/network/ofk
 omnios driver/network/pcan o
 omnios driver/network/pcn
 omnios driver/network/pcwl o
-omnios driver/network/platform
+omnios driver/network/platform r
 omnios driver/network/qede
 omnios driver/network/qlc
 omnios driver/network/ral
