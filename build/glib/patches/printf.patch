@@ -1,8 +1,8 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/test-printf.c a/glib/tests/test-printf.c
 --- a~/glib/tests/test-printf.c	1970-01-01 00:00:00
 +++ a/glib/tests/test-printf.c	1970-01-01 00:00:00
-@@ -899,7 +899,7 @@ test_upper_bound (void)
-   g_assert_cmpint (res, ==, 20);
+@@ -902,7 +902,7 @@ test_upper_bound (void)
+   g_assert_cmpint (res, ==, 0);
  }
  
 -#if !defined(__APPLE__) && !defined(__FreeBSD__)
@@ -10,7 +10,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/test-printf.c a/gl
  static gint test_vasprintf_va (gchar       **string,
                                 const gchar  *format,
                                 ...) G_GNUC_PRINTF (2, 3);
-@@ -919,19 +919,19 @@ test_vasprintf_va (gchar       **string,
+@@ -922,19 +922,19 @@ test_vasprintf_va (gchar       **string,
  
    return len;
  }
@@ -27,6 +27,23 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/test-printf.c a/gl
  #endif
  
    g_test_summary ("Test error handling for invalid format placeholder in g_vasprintf()");
+ 
+-#if !defined(__APPLE__) && !defined(__FreeBSD__)
++#if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__illumos__)
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wformat"
+ #pragma GCC diagnostic ignored "-Wformat-extra-args"
+@@ -951,14 +951,14 @@ test_vasprintf_invalid_format_placeholde
+ static void
+ test_vasprintf_invalid_wide_string (void)
+ {
+-#if !defined(__APPLE__) && !defined(__FreeBSD__)
++#if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__illumos__)
+   gint len = 0;
+   gchar *buf = "some non-null string";
+ #endif
+ 
+   g_test_summary ("Test error handling for invalid wide strings in g_vasprintf()");
  
 -#if !defined(__APPLE__) && !defined(__FreeBSD__)
 +#if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__illumos__)
