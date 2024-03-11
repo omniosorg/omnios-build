@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  
  	/* Standard Options */
  	if (options->num_host_key_files == 0) {
-@@ -1366,8 +1371,17 @@ process_server_config_line_depth(ServerO
+@@ -1368,8 +1373,17 @@ process_server_config_line_depth(ServerO
  	switch (opcode) {
  	/* Portable-specific options */
  	case sUsePAM:

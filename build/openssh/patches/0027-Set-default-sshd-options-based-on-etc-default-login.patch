@@ -102,7 +102,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
 --- a~/sshd_config.5	1970-01-01 00:00:00
 +++ a/sshd_config.5	1970-01-01 00:00:00
-@@ -1321,7 +1321,14 @@ Specifies the maximum number of authenti
+@@ -1330,7 +1330,14 @@ Specifies the maximum number of authenti
  connection.
  Once the number of failures reaches half this value,
  additional failures are logged.
@@ -118,7 +118,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  .It Cm MaxSessions
  Specifies the maximum number of open shell, login or subsystem (e.g. sftp)
  sessions permitted per network connection.
-@@ -1396,7 +1403,14 @@ The default is
+@@ -1405,7 +1412,14 @@ The default is
  When password authentication is allowed, it specifies whether the
  server allows login to accounts with empty password strings.
  The default is

@@ -215,7 +215,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "securitykeyprovider", sSecurityKeyProvider, SSHCFG_GLOBAL },
  	{ "requiredrsasize", sRequiredRSASize, SSHCFG_ALL },
  	{ "channeltimeout", sChannelTimeout, SSHCFG_ALL },
-@@ -2614,6 +2617,18 @@ process_server_config_line_depth(ServerO
+@@ -2667,6 +2670,18 @@ process_server_config_line_depth(ServerO
  		}
  		break;
  

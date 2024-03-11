@@ -45,7 +45,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 diff -wpruN --no-dereference '--exclude=*.orig' a~/README.platform a/README.platform
 --- a~/README.platform	1970-01-01 00:00:00
 +++ a/README.platform	1970-01-01 00:00:00
-@@ -71,10 +71,10 @@ zlib-devel and pam-devel, on Debian base
+@@ -72,10 +72,10 @@ zlib-devel and pam-devel, on Debian base
  libssl-dev, libz-dev and libpam-dev.
  
  
@@ -60,7 +60,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/README.platform a/README.plat
  added to /etc/security/audit_event:
  
  	32800:AUE_openssh:OpenSSH login:lo
-@@ -85,6 +85,9 @@ There is no official registry of 3rd par
+@@ -86,6 +86,9 @@ There is no official registry of 3rd par
  number is already in use on your system, you may change it at build time
  by configure'ing --with-cflags=-DAUE_openssh=32801 then rebuilding.
  
@@ -699,7 +699,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.h a/audit.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1761,7 +1761,7 @@ AC_ARG_WITH([libedit],
+@@ -1769,7 +1769,7 @@ AC_ARG_WITH([libedit],
  
  AUDIT_MODULE=none
  AC_ARG_WITH([audit],
@@ -708,7 +708,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	[
  	  AC_MSG_CHECKING([for supported audit module])
  	  case "$withval" in
-@@ -1798,6 +1798,13 @@ AC_ARG_WITH([audit],
+@@ -1806,6 +1806,13 @@ AC_ARG_WITH([audit],
  		SSHDLIBS="$SSHDLIBS -laudit"
  		AC_DEFINE([USE_LINUX_AUDIT], [1], [Use Linux audit module])
  		;;
