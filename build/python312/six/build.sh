@@ -18,7 +18,7 @@
 
 PKG=library/python-3/six-312
 PROG=six
-inherit_ver python311/six
+VER=1.16.0
 SUMMARY="A Python 2 and 3 compatibility library"
 DESC="$SUMMARY"
 

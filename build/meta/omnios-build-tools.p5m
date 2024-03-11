@@ -42,23 +42,16 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/libpsl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/lzlib type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/nspr type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/pcre2 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-312 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-312 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-312 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pycurl-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyopenssl-312 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-312 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-311 \
-    type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-312 \
     type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-11 type=require
@@ -69,7 +62,6 @@ depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk17 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk21 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-311 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/service/network/tftp type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/header/header-audio type=require
