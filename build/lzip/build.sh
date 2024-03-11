@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=lzip
-VER=1.24
+VER=1.24.1
 PKG=compress/lzip
 SUMMARY="Lzip"
 DESC="Lossless data compressor"
