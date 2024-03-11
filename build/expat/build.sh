@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=expat
-VER=2.6.0
+VER=2.6.1
 PKG=library/expat
 SUMMARY="XML parser library"
 DESC="Fast streaming XML parser written in C"
@@ -40,7 +40,7 @@ PKGDIFF_HELPER="
 init
 download_source $PROG $PROG $VER
 patch_source
-run_autoreconf -fi
+run_inbuild ./buildconf.sh
 prep_build autoconf -oot
 build -multi
 run_testsuite check
