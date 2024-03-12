@@ -148,7 +148,7 @@
 | library/python-3/pyyaml-312		| 6.0.1			| https://pypi.org/project/PyYAML
 | library/python-3/rapidjson-312	| 1.16			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-312	| 2.10.0		| https://pypi.org/project/semantic-version
-| library/python-3/setuptools-312	| 69.0.3		| https://pypi.org/project/setuptools
+| library/python-3/setuptools-312	| 69.1.1		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-312	| 1.8.1			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
