@@ -5,10 +5,10 @@
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.9.4			| https://github.com/lz4/lz4/releases
-| compress/lzip				| 1.24			| https://download.savannah.gnu.org/releases/lzip/
+| compress/lzip				| 1.24.1		| https://download.savannah.gnu.org/releases/lzip/
 | compress/p7zip			| 16.02			| https://sourceforge.net/projects/p7zip/files/p7zip
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.6.0			| https://tukaani.org/xz/
+| compress/xz				| 5.6.1			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.5			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
@@ -35,7 +35,7 @@
 | file/gnu-coreutils			| 9.4			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.9.0			| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.6.0			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.6.1			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
@@ -53,7 +53,7 @@
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.9.1			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.4			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.59.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nghttp2			| 1.60.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nss				| 3.98			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.43			| https://github.com/PhilipHazel/pcre2/releases
@@ -66,10 +66,10 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20231205		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20240116		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20231114		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.24		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
-| network/openssh			| 9.6p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
+| network/openssh			| 9.7p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.2.7			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.0.0		| http://www.dest-unreach.org/socat/download/
@@ -119,12 +119,12 @@
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 643			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.6.0			| https://curl.haxx.se/download.html
-| web/wget				| 1.21.4		| https://ftp.gnu.org/gnu/wget/
+| web/wget				| 1.24.5		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.78.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.80.0		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.42			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
-| system/virtualization/open-vm-tools	| 12.3.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
+| system/virtualization/open-vm-tools	| 12.3.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.2.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-312	| 1.5.1			| https://pypi.org/project/asn1crypto

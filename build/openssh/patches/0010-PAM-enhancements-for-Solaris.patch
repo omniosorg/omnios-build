@@ -472,7 +472,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "revokedkeys", sRevokedKeys, SSHCFG_ALL },
  	{ "trustedusercakeys", sTrustedUserCAKeys, SSHCFG_ALL },
  	{ "authorizedprincipalsfile", sAuthorizedPrincipalsFile, SSHCFG_ALL },
-@@ -2558,6 +2583,37 @@ process_server_config_line_depth(ServerO
+@@ -2611,6 +2636,37 @@ process_server_config_line_depth(ServerO
  		}
  		goto parse_time;
  
@@ -577,7 +577,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.8 a/sshd.8
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
 --- a~/sshd_config.5	1970-01-01 00:00:00
 +++ a/sshd_config.5	1970-01-01 00:00:00
-@@ -1359,6 +1359,35 @@ and
+@@ -1368,6 +1368,35 @@ and
  key exchange methods.
  The default is
  .Pa /etc/moduli .
@@ -613,7 +613,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  .It Cm PasswordAuthentication
  Specifies whether password authentication is allowed.
  The default is
-@@ -1894,8 +1923,7 @@ If
+@@ -1911,8 +1940,7 @@ If
  is enabled, you will not be able to run
  .Xr sshd 8
  as a non-root user.

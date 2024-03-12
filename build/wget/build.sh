@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=wget
-VER=1.21.4
+VER=1.24.5
 PKG=web/wget
 SUMMARY="GNU Wget"
 DESC="Retrieving files using HTTP, HTTPS, FTP and FTPS "

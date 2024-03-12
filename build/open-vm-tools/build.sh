@@ -13,17 +13,17 @@
 # }}}
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PKG=system/virtualization/open-vm-tools
 PROG=open-vm-tools
-VER=12.3.0
+VER=12.3.5
 # The open-vm-tools have been inconsistent in the past in regard to whether
 # the filenames and extracted directories contain the build number. If they
 # do, set the build number.
-BUILD=22234872
+BUILD=22544099
 SUMMARY="Open Virtual Machine Tools"
 DESC="The Open Virtual Machine Tools project aims to provide a suite of open "
 DESC+="source virtualisation utilities and drivers to improve the "

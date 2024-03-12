@@ -6,7 +6,7 @@ Subject: [PATCH 06/34] GSS store creds for Solaris
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1161,6 +1161,9 @@ mips-sony-bsd|mips-sony-newsos4)
+@@ -1169,6 +1169,9 @@ mips-sony-bsd|mips-sony-newsos4)
  		],
  	)
  	TEST_SHELL=$SHELL	# let configure find us a capable shell
