@@ -114,6 +114,7 @@ library/python-3/coverage-312
 library/python-3/idna-312
 library/python-3/js-regex-312
 library/python-3/jsonrpclib-312
+library/python-3/packaging-312
 library/python-3/pip-312
 library/python-3/pycodestyle-312
 library/python-3/pycparser-312

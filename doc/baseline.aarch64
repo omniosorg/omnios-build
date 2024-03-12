@@ -223,6 +223,7 @@ omnios library/python-3/idna-312
 omnios library/python-3/js-regex-312
 omnios library/python-3/jsonrpclib-312
 omnios library/python-3/jsonschema-312
+omnios library/python-3/packaging-312
 omnios library/python-3/pip-312
 omnios library/python-3/pycodestyle-312
 omnios library/python-3/pycparser-312

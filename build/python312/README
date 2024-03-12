@@ -33,6 +33,7 @@ bhyve (brand)
 
 glib2
 	meson
+	packaging
 
 
 Bootstrap
