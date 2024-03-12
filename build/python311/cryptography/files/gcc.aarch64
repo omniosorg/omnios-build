@@ -1,6 +1,0 @@
-#!/bin/ksh
-
-set -- `echo $@ | sed 's/-m64//g'`
-
-exec /opt/cross/aarch64/bin/gcc "$@"
-

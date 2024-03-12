@@ -1,0 +1,33 @@
+The following packages were made obsolete in r151049 as part of the migration
+to Python 3.12:
+
+	asn1crypto-311
+	attrs-311
+	cffi-311
+	coverage-311
+	crossenv-311
+	cryptography-311
+	idna-311
+	js-regex-311
+	jsonrpclib-311
+	jsonschema-311
+	meson-311
+	orjson-311
+	pip-311
+	pycodestyle-311
+	pycparser-311
+	pycurl-311
+	pyopenssl-311
+	pyrsistent-311
+	pyyaml-311
+	rapidjson-311
+	semantic-version-311
+	setuptools-311
+	setuptools-rust-311
+	six-311
+	tomli-311
+	typing-extensions-311
+
+All of these obsolete package entries can be removed in the r151055 cycle,
+after r151054 (next LTS) has been released.
+
