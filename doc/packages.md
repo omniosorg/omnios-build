@@ -130,27 +130,28 @@
 | library/python-3/asn1crypto-312	| 1.5.1			| https://pypi.org/project/asn1crypto
 | library/python-3/attrs-312		| 23.2.0		| https://pypi.org/project/attrs
 | library/python-3/cffi-312		| 1.16.0		| https://pypi.org/project/cffi
-| library/python-3/coverage-312		| 7.4.0			| https://pypi.org/project/coverage
+| library/python-3/coverage-312		| 7.4.3			| https://pypi.org/project/coverage
 | library/python-3/crossenv-312		| 1.4.0			| https://pypi.org/project/crossenv
-| library/python-3/cryptography-312	| 41.0.7		| https://pypi.org/project/cryptography
+| library/python-3/cryptography-312	| 42.0.5		| https://pypi.org/project/cryptography
 | library/python-3/idna-312		| 3.6			| https://pypi.org/project/idna
 | library/python-3/js-regex-312		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-312	| 0.4.3.2		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-312	| 4.17.3		| https://pypi.org/project/jsonschema
-| library/python-3/meson-312		| 1.3.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-312		| 3.9.10		| https://github.com/ijl/orjson/releases
-| library/python-3/pip-312		| 23.3.2		| https://pypi.org/project/pip
+| library/python-3/meson-312		| 1.4.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/orjson-312		| 3.9.15		| https://github.com/ijl/orjson/releases
+| library/python-3/packaging-312	| 24.0			| https://pypi.org/project/packaging
+| library/python-3/pip-312		| 24.0			| https://pypi.org/project/pip
 | library/python-3/pycodestyle-312	| 2.11.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.21			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
-| library/python-3/pyopenssl-312	| 23.3.0		| https://pypi.org/project/pyOpenSSL
+| library/python-3/pyopenssl-312	| 24.1.0		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-312	| 0.20.0		| https://pypi.org/project/pyrsistent
 | library/python-3/pyyaml-312		| 6.0.1			| https://pypi.org/project/PyYAML
-| library/python-3/rapidjson-312	| 1.14			| https://pypi.org/project/python-rapidjson
+| library/python-3/rapidjson-312	| 1.16			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-312	| 2.10.0		| https://pypi.org/project/semantic-version
-| library/python-3/setuptools-312	| 69.0.3		| https://pypi.org/project/setuptools
-| library/python-3/setuptools-rust-312	| 1.8.1			| https://pypi.org/project/setuptools-rust
+| library/python-3/setuptools-312	| 69.1.1		| https://pypi.org/project/setuptools
+| library/python-3/setuptools-rust-312	| 1.9.0			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-312| 4.9.0			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-312| 4.10.0			| https://pypi.org/project/typing-extensions
 

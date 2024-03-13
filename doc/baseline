@@ -316,6 +316,7 @@ omnios library/python-3/meson-311 o
 omnios library/python-3/meson-312
 omnios library/python-3/orjson-311 o
 omnios library/python-3/orjson-312
+omnios library/python-3/packaging-312
 omnios library/python-3/pip-311 o
 omnios library/python-3/pip-312
 omnios library/python-3/pycodestyle-311 o

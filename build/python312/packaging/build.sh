@@ -13,23 +13,20 @@
 # }}}
 #
 # Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
-#
+
 . ../../../lib/build.sh
 
-PKG=library/python-3/pyopenssl-312
-PROG=pyOpenSSL
-VER=24.1.0
-SUMMARY="pyOpenSSL - Python interface to the OpenSSL library"
-DESC="$SUMMARY"
+PKG=library/python-3/packaging-312
+PROG=packaging
+VER=24.0
+SUMMARY="Core utilities for Python packages"
+DESC="Reusable core utilities for various Python Packaging interoperability "
+DESC+="specifications"
 
 . $SRCDIR/../common.sh
 
-RUN_DEPENDS_IPS+=" library/python-$PYMVER/cryptography-$SPYVER"
-
-[ "$BUILDARCH" = aarch64 ] && set_patchdir patches.aarch64
-
 init
-download_source pymodules/${PROG,,} $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
