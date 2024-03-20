@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=tcsh
-VER=6.24.10
+VER=6.24.11
 PKG=shell/tcsh
 SUMMARY="Tenex C-shell (tcsh)"
 DESC="A Unix shell based on and compatible with the C shell (csh)"

@@ -2,7 +2,7 @@
 Expect 53 skipped tests (of untested features) in a full make check
 
 ## ------------------------------ ##
-## Tcsh 6.24.10 test suite: tcsh. ##
+## Tcsh 6.24.11 test suite: tcsh. ##
 ## ------------------------------ ##
 
 Special aliases
@@ -138,7 +138,7 @@ History operations
 Lexical analysis and substitutions
 
 116: Word splitting                                  ok
-117: Comments                                        skipped (lexical.at:43)
+117: Comments                                        ok
 118: Escaping special characters                     ok
 119: Preventing substitution                         ok
 120: History basics                                  ok
@@ -229,7 +229,7 @@ Special shell variables
 178: $ echo                                          ok
 179: $ echo_style                                    ok
 180: $ echo_hex                                      ok
-181: $ edit                                          skipped (variables.at:533)
+181: $ edit                                          ok
 182: $ ellipsis                                      ok
 183: $ fignore                                       ok
 184: $ filec                                         ok
@@ -263,7 +263,7 @@ Special shell variables
 212: $ noglob                                        ok
 213: $ nostat                                        ok
 214: $ notify                                        ok
-215: $ oid                                           skipped (variables.at:1124)
+215: $ oid                                           skipped (variables.at:1136)
 216: $ owd                                           ok
 217: $ path                                          ok
 218: $ printexitvalue                                ok
@@ -302,5 +302,5 @@ Special shell variables
 ## Test results. ##
 ## ------------- ##
 
-193 tests were successful.
-55 tests were skipped.
+195 tests were successful.
+53 tests were skipped.

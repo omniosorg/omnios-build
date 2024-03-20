@@ -8,4 +8,4 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 +		PATH=/usr/gnu/bin:/usr/bin \
  		TESTSUITEREGEN="$(TESTSUITEREGEN)" \
  		USER="$(USER)" \
- 		$(SHELL) $(srcdir)/tests/testsuite $(TESTSUITEFLAGS)
+ 		LC_ALL=C \
