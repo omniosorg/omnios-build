@@ -4,6 +4,33 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038eu (2024-03-22)
+Weekly release for w/c 18th of March 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU microcode has been updated to 20240116.
+
+* Intel CPU microcode has been updated to 20240312.
+
+* Introduced a workaround for the recently published Intel Register File Data
+  Sampling [RFDS] vulnerability in some Intel Atom CPUs -
+  [INTEL-SA-00898](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00898.html)
+
+### Other Changes
+
+* SHA-2 calculations that use libmd and a very large block size could
+  produce incorrect hashes.
+
+* A POSIX normal lock would not properly deadlock on re-entry in a
+  single-threaded application -
+  [illumos 16200](https://www.illumos.org/issues/16200).
+
+<br>
+
+---
+
 ## r151038ep (2024-02-15)
 Weekly release for w/c 12th of February 2024.
 > This is a non-reboot update
