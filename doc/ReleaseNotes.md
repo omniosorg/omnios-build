@@ -4,6 +4,47 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046au (2024-03-22)
+Weekly release for w/c 18th of March 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU microcode has been updated to 20240116.
+
+* Intel CPU microcode has been updated to 20240312.
+
+* Introduced a workaround for the recently published Intel Register File Data
+  Sampling [RFDS] vulnerability in some Intel Atom CPUs -
+  [INTEL-SA-00898](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00898.html)
+
+### Other Changes
+
+* Fix for a kernel panic in the SMB server caused by a race between cancel and
+  completion functions -
+  [illumos 15985](https://www.illumos.org/issues/15985).
+
+* SHA-2 calculations that use libmd and a very large block size could
+  produce incorrect hashes.
+
+* A POSIX normal lock would not properly deadlock on re-entry in a
+  single-threaded application -
+  [illumos 16200](https://www.illumos.org/issues/16200).
+
+* Clock calibration in KVM environments now retrieves the clock frequency
+  directly via an MSR. This fixes the calculation in environments such as AWS.
+  This calibration method was previously only tried in VMWare guests.
+
+* Added support for e1000g I219 V17 and LM+V24-27,29 network cards.
+
+* The `ena` network driver has received a number of fixes that make it more
+  stable on multi-processor instance types, and support for device reset has
+  been added.
+
+<br>
+
+---
+
 ## r151046ap (2024-02-15)
 Weekly release for w/c 12th of February 2024.
 > This update requires a reboot
