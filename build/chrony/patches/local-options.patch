@@ -1,0 +1,287 @@
+This has been submitted upstream with some commentary at
+
+   https://github.com/mlichvar/chrony/pull/7
+
+That's noted to be a source code mirror so the patch was also sent to the
+chrony developers' mailing list:
+
+    https://www.mail-archive.com/chrony-dev@chrony.tuxfamily.org/msg02786.html
+
+diff --git a/candm.h b/candm.h
+index 0894ad5..a173965 100644
+--- a/candm.h
++++ b/candm.h
+@@ -237,6 +237,8 @@ typedef struct {
+   int32_t stratum;
+   Float distance;
+   int32_t orphan;
++  int32_t oncesynced;
++  Float mintime;
+   int32_t EOR;
+ } REQ_Local;
+ 
+diff --git a/client.c b/client.c
+index 0231b9e..ddc1a2c 100644
+--- a/client.c
++++ b/client.c
+@@ -754,12 +754,16 @@ process_cmd_burst(CMD_Request *msg, char *line)
+ static int
+ process_cmd_local(CMD_Request *msg, char *line)
+ {
+-  int on_off, stratum = 0, orphan = 0;
++  int on_off, stratum = 0, orphan = 0, oncesynced = 0;
+   double distance = 0.0;
++  struct timespec mintime;
++
++  UTI_ZeroTimespec(&mintime);
+ 
+   if (!strcmp(line, "off")) {
+     on_off = 0;
+-  } else if (CPS_ParseLocal(line, &stratum, &orphan, &distance)) {
++  } else if (CPS_ParseLocal(line, &stratum, &orphan, &distance,
++             &oncesynced, &mintime)) {
+     on_off = 1;
+   } else {
+     LOG(LOGS_ERR, "Invalid syntax for local command");
+@@ -771,6 +775,8 @@ process_cmd_local(CMD_Request *msg, char *line)
+   msg->data.local.stratum = htonl(stratum);
+   msg->data.local.distance = UTI_FloatHostToNetwork(distance);
+   msg->data.local.orphan = htonl(orphan);
++  msg->data.local.oncesynced = htonl(oncesynced);
++  msg->data.local.mintime = UTI_FloatHostToNetwork(UTI_TimespecToDouble(&mintime));
+ 
+   return 1;
+ }
+diff --git a/cmdmon.c b/cmdmon.c
+index 716775f..c791517 100644
+--- a/cmdmon.c
++++ b/cmdmon.c
+@@ -529,9 +529,17 @@ static void
+ handle_local(CMD_Request *rx_message, CMD_Reply *tx_message)
+ {
+   if (ntohl(rx_message->data.local.on_off)) {
++    struct timespec mintime;
++    double mintimeval;
++
++    mintimeval = UTI_FloatNetworkToHost(rx_message->data.local.mintime),
++    UTI_DoubleToTimespec(mintimeval, &mintime);
++
+     REF_EnableLocal(ntohl(rx_message->data.local.stratum),
+                     UTI_FloatNetworkToHost(rx_message->data.local.distance),
+-                    ntohl(rx_message->data.local.orphan));
++                    ntohl(rx_message->data.local.orphan),
++                    ntohl(rx_message->data.local.oncesynced),
++                    &mintime);
+   } else {
+     REF_DisableLocal();
+   }
+diff --git a/cmdparse.c b/cmdparse.c
+index 0a80fc0..6e8ac99 100644
+--- a/cmdparse.c
++++ b/cmdparse.c
+@@ -296,14 +296,18 @@ CPS_ParseAllowDeny(char *line, int *all, IPAddr *ip, int *subnet_bits)
+ /* ================================================== */
+ 
+ int
+-CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance)
++CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance,
++               int *oncesynced, struct timespec *mintime)
+ {
+   int n;
+   char *cmd;
++  double mintimeval;
+ 
+   *stratum = 10;
+   *distance = 1.0;
+   *orphan = 0;
++  *oncesynced = 0;
++  UTI_ZeroTimespec(mintime);
+ 
+   while (*line) {
+     cmd = line;
+@@ -319,6 +323,13 @@ CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance)
+     } else if (!strcasecmp(cmd, "distance")) {
+       if (sscanf(line, "%lf%n", distance, &n) != 1)
+         return 0;
++    } else if (!strcasecmp(cmd, "oncesynced")) {
++      *oncesynced = 1;
++      n = 0;
++    } else if (!strcasecmp(cmd, "mintime")) {
++      if (sscanf(line, "%lf%n", &mintimeval, &n) != 1)
++        return 0;
++      UTI_DoubleToTimespec(mintimeval, mintime);
+     } else {
+       return 0;
+     }
+diff --git a/cmdparse.h b/cmdparse.h
+index 095a8e2..5e03803 100644
+--- a/cmdparse.h
++++ b/cmdparse.h
+@@ -47,7 +47,7 @@ extern int CPS_GetSelectOption(char *option);
+ extern int CPS_ParseAllowDeny(char *line, int *all, IPAddr *ip, int *subnet_bits);
+ 
+ /* Parse a command to enable local reference */
+-extern int CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance);
++extern int CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance, int *oncesynced, struct timespec *mintime);
+ 
+ /* Remove extra white-space and comments */
+ extern void CPS_NormalizeLine(char *line);
+diff --git a/conf.c b/conf.c
+index 8849bdc..92447d1 100644
+--- a/conf.c
++++ b/conf.c
+@@ -129,6 +129,8 @@ static int enable_local=0;
+ static int local_stratum;
+ static int local_orphan;
+ static double local_distance;
++static int local_oncesynced;
++static struct timespec local_mintime;
+ 
+ /* Threshold (in seconds) - if absolute value of initial error is less
+    than this, slew instead of stepping */
+@@ -1066,7 +1068,8 @@ parse_log(char *line)
+ static void
+ parse_local(char *line)
+ {
+-  if (!CPS_ParseLocal(line, &local_stratum, &local_orphan, &local_distance))
++  if (!CPS_ParseLocal(line, &local_stratum, &local_orphan, &local_distance,
++                      &local_oncesynced, &local_mintime))
+     command_parse_error();
+   enable_local = 1;
+ }
+@@ -2166,12 +2169,14 @@ CNF_GetCommandPort(void) {
+ /* ================================================== */
+ 
+ int
+-CNF_AllowLocalReference(int *stratum, int *orphan, double *distance)
++CNF_AllowLocalReference(int *stratum, int *orphan, double *distance, int *oncesynced, struct timespec *mintime)
+ {
+   if (enable_local) {
+     *stratum = local_stratum;
+     *orphan = local_orphan;
+     *distance = local_distance;
++    *oncesynced = local_oncesynced;
++    *mintime = local_mintime;
+     return 1;
+   } else {
+     return 0;
+diff --git a/conf.h b/conf.h
+index 4c0a787..fe93db3 100644
+--- a/conf.h
++++ b/conf.h
+@@ -108,7 +108,7 @@ extern double CNF_GetReselectDistance(void);
+ extern double CNF_GetStratumWeight(void);
+ extern double CNF_GetCombineLimit(void);
+ 
+-extern int CNF_AllowLocalReference(int *stratum, int *orphan, double *distance);
++extern int CNF_AllowLocalReference(int *stratum, int *orphan, double *distance, int *oncesynced, struct timespec *mintime);
+ 
+ extern void CNF_SetupAccessRestrictions(void);
+ 
+diff --git a/doc/chrony.conf.adoc b/doc/chrony.conf.adoc
+index bd296bc..1330115 100644
+--- a/doc/chrony.conf.adoc
++++ b/doc/chrony.conf.adoc
+@@ -1692,6 +1692,15 @@ smallest reference ID will take over when its local reference mode activates
+ +
+ The *orphan* mode is compatible with the *ntpd*'s orphan mode (enabled by the
+ *tos orphan* command).
+++
++*oncesynced*:::
++This option prevents the local reference being activated unless time was
++synchronised at some point in the past. This can be used to prevent servers
++claiming authority if they are booted without knowledge of the current time.
+++
++*mintime* _mintime_:::
++This option sets a minimum time that the system clock must report before the
++local reference is activated. The default value is 0.
+ {blank}::
+ +
+ An example of the directive is:
+diff --git a/reference.c b/reference.c
+index 1ac6cb9..669f154 100644
+--- a/reference.c
++++ b/reference.c
+@@ -50,10 +50,13 @@
+ #define MAX_DRIFTFILE_AGE 3600.0
+ 
+ static int are_we_synchronised;
++static int we_were_once_synchronised;
+ static int enable_local_stratum;
+ static int local_stratum;
+ static int local_orphan;
+ static double local_distance;
++static int local_oncesynced;
++static struct timespec local_mintime;
+ static struct timespec local_ref_time;
+ static NTP_Leap our_leap_status;
+ static int our_leap_sec;
+@@ -195,6 +198,7 @@ REF_Initialise(void)
+ 
+   mode = REF_ModeNormal;
+   are_we_synchronised = 0;
++  we_were_once_synchronised = 0;
+   our_leap_status = LEAP_Unsynchronised;
+   our_leap_sec = 0;
+   our_tai_offset = 0;
+@@ -245,7 +249,8 @@ REF_Initialise(void)
+ 
+   correction_time_ratio = CNF_GetCorrectionTimeRatio();
+ 
+-  enable_local_stratum = CNF_AllowLocalReference(&local_stratum, &local_orphan, &local_distance);
++  enable_local_stratum = CNF_AllowLocalReference(&local_stratum, &local_orphan, &local_distance,
++                                                 &local_oncesynced, &local_mintime);
+   UTI_ZeroTimespec(&local_ref_time);
+ 
+   leap_when = 0;
+@@ -1149,6 +1154,7 @@ REF_GetReferenceParams
+       !(enable_local_stratum && our_root_delay / 2 + dispersion > local_distance)) {
+ 
+     *is_synchronised = 1;
++    we_were_once_synchronised = 1;
+ 
+     *stratum = our_stratum;
+ 
+@@ -1158,7 +1164,9 @@ REF_GetReferenceParams
+     *root_delay = our_root_delay;
+     *root_dispersion = dispersion;
+ 
+-  } else if (enable_local_stratum) {
++  } else if (enable_local_stratum &&
++             (!local_oncesynced || we_were_once_synchronised) &&
++             UTI_CompareTimespecs(local_time, &local_mintime) >= 0) {
+ 
+     *is_synchronised = 0;
+ 
+@@ -1258,12 +1266,14 @@ REF_ModifyMakestep(int limit, double threshold)
+ /* ================================================== */
+ 
+ void
+-REF_EnableLocal(int stratum, double distance, int orphan)
++REF_EnableLocal(int stratum, double distance, int orphan, int oncesynced, struct timespec *mintime)
+ {
+   enable_local_stratum = 1;
+   local_stratum = CLAMP(1, stratum, NTP_MAX_STRATUM - 1);
+   local_distance = distance;
+   local_orphan = !!orphan;
++  local_oncesynced = !!oncesynced;
++  local_mintime = *mintime;
+   LOG(LOGS_INFO, "%s local reference mode", "Enabled");
+ }
+ 
+diff --git a/reference.h b/reference.h
+index 73454d4..a47533c 100644
+--- a/reference.h
++++ b/reference.h
+@@ -185,7 +185,7 @@ extern void REF_ModifyMaxupdateskew(double new_max_update_skew);
+ /* Modify makestep settings */
+ extern void REF_ModifyMakestep(int limit, double threshold);
+ 
+-extern void REF_EnableLocal(int stratum, double distance, int orphan);
++extern void REF_EnableLocal(int stratum, double distance, int orphan, int oncesynced, struct timespec *mintime);
+ extern void REF_DisableLocal(void);
+ 
+ /* Check if either of the current raw and cooked time, and optionally a
+-- 
+2.42.0
+
