@@ -236,7 +236,6 @@ check_packages_md()
 
 add_targets
 [ "$1" = "-p" ] && print_targets && exit 0
-check_packages_md
 
 exit $err
 
