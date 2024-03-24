@@ -788,6 +788,10 @@ init_sysroot() {
             aarch64)
                 logcmd $PKGCLIENT -R $tmpsysroot set-publisher \
                     -g ${IPS_REPOS[$arch]} $PKGPUBLISHER
+                if [ -n "${IPS_MIRRORS[$arch]}" ]; then
+                    logcmd $PKGCLIENT -R $tmpsysroot set-publisher \
+                        -m ${IPS_MIRRORS[$arch]} $PKGPUBLISHER
+                fi
                 logcmd -p $PKGCLIENT -R $tmpsysroot install '*'
                 logcmd cp /etc/zones/SUNWdefault.xml $tmpsysroot/etc/zones/
                 ;;

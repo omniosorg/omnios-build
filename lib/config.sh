@@ -114,6 +114,9 @@ else
         [$NATIVE_ARCH]=$IPS_REPO
         [aarch64]=https://pkg.omnios.org/bloody/braich
     )
+    IPS_MIRRORS=(
+        [aarch64]=https://us-west.mirror.omnios.org/bloody/braich
+    )
 fi
 
 ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.lz tar.gz tgz tar zip"
