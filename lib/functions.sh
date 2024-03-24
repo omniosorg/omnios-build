@@ -1859,7 +1859,7 @@ manifest_mode_map() {
                     map[b[1]] = b[2]
             }
             if ("path" in map && "mode" in map)
-                printf("%4s %6d %s\n", $1, map["mode"], map["path"])
+                printf("%4s %6d %s|\n", $1, map["mode"], map["path"])
         }
     '
 }
@@ -2013,18 +2013,19 @@ make_package_impl() {
         # patterns to extract the corresponding lines from the mode maps.
         for f in raw mog; do
             $AWK '{print $3}' < $TMPDIR/permdiff.$f.$$ \
-                > $TMPDIR/permdiff.$f.paths.$$
+                | $SORT > $TMPDIR/permdiff.$f.paths.$$
         done
         logcmd -p $COMM -12 $TMPDIR/permdiff.{raw,mog}.paths.$$ \
-            | $SED 's/.*/ &\$/' > $TMPDIR/permdiff.patt.$$
+            | $SED 's/.*/ &/' > $TMPDIR/permdiff.patt.$$
 
         if ! $GDIFF -U0 --color=always --minimal \
-            <($EGREP -f $TMPDIR/permdiff.patt.$$ $TMPDIR/permdiff.raw.$$) \
-            <($EGREP -f $TMPDIR/permdiff.patt.$$ $TMPDIR/permdiff.mog.$$) \
+            <($GREP -Ff $TMPDIR/permdiff.patt.$$ $TMPDIR/permdiff.raw.$$) \
+            <($GREP -Ff $TMPDIR/permdiff.patt.$$ $TMPDIR/permdiff.mog.$$) \
             > $TMPDIR/permdiff.$$; then
                 echo
                 # Not anchored due to colour codes in file
-                $EGREP -v '(\-\-\-|\+\+\+|\@\@) ' $TMPDIR/permdiff.$$
+                $EGREP -v '(\-\-\-|\+\+\+|\@\@) ' $TMPDIR/permdiff.$$ \
+                    | $SED 's/\|//'
                 note "Some permissions were overridden:"
                 logcmd $RM -f $TMPDIR/permdiff.$$
                 [ -z "$PERMDIFF_NOASK" ] && ask_to_continue
