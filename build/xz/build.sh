@@ -34,7 +34,7 @@ post_configure() {
 TESTSUITE_SED="/libtool/d"
 
 init
-download_source $PROG $PROG $VER
+download_source $PROG v$VER
 patch_source
 prep_build autoconf -autoreconf
 build
