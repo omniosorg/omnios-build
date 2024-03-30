@@ -1,8 +1,8 @@
-diff -wpruN '--exclude=*.orig' a~/programs/util.c a/programs/util.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/programs/util.c a/programs/util.c
 --- a~/programs/util.c	1970-01-01 00:00:00
 +++ a/programs/util.c	1970-01-01 00:00:00
-@@ -1258,7 +1258,7 @@ int UTIL_countPhysicalCores(void)
-     return numPhysicalCores;
+@@ -1603,7 +1603,7 @@ int UTIL_countCores(int logical)
+     return numCores;
  }
  
 -#elif defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) || defined(__CYGWIN__)
