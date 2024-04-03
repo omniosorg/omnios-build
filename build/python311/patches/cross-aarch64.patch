@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
      else
  	ac_sys_system=`uname -s`
  	if test "$ac_sys_system" = "AIX" \
-@@ -608,6 +612,15 @@ if test "$cross_compiling" = yes; then
+@@ -616,6 +620,15 @@ if test "$cross_compiling" = yes; then
  	wasm32-*-* | wasm64-*-*)
  		_host_cpu=$host_cpu
  		;;
