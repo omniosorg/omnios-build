@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/ctypes/util.py a/Lib/ctypes/util.py
 --- a~/Lib/ctypes/util.py	1970-01-01 00:00:00
 +++ a/Lib/ctypes/util.py	1970-01-01 00:00:00
-@@ -156,7 +156,7 @@ elif os.name == "posix":
+@@ -159,7 +159,7 @@ elif os.name == "posix":
                  return None
  
              try:
