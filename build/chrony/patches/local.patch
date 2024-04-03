@@ -1,0 +1,344 @@
+From 9083a01a09d2cbae80669feccb0e2a29e200e980 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Mon, 25 Mar 2024 19:05:52 +0000
+Subject: [PATCH] Add "local activate" option
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/candm.h a/candm.h
+--- a~/candm.h	1970-01-01 00:00:00
++++ a/candm.h	1970-01-01 00:00:00
+@@ -110,7 +110,8 @@
+ #define REQ_RELOAD_SOURCES 70
+ #define REQ_DOFFSET2 71
+ #define REQ_MODIFY_SELECTOPTS 72
+-#define N_REQUEST_TYPES 73
++#define REQ_LOCAL3 73
++#define N_REQUEST_TYPES 74
+ 
+ /* Structure used to exchange timespecs independent of time_t size */
+ typedef struct {
+@@ -236,6 +237,7 @@ typedef struct {
+   int32_t stratum;
+   Float distance;
+   int32_t orphan;
++  Float activate;
+   int32_t EOR;
+ } REQ_Local;
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/client.c a/client.c
+--- a~/client.c	1970-01-01 00:00:00
++++ a/client.c	1970-01-01 00:00:00
+@@ -737,22 +737,23 @@ static int
+ process_cmd_local(CMD_Request *msg, char *line)
+ {
+   int on_off, stratum = 0, orphan = 0;
+-  double distance = 0.0;
++  double distance = 0.0, activate = 0.0;
+ 
+   if (!strcmp(line, "off")) {
+     on_off = 0;
+-  } else if (CPS_ParseLocal(line, &stratum, &orphan, &distance)) {
++  } else if (CPS_ParseLocal(line, &stratum, &orphan, &distance, &activate)) {
+     on_off = 1;
+   } else {
+     LOG(LOGS_ERR, "Invalid syntax for local command");
+     return 0;
+   }
+ 
+-  msg->command = htons(REQ_LOCAL2);
++  msg->command = htons(REQ_LOCAL3);
+   msg->data.local.on_off = htonl(on_off);
+   msg->data.local.stratum = htonl(stratum);
+   msg->data.local.distance = UTI_FloatHostToNetwork(distance);
+   msg->data.local.orphan = htonl(orphan);
++  msg->data.local.activate = UTI_FloatHostToNetwork(activate);
+ 
+   return 1;
+ }
+diff -wpruN --no-dereference '--exclude=*.orig' a~/cmdmon.c a/cmdmon.c
+--- a~/cmdmon.c	1970-01-01 00:00:00
++++ a/cmdmon.c	1970-01-01 00:00:00
+@@ -145,6 +145,7 @@ static const char permissions[] = {
+   PERMIT_AUTH, /* RELOAD_SOURCES */
+   PERMIT_AUTH, /* DOFFSET2 */
+   PERMIT_AUTH, /* MODIFY_SELECTOPTS */
++  PERMIT_AUTH, /* LOCAL3 */
+ };
+ 
+ /* ================================================== */
+@@ -525,12 +526,14 @@ handle_settime(CMD_Request *rx_message,
+ /* ================================================== */
+ 
+ static void
+-handle_local(CMD_Request *rx_message, CMD_Reply *tx_message)
++handle_local(CMD_Request *rx_message, CMD_Reply *tx_message, uint16_t cmd)
+ {
+   if (ntohl(rx_message->data.local.on_off)) {
+     REF_EnableLocal(ntohl(rx_message->data.local.stratum),
+                     UTI_FloatNetworkToHost(rx_message->data.local.distance),
+-                    ntohl(rx_message->data.local.orphan));
++                    ntohl(rx_message->data.local.orphan),
++                    cmd == REQ_LOCAL2 ? 0 :
++                    UTI_FloatNetworkToHost(rx_message->data.local.activate));
+   } else {
+     REF_DisableLocal();
+   }
+@@ -1622,7 +1625,8 @@ read_from_cmd_socket(int sock_fd, int ev
+           break;
+         
+         case REQ_LOCAL2:
+-          handle_local(&rx_message, &tx_message);
++        case REQ_LOCAL3:
++          handle_local(&rx_message, &tx_message, rx_command);
+           break;
+ 
+         case REQ_MANUAL:
+diff -wpruN --no-dereference '--exclude=*.orig' a~/cmdparse.c a/cmdparse.c
+--- a~/cmdparse.c	1970-01-01 00:00:00
++++ a/cmdparse.c	1970-01-01 00:00:00
+@@ -291,13 +291,14 @@ CPS_ParseAllowDeny(char *line, int *all,
+ /* ================================================== */
+ 
+ int
+-CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance)
++CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance, double *activate)
+ {
+   int n;
+   char *cmd;
+ 
+   *stratum = 10;
+   *distance = 1.0;
++  *activate = 0.0;
+   *orphan = 0;
+ 
+   while (*line) {
+@@ -314,6 +315,9 @@ CPS_ParseLocal(char *line, int *stratum,
+     } else if (!strcasecmp(cmd, "distance")) {
+       if (sscanf(line, "%lf%n", distance, &n) != 1)
+         return 0;
++    } else if (!strcasecmp(cmd, "activate")) {
++      if (sscanf(line, "%lf%n", activate, &n) != 1)
++        return 0;
+     } else {
+       return 0;
+     }
+diff -wpruN --no-dereference '--exclude=*.orig' a~/cmdparse.h a/cmdparse.h
+--- a~/cmdparse.h	1970-01-01 00:00:00
++++ a/cmdparse.h	1970-01-01 00:00:00
+@@ -46,7 +46,7 @@ extern int CPS_GetSelectOption(char *opt
+ extern int CPS_ParseAllowDeny(char *line, int *all, IPAddr *ip, int *subnet_bits);
+ 
+ /* Parse a command to enable local reference */
+-extern int CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance);
++extern int CPS_ParseLocal(char *line, int *stratum, int *orphan, double *distance, double *activate);
+ 
+ /* Remove extra white-space and comments */
+ extern void CPS_NormalizeLine(char *line);
+diff -wpruN --no-dereference '--exclude=*.orig' a~/conf.c a/conf.c
+--- a~/conf.c	1970-01-01 00:00:00
++++ a/conf.c	1970-01-01 00:00:00
+@@ -129,6 +129,7 @@ static int enable_local=0;
+ static int local_stratum;
+ static int local_orphan;
+ static double local_distance;
++static double local_activate;
+ 
+ /* Threshold (in seconds) - if absolute value of initial error is less
+    than this, slew instead of stepping */
+@@ -1058,7 +1059,7 @@ parse_log(char *line)
+ static void
+ parse_local(char *line)
+ {
+-  if (!CPS_ParseLocal(line, &local_stratum, &local_orphan, &local_distance))
++  if (!CPS_ParseLocal(line, &local_stratum, &local_orphan, &local_distance, &local_activate))
+     command_parse_error();
+   enable_local = 1;
+ }
+@@ -2148,12 +2149,13 @@ CNF_GetCommandPort(void) {
+ /* ================================================== */
+ 
+ int
+-CNF_AllowLocalReference(int *stratum, int *orphan, double *distance)
++CNF_AllowLocalReference(int *stratum, int *orphan, double *distance, double *activate)
+ {
+   if (enable_local) {
+     *stratum = local_stratum;
+     *orphan = local_orphan;
+     *distance = local_distance;
++    *activate = local_activate;
+     return 1;
+   } else {
+     return 0;
+diff -wpruN --no-dereference '--exclude=*.orig' a~/conf.h a/conf.h
+--- a~/conf.h	1970-01-01 00:00:00
++++ a/conf.h	1970-01-01 00:00:00
+@@ -107,7 +107,7 @@ extern double CNF_GetReselectDistance(vo
+ extern double CNF_GetStratumWeight(void);
+ extern double CNF_GetCombineLimit(void);
+ 
+-extern int CNF_AllowLocalReference(int *stratum, int *orphan, double *distance);
++extern int CNF_AllowLocalReference(int *stratum, int *orphan, double *distance, double *activate);
+ 
+ extern void CNF_SetupAccessRestrictions(void);
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/chrony.conf.adoc a/doc/chrony.conf.adoc
+--- a~/doc/chrony.conf.adoc	1970-01-01 00:00:00
++++ a/doc/chrony.conf.adoc	1970-01-01 00:00:00
+@@ -1643,11 +1643,11 @@ be very close to real time. Stratum 2 co
+ of 10 indicates that the clock is so many hops away from a reference clock that
+ its time is fairly unreliable.
+ *distance* _distance_:::
+-This option sets the threshold for the root distance which will activate the local
+-reference. If *chronyd* was synchronised to some source, the local reference
+-will not be activated until its root distance reaches the specified value (the
+-rate at which the distance is increasing depends on how well the clock was
+-tracking the source). The default value is 1 second.
++This option sets the threshold for the root distance which will activate the
++local reference. If *chronyd* was synchronised to some source, the local
++reference will not be activated until its root distance reaches the specified
++value (the rate at which the distance is increasing depends on how well the
++clock was tracking the source). The default value is 1 second.
+ +
+ The current root distance can be calculated from root delay and root dispersion
+ (reported by the <<chronyc.adoc#tracking,*tracking*>> command in *chronyc*) as:
+@@ -1655,6 +1655,14 @@ The current root distance can be calcula
+ ----
+ distance = delay / 2 + dispersion
+ ----
++*activate* _distance_:::
++This option sets an activating root distance for the local reference. The
++local reference will not be used until the root distance drops below the
++configured value for the first time. This can be used to prevent the local
++reference from being activated on a server which has never been synchronised
++with an upstream server. The default value of 0.0 causes no activating
++distance to be used, such that the local reference is always eligible for
++activation.
+ *orphan*:::
+ This option enables a special '`orphan`' mode, where sources with stratum equal
+ to the local _stratum_ are assumed to not serve real time. They are ignored
+@@ -1672,12 +1680,11 @@ smallest reference ID will take over whe
+ +
+ The *orphan* mode is compatible with the *ntpd*'s orphan mode (enabled by the
+ *tos orphan* command).
+-{blank}::
+ +
+ An example of the directive is:
+ +
+ ----
+-local stratum 10 orphan distance 0.1
++local stratum 10 orphan distance 0.1 activate 0.5
+ ----
+ 
+ [[ntpsigndsocket]]*ntpsigndsocket* _directory_::
+diff -wpruN --no-dereference '--exclude=*.orig' a~/pktlength.c a/pktlength.c
+--- a~/pktlength.c	1970-01-01 00:00:00
++++ a/pktlength.c	1970-01-01 00:00:00
+@@ -111,7 +111,7 @@ static const struct request_length reque
+   REQ_LENGTH_ENTRY(null, null),                 /* REFRESH */
+   REQ_LENGTH_ENTRY(null, server_stats),         /* SERVER_STATS */
+   { 0, 0 },                                     /* CLIENT_ACCESSES_BY_INDEX2 - not supported */
+-  REQ_LENGTH_ENTRY(local, null),                /* LOCAL2 */
++  { offsetof(CMD_Request, data.local.activate), 0 }, /* LOCAL2 */
+   REQ_LENGTH_ENTRY(ntp_data, ntp_data),         /* NTP_DATA */
+   { 0, 0 },                                     /* ADD_SERVER2 */
+   { 0, 0 },                                     /* ADD_PEER2 */
+@@ -130,6 +130,7 @@ static const struct request_length reque
+   REQ_LENGTH_ENTRY(null, null),                 /* RELOAD_SOURCES */
+   REQ_LENGTH_ENTRY(doffset, null),              /* DOFFSET2 */
+   REQ_LENGTH_ENTRY(modify_select_opts, null),   /* MODIFY_SELECTOPTS */
++  REQ_LENGTH_ENTRY(local, null),                /* LOCAL3 */
+ };
+ 
+ static const uint16_t reply_lengths[] = {
+diff -wpruN --no-dereference '--exclude=*.orig' a~/reference.c a/reference.c
+--- a~/reference.c	1970-01-01 00:00:00
++++ a/reference.c	1970-01-01 00:00:00
+@@ -53,6 +53,8 @@ static int enable_local_stratum;
+ static int local_stratum;
+ static int local_orphan;
+ static double local_distance;
++static int local_activate_ok;
++static double local_activate;
+ static struct timespec local_ref_time;
+ static NTP_Leap our_leap_status;
+ static int our_leap_sec;
+@@ -211,6 +213,7 @@ REF_Initialise(void)
+   our_frequency_sd = 0.0;
+   our_offset_sd = 0.0;
+   drift_file_age = 0.0;
++  local_activate_ok = 0;
+ 
+   /* Now see if we can get the drift file opened */
+   drift_file = CNF_GetDriftFile();
+@@ -249,7 +252,8 @@ REF_Initialise(void)
+ 
+   correction_time_ratio = CNF_GetCorrectionTimeRatio();
+ 
+-  enable_local_stratum = CNF_AllowLocalReference(&local_stratum, &local_orphan, &local_distance);
++  enable_local_stratum = CNF_AllowLocalReference(&local_stratum, &local_orphan,
++                                                 &local_distance, &local_activate);
+   UTI_ZeroTimespec(&local_ref_time);
+ 
+   leap_when = 0;
+@@ -1219,7 +1223,7 @@ REF_GetReferenceParams
+  double *root_dispersion
+ )
+ {
+-  double dispersion, delta;
++  double dispersion, delta, distance;
+ 
+   assert(initialised);
+ 
+@@ -1229,11 +1233,15 @@ REF_GetReferenceParams
+     dispersion = 0.0;
+   }
+ 
++  distance = our_root_delay / 2 + dispersion;
++
++  if (local_activate == 0.0 || (are_we_synchronised && distance < local_activate))
++    local_activate_ok = 1;
++
+   /* Local reference is active when enabled and the clock is not synchronised
+      or the root distance exceeds the threshold */
+-
+   if (are_we_synchronised &&
+-      !(enable_local_stratum && our_root_delay / 2 + dispersion > local_distance)) {
++      !(enable_local_stratum && distance > local_distance)) {
+ 
+     *is_synchronised = 1;
+ 
+@@ -1245,7 +1253,7 @@ REF_GetReferenceParams
+     *root_delay = our_root_delay;
+     *root_dispersion = dispersion;
+ 
+-  } else if (enable_local_stratum) {
++  } else if (enable_local_stratum && local_activate_ok) {
+ 
+     *is_synchronised = 0;
+ 
+@@ -1345,12 +1353,13 @@ REF_ModifyMakestep(int limit, double thr
+ /* ================================================== */
+ 
+ void
+-REF_EnableLocal(int stratum, double distance, int orphan)
++REF_EnableLocal(int stratum, double distance, int orphan, double activate)
+ {
+   enable_local_stratum = 1;
+   local_stratum = CLAMP(1, stratum, NTP_MAX_STRATUM - 1);
+   local_distance = distance;
+   local_orphan = !!orphan;
++  local_activate = activate;
+   LOG(LOGS_INFO, "%s local reference mode", "Enabled");
+ }
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/reference.h a/reference.h
+--- a~/reference.h	1970-01-01 00:00:00
++++ a/reference.h	1970-01-01 00:00:00
+@@ -185,7 +185,7 @@ extern void REF_ModifyMaxupdateskew(doub
+ /* Modify makestep settings */
+ extern void REF_ModifyMakestep(int limit, double threshold);
+ 
+-extern void REF_EnableLocal(int stratum, double distance, int orphan);
++extern void REF_EnableLocal(int stratum, double distance, int orphan, double activate);
+ extern void REF_DisableLocal(void);
+ 
+ /* Check if either of the current raw and cooked time, and optionally a

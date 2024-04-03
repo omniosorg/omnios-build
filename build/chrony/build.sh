@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -22,6 +22,8 @@ PKG=service/network/chrony
 SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
 NETTLEVER=3.9.1
+
+BUILD_DEPENDS_IPS="ooce/text/asciidoctor"
 
 set_arch 64
 
@@ -77,6 +79,8 @@ CONFIGURE_OPTS="
     --with-user=$PROG
     --enable-ntp-signd
 "
+
+MAKE_INSTALL_ARGS+=" ADOC=$OOCEBIN/asciidoctor"
 
 TESTSUITE_FILTER="^Testing"
 
