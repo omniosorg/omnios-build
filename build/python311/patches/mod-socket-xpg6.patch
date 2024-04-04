@@ -5,7 +5,7 @@ needs to be built in an XPG6 environment.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/setup.py a/setup.py
 --- a~/setup.py	1970-01-01 00:00:00
 +++ a/setup.py	1970-01-01 00:00:00
-@@ -971,7 +971,13 @@ class PyBuildExt(build_ext):
+@@ -972,7 +972,13 @@ class PyBuildExt(build_ext):
          # grp(3)
          self.addext(Extension('grp', ['grpmodule.c']))
  

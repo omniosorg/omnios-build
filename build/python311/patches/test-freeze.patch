@@ -12,28 +12,30 @@ This patch:
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a/Tools/freeze/test/freeze.py
 --- a~/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
 +++ a/Tools/freeze/test/freeze.py	1970-01-01 00:00:00
-@@ -10,7 +10,7 @@ TESTS_DIR = os.path.dirname(__file__)
+@@ -18,7 +18,7 @@ TESTS_DIR = os.path.dirname(__file__)
  TOOL_ROOT = os.path.dirname(TESTS_DIR)
- SRCDIR = os.path.dirname(os.path.dirname(TOOL_ROOT))
+ SRCDIR = get_python_source_dir()
  
 -MAKE = shutil.which('make')
 +MAKE = shutil.which('gmake')
  FREEZE = os.path.join(TOOL_ROOT, 'freeze.py')
  OUTDIR = os.path.join(TESTS_DIR, 'outdir')
  
-@@ -93,8 +93,6 @@ def copy_source_tree(newroot, oldroot):
-         return subdirs_to_skip
+@@ -92,10 +92,6 @@ def copy_source_tree(newroot, oldroot):
+         shutil.rmtree(newroot)
  
-     shutil.copytree(oldroot, newroot, ignore=ignore_non_src)
+     shutil.copytree(oldroot, newroot, ignore=support.copy_python_src_ignore)
 -    if os.path.exists(os.path.join(newroot, 'Makefile')):
--        _run_quiet([MAKE, 'clean'], newroot)
+-        # Out-of-tree builds require a clean srcdir. "make clean" keeps
+-        # the "python" program, so use "make distclean" instead.
+-        _run_quiet([MAKE, 'distclean'], cwd=newroot)
  
  
- def get_makefile_var(builddir, name):
-@@ -155,6 +153,7 @@ def prepare(script=None, outdir=None):
-         os.path.join(srcdir, 'configure'),
-         *shlex.split(get_config_var(srcdir, 'CONFIG_ARGS') or ''),
-     ]
+ ##################################
+@@ -129,6 +125,7 @@ def prepare(script=None, outdir=None):
+     print(f'configuring python in {builddir}...')
+     config_args = shlex.split(sysconfig.get_config_var('CONFIG_ARGS') or '')
+     cmd = [os.path.join(srcdir, 'configure'), *config_args]
 +    cmd = [c for c in cmd if not re.search(r'^--.*dir=', c)]
      ensure_opt(cmd, 'cache-file', os.path.join(outdir, 'python-config.cache'))
      prefix = os.path.join(outdir, 'python-installation')

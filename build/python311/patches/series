@@ -10,6 +10,7 @@ encoding-alias.patch
 locale-encoding.patch
 cgiserver.patch
 static-assert.patch
+pyc-timestamp.patch
 #
 # Additional modules
 module-ucred.patch
@@ -25,13 +26,11 @@ mod-socket-xpg6.patch
 test-filecomments.patch
 test-freeze.patch
 test-opts.patch
-test-vmlimit.patch
 test-processgroup.patch
 test-zipfile.patch
 test-pkgutil.patch
 test-metadata.patch
 test-tarfile.patch
-test-httpservers.patch
 revert-makedirs.patch
 #
 # Do not add ustack.patch to this file, it is used to build the debug
