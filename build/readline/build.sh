@@ -13,12 +13,13 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=readline
 VER=8.2
+DASHREV=1
 PKG=library/readline
 SUMMARY="GNU readline"
 DESC="GNU readline library"
