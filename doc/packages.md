@@ -59,9 +59,7 @@
 | library/pcre2				| 10.43			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.2			| https://ftp.gnu.org/gnu/readline/
-| library/readline6-patchlvl		| 008			| https://ftp.gnu.org/gnu/readline/readline-6.3-patches/
-| library/readline7-patchlvl		| 005			| https://ftp.gnu.org/gnu/readline/readline-7.0-patches/
-| library/readline8-patchlvl		| 002			| https://ftp.gnu.org/gnu/readline/readline-8.1-patches/
+| library/readline8-patchlvl		| 010			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/openssl-3		| 3.1.5			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
