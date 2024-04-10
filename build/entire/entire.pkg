@@ -67,6 +67,7 @@ driver/network/i40e					S
 driver/network/ibdma					S
 driver/network/ibp					S
 driver/network/igb					S
+driver/network/igc					S
 driver/network/ixgb					S
 driver/network/ixgbe					S
 driver/network/mlxcx					S
