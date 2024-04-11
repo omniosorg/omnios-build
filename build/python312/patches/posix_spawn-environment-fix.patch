@@ -13,7 +13,7 @@ https://github.com/python/cpython/pull/113120
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subprocess.py
 --- a~/Lib/subprocess.py	1970-01-01 00:00:00
 +++ a/Lib/subprocess.py	1970-01-01 00:00:00
-@@ -1753,9 +1753,6 @@ class Popen:
+@@ -1755,9 +1755,6 @@ class Popen:
                           c2pread, c2pwrite,
                           errread, errwrite):
              """Execute program using os.posix_spawn()."""
