@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOS r151038
 
+## r151038ex (2024-04-11)
+Weekly release for w/c 8th of April 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* For Intel CPUs that are vulnerable to
+  [Native Branch History Injection](https://www.vusec.net/projects/native-bhi/),
+  the kernel now takes steps to scrub the CPU's Branch History Buffer (BHB)
+  on certain context switches.
+
+* `curl` has been updated to version 8.7.1, addressing:
+  [CVE-2024-2466](https://curl.se/docs/CVE-2024-2466.html),
+  [CVE-2024-2398](https://curl.se/docs/CVE-2024-2398.html),
+  [CVE-2024-2379](https://curl.se/docs/CVE-2024-2379.html) and
+  [CVE-2024-2004](https://curl.se/docs/CVE-2024-2004.html).
+
+* Python has been updated to 3.9.19
+
+### Other Changes
+
+* The system PCI and USB hardware databases have been updated.
+
+* For Intel CPUs which are not vulnerable to
+  [Post-barrier Return Stack Buffer (PBRSB)](https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/advisory-guidance/post-barrier-return-stack-buffer-predictions.html)
+  the kernel no longer spends time mitigating this.
+
+<br>
+
+---
+
 ## r151038eu (2024-03-22)
 Weekly release for w/c 18th of March 2024.
 > This update requires a reboot
