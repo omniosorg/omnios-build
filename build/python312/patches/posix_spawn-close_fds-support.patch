@@ -17,7 +17,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subpr
  
  
  class Popen:
-@@ -1747,7 +1748,7 @@ class Popen:
+@@ -1749,7 +1750,7 @@ class Popen:
                      errread, errwrite)
  
  
@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subpr
                           p2cread, p2cwrite,
                           c2pread, c2pwrite,
                           errread, errwrite):
-@@ -1776,6 +1777,10 @@ class Popen:
+@@ -1778,6 +1779,10 @@ class Popen:
              ):
                  if fd != -1:
                      file_actions.append((os.POSIX_SPAWN_DUP2, fd, fd2))
@@ -37,7 +37,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subpr
              if file_actions:
                  kwargs['file_actions'] = file_actions
  
-@@ -1823,7 +1828,7 @@ class Popen:
+@@ -1825,7 +1830,7 @@ class Popen:
              if (_USE_POSIX_SPAWN
                      and os.path.dirname(executable)
                      and preexec_fn is None
@@ -46,7 +46,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subpr
                      and not pass_fds
                      and cwd is None
                      and (p2cread == -1 or p2cread > 2)
-@@ -1835,7 +1840,7 @@ class Popen:
+@@ -1837,7 +1842,7 @@ class Popen:
                      and gids is None
                      and uid is None
                      and umask < 0):
@@ -104,7 +104,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
              default: {
                  PyErr_SetString(PyExc_TypeError,
                                  "Unknown file_actions identifier");
-@@ -16412,6 +16433,9 @@ all_ins(PyObject *m)
+@@ -16444,6 +16465,9 @@ all_ins(PyObject *m)
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_OPEN", POSIX_SPAWN_OPEN)) return -1;
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_CLOSE", POSIX_SPAWN_CLOSE)) return -1;
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_DUP2", POSIX_SPAWN_DUP2)) return -1;
@@ -117,7 +117,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -4904,6 +4904,7 @@ AC_CHECK_FUNCS([ \
+@@ -4922,6 +4922,7 @@ AC_CHECK_FUNCS([ \
    lockf lstat lutimes madvise mbrtowc memrchr mkdirat mkfifo mkfifoat \
    mknod mknodat mktime mmap mremap nice openat opendir pathconf pause pipe \
    pipe2 plock poll posix_fadvise posix_fallocate posix_spawn posix_spawnp \
