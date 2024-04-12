@@ -83,7 +83,9 @@ clone_source() {
 clobber() {
     logmsg "-- removing any old kayak_image dataset"
     pushd $TMPDIR/$BUILDDIR/kayak >/dev/null || logerr "chdir"
-    logcmd $PFEXEC gmake zfsdestroy
+    logcmd $PFEXEC gmake zfsdestroy \
+        BUILDSEND=$BUILDSEND \
+        BUILDSEND_MP=$BUILDSEND_MP
     popd >/dev/null
 }
 
