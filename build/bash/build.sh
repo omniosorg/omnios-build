@@ -74,7 +74,7 @@ pre_configure() {
 
 post_install() {
     clone_github_source -dependency illumos-completion \
-        https://github.com/OpenIndiana/openindiana-completions master
+        $OOCEGITHUB/completions master
 
     if ((EXTRACT_MODE == 0)); then
         logcmd rm -f $TMPDIR/$BUILDDIR/illumos-completion/*.md
