@@ -101,12 +101,8 @@ configure_amd64() {
 }
 
 configure_aarch64() {
-    # perl builds a native miniperl which it uses for the build
-    set_gccver $DEFAULT_GCC_VER
     # perl-cross requires GNU tools
     export PATH="$GNUBIN:$PATH"
-
-    unset CC
 
     patch_source patches-aarch64
 
@@ -121,8 +117,12 @@ configure_aarch64() {
         --target=${TRIPLETS[aarch64]} \
         --man1dir="$PREFIX/man/man1" \
         --man3dir="$PREFIX/man/man3" \
+        --with-cc=gcc \
+        --with-cpp="gcc -E" \
+        --with-ld=gcc \
         --host-libs="m" \
         --host-set-osname=solaris \
+        --host-cc=/opt/gcc-$DEFAULT_GCC_VER/bin/gcc \
         -Dccdlflags= \
         -Dusethreads \
         -Duseshrplib \
@@ -135,14 +135,6 @@ configure_aarch64() {
         -Dosname=solaris \
         -Dcf_by=omnios-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
-        -Dcc=$CROSSTOOLS/aarch64/bin/gcc \
-        -Dcpp=$CROSSTOOLS/aarch64/bin/cpp \
-        -Dld=$CROSSTOOLS/aarch64/bin/ld \
-        -Dar=$CROSSTOOLS/aarch64/bin/${TRIPLETS[aarch64]}-ar \
-        -Dnm=$CROSSTOOLS/aarch64/bin/${TRIPLETS[aarch64]}-nm \
-        -Dranlib=$CROSSTOOLS/aarch64/bin/${TRIPLETS[aarch64]}-ranlib \
-        -Dreadelf=$CROSSTOOLS/aarch64/bin/${TRIPLETS[aarch64]}-readelf \
-        -Dobjdump=$CROSSTOOLS/aarch64/bin/${TRIPLETS[aarch64]}-objdump \
         -Doptimize="-O3 $CTF_CFLAGS" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
@@ -158,13 +150,13 @@ configure_aarch64() {
         -Darchlib=${PREFIX}/lib/aarch64-solaris-64 \
         -Ulocincpth= \
         -Uloclibpth= \
-        -Dlibpth="/lib/aarch64 /usr/lib/aarch64" \
+        -Dlibpth="/lib /usr/lib" \
         -Dlibs="-lsocket -lnsl -lm -lc" \
         || logerr "--- Configure failed"
 
     logcmd sed -i "
         s/mydomain=\"\.undef\"/mydomain=\"undef\"/g
-        s!^libpth=.*!libpth=\"/lib/aarch64 /usr/lib/aarch64\"!g
+        s!^libpth=.*!libpth=\"/lib /usr/lib\"!g
         s/^d_setenv=.*/d_setenv='undef'/g
         s/^d_unsetenv=.*/d_unsetenv='undef'/g
         s/^ccdlflags=.*/ccdlflags=''/g
