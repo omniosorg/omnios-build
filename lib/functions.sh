@@ -1115,6 +1115,7 @@ prep_build() {
             MAKE=$NINJA
             TESTSUITE_MAKE=$MAKE
             MAKE_TESTSUITE_ARGS=
+            PATH+=:$OOCEBIN
             ;& # fallthrough
         cmake)
             OUT_OF_TREE_BUILD=1
