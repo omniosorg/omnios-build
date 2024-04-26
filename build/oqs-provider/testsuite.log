@@ -1,0 +1,17 @@
+Test project /build/tmp/oqs-provider-0.6.0/oqs-provider-0.6.0-build/build.amd64
+    Start 1: oqs_signatures
+1/6 Test #1: oqs_signatures ...................   Passed
+    Start 2: oqs_kems
+2/6 Test #2: oqs_kems .........................   Passed
+    Start 3: oqs_groups
+3/6 Test #3: oqs_groups .......................   Passed
+    Start 4: oqs_tlssig
+4/6 Test #4: oqs_tlssig .......................   Passed
+    Start 5: oqs_endecode
+5/6 Test #5: oqs_endecode .....................   Passed
+    Start 6: oqs_evp_pkey_params
+6/6 Test #6: oqs_evp_pkey_params ..............   Passed
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =

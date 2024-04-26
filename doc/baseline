@@ -346,11 +346,13 @@ omnios library/python-3/tomli-312
 omnios library/python-3/typing-extensions-311 o
 omnios library/python-3/typing-extensions-312
 omnios library/readline
+omnios library/security/liboqs
 omnios library/security/openssl
 omnios library/security/openssl-10 l
 omnios library/security/openssl-11
 omnios library/security/openssl-3
 omnios library/security/openssl/preview o
+omnios library/security/oqs-provider
 omnios library/security/tcp-wrapper
 omnios library/security/trousers
 omnios library/unixodbc
