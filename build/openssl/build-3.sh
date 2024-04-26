@@ -106,7 +106,7 @@ post_install() {
 
     [ $arch = amd64 ] || return
 
-    RUN_DEPENDS_IPS="library/security/oqs-provider"
+    RUN_DEPENDS_IPS+=" library/security/oqs-provider"
 
     logcmd $SED -i '
         # Add "oqsprovider" to the list of providers in [provider_sect]
