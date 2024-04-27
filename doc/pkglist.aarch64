@@ -26,6 +26,7 @@ developer/build-essential
 developer/build/libtool
 developer/exuberant-ctags
 developer/lexer/flex
+developer/macro/cpp
 developer/macro/gnu-m4
 developer/nasm
 developer/parser/bison
@@ -150,7 +151,6 @@ security/sudo
 ###############################################################################
 # TO DO
 # compress/p7zip
-# developer/macro/cpp
 # developer/pkg-config
 # developer/swig
 # developer/versioning/mercurial

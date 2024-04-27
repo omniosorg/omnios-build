@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=cpp
-VER=20220808
+VER=20240422
 PKG=developer/macro/cpp
 SUMMARY="The C Pre-Processor (cpp)"
 DESC="$SUMMARY"
@@ -27,10 +27,15 @@ BUILD_DEPENDS_IPS="developer/parser/bison"
 SKIP_LICENCES="*.licence"
 
 # cpp does not work properly when built 64-bit
-set_arch 32
+is_cross || set_arch 32
 
-configure_i386() {
-    subsume_arch i386 CFLAGS
+pre_configure() {
+    typeset arch=$1
+
+    subsume_arch $arch CFLAGS
+
+    # No configure
+    false
 }
 
 init
