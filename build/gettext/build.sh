@@ -43,6 +43,8 @@ PKGDIFF_HELPER='
     s:usr/share/gettext-[0-9.]*:usr/share/gettext-VERSION:
 '
 
+CFLAGS[aarch64]+=" -mno-outline-atomics"
+
 init
 download_source $PROG $PROG $VER
 patch_source

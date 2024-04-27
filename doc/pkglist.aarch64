@@ -48,6 +48,7 @@ runtime/perl
 shell/pipe-viewer
 system/defaults
 system/prerequisite/gnu
+text/gnu-gettext
 text/gnu-patch
 web/ca-bundle
 ###############################################################################
@@ -174,7 +175,6 @@ security/sudo
 # system/pciutils/pci.ids
 # system/pkgtree
 # system/test/fio
-# text/gnu-gettext
 # text/groff
 # text/intltool
 # text/words		-- would also need changes in illumos/arm64-gate
