@@ -85,6 +85,7 @@ text/gnu-sed
 .SYSROOT
 archiver/gnu-tar
 compress/gzip
+developer/swig
 library/glib2
 library/libxslt
 library/mpc
@@ -152,7 +153,6 @@ security/sudo
 # TO DO
 # compress/p7zip
 # developer/pkg-config
-# developer/swig
 # developer/versioning/mercurial
 # developer/versioning/sccs
 # incorporation/jeos/illumos-gate

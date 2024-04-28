@@ -47,6 +47,7 @@ omnios developer/macro/gnu-m4
 omnios developer/nasm
 omnios developer/object-file
 omnios developer/parser/bison
+omnios developer/swig
 omnios developer/tnf o
 omnios developer/versioning/git
 omnios diagnostic/cpu-counters
