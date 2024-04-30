@@ -593,6 +593,7 @@ omnios terminal/tmux
 omnios text/doctools
 omnios text/gawk
 omnios text/gnu-diffutils
+omnios text/gnu-gettext
 omnios text/gnu-grep
 omnios text/gnu-patch
 omnios text/gnu-sed
