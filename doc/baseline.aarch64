@@ -42,10 +42,12 @@ omnios developer/lexer/flex
 omnios developer/library/lint o
 omnios developer/library/profiled-libc o
 omnios developer/linker
+omnios developer/macro/cpp
 omnios developer/macro/gnu-m4
 omnios developer/nasm
 omnios developer/object-file
 omnios developer/parser/bison
+omnios developer/swig
 omnios developer/tnf o
 omnios developer/versioning/git
 omnios diagnostic/cpu-counters
