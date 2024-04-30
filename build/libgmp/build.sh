@@ -63,8 +63,11 @@ CONFIGURE_OPTS[amd64_WS]="
     gmp_cv_asm_x86_mulx=no
 "
 
+# TODO: XXXARM disable asm optimisations for now
+# since it is broken on braich
 CONFIGURE_OPTS[aarch64]+="
     CC_FOR_BUILD=$GCC
+    --enable-assembly=no
 "
 
 init
