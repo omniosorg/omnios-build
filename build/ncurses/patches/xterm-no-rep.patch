@@ -10,20 +10,21 @@ See also http://invisible-island.net/ncurses/ncurses.faq.html#xterm_generic
 diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
-@@ -4985,14 +4985,14 @@ xterm-xfree86|xterm terminal emulator (X
+@@ -4946,7 +4946,7 @@ xterm-xfree86|xterm terminal emulator (X
+ 
  xterm+nofkeys|building block for xterm fkey-variants,
  	npc,
- 	kcbt=\E[Z, kent=\EOM, nel=\EE, use=ecma+index,
--	use=ansi+rep, use=ecma+strikeout, use=vt420+lrmm,
-+	use=ecma+strikeout, use=vt420+lrmm,
+-	kcbt=\E[Z, nel=\EE, use=ecma+index, use=ansi+rep,
++	kcbt=\E[Z, nel=\EE, use=ecma+index,
+ 	use=ecma+strikeout, use=vt420+lrmm, use=xterm+focus,
  	use=xterm+sm+1006, use=xterm+tmux, use=ecma+italics,
  	use=xterm+keypad, use=xterm-basic,
- 
+@@ -4954,7 +4954,7 @@ xterm+nofkeys|building block for xterm f
  xterm-p370|xterm patch #370,
- 	npc,
- 	kcbt=\E[Z, kent=\EOM, nel=\EE, use=ecma+index,
--	use=ansi+rep, use=ecma+strikeout, use=xterm+pcfkeys,
-+	use=ecma+strikeout, use=xterm+pcfkeys,
- 	use=xterm+nofkeys, use=bracketed+paste,
- 
- xterm-p371|xterm patch #371,
+ 	rv=\E\\[41;[1-6][0-9][0-9];0c,
+ 	xr=\EP>\\|XTerm\\([1-9][0-9]+\\)\E\\\\,
+-	use=ecma+index, use=ansi+rep, use=ecma+strikeout,
++	use=ecma+index, use=ecma+strikeout,
+ 	use=xterm+pcfkeys, use=xterm+nofkeys,
+ 	use=bracketed+paste, use=report+version,
+ 	use=xterm+focus,
