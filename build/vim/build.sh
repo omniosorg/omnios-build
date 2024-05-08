@@ -13,13 +13,13 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=vim
-VER=9.0
-PATCHLEVEL=2136
+VER=9.1
+PATCHLEVEL=0393
 PKG=editor/vim
 SUMMARY="Vi IMproved"
 DESC="Advanced text editor that provides the power of the UNIX vi editor "
@@ -50,6 +50,10 @@ CONFIGURE_OPTS[WS]="
 "
 MAKE_INSTALL_ARGS="STRIP=/bin/true"
 CPPFLAGS+=" -DSYS_VIMRC_FILE='\"/etc/vimrc\"'"
+
+PKGDIFF_HELPER="
+    s:$PROG[0-9][0-9]:${PROG}VER:
+"
 
 build_init() {
     for arch in $CROSS_ARCH; do
