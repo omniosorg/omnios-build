@@ -47,6 +47,7 @@ release/name
 release/notices
 runtime/perl
 shell/pipe-viewer
+shell/tcsh
 system/defaults
 system/prerequisite/gnu
 text/gnu-gettext
@@ -186,7 +187,6 @@ security/sudo
 # network/test/netperf
 # runtime/java/jexec
 # runtime/java/openjdk17
-# shell/tcsh
 # system/data/urxvt-terminfo
 # system/library/mtsk
 # system/management/cloud-init

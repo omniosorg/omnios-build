@@ -441,6 +441,7 @@ omnios service/storage/virus-scan
 omnios shell/bash
 omnios shell/ksh93
 omnios shell/pipe-viewer
+omnios shell/tcsh
 omnios shell/zsh
 omnios source/demo/mdb-examples
 omnios source/demo/system
