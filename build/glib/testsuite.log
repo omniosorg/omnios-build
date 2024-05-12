@@ -353,13 +353,13 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
-glib:gio / contenttype                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
+glib:gio / contenttype                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / g-file-info                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                        ERROR   killed by signal 5 SIGTRAP
-glib:gio / appinfo                                                     ERROR   killed by signal 6 SIGABRT
 glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
+glib:gio / appinfo                                                     ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
 Ok:                 328 
