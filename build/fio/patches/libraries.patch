@@ -16,7 +16,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -917,7 +917,7 @@ int main(void)
+@@ -921,7 +921,7 @@ int main(void)
  EOF
  if compile_prog "" "-laio" "solarisaio" ; then
    solaris_aio=yes
