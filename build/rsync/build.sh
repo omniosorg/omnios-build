@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=rsync
-VER=3.2.7
+VER=3.3.0
 PKG=network/rsync
 SUMMARY="rsync - faster, flexible replacement for rcp"
 DESC="An open source utility that provides fast incremental file transfer"
