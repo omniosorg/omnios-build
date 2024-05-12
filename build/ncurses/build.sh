@@ -18,8 +18,8 @@
 . ../../lib/build.sh
 
 PROG=ncurses
-VER=6.4
-PATCHLEVEL=20240309
+VER=6.5
+PATCHLEVEL=20240511
 PKG=library/ncurses
 SUMMARY="A CRT screen handling package"
 DESC="Utilities and shared libraries for terminal handling"
