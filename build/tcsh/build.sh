@@ -29,6 +29,14 @@ UVER=${VER//./_}
 set_builddir "$PROG-$UCPROG$UVER"
 set_arch 64
 
+build_init() {
+    export NATIVE_CC="$GCC"
+    export NATIVE_CPPFLAGS="${CPPFLAGS[0]} ${CPPFLAGS[$BUILD_ARCH]}"
+    export NATIVE_CFLAGS="${CFLAGS[0]} ${CFLAGS[$BUILD_ARCH]}"
+    export NATIVE_LDFLAGS="${LDFLAGS[0]} ${LDFLAGS[$BUILD_ARCH]}"
+    MAKEFLAGS+=" -e"
+}
+
 init
 download_source $PROG "$UCPROG$UVER"
 patch_source
