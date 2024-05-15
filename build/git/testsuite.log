@@ -13,7 +13,7 @@
 *** t0005-signals.sh ***
 # passed all 5 test(s)
 *** t0006-date.sh ***
-# passed all 94 test(s)
+# passed all 100 test(s)
 *** t0007-git-var.sh ***
 # passed all 27 test(s)
 *** t0008-ignores.sh ***
@@ -58,16 +58,16 @@
 # passed all 22 test(s)
 *** t0029-core-unsetenvvars.sh ***
 *** t0030-stripspace.sh ***
-# passed all 27 test(s)
+# passed all 30 test(s)
 *** t0032-reftable-unittest.sh ***
 # passed all 1 test(s)
 *** t0033-safe-directory.sh ***
 # passed all 12 test(s)
 *** t0034-root-safe-directory.sh ***
 *** t0035-safe-bare-repository.sh ***
-# passed all 10 test(s)
+# passed all 12 test(s)
 *** t0040-parse-options.sh ***
-# passed all 88 test(s)
+# passed all 89 test(s)
 *** t0041-usage.sh ***
 # passed all 16 test(s)
 *** t0050-filesystem.sh ***
@@ -155,4 +155,4 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 # failed 2 among 8 test(s)
 make[2]: *** [Makefile:74: t0204-gettext-reencode-sanity.sh] Error 1
 make[1]: *** [Makefile:61: test] Error 2
-make: *** [Makefile:3216: test] Error 2
+make: *** [Makefile:3222: test] Error 2

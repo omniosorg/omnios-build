@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=pciutils
-VER=3.11.1
+VER=3.12.0
 PKG=system/pciutils
 SUMMARY="PCI device utilities"
 DESC="Programs (lspci, setpci) for inspecting and manipulating configuration "

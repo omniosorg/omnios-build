@@ -56,7 +56,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
      },
      'unix-mounts' : {},
      'unix-streams' : {},
-@@ -559,8 +573,8 @@ if host_machine.system() != 'windows'
+@@ -565,8 +579,8 @@ if host_machine.system() != 'windows'
  
    # This test is currently unreliable
    executable('gdbus-overflow', 'gdbus-overflow.c',
@@ -76,5 +76,5 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/meson.build a/glib
      'dependencies' : [winsock2],
 +    'link_args' : '-lsocket',
      'extra_programs' : ['test-spawn-echo'],
-   },
-   'spawn-test' : {
+     # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/3148
+     'can_fail' : host_system == 'gnu',
