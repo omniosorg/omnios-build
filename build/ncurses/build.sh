@@ -13,15 +13,18 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=ncurses
 VER=6.4
+PATCHLEVEL=20240309
 PKG=library/ncurses
 SUMMARY="A CRT screen handling package"
 DESC="Utilities and shared libraries for terminal handling"
+
+VER+=-$PATCHLEVEL
 
 LD=/usr/ccs/bin/ld
 export LD
@@ -91,7 +94,7 @@ prep_build
 build_abi5
 build_abi6
 make_isa_stub
-make_package
+VER=${VER//-/.} make_package
 clean_up
 
 # Vim hints

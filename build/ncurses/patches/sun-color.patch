@@ -8,24 +8,24 @@ See: https://www.illumos.org/issues/10359
 diff -wpruN '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
-@@ -8848,9 +8848,9 @@ sun-type4|Sun Workstation console with t
- #	cbt=\E[Z
+@@ -8915,14 +8915,19 @@ sun-type4|Sun Workstation console with t
  #	dim=\E[2m
  #	blink=\E[5m
--# It supports bold, but not underline -TD (2009-09-19)
-+# It supports bold, -TD (2009-09-19)
+ # It supports bold, but not underline -TD (2009-09-19)
++# Replaced klone+color with the first two lines, now that illumos has 256
++# colour support. Added additional capabilities.
  sun-color|Sun Microsystems Workstation console with color support (IA systems),
--	colors#8, ncv#3, pairs#64,
 +	colors#256, ncv#3, pairs#32767,
- 	bold=\E[1m, cub=\E[%p1%dD, cud=\E[%p1%dB, cuf=\E[%p1%dC,
- 	cuu=\E[%p1%dA, home=\E[H, op=\E[0m, rs2=\E[s,
- 	setab=\E[4%p1%dm, setaf=\E[3%p1%dm,
-@@ -8859,7 +8859,7 @@ sun-color|Sun Microsystems Workstation c
++	op=\E[37;40m, setab=\E[4%p1%dm, setaf=\E[3%p1%dm,
+ 	bold=\E[1m, cub1=^H, cud1=\n, home=\E[H, op=\E[0m,
+ 	setb=\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}
+ 	     %=%t3%e%p1%d%;m,
  	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}
  	     %=%t3%e%p1%d%;m,
- 	sgr=\E[0%?%p6%t;1%;%?%p1%p3%|%t;7%;m, sgr0=\E[m,
--	smso=\E[7m, use=sun,
-+	smso=\E[7m, smul=\E[4m, rmul=\E[24m, use=sun,
+ 	sgr=\E[0%?%p6%t;1%;%?%p1%p3%|%t;7%;m, use=ansi+local,
+-	use=sun, use=klone+color,
++	smso=\E[7m, smul=\E[4m, rmul=\E[24m,
++	use=sun,
  
  #### Iris consoles
  #

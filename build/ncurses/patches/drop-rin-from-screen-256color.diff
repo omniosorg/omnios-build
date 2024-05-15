@@ -10,7 +10,7 @@ Last-Update: 2019-08-07
 diff -wpruN '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
-@@ -8245,6 +8245,7 @@ screen-16color-bce-s|GNU Screen with 16
+@@ -8308,6 +8308,7 @@ screen-16color-bce-s|GNU Screen with 16
  
  screen-256color|GNU Screen with 256 colors,
  	use=xterm+256setaf, use=screen,
