@@ -1,4 +1,4 @@
-From 05ff12edd4943fe5b1862f4c0c0edc6a14ce7d4e Mon Sep 17 00:00:00 2001
+From 03f1cbdc2bf2914830e6cdcc757e2500236cef17 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 4 Nov 2020 16:16:25 +0000
 Subject: Use the illumos libc SSP implementation for
@@ -36,10 +36,10 @@ index 7093d90b191a..66a076ccd45e 100644
 +		       "}"
 +#endif
 diff --git a/gcc/configure b/gcc/configure
-index 6d06fe9226d7..750f87e788ed 100755
+index 431074dc1c8c..bc9169310c91 100755
 --- a/gcc/configure
 +++ b/gcc/configure
-@@ -31162,7 +31162,7 @@ fi
+@@ -31351,7 +31351,7 @@ fi
  	 # realistically usable GNU/Hurd configurations.
  	 # All supported versions of musl provide it as well
  	 gcc_cv_libc_provides_ssp=yes;;
@@ -49,10 +49,10 @@ index 6d06fe9226d7..750f87e788ed 100755
  if test "x$ac_cv_func___stack_chk_fail" = xyes; then :
    gcc_cv_libc_provides_ssp=yes
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 4a3f16924759..73346cd04de4 100644
+index 9564f0825e02..4966274870ac 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
-@@ -6772,7 +6772,7 @@ AC_CACHE_CHECK(__stack_chk_fail in target C library,
+@@ -6851,7 +6851,7 @@ AC_CACHE_CHECK(__stack_chk_fail in target C library,
  	 # realistically usable GNU/Hurd configurations.
  	 # All supported versions of musl provide it as well
  	 gcc_cv_libc_provides_ssp=yes;;

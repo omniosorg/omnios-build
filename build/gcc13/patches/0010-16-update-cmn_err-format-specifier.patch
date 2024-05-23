@@ -1,4 +1,4 @@
-From f14aa1018632475a7c24bbce87ef581e5d987a58 Mon Sep 17 00:00:00 2001
+From 2e79bc204af87403adc7d60bba6488af51f6c6dd Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Sat, 5 Nov 2016 05:26:47 +0300
 Subject: 16 update cmn_err format specifier Reviewed by: Richard

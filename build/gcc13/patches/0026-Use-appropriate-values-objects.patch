@@ -1,4 +1,4 @@
-From 5a44411388ea837c1af35e070f240fa2880df5bf Mon Sep 17 00:00:00 2001
+From d42f87a24124ba6fc1f7b3d40c61c6f223e32d72 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 7 Jan 2020 15:08:43 +0000
 Subject: Use appropriate values objects
