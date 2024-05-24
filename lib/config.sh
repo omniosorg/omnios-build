@@ -255,6 +255,7 @@ CTFCFLAGS[_]="-gdwarf-2"
 CTFCFLAGS[10]="-gstrict-dwarf"
 CTFCFLAGS[12]="-gstrict-dwarf"
 CTFCFLAGS[13]="-gstrict-dwarf"
+CTFCFLAGS[14]="-gstrict-dwarf"
 GENOFFSETS_CFLAGS="
     ${CTFCFLAGS[_]}
     -_gcc=-fno-eliminate-unused-debug-symbols
@@ -331,6 +332,7 @@ FCFLAGS[7]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[10]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[12]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[13]+=" -fno-aggressive-loop-optimizations"
+FCFLAGS[14]+=" -fno-aggressive-loop-optimizations"
 
 # Flags to enable particular standards; see standards(7)
 typeset -A STANDARDS
