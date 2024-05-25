@@ -31,9 +31,6 @@ PKG=network/test/iperf
 SUMMARY="iperf network testing tool"
 DESC="$SUMMARY $VER"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 DEPENDS_IPS="system/library"
 
 set_arch 64
