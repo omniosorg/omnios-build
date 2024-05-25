@@ -32,10 +32,10 @@ PKG=shell/pipe-viewer
 SUMMARY="Pipe Viewer"
 DESC="pv - a terminal-based tool for monitoring the progress of data through a pipeline."
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_arch 64
+# Needed to select the standards-compliant version of shmdt(2)
+set_standard XPG4
+
 export DO_GZIP=true
 CONFIGURE_OPTS="
     --mandir=/usr/share/man
