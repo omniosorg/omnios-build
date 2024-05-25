@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
 --- a~/src/lldp_main.c	1970-01-01 00:00:00
 +++ a/src/lldp_main.c	1970-01-01 00:00:00
 @@ -82,6 +82,13 @@ struct lci_s lci;
@@ -15,7 +15,7 @@ diff -wpruN '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
  void usage();
  
  int initializeLLDP();
-diff -wpruN '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
 --- a~/src/lldp_neighbor.c	1970-01-01 00:00:00
 +++ a/src/lldp_neighbor.c	1970-01-01 00:00:00
 @@ -30,6 +30,12 @@
@@ -31,7 +31,7 @@ diff -wpruN '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
  int get_sys_desc() {
  #ifndef WIN32
      int retval;
-diff -wpruN '--exclude=*.orig' a~/src/lldp_neighbor.h a/src/lldp_neighbor.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_neighbor.h a/src/lldp_neighbor.h
 --- a~/src/lldp_neighbor.h	1970-01-01 00:00:00
 +++ a/src/lldp_neighbor.h	1970-01-01 00:00:00
 @@ -19,18 +19,8 @@
