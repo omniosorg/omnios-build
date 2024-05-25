@@ -1,4 +1,4 @@
-From 48bdc90872ba3e3f62311c7b8e70e3dc8b5152fb Mon Sep 17 00:00:00 2001
+From 230de63e849564fd74222b9e2d0dc934e51c5036 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Mon, 11 Jan 2021 14:09:40 +0000
 Subject: 13185 -zassert-deflib does not work for 64-bit objects

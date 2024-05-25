@@ -1,4 +1,4 @@
-From b76e65d545bbf9c3c83e06ccecbe75f34a5ae07a Mon Sep 17 00:00:00 2001
+From de5da288cee04bdeb556346d26de4f0ced0c0b94 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sun, 30 Sep 2012 16:44:14 -0400
 Subject: allow the global disabling of function cloning
@@ -18,10 +18,10 @@ optimization ineffective, and our source safe for debuggers everywhere.
  3 files changed, 24 insertions(+)
 
 diff --git a/gcc/attribs.cc b/gcc/attribs.cc
-index b1300018d1e8..6f17d96a8327 100644
+index 24818c76f70d..808824c38b36 100644
 --- a/gcc/attribs.cc
 +++ b/gcc/attribs.cc
-@@ -695,6 +695,15 @@ decl_attributes (tree *node, tree attributes, int flags,
+@@ -690,6 +690,15 @@ decl_attributes (tree *node, tree attributes, int flags,
  	attributes = tree_cons (get_identifier ("no_icf"),  NULL, attributes);
      }
  
@@ -38,7 +38,7 @@ index b1300018d1e8..6f17d96a8327 100644
  
    /* Note that attributes on the same declaration are not necessarily
 diff --git a/gcc/common.opt b/gcc/common.opt
-index 73560e307c7a..d5460f4727c2 100644
+index 911673400f28..1c01362d4d00 100644
 --- a/gcc/common.opt
 +++ b/gcc/common.opt
 @@ -1216,6 +1216,11 @@ fcode-hoisting
@@ -54,7 +54,7 @@ index 73560e307c7a..d5460f4727c2 100644
  Common Var(flag_combine_stack_adjustments) Optimization
  Looks for opportunities to reduce stack adjustments and stack references.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 8bd0a8357d12..cadce96a0f5b 100644
+index 2026f79705ef..4a5c2d91b334 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -535,6 +535,7 @@ Objective-C and Objective-C++ Dialects}.

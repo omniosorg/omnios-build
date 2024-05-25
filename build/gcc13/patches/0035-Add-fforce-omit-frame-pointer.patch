@@ -1,4 +1,4 @@
-From a8db46399145170704c8046a6fc8fd3005e20892 Mon Sep 17 00:00:00 2001
+From 79cfd401a03d1bb6188fe1e8c348f0c8bd5faefa Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Wed, 26 Oct 2022 12:53:51 +0000
 Subject: Add -fforce-omit-frame-pointer
@@ -9,7 +9,7 @@ Subject: Add -fforce-omit-frame-pointer
  2 files changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/common.opt b/gcc/common.opt
-index d5460f4727c2..e02f3bef41fa 100644
+index 1c01362d4d00..8197f6bbf082 100644
 --- a/gcc/common.opt
 +++ b/gcc/common.opt
 @@ -2230,6 +2230,10 @@ fomit-frame-pointer
@@ -24,10 +24,10 @@ index d5460f4727c2..e02f3bef41fa 100644
  Common Alias(fopenmp-target-simd-clone=,any,none)
  
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index 50a2511c5e2d..7fe1047185c8 100644
+index 001e862d4d14..0609cf07e5ed 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
-@@ -2979,8 +2979,11 @@ ix86_option_override_internal (bool main_args_p,
+@@ -3012,8 +3012,11 @@ ix86_option_override_internal (bool main_args_p,
     * questionable benefit anyway, even on i386.
     */
  
