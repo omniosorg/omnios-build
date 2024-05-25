@@ -23,9 +23,6 @@ PKG=network/test/netperf
 SUMMARY="netperf network testing tool"
 DESC="$SUMMARY $VER"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 SKIP_LICENCES=HP
 
 set_arch 64
