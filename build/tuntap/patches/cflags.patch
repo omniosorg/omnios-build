@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/configure.in a/configure.in
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.in a/configure.in
 --- a~/configure.in	1970-01-01 00:00:00
 +++ a/configure.in	1970-01-01 00:00:00
 @@ -75,17 +75,7 @@ case $KARCH in
