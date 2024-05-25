@@ -22,9 +22,6 @@ PKG=terminal/resize
 SUMMARY="resize - adjust terminal settings to current window size"
 DESC="Set environment and terminal settings to current window size"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 SKIP_LICENCES=xterm
 
 set_arch 64
