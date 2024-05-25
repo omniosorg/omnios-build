@@ -23,6 +23,9 @@ PKG=shell/zsh
 SUMMARY="Z shell"
 DESC="The Z shell"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_arch 64
 
 CONFIGURE_OPTS+="

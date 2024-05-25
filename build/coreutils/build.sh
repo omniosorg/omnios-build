@@ -23,6 +23,9 @@ PKG=file/gnu-coreutils
 SUMMARY="coreutils - GNU core utilities"
 DESC="GNU core utilities"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 BUILD_DEPENDS_IPS="compress/xz library/gmp"
 
 PREFIX=/usr/gnu

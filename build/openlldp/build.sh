@@ -23,6 +23,9 @@ SUMMARY="Link-layer Discovery Daemon"
 DESC="A comprehensive implementation of the IEEE standard 802.1AB "
 DESC+="Link Layer Discovery Protocol"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_arch 64
 
 init

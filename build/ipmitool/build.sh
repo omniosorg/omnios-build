@@ -32,6 +32,9 @@ SUMMARY="IPMI management tool"
 DESC="A utility for managing and configuring devices that support the "
 DESC+="Intelligent Platform Management Interface"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 BUILD_DEPENDS_IPS="driver/ipmi developer/build/libtool"
 
 set_arch 64

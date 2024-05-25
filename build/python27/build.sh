@@ -23,6 +23,9 @@ PKG=runtime/python-27
 SUMMARY="$PROG ${VER%.*}"
 DESC="$SUMMARY"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_python_version $PYTHON2VER
 
 BUILD_DEPENDS_IPS="developer/build/autoconf developer/pkg-config"

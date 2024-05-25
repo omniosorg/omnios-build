@@ -26,6 +26,9 @@ DESC="Git is a free and open source distributed version control system "
 DESC+="designed to handle everything from small to very large projects with "
 DESC+="speed and efficiency."
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_arch 64
 
 BUILD_DEPENDS_IPS="

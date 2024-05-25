@@ -23,6 +23,9 @@ PKG=library/unixodbc
 SUMMARY="The UnixODBC Subsystem and SDK"
 DESC="UnixODBC - The UnixODBC Subsystem and SDK"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 # Requires the new definition of getpwuid_r()
 set_standard XPG6
 

@@ -23,6 +23,9 @@ PKG=driver/tuntap
 SUMMARY="TUN/TAP driver for $DISTRO"
 DESC="TUN/TAP driver for $DISTRO based on the Universal TUN/TAP Driver"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_arch 64
 
 # Ensure that the standard function prologue remains at the very start of a
