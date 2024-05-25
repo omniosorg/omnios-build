@@ -13,7 +13,7 @@
 #
 # Copyright (c) 2015 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 #############################################################################
 # Configuration for the build system
@@ -303,7 +303,7 @@ CXX=g++
 # Specify default versions for building packages
 DEFAULT_GCC_VER=13
 ILLUMOS_GCC_VER=10
-DEFAULT_CLANG_VER=15
+DEFAULT_CLANG_VER=18
 
 PYTHON2VER=2.7
 PYTHON3VER=3.12
