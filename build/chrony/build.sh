@@ -23,9 +23,6 @@ SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
 NETTLEVER=3.9.1
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 BUILD_DEPENDS_IPS="ooce/text/asciidoctor"
 
 set_arch 64
