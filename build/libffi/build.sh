@@ -23,9 +23,6 @@ PKG=library/libffi
 SUMMARY="A Portable Foreign Function Interface Library"
 DESC="$PROG - $SUMMARY"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 SKIP_LICENCES=libffi
 
 # Previous versions that also need to be built and packaged since compiled

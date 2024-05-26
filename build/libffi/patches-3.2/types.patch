@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/x86/ffi.c a/src/x86/ffi.c
+--- a~/src/x86/ffi.c	1970-01-01 00:00:00
++++ a/src/x86/ffi.c	1970-01-01 00:00:00
+@@ -343,7 +343,7 @@ ffi_call_win64(unsigned int (*)(char *, extended_cif *), extended_cif *,
+ extern void
+ ffi_call_win32(unsigned int (*)(char *, extended_cif *), extended_cif *,
+                unsigned, unsigned, unsigned, unsigned *, void (*fn)(void));
+-extern void ffi_call_SYSV(void (*)(char *, extended_cif *), extended_cif *,
++extern void ffi_call_SYSV(unsigned int (*)(char *, extended_cif *), extended_cif *,
+                           unsigned, unsigned, unsigned *, void (*fn)(void));
+ #endif
+ 
