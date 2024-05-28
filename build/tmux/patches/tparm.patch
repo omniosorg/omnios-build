@@ -1,0 +1,122 @@
+Patches taken from
+https://github.com/tmux/tmux/commit/39d41d0810d4e8ae6ce8d27776dfbb96722d9319
+https://github.com/tmux/tmux/commit/168eab11a7cef7ecd8a42ffec160fe2314442b73
+https://github.com/tmux/tmux/commit/8f34504736cf3547992c4ba948c1e65f3813715c
+https://github.com/tmux/tmux/commit/bf636d9575806134ca7efd917ee0d54e9330ae86
+
+diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -344,6 +344,10 @@ else
+ 		AC_MSG_ERROR("curses not found")
+ 	fi
+ fi
++AC_CHECK_FUNCS([ \
++	tiparm \
++	tiparm_s \
++])
+ 
+ # Look for utempter.
+ AC_ARG_ENABLE(
+diff -wpruN '--exclude=*.orig' a~/tty-term.c a/tty-term.c
+--- a~/tty-term.c	1970-01-01 00:00:00
++++ a/tty-term.c	1970-01-01 00:00:00
+@@ -762,33 +762,93 @@ tty_term_string(struct tty_term *term, e
+ const char *
+ tty_term_string1(struct tty_term *term, enum tty_code_code code, int a)
+ {
+-	return (tparm((char *) tty_term_string(term, code), a, 0, 0, 0, 0, 0, 0, 0, 0));
++	const char *s;
++#if defined(HAVE_TIPARM_S)
++	s = tiparm_s(1, 0, tty_term_string(term, code), a);
++#elif defined(HAVE_TIPARM)
++	s = tiparm(tty_term_string(term, code), a);
++#else
++	s = tparm((char *) tty_term_string(term, code), a, 0, 0, 0, 0, 0, 0, 0, 0);
++#endif
++	if (s == NULL) {
++		log_debug("could not expand %s", tty_term_codes[code].name);
++		return ("");
++	}
++	return (s);
+ }
+ 
+ const char *
+ tty_term_string2(struct tty_term *term, enum tty_code_code code, int a, int b)
+ {
+-	return (tparm((char *) tty_term_string(term, code), a, b, 0, 0, 0, 0, 0, 0, 0));
++	const char *s;
++#if defined(HAVE_TIPARM_S)
++        s = tiparm_s(2, 0, tty_term_string(term, code), a, b);
++#elif defined(HAVE_TIPARM)
++        s = tiparm(tty_term_string(term, code), a, b);
++#else
++        s = tparm((char *) tty_term_string(term, code), a, b, 0, 0, 0, 0, 0, 0, 0);
++#endif
++	if (s == NULL) {
++		log_debug("could not expand %s", tty_term_codes[code].name);
++		return ("");
++	}
++	return (s);
+ }
+ 
+ const char *
+ tty_term_string3(struct tty_term *term, enum tty_code_code code, int a, int b,
+     int c)
+ {
+-	return (tparm((char *) tty_term_string(term, code), a, b, c, 0, 0, 0, 0, 0, 0));
++	const char *s;
++#if defined(HAVE_TIPARM_S)
++        s = tiparm_s(3, 0, tty_term_string(term, code), a, b, c);
++#elif defined(HAVE_TIPARM)
++        s = tiparm(tty_term_string(term, code), a, b, c);
++#else
++        s = tparm((char *) tty_term_string(term, code), a, b, c, 0, 0, 0, 0, 0, 0);
++#endif
++	if (s == NULL) {
++                log_debug("could not expand %s", tty_term_codes[code].name);
++                return ("");
++        }
++        return (s);
+ }
+ 
+ const char *
+ tty_term_ptr1(struct tty_term *term, enum tty_code_code code, const void *a)
+ {
+-	return (tparm((char *) tty_term_string(term, code), (long)a, 0, 0, 0, 0, 0, 0, 0, 0));
++	const char *s;
++#if defined(HAVE_TIPARM_S)
++        s = tiparm_s(1, 1, tty_term_string(term, code), a);
++#elif defined(HAVE_TIPARM)
++        s = tiparm(tty_term_string(term, code), a);
++#else
++        s = tparm((char *) tty_term_string(term, code), (long)a, 0, 0, 0, 0, 0, 0, 0, 0);
++#endif
++	if (s == NULL) {
++                log_debug("could not expand %s", tty_term_codes[code].name);
++                return ("");
++        }
++        return (s);
+ }
+ 
+ const char *
+ tty_term_ptr2(struct tty_term *term, enum tty_code_code code, const void *a,
+     const void *b)
+ {
+-	return (tparm((char *) tty_term_string(term, code), (long)a, (long)b, 0, 0, 0, 0, 0, 0, 0));
++	const char *s;
++#if defined(HAVE_TIPARM_S)
++        s = tiparm_s(2, 3, tty_term_string(term, code), a, b);
++#elif defined(HAVE_TIPARM)
++        s = tiparm(tty_term_string(term, code), a, b);
++#else
++        s = tparm((char *) tty_term_string(term, code), (long)a, (long)b, 0, 0, 0, 0, 0, 0, 0);
++#endif
++	if (s == NULL) {
++                log_debug("could not expand %s", tty_term_codes[code].name);
++                return ("");
++        }
++        return (s);
+ }
+ 
+ int
