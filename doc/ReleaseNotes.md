@@ -4,6 +4,38 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048ad (2024-05-31)
+Weekly release for w/c 27th of May 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* `ncurses` has been updated to version 6.4.20240309.
+
+* `tmux` has been updated to version 3.3a, and patched to resolve
+  [CVE-2022-47016](https://www.cve.org/CVERecord?id=CVE-2022-47016).
+
+### Other Changes
+
+* The algorithm for picking a hot spare to use in a ZFS pool has been updated
+  so that spares are first sorted in ascending size order. This means that
+  the smallest appropriate usable spare will be selected.
+
+* Added support for Open File Descriptor (OFD) locks to the `lx` zone brand
+  in order to support systemd v254 and newer.
+
+* The bhyve emulated USB tablet device which is used for mouse support under
+  VNC has been fixed so that it works properly with Linux guests running
+  newer kernel versions.
+
+* If given a very large input (2^29 bytes or more), the illumos crypto
+  code could previously produce incorrect SHA1 hashes. This has been resolved
+  in this update.
+
+<br>
+
+---
+
 ## r151048w (2024-04-11)
 Weekly release for w/c 8th of April 2024.
 > This update requires a reboot
