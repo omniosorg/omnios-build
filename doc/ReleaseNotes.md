@@ -4,6 +4,35 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050d (2024-05-31)
+Weekly release for w/c 27th of May 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* `ncurses` has been updated to version 6.4.20240309.
+
+### Other Changes
+
+* The algorithm for picking a hot spare to use in a ZFS pool has been updated
+  so that spares are first sorted in ascending size order. This means that
+  the smallest appropriate usable spare will be selected.
+
+* Added support for Open File Descriptor (OFD) locks to the `lx` zone brand
+  in order to support systemd v254 and newer.
+
+* The bhyve emulated USB tablet device which is used for mouse support under
+  VNC has been fixed so that it works properly with Linux guests running
+  newer kernel versions.
+
+* If given a very large input (2^29 bytes or more), the illumos crypto
+  code could previously produce incorrect SHA1 hashes. This has been resolved
+  in this update.
+
+<br>
+
+---
+
 Stable Release, 6th of May 2024
 
 `uname -a` shows `omnios-r151050-6f87d0b5d63`
