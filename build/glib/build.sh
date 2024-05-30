@@ -23,6 +23,9 @@ PKG=library/glib2
 SUMMARY="GNOME utility library"
 DESC="The GNOME general-purpose utility library"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 RUN_DEPENDS_IPS="
     runtime/python-$PYTHONPKGVER
     runtime/perl

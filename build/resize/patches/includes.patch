@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/resize.c a/resize.c
+--- a~/resize.c	1970-01-01 00:00:00
++++ a/resize.c	1970-01-01 00:00:00
+@@ -63,6 +63,8 @@
+ #include <xtermcap.h>
+ #include <xterm_io.h>
+ 
++#include <term.h>
++
+ #ifndef USE_TERMINFO		/* avoid conflict with configure script */
+ #if defined(__QNX__) || defined(__SCO__) || defined(linux) || defined(__OpenBSD__) || defined(__UNIXWARE__)
+ #define USE_TERMINFO

@@ -23,6 +23,9 @@ PKG=library/readline
 SUMMARY="GNU readline"
 DESC="GNU readline library"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 # Previous versions that also need to be built and packaged since compiled
 # software may depend on it.
 PVERS="6.3 7.0"

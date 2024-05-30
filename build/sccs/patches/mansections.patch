@@ -1,10 +1,10 @@
-diff -wpruN '--exclude=*.orig' a~/sccs/man/changeset.4 a/sccs/man/changeset.4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/man/changeset.4 a/sccs/man/changeset.4
 --- a~/sccs/man/changeset.4	1970-01-01 00:00:00
 +++ a/sccs/man/changeset.4	1970-01-01 00:00:00
 @@ -1 +1 @@
 -.so man4/sccschangeset.4
 +.so man5/sccschangeset.5
-diff -wpruN '--exclude=*.orig' a~/sccs/man/sccschangeset.4 a/sccs/man/sccschangeset.4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/man/sccschangeset.4 a/sccs/man/sccschangeset.4
 --- a~/sccs/man/sccschangeset.4	1970-01-01 00:00:00
 +++ a/sccs/man/sccschangeset.4	1970-01-01 00:00:00
 @@ -25,7 +25,7 @@
@@ -43,7 +43,7 @@ diff -wpruN '--exclude=*.orig' a~/sccs/man/sccschangeset.4 a/sccs/man/sccschange
  .hy 14
  
  .SH NOTES
-diff -wpruN '--exclude=*.orig' a~/sccs/man/sccsfile.4 a/sccs/man/sccsfile.4
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/man/sccsfile.4 a/sccs/man/sccsfile.4
 --- a~/sccs/man/sccsfile.4	1970-01-01 00:00:00
 +++ a/sccs/man/sccsfile.4	1970-01-01 00:00:00
 @@ -33,7 +33,7 @@

@@ -1,0 +1,11 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/net_uuid.c a/src/net_uuid.c
+--- a~/src/net_uuid.c	1970-01-01 00:00:00
++++ a/src/net_uuid.c	1970-01-01 00:00:00
+@@ -28,6 +28,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #if defined(HAVE_INTTYPES_H)
+ #include <inttypes.h>

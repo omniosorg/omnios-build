@@ -47,6 +47,7 @@ CONFIGURE_OPTS+="
 "
 
 CPPFLAGS+=" -D_PATH_RUN='\"/var/run/\"'"
+CPPFLAGS+=" -DHAVE_ALLOCA_H"
 
 init
 download_source $PROG ${PROG^^}_${VER//./_}

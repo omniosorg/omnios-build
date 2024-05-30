@@ -19,7 +19,7 @@
 . ../../lib/build.sh
 
 PROG=git
-VER=2.45.0
+VER=2.45.1
 PKG=developer/versioning/git
 SUMMARY="$PROG - distributed version control system"
 DESC="Git is a free and open source distributed version control system "
@@ -27,6 +27,10 @@ DESC+="designed to handle everything from small to very large projects with "
 DESC+="speed and efficiency."
 
 set_arch 64
+# This is needed to convince git that we have a new enough iconv(3c) to use
+# non-const char * parameters. As of gcc14, the compiler correctly rejects
+# the mismatch that otherwise occurs.
+set_standard XPG6
 
 BUILD_DEPENDS_IPS="
     compatibility/ucb

@@ -31,6 +31,9 @@ PKG=library/security/trousers
 SUMMARY="TrouSerS - An open-source TCG Software Stack implementation."
 DESC="TrouSerS - software for accessing a TPM device"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 forgo_isaexec
 
 LIBS="-lbsm -lnsl -lsocket -lgen -lscf -lresolv"

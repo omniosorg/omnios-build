@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/patch/pch.c a/patch/pch.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patch/pch.c a/patch/pch.c
 --- a~/patch/pch.c	1970-01-01 00:00:00
 +++ a/patch/pch.c	1970-01-01 00:00:00
 @@ -42,7 +42,7 @@ static off_t	p_filesize;		/* size of the
@@ -10,3 +10,26 @@ diff -wpruN '--exclude=*.orig' a~/patch/pch.c a/patch/pch.c
  static LINENUM p_end = -1;		/* last line in hunk */
  static LINENUM p_max;			/* max allowed value of p_end */
  static LINENUM p_context = 3;		/* # of context lines */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/sccs/hdr/defines.h a/sccs/sccs/hdr/defines.h
+--- a~/sccs/sccs/hdr/defines.h	1970-01-01 00:00:00
++++ a/sccs/sccs/hdr/defines.h	1970-01-01 00:00:00
+@@ -79,7 +79,7 @@ extern long timezone;
+ #endif
+ #else
+ #define	timezone	xtimezone
+-long	timezone;
++extern long	timezone;
+ #endif
+ #define	tzset		xtzset
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/sccs/lib/comobj/src/xtzset.c a/sccs/sccs/lib/comobj/src/xtzset.c
+--- a~/sccs/sccs/lib/comobj/src/xtzset.c	1970-01-01 00:00:00
++++ a/sccs/sccs/lib/comobj/src/xtzset.c	1970-01-01 00:00:00
+@@ -26,6 +26,7 @@
+ time_t	Y2069;
+ time_t	Y2038;
+ time_t	Y1969;
++long timezone;
+ 
+ void
+ xtzset()

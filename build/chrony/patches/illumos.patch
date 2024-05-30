@@ -78,7 +78,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sys.h a/sys.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sys_solaris.c a/sys_solaris.c
 --- a~/sys_solaris.c	1970-01-01 00:00:00
 +++ a/sys_solaris.c	1970-01-01 00:00:00
-@@ -34,41 +34,13 @@
+@@ -34,41 +34,14 @@
  #include "sys_timex.h"
  #include "util.h"
  
@@ -106,6 +106,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sys_solaris.c a/sys_solaris.c
 -  kvm_close(kt);
 -}
 +#include "logging.h"
++#include "conf.h"
  
  /* ================================================== */
  
@@ -121,7 +122,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sys_solaris.c a/sys_solaris.c
    /* The kernel allows the frequency to be set in the full range off int32_t */
    SYS_Timex_InitialiseWithFunctions(32500, 1.0 / 100, NULL, NULL, NULL,
                                      0.0, 0.0, NULL, NULL);
-@@ -85,11 +57,75 @@ SYS_Solaris_Finalise(void)
+@@ -85,11 +58,75 @@ SYS_Solaris_Finalise(void)
  /* ================================================== */
  
  #ifdef FEAT_PRIVDROP

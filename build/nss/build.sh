@@ -24,6 +24,9 @@ DESC="Network Security Services (NSS) is a set of libraries designed to "
 DESC+="support cross-platform development of security-enabled client and "
 DESC+="server applications."
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 BUILD_DEPENDS_IPS="library/nspr"
 
 set_ssp none

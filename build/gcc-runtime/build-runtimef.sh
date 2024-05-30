@@ -12,14 +12,14 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 . common.sh
 
 PKG=system/library/gfortran-runtime
 PROG=gfortran
-VER=13
+VER=14
 SUMMARY="GNU fortran runtime dependencies"
 DESC="$SUMMARY"
 

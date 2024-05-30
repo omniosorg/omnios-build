@@ -23,6 +23,9 @@ PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 SKIP_LICENCES="CMU/UCD"
 
 # net-snmp builds fail randomly with parallel make. There are patches upstream

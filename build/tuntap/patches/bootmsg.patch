@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/tun.c a/tun.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tun.c a/tun.c
 --- a~/tun.c	1970-01-01 00:00:00
 +++ a/tun.c	1970-01-01 00:00:00
 @@ -166,7 +166,7 @@ static struct tunstr *tun_str;

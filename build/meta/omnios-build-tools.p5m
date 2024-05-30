@@ -19,8 +19,8 @@ depend fmri=pkg://$(PKGPUBLISHER)/developer/build/libtool type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/build/onbld type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/dtrace type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc10 type=require
-depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc12 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc13 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc14 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc7 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/illumos-tools type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/java/openjdk8 type=require

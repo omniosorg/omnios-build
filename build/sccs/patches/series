@@ -1,3 +1,4 @@
 03.Defaults.sunos5.patch
 multiple_symbols.patch
 mansections.patch
+modernise.patch

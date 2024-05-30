@@ -51,6 +51,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv-krb5.c a/gss-serv-kr
 diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv.c a/gss-serv.c
 --- a~/gss-serv.c	1970-01-01 00:00:00
 +++ a/gss-serv.c	1970-01-01 00:00:00
+@@ -44,6 +44,7 @@
+ #include "session.h"
+ #include "misc.h"
+ #include "servconf.h"
++#include "sshbuf.h"
+ 
+ #include "ssh-gss.h"
+ 
 @@ -319,22 +319,66 @@ ssh_gssapi_getclient(Gssctxt *ctx, ssh_g
  void
  ssh_gssapi_cleanup_creds(void)

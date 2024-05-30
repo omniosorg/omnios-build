@@ -24,6 +24,9 @@ SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
 DESC+="terminal between several processes"
 
+# This does not yet build with gcc 14
+set_gccver 13
+
 set_arch 64
 # Need access to additional fields in struct msghdr
 set_standard XPG6

@@ -1,4 +1,4 @@
-diff -wpruN '--exclude=*.orig' a~/src/netlib.c a/src/netlib.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/netlib.c a/src/netlib.c
 --- a~/src/netlib.c	1970-01-01 00:00:00
 +++ a/src/netlib.c	1970-01-01 00:00:00
 @@ -143,6 +143,9 @@ char    netlib_id[]="\

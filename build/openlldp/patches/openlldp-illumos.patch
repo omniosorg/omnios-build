@@ -1,6 +1,6 @@
 From https://github.com/joyent/illumos-extra/blob/master/openlldp/Patches/
 
-diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
 @@ -177,6 +177,11 @@ case "$host_os" in
@@ -37,7 +37,7 @@ diff -wpruN '--exclude=*.orig' a~/configure.ac a/configure.ac
  
  dnl what about __BSD__?
  AM_CONDITIONAL([LINUX],   [test "$platform" = linux])
-diff -wpruN '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
 --- a~/src/lldp_main.c	1970-01-01 00:00:00
 +++ a/src/lldp_main.c	1970-01-01 00:00:00
 @@ -54,7 +54,10 @@
@@ -240,7 +240,7 @@ diff -wpruN '--exclude=*.orig' a~/src/lldp_main.c a/src/lldp_main.c
  }
  
  void cleanupLLDP(struct lldp_port *lldp_port) {
-diff -wpruN '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
 --- a~/src/lldp_neighbor.c	1970-01-01 00:00:00
 +++ a/src/lldp_neighbor.c	1970-01-01 00:00:00
 @@ -77,6 +77,7 @@ int get_sys_fqdn() {
@@ -259,7 +259,7 @@ diff -wpruN '--exclude=*.orig' a~/src/lldp_neighbor.c a/src/lldp_neighbor.c
  
      debug_printf(DEBUG_NORMAL, "lldp_systemname: %s\n", lldp_systemname);
  
-diff -wpruN '--exclude=*.orig' a~/src/lldp_port.h a/src/lldp_port.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/lldp_port.h a/src/lldp_port.h
 --- a~/src/lldp_port.h	1970-01-01 00:00:00
 +++ a/src/lldp_port.h	1970-01-01 00:00:00
 @@ -124,6 +124,7 @@ enum portAdminStatus {
@@ -270,7 +270,7 @@ diff -wpruN '--exclude=*.orig' a~/src/lldp_port.h a/src/lldp_port.h
    char *if_name;     // The interface name.
    uint32_t if_index; // The interface index.
    uint32_t mtu;      // The interface MTU.
-diff -wpruN '--exclude=*.orig' a~/src/platform/Makefile.am a/src/platform/Makefile.am
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/platform/Makefile.am a/src/platform/Makefile.am
 --- a~/src/platform/Makefile.am	1970-01-01 00:00:00
 +++ a/src/platform/Makefile.am	1970-01-01 00:00:00
 @@ -19,6 +19,9 @@ if FRAMER_BPF
@@ -283,7 +283,7 @@ diff -wpruN '--exclude=*.orig' a~/src/platform/Makefile.am a/src/platform/Makefi
  
  if LINUX
    PLATFORM_SRCS = 
-diff -wpruN '--exclude=*.orig' a~/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c a/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c a/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c
 --- a~/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c	1970-01-01 00:00:00
 +++ a/src/platform/framehandlers/dlpi/lldp_dlpi_framer.c	1970-01-01 00:00:00
 @@ -0,0 +1,128 @@
