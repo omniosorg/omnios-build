@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=tmux
-VER=3.3
+VER=3.3a
 PKG=terminal/tmux
 SUMMARY="Terminal multiplexer"
 DESC="$SUMMARY"
@@ -30,7 +30,7 @@ BUILD_DEPENDS_IPS=library/ncurses
 SKIP_LICENCES=tmux
 
 init
-prep_build
+prep_build autoconf -autoreconf
 
 set_arch 64
 
