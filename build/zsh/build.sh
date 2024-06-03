@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,24 +23,26 @@ PKG=shell/zsh
 SUMMARY="Z shell"
 DESC="The Z shell"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_arch 64
+# Needed for X/Open curses/termcap
+set_standard XPG6
 
 CONFIGURE_OPTS+="
-	--enable-cap
-	--enable-dynamic
-	--enable-etcdir=/etc
-	--enable-function-subdirs
-	--enable-ldflags=-zignore
-	--enable-libs=-lnsl
-	--enable-maildir-support
-	--enable-multibyte
-	--enable-pcre
-	--with-tcsetpgrp
-	--disable-gdbm
+    --enable-cap
+    --enable-dynamic
+    --enable-etcdir=/etc
+    --enable-function-subdirs
+    --enable-ldflags=-zignore
+    --enable-libs=-lnsl
+    --enable-maildir-support
+    --enable-multibyte
+    --enable-pcre
+    --with-tcsetpgrp
+    --disable-gdbm
 "
+
+# See illumos #3801. We don't want zsh to set _XOPEN_SOURCE_EXTENDED for us.
+CONFIGURE_OPTS+=" zsh_cv_no_xopen=yes"
 
 build_init() {
     CONFIGURE_OPTS[amd64_WS]="--enable-ldflags=\"-m64 -zignore\""
