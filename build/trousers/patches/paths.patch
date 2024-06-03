@@ -3,7 +3,7 @@ This is based on a patch taken from Dilos.
 # Copyright (c) 2012-2013, Igor Kozhukhov <ikozhukhov@gmail.com>.
 # All rights reserved.
 
-diff -wpruN '--exclude=*.orig' a~/src/include/tcsd.h a/src/include/tcsd.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/include/tcsd.h a/src/include/tcsd.h
 --- a~/src/include/tcsd.h	1970-01-01 00:00:00
 +++ a/src/include/tcsd.h	1970-01-01 00:00:00
 @@ -50,15 +50,24 @@ struct tcsd_config
@@ -31,7 +31,7 @@ diff -wpruN '--exclude=*.orig' a~/src/include/tcsd.h a/src/include/tcsd.h
  #define TCSD_DEFAULT_FIRMWARE_LOG_FILE	"/sys/kernel/security/tpm0/binary_bios_measurements"
  #define TCSD_DEFAULT_KERNEL_LOG_FILE	"/sys/kernel/security/ima/binary_runtime_measurements"
  #define TCSD_DEFAULT_FIRMWARE_PCRS	0x00000000
-diff -wpruN '--exclude=*.orig' a~/src/include/tspps.h a/src/include/tspps.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/include/tspps.h a/src/include/tspps.h
 --- a~/src/include/tspps.h	1970-01-01 00:00:00
 +++ a/src/include/tspps.h	1970-01-01 00:00:00
 @@ -13,7 +13,11 @@

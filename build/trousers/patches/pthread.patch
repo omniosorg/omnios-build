@@ -2,7 +2,7 @@
 libpthread is a stub library on OmniOS and does not need to be included in the
 link.
 
-diff -wpruN '--exclude=*.orig' a~/src/tcsd/Makefile.am a/src/tcsd/Makefile.am
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/tcsd/Makefile.am a/src/tcsd/Makefile.am
 --- a~/src/tcsd/Makefile.am	1970-01-01 00:00:00
 +++ a/src/tcsd/Makefile.am	1970-01-01 00:00:00
 @@ -1,7 +1,7 @@
@@ -14,7 +14,7 @@ diff -wpruN '--exclude=*.orig' a~/src/tcsd/Makefile.am a/src/tcsd/Makefile.am
  tcsd_LDFLAGS=@TCSD_LDFLAGS@
  tcsd_SOURCES=svrside.c tcsd_conf.c tcsd_threads.c platform.c
  
-diff -wpruN '--exclude=*.orig' a~/src/tspi/Makefile.am a/src/tspi/Makefile.am
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/tspi/Makefile.am a/src/tspi/Makefile.am
 --- a~/src/tspi/Makefile.am	1970-01-01 00:00:00
 +++ a/src/tspi/Makefile.am	1970-01-01 00:00:00
 @@ -17,7 +17,7 @@ libtspi_la_LIBADD=${top_builddir}/src/tr
