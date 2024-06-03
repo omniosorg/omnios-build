@@ -23,9 +23,6 @@ PKG=runtime/python-27
 SUMMARY="$PROG ${VER%.*}"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_python_version $PYTHON2VER
 
 BUILD_DEPENDS_IPS="developer/build/autoconf developer/pkg-config"
@@ -44,7 +41,7 @@ RUN_DEPENDS_IPS="
 "
 XFORM_ARGS="-D PYTHONVER=$PYTHONVER"
 
-CC=gcc
+CC="gcc -fpermissive"
 CXX=g++
 
 NO_SONAME_EXPECTED=1
