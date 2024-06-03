@@ -2655,6 +2655,11 @@ configure_arch() {
         "$@" || \
         logerr "--- Configure failed"
     hook post_configure $arch
+    # Check for configuration tests that have failed as a result of a
+    # main function being present without a declared return type.
+    $RIPGREP --no-messages --no-ignore \
+        "error: (return type defaults|implicit declaration.*'(exit|strcmp)')" \
+        -g config.log && logerr 'Found broken tests in configure'
 }
 
 make_arch() {
