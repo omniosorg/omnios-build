@@ -23,9 +23,6 @@ PKG=file/gnu-coreutils
 SUMMARY="coreutils - GNU core utilities"
 DESC="GNU core utilities"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 BUILD_DEPENDS_IPS="compress/xz library/gmp"
 
 PREFIX=/usr/gnu
@@ -51,6 +48,8 @@ CONFIGURE_OPTS+="
 "
 CONFIGURE_OPTS[i386]+=" --libexecdir=/usr/lib"
 CONFIGURE_OPTS[amd64]+=" --libexecdir=/usr/lib/amd64"
+# For memset_s
+CPPFLAGS+=" -D__STDC_WANT_LIB_EXT1__"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 
