@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -22,9 +22,6 @@ VER=2.3.12
 PKG=library/unixodbc
 SUMMARY="The UnixODBC Subsystem and SDK"
 DESC="UnixODBC - The UnixODBC Subsystem and SDK"
-
-# This does not yet build with gcc 14
-set_gccver 13
 
 # Requires the new definition of getpwuid_r()
 set_standard XPG6
@@ -55,6 +52,9 @@ CONFIGURE_OPTS="
     --disable-ltdl-install
     --with-pic
 "
+
+# TODO: Rather than using this, the code should be updated.
+CFLAGS+=" -fpermissive"
 
 init
 download_source $PROG $PROG $VER
