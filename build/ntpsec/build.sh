@@ -22,9 +22,6 @@ PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_arch 64
 
 # Required to generate man pages
@@ -37,6 +34,9 @@ export XML_CATALOG_FILES=$OOCEOPT/docbook-xsl/catalog.xml
 
 # Required to include struct timespec definition and constants.
 export CFLAGS+=" -D__EXTENSIONS__"
+
+# TODO: The code needs some updates to build without this option
+CFLAGS+=" -fpermissive"
 
 CONFIGURE_OPTS="
     --prefix=$PREFIX
