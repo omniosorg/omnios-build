@@ -1,0 +1,25 @@
+
+These values are set appropriately by the build framework and don't need to
+be hard coded in the meson script.
+In particular, setting `_XOPEN_SOURCE_EXTENDED` forces a maximum standard
+of XPG4v2, which is not high enough for the features that glib tries to
+use.
+
+diff --git a/meson.build b/meson.build
+index d84c743..bfb765f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2437,13 +2437,6 @@ have_pkg_config = find_program('pkg-config', required: false).found()
+ # Some installed tests require a custom environment
+ env_program = find_program('env', required: installed_tests_enabled)
+ 
+-# FIXME: How to detect Solaris? https://github.com/mesonbuild/meson/issues/1578
+-if host_system == 'sunos'
+-  glib_conf.set('_XOPEN_SOURCE_EXTENDED', 1)
+-  glib_conf.set('_XOPEN_SOURCE', 2)
+-  glib_conf.set('__EXTENSIONS__',1)
+-endif
+-
+ # Sadly Meson does not expose this value:
+ # https://github.com/mesonbuild/meson/pull/3460
+ if host_system == 'windows'

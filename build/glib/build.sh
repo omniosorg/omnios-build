@@ -23,9 +23,6 @@ PKG=library/glib2
 SUMMARY="GNOME utility library"
 DESC="The GNOME general-purpose utility library"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 RUN_DEPENDS_IPS="
     runtime/python-$PYTHONPKGVER
     runtime/perl
@@ -44,13 +41,7 @@ CFLAGS+=" -Wno-error=format-nonliteral -Wno-error=format=2"
 
 # Required to enable the POSIX variants of getpwuid_r and getpwnam_r
 # See comment in /usr/include/pwd.h
-set_standard POSIX
-
-# TODO: XXXARM
-# wcrtomb is defined in iso/wchar-iso.h under an
-# #if !defined(_XPG4) || defined(_XPG5) guard
-# need to investigate why _XPG4 is set
-CPPFLAGS[aarch64]+=" -D_XPG5"
+set_standard XPG6
 
 LDFLAGS+=" -Wl,-z,ignore"
 LDFLAGS[i386]+=" -lssp_ns"

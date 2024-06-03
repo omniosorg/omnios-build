@@ -6,3 +6,4 @@ devnull_poll.patch
 strftime.patch
 printf.patch
 test-credentials-clear-error.patch
+standards.patch
