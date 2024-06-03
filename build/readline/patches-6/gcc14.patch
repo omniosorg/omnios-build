@@ -1,0 +1,72 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
+--- a~/configure	1970-01-01 00:00:00
++++ a/configure	1970-01-01 00:00:00
+@@ -5026,6 +5026,7 @@ else
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#include <stdlib.h>
+ 
+ typedef RETSIGTYPE sigfunc();
+ 
+@@ -5056,7 +5057,7 @@ int s;
+   nsigint++;
+ }
+ 
+-main()
++int main(void)
+ {
+ 	nsigint = 0;
+ 	set_signal_handler(SIGINT, sigint);
+@@ -5106,8 +5107,9 @@ else
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <setjmp.h>
++#include <stdlib.h>
+ 
+-main()
++int main(void)
+ {
+ #if !defined (_POSIX_VERSION) || !defined (HAVE_POSIX_SIGNALS)
+ exit (1);
+@@ -5209,10 +5211,11 @@ else
+ #if defined (HAVE_LOCALE_H)
+ #include <locale.h>
+ #endif
++#include <stdlib.h>
++#include <string.h>
+ 
+-main(c, v)
+-int     c;
+-char    *v[];
++int
++main(int c, char **v)
+ {
+         int     r1, r2;
+         char    *deflocale, *defcoll;
+@@ -5279,10 +5282,10 @@ else
+ #endif
+ #include <stdio.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+-main(c, v)
+-int	c;
+-char	*v[];
++int
++main(int c, char **v)
+ {
+ 	char	*deflocale;
+ 	unsigned char x;
+@@ -6337,9 +6340,8 @@ else
+ #include <locale.h>
+ #include <wchar.h>
+ 
+-main(c, v)
+-int     c;
+-char    **v;
++int
++main(int c, char **v)
+ {
+         int     w;
+ 

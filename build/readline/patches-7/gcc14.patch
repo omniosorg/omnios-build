@@ -1,0 +1,75 @@
+diff --git a/configure b/configure
+index aa98bce..a3133f8 100755
+--- a/configure
++++ b/configure
+@@ -5126,6 +5126,7 @@ else
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#include <stdlib.h>
+ 
+ typedef RETSIGTYPE sigfunc();
+ 
+@@ -5156,7 +5157,8 @@ int s;
+   nsigint++;
+ }
+ 
+-main()
++int
++main(void)
+ {
+ 	nsigint = 0;
+ 	set_signal_handler(SIGINT, sigint);
+@@ -5206,8 +5208,10 @@ else
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <setjmp.h>
++#include <stdlib.h>
+ 
+-main()
++int
++main(void)
+ {
+ #if !defined (_POSIX_VERSION) || !defined (HAVE_POSIX_SIGNALS)
+ exit (1);
+@@ -5309,10 +5313,11 @@ else
+ #if defined (HAVE_LOCALE_H)
+ #include <locale.h>
+ #endif
++#include <stdlib.h>
++#include <string.h>
+ 
+-main(c, v)
+-int     c;
+-char    *v[];
++int
++main(int c, char **v)
+ {
+         int     r1, r2;
+         char    *deflocale, *defcoll;
+@@ -5379,10 +5384,10 @@ else
+ #endif
+ #include <stdio.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+-main(c, v)
+-int	c;
+-char	*v[];
++int
++main(int c, char **v)
+ {
+ 	char	*deflocale;
+ 	unsigned char x;
+@@ -6474,9 +6479,8 @@ else
+ #include <locale.h>
+ #include <wchar.h>
+ 
+-main(c, v)
+-int     c;
+-char    **v;
++int
++main(int c, char **v)
+ {
+         int     w;
+ 

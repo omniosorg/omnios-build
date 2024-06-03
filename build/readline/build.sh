@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,12 +23,12 @@ PKG=library/readline
 SUMMARY="GNU readline"
 DESC="GNU readline library"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 # Previous versions that also need to be built and packaged since compiled
 # software may depend on it.
 PVERS="6.3 7.0"
+
+# Needed for X/Open curses/termcap
+set_standard XPG6
 
 CONFIGURE_OPTS="--disable-static"
 LDFLAGS+=" $SSPFLAGS"
@@ -43,6 +43,7 @@ pre_build() { ! cross_arch $1; }
 
 save_variables BUILDDIR EXTRACTED_SRC
 for pver in $PVERS; do
+    [ -z "$FLAVOR" -o "$FLAVOR" = $pver ] || continue
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
     download_source -dependency $PROG $PROG $pver
@@ -51,6 +52,8 @@ for pver in $PVERS; do
 done
 restore_variables BUILDDIR EXTRACTED_SRC
 unset -f pre_build
+
+[ -z "$FLAVOR" -o "$FLAVOR" = $VER ] || exit 0
 
 note -n "Building current version: $VER"
 download_source $PROG $PROG $VER

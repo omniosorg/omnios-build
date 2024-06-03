@@ -3,3 +3,4 @@ readline70-002 -p0
 readline70-003 -p0
 readline70-004 -p0
 readline70-005 -p0
+gcc14.patch
