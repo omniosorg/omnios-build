@@ -7,3 +7,4 @@ ctags-5.8-memmove.patch
 ctags-5.8-ocaml-crash.patch
 ctags-CVE-2014-7204.patch
 xpg4-man-page.patch
+gcc14.patch

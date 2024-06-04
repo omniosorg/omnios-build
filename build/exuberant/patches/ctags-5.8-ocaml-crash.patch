@@ -1,6 +1,6 @@
 patch taken from https://github.com/OpenIndiana/oi-userland
 
-diff -wpruN '--exclude=*.orig' a~/ocaml.c a/ocaml.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/ocaml.c a/ocaml.c
 --- a~/ocaml.c	1970-01-01 00:00:00
 +++ a/ocaml.c	1970-01-01 00:00:00
 @@ -72,6 +72,7 @@ typedef enum {
