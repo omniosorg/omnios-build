@@ -257,5 +257,5 @@ Result: NOTESTS
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=255, Tests=3364, 
+Files=255, Tests=3369, 
 Result: PASS
