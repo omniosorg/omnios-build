@@ -154,9 +154,9 @@
    elif test -x /usr/sbin/sysctl; then
 --- old/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.492355171 -0700
 +++ new/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.108347798 -0700
-@@ -427,9 +427,6 @@
+@@ -481,9 +481,6 @@
    if test "x$OPENJDK_TARGET_OS" = xlinux; then
-     CFLAGS_OS_DEF_JVM="-DLINUX"
+     CFLAGS_OS_DEF_JVM="-DLINUX -D_FILE_OFFSET_BITS=64"
      CFLAGS_OS_DEF_JDK="-D_GNU_SOURCE -D_REENTRANT -D_LARGEFILE64_SOURCE"
 -  elif test "x$OPENJDK_TARGET_OS" = xsolaris; then
 -    CFLAGS_OS_DEF_JVM="-DSOLARIS"
@@ -736,7 +736,7 @@
    ))
  
    $(BUILD_LIBAWT_HEADLESS): $(BUILD_LIBAWT)
-@@ -456,7 +454,7 @@
+@@ -454,7 +452,7 @@
                          -DHAVE_SYSCONF -DHAVE_SYS_MMAN_H -DHAVE_UNISTD_H \
                          -DHB_NO_PRAGMA_GCC_DIAGNOSTIC
     endif
@@ -745,7 +745,7 @@
       HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
     endif
  
-@@ -625,10 +623,7 @@
+@@ -623,10 +621,7 @@
    ifeq ($(call isTargetOs, macosx), true)
      JAWT_LIBS := -lawt_lwawt
    else
@@ -757,7 +757,7 @@
      ifeq ($(ENABLE_HEADLESS_ONLY), false)
        JAWT_LIBS += -lawt_xawt
      else
-@@ -655,7 +650,6 @@
+@@ -653,7 +648,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LDFLAGS_macosx := -Wl$(COMMA)-rpath$(COMMA)@loader_path, \
        LIBS_unix := $(JAWT_LIBS) $(JDKLIB_LIBS), \
@@ -1059,7 +1059,7 @@
  #endif /* !_JAVASOFT_JVM_MD_H_ */
 --- old/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.965746713 -0700
 +++ new/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.629740261 -0700
-@@ -504,7 +504,7 @@
+@@ -506,7 +506,7 @@
    st->print("%d", sysconf(_SC_CHILD_MAX));
  
    print_rlimit(st, ", THREADS", RLIMIT_THREADS);
@@ -1068,7 +1068,7 @@
    print_rlimit(st, ", NPROC", RLIMIT_NPROC);
  #endif
  
-@@ -522,12 +522,6 @@
+@@ -524,12 +524,6 @@
    print_rlimit(st, ", MEMLOCK", RLIMIT_MEMLOCK, true);
  #endif
  
@@ -1170,7 +1170,7 @@
  
 --- old/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:31.194672744 -0700
 +++ new/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:30.854666216 -0700
-@@ -1589,10 +1589,8 @@
+@@ -1592,10 +1592,8 @@
    product(int, ThreadPriorityPolicy, 0,                                     \
            "0 : Normal.                                                     "\
            "    VM chooses priorities that are appropriate for normal       "\
@@ -1183,7 +1183,7 @@
            "    priorities. However, with ThreadPriorityPolicy=0, VM will   "\
            "    not use the highest possible native priority,               "\
            "    THREAD_PRIORITY_TIME_CRITICAL, as it may interfere with     "\
-@@ -1874,8 +1872,7 @@
+@@ -1877,8 +1875,7 @@
    product(bool, WhiteBoxAPI, false, DIAGNOSTIC,                             \
            "Enable internal testing APIs")                                   \
                                                                              \
@@ -1338,7 +1338,7 @@
 -// warnings.
 -//
 -// This also means that pointers to functions can no longer be "hidden"
--// in opaque types like void * because at the invokation point warnings
+-// in opaque types like void * because at the invocation point warnings
 -// will be generated. While this makes perfect sense from a type safety
 -// point of view it causes a lot of warnings on old code using C header
 -// files. Here are some typedefs to make the job of silencing warnings
@@ -1409,7 +1409,7 @@
  #include <netinet/in.h>
 --- old/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:48.214999546 -0700
 +++ new/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:47.822992019 -0700
-@@ -1888,8 +1888,6 @@
+@@ -1889,8 +1889,6 @@
        out.print_raw   ("#   Executing ");
  #if defined(LINUX) || defined(_ALLBSD_SOURCE)
        out.print_raw   ("/bin/sh -c ");
@@ -1418,7 +1418,7 @@
  #elif defined(_WINDOWS)
        out.print_raw   ("cmd /C ");
  #endif
-@@ -1954,8 +1952,6 @@
+@@ -1955,8 +1953,6 @@
      tty->print("#   Executing ");
  #if defined(LINUX)
      tty->print  ("/bin/sh -c ");
@@ -1473,21 +1473,13 @@
     identifiers matching a C constant. The PREFIX_ is filtered out in the
 --- old/src/java.base/share/conf/security/java.security	2020-05-20 18:00:54.519120590 -0700
 +++ new/src/java.base/share/conf/security/java.security	2020-05-20 18:00:54.183114138 -0700
-@@ -66,9 +66,6 @@
- #
- # List of providers and their preference orders (see above):
- #
--#ifdef solaris
--security.provider.tbd=SunPKCS11 ${java.home}/conf/security/sunpkcs11-solaris.cfg
--#endif
- security.provider.tbd=SUN
- security.provider.tbd=SunRsaSign
- security.provider.tbd=SunEC
-@@ -86,9 +83,7 @@
+@@ -83,11 +83,7 @@
  #ifdef macosx
  security.provider.tbd=Apple
  #endif
--#ifndef solaris
+-#ifdef solaris
+-security.provider.tbd=SunPKCS11 ${java.home}/conf/security/sunpkcs11-solaris.cfg
+-#else
  security.provider.tbd=SunPKCS11
 -#endif
  
@@ -1546,7 +1538,7 @@
                      if (lm != LaunchMechanism.VFORK) {
                          return lm; // All but VFORK are valid
                      }
-@@ -368,41 +364,6 @@
+@@ -368,44 +364,6 @@
                  });
                  break;
  
@@ -1576,10 +1568,13 @@
 -                 * need no native code).
 -                 */
 -                ProcessHandleImpl.completion(pid, true).handle((exitcode, throwable) -> {
--                    synchronized (this) {
+-                    lock.lock();
+-                    try {
 -                        this.exitcode = (exitcode == null) ? -1 : exitcode.intValue();
 -                        this.hasExited = true;
--                        this.notifyAll();
+-                        condition.signalAll();
+-                    } finally {
+-                        lock.unlock();
 -                    }
 -                    return null;
 -                });
@@ -1588,7 +1583,7 @@
              case AIX:
                  stdin = (fds[0] == -1) ?
                          ProcessBuilder.NullOutputStream.INSTANCE :
-@@ -519,29 +480,6 @@
+@@ -519,32 +480,6 @@
                  try { stderr.close(); } catch (IOException ignored) {}
                  break;
  
@@ -1599,19 +1594,22 @@
 -                // there is an unavoidable race condition here, but the window
 -                // is very small, and OSes try hard to not recycle pids too
 -                // soon, so this is quite safe.
--                synchronized (this) {
+-                lock.lock();
+-                try {
 -                    if (!hasExited)
 -                        processHandle.destroyProcess(force);
--                    try {
--                        stdin.close();
--                        if (stdout_inner_stream != null)
--                            stdout_inner_stream.closeDeferred(stdout);
--                        if (stderr instanceof DeferredCloseInputStream)
--                            ((DeferredCloseInputStream) stderr)
--                                .closeDeferred(stderr);
--                    } catch (IOException e) {
--                        // ignore
--                    }
+-                } finally {
+-                    lock.unlock();
+-                }
+-                try {
+-                    stdin.close();
+-                    if (stdout_inner_stream != null)
+-                        stdout_inner_stream.closeDeferred(stdout);
+-                    if (stderr instanceof DeferredCloseInputStream)
+-                        ((DeferredCloseInputStream) stderr)
+-                            .closeDeferred(stderr);
+-                } catch (IOException e) {
+-                    // ignore
 -                }
 -                break;
 -
@@ -3061,7 +3059,7 @@
  #ifdef _AIX
      if (level == SOL_SOCKET) {
          if (opt == SO_SNDBUF || opt == SO_RCVBUF) {
-@@ -862,20 +629,10 @@
+@@ -864,20 +631,10 @@
   *
   * Linux allows a socket to bind to 127.0.0.255 which must be
   * caught.
@@ -3082,7 +3080,7 @@
      int rv;
  
  #ifdef __linux__
-@@ -892,61 +649,8 @@
+@@ -894,61 +651,8 @@
      }
  #endif
  
@@ -3952,21 +3950,21 @@
  
 --- old/src/java.smartcardio/unix/classes/sun/security/smartcardio/PlatformPCSC.java	2020-05-20 18:02:52.281381711 -0700
 +++ new/src/java.smartcardio/unix/classes/sun/security/smartcardio/PlatformPCSC.java	2020-05-20 18:02:51.897374338 -0700
-@@ -82,12 +82,8 @@
-         String s2 = lib.substring(k + 7);
-         String libDir;
-         if ("64".equals(System.getProperty("sun.arch.data.model"))) {
--            if ("SunOS".equals(System.getProperty("os.name"))) {
--                libDir = "lib/64";
--            } else {
--                // assume Linux convention
--                libDir = "lib64";
--            }
-+            // assume Linux convention
-+            libDir = "lib64";
-         } else {
-             // must be 32-bit
-             libDir = "lib";
+@@ -86,12 +86,8 @@
+         if (k != -1) {
+             String libDir;
+             if ("64".equals(System.getProperty("sun.arch.data.model"))) {
+-                if ("SunOS".equals(System.getProperty("os.name"))) {
+-                    libDir = "lib/64";
+-                } else {
+-                    // assume Linux convention
+-                    libDir = "lib64";
+-                }
++                // assume Linux convention
++                libDir = "lib64";
+             } else {
+                 // must be 32-bit
+                 libDir = "lib";
 --- old/src/java.xml/share/classes/com/sun/org/apache/xalan/internal/xsltc/runtime/output/WriterOutputBuffer.java	2020-05-20 18:02:53.293401143 -0700
 +++ new/src/java.xml/share/classes/com/sun/org/apache/xalan/internal/xsltc/runtime/output/WriterOutputBuffer.java	2020-05-20 18:02:52.961394768 -0700
 @@ -33,21 +33,12 @@
@@ -4246,7 +4244,7 @@
      int ret;
      jlong total = 0, avail = 0;
  
-@@ -184,37 +128,7 @@
+@@ -190,37 +134,7 @@
  Java_com_sun_management_internal_OperatingSystemImpl_getCommittedVirtualMemorySize0
    (JNIEnv *env, jobject mbean)
  {
@@ -4285,7 +4283,7 @@
      struct task_basic_info t_info;
      mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
  
-@@ -240,7 +184,7 @@
+@@ -276,7 +190,7 @@
       * BSDNOTE: FreeBSD implements _SC_CLK_TCK since FreeBSD 5, so
       *          add a magic to handle it
       */
@@ -5315,7 +5313,7 @@
 -
 -  GEN_VALUE(DATA_MODEL, data_model);
 -  GEN_VALUE(POINTER_SIZE, pointer_size);
--#if defined(TIERED)
+-#if COMPILER1_AND_COMPILER2
 -  GEN_VALUE(COMPILER, 3);
 -#elif COMPILER1
 -  GEN_VALUE(COMPILER, 1);
@@ -6046,7 +6044,7 @@
 -    if (::rename(initial_path, door_path) == -1) {
 -        ::close(dd);
 -        ::fdetach(initial_path);
--        log_debug(attach)("unable to create door - rename %s to %s failed (%d)", errno);
+-        log_debug(attach)("unable to create door - rename %s to %s failed (%d)", initial_path, door_path, errno);
 -        dd = -1;
 -    }
 -  }
@@ -8033,7 +8031,7 @@
 -}
 --- old/src/hotspot/os/solaris/os_solaris.cpp	2020-05-20 18:09:34.749109332 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,3129 +0,0 @@
+@@ -1,3154 +0,0 @@
 -/*
 - * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -8456,7 +8454,7 @@
 -    path = &info->dls_serpath[0];
 -
 -    // Note: Due to a legacy implementation, most of the library path
--    // is set in the launcher. This was to accomodate linking restrictions
+-    // is set in the launcher. This was to accommodate linking restrictions
 -    // on legacy Solaris implementations (which are no longer supported).
 -    // Eventually, all the library path setting will be done here.
 -    //
@@ -8746,11 +8744,11 @@
 -
 -  char buf[64];
 -  if (status == 0) {
--    log_info(os, thread)("Thread started (tid: " UINTX_FORMAT ", attributes: %s). ",
--      (uintx) tid, describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
+-    log_info(os, thread)("Thread \"%s\" started (tid: " UINTX_FORMAT ", attributes: %s). ",
+-      thread->name(), (uintx) tid, describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
 -  } else {
--    log_warning(os, thread)("Failed to start thread - thr_create failed (%s) for attributes: %s.",
--      os::errno_name(status), describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
+-    log_warning(os, thread)("Failed to start thread \"%s\" - thr_create failed (%s) for attributes: %s.",
+-      thread->name(), os::errno_name(status), describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
 -    // Log some OS information which might explain why creating the thread failed.
 -    log_info(os, thread)("Number of threads approx. running in the VM: %d", Threads::number_of_threads());
 -    LogStream st(Log(os, thread)::info());
@@ -8926,6 +8924,9 @@
 -  }
 -
 -  return false;
+-}
+-
+-void os::prepare_native_symbols() {
 -}
 -
 -typedef int (*dladdr1_func_type)(void *, Dl_info *, void **, int);
@@ -9933,7 +9934,7 @@
 -    if (_illumos_page_sizes[beg] <= size_limit) {
 -      _page_sizes.add(_illumos_page_sizes[beg]);
 -      if (_illumos_page_sizes[beg] > *page_size) {
--	*page_size = _illumos_page_sizes[beg];
+-        *page_size = _illumos_page_sizes[beg];
 -      }
 -    }
 -  }
@@ -10034,11 +10035,11 @@
 -// meaningless in this mode so we must adjust the real lwp's priority.
 -// The routines below implement the getting and setting of lwp priorities.
 -//
--// Note: There are three priority scales used on Solaris.  Java priotities
+-// Note: There are three priority scales used on Solaris.  Java priorities
 -//       which range from 1 to 10, libthread "thr_setprio" scale which range
 -//       from 0 to 127, and the current scheduling class of the process we
 -//       are running in.  This is typically from -60 to +60.
--//       The setting of the lwp priorities in done after a call to thr_setprio
+-//       The setting of the lwp priorities is done after a call to thr_setprio
 -//       so Java priorities are mapped to libthread priorities and we map from
 -//       the latter to lwp priorities.  We don't keep priorities stored in
 -//       Java priorities since some of our worker threads want to set priorities
@@ -10476,7 +10477,7 @@
 -static address resolve_symbol(const char* name) {
 -  address addr = resolve_symbol_lazy(name);
 -  if (addr == NULL) {
--    fatal(dlerror());
+-    fatal("resolve_symbol failed (%s)", dlerror());
 -  }
 -  return addr;
 -}
@@ -11163,6 +11164,28 @@
 -void os::jfr_report_memory_info() {}
 -
 -#endif // INCLUDE_JFR
+-
+-bool os::pd_dll_unload(void* libhandle, char* ebuf, int ebuflen) {
+-
+-  if (ebuf && ebuflen > 0) {
+-    ebuf[0] = '\0';
+-    ebuf[ebuflen - 1] = '\0';
+-  }
+-
+-  bool res = (0 == ::dlclose(libhandle));
+-  if (!res) {
+-    // error analysis when dlopen fails
+-    const char* error_report = ::dlerror();
+-    if (error_report == nullptr) {
+-      error_report = "dlerror returned no error description";
+-    }
+-    if (ebuf != nullptr && ebuflen > 0) {
+-      snprintf(ebuf, ebuflen - 1, "%s", error_report);
+-    }
+-  }
+-
+-  return res;
+-} // end: os::pd_dll_unload()
 --- old/src/hotspot/os/solaris/os_solaris.hpp	2020-05-20 18:09:35.461123002 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
 @@ -1,198 +0,0 @@
