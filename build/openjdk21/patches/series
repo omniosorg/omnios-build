@@ -4,7 +4,6 @@ illumos-jline.patch
 illumos-pollerprovider.patch
 illumos-port-2.patch
 illumos-port-3.patch
-illumos-port-4.patch
 illumos-port-5.patch
 illumos-port-6.patch
 illumos-port-7.patch
@@ -34,11 +33,9 @@ patch-make_launcher_LauncherCommon.gmk -p0
 patch-make_lib_LibCommon.gmk -p0
 patch-src_hotspot_share_gc_g1_g1Analytics.cpp -p0
 patch-src_java.desktop_share_native_libsplashscreen_libpng_pngpriv.h -p0
-tribblix-attachListener_solaris.patch -p0
 tribblix-demangle1.patch -p0
 tribblix-flags-cflags.patch -p0
 tribblix-flags-ldflags.patch -p0
 tribblix-flags-ldflags3.patch -p0
 omnios-headless.patch
-security-pkcs11.patch
 fontpath.patch
