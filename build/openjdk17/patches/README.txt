@@ -7,6 +7,33 @@ Most patches -p0
 
 JDK17:
 
+17.0.11
+
+Needed to restore src/hotspot/share/services/dtraceAttacher.hpp
+Copied illumos-port-17.patch from the original fix in jdk 19+11,
+here as illumos-port-19.patch
+This file should have been removed in the original solaris
+deprecation along with the corresponding cpp file, but was forgotten
+about, and has recently been cleaned up. As we still #include it, we
+need to put it back. As we disable DTrace in any case, it would be
+cleaner to simply remove all of it.
+
+
+Cleanup: Restore the necessary parts of sparc into the main patch, to
+ease future maintenance.
+
+Cleanup: missed the dropping of TIERED in 17+8, it's now
+COMPILER1_AND_COMPILER2
+
+17.0.10
+
+Drop the make/modules/jdk.net/Lib.gmk patch, as it's guarded in such a
+way as will never be used on solaris.
+
+Need to add illumos-port-18.patch (derived from jdk21's
+illumos-port-24.patch) so that test/jdk/java/io/File/libGetXSpace.c
+will compile.
+
 17.0.9
 
 Much rework around safefetch. Removed illumos-port-12.patch, and
