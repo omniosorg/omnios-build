@@ -33,7 +33,7 @@
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| http://ftp.vim.org/pub/vim/unix
 | file/gnu-coreutils			| 9.5			| https://ftp.gnu.org/gnu/coreutils/
-| file/gnu-findutils			| 4.9.0			| https://ftp.gnu.org/pub/gnu/findutils/
+| file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.6.2			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
@@ -151,5 +151,5 @@
 | library/python-3/setuptools-rust-312	| 1.9.0			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
-| library/python-3/typing-extensions-312| 4.11.0			| https://pypi.org/project/typing-extensions
+| library/python-3/typing-extensions-312| 4.11.0		| https://pypi.org/project/typing-extensions
 

@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=findutils
-VER=4.9.0
+VER=4.10.0
 PKG=file/gnu-findutils
 SUMMARY="GNU utilities find and xargs"
 DESC="GNU Find Utilities are the basic directory searching utilities"
