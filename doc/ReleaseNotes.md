@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048ae (2024-06-07)
+Weekly release for w/c 3rd of June 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL packages have been updated to versions 3.1.6 and 1.1.1w-2.
+
+* OpenJDK packages have been updated to versions 1.8.412-08, 11.0.23+9 and
+  17.0.11+9.
+
+<br>
+
+---
+
 ## r151048ad (2024-05-31)
 Weekly release for w/c 27th of May 2024.
 > This update requires a reboot
