@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bf (2024-06-07)
+Weekly release for w/c 3rd of June 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSL packages have been updated to versions 3.0.14 and 1.1.1w-2.
+
+* OpenJDK packages have been updated to versions 1.8.412-08, 11.0.23+9 and
+  17.0.11+9.
+
+### Other Changes
+
+* Support for 38xx HBAs has been added to the `mpt_sas` driver.
+
+<br>
+
+---
+
 ## r151046be (2024-05-31)
 Weekly release for w/c 27th of May 2024.
 > This update requires a reboot
