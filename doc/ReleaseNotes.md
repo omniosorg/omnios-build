@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050e (2024-06-07)
+Weekly release for w/c 3rd of June 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL packages have been updated to versions 3.1.6 and 1.1.1w-1.
+
+* OpenJDK packages have been updated to versions 1.8.412-08, 11.0.23+9,
+  17.0.11+9 and 21.0.3+9.
+
+### Other Changes
+
+* `xz` has been updated to version 5.6.2, the first release following the
+  [backdoor incident](https://tukaani.org/xz-backdoor/).
+
+<br>
+
+---
+
 ## r151050d (2024-05-31)
 Weekly release for w/c 27th of May 2024.
 > This update requires a reboot
