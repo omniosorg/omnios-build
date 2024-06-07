@@ -23,15 +23,13 @@ PKG=compress/zip
 SUMMARY="The Info-Zip (zip) compression utility"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_builddir "$PROG${VER//./}"
 set_arch 64
 
 SKIP_LICENCES="*"
 
 export CPP="gcc -E"
+CFLAGS+=" -fpermissive"
 
 configure_amd64() {
     export i386 DESTDIR PREFIX

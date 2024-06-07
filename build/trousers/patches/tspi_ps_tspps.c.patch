@@ -3,7 +3,7 @@ This is based on a patch taken from Dilos.
 # Copyright (c) 2012-2013, Igor Kozhukhov <ikozhukhov@gmail.com>.
 # All rights reserved.
 
-diff -wpruN '--exclude=*.orig' a~/src/tspi/ps/tspps.c a/src/tspi/ps/tspps.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/tspi/ps/tspps.c a/src/tspi/ps/tspps.c
 --- a~/src/tspi/ps/tspps.c	1970-01-01 00:00:00
 +++ a/src/tspi/ps/tspps.c	1970-01-01 00:00:00
 @@ -48,6 +48,7 @@
@@ -28,26 +28,32 @@ diff -wpruN '--exclude=*.orig' a~/src/tspi/ps/tspps.c a/src/tspi/ps/tspps.c
  	struct stat stat_buf;
  	char buf[PASSWD_BUFSIZE];
  	uid_t euid;
-@@ -90,9 +94,16 @@ get_user_ps_path(char **file)
+@@ -90,10 +94,22 @@ get_user_ps_path(char **file)
           * in the user's home directory, which may be shared
           * by multiple systems.
           *
 -         * The directory path on Solaris is /var/tpm/userps/[EUID]/
-+         * The directory path on Solaris is /var/user[USERNAME]/tpm/userps
++         * The directory path on illumos is /var/user/[USERNAME]/tpm/userps
           */
 -        rc = snprintf(buf, sizeof (buf), "%s/%d", TSS_USER_PS_DIR, euid);
 +
-+	pwp = getpwuid_r(euid, &pw, pwbuf, sizeof (pwbuf));
-+	if (pwp != NULL) {
-+		rc = snprintf(buf, sizeof (buf), "/var/user/%s/tpm/userps",
-+		    pwp->pw_name);
-+	} else {
++#if (_POSIX_C_SOURCE - 0 >= 199506L) || defined(_POSIX_PTHREAD_SEMANTICS)
++	if (getpwuid_r(euid, &pw, pwbuf, sizeof (pwbuf), &pwp) != 0 ||
++	    pwp == NULL) {
 +		return TSPERR(TSS_E_INTERNAL_ERROR);
 +	}
  #else
++	pwp = getpwuid_r(euid, &pw, pwbuf, sizeof (pwbuf));
++	if (pwp == NULL)
++		return TSPERR(TSS_E_INTERNAL_ERROR);
++#endif
++	rc = snprintf(buf, sizeof (buf), "/var/user/%s/tpm/userps",
++	    pwp->pw_name);
++#else /* SOLARIS */
  	setpwent();
  	while (1) {
-@@ -138,7 +149,7 @@ get_user_ps_path(char **file)
+ #if (defined (__linux) || defined (linux) || defined(__GLIBC__))
+@@ -138,7 +154,7 @@ get_user_ps_path(char **file)
  		if (errno == ENOENT) {
  			errno = 0;
  			/* Create the user's ps directory if it is not there. */
@@ -56,7 +62,7 @@ diff -wpruN '--exclude=*.orig' a~/src/tspi/ps/tspps.c a/src/tspi/ps/tspps.c
  				LogDebugFn("USER PS: Error creating dir: %s: %s", buf,
  					   strerror(errno));
  				result = TSPERR(TSS_E_INTERNAL_ERROR);
-@@ -153,8 +164,8 @@ get_user_ps_path(char **file)
+@@ -153,8 +169,8 @@ get_user_ps_path(char **file)
  
  	/* Directory exists or has been created, return the path to the file */
  #if defined (SOLARIS)

@@ -2,3 +2,4 @@ testsuite.patch
 shared.patch
 completion.patch
 fix_shebang.patch
+gcc14.patch

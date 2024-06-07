@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -23,9 +23,6 @@ PKG=terminal/screen
 SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
 DESC+="terminal between several processes"
-
-# This does not yet build with gcc 14
-set_gccver 13
 
 set_arch 64
 # Need access to additional fields in struct msghdr

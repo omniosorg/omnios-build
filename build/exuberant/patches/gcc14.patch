@@ -1,0 +1,25 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -369,7 +369,10 @@ AC_OBJEXT
+ AC_EXEEXT
+ 
+ AC_MSG_CHECKING(if struct stat contains st_ino)
+-AC_TRY_COMPILE([#include <sys/stat.h>], [
++AC_TRY_COMPILE([
++	#include <sys/stat.h>
++	#include <stdlib.h>
++], [
+ 	struct stat st;
+ 	stat(".", &st);
+ 	if (st.st_ino > 0)
+@@ -449,7 +452,8 @@ if test no != "$with_posix_regex"; then
+ 	AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <regex.h>
+-main() {
++#include <stdlib.h>
++int main(void) {
+ 	regex_t patbuf;
+ 	exit (regcomp (&patbuf, "/hello/", 0) != 0);
+ }],regcomp_works=yes,regcomp_works=no,AC_DEFINE(CHECK_REGCOMP))

@@ -32,7 +32,7 @@ MAKE_INSTALL_ARGS="-e CTAGS_PROG=ctags-exuberant"
 init
 download_source $PROG ctags $VER
 patch_source
-prep_build
+prep_build autoconf -autoreconf
 build
 make_package
 clean_up

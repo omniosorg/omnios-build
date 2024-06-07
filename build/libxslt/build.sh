@@ -31,9 +31,6 @@ PKG=library/libxslt
 SUMMARY="The XSLT C library"
 DESC="The portable XSLT C library built on libxml2"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 CFLAGS[i386]+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 CFLAGS[amd64]+=" -D_LARGEFILE_SOURCE"
 CFLAGS[aarch64]+=" -D_LARGEFILE_SOURCE"

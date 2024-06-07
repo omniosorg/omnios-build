@@ -1,6 +1,6 @@
 patch taken from https://github.com/OpenIndiana/oi-userland
 
-diff -wpruN '--exclude=*.orig' a~/routines.c a/routines.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/routines.c a/routines.c
 --- a~/routines.c	1970-01-01 00:00:00
 +++ a/routines.c	1970-01-01 00:00:00
 @@ -757,13 +757,13 @@ extern char* absoluteFilename (const cha

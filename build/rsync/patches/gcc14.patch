@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -392,7 +392,7 @@ AS_HELP_STRING([--disable-ipv6],[disable
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-main()
++int main(void)
+ {
+    if (socket(AF_INET6, SOCK_STREAM, 0) < 0)
+      exit(1);

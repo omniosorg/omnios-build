@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -31,10 +31,10 @@ PKG=library/security/trousers
 SUMMARY="TrouSerS - An open-source TCG Software Stack implementation."
 DESC="TrouSerS - software for accessing a TPM device"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 forgo_isaexec
+
+# We need the XPG6 iconv()
+set_standard XPG6
 
 LIBS="-lbsm -lnsl -lsocket -lgen -lscf -lresolv"
 

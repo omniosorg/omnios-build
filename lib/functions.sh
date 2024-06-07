@@ -650,11 +650,30 @@ clear_archflags() {
 }
 
 set_standard() {
+    typeset -i curses=1
+    while [[ "$1" = -* ]]; do
+        case $1 in
+            -nocurses)  curses=0 ;;
+        esac
+        shift
+    done
     typeset st="$1"
     typeset var="${2:-CPPFLAGS}"
     [ -n "${STANDARDS[$st]}" ] || logerr "Unknown standard $st"
     declare -n _var=$var
     _var[0]+=" ${STANDARDS[$st]}"
+
+    # When selecting XPG4v2 or later, we must also use the X/Open curses
+    # library, as long as we were not called with "-nocurses"
+    ((curses)) || return
+    case $st in
+        XPG4v2|XPG5|XPG6)
+            typeset x=/usr/xpg4
+            _var[0]="-I$x/include ${_var[0]}"
+            LDFLAGS[i386]="-L$x/lib -R$x/lib ${LDFLAGS[i386]}"
+            LDFLAGS[amd64]="-L$x/lib/amd64 -R$x/lib/amd64 ${LDFLAGS[amd64]}"
+            ;;
+    esac
 }
 
 forgo_isaexec() {
@@ -2636,6 +2655,11 @@ configure_arch() {
         "$@" || \
         logerr "--- Configure failed"
     hook post_configure $arch
+    # Check for configuration tests that have failed as a result of a
+    # main function being present without a declared return type.
+    $RIPGREP --no-messages --no-ignore \
+        "error: (return type defaults|implicit declaration.*'(exit|strcmp)')" \
+        -g config.log && logerr 'Found broken tests in configure'
 }
 
 make_arch() {

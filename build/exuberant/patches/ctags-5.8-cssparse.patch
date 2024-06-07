@@ -1,6 +1,6 @@
 patch taken from https://github.com/OpenIndiana/oi-userland
 
-diff -wpruN '--exclude=*.orig' a~/css.c a/css.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/css.c a/css.c
 --- a~/css.c	1970-01-01 00:00:00
 +++ a/css.c	1970-01-01 00:00:00
 @@ -73,10 +73,11 @@ static CssParserState parseCssDeclaratio

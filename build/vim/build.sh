@@ -25,9 +25,6 @@ SUMMARY="Vi IMproved"
 DESC="Advanced text editor that provides the power of the UNIX vi editor "
 DESC+="with a more complete feature set."
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 SVER=${VER//./}
 VER+=".$PATCHLEVEL"
 

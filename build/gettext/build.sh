@@ -23,9 +23,6 @@ PKG=text/gnu-gettext
 SUMMARY="gettext - GNU gettext utility"
 DESC="GNU gettext - GNU gettext utility"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 set_arch 64
 
 RUN_DEPENDS_IPS="system/prerequisite/gnu developer/macro/gnu-m4"
@@ -39,6 +36,8 @@ CONFIGURE_OPTS="
     --disable-static
     --disable-shared
 "
+# For memset_s
+CPPFLAGS+=" -D__STDC_WANT_LIB_EXT1__"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 

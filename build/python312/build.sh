@@ -53,7 +53,7 @@ set_python_version $MVER
 set_arch 64
 
 # To expose the CMSG_ macros and new recvmsg() semantics for the socket module
-set_standard XPG6
+set_standard -nocurses XPG6
 
 # Save arguments to the stack so that the mdb/pstack plugin can find them.
 CFLAGS[amd64]+=" -msave-args"

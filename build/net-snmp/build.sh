@@ -23,9 +23,6 @@ PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 14
-set_gccver 13
-
 SKIP_LICENCES="CMU/UCD"
 
 # net-snmp builds fail randomly with parallel make. There are patches upstream
@@ -98,6 +95,8 @@ pre_build() { ! cross_arch $1; }
 # For legacy versions, we only want the libraries.
 save_buildenv
 CONFIGURE_OPTS[amd64]+=" $LIBRARIES_ONLY"
+# Be permissive when building the old versions
+CFLAGS+=" -fpermissive"
 for pver in $PVERS; do
     [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"
