@@ -42,7 +42,8 @@ clone_source() {
 }
 
 build() {
-    pushd $TMPDIR/$BUILDDIR/pkg/src > /dev/null || logerr "Cannot chdir"
+    CODE_WS=$TMPDIR/$BUILDDIR/pkg
+    pushd $CODE_WS/src > /dev/null || logerr "Cannot chdir"
 
     logmsg "--- generate CFFI source"
     logcmd make cffi_src || logerr "Failed to build cffi_src"
@@ -61,6 +62,13 @@ build() {
             TARGET=install modules/$PYTHONVER
         python_cross_end
     done
+
+    for d in po man; do
+        logmsg "--- running install in $d"
+        logcmd make -C $d -e install CODE_WS=$CODE_WS MACH=$ARCH \
+            || logerr "Failed to install $d"
+    done
+
     popd > /dev/null
     set_python_version $PYTHON3VER
 }
