@@ -101,6 +101,17 @@ CONFIGURE_OPTS[amd64]+="
     --libexecdir=$PREFIX/lib
 "
 
+# Provide some overrides for things which cannot be detected when cross
+# compiling.
+CFLAGS[aarch64]+=" -mno-outline-atomics"
+CONFIGURE_OPTS[aarch64]+="
+    ap_cv_atomic_builtins=yes
+    ap_cv_atomic_builtins_64=yes
+    ac_cv_func_chown_works=yes
+    ac_cv_func_stat_empty_string_bug=yes
+    ac_cv_func_lstat_dereferences_slashed_symlink=yes
+"
+
 # The testsuite output is quite noisy - clean it up
 TESTSUITE_FILTER="(PASS|SKIP|FAIL|ERROR|TOTAL|summary|====)"
 
