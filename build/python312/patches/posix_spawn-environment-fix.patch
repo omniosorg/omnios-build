@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/subprocess.py a/Lib/subpr
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modules/posixmodule.c
 --- a~/Modules/posixmodule.c	1970-01-01 00:00:00
 +++ a/Modules/posixmodule.c	1970-01-01 00:00:00
-@@ -7061,9 +7061,9 @@ py_posix_spawn(int use_posix_spawnp, PyO
+@@ -7092,9 +7092,9 @@ py_posix_spawn(int use_posix_spawnp, PyO
          return NULL;
      }
  
@@ -38,7 +38,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
          goto exit;
      }
  
-@@ -7077,10 +7077,14 @@ py_posix_spawn(int use_posix_spawnp, PyO
+@@ -7108,10 +7108,14 @@ py_posix_spawn(int use_posix_spawnp, PyO
          goto exit;
      }
  
@@ -53,7 +53,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
  
      if (file_actions != NULL && file_actions != Py_None) {
          /* There is a bug in old versions of glibc that makes some of the
-@@ -7142,7 +7146,7 @@ exit:
+@@ -7173,7 +7177,7 @@ exit:
      if (attrp) {
          (void)posix_spawnattr_destroy(attrp);
      }
