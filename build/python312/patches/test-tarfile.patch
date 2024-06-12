@@ -9,7 +9,7 @@ Convert both timestamps to integer before comparing.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_tarfile.py a/Lib/test/test_tarfile.py
 --- a~/Lib/test/test_tarfile.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_tarfile.py	1970-01-01 00:00:00
-@@ -3161,7 +3161,7 @@ class NoneInfoExtractTests(ReadTest):
+@@ -3188,7 +3188,7 @@ class NoneInfoExtractTests(ReadTest):
                          if not path.is_symlink():
                              raise
                      else:
