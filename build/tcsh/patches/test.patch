@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -723,6 +723,7 @@ $(srcdir)/stamp-h.in: $(srcdir)/configur
+@@ -726,6 +726,7 @@ $(srcdir)/stamp-h.in: $(srcdir)/configur
  
  check test: atconfig atlocal $(srcdir)/tests/testsuite $(BUILD)
  	$(ENVCMD) - \

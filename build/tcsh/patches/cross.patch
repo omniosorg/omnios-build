@@ -1,24 +1,16 @@
 When cross compiling, the `gethost` binary needs to be built for the build
 host and there is a specific `CC_FOR_GETHOST` variable that controls that.
-It unfortunately always defaults to `cc` and uses the cross CPPFLAGS etc.
-This patch adds more tokens, then we use -e with make to pick them up from
-the environment. We use NATIVE_CC in place of CC_FOR_GETHOST too as that one
-is not possible to override with -e.
+It unfortunately always defaults to `cc`.
 
-diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
---- a~/Makefile.in	1970-01-01 00:00:00
-+++ a/Makefile.in	1970-01-01 00:00:00
-@@ -506,11 +506,11 @@ pure:$(P) ${OBJS}
- #	emxbind tcsh
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -357,7 +357,7 @@ AC_PATH_PROG([GENCAT], [gencat])
  
- gethost.${SUF}: gethost.c sh.err.h tc.const.h sh.h
--	${CC_FOR_GETHOST} ${CF} ${CPPFLAGS} ${CFLAGS} $(srcdir)/gethost.c
-+	${NATIVE_CC} ${CF} ${NATIVE_CPPFLAGS} ${NATIVE_CFLAGS} $(srcdir)/gethost.c
+ dnl Require build CC to create gethost helper when cross building
+ AS_IF([test "x${cross_compiling}" = xyes],
+-      [CC_FOR_GETHOST="cc"],
++      [CC_FOR_GETHOST=${CC_FOR_GETHOST:-"cc"}],
+       [CC_FOR_GETHOST="\$(CC)"])
+ AC_SUBST(CC_FOR_GETHOST)
  
- gethost:  gethost.${SUF}
- 	rm -f gethost
--	${CC_FOR_GETHOST} -o gethost ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} gethost.${SUF}
-+	${NATIVE_CC} -o gethost ${NATIVE_CPPFLAGS} ${NATIVE_CFLAGS} ${NATIVE_LDFLAGS} gethost.${SUF}
- 
- tc.defs.c:	gethost host.defs
- 	@rm -f $@.tmp
