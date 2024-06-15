@@ -28,7 +28,7 @@ DESC="GNU readline library"
 PVERS="6.3 7.0"
 
 # Needed for X/Open curses/termcap
-set_standard XPG6
+set_standard -xcurses XPG6
 
 CONFIGURE_OPTS="--disable-static"
 LDFLAGS+=" $SSPFLAGS"
