@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -39,6 +39,11 @@ CONFIGURE_OPTS="
 "
 CONFIGURE_OPTS[amd64]+=" --includedir=/usr/include"
 CONFIGURE_OPTS[aarch64]+=" CC_FOR_BUILD=$GCC"
+
+# The configure script makes the wrong assumption about malloc/realloc when
+# cross compiling.
+CONFIGURE_OPTS[aarch64]+=" ac_cv_func_malloc_0_nonnull=yes"
+CONFIGURE_OPTS[aarch64]+=" ac_cv_func_realloc_0_nonnull=yes"
 
 MAKE_ARGS+=' dist_doc_DATA= '
 MAKE_INSTALL_ARGS+=' dist_doc_DATA= '
