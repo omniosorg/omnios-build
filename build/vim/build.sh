@@ -29,7 +29,7 @@ SVER=${VER//./}
 VER+=".$PATCHLEVEL"
 
 set_arch 64
-set_standard XPG6
+set_standard -xcurses XPG6
 
 XFORM_ARGS+=" -D SVER=$SVER"
 

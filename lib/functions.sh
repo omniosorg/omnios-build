@@ -650,10 +650,10 @@ clear_archflags() {
 }
 
 set_standard() {
-    typeset -i curses=1
+    typeset -i xcurses=0
     while [[ "$1" = -* ]]; do
         case $1 in
-            -nocurses)  curses=0 ;;
+            -xcurses)  xcurses=1 ;;
         esac
         shift
     done
@@ -665,7 +665,7 @@ set_standard() {
 
     # When selecting XPG4v2 or later, we must also use the X/Open curses
     # library, as long as we were not called with "-nocurses"
-    ((curses)) || return
+    ((xcurses)) || return
     case $st in
         XPG4v2|XPG5|XPG6)
             typeset x=/usr/xpg4
