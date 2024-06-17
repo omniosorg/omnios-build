@@ -13,7 +13,7 @@ CK_GENERATOR_FUNCTION is just CK_ULONG, so replace it in the header file.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/pk11wrap/pk11pub.h a/lib/pk11wrap/pk11pub.h
 --- a~/lib/pk11wrap/pk11pub.h	1970-01-01 00:00:00
 +++ a/lib/pk11wrap/pk11pub.h	1970-01-01 00:00:00
-@@ -888,7 +888,7 @@ SECStatus PK11_AEADRawOp(PK11Context *co
+@@ -889,7 +889,7 @@ SECStatus PK11_AEADRawOp(PK11Context *co
                           unsigned char *out, int *outlen,
                           int maxout, const unsigned char *in, int inlen);
  /* NSS builds the mechanism specific params */

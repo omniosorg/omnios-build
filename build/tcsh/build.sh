@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=tcsh
-VER=6.24.12
+VER=6.24.13
 PKG=shell/tcsh
 SUMMARY="Tenex C-shell (tcsh)"
 DESC="A Unix shell based on and compatible with the C shell (csh)"
@@ -30,17 +30,17 @@ set_builddir "$PROG-$UCPROG$UVER"
 set_arch 64
 
 build_init() {
-    export NATIVE_CC="$GCC"
-    export NATIVE_CPPFLAGS="${CPPFLAGS[0]} ${CPPFLAGS[$BUILD_ARCH]}"
-    export NATIVE_CFLAGS="${CFLAGS[0]} ${CFLAGS[$BUILD_ARCH]}"
-    export NATIVE_LDFLAGS="${LDFLAGS[0]} ${LDFLAGS[$BUILD_ARCH]}"
+    export CC_FOR_GETHOST="$GCC"
+    export CPPFLAGS_FOR_BUILD="${CPPFLAGS[0]} ${CPPFLAGS[$BUILD_ARCH]}"
+    export CFLAGS_FOR_BUILD="${CFLAGS[0]} ${CFLAGS[$BUILD_ARCH]}"
+    export LDFLAGS_FOR_BUILD="${LDFLAGS[0]} ${LDFLAGS[$BUILD_ARCH]}"
     MAKEFLAGS+=" -e"
 }
 
 init
 download_source $PROG "$UCPROG$UVER"
 patch_source
-prep_build
+prep_build autoconf -autoreconf
 build
 run_testsuite check
 make_package
