@@ -27,8 +27,7 @@ DESC+=" pattern matching using the same syntax and semantics as Perl 5"
 #         functions was removed. We continue to build and provide
 #         libpcre-posix.so.2 for existing software linked against it.
 #      https://vcs.pcre.org/pcre2/code/trunk/src/pcre2posix.c?r1=1176&r2=1306
-# 10.40 - libpcre2-8.so changed from .0.10.X to 0.11.X
-PVERS="10.36 10.39"
+PVERS="10.36"
 
 CONFIGURE_OPTS="
 	--localstatedir=/var
