@@ -34,7 +34,7 @@ SUMMARY="GNU Bash"
 DESC="GNU Bourne-Again shell (bash)"
 
 # bash-completion version
-BCVER=2.12.0
+BCVER=2.14.0
 
 BUILD_DEPENDS_IPS="library/readline"
 RUN_DEPENDS_IPS="system/prerequisite/gnu system/library"
