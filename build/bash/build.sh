@@ -150,6 +150,11 @@ CONFIGURE_OPTS="
 "
 CONFIGURE_OPTS[amd64]+=" --enable-separate-helpfiles"
 
+# Due to a faulty configure check that is an error with gcc14
+# (error: passing argument 2 of 'strtold' from incompatible pointer type)
+# configure mistakenly thinks our strtold(3c) is horribly broken.
+CONFIGURE_OPTS+=" bash_cv_strtold_broken=no"
+
 download_source $PROG $PROG $VER
 patch_source
 build
