@@ -40,3 +40,4 @@ revert-makedirs.patch
 #
 # Do not add ustack.patch to this file, it is used to build the debug
 # variant of python, see build.sh
+gethostbyname.patch

@@ -29,6 +29,7 @@ CONFIGURE_OPTS+="
 "
 
 forgo_isaexec
+set_standard XPG6
 
 export MAKE
 

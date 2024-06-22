@@ -27,6 +27,7 @@ UCPROG=${PROG^^}
 UVER=${VER//./_}
 
 set_builddir "$PROG-$UCPROG$UVER"
+set_standard XPG6
 set_arch 64
 
 build_init() {

@@ -37,6 +37,7 @@ TEST_DEPENDS_PERLMOD="
 "
 
 set_arch 64
+set_standard XPG6
 
 CONFIGURE_OPTS="
     --with-ssl=openssl

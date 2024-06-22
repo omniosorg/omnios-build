@@ -1,0 +1,24 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
+--- a~/configure	1970-01-01 00:00:00
++++ a/configure	1970-01-01 00:00:00
+@@ -22622,7 +22622,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+ /* end confdefs.h.  */
+ 
+ #include <bsm/adt.h>
+-adt_user_context = ADT_USER;
++int adt_user_context = ADT_USER;
+ 
+ int
+ main (void)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -1042,7 +1042,7 @@ AC_SUBST([SELINUX_LIBS])
+ AC_MSG_CHECKING(for ADT API)
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <bsm/adt.h>
+-adt_user_context = ADT_USER;
++int adt_user_context = ADT_USER;
+ ]], [[]])], [ check_adt_audit=yes ], [ check_adt_audit=no ])
+ 
+ if test ${check_adt_audit} = yes

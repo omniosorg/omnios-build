@@ -2658,7 +2658,7 @@ configure_arch() {
     # Check for configuration tests that have failed as a result of a
     # main function being present without a declared return type.
     $RIPGREP --no-messages --no-ignore \
-        "error: (return type defaults|implicit declaration.*'(exit|strcmp)')" \
+        'error:.*(-W(incompatible-pointer-types|implicit-int)|(exit|strcmp).*-Wimplicit-function-declaration)' \
         -g config.log && logerr 'Found broken tests in configure'
 }
 

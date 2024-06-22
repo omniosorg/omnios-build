@@ -33,6 +33,7 @@ DESC="GNU m4 - A macro processor (gm4)"
 
 PREFIX=/usr/gnu
 set_arch 64
+set_standard XPG6
 
 CONFIGURE_OPTS="--infodir=/usr/share/info"
 

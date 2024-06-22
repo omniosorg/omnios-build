@@ -20,3 +20,4 @@ sshd_config.patch
 0029-Accept-LANG-and-LC_-environment-variables-from-clien.patch
 0031-Restore-tcpwrappers-libwrap-support.patch
 test.patch
+configure-ed25519.patch
