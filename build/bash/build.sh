@@ -40,6 +40,7 @@ BUILD_DEPENDS_IPS="library/readline"
 RUN_DEPENDS_IPS="system/prerequisite/gnu system/library"
 
 set_arch 64
+set_standard XPG6
 
 XFORM_ARGS+="
     -DBCVER=$BCVER

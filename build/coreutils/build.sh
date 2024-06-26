@@ -33,6 +33,8 @@ PREFIX=/usr/gnu
 # work with 32-bit binaries.
 forgo_isaexec
 
+set_standard XPG6 CFLAGS
+
 # hardlinks are defined in local.mog
 SKIP_HARDLINK=1
 

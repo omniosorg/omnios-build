@@ -32,6 +32,8 @@ CONFIGURE_OPTS="--disable-static"
 MAKE_ARGS="MAKEINFO=/usr/bin/true"
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 
+set_standard XPG6
+
 init
 prep_build
 

@@ -24,6 +24,7 @@ SUMMARY="gettext - GNU gettext utility"
 DESC="GNU gettext - GNU gettext utility"
 
 set_arch 64
+set_standard XPG6
 
 RUN_DEPENDS_IPS="system/prerequisite/gnu developer/macro/gnu-m4"
 

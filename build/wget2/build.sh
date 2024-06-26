@@ -52,6 +52,7 @@ fi
 note -n "-- Building $PROG"
 
 forgo_isaexec
+set_standard XPG6
 
 CONFIGURE_OPTS="
     --with-ssl=openssl

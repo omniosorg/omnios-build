@@ -26,6 +26,7 @@ DESC="GNU grep utilities"
 DEPENDS_IPS="system/prerequisite/gnu library/pcre"
 
 set_arch 64
+set_standard XPG6
 CONFIGURE_OPTS="--program-prefix=g"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'

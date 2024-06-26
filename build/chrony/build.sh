@@ -33,7 +33,7 @@ XFORM_ARGS="
 "
 
 init
-prep_build
+prep_build autoconf -autoreconf
 
 #########################################################################
 # Download and build a static version of nettle
@@ -56,6 +56,7 @@ note -n "-- Building $PROG"
 pre_build() {
     typeset arch=$1
 
+    unset RUN_AUTORECONF
     CPPFLAGS[$arch]="-I$DEPROOT$PREFIX/include"
     LDFLAGS[$arch]+=" -L$DEPROOT$PREFIX/${LIBDIRS[$arch]}"
     addpath PKG_CONFIG_PATH[$arch] \

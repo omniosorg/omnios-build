@@ -34,6 +34,7 @@ DESC="$SUMMARY"
 RUN_DEPENDS_IPS="system/prerequisite/gnu"
 
 set_arch 64
+set_standard XPG6
 CONFIGURE_OPTS="--program-prefix=g"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'

@@ -47,6 +47,7 @@ CONFIGURE_OPTS_COMMON="
     --prefix=$GPREFIX
     --with-terminfo-dirs=$GPREFIX/share/terminfo
     --with-default-terminfo-dir=$GPREFIX/share/terminfo
+    cf_cv_struct_dirent64=no
 "
 CONFIGURE_OPTS_ABI6="$CONFIGURE_OPTS_COMMON"
 CONFIGURE_OPTS_ABI5="$CONFIGURE_OPTS_COMMON --with-abi-version=5"
