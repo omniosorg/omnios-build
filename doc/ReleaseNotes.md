@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050h (2024-06-28)
+Weekly release for w/c 24th of June 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* Python 3.12 has been updated to version 3.12.4
+
+### Other Changes
+
+* The `ena` driver has been updated fixing a panic under heavy traffic.
+
+* `rsync` is now built with IPv6 support.
+
+* The `TCP_INFO` socket option for lx zones has been fixed.
+
+<br>
+
+---
+
 ## r151050e (2024-06-07)
 Weekly release for w/c 3rd of June 2024.
 > This is a non-reboot update
