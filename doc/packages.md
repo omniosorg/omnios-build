@@ -31,7 +31,7 @@
 | developer/versioning/mercurial	| 6.7.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
-| editor/vim				| 9.1			| http://ftp.vim.org/pub/vim/unix
+| editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
 | file/gnu-coreutils			| 9.5			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
