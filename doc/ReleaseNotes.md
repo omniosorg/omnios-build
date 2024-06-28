@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048ah (2024-06-28)
+Weekly release for w/c 24th of June 2024.
+> This update requires a reboot
+
+### Other Changes
+
+* The `ena` driver has been updated fixing a panic under heavy traffic.
+
+* `rsync` is now built with IPv6 support.
+
+<br>
+
+---
+
 ## r151048ae (2024-06-07)
 Weekly release for w/c 3rd of June 2024.
 > This is a non-reboot update
