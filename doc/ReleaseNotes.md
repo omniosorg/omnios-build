@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bi (2024-06-28)
+Weekly release for w/c 24th of June 2024.
+> This update requires a reboot
+
+### Other Changes
+
+* The `ena` driver has been updated fixing a panic under heavy traffic.
+
+* `rsync` is now built with IPv6 support.
+
+<br>
+
+---
+
 ## r151046bf (2024-06-07)
 Weekly release for w/c 3rd of June 2024.
 > This update requires a reboot
