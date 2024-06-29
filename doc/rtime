@@ -9,7 +9,7 @@
 # http://www.illumos.org/license/CDDL.
 #
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 # Disable these checks for now.
 NODIRECT	.*
@@ -18,7 +18,7 @@ EXEC_STACK	.*
 NOSYMSORT	.*
 
 UNUSED_RPATH	/usr/gcc/7/lib.*\ from
-UNUSED_RPATH	/usr/gcc/1[0123]/lib.*\ from
+UNUSED_RPATH	/usr/gcc/1[01234]/lib.*\ from
 
 # Objects that used to contain system functionalty that has since
 # migrated to libc.
