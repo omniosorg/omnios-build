@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bj (2024-07-01)
+Weekly release for w/c 1st of July 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+- The `openssh` and `openssh-server` packages have been updated to mitigate
+  the
+  [regreSSHion security vulnerability](https://blog.qualys.com/vulnerabilities-threat-research/2024/07/01/regresshion-remote-unauthenticated-code-execution-vulnerability-in-openssh-server).
+
+<br>
+
+---
+
 ## r151046bi (2024-06-28)
 Weekly release for w/c 24th of June 2024.
 > This update requires a reboot
