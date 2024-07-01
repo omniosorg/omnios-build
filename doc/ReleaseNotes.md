@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048ai (2024-07-01)
+Weekly release for w/c 1st of July 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+- The `openssh` and `openssh-server` packages have been updated to mitigate
+  the
+  [regreSSHion security vulnerability](https://blog.qualys.com/vulnerabilities-threat-research/2024/07/01/regresshion-remote-unauthenticated-code-execution-vulnerability-in-openssh-server).
+
+<br>
+
+---
+
 ## r151048ah (2024-06-28)
 Weekly release for w/c 24th of June 2024.
 > This update requires a reboot
