@@ -33,14 +33,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -120,7 +120,7 @@ SSHOBJS= ssh.o readconf.o clientloop.o s
- 	sshconnect.o sshconnect2.o mux.o $(SKOBJS)
+@@ -128,7 +128,7 @@ SSHDOBJS=sshd.o \
+ 	$(SKOBJS)
  
- SSHDOBJS=sshd.o auth-rhosts.o auth-passwd.o \
+ SSHD_SESSION_OBJS=sshd-session.o auth-rhosts.o auth-passwd.o \
 -	audit.o audit-bsm.o audit-linux.o platform.o \
 +	audit.o audit-bsm.o audit-linux.o audit-solaris.o platform.o \
  	sshpty.o sshlogin.o servconf.o serverloop.o \
- 	auth.o auth2.o auth-options.o session.o \
+ 	auth.o auth2.o auth2-methods.o auth-options.o session.o \
  	auth2-chall.o groupaccess.o \
 diff -wpruN --no-dereference '--exclude=*.orig' a~/README.platform a/README.platform
 --- a~/README.platform	1970-01-01 00:00:00
@@ -680,7 +680,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.c a/audit.c
   */
  void
 -audit_connection_from(const char *host, int port)
-+audit_connection_from(struct ssh *, const char *host, int port)
++audit_connection_from(struct ssh *ssh, const char *host, int port)
  {
  	debug("audit connection from %s port %d euid %d", host, port,
  	    (int)geteuid());
@@ -699,7 +699,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.h a/audit.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1769,7 +1769,7 @@ AC_ARG_WITH([libedit],
+@@ -1770,7 +1770,7 @@ AC_ARG_WITH([libedit],
  
  AUDIT_MODULE=none
  AC_ARG_WITH([audit],
@@ -708,7 +708,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	[
  	  AC_MSG_CHECKING([for supported audit module])
  	  case "$withval" in
-@@ -1806,6 +1806,13 @@ AC_ARG_WITH([audit],
+@@ -1807,6 +1807,13 @@ AC_ARG_WITH([audit],
  		SSHDLIBS="$SSHDLIBS -laudit"
  		AC_DEFINE([USE_LINUX_AUDIT], [1], [Use Linux audit module])
  		;;
@@ -737,10 +737,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
  #if !defined(HAVE___func__) && defined(HAVE___FUNCTION__)
  #  define __func__ __FUNCTION__
  #elif !defined(HAVE___func__)
-diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.c a/sshd.c
---- a~/sshd.c	1970-01-01 00:00:00
-+++ a/sshd.c	1970-01-01 00:00:00
-@@ -2197,7 +2197,7 @@ main(int ac, char **av)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session.c
+--- a~/sshd-session.c	1970-01-01 00:00:00
++++ a/sshd-session.c	1970-01-01 00:00:00
+@@ -1252,7 +1252,7 @@ main(int ac, char **av)
  	remote_ip = ssh_remote_ipaddr(ssh);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -749,8 +749,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.c a/sshd.c
  #endif
  
  	rdomain = ssh_packet_rdomain_in(ssh);
-@@ -2286,8 +2286,10 @@ main(int ac, char **av)
- 	}
+@@ -1334,8 +1334,10 @@ main(int ac, char **av)
+ 		set_process_rdomain(ssh, options.routing_domain);
  
  #ifdef SSH_AUDIT_EVENTS
 +#ifndef USE_SOLARIS_AUDIT
@@ -760,14 +760,3 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.c a/sshd.c
  
  #ifdef GSSAPI
  	if (options.gss_authentication) {
-@@ -2316,6 +2318,10 @@ main(int ac, char **av)
- 		do_pam_session(ssh);
- 	}
- #endif
-+#ifdef	USE_SOLARIS_AUDIT
-+	/* Audit should take place after all successful pam */
-+	audit_event(ssh, SSH_AUTH_SUCCESS);
-+#endif	/* USE_SOLARIS_AUDIT */
- 
- 	/*
- 	 * In privilege separation, we fork another child and prepare
