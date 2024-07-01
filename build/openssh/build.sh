@@ -19,6 +19,7 @@
 
 PROG=openssh
 VER=9.7p1
+DASHREV=1
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
