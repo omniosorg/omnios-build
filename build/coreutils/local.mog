@@ -9,12 +9,13 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
 
 <transform file path=license -> drop>
 license COPYING license=GPLv3
 
 hardlink path=usr/bin/[			target=../gnu/bin/[
+hardlink path=usr/bin/base32		target=../gnu/bin/base32
 hardlink path=usr/bin/base64		target=../gnu/bin/base64
 hardlink path=usr/bin/dir		target=../gnu/bin/dir
 hardlink path=usr/bin/dircolors		target=../gnu/bin/dircolors
