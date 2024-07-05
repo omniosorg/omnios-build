@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=openssh
-VER=9.7p1
+VER=9.8p1
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
@@ -54,16 +54,25 @@ CONFIGURE_OPTS[aarch64]+="
     ac_cv_file__etc_default_login=yes
 "
 
-CFLAGS+=" -fstack-check "
-CFLAGS+="-DPAM_ENHANCEMENT -DSET_USE_PAM -DPAM_BUGFIX "
-CFLAGS+="-I/usr/include/kerberosv5 -DKRB5_BUILD_FIX -DDISABLE_BANNER "
-CFLAGS+="-DDEPRECATE_SUNSSH_OPT -DOPTION_DEFAULT_VALUE -DSANDBOX_SOLARIS"
+CFLAGS+=" -fstack-check"
+CFLAGS+=" -DPAM_ENHANCEMENT -DSET_USE_PAM -DPAM_BUGFIX"
+CFLAGS+=" -I/usr/include/kerberosv5 -DKRB5_BUILD_FIX -DDISABLE_BANNER"
+CFLAGS+=" -DDEPRECATE_SUNSSH_OPT -DOPTION_DEFAULT_VALUE -DSANDBOX_SOLARIS"
 CFLAGS[amd64]+=" -DDTRACE_SFTP"
+LDFLAGS+=" -lumem"
 
 build_init() {
     CFLAGS[aarch64]+=" -I${SYSROOT[aarch64]}/usr/include"
     LDFLAGS[aarch64]+=" -L${SYSROOT[aarch64]}/usr/lib"
     LDFLAGS[aarch64]+=" -L${SYSROOT[aarch64]}/usr"
+}
+
+pre_make() {
+    # OpenSSH is able to build with -Werror (it's part of their CI) and
+    # doing the same helps validate our local patches.
+    # However, we must defer adding this to the CFLAGS until after configure so
+    # that feature detection works properly.
+    CFLAGS+=" -Werror"
 }
 
 post_install() {
@@ -82,7 +91,7 @@ post_install() {
     manifest_add_dir lib/svc manifest/network method
     manifest_add_dir usr/lib/dtrace/64
     manifest_add usr/libexec sftp-server
-    manifest_add usr/libexec/amd64 sftp-server
+    manifest_add usr/libexec/amd64 sftp-server sshd-session
     manifest_add usr/sbin sshd
     manifest_add usr/share/man/man1m sshd.8 sftp-server.8
     manifest_add usr/share/man/man4 moduli.5 sshd_config.5

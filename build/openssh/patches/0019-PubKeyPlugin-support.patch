@@ -36,7 +36,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey
  #include "kex.h"
  #include "sshbuf.h"
  #include "log.h"
-@@ -84,6 +91,15 @@ format_key(const struct sshkey *key)
+@@ -85,6 +92,15 @@ format_key(const struct sshkey *key)
  	return ret;
  }
  
@@ -52,7 +52,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey
  static int
  userauth_pubkey(struct ssh *ssh, const char *method)
  {
-@@ -745,6 +761,124 @@ user_key_command_allowed2(struct passwd
+@@ -746,6 +762,124 @@ user_key_command_allowed2(struct passwd
  	return found_key;
  }
  
@@ -177,7 +177,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey
  /*
   * Check whether key authenticates and authorises the user.
   */
-@@ -796,6 +930,10 @@ user_key_allowed(struct ssh *ssh, struct
+@@ -797,6 +931,10 @@ user_key_allowed(struct ssh *ssh, struct
  	sshauthopt_free(opts);
  	opts = NULL;
  
@@ -191,23 +191,23 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -209,6 +209,7 @@ initialize_server_options(ServerOptions
- 	 */
- 	options->pam_service_per_authmethod = 1;
- #endif
+@@ -224,6 +224,7 @@ initialize_server_options(ServerOptions
+ 	options->num_channel_timeouts = 0;
+ 	options->unused_connection_timeout = -1;
+ 	options->sshd_session_path = NULL;
 +	options->pubkey_plugin = NULL;
  }
  
  /* Returns 1 if a string option is unset or set to "none" or 0 otherwise. */
-@@ -557,6 +558,7 @@ typedef enum {
- 	sAllowStreamLocalForwarding, sFingerprintHash, sDisableForwarding,
- 	sExposeAuthInfo, sRDomain, sPubkeyAuthOptions, sSecurityKeyProvider,
- 	sRequiredRSASize, sChannelTimeout, sUnusedConnectionTimeout,
+@@ -589,6 +590,7 @@ typedef enum {
+ 	sRevokedKeys, sTrustedUserCAKeys, sAuthorizedPrincipalsFile,
+ 	sAuthorizedPrincipalsCommand, sAuthorizedPrincipalsCommandUser,
+ 	sKexAlgorithms, sCASignatureAlgorithms, sIPQoS, sVersionAddendum,
 +	sPubKeyPlugin,
- 	sDeprecated, sIgnore, sUnsupported
- } ServerOpCodes;
- 
-@@ -723,6 +725,7 @@ static struct {
+ 	sAuthorizedKeysCommand, sAuthorizedKeysCommandUser,
+ 	sAuthenticationMethods, sHostKeyAgent, sPermitUserRC,
+ 	sStreamLocalBindMask, sStreamLocalBindUnlink,
+@@ -772,6 +774,7 @@ static struct {
  	{ "exposeauthinfo", sExposeAuthInfo, SSHCFG_ALL },
  	{ "rdomain", sRDomain, SSHCFG_ALL },
  	{ "casignaturealgorithms", sCASignatureAlgorithms, SSHCFG_ALL },
@@ -215,9 +215,9 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "securitykeyprovider", sSecurityKeyProvider, SSHCFG_GLOBAL },
  	{ "requiredrsasize", sRequiredRSASize, SSHCFG_ALL },
  	{ "channeltimeout", sChannelTimeout, SSHCFG_ALL },
-@@ -2667,6 +2670,18 @@ process_server_config_line_depth(ServerO
- 		}
- 		break;
+@@ -2732,6 +2735,18 @@ process_server_config_line_depth(ServerO
+ 		charptr = &options->sshd_session_path;
+ 		goto parse_filename;
  
 +	case sPubKeyPlugin:
 +		/*
@@ -237,7 +237,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
-@@ -235,6 +235,7 @@ typedef struct {
+@@ -242,6 +242,7 @@ typedef struct {
  
  	int	fingerprint_hash;
  	int	expose_userauth_info;
