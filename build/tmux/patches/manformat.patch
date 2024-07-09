@@ -1,0 +1,24 @@
+We always want the mdoc format man page, even though we do not have
+groff as /usr/bin/nroff. The converted 'man' page does not render
+correctly.
+
+diff --git a/configure.ac b/configure.ac
+index d800e45..65ac7ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -926,8 +926,13 @@ case "$host_os" in
+ 				MANFORMAT=mdoc
+ 				;;
+ 			*)
+-				# Solaris 2.0 to 11.3 use AT&T nroff.
+-				MANFORMAT=man
++				if test `uname -o 2>/dev/null` = illumos; then
++					# illumos uses mandoc
++					MANFORMAT=mdoc
++				else
++					# Solaris 2.0 to 11.3 use AT&T nroff.
++					MANFORMAT=man
++				fi
+ 				;;
+ 		esac
+ 		;;

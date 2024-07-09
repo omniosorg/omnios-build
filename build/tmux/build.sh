@@ -69,6 +69,7 @@ pre_build() {
 
 download_source $PROG $PROG $VER
 patch_source
+run_autoreconf -i
 build
 make_package
 clean_up
