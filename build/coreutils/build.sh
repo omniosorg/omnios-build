@@ -48,6 +48,12 @@ CONFIGURE_OPTS+="
     gt_cv_locale_ja=none
     gt_cv_locale_zh_CN=none
 "
+# We explicitly select an older POSIX conformance level so that traditional
+# behaviour of utilities is preserved. Without this, for example, sort, head
+# and tail no longer accept the legacy +/- options.
+CONFIGURE_OPTS+="
+    DEFAULT_POSIX2_VERSION=199209
+"
 CONFIGURE_OPTS[i386]+=" --libexecdir=/usr/lib"
 CONFIGURE_OPTS[amd64]+=" --libexecdir=/usr/lib/amd64"
 # For memset_s
