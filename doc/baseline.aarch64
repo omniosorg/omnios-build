@@ -592,6 +592,7 @@ omnios system/test/elftest
 omnios system/test/ksh93
 omnios system/test/libctest
 omnios system/test/libmlrpctest
+omnios system/test/libsectest
 omnios system/test/nettest
 omnios system/test/nvmetest
 omnios system/test/ostest
