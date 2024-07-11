@@ -84,7 +84,7 @@ build
                  make_arch <arch>
                 *post_make <arch>
              make_install_<arch>
-                *pre_install <arch>
+                *pre_install <arch> <- return false to skip make_install
                  make_install <arch> [options]
                 *post_install <arch>
             *post_build <arch>

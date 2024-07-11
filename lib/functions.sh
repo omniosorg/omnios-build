@@ -2684,7 +2684,7 @@ done
 
 make_install() {
     typeset arch=$1; shift
-    hook pre_install $arch
+    hook pre_install $arch || return
     local args="$@"
     eval set -- $MAKE_INSTALL_ARGS_WS
     logmsg "--- make install"
