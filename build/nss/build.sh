@@ -58,7 +58,6 @@ CONFIGURE_OPTS[amd64]="
     --target=x64
     --with-nspr=/usr/include/mps:/usr/lib/mps/amd64
 "
-CXXFLAGS[aarch64]+=" -mno-outline-atomics"
 
 post_clean() {
     $TMPDIR/$EXTRACTED_SRC/build.sh -cc
