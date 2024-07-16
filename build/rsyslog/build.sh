@@ -103,7 +103,6 @@ CONFIGURE_OPTS[amd64]+="
 
 # Provide some overrides for things which cannot be detected when cross
 # compiling.
-CFLAGS[aarch64]+=" -mno-outline-atomics"
 CONFIGURE_OPTS[aarch64]+="
     ap_cv_atomic_builtins=yes
     ap_cv_atomic_builtins_64=yes

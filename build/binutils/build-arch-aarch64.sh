@@ -47,7 +47,7 @@ export LD_FOR_BUILD=/opt/cross/$ARCH/bin/ld
 export AS_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-as
 export AR_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-ar
 export LD_FOR_TARGET=/bin/ld
-export CFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
+export CFLAGS_FOR_TARGET="-mtls-dialect=trad"
 export CXXFLAGS_FOR_TARGET="$CFLAGS_FOR_TARGET"
 export STRIP="/usr/bin/strip -x"
 export STRIP_FOR_TARGET="$STRIP"

@@ -59,7 +59,7 @@ PKGDIFF_HELPER="
     s:-[0-9]\.[0-9][0-9]*\.[0-9][0-9]*\.so:-VERSION:g
 "
 
-CFLAGS[aarch64]+=" -mno-outline-atomics -mtls-dialect=trad"
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
 init
 prep_build autoconf -autoreconf

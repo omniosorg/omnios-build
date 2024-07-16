@@ -37,8 +37,6 @@ set_standard XPG6
 
 CONFIGURE_OPTS="--infodir=/usr/share/info"
 
-CFLAGS[aarch64]+=' -mno-outline-atomics'
-
 TESTSUITE_SED="
     /^Making check.*/d
     / GEN /d
