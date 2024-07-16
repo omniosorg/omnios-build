@@ -40,10 +40,25 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdopti
      help="Don't periodically check PyPI to determine whether a new version "
      "of pip is available for download. Implied with --no-index.",
  )
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.py a/src/pip/_internal/exceptions.py
+--- a~/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
+@@ -769,9 +769,8 @@ class LegacyDistutilsInstall(DiagnosticP
+         super().__init__(
+             message=Text(f"Cannot uninstall {distribution}"),
+             context=(
+-                "It is a distutils installed project and thus we cannot accurately "
+-                "determine which files belong to it which would lead to only a partial "
+-                "uninstall."
++                "It is an IPS-managed package.\n"
++                "Use the system 'pkg' command instead."
+             ),
+             hint_stmt=None,
+         )
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uninstall.py a/src/pip/_internal/req/req_uninstall.py
 --- a~/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
-@@ -323,6 +323,15 @@ class UninstallPathSet:
+@@ -313,6 +313,15 @@ class UninstallPathSet:
          remove/modify, False otherwise.
  
          """
@@ -59,18 +74,6 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
          # aka is_local, but caching normalized sys.prefix
          if not running_under_virtualenv():
              return True
-@@ -510,9 +519,8 @@ class UninstallPathSet:
- 
-         elif dist.installed_by_distutils:
-             raise UninstallationError(
--                "Cannot uninstall {!r}. It is a distutils installed project "
--                "and thus we cannot accurately determine which files belong "
--                "to it which would lead to only a partial uninstall.".format(
-+                "Cannot uninstall {!r} as it is an IPS-managed package.\n"
-+                "Use the system 'pkg' command instead.".format(
-                     dist.raw_name,
-                 )
-             )
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
 --- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
