@@ -7,9 +7,9 @@ manner when a CA cert is added/removed/modified.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_vendor/certifi/core.py a/src/pip/_vendor/certifi/core.py
 --- a~/src/pip/_vendor/certifi/core.py	1970-01-01 00:00:00
 +++ a/src/pip/_vendor/certifi/core.py	1970-01-01 00:00:00
-@@ -6,103 +6,10 @@ This module returns the installation loc
- """
- import sys
+@@ -10,105 +10,10 @@ import atexit
+ def exit_cacert_ctx() -> None:
+     _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
  
 +def where() -> str: #keepindent
 +    return "/etc/ssl/cacert.pem"
@@ -45,6 +45,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_vendor/certifi/core.
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = as_file(files("pip._vendor.certifi").joinpath("cacert.pem"))
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
@@ -80,6 +81,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_vendor/certifi/core.
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = get_path("pip._vendor.certifi", "cacert.pem")
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
