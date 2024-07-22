@@ -9,9 +9,9 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
-# PCI IDs are delivered via system/pciutils/pci.ids
+# PCI IDs are delivered via system/data/hardware-registry
 <transform file path=usr/share/pci.ids.gz$ -> drop>
 <transform file path=.*update-pciids -> drop>
 <transform path=usr/share/man/man[57] -> drop>
