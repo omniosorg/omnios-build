@@ -1,0 +1,13 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/tcpflood.c a/tests/tcpflood.c
+--- a~/tests/tcpflood.c	1970-01-01 00:00:00
++++ a/tests/tcpflood.c	1970-01-01 00:00:00
+@@ -808,7 +808,8 @@ int sendMessages(struct instdata *inst)
+ 			}
+ 			lenSend = sendPlainTCP(socknum, buf, lenBuf, &error_number);
+ 		} else if(transport == TP_UDP) {
+-			lenSend = sendto(udpsockout, buf, lenBuf, 0, &udpRcvr, sizeof(udpRcvr));
++			lenSend = sendto(udpsockout, buf, lenBuf, 0,
++			    (const struct sockaddr *)&udpRcvr, sizeof(udpRcvr));
+ 			error_number = errno;
+ 		} else if(transport == TP_TLS) {
+ 			if(sockArray[socknum] == -1) {
