@@ -723,7 +723,7 @@ omnios system/network/udapl
 omnios system/network/udapl/udapl-tavor
 omnios system/network/wificonfig
 omnios system/pciutils
-omnios system/pciutils/pci.ids
+omnios system/pciutils/pci.ids o
 omnios system/pkgtree
 omnios system/prerequisite/gnu
 omnios system/remote-shared-memory

@@ -1,0 +1,4 @@
+set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/system/pciutils/pci.ids@2.2.20240331,$(SUNOSVER)-$(PVER)
+set name=publisher value=$(PKGPUBEMAIL)
+set name=pkg.obsolete value=true
+
