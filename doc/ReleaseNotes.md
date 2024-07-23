@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048al (2024-07-22)
+Weekly release for w/c 22nd of July 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU Microcode updated to version 20240710.
+
+### Other Changes
+
+* The compatibility copy of the PCI IDs file in `/usr/share/pci.ids.gz`
+  delivered by `pkg://system/pciutils/pci.ids` was mistakenly empty. This file
+  has been removed and the same package now provides a symbolic link from
+  `/usr/share/pci.ids` to `/usr/share/hwdata/pci.ids` to support software
+  which incorrectly assumes the wrong location.
+
+<br>
+
+---
+
 ## r151048ai (2024-07-01)
 Weekly release for w/c 1st of July 2024.
 > This is a non-reboot update
