@@ -24,8 +24,6 @@ SUMMARY="PCI device utilities"
 DESC="Programs (lspci, setpci) for inspecting and manipulating configuration "
 DESC+="of PCI devices"
 
-RUN_DEPENDS_IPS="system/pciutils/pci.ids"
-
 set_arch 64
 
 export PATH=$GNUBIN:$PATH
@@ -37,6 +35,7 @@ configure_amd64() {
         PREFIX=$PREFIX
         CC=\"$CC\"
         OPT=\"$CFLAGS ${CFLAGS[amd64]} -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234\"
+        IDSDIR=/usr/share/hwdata
     "
 }
 
