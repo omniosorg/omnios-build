@@ -59,7 +59,7 @@ glib:gio / giomodule                                                   OK   3 su
 glib:gio / glistmodel                                                  OK   18 subtests passed
 glib:gio / gschema-compile                                             OK   82 subtests passed
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
-glib:gio / gsocketclient-slow                                          ERROR   killed by signal 6 SIGABRT
+glib:gio / gsocketclient-slow                                          OK   4 subtests passed
 glib:gio / gsubprocess                                                 OK   82 subtests passed
 glib:gio / inet-address                                                OK   11 subtests passed
 glib:gio / io-stream                                                   OK   3 subtests passed
@@ -80,7 +80,7 @@ glib:gio / pollable                                                    OK   4 su
 glib:gio / power-profile-monitor                                       OK   1 subtests passed
 glib:gio / proxy-test                                                  OK   11 subtests passed
 glib:gio / readwrite                                                   OK   3 subtests passed
-glib:gio / resolver-parsing                                            OK   20 subtests passed
+glib:gio / resolver-parsing                                            OK   21 subtests passed
 glib:gio / resources                                                   OK   16 subtests passed
 glib:gio / sandbox                                                     OK   4 subtests passed
 glib:gio / simple-async-result                                         OK   2 subtests passed
@@ -357,14 +357,13 @@ glib:gio / contenttype                                                 ERROR   k
 glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                        ERROR   killed by signal 5 SIGTRAP
-glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
 glib:gio / appinfo                                                     ERROR   killed by signal 6 SIGABRT
+glib:gio / desktop-app-info                                            ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
-glib:gio / gsocketclient-slow                                          ERROR   killed by signal 6 SIGABRT
 
-Ok:                 328 
+Ok:                 329 
 Expected Fail:      0   
-Fail:               13  
+Fail:               12  
 Unexpected Pass:    0   
 Skipped:            6   
 Timeout:            0   

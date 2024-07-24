@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=automake
-VER=1.16.5
+VER=1.17
 PKG=developer/build/automake
 SUMMARY="GNU Automake"
 DESC="GNU Automake - A Makefile generator"
@@ -26,8 +26,17 @@ DESC="GNU Automake - A Makefile generator"
 BUILD_DEPENDS_IPS="compress/xz developer/build/autoconf"
 RUN_DEPENDS_IPS="developer/macro/gnu-m4 runtime/perl"
 HARDLINK_TARGETS="usr/bin/aclocal usr/bin/automake"
+MAKE_TESTSUITE_ARGS_WS="
+    LEX=flex
+    YACC=\"bison -y\"
+"
 
 set_arch 64
+
+TESTSUITE_SED="
+    /\/bash -n t\//d
+    /\/bash -n contrib\/t\//d
+"
 
 init
 download_source $PROG $PROG $VER

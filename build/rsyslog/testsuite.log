@@ -349,16 +349,19 @@ PASS: ommail_errmsg_no_params.sh
 PASS: rscript_http_request.sh
 PASS: omhttp-auth.sh
 PASS: omhttp-basic.sh
+PASS: omhttp-basic-ignorecodes.sh
 PASS: omhttp-batch-fail-with-400.sh
 PASS: omhttp-batch-jsonarray-compress.sh
 PASS: omhttp-batch-jsonarray-retry.sh
 PASS: omhttp-batch-jsonarray.sh
 PASS: omhttp-batch-kafkarest-retry.sh
 PASS: omhttp-batch-kafkarest.sh
+PASS: omhttp-batch-retry-metadata.sh
 PASS: omhttp-batch-lokirest-retry.sh
 PASS: omhttp-batch-lokirest.sh
 PASS: omhttp-batch-newline.sh
 PASS: omhttp-retry.sh
+PASS: omhttp-retry-timeout.sh
 PASS: omhttp-httpheaderkey.sh
 PASS: omhttp-multiplehttpheaders.sh
 PASS: omhttp-dynrestpath.sh
@@ -408,3 +411,14 @@ PASS: imtcp-tls-ossl-error-cert.sh
 PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
+============================================================================
+Testsuite summary for rsyslog 8.2406.0
+============================================================================
+# TOTAL: 414
+# PASS:  374
+# SKIP:  40
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
