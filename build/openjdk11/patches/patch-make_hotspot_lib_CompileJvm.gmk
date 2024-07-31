@@ -2,10 +2,9 @@ $NetBSD$
 
 Support SunOS/gcc.
 
-diff -wpruN --no-dereference '--exclude=*.orig' a~/make/hotspot/lib/CompileJvm.gmk a/make/hotspot/lib/CompileJvm.gmk
---- a~/make/hotspot/lib/CompileJvm.gmk	1970-01-01 00:00:00
-+++ a/make/hotspot/lib/CompileJvm.gmk	1970-01-01 00:00:00
-@@ -109,7 +109,7 @@ else ifeq ($(call isTargetCpu, x86_64),
+--- make/hotspot/lib/CompileJvm.gmk.orig	2019-01-08 09:40:28.000000000 +0000
++++ make/hotspot/lib/CompileJvm.gmk
+@@ -128,7 +128,7 @@ else ifeq ($(OPENJDK_TARGET_CPU), x86_64
  endif
  
  # Inline assembly for solaris
