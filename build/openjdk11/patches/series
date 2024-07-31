@@ -1,41 +1,41 @@
-patch-make_autoconf_flags-cflags.m4
-patch-make_autoconf_jdk-options.m4
-patch-make_autoconf_lib-x11.m4
-patch-make_autoconf_libraries.m4
-patch-make_autoconf_toolchain.m4
-patch-make_GenerateLinkOptData.gmk
-patch-make_hotspot_gensrc_GensrcAdlc.gmk
-patch-make_hotspot_gensrc_GensrcDtrace.gmk
-patch-make_hotspot_lib_CompileJvm.gmk
-patch-make_hotspot_lib_JvmOverrideFiles.gmk
-patch-make_launcher_Launcher-jdk.pack.gmk
-patch-make_launcher_LauncherCommon.gmk
-patch-make_lib_Awt2dLibraries.gmk
-patch-make_lib_Lib-jdk.crypto.ec.gmk
-patch-make_lib_Lib-jdk.crypto.ucrypto.gmk
-patch-make_lib_LibCommon.gmk
-patch-src_hotspot_os__cpu_solaris__x86_atomic__solaris__x86.hpp
-patch-src_hotspot_os__cpu_solaris__x86_bytes__solaris__x86.inline.hpp
-patch-src_hotspot_os__cpu_solaris__x86_os__solaris__x86.cpp
-patch-src_hotspot_os__cpu_solaris__x86_os__solaris__x86.inline.hpp
-patch-src_hotspot_os__cpu_solaris__x86_prefetch__solaris__x86.inline.hpp
-patch-src_hotspot_os_solaris_os__solaris.cpp
-patch-src_hotspot_share_gc_g1_g1Analytics.cpp
-patch-src_hotspot_share_utilities_globalDefinitions__gcc.hpp
-patch-src_java.base_solaris_native_libnio_ch_DevPollArrayWrapper.c
-patch-src_java.desktop_share_native_libsplashscreen_libpng_pngpriv.h
-patch-src_jdk.crypto.ec_share_native_libsunec_ECC__JNI.cpp
-tribblix-agent-mt.patch
-tribblix-attachListener_solaris.patch
-tribblix-demangle1.patch
-tribblix-demangle2.patch
-tribblix-demangle3.patch
-tribblix-demangle4.patch
-tribblix-flags-ldflags.patch
-tribblix-flags-ldflags2.patch
-tribblix-flags-ldflags3.patch
-tribblix-Launcher-jdk.patch
-tribblix-LauncherCommon.patch
+patch-make_autoconf_flags-cflags.m4 -p0
+patch-make_autoconf_jdk-options.m4 -p0
+patch-make_autoconf_lib-x11.m4 -p0
+patch-make_autoconf_libraries.m4 -p0
+patch-make_autoconf_toolchain.m4 -p0
+patch-make_GenerateLinkOptData.gmk -p0
+patch-make_hotspot_gensrc_GensrcAdlc.gmk -p0
+patch-make_hotspot_gensrc_GensrcDtrace.gmk -p0
+patch-make_hotspot_lib_CompileJvm.gmk -p0
+patch-make_hotspot_lib_JvmOverrideFiles.gmk -p0
+patch-make_launcher_Launcher-jdk.pack.gmk -p0
+patch-make_launcher_LauncherCommon.gmk -p0
+patch-make_lib_Awt2dLibraries.gmk -p0
+patch-make_lib_Lib-jdk.crypto.ec.gmk -p0
+patch-make_lib_Lib-jdk.crypto.ucrypto.gmk -p0
+patch-make_lib_LibCommon.gmk -p0
+patch-src_hotspot_os__cpu_solaris__x86_atomic__solaris__x86.hpp -p0
+patch-src_hotspot_os__cpu_solaris__x86_bytes__solaris__x86.inline.hpp -p0
+patch-src_hotspot_os__cpu_solaris__x86_os__solaris__x86.cpp -p0
+patch-src_hotspot_os__cpu_solaris__x86_os__solaris__x86.inline.hpp -p0
+patch-src_hotspot_os__cpu_solaris__x86_prefetch__solaris__x86.inline.hpp -p0
+patch-src_hotspot_os_solaris_os__solaris.cpp -p0
+patch-src_hotspot_share_gc_g1_g1Analytics.cpp -p0
+patch-src_hotspot_share_utilities_globalDefinitions__gcc.hpp -p0
+patch-src_java.base_solaris_native_libnio_ch_DevPollArrayWrapper.c -p0
+patch-src_java.desktop_share_native_libsplashscreen_libpng_pngpriv.h -p0
+patch-src_jdk.crypto.ec_share_native_libsunec_ECC__JNI.cpp -p0
+tribblix-agent-mt.patch -p0
+tribblix-attachListener_solaris.patch -p0
+tribblix-demangle1.patch -p0
+tribblix-demangle2.patch -p0
+tribblix-demangle3.patch -p0
+tribblix-demangle4.patch -p0
+tribblix-flags-ldflags.patch -p0
+tribblix-flags-ldflags2.patch -p0
+tribblix-flags-ldflags3.patch -p0
+tribblix-Launcher-jdk.patch -p0
+tribblix-LauncherCommon.patch -p0
 tribblix-thrstat001.patch
 omnios-headless.patch
 security-pkcs11.patch
