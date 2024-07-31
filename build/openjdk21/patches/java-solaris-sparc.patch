@@ -154,7 +154,7 @@
    elif test -x /usr/sbin/sysctl; then
 --- old/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.492355171 -0700
 +++ new/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.108347798 -0700
-@@ -481,9 +481,6 @@
+@@ -492,9 +492,6 @@
    if test "x$OPENJDK_TARGET_OS" = xlinux; then
      CFLAGS_OS_DEF_JVM="-DLINUX -D_FILE_OFFSET_BITS=64"
      CFLAGS_OS_DEF_JDK="-D_GNU_SOURCE -D_REENTRANT -D_LARGEFILE64_SOURCE"
@@ -166,7 +166,7 @@
      CFLAGS_OS_DEF_JDK="-D_ALLBSD_SOURCE -D_DARWIN_UNLIMITED_SELECT"
 --- old/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.812457321 -0700
 +++ new/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.432450025 -0700
-@@ -274,7 +274,7 @@
+@@ -285,7 +285,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xexternal; then
  
@@ -175,7 +175,7 @@
        if test "x$OBJCOPY" = x; then
          # enabling of enable-debug-symbols and can't find objcopy
          # this is an error
-@@ -287,7 +287,7 @@
+@@ -298,7 +298,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xzipped; then
  
@@ -311,7 +311,7 @@
  VALID_TOOLCHAINS_windows="microsoft"
 --- old/make/common/MakeBase.gmk	2020-05-20 17:58:45.708647335 -0700
 +++ new/make/common/MakeBase.gmk	2020-05-20 17:58:45.324639962 -0700
-@@ -263,33 +263,7 @@
+@@ -267,33 +267,7 @@
  ################################################################################
  # All install-file and related macros automatically call DecodeSpace when needed.
  
@@ -662,7 +662,7 @@
    ifeq ($(COMPILE_WITH_DEBUG_SYMBOLS), true)
      LIBVERIFY_OPTIMIZATION := LOW
    endif
-@@ -67,7 +67,6 @@
+@@ -68,7 +68,6 @@
      LDFLAGS_windows := -delayload:shell32.dll, \
      LIBS_unix := -ljvm, \
      LIBS_linux := $(LIBDL), \
@@ -670,7 +670,7 @@
      LIBS_aix := $(LIBDL) $(LIBM),\
      LIBS_macosx := -framework CoreFoundation \
          -framework Foundation \
-@@ -178,7 +177,6 @@
+@@ -179,7 +178,6 @@
          $(call SET_SHARED_LIBRARY_ORIGIN), \
      LIBS_unix := $(LIBZ_LIBS), \
      LIBS_linux := $(LIBDL) -lpthread, \
@@ -745,7 +745,7 @@
       HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
     endif
  
-@@ -623,10 +621,7 @@
+@@ -625,10 +623,7 @@
    ifeq ($(call isTargetOs, macosx), true)
      JAWT_LIBS := -lawt_lwawt
    else
@@ -757,7 +757,7 @@
      ifeq ($(ENABLE_HEADLESS_ONLY), false)
        JAWT_LIBS += -lawt_xawt
      else
-@@ -653,7 +648,6 @@
+@@ -655,7 +650,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LDFLAGS_macosx := -Wl$(COMMA)-rpath$(COMMA)@loader_path, \
        LIBS_unix := $(JAWT_LIBS) $(JDKLIB_LIBS), \
@@ -1007,7 +1007,7 @@
 -
  ifeq ($(call isTargetOs, windows), true)
    BUILD_HOTSPOT_JTREG_EXECUTABLES_CFLAGS_exeFPRegs := -MT
-   BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c libCompleteExit.c libTestPsig.c libnativeStack.c exeGetCreatedJavaVMs.c
+   BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c libCompleteExit.c libMonitorWithDeadObjectTest.c libTestPsig.c libnativeStack.c exeGetCreatedJavaVMs.c
 --- old/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.437582966 -0700
 +++ new/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.045575440 -0700
 @@ -107,9 +107,6 @@
@@ -1022,7 +1022,7 @@
    BUILD_JDK_JTREG_EXECUTABLES_LIBS_exeCallerAccessTest := -ljvm
 --- old/src/hotspot/cpu/x86/globalDefinitions_x86.hpp	2020-05-20 17:59:37.533642413 -0700
 +++ new/src/hotspot/cpu/x86/globalDefinitions_x86.hpp	2020-05-20 17:59:37.197635961 -0700
-@@ -67,7 +67,7 @@
+@@ -68,7 +68,7 @@
  #define INCLUDE_RTM_OPT 1
  #endif
  
@@ -1059,7 +1059,7 @@
  #endif /* !_JAVASOFT_JVM_MD_H_ */
 --- old/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.965746713 -0700
 +++ new/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.629740261 -0700
-@@ -506,7 +506,7 @@
+@@ -517,7 +517,7 @@
    st->print("%d", sysconf(_SC_CHILD_MAX));
  
    print_rlimit(st, ", THREADS", RLIMIT_THREADS);
@@ -1068,7 +1068,7 @@
    print_rlimit(st, ", NPROC", RLIMIT_NPROC);
  #endif
  
-@@ -524,12 +524,6 @@
+@@ -535,12 +535,6 @@
    print_rlimit(st, ", MEMLOCK", RLIMIT_MEMLOCK, true);
  #endif
  
@@ -1170,7 +1170,7 @@
  
 --- old/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:31.194672744 -0700
 +++ new/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:30.854666216 -0700
-@@ -1592,10 +1592,8 @@
+@@ -1596,10 +1596,8 @@
    product(int, ThreadPriorityPolicy, 0,                                     \
            "0 : Normal.                                                     "\
            "    VM chooses priorities that are appropriate for normal       "\
@@ -1183,7 +1183,7 @@
            "    priorities. However, with ThreadPriorityPolicy=0, VM will   "\
            "    not use the highest possible native priority,               "\
            "    THREAD_PRIORITY_TIME_CRITICAL, as it may interfere with     "\
-@@ -1877,8 +1875,7 @@
+@@ -1881,8 +1879,7 @@
    product(bool, WhiteBoxAPI, false, DIAGNOSTIC,                             \
            "Enable internal testing APIs")                                   \
                                                                              \
@@ -1409,7 +1409,7 @@
  #include <netinet/in.h>
 --- old/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:48.214999546 -0700
 +++ new/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:47.822992019 -0700
-@@ -1889,8 +1889,6 @@
+@@ -1890,8 +1890,6 @@
        out.print_raw   ("#   Executing ");
  #if defined(LINUX) || defined(_ALLBSD_SOURCE)
        out.print_raw   ("/bin/sh -c ");
@@ -1418,7 +1418,7 @@
  #elif defined(_WINDOWS)
        out.print_raw   ("cmd /C ");
  #endif
-@@ -1955,8 +1953,6 @@
+@@ -1956,8 +1954,6 @@
      tty->print("#   Executing ");
  #if defined(LINUX)
      tty->print  ("/bin/sh -c ");
@@ -1810,7 +1810,7 @@
  }
  
  static const char*
-@@ -450,7 +443,7 @@
+@@ -454,7 +447,7 @@
  #endif
  
  /* vfork(2) is deprecated on Darwin */
@@ -1819,7 +1819,7 @@
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -603,7 +596,7 @@
+@@ -609,7 +602,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
  /* vfork(2) is deprecated on Darwin*/
@@ -8031,7 +8031,7 @@
 -}
 --- old/src/hotspot/os/solaris/os_solaris.cpp	2020-05-20 18:09:34.749109332 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,3154 +0,0 @@
+@@ -1,3073 +0,0 @@
 -/*
 - * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -8186,9 +8186,6 @@
 -
 -// System parameters used internally
 -static clock_t clock_tics_per_sec = 100;
--
--// Track if we have called enable_extended_FILE_stdio (on Solaris 10u4+)
--static bool enabled_extended_FILE_stdio = false;
 -
 -// For diagnostics to print a message once. see run_periodic_checks
 -static bool check_addr0_done = false;
@@ -8516,14 +8513,6 @@
 -
 -#undef SYS_EXT_DIR
 -#undef EXTENSIONS_DIR
--}
--
--void os::breakpoint() {
--  BREAKPOINT;
--}
--
--extern "C" void breakpoint() {
--  // use debugger to set breakpoint here
 -}
 -
 -static thread_t main_thread;
@@ -10002,33 +9991,6 @@
 -  return true;
 -}
 -
--// Used to convert frequent JVM_Yield() to nops
--bool os::dont_yield() {
--  if (DontYieldALot) {
--    static hrtime_t last_time = 0;
--    hrtime_t diff = getTimeNanos() - last_time;
--
--    if (diff < DontYieldALotInterval * 1000000) {
--      return true;
--    }
--
--    last_time += diff;
--
--    return false;
--  } else {
--    return false;
--  }
--}
--
--// Note that yield semantics are defined by the scheduling class to which
--// the thread currently belongs.  Typically, yield will _not yield to
--// other equal or higher priority threads that reside on the dispatch queues
--// of other CPUs.
--
--void os::naked_yield() {
--  thr_yield();
--}
--
 -// Interface for setting lwp priorities.  We are using T2 libthread,
 -// which forces the use of bound threads, so all of our threads will
 -// be assigned to real lwp's.  Using the thr_setprio function is
@@ -10726,49 +10688,6 @@
 -      return -1;
 -    }
 -  }
--
--  // 32-bit Solaris systems suffer from:
--  //
--  // - an historical default soft limit of 256 per-process file
--  //   descriptors that is too low for many Java programs.
--  //
--  // - a design flaw where file descriptors created using stdio
--  //   fopen must be less than 256, _even_ when the first limit above
--  //   has been raised.  This can cause calls to fopen (but not calls to
--  //   open, for example) to fail mysteriously, perhaps in 3rd party
--  //   native code (although the JDK itself uses fopen).  One can hardly
--  //   criticize them for using this most standard of all functions.
--  //
--  // We attempt to make everything work anyways by:
--  //
--  // - raising the soft limit on per-process file descriptors beyond
--  //   256
--  //
--  // - As of Solaris 10u4, we can request that Solaris raise the 256
--  //   stdio fopen limit by calling function enable_extended_FILE_stdio.
--  //   This is done in init_2 and recorded in enabled_extended_FILE_stdio
--  //
--  // - If we are stuck on an old (pre 10u4) Solaris system, we can
--  //   workaround the bug by remapping non-stdio file descriptors below
--  //   256 to ones beyond 256, which is done below.
--  //
--  // See:
--  // 1085341: 32-bit stdio routines should support file descriptors >255
--  // 6533291: Work around 32-bit Solaris stdio limit of 256 open files
--  // 6431278: Netbeans crash on 32 bit Solaris: need to call
--  //          enable_extended_FILE_stdio() in VM initialisation
--  // Giri Mandalika's blog
--  // http://technopark02.blogspot.com/2005_05_01_archive.html
--  //
--#ifndef  _LP64
--  if ((!enabled_extended_FILE_stdio) && fd < 256) {
--    int newfd = ::fcntl(fd, F_DUPFD, 256);
--    if (newfd != -1) {
--      ::close(fd);
--      fd = newfd;
--    }
--  }
--#endif // 32-bit Solaris
 -
 -  // All file descriptors that are opened in the JVM and not
 -  // specifically destined for a subprocess should have the
@@ -14473,7 +14392,7 @@
 -}
 --- old/src/java.base/solaris/classes/sun/nio/ch/SolarisEventPort.java	2020-05-20 18:10:16.985920232 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,268 +0,0 @@
+@@ -1,273 +0,0 @@
 -/*
 - * Copyright (c) 2008, 2020, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -14538,6 +14457,10 @@
 -    // port sources
 -    static final short PORT_SOURCE_USER     = 3;
 -    static final short PORT_SOURCE_FD       = 4;
+-
+-    // events (sys/poll.h)
+-    static final int POLLIN  = 0x0001;
+-    static final int POLLOUT = 0x0004;
 -
 -    // file descriptor to event port.
 -    private final int port;
@@ -14722,7 +14645,8 @@
 -    static native int port_get(int port, long address) throws IOException;
 -
 -    /**
--     * Retrieves at most {@code max} events from a port.
+-     * Retrieves at most {@code max} events from a port. A time-out of {@code < 0} means
+-     * never time-out.
 -     */
 -    static native int port_getn(int port, long address, int max, long timeout)
 -        throws IOException;
