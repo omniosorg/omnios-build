@@ -75,7 +75,7 @@
 | network/socat				| 1.8.0.0		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.17.1		| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
-| runtime/java/openjdk11		| 11.0.23+9		| https://github.com/openjdk/jdk11u/tags
+| runtime/java/openjdk11		| 11.0.24+8		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.11+9		| https://github.com/openjdk/jdk17u/tags
 | runtime/java/openjdk21		| 21.0.3+9		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.422-05		| https://github.com/openjdk/jdk8u/tags
