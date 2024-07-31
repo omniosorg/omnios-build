@@ -54,3 +54,5 @@ link path=usr/share/man/man1/gcpp-$(MAJOR).1 target=$(OPT)/share/man/man1/cpp.1
 link path=usr/share/man/man1/gfortran-$(MAJOR).1 \
     target=$(OPT)/share/man/man1/gfortran.1
 
+link path=$(OPT)/lib/gcc/$(TRIPLET)/$(MAJOR) target=$(GCCVER)
+
