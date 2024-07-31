@@ -7,6 +7,14 @@ Most patches -p0
 
 JDK17:
 
+17.0.12
+
+Removed last remnants of extended_FILE_stdio, it's unused as 32-bit
+only, and the code to enable it had already been removed.
+
+Extensive rework of
+src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java
+
 17.0.11
 
 Needed to restore src/hotspot/share/services/dtraceAttacher.hpp
@@ -327,7 +335,7 @@ _large_page_size) is initialized to the largest valid page size.
 Build:
 
 env PATH=/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/gnu/bin bash ./configure \
---enable-unlimited-crypto --with-boot-jdk=/usr/jdk/instances/jdk16 \
+--enable-unlimited-crypto --with-boot-jdk=/usr/jdk/instances/jdk17 \
 --with-native-debug-symbols=none \
 --with-toolchain-type=gcc \
 --disable-dtrace \
