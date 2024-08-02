@@ -1,7 +1,6 @@
-diff -wpruN --no-dereference '--exclude=*.orig' a~/make/lib/Lib-jdk.hotspot.agent.gmk a/make/lib/Lib-jdk.hotspot.agent.gmk
---- a~/make/lib/Lib-jdk.hotspot.agent.gmk	1970-01-01 00:00:00
-+++ a/make/lib/Lib-jdk.hotspot.agent.gmk	1970-01-01 00:00:00
-@@ -32,9 +32,6 @@ $(eval $(call IncludeCustomExtension, ho
+--- make/lib/Lib-jdk.hotspot.agent.gmk~	Tue Nov 26 00:55:54 2019
++++ make/lib/Lib-jdk.hotspot.agent.gmk	Thu Apr  9 18:24:54 2020
+@@ -32,9 +32,6 @@
  ifeq ($(call isTargetOs, linux), true)
    SA_CFLAGS := -D_FILE_OFFSET_BITS=64
  
