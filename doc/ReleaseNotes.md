@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050m (2024-08-01)
+Weekly release for w/c 29th of July 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Curl updated to version 8.9.1.
+
+* OpenJDK packages updated to versions 1.8.422-05, 11.0.24+8, 17.0.12+7
+  and 21.0.4+7.
+
+<br>
+
+---
+
 ## r151050l (2024-07-23)
 Weekly release for w/c 22nd of July 2024.
 > This update requires a reboot
