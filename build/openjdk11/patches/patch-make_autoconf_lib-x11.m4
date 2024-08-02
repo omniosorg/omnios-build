@@ -2,10 +2,9 @@ $NetBSD$
 
 Do not pull in openwin.
 
-diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/lib-x11.m4 a/make/autoconf/lib-x11.m4
---- a~/make/autoconf/lib-x11.m4	1970-01-01 00:00:00
-+++ a/make/autoconf/lib-x11.m4	1970-01-01 00:00:00
-@@ -92,7 +92,7 @@ AC_DEFUN_ONCE([LIB_SETUP_X11],
+--- make/autoconf/lib-x11.m4.orig	2019-01-08 09:40:29.000000000 +0000
++++ make/autoconf/lib-x11.m4
+@@ -94,7 +94,7 @@ AC_DEFUN_ONCE([LIB_SETUP_X11],
        AC_MSG_ERROR([Could not find X11 libraries. $HELP_MSG])
      fi
  

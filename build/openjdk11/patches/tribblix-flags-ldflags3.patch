@@ -1,19 +1,21 @@
-diff -wpruN --no-dereference '--exclude=*.orig' a~/make/autoconf/flags-ldflags.m4 a/make/autoconf/flags-ldflags.m4
---- a~/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
-+++ a/make/autoconf/flags-ldflags.m4	1970-01-01 00:00:00
-@@ -146,6 +146,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+--- make/autoconf/flags-ldflags.m4~	Wed Apr 15 14:26:49 2020
++++ make/autoconf/flags-ldflags.m4	Wed Apr 15 14:28:01 2020
+@@ -154,11 +154,13 @@
  
    # Setup LDFLAGS for linking executables
    if test "x$TOOLCHAIN_TYPE" = xgcc; then
+-    EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -Wl,--allow-shlib-undefined"
+-    # Enabling pie on 32 bit builds prevents the JVM from allocating a continuous
+-    # java heap.
+-    if test "x$OPENJDK_TARGET_CPU_BITS" != "x32"; then
+-      EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -pie"
 +    if test "x$OPENJDK_TARGET_OS" != xsolaris; then
-     EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -Wl,--allow-shlib-undefined"
-     # Enabling pie on 32 bit builds prevents the JVM from allocating a continuous
-     # java heap.
-@@ -159,6 +160,7 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
-       REPRODUCIBLE_LDFLAGS="-experimental:deterministic"
++      EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -Wl,--allow-shlib-undefined"
++      # Enabling pie on 32 bit builds prevents the JVM from allocating a continuous
++      # java heap.
++      if test "x$OPENJDK_TARGET_CPU_BITS" != "x32"; then
++        EXECUTABLE_LDFLAGS="$EXECUTABLE_LDFLAGS -pie"
++      fi
      fi
    fi
-+  fi
  
-   if test "x$ALLOW_ABSOLUTE_PATHS_IN_OUTPUT" = "xfalse"; then
-     if test "x$TOOLCHAIN_TYPE" = xmicrosoft; then
