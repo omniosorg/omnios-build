@@ -27,8 +27,8 @@
 . ../../lib/build.sh
 
 PROG=bash
-VER=5.2.21
-PATCHLVL=26
+VER=5.2.32
+PATCHLVL=32
 PKG=shell/bash
 SUMMARY="GNU Bash"
 DESC="GNU Bourne-Again shell (bash)"
