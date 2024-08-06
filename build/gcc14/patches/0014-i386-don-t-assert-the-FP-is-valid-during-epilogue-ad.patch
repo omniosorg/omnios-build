@@ -1,4 +1,4 @@
-From 4b3409ee342ac6c7d3f8ae34ce1ccf2934c5c7f5 Mon Sep 17 00:00:00 2001
+From e104a71e034c591f017c1b3194b23b9eef1a9818 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 00:56:45 +0000
 Subject: i386: don't assert the FP is valid during epilogue
@@ -15,7 +15,7 @@ While here, make the code more readable and conventional.
  1 file changed, 32 insertions(+), 36 deletions(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index f6f07630a407..4b2df24bcf0b 100644
+index b18ac72dbc9a..93a503f22c2e 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -7453,21 +7453,21 @@ static void

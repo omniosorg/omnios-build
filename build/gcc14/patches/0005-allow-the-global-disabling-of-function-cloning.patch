@@ -1,4 +1,4 @@
-From 320d4032664e6267a9d2d6df1a3898bf75712035 Mon Sep 17 00:00:00 2001
+From 6d3b4e586fcc1bebef3a4b01921c80a564bd9813 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sun, 30 Sep 2012 16:44:14 -0400
 Subject: allow the global disabling of function cloning
@@ -18,7 +18,7 @@ optimization ineffective, and our source safe for debuggers everywhere.
  3 files changed, 24 insertions(+)
 
 diff --git a/gcc/attribs.cc b/gcc/attribs.cc
-index 12ffc5f170a1..75d1e43eb0c3 100644
+index 3ab0b0fd87a4..e2d005cb8b08 100644
 --- a/gcc/attribs.cc
 +++ b/gcc/attribs.cc
 @@ -709,6 +709,15 @@ decl_attributes (tree *node, tree attributes, int flags,
@@ -54,7 +54,7 @@ index a4a04b0aa81d..3998e9c427f5 100644
  Common Var(flag_combine_stack_adjustments) Optimization
  Looks for opportunities to reduce stack adjustments and stack references.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index e28412fb4488..cb53a55501c3 100644
+index 150d822a8747..2f2f3700057b 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -552,6 +552,7 @@ Objective-C and Objective-C++ Dialects}.
