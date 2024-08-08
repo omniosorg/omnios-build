@@ -1,4 +1,4 @@
-From 280bf9cfe6e9e597afd605b394481d1e9c154586 Mon Sep 17 00:00:00 2001
+From aa42f238ecef648d550f376b1e47c75bc6bdecbc Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Mon, 13 Feb 2017 18:14:45 +0300
 Subject: 19 cmn_err %b conversion should accept 0 flag Reviewed

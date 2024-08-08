@@ -1,4 +1,4 @@
-From f12e57764d67c35a04be77d2798f6b16a1ac1c1f Mon Sep 17 00:00:00 2001
+From d39aa628ec4c3d1314af6d96b0d7b97b7b93f57c Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Mon, 29 Oct 2018 18:23:00 +0000
 Subject: libgo: libelf on illumos doesn't support largefile
