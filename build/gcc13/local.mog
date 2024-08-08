@@ -8,7 +8,7 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=GPLv2
 license COPYING.LIB license=LGPLv2.1
@@ -19,7 +19,6 @@ license COPYING3.LIB license=LGPLv3
 # Mediated symlinks
 <transform link target=$(OPT)/ -> default mediator gcc>
 <transform link target=$(OPT)/ -> default mediator-version $(MAJOR)>
-<transform link target=$(OPT)/ -> default mediator-priority vendor>
 
 link path=usr/bin/g++                   target=$(OPT)/bin/g++
 link path=usr/bin/gcc                   target=$(OPT)/bin/gcc
