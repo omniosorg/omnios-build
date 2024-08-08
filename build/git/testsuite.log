@@ -3,39 +3,35 @@
 *** t0000-basic.sh ***
 # passed all 92 test(s)
 *** t0001-init.sh ***
-# passed all 69 test(s)
+# passed all 78 test(s)
 *** t0002-gitfile.sh ***
 # passed all 14 test(s)
 *** t0003-attributes.sh ***
-# passed all 52 test(s)
+# passed all 54 test(s)
 *** t0004-unwritable.sh ***
 # passed all 9 test(s)
 *** t0005-signals.sh ***
 # passed all 5 test(s)
 *** t0006-date.sh ***
-# passed all 100 test(s)
+# passed all 129 test(s)
 *** t0007-git-var.sh ***
 # passed all 27 test(s)
 *** t0008-ignores.sh ***
-# passed all 396 test(s)
+# passed all 397 test(s)
 *** t0010-racy-git.sh ***
 # passed all 10 test(s)
 *** t0011-hashmap.sh ***
 # passed all 14 test(s)
 *** t0012-help.sh ***
-# passed all 173 test(s)
+# passed all 174 test(s)
 *** t0013-sha1dc.sh ***
 # passed all 1 test(s)
 *** t0014-alias.sh ***
-# passed all 4 test(s)
-*** t0015-hash.sh ***
-# passed all 2 test(s)
-*** t0016-oidmap.sh ***
-# passed all 6 test(s)
+# passed all 5 test(s)
 *** t0017-env-helper.sh ***
 # passed all 5 test(s)
 *** t0018-advice.sh ***
-# passed all 3 test(s)
+# passed all 6 test(s)
 *** t0019-json-writer.sh ***
 # passed all 16 test(s)
 *** t0020-crlf.sh ***
@@ -62,12 +58,12 @@
 *** t0032-reftable-unittest.sh ***
 # passed all 1 test(s)
 *** t0033-safe-directory.sh ***
-# passed all 14 test(s)
+# passed all 16 test(s)
 *** t0034-root-safe-directory.sh ***
 *** t0035-safe-bare-repository.sh ***
 # passed all 12 test(s)
 *** t0040-parse-options.sh ***
-# passed all 89 test(s)
+# passed all 90 test(s)
 *** t0041-usage.sh ***
 # passed all 16 test(s)
 *** t0050-filesystem.sh ***
@@ -88,17 +84,13 @@
 *** t0063-string-list.sh ***
 # passed all 14 test(s)
 *** t0064-oid-array.sh ***
-# passed all 8 test(s)
-*** t0065-strcmp-offset.sh ***
-# passed all 4 test(s)
+# passed all 9 test(s)
 *** t0066-dir-iterator.sh ***
 # passed all 10 test(s)
 *** t0067-parse_pathspec_file.sh ***
 # passed all 8 test(s)
 *** t0068-for-each-repo.sh ***
-# passed all 4 test(s)
-*** t0069-oidtree.sh ***
-# passed all 2 test(s)
+# passed all 5 test(s)
 *** t0070-fundamental.sh ***
 # passed all 11 test(s)
 *** t0071-sort.sh ***
@@ -114,7 +106,7 @@
 *** t0092-diagnose.sh ***
 # passed all 4 test(s)
 *** t0095-bloom.sh ***
-# passed all 10 test(s)
+# passed all 11 test(s)
 *** t0100-previous.sh ***
 # passed all 6 test(s)
 *** t0101-at-syntax.sh ***
@@ -153,6 +145,6 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 #	    grep "$(echo tvöfaldar | iconv -f UTF-8 -t ISO8859-1)" actual
 #	
 # failed 2 among 8 test(s)
-make[2]: *** [Makefile:74: t0204-gettext-reencode-sanity.sh] Error 1
-make[1]: *** [Makefile:61: test] Error 2
-make: *** [Makefile:3222: test] Error 2
+make[2]: *** [Makefile:75: t0204-gettext-reencode-sanity.sh] Error 1
+make[1]: *** [Makefile:62: test] Error 2
+make: *** [Makefile:3235: test] Error 2
