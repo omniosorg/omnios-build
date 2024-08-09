@@ -5,3 +5,4 @@ gnu-ld.patch
 plugindir.patch
 unneededlibs.patch
 dlfcn.patch
+pam-illumos.patch
