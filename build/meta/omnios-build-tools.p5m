@@ -72,7 +72,6 @@ depend fmri=pkg://$(PKGPUBLISHER)/system/library/gfortran-runtime type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library/iconv/unicode type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library/libutempter type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library/math type=require
-depend fmri=pkg://$(PKGPUBLISHER)/system/pciutils/pci.ids type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/zones/internal type=require
 depend fmri=pkg://$(PKGPUBLISHER)/text/gnu-sed type=require
 depend fmri=pkg://$(PKGPUBLISHER)/text/intltool type=require
