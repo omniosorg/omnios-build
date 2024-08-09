@@ -1,0 +1,19 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/xio-socket.h a/xio-socket.h
+--- a~/xio-socket.h	1970-01-01 00:00:00
++++ a/xio-socket.h	1970-01-01 00:00:00
+@@ -6,10 +6,13 @@
+ #define __xio_socket_h_included 1
+ 
+ /* SO_PROTOTYPE is defined on Solaris, HP-UX
+-   SO_PROTOCOL in Linux, is the better name, but came much later */
++   SO_PROTOCOL in Linux, is the better name, but came much later, now
++   standardised in POSIX 2024
++   illumos defines both, with SO_PROTOCOL as an alias of SO_PROTOTYPE */
+ #ifdef SO_PROTOCOL
+-#  undef SO_PROTOTYPE
++#  ifndef SO_PROTOTYPE
+ #    define SO_PROTOTYPE SO_PROTOCOL
++#  endif
+ #else
+ #  ifdef SO_PROTOTYPE
+ #    define SO_PROTOCOL SO_PROTOTYPE
