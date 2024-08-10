@@ -1,3 +1,4 @@
 audit-event.patch
 Makefile.in.patch
 mansections.patch
+pam-illumos.patch
