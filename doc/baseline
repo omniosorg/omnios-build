@@ -736,6 +736,7 @@ omnios system/storage/parted o
 omnios system/storage/sasinfo
 omnios system/test/cryptotest
 omnios system/test/elftest
+omnios system/test/epolltest
 omnios system/test/fio
 omnios system/test/ksh93
 omnios system/test/libctest

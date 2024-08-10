@@ -1,0 +1,44 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source.  A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+#
+
+#
+# Copyright 2024 Oxide Computer Company
+#
+
+[DEFAULT]
+pre =
+verbose = False
+quiet = False
+timeout = 30
+post =
+outputdir = /var/tmp/test_results
+
+[/opt/epoll-tests/tests/functional]
+tests = [
+	'test_create',
+	'test_depth1',
+	'test_depth2',
+	'test_dir',
+	'test_errevent',
+	'test_et',
+	'test_eventfd_et',
+	'test_exclusive',
+	'test_file',
+	'test_hupevent',
+	'test_illumos',
+	'test_loop',
+	'test_nested',
+	'test_nested_et',
+	'test_oneshot',
+	'test_pipe_et',
+	'test_replace',
+	'test_timeout'
+	]
