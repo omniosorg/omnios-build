@@ -32,7 +32,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
      AC_MSG_CHECKING([gethostbyname_r with 5 args])
      AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
  #       include <netdb.h>
-@@ -5622,7 +5602,6 @@ AC_CHECK_FUNC([gethostbyname_r],
+@@ -5622,7 +5604,6 @@ AC_CHECK_FUNC([gethostbyname_r],
             AC_MSG_RESULT([no])
          ])
      ])
