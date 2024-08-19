@@ -8,7 +8,6 @@ strxfrm-fix.patch
 encoding-alias.patch
 locale-encoding.patch
 cgiserver.patch
-static-assert.patch
 pyc-timestamp.patch
 asyncio-watcher.patch
 py_db.patch
