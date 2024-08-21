@@ -17,8 +17,8 @@
 . ../../../lib/build.sh
 
 PKG=library/python-3/pyopenssl-312
-PROG=pyOpenSSL
-VER=24.1.0
+PROG=pyopenssl
+VER=24.2.1
 SUMMARY="pyOpenSSL - Python interface to the OpenSSL library"
 DESC="$SUMMARY"
 
@@ -29,7 +29,7 @@ RUN_DEPENDS_IPS+=" library/python-$PYMVER/cryptography-$SPYVER"
 [ "$BUILDARCH" = aarch64 ] && set_patchdir patches.aarch64
 
 init
-download_source pymodules/${PROG,,} $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
