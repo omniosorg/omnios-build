@@ -17,8 +17,8 @@
 . ../../../lib/build.sh
 
 PKG=library/python-3/pyyaml-312
-PROG=PyYAML
-VER=6.0.1
+PROG=pyyaml
+VER=6.0.2
 SUMMARY="YAML parser and emitter for Python"
 DESC="YAML is a data serialization format designed for human readability "
 DESC+="and interaction with scripting languages. "
@@ -27,7 +27,7 @@ DESC+="PyYAML is a YAML parser and emitter for Python."
 . $SRCDIR/../common.sh
 
 init
-download_source pymodules/${PROG,,} $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
