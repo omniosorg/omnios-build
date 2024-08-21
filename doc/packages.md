@@ -136,7 +136,7 @@
 | library/python-3/js-regex-312		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-312	| 0.4.3.3		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-312	| 4.17.3		| https://pypi.org/project/jsonschema
-| library/python-3/meson-312		| 1.5.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/meson-312		| 1.5.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-312		| 3.10.6		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
 | library/python-3/pip-312		| 24.1.2		| https://pypi.org/project/pip
