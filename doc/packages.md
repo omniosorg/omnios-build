@@ -140,7 +140,7 @@
 | library/python-3/orjson-312		| 3.10.7		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
 | library/python-3/pip-312		| 24.2		| https://pypi.org/project/pip
-| library/python-3/pycodestyle-312	| 2.12.0		| https://pypi.org/project/pycodestyle/
+| library/python-3/pycodestyle-312	| 2.12.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
 | library/python-3/pyopenssl-312	| 24.1.0		| https://pypi.org/project/pyOpenSSL
