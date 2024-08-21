@@ -139,7 +139,7 @@
 | library/python-3/meson-312		| 1.5.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-312		| 3.10.7		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
-| library/python-3/pip-312		| 24.1.2		| https://pypi.org/project/pip
+| library/python-3/pip-312		| 24.2		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-312	| 2.12.0		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
