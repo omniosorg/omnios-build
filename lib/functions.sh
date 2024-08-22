@@ -1550,8 +1550,9 @@ clone_github_source() {
         logcmd $GIT -C $prog clean -fdx
         fresh=1
     elif [ ! -d $prog ]; then
-        logcmd $GIT clone --no-single-branch --depth $depth $src $prog \
-            || logerr "clone failed"
+        typeset args="--no-single-branch"
+        ((depth > 0)) && args+=" --depth $depth"
+        logcmd $GIT clone $args $src $prog || logerr "clone failed"
         fresh=1
     else
         logmsg "Using existing checkout"
