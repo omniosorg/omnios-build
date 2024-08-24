@@ -27,7 +27,10 @@ CFLAGS[i386]+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 CFLAGS[amd64]+=" -D_LARGEFILE_SOURCE"
 CFLAGS[aarch64]+=" -D_LARGEFILE_SOURCE"
 
+# Without --with-libxml-prefix, configure may not find /usr/bin/xml2-config,
+# particularly when cross compiling.
 CONFIGURE_OPTS="
+    --with-libxml-prefix=$PREFIX
     --disable-static
     --with-pic
     --without-crypto
