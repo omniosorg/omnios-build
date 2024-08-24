@@ -46,6 +46,13 @@ PASS: mmexternal-SegFault.sh
 PASS: nested-call-shutdown.sh
 PASS: dnscache-TTL-0.sh
 PASS: invalid_nested_include.sh
+SKIP: omfwd-lb-1target-retry-full_buf.sh
+SKIP: omfwd-lb-1target-retry-1_byte_buf.sh
+SKIP: omfwd-lb-1target-retry-1_byte_buf-TargetFail
+PASS: omfwd-lb-susp.sh
+PASS: omfwd-lb-2target-basic.sh
+PASS: omfwd-lb-2target-retry.sh
+PASS: omfwd-lb-2target-one_fail.sh
 PASS: omfwd-tls-invalid-permitExpiredCerts.sh
 PASS: omfwd-keepalive.sh
 PASS: omusrmsg-errmsg-no-params.sh
@@ -381,6 +388,7 @@ PASS: stats-cee.sh
 PASS: stats-json-es.sh
 PASS: dynstats_reset_without_pstats_reset.sh
 PASS: dynstats_prevent_premature_eviction.sh
+PASS: omfwd-lb-2target-impstats.sh
 SKIP: omfwd_fast_imuxsock.sh
 PASS: omfwd_impstats-udp.sh
 PASS: omfwd_impstats-tcp.sh
@@ -412,11 +420,11 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2406.0
+Testsuite summary for rsyslog 8.2408.0
 ============================================================================
-# TOTAL: 414
-# PASS:  374
-# SKIP:  40
+# TOTAL: 422
+# PASS:  379
+# SKIP:  43
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0

@@ -17,8 +17,8 @@
 . ../../../lib/build.sh
 
 PKG=library/python-3/setuptools-rust-312
-PROG=setuptools-rust
-VER=1.9.0
+PROG=setuptools_rust
+VER=1.10.1
 SUMMARY="Python setuptools rust extension plugin"
 DESC="Compile and distribute Python extensions written in rust as easily "
 DESC+="as if they were written in C."
@@ -33,7 +33,7 @@ RUN_DEPENDS_IPS+="
 "
 
 init
-download_source pymodules/$PROG $PROG $VER
+download_source pymodules/${PROG/_/-} $PROG-$VER
 patch_source
 prep_build
 python_build
