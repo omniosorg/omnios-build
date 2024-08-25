@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/OpenSSL/crypto.py
 --- a~/src/OpenSSL/crypto.py	1970-01-01 00:00:00
 +++ a/src/OpenSSL/crypto.py	1970-01-01 00:00:00
-@@ -947,7 +947,6 @@ utils.deprecated(
+@@ -968,7 +968,6 @@ utils.deprecated(
          "APIs in cryptography."
      ),
      DeprecationWarning,
@@ -9,7 +9,15 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2365,7 +2364,6 @@ utils.deprecated(
+@@ -1203,7 +1202,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="X509Req",
+ )
+ 
+ 
+@@ -2400,7 +2398,6 @@ utils.deprecated(
          "in cryptography."
      ),
      DeprecationWarning,
@@ -17,7 +25,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2610,7 +2608,6 @@ utils.deprecated(
+@@ -2645,7 +2642,6 @@ utils.deprecated(
          "in cryptography."
      ),
      DeprecationWarning,
@@ -25,7 +33,23 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2863,7 +2860,6 @@ utils.deprecated(
+@@ -2840,7 +2836,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="dump_certificate_request",
+ )
+ 
+ 
+@@ -2882,7 +2877,6 @@ utils.deprecated(
+         "in cryptography."
+     ),
+     DeprecationWarning,
+-    name="load_certificate_request",
+ )
+ 
+ 
+@@ -2926,7 +2920,6 @@ utils.deprecated(
      __name__,
      "sign() is deprecated. Use the equivalent APIs in cryptography.",
      DeprecationWarning,
@@ -33,7 +57,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2910,7 +2906,6 @@ utils.deprecated(
+@@ -2973,7 +2966,6 @@ utils.deprecated(
      __name__,
      "verify() is deprecated. Use the equivalent APIs in cryptography.",
      DeprecationWarning,
@@ -41,7 +65,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2952,7 +2947,6 @@ utils.deprecated(
+@@ -3015,7 +3007,6 @@ utils.deprecated(
          "in cryptography."
      ),
      DeprecationWarning,
@@ -49,7 +73,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/OpenSSL/crypto.py a/src/O
  )
  
  
-@@ -2995,5 +2989,4 @@ utils.deprecated(
+@@ -3058,5 +3049,4 @@ utils.deprecated(
          "in cryptography."
      ),
      DeprecationWarning,
