@@ -12,7 +12,7 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.6			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3460000		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3460100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -42,14 +42,14 @@
 | library/mpc				| 1.3.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.1			| http://www.mpfr.org/mpfr-current/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
-| library/libedit			| 20240517-3.1		| https://thrysoee.dk/editline/
+| library/libedit			| 20240808-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.48.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.12.7		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
-| library/libxslt			| 1.1.30		| http://xmlsoft.org/libxslt/news.html
+| library/libxml2			| 2.13.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxslt			| 1.1.42		| https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
@@ -68,7 +68,7 @@
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20240710		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20240312		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.28		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.29		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.8p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.3.0			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -89,7 +89,7 @@
 | shell/bash				| 5.2.32		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 032			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.8.12		| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.8.13		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.13		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
@@ -103,7 +103,7 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.13.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2406.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2408.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.37			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
@@ -121,35 +121,35 @@
 | web/wget				| 1.24.5		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.80.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
-| developer/gnu-binutils		| 2.43			| https://ftp.gnu.org/gnu/binutils
+| developer/gnu-binutils		| 2.43.1		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.4.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.2.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-312	| 1.5.1			| https://pypi.org/project/asn1crypto
-| library/python-3/attrs-312		| 23.2.0		| https://pypi.org/project/attrs
-| library/python-3/cffi-312		| 1.16.0		| https://pypi.org/project/cffi
-| library/python-3/coverage-312		| 7.6.0			| https://pypi.org/project/coverage
+| library/python-3/attrs-312		| 24.2.0		| https://pypi.org/project/attrs
+| library/python-3/cffi-312		| 1.17.0		| https://pypi.org/project/cffi
+| library/python-3/coverage-312		| 7.6.1			| https://pypi.org/project/coverage
 | library/python-3/crossenv-312		| 1.4.0			| https://pypi.org/project/crossenv
-| library/python-3/cryptography-312	| 42.0.8		| https://pypi.org/project/cryptography
+| library/python-3/cryptography-312	| 43.0.0		| https://pypi.org/project/cryptography
 | library/python-3/idna-312		| 3.7			| https://pypi.org/project/idna
 | library/python-3/js-regex-312		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-312	| 0.4.3.3		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-312	| 4.17.3		| https://pypi.org/project/jsonschema
-| library/python-3/meson-312		| 1.5.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-312		| 3.10.6		| https://github.com/ijl/orjson/releases
+| library/python-3/meson-312		| 1.5.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/orjson-312		| 3.10.7		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
-| library/python-3/pip-312		| 24.1.2		| https://pypi.org/project/pip
-| library/python-3/pycodestyle-312	| 2.12.0		| https://pypi.org/project/pycodestyle/
+| library/python-3/pip-312		| 24.2		| https://pypi.org/project/pip
+| library/python-3/pycodestyle-312	| 2.12.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
-| library/python-3/pyopenssl-312	| 24.1.0		| https://pypi.org/project/pyOpenSSL
+| library/python-3/pyopenssl-312	| 24.2.1		| https://pypi.org/project/pyOpenSSL
 | library/python-3/pyrsistent-312	| 0.20.0		| https://pypi.org/project/pyrsistent
-| library/python-3/pyyaml-312		| 6.0.1			| https://pypi.org/project/PyYAML
-| library/python-3/rapidjson-312	| 1.18			| https://pypi.org/project/python-rapidjson
+| library/python-3/pyyaml-312		| 6.0.2			| https://pypi.org/project/PyYAML
+| library/python-3/rapidjson-312	| 1.20			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-312	| 2.10.0		| https://pypi.org/project/semantic-version
-| library/python-3/setuptools-312	| 70.3.0		| https://pypi.org/project/setuptools
-| library/python-3/setuptools-rust-312	| 1.9.0			| https://pypi.org/project/setuptools-rust
+| library/python-3/setuptools-312	| 73.0.1		| https://pypi.org/project/setuptools
+| library/python-3/setuptools-rust-312	| 1.10.1			| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
 | library/python-3/typing-extensions-312| 4.12.2		| https://pypi.org/project/typing-extensions

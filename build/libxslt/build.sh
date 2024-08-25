@@ -1,32 +1,24 @@
 #!/usr/bin/bash
 #
-# {{{ CDDL HEADER START
+# {{{ CDDL HEADER
 #
-# The contents of this file are subject to the terms of the
-# Common Development and Distribution License, Version 1.0 only
-# (the "License").  You may not use this file except in compliance
-# with the License.
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
 #
-# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
-# or http://www.opensolaris.org/os/licensing.
-# See the License for the specific language governing permissions
-# and limitations under the License.
-#
-# When distributing Covered Code, include this CDDL HEADER in each
-# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
-# If applicable, add the following below this CDDL HEADER, with the
-# fields enclosed by brackets "[]" replaced with your own identifying
-# information: Portions Copyright [yyyy] [name of copyright owner]
-#
-# CDDL HEADER END }}}
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+# }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=libxslt
-VER=1.1.30
+VER=1.1.42
 PKG=library/libxslt
 SUMMARY="The XSLT C library"
 DESC="The portable XSLT C library built on libxml2"
@@ -35,35 +27,15 @@ CFLAGS[i386]+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 CFLAGS[amd64]+=" -D_LARGEFILE_SOURCE"
 CFLAGS[aarch64]+=" -D_LARGEFILE_SOURCE"
 
-# Without --with-libxml-prefix, configure does not find /usr/bin/xml2-config!
+# Without --with-libxml-prefix, configure may not find /usr/bin/xml2-config,
+# particularly when cross compiling.
 CONFIGURE_OPTS="
+    --with-libxml-prefix=$PREFIX
     --disable-static
     --with-pic
     --without-crypto
-    --with-libxml-prefix=/usr
     --without-python
 "
-
-# Make clean removes the man page (xsltproc.1) so it is preserved and
-# restored between flavours (see below). However, this makes the tree
-# end up with this file missing. Force removal of any previous extracted
-# source trees to start from a clean slate.
-REMOVE_PREVIOUS=1
-SKIP_LICENCES=libxslt
-
-# During build, several errors are output as part of validation checks.
-SKIP_BUILD_ERRCHK=1
-
-build_init() {
-    logmsg "making a backup of xsltproc.1"
-    logcmd cp $TMPDIR/$BUILDDIR/doc/xsltproc.1 $TMPDIR/$BUILDDIR/backup.1
-}
-
-pre_configure() {
-    logmsg "restoring backup of xsltproc.1"
-    logcmd cp $TMPDIR/$BUILDDIR/backup.1 $TMPDIR/$BUILDDIR/doc/xsltproc.1
-    logcmd touch $TMPDIR/$BUILDDIR/doc/xsltproc.1
-}
 
 post_install() {
     [ $1 = i386 ] && return
