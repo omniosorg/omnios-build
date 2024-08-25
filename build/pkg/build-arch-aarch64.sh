@@ -63,7 +63,7 @@ build() {
         python_cross_end
     done
 
-    for d in po man; do
+    for d in po man svc web; do
         logmsg "--- running install in $d"
         logcmd make -C $d -e install CODE_WS=$CODE_WS MACH=$ARCH \
             || logerr "Failed to install $d"
