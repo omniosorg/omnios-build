@@ -76,6 +76,7 @@ omnios driver/graphics/av1394
 omnios driver/graphics/dcam1394
 omnios driver/graphics/dcam1394/devfsadm-dcam1394
 omnios driver/graphics/usbvc
+omnios driver/ktest
 omnios driver/misc/ccid
 omnios driver/misc/virtio
 omnios driver/network/afe
