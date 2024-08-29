@@ -1,58 +1,19 @@
-diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
---- a~/configure.ac	1970-01-01 00:00:00
-+++ a/configure.ac	1970-01-01 00:00:00
-@@ -493,7 +493,7 @@ main()
-     }
-   l = sizeof(a);
-   close(0);
--  if (accept(s1, &a, &l))
-+  if (accept(s1, (struct sockaddr *)&a, &l))
-     return 1;
-   FD_SET(0, &f);
-   if (select(1, &f, 0, 0, 0) == -1)
-@@ -914,7 +914,7 @@ AC_TRY_LINK([
- #define pututline _pututline
- #endif
- ],
--[int x = DEAD_PROCESS; pututline((struct utmp *)0); getutent();], AC_DEFINE(GETUTENT),
-+[int x = DEAD_PROCESS; pututline(NULL); getutent();], AC_DEFINE(GETUTENT),
- olibs="$LIBS"
- LIBS="$LIBS -lgen"
- AC_CHECKING(getutent with -lgen)
-@@ -931,7 +931,7 @@ AC_TRY_LINK([
- #define pututline _pututline
- #endif
- ],
--[int x = DEAD_PROCESS; pututline((struct utmp *)0); getutent();], AC_DEFINE(GETUTENT), LIBS="$olibs")
-+[int x = DEAD_PROCESS; pututline(NULL); getutent();], AC_DEFINE(GETUTENT), LIBS="$olibs")
- )
- AC_CHECKING(ut_host)
- AC_TRY_COMPILE([
-@@ -962,6 +962,7 @@ fi
- AC_CHECKING(getloadavg)
- AC_TRY_LINK([
-     #include <stdlib.h>
-+    #include <sys/loadavg.h>
- ],[
-     getloadavg((double *)0, 0);],
- AC_DEFINE(LOADAV_GETLOADAVG) load=1,
-diff -wpruN --no-dereference '--exclude=*.orig' a~/os.h a/os.h
---- a~/os.h	1970-01-01 00:00:00
-+++ a/os.h	1970-01-01 00:00:00
-@@ -131,7 +131,7 @@ extern int errno;
- # define rindex strrchr
- # define bzero(poi,len) memset(poi,0,len)
- # define bcmp memcmp
--# define killpg(pgrp,sig) kill( -(pgrp), sig)
-+//# define killpg(pgrp,sig) kill( -(pgrp), sig)
- #endif
+diff -wpruN --no-dereference '--exclude=*.orig' a~/termcap.c a/termcap.c
+--- a~/termcap.c	1970-01-01 00:00:00
++++ a/termcap.c	1970-01-01 00:00:00
+@@ -32,6 +32,7 @@
  
- #ifndef HAVE_GETCWD
+ #include <sys/types.h>
+ #include <stdint.h>
++#include <strings.h>
+ 
+ #include "screen.h"
+ 
 diff -wpruN --no-dereference '--exclude=*.orig' a~/utmp.c a/utmp.c
 --- a~/utmp.c	1970-01-01 00:00:00
 +++ a/utmp.c	1970-01-01 00:00:00
-@@ -35,6 +35,8 @@
- #include "extern.h"
+@@ -39,6 +39,8 @@
+ #include "screen.h"
  
  #ifdef HAVE_UTEMPTER
 +#include <sys/types.h>
