@@ -109,6 +109,7 @@ omnios driver/i86pc/ioat
 omnios driver/i86pc/platform
 omnios driver/inotify
 omnios driver/ipmi
+omnios driver/ktest
 omnios driver/misc/ccid
 omnios driver/misc/virtio
 omnios driver/network/afe
