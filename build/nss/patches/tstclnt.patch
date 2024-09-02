@@ -1,0 +1,14 @@
+Build and ship the `tstclnt` utility. This is usually only enabled if all
+tests are built, and they do not yet build on illumos
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/nss.gyp a/nss.gyp
+--- a~/nss.gyp	1970-01-01 00:00:00
++++ a/nss.gyp	1970-01-01 00:00:00
+@@ -115,6 +115,7 @@
+           'dependencies': [
+             'cmd/certutil/certutil.gyp:certutil',
+             'cmd/pk12util/pk12util.gyp:pk12util',
++            'cmd/tstclnt/tstclnt.gyp:tstclnt',
+           ],
+           'conditions': [
+             [ 'comm_client==1', {
