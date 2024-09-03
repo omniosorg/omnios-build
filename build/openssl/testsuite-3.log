@@ -128,6 +128,7 @@ Result: NOTESTS
 30-test_defltfips.t ................ ok
 30-test_engine.t ................... ok
 30-test_evp.t ...................... ok
+30-test_evp_byname.t ............... ok
 30-test_evp_extra.t ................ ok
 30-test_evp_fetch_prov.t ........... ok
 30-test_evp_kdf.t .................. ok
@@ -161,6 +162,7 @@ Result: NOTESTS
 70-test_clienthello.t .............. ok
 70-test_comp.t ..................... ok
 70-test_key_share.t ................ ok
+70-test_npn.t ...................... ok
 70-test_packet.t ................... ok
 70-test_recordlen.t ................ ok
 70-test_renegotiation.t ............ ok
@@ -255,5 +257,5 @@ Result: NOTESTS
 99-test_fuzz_server.t .............. ok
 99-test_fuzz_x509.t ................ ok
 All tests successful.
-Files=253, Tests=3350, 
+Files=255, Tests=3358, 
 Result: PASS
