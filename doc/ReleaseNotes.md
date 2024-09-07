@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bs (2024-09-06)
+Weekly release for w/c 2nd of September 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to version 3.0.15.
+
+* Git updated to version 2.40.3
+
+### Other Changes
+
+* The `bhyve` branded zone can now handle up to 16 VNICs.
+
+<br>
+
+---
+
 ## r151046bn (2024-08-01)
 Weekly release for w/c 29th of July 2024.
 > This is a non-reboot update
