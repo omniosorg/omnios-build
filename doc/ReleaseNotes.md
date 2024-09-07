@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050r (2024-09-06)
+Weekly release for w/c 2nd of September 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to version 3.1.7.
+
+* Git updated to version 2.44.2
+
+<br>
+
+---
+
 ## r151050m (2024-08-01)
 Weekly release for w/c 29th of July 2024.
 > This is a non-reboot update
