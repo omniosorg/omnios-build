@@ -104,7 +104,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/posixmodule.c a/Modul
              default: {
                  PyErr_SetString(PyExc_TypeError,
                                  "Unknown file_actions identifier");
-@@ -16503,6 +16524,9 @@ all_ins(PyObject *m)
+@@ -16505,6 +16526,9 @@ all_ins(PyObject *m)
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_OPEN", POSIX_SPAWN_OPEN)) return -1;
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_CLOSE", POSIX_SPAWN_CLOSE)) return -1;
      if (PyModule_AddIntConstant(m, "POSIX_SPAWN_DUP2", POSIX_SPAWN_DUP2)) return -1;

@@ -4,7 +4,7 @@ it may well have if it's an IPS image.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_pkgutil.py a/Lib/test/test_pkgutil.py
 --- a~/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_pkgutil.py	1970-01-01 00:00:00
-@@ -546,22 +546,22 @@ class NestedNamespacePackageTest(unittes
+@@ -582,22 +582,22 @@ class NestedNamespacePackageTest(unittes
          pkgutil_boilerplate = (
              'import pkgutil; '
              '__path__ = pkgutil.extend_path(__path__, __name__)')
