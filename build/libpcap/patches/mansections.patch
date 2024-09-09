@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -10508,10 +10508,11 @@ $as_echo "#define HAVE_SOLARIS 1" >>conf
+@@ -10200,10 +10200,11 @@ printf "%s\n" "#define HAVE_SOLARIS 1" >
  		#
  		# Use System V conventions for man pages.
  		#
@@ -20,7 +20,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -2464,10 +2464,11 @@ solaris*)
+@@ -2484,10 +2484,11 @@ solaris*)
  		#
  		# Use System V conventions for man pages.
  		#
