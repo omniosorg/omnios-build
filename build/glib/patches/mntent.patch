@@ -5,7 +5,7 @@ OmniOS and mnt_opts on Linux; adjust.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/gunixmounts.c a/gio/gunixmounts.c
 --- a~/gio/gunixmounts.c	1970-01-01 00:00:00
 +++ a/gio/gunixmounts.c	1970-01-01 00:00:00
-@@ -634,7 +634,7 @@ _g_get_unix_mounts (void)
+@@ -704,7 +704,7 @@ _g_unix_mounts_get_from_file (const char
                                               mntent->mnt_dir,
                                               NULL,
                                               mntent->mnt_type,
@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/gunixmounts.c a/gio/gunix
                                               is_read_only);
  
        g_hash_table_insert (mounts_hash,
-@@ -749,7 +749,7 @@ _g_get_unix_mounts (void)
+@@ -835,7 +835,7 @@ _g_unix_mounts_get_from_file (const char
                                               mntent.mnt_mountp,
                                               NULL,
                                               mntent.mnt_fstype,
@@ -22,8 +22,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/gunixmounts.c a/gio/gunix
 +                                             mntent.mnt_mntopts,
                                               is_read_only);
  
-       return_list = g_list_prepend (return_list, mount_entry);
-@@ -1172,7 +1172,7 @@ _g_get_unix_mount_points (void)
+       g_ptr_array_add (return_array, g_steal_pointer (&mount_entry));
+@@ -1355,7 +1355,7 @@ _g_unix_mount_points_get_from_file (cons
        mount_point = create_unix_mount_point (device_path,
                                               mntent->mnt_dir,
                                               mntent->mnt_type,
