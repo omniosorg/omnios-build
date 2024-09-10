@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.9
+VER=3.11.10
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
