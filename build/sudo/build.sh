@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=sudo
-VER=1.9.15p5
+VER=1.9.16
 PKG=security/sudo
 SUMMARY="Authority delegation tool"
 DESC="Provide limited super-user privileges to specific users"
