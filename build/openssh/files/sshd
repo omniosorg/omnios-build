@@ -4,11 +4,13 @@
 # Use is subject to license terms.
 #
 # Copyright 2016 Hans Rosenfeld <rosenfeld@grumpf.hope-2000.org>
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 
 . /lib/svc/share/ipf_include.sh
 . /lib/svc/share/smf_include.sh
+
+rc=$SMF_EXIT_OK
 
 create_ipf_rules()
 {
@@ -34,13 +36,16 @@ case $1 in
 
 'start')
 	# If host keys don't exist when the service is started, create them.
-        /usr/bin/ssh-keygen -A || exit $SMF_EXIT_ERR_FATAL
-	exec /usr/sbin/sshd
+	# If we can't, we will flag this service as degraded but still allow it
+	# to attempt to start to end up with a system that is as functional as
+	# possible, and potentially has a running sshd to aid remote recovery.
+	/usr/bin/ssh-keygen -A || rc=$SMF_EXIT_MON_DEGRADE
+	/usr/sbin/sshd || rc=$SMF_EXIT_ERR_FATAL
 	;;
 *)
 	echo "Usage: $0 start"
-	exit $SMF_ERROR_FATAL
+	rc=$SMF_ERROR_FATAL
 	;;
 esac
 
-exit $?
+exit $rc
