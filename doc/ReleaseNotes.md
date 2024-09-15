@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048as (2024-09-15)
+Weekly release for w/c 9th of September 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Python updated to version 3.11.10
+
+* Expat updated to version 2.6.3
+
+<br>
+
+---
+
 ## r151048ar (2024-09-06)
 Weekly release for w/c 2nd of September 2024.
 > This is a non-reboot update
