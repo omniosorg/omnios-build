@@ -1,0 +1,22 @@
+From https://github.com/oracle/solaris-userland
+
+server_res is not touched if the previous getaddrinfo failed;
+there is nothing to free.
+
+This reverts the following upstream commit:
+https://github.com/esnet/iperf/commit/111212bca2eaab948cff11fafddcb097e7615f52
+
+and was reported here:
+https://github.com/esnet/iperf/pull/1755
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/net.c a/src/net.c
+--- a~/src/net.c	1970-01-01 00:00:00
++++ a/src/net.c	1970-01-01 00:00:00
+@@ -145,7 +145,6 @@ create_socket(int domain, int proto, con
+     if ((gerror = getaddrinfo(server, portstr, &hints, &server_res)) != 0) {
+ 	if (local)
+ 	    freeaddrinfo(local_res);
+-        freeaddrinfo(server_res);
+         return -1;
+     }
+ 
