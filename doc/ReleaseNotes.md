@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bt (2024-09-15)
+Weekly release for w/c 9th of September 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Python updated to version 3.11.10
+
+* Expat updated to version 2.6.3
+
+<br>
+
+---
+
 ## r151046bs (2024-09-06)
 Weekly release for w/c 2nd of September 2024.
 > This is a non-reboot update
