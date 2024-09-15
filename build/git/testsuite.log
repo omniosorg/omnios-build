@@ -58,7 +58,7 @@
 *** t0032-reftable-unittest.sh ***
 # passed all 1 test(s)
 *** t0033-safe-directory.sh ***
-# passed all 16 test(s)
+# passed all 22 test(s)
 *** t0034-root-safe-directory.sh ***
 *** t0035-safe-bare-repository.sh ***
 # passed all 12 test(s)
