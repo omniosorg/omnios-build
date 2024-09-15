@@ -117,7 +117,7 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 661			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.10.0			| https://curl.haxx.se/download.html
+| web/curl				| 8.10.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.24.5		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.0		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
@@ -139,7 +139,7 @@
 | library/python-3/meson-312		| 1.5.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-312		| 3.10.7		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
-| library/python-3/pip-312		| 24.2		| https://pypi.org/project/pip
+| library/python-3/pip-312		| 24.2			| https://pypi.org/project/pip
 | library/python-3/pycodestyle-312	| 2.12.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
@@ -149,7 +149,7 @@
 | library/python-3/rapidjson-312	| 1.20			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-312	| 2.10.0		| https://pypi.org/project/semantic-version
 | library/python-3/setuptools-312	| 73.0.1		| https://pypi.org/project/setuptools
-| library/python-3/setuptools-rust-312	| 1.10.1			| https://pypi.org/project/setuptools-rust
+| library/python-3/setuptools-rust-312	| 1.10.1		| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
 | library/python-3/typing-extensions-312| 4.12.2		| https://pypi.org/project/typing-extensions
