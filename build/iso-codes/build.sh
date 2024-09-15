@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=iso-codes
-VER=4.16.0
+VER=4.17.0
 PKG=data/iso-codes
 SUMMARY="ISO code lists and translations"
 DESC="Lists of various ISO standards "
