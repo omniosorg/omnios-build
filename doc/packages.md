@@ -11,7 +11,7 @@
 | compress/xz				| 5.6.2			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.6			| https://github.com/facebook/zstd/releases
-| data/iso-codes			| 4.16.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
+| data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
 | database/sqlite-3			| 3460100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
@@ -27,7 +27,7 @@
 | developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.46.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.46.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 6.8.1			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -80,7 +80,7 @@
 | runtime/java/openjdk21		| 21.0.4+7		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.422-05		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.38.2		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.9		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.10		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.6		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
@@ -117,7 +117,7 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 661			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.9.1			| https://curl.haxx.se/download.html
+| web/curl				| 8.10.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.24.5		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.0		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
@@ -139,7 +139,7 @@
 | library/python-3/meson-312		| 1.5.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-312		| 3.10.7		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.1			| https://pypi.org/project/packaging
-| library/python-3/pip-312		| 24.2		| https://pypi.org/project/pip
+| library/python-3/pip-312		| 24.2			| https://pypi.org/project/pip
 | library/python-3/pycodestyle-312	| 2.12.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
@@ -149,7 +149,7 @@
 | library/python-3/rapidjson-312	| 1.20			| https://pypi.org/project/python-rapidjson
 | library/python-3/semantic-version-312	| 2.10.0		| https://pypi.org/project/semantic-version
 | library/python-3/setuptools-312	| 73.0.1		| https://pypi.org/project/setuptools
-| library/python-3/setuptools-rust-312	| 1.10.1			| https://pypi.org/project/setuptools-rust
+| library/python-3/setuptools-rust-312	| 1.10.1		| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
 | library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
 | library/python-3/typing-extensions-312| 4.12.2		| https://pypi.org/project/typing-extensions
