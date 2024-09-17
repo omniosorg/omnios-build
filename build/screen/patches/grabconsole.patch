@@ -1,0 +1,22 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tty.c a/tty.c
+--- a~/tty.c	1970-01-01 00:00:00
++++ a/tty.c	1970-01-01 00:00:00
+@@ -802,6 +802,7 @@ static void consredir_readev_fn(Event *
+ 
+ int TtyGrabConsole(int fd, bool on, char *rc_name)
+ {
++#if defined(SRIOCSREDIR) || defined(TIOCCONS)
+ 	Display *d;
+ #ifdef SRIOCSREDIR
+ 	int cfd;
+@@ -881,6 +882,10 @@ int TtyGrabConsole(int fd, bool on, char
+ 	consredir_ev.handler = consredir_readev_fn;
+ 	evenq(&consredir_ev);
+ 	return 0;
++#else
++	Msg(0, "Grabbing console not supported");
++	return -1;
++#endif
+ }
+ 
+ /*

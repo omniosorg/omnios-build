@@ -1,4 +1,5 @@
 Makefile.in.patch
-ncurses.patch
-unneededlibs.patch
+openpty.patch
+grabconsole.patch
+closefiles.patch
 gcc14.patch

@@ -8,5 +8,5 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 -bindir  = $(exec_prefix)/bin
 +bindir  = @bindir@
  
- VERSION = @VERSION@
+ VERSION = @PACKAGE_VERSION@
  SCREEN = screen-$(VERSION)

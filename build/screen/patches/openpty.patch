@@ -1,0 +1,62 @@
+Pending https://www.illumos.org/issues/5386
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/pty.c a/pty.c
+--- a~/pty.c	1970-01-01 00:00:00
++++ a/pty.c	1970-01-01 00:00:00
+@@ -46,6 +46,56 @@
+ 
+ int pty_preopen = 0;
+ 
++#ifdef __illumos__
++#include <sys/stropts.h>
++
++static int
++openpty_failure(int c, int s, int e)
++{
++	if (s >= 0)
++		(void) close(s);
++	if (c >= 0)
++		(void) close(c);
++	errno = e;
++	return (-1);
++}
++
++static int
++openpty(int *controlp, int *subordp, char *name, const struct termios *termp,
++    const struct winsize *winp)
++{
++	int c = -1;
++	int s = -1;
++	char *sname;
++
++	if ((c = posix_openpt(O_RDWR | O_NOCTTY)) < 0)
++		return (-1);
++	if (grantpt(c) < 0 || unlockpt(c) < 0)
++		return (openpty_failure(c, s, errno));
++	if ((sname = ptsname(c)) == NULL ||
++	    (s = open(sname, O_RDWR | O_NOCTTY)) < 0) {
++		return (openpty_failure(c, s, errno));
++	}
++
++	if (ioctl(s, __I_PUSH_NOCTTY, "ptem") < 0 ||
++	    ioctl(s, __I_PUSH_NOCTTY, "ldterm") < 0) {
++		return (openpty_failure(c, s, errno));
++	}
++
++	if (termp != NULL && tcsetattr(s, TCSAFLUSH, termp) != 0)
++		return (openpty_failure(c, s, errno));
++	if (winp != NULL && ioctl(s, TIOCSWINSZ, winp) != 0)
++		return (openpty_failure(c, s, errno));
++
++	if (name != NULL)
++		strcpy(name, sname);
++
++	*controlp = c;
++	*subordp = s;
++	return (0);
++}
++#endif
++
+ /***************************************************************/
+ 
+ int OpenPTY(char **ttyn)
