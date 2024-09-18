@@ -1,4 +1,3 @@
-
 # Using a PTY, which became the default in sudo 1.9.14, does not yet work
 # properly. This restores the previous default.
 

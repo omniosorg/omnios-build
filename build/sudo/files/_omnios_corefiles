@@ -1,0 +1,7 @@
+# Lowering the core dump limit in the child environment became the default
+# when resource limits were introduced in sudo 1.9.9.
+# We preserve the default limits on OmniOS to retain old behaviour, and to have
+# something useful for post-mortem debugging.
+
+Defaults rlimit_core=default
+

@@ -30,6 +30,8 @@
 
 file files/_omnios_nopty path=etc/sudoers.d/_omnios_nopty \
     owner=root group=root mode=0440 preserve=true
+file files/_omnios_corefiles path=etc/sudoers.d/_omnios_corefiles \
+    owner=root group=root mode=0440 preserve=true
 
 license LICENSE.md license=Various
 
