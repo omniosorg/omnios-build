@@ -40,6 +40,7 @@ CONFIGURE_OPTS="
     --enable-python
     --enable-log-client
     --disable-log-server
+    --with-secure-path-value=no
 "
 CONFIGURE_OPTS[amd64]+="
     --libexecdir=/usr/lib/$PROG/amd64
