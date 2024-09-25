@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=libxml2
-VER=2.13.3
+VER=2.13.4
 PKG=library/libxml2
 SUMMARY="XML C parser and toolkit"
 DESC="Portable XML parser and toolkit library"
