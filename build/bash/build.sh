@@ -27,7 +27,7 @@
 . ../../lib/build.sh
 
 PROG=bash
-VER=5.2.32
+VER=5.2.37
 PATCHLVL=32
 PKG=shell/bash
 SUMMARY="GNU Bash"

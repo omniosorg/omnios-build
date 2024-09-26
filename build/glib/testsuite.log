@@ -226,7 +226,7 @@ glib:glib+core / types                                                 OK   1 su
 glib:glib+core / unicode                                               OK   38 subtests passed
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-normalize                                     OK   3 subtests passed
-glib:glib+core / unix                                                  OK   20 subtests passed
+glib:glib+core / unix                                                  ERROR   killed by signal 11 SIGSEGV
 glib:glib+core / uri                                                   OK   24 subtests passed
 glib:glib+core / utf8-misc                                             OK   7 subtests passed
 glib:glib+core / utf8-performance                                      OK   36 subtests passed
@@ -355,14 +355,15 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
+glib:glib+core / unix                                                  ERROR   killed by signal 11 SIGSEGV
 glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 334 
+Ok:                 333 
 Expected Fail:      0   
-Fail:               9   
+Fail:               10  
 Unexpected Pass:    0   
 Skipped:            6   
 Timeout:            0   

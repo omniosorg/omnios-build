@@ -148,6 +148,8 @@ litoct
 longsub
 longwrds
 manglprm
+match4
+matchuninitialized
 math
 membug1
 memleak
@@ -205,6 +207,7 @@ posix2008sub
 posix_compare
 prdupval
 prec
+printf-corners
 printf0
 printf1
 printfchar
@@ -264,6 +267,7 @@ strcat1
 strfieldnum
 strnum1
 strnum2
+strsubscript
 strtod
 subamp
 subback
@@ -343,6 +347,10 @@ csv1
 csv2
 csv3
 csvodd
+dbugarray1
+dbugarray2
+dbugarray3
+dbugarray4
 dbugeval
 dbugeval2
 dbugeval3
@@ -473,6 +481,7 @@ nsindirect1
 nsindirect2
 nsprof1
 nsprof2
+nsprof3
 octdec
 patsplit
 posix
@@ -484,14 +493,6 @@ printhuge
 procinfs
 profile0
 profile1
-profile10
-profile11
-profile12
-profile13
-profile14
-profile15
-profile16
-profile17
 profile2
 profile3
 profile4
@@ -500,8 +501,17 @@ profile6
 profile7
 profile8
 profile9
+profile10
+profile11
+profile12
+profile13
+profile14
+profile15
+profile16
+profile17
 pty1
 pty2
+re_test
 rebuf
 regexsub
 reginttrad
@@ -560,6 +570,8 @@ typeof3
 typeof4
 typeof5
 typeof6
+typeof7
+typeof8
 unicode1
 watchpoint1
 gawk is not compiled to support the array debug tests
@@ -660,10 +672,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 2 TESTS FAILED
-make[3]: *** [Makefile:5687: pass-fail] Error 1
+make[3]: *** [Makefile:5785: pass-fail] Error 1
 ============== _cmdlinefsbacknl2 =============
---- cmdlinefsbacknl2.ok	Mon Oct  9 15:38:09 2023
-+++ _cmdlinefsbacknl2	Fri Nov 10 11:00:13 2023
+--- cmdlinefsbacknl2.ok	Thu Aug 29 06:52:19 2024
++++ _cmdlinefsbacknl2	Wed Sep 25 14:19:34 2024
 @@ -1,12 +1,19 @@
   5c 0a
 +
@@ -686,7 +698,7 @@ make[3]: *** [Makefile:5687: pass-fail] Error 1
  gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
 --- localenl.ok	Thu Dec 14 17:49:00 2017
-+++ _localenl	Fri Nov 10 11:00:26 2023
++++ _localenl	Wed Sep 25 14:19:47 2024
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -694,6 +706,6 @@ make[3]: *** [Makefile:5687: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2189: check] Error 1
-make[1]: *** [Makefile:803: check-recursive] Error 1
-make: *** [Makefile:1102: check] Error 2
+make[2]: *** [Makefile:2223: check] Error 1
+make[1]: *** [Makefile:805: check-recursive] Error 1
+make: *** [Makefile:1104: check] Error 2

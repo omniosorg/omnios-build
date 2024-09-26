@@ -27,7 +27,7 @@
 | developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.46.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.46.2		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 6.8.1			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -47,8 +47,8 @@
 | library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.48.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.13.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libuv				| 1.49.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libxml2			| 2.13.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.42		| https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -66,9 +66,9 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20240710		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20240910		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20240312		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.29		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.30		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.8p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.3.0			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -86,8 +86,8 @@
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
-| shell/bash				| 5.2.32		| https://ftp.gnu.org/gnu/bash/
-| shell/bash5-patchlvl			| 032			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
+| shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
+| shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.8.14		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.13		| https://github.com/tcsh-org/tcsh/tags
@@ -109,7 +109,7 @@
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.4			| https://github.com/tmux/tmux/releases http://tmux.github.io/
-| text/gawk				| 5.3.0			| https://ftp.gnu.org/gnu/gawk/
+| text/gawk				| 5.3.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.22.5		| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
@@ -117,10 +117,10 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 661			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.10.0		| https://curl.haxx.se/download.html
+| web/curl				| 8.10.1		| https://curl.haxx.se/download.html
 | web/wget				| 1.24.5		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.82.0		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.82.1		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.43.1		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.4.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
