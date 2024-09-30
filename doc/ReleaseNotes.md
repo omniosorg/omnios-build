@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOS v11 r151048
 
+## r151048av (2024-10-01)
+Weekly release for w/c 30th of September 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode has been updated to 20240910.
+
+### Other Changes
+
+* The `pkg` client has been updated to consider unknown variants as `false` by
+  default. This enables developers to use `onu` with recent versions of
+  illumos gate.
+
+<br>
+
+---
+
 ## r151048as (2024-09-15)
 Weekly release for w/c 9th of September 2024.
 > This is a non-reboot update
