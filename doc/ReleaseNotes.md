@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050v (2024-09-30)
+Weekly release for w/c 30th of September 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode has been updated to 20240910.
+
+<br>
+
+---
+
 ## r151050s (2024-09-15)
 Weekly release for w/c 9th of September 2024.
 > This is a non-reboot update
