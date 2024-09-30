@@ -54,7 +54,7 @@
 | library/nettle			| 3.10			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.63.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.104			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.105			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.35			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.44			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
@@ -108,7 +108,7 @@
 | system/test/fio			| 3.37			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
-| terminal/tmux				| 3.4			| https://github.com/tmux/tmux/releases http://tmux.github.io/
+| terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.22.5		| https://ftp.gnu.org/pub/gnu/gettext/
