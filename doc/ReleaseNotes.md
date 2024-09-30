@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bw (2024-10-01)
+Weekly release for w/c 30th of September 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode has been updated to 20240910.
+
+### Other Changes
+
+* The SMB client now has support for the SMB3 encryption feature. Encryption
+  can also be required on illumos SMB server shares by including
+  `encrypt=required` in the share properties.
+
+* The `pkg` client has been updated to consider unknown variants as `false` by
+  default. This enables developers to use `onu` with recent versions of
+  illumos gate.
+
+<br>
+
+---
+
 ## r151046bt (2024-09-15)
 Weekly release for w/c 9th of September 2024.
 > This is a non-reboot update
