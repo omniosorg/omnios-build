@@ -10,7 +10,7 @@ behaviour (at least the parts that are most commonly used).
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -200,6 +200,7 @@ initialize_server_options(ServerOptions
+@@ -201,6 +201,7 @@ initialize_server_options(ServerOptions
  	options->client_alive_count_max = -1;
  	options->num_authkeys_files = 0;
  	options->num_accept_env = 0;
@@ -18,7 +18,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	options->num_setenv = 0;
  	options->permit_tun = -1;
  	options->permitted_opens = NULL;
-@@ -532,6 +533,32 @@ fill_default_server_options(ServerOption
+@@ -536,6 +537,32 @@ fill_default_server_options(ServerOption
  		options->max_sessions = DEFAULT_SESSIONS_MAX;
  	if (options->use_dns == -1)
  		options->use_dns = 0;
@@ -51,7 +51,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	if (options->client_alive_interval == -1)
  		options->client_alive_interval = 0;
  	if (options->client_alive_count_max == -1)
-@@ -2305,9 +2332,12 @@ process_server_config_line_depth(ServerO
+@@ -2329,9 +2356,12 @@ process_server_config_line_depth(ServerO
  			if (*arg == '\0' || strchr(arg, '=') != NULL)
  				fatal("%s line %d: Invalid environment name.",
  				    filename, linenum);
@@ -67,7 +67,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
-@@ -178,6 +178,7 @@ typedef struct {
+@@ -179,6 +179,7 @@ typedef struct {
  	char   **subsystem_args;
  
  	u_int num_accept_env;

@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1665,6 +1665,62 @@ else
+@@ -1672,6 +1672,62 @@ else
  	AC_MSG_RESULT([no])
  fi
  
@@ -64,7 +64,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  # Check whether user wants to use ldns
  LDNS_MSG="no"
  AC_ARG_WITH(ldns,
-@@ -5714,6 +5770,7 @@ echo "                       PAM support
+@@ -5725,6 +5781,7 @@ echo "                       PAM support
  echo "                   OSF SIA support: $SIA_MSG"
  echo "                 KerberosV support: $KRB5_MSG"
  echo "                   SELinux support: $SELINUX_MSG"
@@ -87,7 +87,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  #include "xmalloc.h"
  #include "ssh.h"
  #include "ssh2.h"
-@@ -1269,6 +1274,25 @@ main(int ac, char **av)
+@@ -1271,6 +1276,25 @@ main(int ac, char **av)
  	audit_connection_from(ssh, remote_ip, remote_port);
  #endif
  
@@ -116,7 +116,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.8 a/sshd.8
 --- a~/sshd.8	1970-01-01 00:00:00
 +++ a/sshd.8	1970-01-01 00:00:00
-@@ -921,6 +921,12 @@ the user's home directory becomes access
+@@ -925,6 +925,12 @@ the user's home directory becomes access
  This file should be writable only by the user, and need not be
  readable by anyone else.
  .Pp
@@ -129,7 +129,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd.8 a/sshd.8
  .It Pa /etc/hosts.equiv
  This file is for host-based authentication (see
  .Xr ssh 1 ) .
-@@ -1048,6 +1054,7 @@ Each SSHv2 userauth type has its own PAM
+@@ -1052,6 +1058,7 @@ Each SSHv2 userauth type has its own PAM
  .Xr ssh-keygen 1 ,
  .Xr ssh-keyscan 1 ,
  .Xr chroot 2 ,
