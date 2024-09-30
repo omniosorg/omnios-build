@@ -108,7 +108,7 @@
 | system/test/fio			| 3.37			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
-| terminal/tmux				| 3.4			| https://github.com/tmux/tmux/releases http://tmux.github.io/
+| terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.10			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.22.5		| https://ftp.gnu.org/pub/gnu/gettext/
