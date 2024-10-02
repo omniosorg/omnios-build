@@ -54,7 +54,7 @@
 		name='start'
 		exec='/usr/lib/inet/in.lldpd'
 		timeout_seconds='60'>
-		<method_context security_flags='aslr'>
+		<method_context security_flags='aslr' working_directory='/'>
 			<method_credential
 			    user='root'
 			    group='root'

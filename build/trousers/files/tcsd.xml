@@ -53,7 +53,7 @@
 		<service_fmri value='svc:/system/filesystem/minimal' />
 	</dependency>
 
-	<method_context security_flags="aslr">
+	<method_context security_flags='aslr' working_directory='/'>
 		<method_credential user='root' group='sys' />
 	</method_context>
 

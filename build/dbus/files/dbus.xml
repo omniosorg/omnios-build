@@ -57,9 +57,6 @@
 		name='start'
 		exec='/lib/svc/method/svc-dbus start'
 		timeout_seconds='30'>
-		<method_context>
-			<method_credential user='root' group='root' />
-		</method_context>
 	</exec_method>
 
 	<exec_method

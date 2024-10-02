@@ -102,7 +102,7 @@
     	    name='start'
     	    exec='/lib/svc/method/ntpsec %m'
     	    timeout_seconds='600'>
-		<method_context security_flags='aslr'>
+		<method_context security_flags='aslr' working_directory='/'>
 			<method_credential
 			    user='root'
 			    group='root'
@@ -116,7 +116,7 @@
     	    name='restart'
     	    exec='/lib/svc/method/ntpsec %m'
     	    timeout_seconds='1800'>
-		<method_context security_flags='aslr'>
+		<method_context security_flags='aslr' working_directory='/'>
 			<method_credential
 			    user='root'
 			    group='root'
