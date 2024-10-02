@@ -25,61 +25,59 @@
  operating system upgrade.  Make customizations in a different
  file.
 -->
+<service_bundle type="manifest"
+                name="lldpd">
 
-<service_bundle type='manifest' name='lldpd'>
+    <service name="network/lldp"
+             type="service"
+             version="1">
 
-<service
-	name='network/lldp'
-	type='service'
-	version='1'>
-	<single_instance />
-	<dependency
-		name='network'
-		grouping='require_all'
-		restart_on='error'
-		type='service'>
-		<service_fmri value='svc:/network/physical' />
-	</dependency>
+        <single_instance />
 
-	<dependency
-		name='dladm'
-		grouping='require_all'
-		restart_on='error'
-		type='service'>
-		<service_fmri value='svc:/network/datalink-management' />
-	</dependency>
+        <dependency name="network"
+                    grouping="require_all"
+                    restart_on="error"
+                    type="service">
+            <service_fmri value="svc:/network/physical" />
+        </dependency>
 
-	<exec_method
-		type='method'
-		name='start'
-		exec='/usr/lib/inet/in.lldpd'
-		timeout_seconds='60'>
-		<method_context security_flags='aslr' working_directory='/'>
-			<method_credential
-			    user='root'
-			    group='root'
-			    privileges='basic,!file_link_any,!proc_info,!proc_session,net_rawaccess'
-			/>
-		</method_context>
-	</exec_method>
+        <dependency name="dladm"
+                    grouping="require_all"
+                    restart_on="error"
+                    type="service">
+            <service_fmri value="svc:/network/datalink-management" />
+        </dependency>
 
-	<exec_method
-		type='method'
-		name='stop'
-		exec=':kill'
-		timeout_seconds='60' />
+        <exec_method type="method"
+                     name="start"
+                     exec="/usr/lib/inet/in.lldpd"
+                     timeout_seconds="60">
+            <method_context security_flags="aslr"
+                            working_directory="/">
+                <method_credential user="root"
+                                   group="root"
+                                   privileges="basic,!file_link_any,!proc_info,!proc_session,net_rawaccess" />
+            </method_context>
+        </exec_method>
 
-	<instance name="default" enabled="true" />
-	<stability value='Unstable' />
+        <exec_method type="method"
+                     name="stop"
+                     exec=":kill"
+                     timeout_seconds="60" />
 
-	<template>
-		<common_name>
-			<loctext xml:lang='C'>
-			Link-layer Discovery Protocol Server
-			</loctext>
-		</common_name>
-		<documentation />
-	</template>
-</service>
+        <instance name="default"
+                  enabled="true" />
+
+        <stability value="Unstable" />
+
+        <template>
+            <common_name>
+                <loctext xml:lang="C">Link-layer Discovery Protocol
+                Server</loctext>
+            </common_name>
+            <documentation />
+        </template>
+
+    </service>
 
 </service_bundle>

@@ -1,5 +1,5 @@
-<?xml version="1.0" ?>
-<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
 <!--
     CDDL HEADER START
 
@@ -24,74 +24,67 @@
     All rights reserved.
     Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 -->
+<service_bundle type="manifest"
+                name="system/virtualization/open-vm-tools">
 
-<service_bundle type="manifest" name="system/virtualization/open-vm-tools">
+    <service name="system/virtualization/open-vm-tools"
+             type="service"
+             version="1">
 
-<service
-	name="system/virtualization/open-vm-tools"
-	type="service"
-	version="1">
+        <create_default_instance enabled="true" />
 
-	<create_default_instance enabled="true" />
+        <dependency name="multi_user_dependency"
+                    grouping="require_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/milestone/multi-user" />
+        </dependency>
+        <!-- vmtoolsd adjusts the system time. Prevent ntp and chrony running
+             at the same time. -->
 
-	<dependency
-		name="multi_user_dependency"
-		grouping="require_all"
-		restart_on="none"
-		type="service">
-		<service_fmri value="svc:/milestone/multi-user"/>
-	</dependency>
+        <dependency name="ntpd"
+                    grouping="exclude_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/network/ntp:default" />
+        </dependency>
 
-	<!-- vmtoolsd adjusts the system time. Prevent ntp and chrony running
-	     at the same time. -->
-	<dependency
-		name='ntpd'
-		grouping='exclude_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri
-		    value='svc:/network/ntp:default' />
-	</dependency>
+        <dependency name="chrony"
+                    grouping="exclude_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/network/chrony:default" />
+        </dependency>
 
-	<dependency
-		name='chrony'
-		grouping='exclude_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri
-		    value='svc:/network/chrony:default' />
-	</dependency>
+        <exec_method type="method"
+                     name="start"
+                     exec="/usr/bin/vmtoolsd &amp;"
+                     timeout_seconds="60" />
 
-	<exec_method
-		type="method"
-		name="start"
-		exec="/usr/bin/vmtoolsd &amp;"
-		timeout_seconds="60" />
+        <exec_method type="method"
+                     name="stop"
+                     exec=":kill"
+                     timeout_seconds="60" />
 
-	<exec_method
-		type="method"
-		name="stop"
-		exec=":kill"
-		timeout_seconds="60" />
+        <exec_method type="method"
+                     name="refresh"
+                     exec=":kill -1"
+                     timeout_seconds="60" />
+        <!-- SIGHUP -->
 
-	<exec_method
-		type="method"
-		name="refresh"
-		exec=":kill -1"
-		timeout_seconds="60" /> <!-- SIGHUP -->
+        <template>
+            <common_name>
+                <loctext xml:lang="C">Open Virtual Machine Tools</loctext>
+            </common_name>
+            <description>
+                <loctext xml:lang="C">The Open Virtual Machine Tools project
+                aims to provide a suite of open source virtualization utilities
+                and drivers to improve the functionality and user experience of
+                virtualization. The project currently runs in guest operating
+                systems under VMware hypervisor.</loctext>
+            </description>
+        </template>
 
-	<template>
-		<common_name>
-			<loctext xml:lang="C">
-			Open Virtual Machine Tools
-			</loctext>
-		</common_name>
-		<description>
-			<loctext xml:lang="C">
-			The Open Virtual Machine Tools project aims to provide a suite of open source virtualization utilities and drivers to improve the functionality and user experience of virtualization. The project currently runs in guest operating systems under VMware hypervisor.
-			</loctext>
-		</description>
-	</template>
-</service>
+    </service>
 
 </service_bundle>

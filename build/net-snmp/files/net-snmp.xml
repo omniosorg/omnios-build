@@ -29,130 +29,118 @@
 
     Service manifest for the net-snmp daemon
 -->
+<service_bundle type="manifest"
+                name="SUNWnet-snmp-core:net-snmp">
 
-<service_bundle type='manifest' name='SUNWnet-snmp-core:net-snmp'>
+    <service name="application/management/net-snmp"
+             type="service"
+             version="1">
 
-<service
-	name='application/management/net-snmp'
-	type='service'
-	version='1'>
+        <create_default_instance enabled="false" />
 
-	<create_default_instance enabled='false' />
+        <single_instance />
 
-	<single_instance />
+        <dependency name="multi-user"
+                    grouping="require_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/milestone/multi-user" />
+        </dependency>
+        <!-- Need / & /usr filesystems mounted, /var mounted read/write -->
 
-	<dependency
-		name='multi-user'
-		grouping='require_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri value='svc:/milestone/multi-user' />
-	</dependency>
+        <dependency name="fs-local"
+                    type="service"
+                    grouping="require_all"
+                    restart_on="none">
+            <service_fmri value="svc:/system/filesystem/local" />
+        </dependency>
 
-	<!-- Need / & /usr filesystems mounted, /var mounted read/write -->
-	<dependency
-		name='fs-local'
-		type='service'
-		grouping='require_all'
-		restart_on='none'>
-			<service_fmri value='svc:/system/filesystem/local' />
-	</dependency>
+        <dependency name="name-services"
+                    grouping="optional_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/milestone/name-services" />
+        </dependency>
 
-	<dependency
-		name='name-services'
-		grouping='optional_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri value='svc:/milestone/name-services' />
-	</dependency>
+        <dependency name="system-log"
+                    grouping="optional_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/system/system-log" />
+        </dependency>
 
-	<dependency
-		name='system-log'
-		grouping='optional_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri value='svc:/system/system-log' />
-	</dependency>
+        <dependency name="rstat"
+                    grouping="optional_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/network/rpc/rstat" />
+        </dependency>
 
-	<dependency
-		name='rstat'
-		grouping='optional_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri value='svc:/network/rpc/rstat' />
-	</dependency>
+        <dependency name="cryptosvc"
+                    grouping="require_all"
+                    restart_on="restart"
+                    type="service">
+            <service_fmri value="svc:/system/cryptosvc" />
+        </dependency>
 
-	<dependency name='cryptosvc'
-		grouping='require_all'
-		restart_on='restart'
-		type='service'>
-			<service_fmri value='svc:/system/cryptosvc' />
-	</dependency>
+        <dependency name="network"
+                    grouping="require_all"
+                    restart_on="restart"
+                    type="service">
+            <service_fmri value="svc:/milestone/network" />
+        </dependency>
 
-	<dependency
-		name='network'
-		grouping='require_all'
-		restart_on='restart'
-		type='service'>
-			<service_fmri value='svc:/milestone/network' />
-	</dependency>
+        <dependency name="config-file"
+                    grouping="require_all"
+                    restart_on="refresh"
+                    type="path">
+            <service_fmri value="file://localhost/etc/net-snmp/snmp/snmpd.conf" />
+        </dependency>
 
-	<dependency
-		name='config-file'
-		grouping='require_all'
-		restart_on='refresh'
-		type='path'>
-			<service_fmri
-			   value='file://localhost/etc/net-snmp/snmp/snmpd.conf' />
-	</dependency>
+        <exec_method type="method"
+                     name="start"
+                     exec="/lib/svc/method/svc-net-snmp"
+                     timeout_seconds="60">
+            <method_context security_flags="aslr" />
+        </exec_method>
 
-	<exec_method
-        	type='method'
-		name='start'
-		exec='/lib/svc/method/svc-net-snmp'
-		timeout_seconds='60'>
-		<method_context security_flags='aslr' />
-	</exec_method>
+        <exec_method type="method"
+                     name="stop"
+                     exec=":kill"
+                     timeout_seconds="60"></exec_method>
 
-	<exec_method
-       type='method'
-	   name='stop'
-	   exec=':kill'
-	   timeout_seconds='60'>
-	</exec_method>
+        <exec_method type="method"
+                     name="refresh"
+                     exec=":kill -HUP"
+                     timeout_seconds="60"></exec_method>
 
-	<exec_method
-	   type='method'
-	   name='refresh'
-	   exec=':kill -HUP'
-	   timeout_seconds='60'>
-	</exec_method>
+        <property_group name="general"
+                        type="framework">
+            <!-- to start/stop net-snmp -->
+            <propval name="action_authorization"
+                     type="astring"
+                     value="solaris.smf.manage.net-snmp" />
+            <propval name="value_authorization"
+                     type="astring"
+                     value="solaris.smf.manage.net-snmp" />
+            <propval name="arch_type"
+                     type="integer"
+                     value="0" />
+        </property_group>
 
-	<property_group name='general' type='framework'>
-		<!-- to start/stop net-snmp -->
-		<propval name='action_authorization' type='astring'
-			value='solaris.smf.manage.net-snmp' />
-		<propval name='value_authorization' type='astring'
-			value='solaris.smf.manage.net-snmp' />
-		<propval name='arch_type' type='integer' value='0' />
-	</property_group>
+        <stability value="Unstable" />
 
-	<stability value='Unstable' />
+        <template>
+            <common_name>
+                <loctext xml:lang="C">net-snmp SNMP daemon</loctext>
+            </common_name>
+            <documentation>
+                <manpage title="snmpd"
+                         section="8"
+                         manpath="/usr/share/man/" />
+            </documentation>
+        </template>
 
-	<template>
-		<common_name>
-			<loctext xml:lang='C'>
-			net-snmp SNMP daemon
-			</loctext>
-		</common_name>
-
-		<documentation>
-			<manpage title='snmpd' section='8'
-			    manpath='/usr/share/man/' />
-		</documentation>
-
-	</template>
-
-</service>
+    </service>
 
 </service_bundle>

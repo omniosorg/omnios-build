@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
 <!--
-	Copyright 2010 Sun Microsystems, Inc.  All rights reserved.
-	Use is subject to license terms.
+        Copyright 2010 Sun Microsystems, Inc.  All rights reserved.
+        Use is subject to license terms.
 
  CDDL HEADER START
 
@@ -24,66 +24,64 @@
 
  CDDL HEADER END
 
-	ident	"@(#)dbus.xml	1.1	06/04/24 SMI"
+        ident   "@(#)dbus.xml   1.1     06/04/24 SMI"
 
-	NOTE:  This service manifest is not editable; its contents will
-	be overwritten by package or patch operations, including
-	operating system upgrade.  Make customizations in a different
-	file.
+        NOTE:  This service manifest is not editable; its contents will
+        be overwritten by package or patch operations, including
+        operating system upgrade.  Make customizations in a different
+        file.
 
-	Service manifest for dbus.
+        Service manifest for dbus.
 -->
+<service_bundle type="manifest"
+                name="SUNWdbusr:dbus">
 
-<service_bundle type='manifest' name='SUNWdbusr:dbus'>
+    <service name="system/dbus"
+             type="service"
+             version="1">
 
-<service
-	name='system/dbus'
-	type='service'
-	version='1'>
+        <create_default_instance enabled="true" />
 
-	<create_default_instance enabled='true' />
+        <single_instance />
 
-	<single_instance />
+        <dependency name="usr"
+                    type="service"
+                    grouping="require_all"
+                    restart_on="none">
+            <service_fmri value="svc:/system/filesystem/minimal" />
+        </dependency>
 
-	<dependency name='usr'
-		type='service'
-		grouping='require_all'
-		restart_on='none'>
-		<service_fmri value='svc:/system/filesystem/minimal' />
-	</dependency>
+        <exec_method type="method"
+                     name="start"
+                     exec="/lib/svc/method/svc-dbus start"
+                     timeout_seconds="30"></exec_method>
 
-	<exec_method
-		type='method'
-		name='start'
-		exec='/lib/svc/method/svc-dbus start'
-		timeout_seconds='30'>
-	</exec_method>
+        <exec_method type="method"
+                     name="stop"
+                     exec=":kill"
+                     timeout_seconds="30" />
 
-	<exec_method
-		type='method'
-		name='stop'
-		exec=':kill'
-		timeout_seconds='30' />
+        <property_group name="startd"
+                        type="framework">
+            <!-- sub-process core dumps should not restart session -->
+            <propval name="ignore_error"
+                     type="astring"
+                     value="core,signal" />
+        </property_group>
 
-	<property_group name='startd' type='framework'>
-		<!-- sub-process core dumps shouldn't restart session -->
-		<propval name='ignore_error' type='astring'
-		    value='core,signal' />
-	</property_group>
+        <stability value="Unstable" />
 
-	<stability value='Unstable' />
+        <template>
+            <common_name>
+                <loctext xml:lang="C">D-BUS message bus</loctext>
+            </common_name>
+            <documentation>
+                <manpage title="dbus-daemon"
+                         section="1"
+                         manpath="/usr/man" />
+            </documentation>
+        </template>
 
-	<template>
-		<common_name>
-			<loctext xml:lang='C'>
-			D-BUS message bus
-			</loctext>
-		</common_name>
-		<documentation>
-			<manpage title='dbus-daemon' section='1' manpath='/usr/man' />
-		</documentation>
-	</template>
-
-</service>
+    </service>
 
 </service_bundle>

@@ -25,82 +25,78 @@
  Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
 -->
+<service_bundle type="manifest"
+                name="tcsd">
 
-<service_bundle type='manifest' name='tcsd'>
+    <service name="application/security/tcsd"
+             type="service"
+             version="1">
 
-<service
-        name='application/security/tcsd'
-        type='service'
-        version='1'>
+        <create_default_instance enabled="false" />
+        <!-- Wait for network interfaces to be initialized. -->
 
-	<create_default_instance enabled='false' />
-
-	<!-- Wait for network interfaces to be initialized. -->
-        <dependency
-                name='network'
-                grouping='require_all'
-                restart_on='none'
-                type='service'>
-                <service_fmri value='svc:/milestone/network:default' />
+        <dependency name="network"
+                    grouping="require_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/milestone/network:default" />
         </dependency>
+        <!-- Need / & /usr filesystems mounted, /var mounted read/write -->
 
-	<!-- Need / & /usr filesystems mounted, /var mounted read/write -->
-	<dependency
-		name='filesystem'
-		grouping='require_all'
-		restart_on='none'
-		type='service'>
-		<service_fmri value='svc:/system/filesystem/minimal' />
-	</dependency>
+        <dependency name="filesystem"
+                    grouping="require_all"
+                    restart_on="none"
+                    type="service">
+            <service_fmri value="svc:/system/filesystem/minimal" />
+        </dependency>
+        <method_context security_flags="aslr"
+                        working_directory="/">
+            <method_credential user="root"
+                               group="sys" />
+        </method_context>
 
-	<method_context security_flags='aslr' working_directory='/'>
-		<method_credential user='root' group='sys' />
-	</method_context>
+        <exec_method type="method"
+                     name="stop"
+                     exec="/lib/svc/method/tcsd stop"
+                     timeout_seconds="60"></exec_method>
 
-        <exec_method
-                type='method'
-                name='stop'
-                exec='/lib/svc/method/tcsd stop'
-                timeout_seconds='60'>
-	</exec_method>
+        <exec_method type="method"
+                     name="start"
+                     exec="/lib/svc/method/tcsd start"
+                     timeout_seconds="60"></exec_method>
 
-        <exec_method
-                type='method'
-                name='start'
-                exec='/lib/svc/method/tcsd start'
-                timeout_seconds='60'>
-	</exec_method>
-
-	<property_group name='general' type='framework'>
-		<propval name='action_authorization' type='astring'
-			value='solaris.smf.manage.tcsd' />
-		<propval name='value_authorization' type='astring'
-			value='solaris.smf.manage.tcsd' />
+        <property_group name="general"
+                        type="framework">
+            <propval name="action_authorization"
+                     type="astring"
+                     value="solaris.smf.manage.tcsd" />
+            <propval name="value_authorization"
+                     type="astring"
+                     value="solaris.smf.manage.tcsd" />
         </property_group>
 
+        <property_group name="config"
+                        type="application">
+            <propval name="local_only"
+                     type="boolean"
+                     value="true" />
+            <propval name="value_authorization"
+                     type="astring"
+                     value="solaris.smf.value.tcsd" />
+        </property_group>
 
-	<property_group name='config' type='application'>
-		<propval
-			name='local_only'
-			type='boolean'
-			value='true' />
-		<propval
-			name='value_authorization'
-			type='astring'
-			value='solaris.smf.value.tcsd' />
-	</property_group>
-
-        <stability value='Unstable' />
+        <stability value="Unstable" />
 
         <template>
-                <common_name>
-                        <loctext xml:lang='C'>
-                                TCS Daemon
-                        </loctext>
-                </common_name>
-                <documentation>
-                        <manpage title='tcsd' section='8' />
-                </documentation>
+            <common_name>
+                <loctext xml:lang="C">TCS Daemon</loctext>
+            </common_name>
+            <documentation>
+                <manpage title="tcsd"
+                         section="8" />
+            </documentation>
         </template>
-</service>
+
+    </service>
+
 </service_bundle>
