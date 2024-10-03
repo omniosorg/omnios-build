@@ -27,6 +27,8 @@ CONFIGURE_OPTS="
     --mandir=/usr/share/man
     --with-pcap=dlpi
 "
+
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
 LDFLAGS+=" $SSPFLAGS"
 
 build_init() {

@@ -45,6 +45,12 @@ CONFIGURE_OPTS="
 CONFIGURE_OPTS[amd64]+="
     --libexecdir=/usr/lib/$PROG/amd64
 "
+# for cross-builds this is detected as 'cross' which leads to sudo
+# using its own implementation; however, the build fails to make
+# the symbols global which breaks linking
+CONFIGURE_OPTS[aarch64]+="
+    ac_cv_have_working_vsnprintf=yes
+"
 
 SKIP_LICENCES=Various
 TESTSUITE_SED="

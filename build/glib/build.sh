@@ -43,6 +43,7 @@ CFLAGS+=" -Wno-error=format-nonliteral -Wno-error=format=2"
 # See comment in /usr/include/pwd.h
 set_standard XPG6
 
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
 LDFLAGS+=" -Wl,-z,ignore"
 LDFLAGS[i386]+=" -lssp_ns"
 
