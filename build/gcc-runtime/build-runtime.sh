@@ -19,7 +19,7 @@
 
 PKG=system/library/gcc-runtime
 PROG=libgcc_s
-VER=12
+VER=14
 SUMMARY="GNU compiler runtime dependencies"
 DESC="$SUMMARY"
 
@@ -46,7 +46,7 @@ else
 
     logcmd mkdir -p usr/lib/amd64
 
-    for v in `seq 5 $VER`; do
+    for v in `seq 5 12` $VER; do
         install_lib $v "$libs" amd64
         # The gcc-runtime package provides the 64 -> amd64 links
         logcmd ln -s amd64 usr/gcc/$v/lib/64
