@@ -27,9 +27,9 @@
 0028-Convert-unsupported-use-of-msave-args-to-a-warning.patch
 0029-Use-the-illumos-libc-SSP-implementation-for-fstack-p.patch
 0030-13185-zassert-deflib-does-not-work-for-64-bit-object.patch
-0031-Fix-cp-module.cc-build-use-posix_madvise.patch
-0032-Add-__illumos__-preprocessor-definition.patch
-0033-libstdc-must-use-thread-local-errno.patch
-0034-Add-fforce-omit-frame-pointer.patch
-0035-cmn_err-supports-h-and-hh.patch
+0031-13726-distinguish-ourselves-with-a-macro-__illumos__.patch
+0032-libstdc-must-use-thread-local-errno.patch
+0033-Add-fforce-omit-frame-pointer.patch
+0034-cmn_err-supports-h-and-hh-6333936.patch
+0035-16768-kernel-printf-should-know-about-j-and-z-size-s.patch
 0036-OOCE-Adjust-default-library-paths-for-OmniOS.patch

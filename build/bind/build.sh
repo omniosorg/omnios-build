@@ -23,7 +23,7 @@ PKG=network/dns/bind
 SUMMARY="BIND DNS tools"
 DESC="Client utilities for DNS lookups"
 
-LIBUVVER=1.49.0
+LIBUVVER=1.49.1
 XFORM_ARGS+=" -DLIBUV=$LIBUVVER"
 
 # This package ships private shared libraries in $PREFIX/lib/dns that are only
