@@ -14,8 +14,8 @@
     test_ossaudiodev test_smtpnet test_socketserver test_urllib2net
     test_urllibnet test_winsound test_xmlrpc_net test_zipfile64
 
-455 tests OK.
+456 tests OK.
 
-Total tests: run=41,886 (filtered) skipped=1,425
-Total test files: run=481/489 (filtered) skipped=26 resource_denied=8
+Total tests: run=41,968 (filtered) skipped=1,424
+Total test files: run=482/490 (filtered) skipped=26 resource_denied=8
 Result: SUCCESS
