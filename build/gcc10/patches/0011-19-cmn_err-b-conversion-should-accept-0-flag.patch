@@ -1,4 +1,4 @@
-From 3b711063f3340d244bb07f3b1436ec453168f4b7 Mon Sep 17 00:00:00 2001
+From 2a5b5774b6d0701e3fa5e1aab4a083476ada6a28 Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Mon, 13 Feb 2017 18:14:45 +0300
 Subject: 19 cmn_err %b conversion should accept 0 flag Reviewed
@@ -10,7 +10,7 @@ Subject: 19 cmn_err %b conversion should accept 0 flag Reviewed
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/gcc/config/sol2-c.c b/gcc/config/sol2-c.c
-index 202de74d360..4916d686771 100644
+index 202de74d3604..4916d6867716 100644
 --- a/gcc/config/sol2-c.c
 +++ b/gcc/config/sol2-c.c
 @@ -67,7 +67,7 @@ static const format_char_info cmn_err_char_table[] =

@@ -1,4 +1,4 @@
-From 18913e92d170f66b33f5497292701e2c825468f5 Mon Sep 17 00:00:00 2001
+From 524a9af93d689c101e09fa3f9fbe276784917b6d Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Mon, 11 Jan 2021 14:09:40 +0000
 Subject: 13185 -zassert-deflib does not work for 64-bit objects
@@ -8,10 +8,10 @@ Subject: 13185 -zassert-deflib does not work for 64-bit objects
  1 file changed, 26 insertions(+), 7 deletions(-)
 
 diff --git a/gcc/gcc.c b/gcc/gcc.c
-index 6d0f8570ab5..c2252b7f48e 100644
+index 6517d9935dc0..e0b9dc2e0321 100644
 --- a/gcc/gcc.c
 +++ b/gcc/gcc.c
-@@ -7192,15 +7192,34 @@ is_directory (const char *path1, bool linker)
+@@ -7194,15 +7194,34 @@ is_directory (const char *path1, bool linker)
    *cp = '\0';
  
    /* Exclude directories that the linker is known to search.  */

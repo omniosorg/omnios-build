@@ -1,4 +1,4 @@
-From 0f070e743e47c7020032fff01b5068f3c08db54f Mon Sep 17 00:00:00 2001
+From 0328c7baf41ecc12a9961cc96596ab9d3820734f Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 4 Mar 2014 22:11:03 +0000
 Subject: sol2: enable full __cxa_atexit support
@@ -9,7 +9,7 @@ Subject: sol2: enable full __cxa_atexit support
  2 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index 91b4602b49d..a60fcba2864 100644
+index 91b4602b49de..a60fcba2864a 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -210,7 +210,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -31,10 +31,10 @@ index 91b4602b49d..a60fcba2864 100644
  
  #undef  ENDFILE_SPEC
 diff --git a/libgcc/config.host b/libgcc/config.host
-index 89f41b56000..cfd0077e7d1 100644
+index 2b276ce3436e..3fd31396f993 100644
 --- a/libgcc/config.host
 +++ b/libgcc/config.host
-@@ -290,7 +290,7 @@ case ${host} in
+@@ -308,7 +308,7 @@ case ${host} in
  *-*-solaris2*)
    # Unless linker support and dl_iterate_phdr are present,
    # unwind-dw2-fde-dip.c automatically falls back to unwind-dw2-fde.c.
@@ -43,7 +43,7 @@ index 89f41b56000..cfd0077e7d1 100644
    if test $with_gnu_ld = yes; then
      tmake_file="$tmake_file t-slibgcc-gld"
    else
-@@ -310,6 +310,7 @@ case ${host} in
+@@ -328,6 +328,7 @@ case ${host} in
        i?86-*-solaris2* | x86_64-*-solaris2*)
          # Solaris 10+/x86 provides crt1.o, crti.o, crtn.o, and gcrt1.o as
          # part of the base system.
