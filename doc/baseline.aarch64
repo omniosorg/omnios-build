@@ -187,7 +187,7 @@ omnios driver/storage/vioblk
 omnios driver/usb
 omnios driver/usb/ugen
 omnios driver/usb/usbgem
-omnios driver/x11/winlock
+omnios driver/x11/winlock o
 omnios editor/vim
 omnios entire
 omnios file/gnu-coreutils
