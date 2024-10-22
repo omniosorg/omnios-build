@@ -1,4 +1,4 @@
-From e6cc5410edffa5a5e260adab815b86f4ff1d1dac Mon Sep 17 00:00:00 2001
+From 2f7da3645a630a1990f9f63939495e5e11690775 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Mon, 29 Oct 2018 18:21:34 +0000
 Subject: libstdc++v3: illumos and Solaris haven't needed -lrt in
@@ -11,7 +11,7 @@ Originally from Andy Fiddaman <andy@omniosce.org>
  2 files changed, 2 deletions(-)
 
 diff --git a/libstdc++-v3/acinclude.m4 b/libstdc++-v3/acinclude.m4
-index b6557a43465..2af8ba56345 100644
+index b6557a43465b..2af8ba563455 100644
 --- a/libstdc++-v3/acinclude.m4
 +++ b/libstdc++-v3/acinclude.m4
 @@ -1446,7 +1446,6 @@ AC_DEFUN([GLIBCXX_ENABLE_LIBSTDCXX_TIME], [
@@ -23,7 +23,7 @@ index b6557a43465..2af8ba56345 100644
          ac_has_clock_realtime=yes
          ac_has_nanosleep=yes
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index 766a0a8d504..1aa657d443f 100755
+index 766a0a8d5041..1aa657d443ff 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -20525,7 +20525,6 @@ fi

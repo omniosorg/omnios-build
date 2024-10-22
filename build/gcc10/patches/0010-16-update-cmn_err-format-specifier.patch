@@ -1,4 +1,4 @@
-From 125d83c3588716e4dbb69e1ceeba54153dd59526 Mon Sep 17 00:00:00 2001
+From c582c89d2d1fd1227da47affa62ae7c3cd7b9386 Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Sat, 5 Nov 2016 05:26:47 +0300
 Subject: 16 update cmn_err format specifier Reviewed by: Richard
@@ -9,7 +9,7 @@ Subject: 16 update cmn_err format specifier Reviewed by: Richard
  1 file changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/gcc/config/sol2-c.c b/gcc/config/sol2-c.c
-index 9eaf43c4c98..202de74d360 100644
+index 9eaf43c4c982..202de74d3604 100644
 --- a/gcc/config/sol2-c.c
 +++ b/gcc/config/sol2-c.c
 @@ -40,7 +40,10 @@ static const format_length_info cmn_err_length_specs[] =

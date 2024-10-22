@@ -1,4 +1,4 @@
-From b88a938db14e28d48cd3378af821b1c492fc1d02 Mon Sep 17 00:00:00 2001
+From 3db26429da309aca9dadab271dc5110ab68117ac Mon Sep 17 00:00:00 2001
 From: Petr Sumbera <petr.sumbera@oracle.com>
 Date: Wed, 13 Nov 2019 18:05:21 +0000
 Subject: gccgo should use GNU ar
@@ -25,7 +25,7 @@ doesn't know -D option, after failure, GCCGO runs it again without -D.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/libgo/go/cmd/go/internal/work/gccgo.go b/libgo/go/cmd/go/internal/work/gccgo.go
-index 63d5c624f79..4ed59248bf5 100644
+index 63d5c624f79c..4ed59248bf5b 100644
 --- a/libgo/go/cmd/go/internal/work/gccgo.go
 +++ b/libgo/go/cmd/go/internal/work/gccgo.go
 @@ -46,7 +46,7 @@ func (gccgoToolchain) linker() string {
@@ -38,7 +38,7 @@ index 63d5c624f79..4ed59248bf5 100644
  	return ar
  }
 diff --git a/libgo/go/go/internal/gccgoimporter/importer_test.go b/libgo/go/go/internal/gccgoimporter/importer_test.go
-index a74a4568680..51d57555d16 100644
+index a74a45686801..51d57555d168 100644
 --- a/libgo/go/go/internal/gccgoimporter/importer_test.go
 +++ b/libgo/go/go/internal/gccgoimporter/importer_test.go
 @@ -190,7 +190,7 @@ func TestObjImporter(t *testing.T) {
