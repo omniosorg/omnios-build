@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046bz (2024-10-22)
+Weekly release for w/c 21st of October 2024.
+> This is a non-reboot update
+
+### Changes
+
+* The `gcc10` compiler has been updated to understand that various illumos
+  kernel functions that take format strings can now understand the `%j` and
+  `%z` length modifiers.
+
+* gcc 14.2.0-il-1 has been added as a new `gcc14` package.
+
+* Meson has been upgraded from version 1.0.1 to 1.5.1.
+
+<br>
+
+---
+
 ## r151046bw (2024-10-01)
 Weekly release for w/c 30th of September 2024.
 > This update requires a reboot
