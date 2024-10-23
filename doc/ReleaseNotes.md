@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050y (2024-10-22)
+Weekly release for w/c 21st of October 2024.
+> This is a non-reboot update
+
+### Changes
+
+* The `gcc10` compiler has been updated to understand that various illumos
+  kernel functions that take format strings can now understand the `%j` and
+  `%z` length modifiers.
+
+<br>
+
+---
+
 ## r151050v (2024-09-30)
 Weekly release for w/c 30th of September 2024.
 > This update requires a reboot
