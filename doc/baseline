@@ -253,7 +253,7 @@ omnios driver/usb
 omnios driver/usb/ugen
 omnios driver/usb/usbgem
 omnios driver/virtualization/kvm
-omnios driver/x11/winlock
+omnios driver/x11/winlock o
 omnios driver/x11/xsvc
 omnios driver/xvm/pv
 omnios editor/vim
