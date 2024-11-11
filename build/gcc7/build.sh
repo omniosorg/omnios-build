@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -27,7 +27,7 @@ DESC="The GNU Compiler Collection"
 GCCMAJOR=${VER%%.*}
 OPT=/opt/gcc-$GCCMAJOR
 
-XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=$OPT -D GCCVER=$VER"
+XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=${OPT#/} -D GCCVER=$VER"
 BMI_EXPECTED=1
 
 # Build gcc with itself

@@ -59,8 +59,5 @@ link path=usr/share/man/man1/gfortran-$(MAJOR).1 \
 link path=usr/share/man/man1/gccgo-$(MAJOR).1 \
     target=/$(OPT)/share/man/man1/gccgo.1
 
-# We do not want to ship gcc's "fixed" headers for aarch64 since they are
-# broken there (for example, PATH_MAX is stripped from limits.h)
-$(aarch64_ONLY)<transform path=$(OPT)/lib/gcc/[^/]+/$(GCCVER)/include-fixed \
-    -> drop>
+<transform path=$(OPT)/lib/gcc/[^/]+/$(GCCVER)/include-fixed -> drop>
 

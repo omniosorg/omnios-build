@@ -38,7 +38,7 @@ set_arch 64
 set_ssp none
 ARCH=${TRIPLETS[amd64]}
 
-XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=$OPT -D GCCVER=$VER -D TRIPLET=$ARCH"
+XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=${OPT#/} -D GCCVER=$VER -D TRIPLET=$ARCH"
 
 # We're building the 64-bit version of the compiler and tools but we want
 # to install it in the standard bin/lib locations. Gcc will take care of

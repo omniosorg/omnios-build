@@ -20,20 +20,20 @@ license COPYING3.LIB license=LGPLv3
 <transform file path=$(OPT)/share/info -> drop>
 
 # Mediated symlinks
-<transform link target=$(OPT)/ -> default mediator gcc>
-<transform link target=$(OPT)/ -> default mediator-version $(MAJOR)>
+<transform link target=/$(OPT)/ -> default mediator gcc>
+<transform link target=/$(OPT)/ -> default mediator-version $(MAJOR)>
 
-link path=usr/bin/g++                   target=$(OPT)/bin/g++
-link path=usr/bin/gcc                   target=$(OPT)/bin/gcc
-link path=usr/bin/gcov                  target=$(OPT)/bin/gcov
-link path=usr/bin/gcpp                  target=$(OPT)/bin/cpp
-link path=usr/bin/gfortran              target=$(OPT)/bin/gfortran
+link path=usr/bin/g++                   target=/$(OPT)/bin/g++
+link path=usr/bin/gcc                   target=/$(OPT)/bin/gcc
+link path=usr/bin/gcov                  target=/$(OPT)/bin/gcov
+link path=usr/bin/gcpp                  target=/$(OPT)/bin/cpp
+link path=usr/bin/gfortran              target=/$(OPT)/bin/gfortran
 
-link path=usr/share/man/man1/g++.1      target=$(OPT)/share/man/man1/g++.1
-link path=usr/share/man/man1/gcc.1      target=$(OPT)/share/man/man1/gcc.1
-link path=usr/share/man/man1/gcov.1     target=$(OPT)/share/man/man1/gcov.1
-link path=usr/share/man/man1/gcpp.1     target=$(OPT)/share/man/man1/cpp.1
-link path=usr/share/man/man1/gfortran.1 target=$(OPT)/share/man/man1/gfortran.1
+link path=usr/share/man/man1/g++.1      target=/$(OPT)/share/man/man1/g++.1
+link path=usr/share/man/man1/gcc.1      target=/$(OPT)/share/man/man1/gcc.1
+link path=usr/share/man/man1/gcov.1     target=/$(OPT)/share/man/man1/gcov.1
+link path=usr/share/man/man1/gcpp.1     target=/$(OPT)/share/man/man1/cpp.1
+link path=usr/share/man/man1/gfortran.1 target=/$(OPT)/share/man/man1/gfortran.1
 
 # Symlinks to make the compiler tools available as xxx-7.
 # These are not mediated.
@@ -42,16 +42,18 @@ link path=usr/share/man/man1/gfortran.1 target=$(OPT)/share/man/man1/gfortran.1
 <transform link path=usr/.*-$(MAJOR)(\.1)?$ -> delete mediator-version .>
 <transform link path=usr/.*-$(MAJOR)(\.1)?$ -> delete mediator-priority .>
 
-link path=usr/bin/g++-$(MAJOR)          target=$(OPT)/bin/g++
-link path=usr/bin/gcc-$(MAJOR)          target=$(OPT)/bin/gcc
-link path=usr/bin/gcov-$(MAJOR)         target=$(OPT)/bin/gcov
-link path=usr/bin/gcpp-$(MAJOR)         target=$(OPT)/bin/cpp
-link path=usr/bin/gfortran-$(MAJOR)     target=$(OPT)/bin/gfortran
+link path=usr/bin/g++-$(MAJOR)          target=/$(OPT)/bin/g++
+link path=usr/bin/gcc-$(MAJOR)          target=/$(OPT)/bin/gcc
+link path=usr/bin/gcov-$(MAJOR)         target=/$(OPT)/bin/gcov
+link path=usr/bin/gcpp-$(MAJOR)         target=/$(OPT)/bin/cpp
+link path=usr/bin/gfortran-$(MAJOR)     target=/$(OPT)/bin/gfortran
 
-link path=usr/share/man/man1/g++-$(MAJOR).1  target=$(OPT)/share/man/man1/g++.1
-link path=usr/share/man/man1/gcc-$(MAJOR).1  target=$(OPT)/share/man/man1/gcc.1
-link path=usr/share/man/man1/gcov-$(MAJOR).1 target=$(OPT)/share/man/man1/gcov.1
-link path=usr/share/man/man1/gcpp-$(MAJOR).1 target=$(OPT)/share/man/man1/cpp.1
+link path=usr/share/man/man1/g++-$(MAJOR).1  target=/$(OPT)/share/man/man1/g++.1
+link path=usr/share/man/man1/gcc-$(MAJOR).1  target=/$(OPT)/share/man/man1/gcc.1
+link path=usr/share/man/man1/gcov-$(MAJOR).1 target=/$(OPT)/share/man/man1/gcov.1
+link path=usr/share/man/man1/gcpp-$(MAJOR).1 target=/$(OPT)/share/man/man1/cpp.1
 link path=usr/share/man/man1/gfortran-$(MAJOR).1 \
-    target=$(OPT)/share/man/man1/gfortran.1
+    target=/$(OPT)/share/man/man1/gfortran.1
+
+<transform path=$(OPT)/lib/gcc/[^/]+/$(GCCVER)/include-fixed -> drop>
 
