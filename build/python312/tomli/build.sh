@@ -18,7 +18,7 @@
 
 PKG=library/python-3/tomli-312
 PROG=tomli
-VER=2.0.1
+VER=2.1.0
 SUMMARY="Python TOML parser"
 DESC="Tomli is a Python library for parsing TOML"
 

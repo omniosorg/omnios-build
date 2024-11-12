@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/crossenv/__init__.py a/crossenv/__init__.py
+diff -wpruN --no-dereference '--exclude=*.orig' a~/crossenv/__init__.py a/crossenv/__init__.py
 --- a~/crossenv/__init__.py	1970-01-01 00:00:00
 +++ a/crossenv/__init__.py	1970-01-01 00:00:00
-@@ -509,6 +509,8 @@ class CrossEnvBuilder(venv.EnvBuilder):
+@@ -520,6 +520,8 @@ class CrossEnvBuilder(venv.EnvBuilder):
                  self.host_machine = self.host_gnu_type.split('-')[0]
  
          self.host_release = ''
