@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=liboqs
-VER=0.10.1
+VER=0.11.0
 PKG=library/security/liboqs
 SUMMARY="$PROG"
 DESC="An open source C library for quantum-safe cryptographic algorithms"
