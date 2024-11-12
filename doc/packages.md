@@ -151,6 +151,6 @@
 | library/python-3/setuptools-312	| 75.4.0		| https://pypi.org/project/setuptools
 | library/python-3/setuptools-rust-312	| 1.10.2		| https://pypi.org/project/setuptools-rust
 | library/python-3/six-312		| 1.16.0		| https://pypi.org/project/six
-| library/python-3/tomli-312		| 2.0.1			| https://pypi.org/project/tomli
+| library/python-3/tomli-312		| 2.1.0			| https://pypi.org/project/tomli
 | library/python-3/typing-extensions-312| 4.12.2		| https://pypi.org/project/typing-extensions
 
