@@ -18,7 +18,7 @@
 
 PKG=library/python-3/crossenv-312
 PROG=crossenv
-VER=1.4.0
+VER=1.5.0
 SUMMARY="A cross-compiling tool for Python extension modules"
 DESC="$SUMMARY"
 
