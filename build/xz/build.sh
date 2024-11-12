@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=xz
-VER=5.6.2
+VER=5.6.3
 PKG=compress/xz
 SUMMARY="XZ Utils - general-purpose data compression software"
 DESC="Free general-purpose data compression software with a "
