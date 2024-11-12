@@ -132,7 +132,7 @@
 | library/python-3/coverage-312		| 7.6.4			| https://pypi.org/project/coverage
 | library/python-3/crossenv-312		| 1.5.0			| https://pypi.org/project/crossenv
 | library/python-3/cryptography-312	| 43.0.3		| https://pypi.org/project/cryptography
-| library/python-3/idna-312		| 3.7			| https://pypi.org/project/idna
+| library/python-3/idna-312		| 3.10			| https://pypi.org/project/idna
 | library/python-3/js-regex-312		| 1.0.1			| https://pypi.org/project/js-regex
 | library/python-3/jsonrpclib-312	| 0.4.3.3		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-312	| 4.17.3		| https://pypi.org/project/jsonschema
