@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=swig
-VER=4.2.1
+VER=4.3.0
 PKG=developer/swig
 SUMMARY="The Simplified Wrapper and Interface Generator (swig)"
 DESC="A compiler that integrates C and C++ with languages including Perl, "

@@ -3,7 +3,7 @@
 *** t0000-basic.sh ***
 # passed all 92 test(s)
 *** t0001-init.sh ***
-# passed all 78 test(s)
+# passed all 91 test(s)
 *** t0002-gitfile.sh ***
 # passed all 14 test(s)
 *** t0003-attributes.sh ***
@@ -20,8 +20,6 @@
 # passed all 397 test(s)
 *** t0010-racy-git.sh ***
 # passed all 10 test(s)
-*** t0011-hashmap.sh ***
-# passed all 14 test(s)
 *** t0012-help.sh ***
 # passed all 174 test(s)
 *** t0013-sha1dc.sh ***
@@ -55,8 +53,6 @@
 *** t0029-core-unsetenvvars.sh ***
 *** t0030-stripspace.sh ***
 # passed all 30 test(s)
-*** t0032-reftable-unittest.sh ***
-# passed all 1 test(s)
 *** t0033-safe-directory.sh ***
 # passed all 22 test(s)
 *** t0034-root-safe-directory.sh ***
@@ -83,8 +79,6 @@
 # passed all 2 test(s)
 *** t0063-string-list.sh ***
 # passed all 14 test(s)
-*** t0064-oid-array.sh ***
-# passed all 9 test(s)
 *** t0066-dir-iterator.sh ***
 # passed all 10 test(s)
 *** t0067-parse_pathspec_file.sh ***
@@ -111,8 +105,6 @@
 # passed all 6 test(s)
 *** t0101-at-syntax.sh ***
 # passed all 8 test(s)
-*** t0110-urlmatch-normalization.sh ***
-# passed all 11 test(s)
 *** t0200-gettext-basic.sh ***
 # lib-gettext: Found 'is_IS.UTF-8' as an is_IS UTF-8 locale
 # lib-gettext: Found 'is_IS.ISO8859-1' as an is_IS ISO-8859-1 locale
@@ -145,6 +137,6 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 #	    grep "$(echo tvöfaldar | iconv -f UTF-8 -t ISO8859-1)" actual
 #	
 # failed 2 among 8 test(s)
-make[2]: *** [Makefile:75: t0204-gettext-reencode-sanity.sh] Error 1
-make[1]: *** [Makefile:62: test] Error 2
-make: *** [Makefile:3235: test] Error 2
+make[2]: *** [Makefile:77: t0204-gettext-reencode-sanity.sh] Error 1
+make[1]: *** [Makefile:63: test] Error 2
+make: *** [Makefile:3273: test] Error 2

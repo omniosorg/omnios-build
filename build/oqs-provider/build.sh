@@ -17,12 +17,15 @@
 . ../../lib/build.sh
 
 PROG=oqs-provider
-VER=0.6.0
+VER=0.7.0
 PKG=library/security/oqs-provider
 SUMMARY="$PROG"
 DESC="Open Quantum Safe provider for OpenSSL (3.x)"
 
-TESTSUITE_SED='s/  *[0-9][0-9]*\.[0-9][0-9]*  *sec//'
+TESTSUITE_SED='
+    s/  *[0-9][0-9]*\.[0-9][0-9]*  *sec//
+    /^Test project/d
+'
 
 CONFIGURE_OPTS="
     -DCMAKE_BUILD_TYPE=Release

@@ -4,7 +4,7 @@ report 'solaris2.11'
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -8376,7 +8376,7 @@ case $host_os in *\ *) host_os=`echo "$h
+@@ -8678,7 +8678,7 @@ case $host_os in *\ *) host_os=`echo "$h
  
  
  
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 +printf "%s\n" "#define OS_TYPE \"OmniOS\"" >>confdefs.h
  
  
- # Check whether --enable-silent-rules was given.
+ 
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
