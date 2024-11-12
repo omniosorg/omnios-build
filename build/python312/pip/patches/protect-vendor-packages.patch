@@ -43,7 +43,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdopti
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.py a/src/pip/_internal/exceptions.py
 --- a~/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
-@@ -769,9 +769,8 @@ class LegacyDistutilsInstall(DiagnosticP
+@@ -771,9 +771,8 @@ class LegacyDistutilsInstall(DiagnosticP
          super().__init__(
              message=Text(f"Cannot uninstall {distribution}"),
              context=(
