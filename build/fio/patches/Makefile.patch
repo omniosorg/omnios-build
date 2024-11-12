@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
 --- a~/Makefile	1970-01-01 00:00:00
 +++ a/Makefile	1970-01-01 00:00:00
-@@ -500,11 +500,11 @@ endif
+@@ -477,11 +477,11 @@ endif
  endif
  
  ifeq ($(CONFIG_TARGET_OS), SunOS)
@@ -15,7 +15,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
  bindir = $(prefix)/bin
  libdir = $(prefix)/lib/fio
  
-@@ -512,7 +512,7 @@ ifeq ($(CONFIG_TARGET_OS), Darwin)
+@@ -489,7 +489,7 @@ ifeq ($(CONFIG_TARGET_OS), Darwin)
  mandir = /usr/share/man
  sharedir = /usr/share/fio
  else
