@@ -1,5 +1,6 @@
 java-solaris-sparc.patch -R
-illumos-cpu_microcode_revision.patch
+restore_os_solaris.patch
+restore_os_cpu_solaris_x86.patch
 illumos-jline.patch
 illumos-pollerprovider.patch
 illumos-port-2.patch
@@ -7,11 +8,9 @@ illumos-port-3.patch
 illumos-port-5.patch
 illumos-port-6.patch
 illumos-port-7.patch
-illumos-port-9.patch
 illumos-port-10.patch
 illumos-port-11.patch
 illumos-port-12.patch
-illumos-port-15.patch
 illumos-port-16.patch
 illumos-port-17.patch
 illumos-port-18.patch
@@ -24,7 +23,6 @@ illumos-port-24.patch
 illumos-port-25.patch
 illumos-port-26.patch
 illumos-port-27.patch
-illumos-safefetch.patch
 illumos-signal-1.patch
 patch-make_autoconf_flags-cflags.m4 -p0
 patch-make_autoconf_jdk-options.m4 -p0
@@ -32,8 +30,6 @@ patch-make_GenerateLinkOptData.gmk -p0
 patch-make_launcher_LauncherCommon.gmk -p0
 patch-make_lib_LibCommon.gmk -p0
 patch-src_hotspot_share_gc_g1_g1Analytics.cpp -p0
-patch-src_java.desktop_share_native_libsplashscreen_libpng_pngpriv.h -p0
-tribblix-demangle1.patch -p0
 tribblix-flags-cflags.patch -p0
 tribblix-flags-ldflags.patch -p0
 tribblix-flags-ldflags3.patch -p0
