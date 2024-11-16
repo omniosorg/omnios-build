@@ -58,6 +58,7 @@ CC+=" $CTF_CFLAGS"
 init
 download_source $PROG $PROG $VER
 patch_source
+run_autoreconf -i
 prep_build autoconf -oot
 build -multi
 run_testsuite
