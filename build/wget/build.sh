@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=wget
-VER=1.24.5
+VER=1.25.0
 PKG=web/wget
 SUMMARY="GNU Wget"
 DESC="Retrieving files using HTTP, HTTPS, FTP and FTPS "
