@@ -48,7 +48,7 @@
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.49.2		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.13.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxml2			| 2.13.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.42		| https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
@@ -82,7 +82,7 @@
 | runtime/perl				| 5.40.0		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.10		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.7		| https://www.python.org/downloads/source/
-| security/sudo				| 1.9.16		| https://www.sudo.ws/
+| security/sudo				| 1.9.16p1		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
@@ -139,7 +139,7 @@
 | library/python-3/meson-312		| 1.6.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-312		| 3.10.11		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-312	| 24.2			| https://pypi.org/project/packaging
-| library/python-3/pip-312		| 24.3.1			| https://pypi.org/project/pip
+| library/python-3/pip-312		| 24.3.1		| https://pypi.org/project/pip
 | library/python-3/pycodestyle-312	| 2.12.1		| https://pypi.org/project/pycodestyle/
 | library/python-3/pycparser-312	| 2.22			| https://pypi.org/project/pycparser
 | library/python-3/pycurl-312		| 7.44.1		| https://pypi.org/project/pycurl
