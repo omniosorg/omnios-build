@@ -184,7 +184,7 @@
 +++ new/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.108347798 -0700
 @@ -421,9 +421,6 @@
    if test "x$OPENJDK_TARGET_OS" = xlinux; then
-     CFLAGS_OS_DEF_JVM="-DLINUX"
+     CFLAGS_OS_DEF_JVM="-DLINUX -D_FILE_OFFSET_BITS=64"
      CFLAGS_OS_DEF_JDK="-D_GNU_SOURCE -D_REENTRANT -D_LARGEFILE64_SOURCE"
 -  elif test "x$OPENJDK_TARGET_OS" = xsolaris; then
 -    CFLAGS_OS_DEF_JVM="-DSOLARIS"
@@ -793,7 +793,7 @@
    ifeq ($(COMPILE_WITH_DEBUG_SYMBOLS), true)
      LIBVERIFY_OPTIMIZATION := LOW
    endif
-@@ -106,7 +102,6 @@
+@@ -107,7 +103,6 @@
      LIBS := $(BUILD_LIBFDLIBM_TARGET), \
      LIBS_unix := -ljvm, \
      LIBS_linux := $(LIBDL), \
@@ -801,7 +801,7 @@
      LIBS_aix := $(LIBDL) $(LIBM),\
      LIBS_macosx := -framework CoreFoundation \
          -framework Foundation \
-@@ -215,7 +210,6 @@
+@@ -216,7 +211,6 @@
          $(call SET_SHARED_LIBRARY_ORIGIN), \
      LIBS_unix := $(LIBZ_LIBS), \
      LIBS_linux := $(LIBDL) -lpthread, \
@@ -859,7 +859,7 @@
      LIBS_aix := $(LIBDL),\
      LIBS_macosx := -lmlib_image \
          -framework Cocoa \
-@@ -389,7 +388,6 @@
+@@ -392,7 +391,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LIBS_unix := -lawt -ljvm -ljava, \
        LIBS_linux := $(LIBM) $(LIBDL), \
@@ -867,7 +867,7 @@
    ))
  
    $(BUILD_LIBAWT_HEADLESS): $(BUILD_LIBAWT)
-@@ -447,7 +445,7 @@
+@@ -450,7 +448,7 @@
                          -DHAVE_SYSCONF -DHAVE_SYS_MMAN_H -DHAVE_UNISTD_H \
                          -DHB_NO_PRAGMA_GCC_DIAGNOSTIC
     endif
@@ -876,7 +876,7 @@
       HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
     endif
  
-@@ -621,10 +619,7 @@
+@@ -627,10 +625,7 @@
    ifeq ($(call isTargetOs, macosx), true)
      JAWT_LIBS := -lawt_lwawt
    else
@@ -888,7 +888,7 @@
      ifeq ($(ENABLE_HEADLESS_ONLY), false)
        JAWT_LIBS += -lawt_xawt
      else
-@@ -651,7 +646,6 @@
+@@ -657,7 +652,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LDFLAGS_macosx := -Wl$(COMMA)-rpath$(COMMA)@loader_path, \
        LIBS_unix := $(JAWT_LIBS) $(JDKLIB_LIBS), \
@@ -1208,7 +1208,7 @@
  #endif /* !_JAVASOFT_JVM_MD_H_ */
 --- old/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.965746713 -0700
 +++ new/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.629740261 -0700
-@@ -490,7 +490,7 @@
+@@ -491,7 +491,7 @@
    st->print("%d", sysconf(_SC_CHILD_MAX));
  
    print_rlimit(st, ", THREADS", RLIMIT_THREADS);
@@ -1217,7 +1217,7 @@
    print_rlimit(st, ", NPROC", RLIMIT_NPROC);
  #endif
  
-@@ -508,12 +508,6 @@
+@@ -509,12 +509,6 @@
    print_rlimit(st, ", MEMLOCK", RLIMIT_MEMLOCK, true);
  #endif
  
@@ -1230,7 +1230,7 @@
    // MacOS; The maximum size (in bytes) to which a process's resident set size may grow.
  #if defined(__APPLE__)
    print_rlimit(st, ", RSS", RLIMIT_RSS, true);
-@@ -984,7 +978,7 @@
+@@ -985,7 +979,7 @@
  // page size which again depends on the concrete system the VM is running
  // on. Space for libc guard pages is not included in this size.
  jint os::Posix::set_minimum_stack_sizes() {
@@ -1239,7 +1239,7 @@
  
    _java_thread_min_stack_allowed = _java_thread_min_stack_allowed +
                                     StackOverflow::stack_guard_zone_size() +
-@@ -1305,8 +1299,7 @@
+@@ -1306,8 +1300,7 @@
    if ((status = pthread_mutexattr_settype(_mutexAttr, PTHREAD_MUTEX_NORMAL)) != 0) {
      fatal("pthread_mutexattr_settype: %s", os::strerror(status));
    }
@@ -1249,7 +1249,7 @@
  }
  
  static int (*_pthread_condattr_setclock)(pthread_condattr_t *, clockid_t) = NULL;
-@@ -1521,7 +1514,6 @@
+@@ -1522,7 +1515,6 @@
  // Shared pthread_mutex/cond based PlatformEvent implementation.
  // Not currently usable by Solaris.
  
@@ -1257,7 +1257,7 @@
  
  // PlatformEvent
  //
-@@ -1951,8 +1943,6 @@
+@@ -1952,8 +1944,6 @@
      return OS_OK;
    }
  }
@@ -1377,7 +1377,7 @@
  
 --- old/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:31.194672744 -0700
 +++ new/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:30.854666216 -0700
-@@ -693,10 +693,6 @@
+@@ -696,10 +696,6 @@
    product_pd(bool, DontYieldALot,                                           \
            "Throw away obvious excess yield calls")                          \
                                                                              \
@@ -1388,7 +1388,7 @@
    product(bool, DisablePrimordialThreadGuardPages, false, EXPERIMENTAL,     \
                 "Disable the use of stack guard pages if the JVM is loaded " \
                 "on the primordial process thread")                          \
-@@ -750,10 +746,6 @@
+@@ -753,10 +749,6 @@
            "When true prevents OS-level spurious, or premature, wakeups "    \
            "from Object.wait (Ignored for Windows)")                         \
                                                                              \
@@ -1399,7 +1399,7 @@
    product(bool, ReduceSignalUsage, false,                                   \
            "Reduce the use of OS signals in Java and/or the VM")             \
                                                                              \
-@@ -1677,10 +1669,8 @@
+@@ -1680,10 +1672,8 @@
    product(intx, ThreadPriorityPolicy, 0,                                    \
            "0 : Normal.                                                     "\
            "    VM chooses priorities that are appropriate for normal       "\
@@ -1412,7 +1412,7 @@
            "    priorities. However, with ThreadPriorityPolicy=0, VM will   "\
            "    not use the highest possible native priority,               "\
            "    THREAD_PRIORITY_TIME_CRITICAL, as it may interfere with     "\
-@@ -2029,8 +2019,7 @@
+@@ -2032,8 +2022,7 @@
             "do not map the archive")                                        \
             range(0, 2)                                                      \
                                                                              \
@@ -1439,7 +1439,7 @@
    if (PrintFlagsFinal || PrintFlagsRanges) {
 --- old/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.390734111 -0700
 +++ new/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.014726891 -0700
-@@ -493,7 +493,7 @@
+@@ -494,7 +494,7 @@
  
    static void free_thread(OSThread* osthread);
  
@@ -1448,7 +1448,7 @@
    static intx current_thread_id();
    static int current_process_id();
  
-@@ -842,10 +842,8 @@
+@@ -848,10 +848,8 @@
    // JVMTI & JVM monitoring and management support
    // The thread_cpu_time() and current_thread_cpu_time() are only
    // supported if is_thread_cpu_time_supported() returns true.
@@ -2121,7 +2121,7 @@
  }
  
  static const char*
-@@ -452,7 +445,7 @@
+@@ -456,7 +449,7 @@
  #endif
  
  /* vfork(2) is deprecated on Darwin */
@@ -2130,7 +2130,7 @@
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -606,7 +599,7 @@
+@@ -612,7 +605,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
  /* vfork(2) is deprecated on Darwin*/
@@ -3992,7 +3992,7 @@
  #ifdef __linux__
  #include <sys/syscall.h>
  #include <sys/sysmacros.h> // makedev macros
-@@ -389,8 +382,7 @@
+@@ -390,8 +383,7 @@
  
      /* system calls that might not be available at run time */
  
@@ -4120,7 +4120,7 @@
       */
 --- old/src/java.desktop/share/classes/sun/font/FileFontStrike.java	2020-05-20 18:01:46.908126498 -0700
 +++ new/src/java.desktop/share/classes/sun/font/FileFontStrike.java	2020-05-20 18:01:46.528119201 -0700
-@@ -222,24 +222,6 @@
+@@ -224,24 +224,6 @@
              !((TrueTypeFont)fileFont).useEmbeddedBitmapsForSize(intPtSize)) {
              useNatives = true;
          }
@@ -5409,32 +5409,6 @@
  long
  dbgsysCurrentTimeMillis() {
      struct timeval t;
---- old/src/jdk.jdwp.agent/unix/native/libjdwp/exec_md.c	2020-05-20 18:03:33.146166346 -0700
-+++ new/src/jdk.jdwp.agent/unix/native/libjdwp/exec_md.c	2020-05-20 18:03:32.810159893 -0700
-@@ -30,14 +30,6 @@
- #include "sys.h"
- #include "util.h"
- 
--#if defined(LINUX) || defined(_ALLBSD_SOURCE) || defined(AIX)
--  /* Linux, BSD, AIX */
--  #define FORK() fork()
--#else
--  /* Solaris (make sure we always get the POSIX-specified behavior) */
--  #define FORK() fork1()
--#endif
--
- static char *skipWhitespace(char *p) {
-     while ((*p != '\0') && isspace(*p)) {
-         p++;
-@@ -100,7 +92,7 @@
-     }
-     argv[i] = NULL;  /* NULL terminate */
- 
--    if ((pid = FORK()) == 0) {
-+    if ((pid = fork()) == 0) {
-         /* Child process */
-         int i;
-         long max_fd;
 --- old/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java	2020-05-20 18:03:35.234206438 -0700
 +++ new/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java	2020-05-20 18:03:34.898199985 -0700
 @@ -34,7 +34,6 @@
@@ -5618,7 +5592,7 @@
 -#endif
 -
 -/* Function types to support dynamic linking of socket API extension functions
-- * for SCTP. This is so that there is no linkage depandancy during build or
+- * for SCTP. This is so that there is no linkage dependency during build or
 - * runtime for libsctp.*/
 -typedef int sctp_getladdrs_func(int sock, sctp_assoc_t id, void **addrs);
 -typedef int sctp_freeladdrs_func(void* addrs);
@@ -7001,7 +6975,7 @@
 -
 -// The attach mechanism on Solaris is implemented using the Doors IPC
 -// mechanism. The first tool to attempt to attach causes the attach
--// listener thread to startup. This thread creats a door that is
+-// listener thread to startup. This thread creates a door that is
 -// associated with a function that enqueues an operation to the attach
 -// listener. The door is attached to a file in the file system so that
 -// client (tools) can locate it. To enqueue an operation to the VM the
@@ -7288,7 +7262,7 @@
 -
 -    // create a pair of connected sockets. Store the file descriptor
 -    // for one end in the operation and enqueue the operation. The
--    // file descriptor for the other end wil be returned to the client.
+-    // file descriptor for the other end will be returned to the client.
 -    if (res == 0) {
 -      int s[2];
 -      if (socketpair(PF_UNIX, SOCK_STREAM, 0, s) < 0) {
@@ -7389,7 +7363,7 @@
 -  if (dd >= 0) {
 -    set_door_descriptor(dd);
 -    set_door_path(door_path);
--    log_trace(attach)("door file %s created succesfully", door_path);
+-    log_trace(attach)("door file %s created successfully", door_path);
 -  } else {
 -    // unable to create door, attach it to file, or rename file into place
 -    ::unlink(initial_path);
@@ -11653,7 +11627,7 @@
 -//
 -// Assumptions:
 -// +    We assume that all threads in the process belong to the same
--//              scheduling class.   IE. an homogenous process.
+-//              scheduling class.   IE. a homogeneous process.
 -// +    Must be root or in IA group to change change "interactive" attribute.
 -//              Priocntl() will fail silently.  The only indication of failure is when
 -//              we read-back the value and notice that it hasn't changed.
@@ -12014,8 +11988,8 @@
 -//
 -// ThreadPriorityPolicy=1
 -// This mode causes the priority table to get filled with
--// linear values.  NormPriority get's mapped to 50% of the
--// Maximum priority an so on.  This will cause VM threads
+-// linear values.  NormPriority gets mapped to 50% of the
+-// Maximum priority and so on.  This will cause VM threads
 -// to get unfair treatment against other Solaris processes
 -// which do not explicitly alter their thread priorities.
 -
@@ -12375,7 +12349,7 @@
 -  }
 -
 -  // Calculate theoretical max. size of Threads to guard gainst
--  // artifical out-of-memory situations, where all available address-
+-  // artificial out-of-memory situations, where all available address-
 -  // space has been reserved by thread stacks. Default stack size is 1Mb.
 -  size_t pre_thread_stack_size = (JavaThread::stack_size_at_create()) ?
 -    JavaThread::stack_size_at_create() : (1*K*K);
@@ -17115,7 +17089,7 @@
 -class EventPortSelectorImpl
 -    extends SelectorImpl
 -{
--    // maximum number of events to retrive in one call to port_getn
+-    // maximum number of events to retrieve in one call to port_getn
 -    static final int MAX_EVENTS = Math.min(IOUtil.fdLimit()-1, 1024);
 -
 -    // port file descriptor
@@ -21364,7 +21338,7 @@
 -  J->bcp = bcp;
 -
 -  /* On x86 with C2 JVM: native frame may have wrong regs[R_FP]
--   * For example: JVM_SuspendThread frame poins to the top interpreted frame.
+-   * For example: JVM_SuspendThread frame points to the top interpreted frame.
 -   * If we call is_method(J, methodPtr) before codecache_contains(J, pc)
 -   * then we go over and omit both: nmethod and I2CAdapter frames.
 -   * Note, that regs[R_PC] is always correct if frame defined correctly.
@@ -21626,7 +21600,7 @@
 -// generic error messages
 -#define JVM_ERR_OUT_OF_MEMORY            "out of memory (native heap)"
 -#define JVM_ERR_INVALID_PARAM            "invalid input parameter(s)"
--#define JVM_ERR_NULL_PARAM               "input paramater is NULL"
+-#define JVM_ERR_NULL_PARAM               "input parameter is NULL"
 -
 -// error messages for attach
 -#define JVM_ERR_CANT_OPEN_DOOR           "cannot open door file"
