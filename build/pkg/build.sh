@@ -55,6 +55,9 @@ BUILD_DEPENDS_IPS="
     text/intltool
 "
 
+# We use the native illumos parallel make for this
+MAKE=$USRBIN/dmake
+
 # Respect environmental overrides for these to ease development.
 : ${PKG_SOURCE_REPO:=$OOCEGITHUB/pkg5}
 : ${PKG_SOURCE_BRANCH:=r$RELVER}
@@ -71,18 +74,17 @@ clone_source() {
 
 build() {
     pushd $TMPDIR/$BUILDDIR/pkg/src > /dev/null || logerr "Cannot chdir"
-    logmsg "--- build"
-    logcmd make clean
-    logcmd make || logerr "make failed"
+    logmsg "--- clean"
+    logcmd $MAKE clean
     logmsg "--- install"
-    logcmd make install || logerr "install failed"
+    logcmd $MAKE install || logerr "install failed"
     popd > /dev/null
 }
 
 package() {
     pushd $TMPDIR/$BUILDDIR/pkg/src/pkg > /dev/null
     logmsg "--- packaging"
-    logcmd make check publish-pkgs \
+    logcmd $MAKE check publish-pkgs \
         BUILDNUM=$BUILDNUM \
         PKGSEND_OPTS="" \
         PKGPUBLISHER=$PKGPUBLISHER \
