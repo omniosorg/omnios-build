@@ -4,6 +4,15 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052b (2024-11-18)
+
+This release is a respin of the installation media to correct a problem with
+the dialogue-based installer; there are no other changes.
+
+<br>
+
+---
+
 Stable Release, 4th of Nov 2024
 
 `uname -a` shows `omnios-r151052-dbe4644ba92`
