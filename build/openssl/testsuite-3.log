@@ -19,7 +19,9 @@ Result: NOTESTS
 02-test_priority_queue.t ................ ok
 02-test_sparse_array.t .................. ok
 02-test_stack.t ......................... ok
+02-test_strtoul.t ....................... ok
 02-test_time.t .......................... ok
+02-test_windows_registry.t .............. skipped: Windows registry tests are only available on windows
 03-test_exdata.t ........................ ok
 03-test_fipsinstall.t ................... skipped: Test only supported in a fips build
 03-test_internal_asn1.t ................. ok
@@ -121,6 +123,7 @@ Result: NOTESTS
 20-test_passwd.t ........................ ok
 20-test_pkeyutl.t ....................... ok
 20-test_rand_config.t ................... ok
+20-test_speed.t ......................... ok
 20-test_spkac.t ......................... ok
 25-test_crl.t ........................... ok
 25-test_d2i.t ........................... ok
@@ -156,14 +159,17 @@ Result: NOTESTS
 30-test_prov_config.t ................... ok
 30-test_provider_status.t ............... ok
 40-test_rehash.t ........................ ok
+60-test_x509_acert.t .................... ok
 60-test_x509_check_cert_pkey.t .......... ok
 60-test_x509_dup_cert.t ................. ok
 60-test_x509_load_cert_file.t ........... ok
+60-test_x509_req.t ...................... ok
 60-test_x509_store.t .................... ok
 60-test_x509_time.t ..................... ok
 61-test_bio_addr.t ...................... ok
 61-test_bio_meth.t ...................... ok
 61-test_bio_prefix.t .................... ok
+61-test_bio_pw_callback.t ............... ok
 61-test_bio_readbuffer.t ................ ok
 65-test_cmp_asn.t ....................... ok
 65-test_cmp_client.t .................... ok
@@ -256,6 +262,7 @@ Result: NOTESTS
 82-test_tfo_cli.t ....................... skipped: test_tfo_cli needs tfo enabled
 90-test_asn1_time.t ..................... ok
 90-test_async.t ......................... ok
+90-test_bio_base64.t .................... ok
 90-test_bio_enc.t ....................... ok
 90-test_bio_memleak.t ................... ok
 90-test_cert_comp.t ..................... ok
@@ -292,6 +299,7 @@ Result: NOTESTS
 95-test_external_pyca.t ................. skipped: No external tests in this configuration
 95-test_external_tlsfuzzer.t ............ skipped: No external tests in this configuration
 99-test_ecstress.t ...................... ok
+99-test_fuzz_acert.t .................... ok
 99-test_fuzz_asn1.t ..................... ok
 99-test_fuzz_asn1parse.t ................ ok
 99-test_fuzz_bignum.t ................... ok
@@ -305,7 +313,9 @@ Result: NOTESTS
 99-test_fuzz_decoder.t .................. ok
 99-test_fuzz_dtlsclient.t ............... ok
 99-test_fuzz_dtlsserver.t ............... ok
+99-test_fuzz_hashtable.t ................ ok
 99-test_fuzz_pem.t ...................... ok
+99-test_fuzz_provider.t ................. ok
 99-test_fuzz_punycode.t ................. ok
 99-test_fuzz_quic_client.t .............. ok
 99-test_fuzz_quic_lcidm.t ............... ok
@@ -316,5 +326,5 @@ Result: NOTESTS
 99-test_fuzz_v3name.t ................... ok
 99-test_fuzz_x509.t ..................... ok
 All tests successful.
-Files=314, Tests=3670, 
+Files=324, Tests=3799, 
 Result: PASS

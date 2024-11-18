@@ -61,7 +61,7 @@
 | library/readline			| 8.2.13		| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/liboqs		| 0.11.0		| https://github.com/open-quantum-safe/liboqs/releases
-| library/security/openssl-3		| 3.3.2			| https://www.openssl.org/source/
+| library/security/openssl-3		| 3.4.0			| https://www.openssl.org/source/
 | library/security/oqs-provider		| 0.7.0			| https://github.com/open-quantum-safe/oqs-provider/releases
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
