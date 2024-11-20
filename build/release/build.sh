@@ -25,7 +25,7 @@ DESC="$DISTRO /etc/release and /etc/os-release files"
 set_arch 64
 
 # Update the following line with the current release suffix
-RELSUFFIX=y
+RELSUFFIX=ac
 
 RELEASE=${RELVER}${RELSUFFIX}
 RELDATE="`date +%Y.%m.%d`"
