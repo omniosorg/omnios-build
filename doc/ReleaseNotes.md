@@ -4,25 +4,6 @@
 
 # Release Notes for OmniOSce v11 r151052
 
-## r151052c (2024-11-20)
-Weekly release for w/c 18th of November 2024.
-> This is a non-reboot update
-
-### Security Fixes
-
-- `curl` updated to version 8.11.0
-
-- `expat` updated to version 2.6.4
-
-- `wget` updated to version 1.25.0
-
-- OpenJDK packages updated to versions 1.8.432-06, 11.0.25+9, 17.0.13+11 and
-  21.0.5+11.
-
-<br>
-
----
-
 ## r151052b (2024-11-18)
 
 This release is a respin of the installation media to correct a problem with
