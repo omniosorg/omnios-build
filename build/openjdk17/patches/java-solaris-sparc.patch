@@ -24,38 +24,9 @@
  src/hotspot/os_cpu/windows_x86 : hotspot/src/os_cpu/windows_x86/vm
  src/hotspot : hotspot/src
  src/utils/IdealGraphVisualizer : hotspot/src/share/tools/IdealGraphVisualizer
---- old/make/Bundles.gmk	2020-05-20 17:58:19.940152562 -0700
-+++ new/make/Bundles.gmk	2020-05-20 17:58:19.604146110 -0700
-@@ -101,7 +101,7 @@
-           # If no subdir is specified and only one BASE_DIR, tar.gz can be done
-           # directly from BASE_DIR.
- 	  $(CD) $$($1_BASE_DIRS) \
--	      && ( $(TAR) cf - $(TAR_CREATE_EXTRA_PARAM) \
-+	      && ( $(TAR) cf - \
- 	          -$(TAR_INCLUDE_PARAM) $$($1_$$($1_BASE_DIRS)_LIST_FILE) \
- 	          $(TAR_IGNORE_EXIT_VALUE) ) \
- 	      | $(GZIP) > $$@
-@@ -110,7 +110,7 @@
-           # If only one BASE_DIR, but with a SUBDIR set, tar.gz can use the
-           # transform option to create bundle directly from the BASE_DIR.
- 	  $(CD) $$($1_BASE_DIRS) \
--	      && ( $(TAR) cf - $(TAR_CREATE_EXTRA_PARAM) \
-+	      && ( $(TAR) cf - \
- 	          -$(TAR_INCLUDE_PARAM) $$($1_$$($1_BASE_DIRS)_LIST_FILE) \
- 	          $$(if $$($1_SUBDIR), --transform 's|^|$$($1_SUBDIR)/|S') \
- 	          $(TAR_IGNORE_EXIT_VALUE) ) \
-@@ -140,7 +140,7 @@
-           endif
-           ifeq ($$($1_TYPE), tar.gz)
- 	    $(CD) $(SUPPORT_OUTPUTDIR)/bundles/$1 && \
--	    ( $(TAR) cf - $(TAR_CREATE_EXTRA_PARAM) \
-+	    ( $(TAR) cf - \
- 	        $$(if $$($1_SUBDIR), $$($1_SUBDIR), .) $(TAR_IGNORE_EXIT_VALUE) ) \
- 	    | $(GZIP) > $$@
-           else ifeq ($$($1_TYPE), zip)
 --- old/make/RunTestsPrebuilt.gmk	2020-05-20 17:58:24.212234589 -0700
 +++ new/make/RunTestsPrebuilt.gmk	2020-05-20 17:58:23.828227215 -0700
-@@ -163,8 +163,6 @@
+@@ -168,8 +168,6 @@
      OPENJDK_TARGET_OS := linux
    else ifeq ($(UNAME_OS), Darwin)
      OPENJDK_TARGET_OS := macosx
@@ -64,7 +35,7 @@
    else
      OPENJDK_TARGET_OS := $(UNAME_OS)
    endif
-@@ -174,28 +172,15 @@
+@@ -182,38 +180,20 @@
  # Assume little endian unless otherwise specified
  OPENJDK_TARGET_CPU_ENDIAN := little
  
@@ -75,6 +46,9 @@
 -  OPENJDK_TARGET_CPU_BITS := 64
 -  ifeq ($(UNAME_CPU), i386)
 -    OPENJDK_TARGET_CPU := x86_64
+-  else ifeq ($(UNAME_CPU), sparc)
+-    OPENJDK_TARGET_CPU := sparcv9
+-    OPENJDK_TARGET_CPU_ENDIAN := big
 -  else
 -    OPENJDK_TARGET_CPU := $(UNAME_CPU)
 -  endif
@@ -101,7 +75,14 @@
  endif
  
  OPENJDK_TARGET_CPU_ARCH := $(OPENJDK_TARGET_CPU)
-@@ -225,11 +205,6 @@
+ ifeq ($(OPENJDK_TARGET_CPU), x86_64)
+   OPENJDK_TARGET_CPU_ARCH := x86
+-else ifeq ($(OPENJDK_TARGET_CPU), sparcv9)
+-  OPENJDK_TARGET_CPU_ARCH := sparc
+ endif
+ 
+ ifeq ($(OPENJDK_TARGET_OS), windows)
+@@ -233,11 +213,6 @@
  else ifeq ($(OPENJDK_TARGET_OS), macosx)
    NUM_CORES := $(shell /usr/sbin/sysctl -n hw.ncpu)
    MEMORY_SIZE := $(shell $(EXPR) `/usr/sbin/sysctl -n hw.memsize` / 1024 / 1024)
@@ -115,7 +96,7 @@
    MEMORY_SIZE := $(shell \
 --- old/make/RunTestsPrebuiltSpec.gmk	2020-05-20 17:58:25.304255556 -0700
 +++ new/make/RunTestsPrebuiltSpec.gmk	2020-05-20 17:58:24.916248106 -0700
-@@ -172,16 +172,6 @@
+@@ -174,16 +174,6 @@
  HG := hg
  ULIMIT := ulimit
  
@@ -134,7 +115,7 @@
  endif
 --- old/make/autoconf/basic_tools.m4	2020-05-20 17:58:27.308294035 -0700
 +++ new/make/autoconf/basic_tools.m4	2020-05-20 17:58:26.972287584 -0700
-@@ -270,25 +270,17 @@
+@@ -280,8 +280,6 @@
      TAR_TYPE="bsd"
    elif test "x$($TAR -v | $GREP "bsdtar")" != "x"; then
      TAR_TYPE="bsd"
@@ -143,34 +124,9 @@
    elif test "x$($TAR --version | $GREP "busybox")" != "x"; then
      TAR_TYPE="busybox"
    elif test "x$OPENJDK_BUILD_OS" = "xaix"; then
-     TAR_TYPE="aix"
-   fi
-   AC_MSG_CHECKING([what type of tar was found])
-   AC_MSG_RESULT([$TAR_TYPE])
- 
--  TAR_CREATE_FILE_PARAM=""
--
-   if test "x$TAR_TYPE" = "xgnu"; then
-     TAR_INCLUDE_PARAM="T"
-     TAR_SUPPORTS_TRANSFORM="true"
--    if test "x$OPENJDK_TARGET_OS" = "xsolaris"; then
--      # When using gnu tar for Solaris targets, need to use compatibility mode
--      TAR_CREATE_EXTRA_PARAM="--format=ustar"
--    fi
-   elif test "x$TAR_TYPE" = "aix"; then
-     # -L InputList of aix tar: name of file listing the files and directories
-     # that need to be archived or extracted
-@@ -302,7 +294,6 @@
-     TAR_SUPPORTS_TRANSFORM="false"
-   fi
-   AC_SUBST(TAR_TYPE)
--  AC_SUBST(TAR_CREATE_EXTRA_PARAM)
-   AC_SUBST(TAR_INCLUDE_PARAM)
-   AC_SUBST(TAR_SUPPORTS_TRANSFORM)
- ])
-@@ -425,8 +416,6 @@
-       fi
-     fi
+@@ -391,8 +389,6 @@
+     UTIL_REQUIRE_PROGS(XATTR, xattr)
+     UTIL_LOOKUP_PROGS(CODESIGN, codesign)
      UTIL_REQUIRE_PROGS(SETFILE, SetFile)
 -  elif test "x$OPENJDK_TARGET_OS" = "xsolaris"; then
 -    UTIL_REQUIRE_PROGS(ELFEDIT, elfedit)
@@ -179,7 +135,7 @@
      UTIL_REQUIRE_PROGS(ULIMIT, ulimit)
 --- old/make/autoconf/build-aux/config.guess	2020-05-20 17:58:28.372314465 -0700
 +++ new/make/autoconf/build-aux/config.guess	2020-05-20 17:58:27.980306938 -0700
-@@ -42,14 +42,6 @@
+@@ -75,22 +75,6 @@
    fi
  fi
  
@@ -187,6 +143,14 @@
 -echo $OUT | grep i386-pc-solaris > /dev/null 2> /dev/null
 -if test $? = 0; then
 -  # isainfo -n returns either i386 or amd64
+-  REAL_CPU=`isainfo -n`
+-  OUT=$REAL_CPU`echo $OUT | sed -e 's/[^-]*//'`
+-fi
+-
+-# Test and fix solaris on sparcv9
+-echo $OUT | grep sparc-sun-solaris > /dev/null 2> /dev/null
+-if test $? = 0; then
+-  # isainfo -n returns either sparc or sparcv9
 -  REAL_CPU=`isainfo -n`
 -  OUT=$REAL_CPU`echo $OUT | sed -e 's/[^-]*//'`
 -fi
@@ -218,9 +182,9 @@
    elif test -x /usr/sbin/sysctl; then
 --- old/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.492355171 -0700
 +++ new/make/autoconf/flags-cflags.m4	2020-05-20 17:58:30.108347798 -0700
-@@ -409,9 +409,6 @@
+@@ -421,9 +421,6 @@
    if test "x$OPENJDK_TARGET_OS" = xlinux; then
-     CFLAGS_OS_DEF_JVM="-DLINUX"
+     CFLAGS_OS_DEF_JVM="-DLINUX -D_FILE_OFFSET_BITS=64"
      CFLAGS_OS_DEF_JDK="-D_GNU_SOURCE -D_REENTRANT -D_LARGEFILE64_SOURCE"
 -  elif test "x$OPENJDK_TARGET_OS" = xsolaris; then
 -    CFLAGS_OS_DEF_JVM="-DSOLARIS"
@@ -241,7 +205,7 @@
    elif test "x$OPENJDK_TARGET_OS" = xaix; then
 --- old/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.812457321 -0700
 +++ new/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.432450025 -0700
-@@ -288,7 +288,7 @@
+@@ -299,7 +299,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xexternal; then
  
@@ -250,7 +214,7 @@
        if test "x$OBJCOPY" = x; then
          # enabling of enable-debug-symbols and can't find objcopy
          # this is an error
-@@ -301,7 +301,7 @@
+@@ -312,7 +312,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xzipped; then
  
@@ -293,7 +257,7 @@
              fi
 --- old/make/autoconf/libraries.m4	2020-05-20 17:58:41.188560546 -0700
 +++ new/make/autoconf/libraries.m4	2020-05-20 17:58:40.768552482 -0700
-@@ -121,15 +114,13 @@
+@@ -114,15 +114,13 @@
    BASIC_JVM_LIBS="$LIBM"
  
    # Dynamic loading library
@@ -310,7 +274,7 @@
    fi
  
    # librt for legacy clock_gettime
-@@ -160,12 +151,6 @@
+@@ -153,12 +151,6 @@
      BASIC_JVM_LIBS="$BASIC_JVM_LIBS -lperfstat"
    fi
  
@@ -322,8 +286,8 @@
 -
    if test "x$OPENJDK_TARGET_OS" = xwindows; then
      BASIC_JVM_LIBS="$BASIC_JVM_LIBS kernel32.lib user32.lib gdi32.lib winspool.lib \
-         comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib \
-@@ -183,7 +168,6 @@
+         comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib powrprof.lib uuid.lib \
+@@ -176,7 +168,6 @@
    AC_SUBST(JVM_LIBS)
    AC_SUBST(OPENJDK_BUILD_JDKLIB_LIBS)
    AC_SUBST(OPENJDK_BUILD_JVM_LIBS)
@@ -333,7 +297,7 @@
  ################################################################################
 --- old/make/autoconf/platform.m4	2020-05-20 17:58:42.328582435 -0700
 +++ new/make/autoconf/platform.m4	2020-05-20 17:58:41.904574294 -0700
-@@ -184,10 +196,6 @@
+@@ -196,10 +196,6 @@
        VAR_OS=linux
        VAR_OS_TYPE=unix
        ;;
@@ -344,7 +308,7 @@
      *darwin*)
        VAR_OS=macosx
        VAR_OS_TYPE=unix
-@@ -458,17 +466,6 @@
+@@ -470,19 +466,6 @@
    fi
    AC_SUBST(OPENJDK_$1_CPU_LEGACY_LIB)
  
@@ -355,6 +319,8 @@
 -  if test "x$OPENJDK_$1_OS" = xsolaris; then
 -    if test "x$OPENJDK_$1_CPU" = xx86_64; then
 -      OPENJDK_$1_CPU_ISADIR="/amd64"
+-    elif test "x$OPENJDK_$1_CPU" = xsparcv9; then
+-      OPENJDK_$1_CPU_ISADIR="/sparcv9"
 -    fi
 -  fi
 -  AC_SUBST(OPENJDK_$1_CPU_ISADIR)
@@ -362,7 +328,7 @@
    # Setup OPENJDK_$1_CPU_OSARCH, which is used to set the os.arch Java system property
    OPENJDK_$1_CPU_OSARCH="$OPENJDK_$1_CPU"
    if test "x$OPENJDK_$1_OS" = xlinux && test "x$OPENJDK_$1_CPU" = xx86; then
-@@ -598,9 +593,6 @@
+@@ -610,9 +595,6 @@
  
  AC_DEFUN([PLATFORM_SET_RELEASE_FILE_OS_VALUES],
  [
@@ -372,7 +338,7 @@
    if test "x$OPENJDK_TARGET_OS" = "xlinux"; then
      RELEASE_FILE_OS_NAME=Linux
    fi
-@@ -656,25 +648,9 @@
+@@ -669,25 +651,9 @@
    PLATFORM_SET_MODULE_TARGET_OS_VALUES
    PLATFORM_SET_RELEASE_FILE_OS_VALUES
    PLATFORM_SETUP_LEGACY_VARS
@@ -410,7 +376,7 @@
  OPENJDK_TARGET_CPU_LEGACY:=@OPENJDK_TARGET_CPU_LEGACY@
  OPENJDK_TARGET_CPU_LEGACY_LIB:=@OPENJDK_TARGET_CPU_LEGACY_LIB@
  OPENJDK_TARGET_CPU_OSARCH:=@OPENJDK_TARGET_CPU_OSARCH@
-@@ -538,7 +537,6 @@
+@@ -539,7 +538,6 @@
  # LDFLAGS used to link the jdk native libraries (C-code)
  LDFLAGS_JDKLIB:=@LDFLAGS_JDKLIB@
  JDKLIB_LIBS:=@JDKLIB_LIBS@
@@ -418,7 +384,7 @@
  
  # LDFLAGS used to link the jdk native launchers (C-code)
  LDFLAGS_JDKEXE:=@LDFLAGS_JDKEXE@
-@@ -752,7 +750,6 @@
+@@ -756,7 +754,6 @@
  LDD:=@LDD@
  OTOOL:=@OTOOL@
  READELF:=@READELF@
@@ -426,22 +392,6 @@
  EXPR:=@EXPR@
  FILE:=@FILE@
  DOT:=@DOT@
-@@ -770,7 +767,6 @@
- ULIMIT:=@ULIMIT@
- 
- TAR_TYPE:=@TAR_TYPE@
--TAR_CREATE_EXTRA_PARAM:=@TAR_CREATE_EXTRA_PARAM@
- TAR_INCLUDE_PARAM:=@TAR_INCLUDE_PARAM@
- TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TRANSFORM@
- 
-@@ -785,7 +781,6 @@
- VCRUNTIME_1_DLL:=@VCRUNTIME_1_DLL@
- MSVCP_DLL:=@MSVCP_DLL@
- UCRT_DLL_DIR:=@UCRT_DLL_DIR@
--STLPORT_LIB:=@STLPORT_LIB@
- ENABLE_PANDOC:=@ENABLE_PANDOC@
- PANDOC_MARKDOWN_FLAG:=@PANDOC_MARKDOWN_FLAG@
- 
 --- old/make/autoconf/toolchain.m4	2020-05-20 17:58:44.612626291 -0700
 +++ new/make/autoconf/toolchain.m4	2020-05-20 17:58:44.216618687 -0700
 @@ -39,7 +39,6 @@
@@ -454,7 +404,7 @@
  VALID_TOOLCHAINS_windows="microsoft"
 --- old/make/common/MakeBase.gmk	2020-05-20 17:58:45.708647335 -0700
 +++ new/make/common/MakeBase.gmk	2020-05-20 17:58:45.324639962 -0700
-@@ -264,33 +264,7 @@
+@@ -268,33 +268,7 @@
  ################################################################################
  # All install-file and related macros automatically call DecodeSpace when needed.
  
@@ -491,7 +441,7 @@
    # set. Some files get their write permissions removed after being copied to the
 --- old/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.780687120 -0700
 +++ new/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.440680591 -0700
-@@ -990,7 +990,7 @@
+@@ -1000,7 +1000,7 @@
            $1_DEBUGINFO_FILES := $$($1_SYMBOLS_DIR)/$$($1_NOSUFFIX).pdb \
                $$($1_SYMBOLS_DIR)/$$($1_NOSUFFIX).map
  
@@ -500,7 +450,7 @@
            $1_DEBUGINFO_FILES := $$($1_SYMBOLS_DIR)/$$($1_NOSUFFIX).debuginfo
            # Setup the command line creating debuginfo files, to be run after linking.
            # It cannot be run separately since it updates the original target file
-@@ -1124,7 +1124,7 @@
+@@ -1134,7 +1134,7 @@
      endif
  
      $1_VARDEPS := $$($1_LD) $$($1_SYSROOT_LDFLAGS) $$($1_LDFLAGS) $$($1_EXTRA_LDFLAGS) \
@@ -509,7 +459,7 @@
          $$($1_CREATE_DEBUGINFO_CMDS) $$($1_MANIFEST_VERSION) \
          $$($1_STRIP_CMD)
      $1_VARDEPS_FILE := $$(call DependOnVariable, $1_VARDEPS, \
-@@ -1183,7 +1183,7 @@
+@@ -1193,7 +1193,7 @@
  
  		  $$(call ExecuteWithLog, $$($1_OBJECT_DIR)/$$($1_SAFE_NAME)_link, \
  		      $$($1_LD) $$($1_LDFLAGS) $$($1_EXTRA_LDFLAGS) $$($1_SYSROOT_LDFLAGS) \
@@ -518,7 +468,7 @@
  		          $$($1_LIBS) $$($1_EXTRA_LIBS)) \
  		      | $(GREP) -v "^   Creating library .*\.lib and object .*\.exp" || \
  		          test "$$$$?" = "1" ; \
-@@ -1196,7 +1196,7 @@
+@@ -1206,7 +1206,7 @@
  		  $$(call ExecuteWithLog, $$($1_OBJECT_DIR)/$$($1_SAFE_NAME)_link, \
  		      $$(if $$($1_LINK_OBJS_RELATIVE), $$(CD) $$(OUTPUTDIR) ; ) \
  		      $$($1_LD) $$($1_LDFLAGS) $$($1_EXTRA_LDFLAGS) $$($1_SYSROOT_LDFLAGS) \
@@ -529,7 +479,7 @@
  		  $$($1_STRIP_CMD)
 --- old/make/common/modules/LauncherCommon.gmk	2020-05-20 17:58:50.820745492 -0700
 +++ new/make/common/modules/LauncherCommon.gmk	2020-05-20 17:58:50.488739117 -0700
-@@ -151,7 +151,6 @@
+@@ -150,7 +150,6 @@
            -DLAUNCHER_NAME='"$$(LAUNCHER_NAME)"' \
            -DPROGNAME='"$1"' \
            $$($1_CFLAGS), \
@@ -537,7 +487,7 @@
        CFLAGS_windows := $$($1_CFLAGS_windows), \
        DISABLED_WARNINGS_gcc := unused-function, \
        LDFLAGS := $$(LDFLAGS_JDKEXE) \
-@@ -161,14 +160,11 @@
+@@ -160,14 +159,11 @@
            -L$(call FindLibDirForModule, java.base), \
        LDFLAGS_macosx := $$(call SET_EXECUTABLE_ORIGIN,/../lib) \
            -L$(call FindLibDirForModule, java.base), \
@@ -719,23 +669,6 @@
  else ifeq ($(call isTargetOs, macosx), true)
    # nm on macosx prints out "warning: nm: no name list" to stderr for
    # files without symbols. Hide this, even at the expense of hiding real errors.
---- old/make/hotspot/test/GtestImage.gmk	2020-05-20 17:59:02.544970605 -0700
-+++ new/make/hotspot/test/GtestImage.gmk	2020-05-20 17:59:02.160963232 -0700
-@@ -56,14 +56,4 @@
-   )
- endif
- 
--ifeq ($(call isTargetOs, solaris), true)
--  $(foreach v, $(JVM_VARIANTS), \
--    $(eval $(call SetupCopyFiles, COPY_GTEST_STLPORT_$v, \
--        DEST := $(TEST_IMAGE_DIR)/hotspot/gtest/$v, \
--        FILES := $(STLPORT_LIB), \
--    )) \
--    $(eval TARGETS += $$(COPY_GTEST_STLPORT_$v)) \
--  )
--endif
--
- all: $(TARGETS)
 --- old/make/ide/visualstudio/hotspot/CreateVSProject.gmk	2020-05-20 17:59:05.797033047 -0700
 +++ new/make/ide/visualstudio/hotspot/CreateVSProject.gmk	2020-05-20 17:59:05.409025597 -0700
 @@ -76,7 +76,6 @@
@@ -851,7 +784,7 @@
  # If FDLIBM_CFLAGS is non-empty we know that we can optimize
  # fdlibm when adding those extra C flags. Currently GCC,
  # and clang only.
-@@ -62,7 +58,7 @@
+@@ -63,7 +59,7 @@
  ##########################################################################################
  
  LIBVERIFY_OPTIMIZATION := HIGH
@@ -860,7 +793,7 @@
    ifeq ($(COMPILE_WITH_DEBUG_SYMBOLS), true)
      LIBVERIFY_OPTIMIZATION := LOW
    endif
-@@ -106,7 +101,6 @@
+@@ -107,7 +103,6 @@
      LIBS := $(BUILD_LIBFDLIBM_TARGET), \
      LIBS_unix := -ljvm, \
      LIBS_linux := $(LIBDL), \
@@ -868,7 +801,7 @@
      LIBS_aix := $(LIBDL) $(LIBM),\
      LIBS_macosx := -framework CoreFoundation \
          -framework Foundation \
-@@ -214,7 +209,6 @@
+@@ -216,7 +211,6 @@
          $(call SET_SHARED_LIBRARY_ORIGIN), \
      LIBS_unix := $(LIBZ_LIBS), \
      LIBS_linux := $(LIBDL) -lpthread, \
@@ -909,7 +842,7 @@
    endif
 --- old/make/modules/java.desktop/lib/Awt2dLibraries.gmk	2020-05-20 17:59:15.341216302 -0700
 +++ new/make/modules/java.desktop/lib/Awt2dLibraries.gmk	2020-05-20 17:59:14.945208698 -0700
-@@ -76,7 +76,7 @@
+@@ -77,7 +77,7 @@
        #
  endif
  
@@ -918,7 +851,7 @@
    LIBAWT_EXFILES += awt_Font.c CUPSfuncs.c fontpath.c X11Color.c
  endif
  
-@@ -156,7 +156,6 @@
+@@ -157,7 +157,6 @@
          -delayload:comctl32.dll -delayload:shlwapi.dll, \
      LIBS_unix := -ljvm -ljava $(LIBM), \
      LIBS_linux :=  $(LIBDL), \
@@ -926,7 +859,7 @@
      LIBS_aix := $(LIBDL),\
      LIBS_macosx := -lmlib_image \
          -framework Cocoa \
-@@ -389,7 +388,6 @@
+@@ -392,7 +391,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LIBS_unix := -lawt -ljvm -ljava, \
        LIBS_linux := $(LIBM) $(LIBDL), \
@@ -934,16 +867,16 @@
    ))
  
    $(BUILD_LIBAWT_HEADLESS): $(BUILD_LIBAWT)
-@@ -447,7 +445,7 @@
+@@ -450,7 +448,7 @@
                          -DHAVE_SYSCONF -DHAVE_SYS_MMAN_H -DHAVE_UNISTD_H \
                          -DHB_NO_PRAGMA_GCC_DIAGNOSTIC
     endif
 +   ifeq ($(call isTargetOs, linux macosx), true)
 -   ifeq ($(call isTargetOs, solaris linux macosx), true)
-      HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES
+      HARFBUZZ_CFLAGS += -DHAVE_INTEL_ATOMIC_PRIMITIVES -DHB_NO_VISIBILITY
     endif
  
-@@ -608,10 +606,7 @@
+@@ -627,10 +625,7 @@
    ifeq ($(call isTargetOs, macosx), true)
      JAWT_LIBS := -lawt_lwawt
    else
@@ -955,7 +888,7 @@
      ifeq ($(ENABLE_HEADLESS_ONLY), false)
        JAWT_LIBS += -lawt_xawt
      else
-@@ -638,7 +633,6 @@
+@@ -657,7 +652,6 @@
        LDFLAGS_unix := -L$(INSTALL_LIBRARIES_HERE), \
        LDFLAGS_macosx := -Wl$(COMMA)-rpath$(COMMA)@loader_path, \
        LIBS_unix := $(JAWT_LIBS) $(JDKLIB_LIBS), \
@@ -1070,16 +1003,6 @@
      LIBS_aix := -lperfstat,\
      LIBS_windows := jvm.lib psapi.lib $(WIN_JAVA_LIB) advapi32.lib, \
  ))
---- old/make/modules/jdk.net/Lib.gmk	2020-05-20 17:59:25.877418605 -0700
-+++ new/make/modules/jdk.net/Lib.gmk	2020-05-20 17:59:25.493411232 -0700
-@@ -36,7 +36,6 @@
-       LDFLAGS := $(LDFLAGS_JDKLIB) \
-           $(call SET_SHARED_LIBRARY_ORIGIN), \
-       LIBS := -ljava, \
--      LIBS_solaris := -lsocket, \
-       LIBS_linux := -ljvm, \
-   ))
- 
 --- old/make/modules/jdk.sctp/Lib.gmk	2020-05-20 17:59:26.921438651 -0700
 +++ new/make/modules/jdk.sctp/Lib.gmk	2020-05-20 17:59:26.541431354 -0700
 @@ -44,7 +44,6 @@
@@ -1092,12 +1015,24 @@
      TARGETS += $(BUILD_LIBSCTP)
 --- old/make/scripts/compare.sh	2020-05-20 17:59:27.985459081 -0700
 +++ new/make/scripts/compare.sh	2020-05-20 17:59:27.597451631 -0700
-@@ -72,14 +72,7 @@
+@@ -73,26 +73,7 @@
  # Disassembly diff filters. These filters try to filter out ephemeral parts of the
  # disassembly, such as hard-coded addresses, to be able to catch "actual" differences.
  
 -if [ "$OPENJDK_TARGET_OS" = "solaris" ]; then
--  if [ "$OPENJDK_TARGET_CPU" = "x86_64" ]; then
+-  if [ "$OPENJDK_TARGET_CPU" = "sparcv9" ]; then
+-    DIS_DIFF_FILTER="$SED \
+-        -e 's/^[0-9a-f]\{16\}/<ADDR>:/' \
+-        -e 's/^ *[0-9a-f]\{3,12\}:/  <ADDR>:/' \
+-        -e 's/:	[0-9a-f][0-9a-f]\( [0-9a-f][0-9a-f]\)\{2,10\}/:	<NUMS>/' \
+-        -e 's/\$[a-zA-Z0-9_\$]\{15\}\./<SYM>./' \
+-        -e 's/, [0-9a-fx\-]\{1,8\}/, <ADDR>/g' \
+-        -e 's/0x[0-9a-f]\{1,8\}/<HEX>/g' \
+-        -e 's/\! [0-9a-f]\{1,8\} /! <ADDR> /' \
+-        -e 's/call  [0-9a-f]\{4,7\}/call  <ADDR>/' \
+-        -e 's/%hi(0),/%hi(<HEX>),/' \
+-        "
+-  elif [ "$OPENJDK_TARGET_CPU" = "x86_64" ]; then
 -    # Random strings looking like this differ: <.XAKoKoPIac2W0OA.
 -    DIS_DIFF_FILTER="$SED \
 -        -e 's/<\.[A-Za-z0-9]\{\15}\./<.SYM./' \
@@ -1108,7 +1043,7 @@
    if [ "$OPENJDK_TARGET_CPU" = "x86" ]; then
      DIS_DIFF_FILTER="$SED -r \
          -e 's/^  [0-9A-F]{16}: //' \
-@@ -458,14 +439,7 @@
+@@ -447,14 +440,7 @@
      fi
  
      CONTENTS_DIFF_FILE=$WORK_DIR/$ZIP_FILE.diff
@@ -1124,7 +1059,7 @@
  
      ONLY_OTHER=$($GREP "^Only in $OTHER_UNZIPDIR" $CONTENTS_DIFF_FILE)
      ONLY_THIS=$($GREP "^Only in $THIS_UNZIPDIR" $CONTENTS_DIFF_FILE)
-@@ -485,14 +459,8 @@
+@@ -474,14 +460,8 @@
      fi
  
      if [ "$CMP_ZIPS_CONTENTS" = "true" ]; then
@@ -1141,7 +1076,7 @@
  
          # Separate executable/library files from other files in zip.
          DIFFING_TEXT_FILES=
-@@ -829,10 +797,6 @@
+@@ -826,10 +806,6 @@
          # to filter out that extra information.
          $DUMPBIN -exports $OTHER_FILE | $GREP  -E '^ +[0-9A-F]+ +[0-9A-F]+ [0-9A-F]+' | sed 's/ = .*//g' | cut -c27- | $SYM_SORT_CMD > $WORK_FILE_BASE.symbols.other
          $DUMPBIN -exports $THIS_FILE  | $GREP  -E '^ +[0-9A-F]+ +[0-9A-F]+ [0-9A-F]+' | sed 's/ = .*//g' | cut -c27- | $SYM_SORT_CMD > $WORK_FILE_BASE.symbols.this
@@ -1211,7 +1146,7 @@
  set -e
 --- old/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:33.301561154 -0700
 +++ new/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:32.909553627 -0700
-@@ -869,10 +869,6 @@
+@@ -871,10 +871,6 @@
  
  BUILD_HOTSPOT_JTREG_EXECUTABLES_LIBS_exesigtest := -ljvm
  
@@ -1221,10 +1156,10 @@
 -
  ifeq ($(call isTargetOs, windows), true)
      BUILD_HOTSPOT_JTREG_EXECUTABLES_CFLAGS_exeFPRegs := -MT
-     BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c
+     BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c libnativeStack.c
 --- old/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.437582966 -0700
 +++ new/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.045575440 -0700
-@@ -73,9 +73,6 @@
+@@ -75,9 +75,6 @@
    ifeq ($(call isTargetOs, linux), true)
      BUILD_JDK_JTREG_LIBRARIES_LIBS_libInheritedChannel := -ljava
      BUILD_JDK_JTREG_EXECUTABLES_LIBS_exelauncher := -ldl
@@ -1273,7 +1208,7 @@
  #endif /* !_JAVASOFT_JVM_MD_H_ */
 --- old/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.965746713 -0700
 +++ new/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.629740261 -0700
-@@ -489,7 +489,7 @@
+@@ -491,7 +491,7 @@
    st->print("%d", sysconf(_SC_CHILD_MAX));
  
    print_rlimit(st, ", THREADS", RLIMIT_THREADS);
@@ -1282,7 +1217,7 @@
    print_rlimit(st, ", NPROC", RLIMIT_NPROC);
  #endif
  
-@@ -507,12 +507,6 @@
+@@ -509,12 +509,6 @@
    print_rlimit(st, ", MEMLOCK", RLIMIT_MEMLOCK, true);
  #endif
  
@@ -1295,7 +1230,7 @@
    // MacOS; The maximum size (in bytes) to which a process's resident set size may grow.
  #if defined(__APPLE__)
    print_rlimit(st, ", RSS", RLIMIT_RSS, true);
-@@ -960,7 +954,7 @@
+@@ -985,7 +979,7 @@
  // page size which again depends on the concrete system the VM is running
  // on. Space for libc guard pages is not included in this size.
  jint os::Posix::set_minimum_stack_sizes() {
@@ -1304,7 +1239,7 @@
  
    _java_thread_min_stack_allowed = _java_thread_min_stack_allowed +
                                     StackOverflow::stack_guard_zone_size() +
-@@ -1281,8 +1275,7 @@
+@@ -1306,8 +1300,7 @@
    if ((status = pthread_mutexattr_settype(_mutexAttr, PTHREAD_MUTEX_NORMAL)) != 0) {
      fatal("pthread_mutexattr_settype: %s", os::strerror(status));
    }
@@ -1314,7 +1249,7 @@
  }
  
  static int (*_pthread_condattr_setclock)(pthread_condattr_t *, clockid_t) = NULL;
-@@ -1497,7 +1490,6 @@
+@@ -1522,7 +1515,6 @@
  // Shared pthread_mutex/cond based PlatformEvent implementation.
  // Not currently usable by Solaris.
  
@@ -1322,7 +1257,7 @@
  
  // PlatformEvent
  //
-@@ -1927,8 +1919,6 @@
+@@ -1952,8 +1944,6 @@
      return OS_OK;
    }
  }
@@ -1333,7 +1268,7 @@
  #ifdef __APPLE__
 --- old/src/hotspot/os/posix/os_posix.hpp	2020-05-20 17:59:44.033767220 -0700
 +++ new/src/hotspot/os/posix/os_posix.hpp	2020-05-20 17:59:43.649759847 -0700
-@@ -123,8 +123,6 @@
+@@ -134,8 +134,6 @@
    sigjmp_buf _jmpbuf;
  };
  
@@ -1342,7 +1277,7 @@
  /*
   * This is the platform-specific implementation underpinning
   * the ParkEvent class, which itself underpins Java-level monitor
-@@ -290,6 +288,4 @@
+@@ -301,6 +299,4 @@
    void notify_all();
  };
  
@@ -1380,7 +1315,7 @@
  #endif
 --- old/src/hotspot/share/c1/c1_LIR.cpp	2020-05-20 17:59:59.318060690 -0700
 +++ new/src/hotspot/share/c1/c1_LIR.cpp	2020-05-20 17:59:58.926053163 -0700
-@@ -452,8 +452,6 @@
+@@ -467,8 +467,6 @@
      case lir_monaddr:        // input and result always valid, info always invalid
      case lir_null_check:     // input and info always valid, result always invalid
      case lir_move:           // input and result always valid, may have info
@@ -1389,7 +1324,7 @@
      {
        assert(op->as_Op1() != NULL, "must be");
        LIR_Op1* op1 = (LIR_Op1*)op;
-@@ -1664,8 +1662,6 @@
+@@ -1763,8 +1761,6 @@
       case lir_convert:               s = "convert";       break;
       case lir_alloc_object:          s = "alloc_obj";     break;
       case lir_monaddr:               s = "mon_addr";      break;
@@ -1400,16 +1335,16 @@
       case lir_cmp_l2i:               s = "cmp_l2i";       break;
 --- old/src/hotspot/share/c1/c1_LIR.hpp	2020-05-20 18:00:00.446082348 -0700
 +++ new/src/hotspot/share/c1/c1_LIR.hpp	2020-05-20 18:00:00.042074591 -0700
-@@ -921,8 +921,6 @@
+@@ -927,8 +927,6 @@
        , lir_monaddr
        , lir_roundfp
        , lir_safepoint
 -      , lir_pack64
 -      , lir_unpack64
        , lir_unwind
+       , lir_load_klass
    , end_op1
-   , begin_op2
-@@ -2114,9 +2112,6 @@
+@@ -2254,9 +2252,6 @@
    void logical_or  (LIR_Opr left, LIR_Opr right, LIR_Opr dst) { append(new LIR_Op2(lir_logic_or,   left, right, dst)); }
    void logical_xor (LIR_Opr left, LIR_Opr right, LIR_Opr dst) { append(new LIR_Op2(lir_logic_xor,  left, right, dst)); }
  
@@ -1442,7 +1377,7 @@
  
 --- old/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:31.194672744 -0700
 +++ new/src/hotspot/share/runtime/globals.hpp	2020-05-20 18:00:30.854666216 -0700
-@@ -689,10 +689,6 @@
+@@ -696,10 +696,6 @@
    product_pd(bool, DontYieldALot,                                           \
            "Throw away obvious excess yield calls")                          \
                                                                              \
@@ -1453,7 +1388,7 @@
    product(bool, DisablePrimordialThreadGuardPages, false, EXPERIMENTAL,     \
                 "Disable the use of stack guard pages if the JVM is loaded " \
                 "on the primordial process thread")                          \
-@@ -734,10 +730,6 @@
+@@ -753,10 +749,6 @@
            "When true prevents OS-level spurious, or premature, wakeups "    \
            "from Object.wait (Ignored for Windows)")                         \
                                                                              \
@@ -1464,7 +1399,7 @@
    product(bool, ReduceSignalUsage, false,                                   \
            "Reduce the use of OS signals in Java and/or the VM")             \
                                                                              \
-@@ -1664,10 +1656,8 @@
+@@ -1680,10 +1672,8 @@
    product(intx, ThreadPriorityPolicy, 0,                                    \
            "0 : Normal.                                                     "\
            "    VM chooses priorities that are appropriate for normal       "\
@@ -1477,7 +1412,7 @@
            "    priorities. However, with ThreadPriorityPolicy=0, VM will   "\
            "    not use the highest possible native priority,               "\
            "    THREAD_PRIORITY_TIME_CRITICAL, as it may interfere with     "\
-@@ -2017,8 +2006,7 @@
+@@ -2032,8 +2022,7 @@
             "do not map the archive")                                        \
             range(0, 2)                                                      \
                                                                              \
@@ -1504,7 +1439,7 @@
    if (PrintFlagsFinal || PrintFlagsRanges) {
 --- old/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.390734111 -0700
 +++ new/src/hotspot/share/runtime/os.hpp	2020-05-20 18:00:34.014726891 -0700
-@@ -484,7 +484,7 @@
+@@ -494,7 +494,7 @@
  
    static void free_thread(OSThread* osthread);
  
@@ -1513,7 +1448,7 @@
    static intx current_thread_id();
    static int current_process_id();
  
-@@ -838,10 +838,8 @@
+@@ -848,10 +848,8 @@
    // JVMTI & JVM monitoring and management support
    // The thread_cpu_time() and current_thread_cpu_time() are only
    // supported if is_thread_cpu_time_supported() returns true.
@@ -1537,7 +1472,7 @@
  # include "semaphore_bsd.hpp"
 --- old/src/hotspot/share/runtime/thread.cpp	2020-05-20 18:00:37.538794556 -0700
 +++ new/src/hotspot/share/runtime/thread.cpp	2020-05-20 18:00:37.202788104 -0700
-@@ -347,12 +347,6 @@
+@@ -348,12 +348,6 @@
    set_stack_base(os::current_stack_base());
    set_stack_size(os::current_stack_size());
  
@@ -1567,7 +1502,7 @@
  
 --- old/src/hotspot/share/services/memTracker.hpp	2020-05-20 18:00:39.774837489 -0700
 +++ new/src/hotspot/share/services/memTracker.hpp	2020-05-20 18:00:39.374829809 -0700
-@@ -86,11 +86,9 @@
+@@ -89,11 +89,9 @@
  #include "services/threadStackTracker.hpp"
  #include "services/virtualMemoryTracker.hpp"
  
@@ -1575,15 +1510,15 @@
 -
 -#define CURRENT_PC ((MemTracker::tracking_level() == NMT_detail && NMT_stack_walkable) ? \
 +#define CURRENT_PC ((MemTracker::tracking_level() == NMT_detail) ? \
-                     NativeCallStack(0) : NativeCallStack::empty_stack())
+                     NativeCallStack(0) : FAKE_CALLSTACK)
 -#define CALLER_PC  ((MemTracker::tracking_level() == NMT_detail && NMT_stack_walkable) ?  \
 +#define CALLER_PC  ((MemTracker::tracking_level() == NMT_detail) ?  \
-                     NativeCallStack(1) : NativeCallStack::empty_stack())
+                     NativeCallStack(1) : FAKE_CALLSTACK)
  
  class MemBaseline;
 --- old/src/hotspot/share/utilities/debug.cpp	2020-05-20 18:00:41.782876045 -0700
 +++ new/src/hotspot/share/utilities/debug.cpp	2020-05-20 18:00:41.442869517 -0700
-@@ -639,12 +639,11 @@
+@@ -641,12 +641,11 @@
    tty->print_cr("  findm(intptr_t pc) - finds Method*");
    tty->print_cr("  find(intptr_t x)   - finds & prints nmethod/stub/bytecode/oop based on pointer into it");
    tty->print_cr("  pns(void* sp, void* fp, void* pc)  - print native (i.e. mixed) stack trace. E.g.");
@@ -1684,7 +1619,7 @@
 -// warnings.
 -//
 -// This also means that pointers to functions can no longer be "hidden"
--// in opaque types like void * because at the invokation point warnings
+-// in opaque types like void * because at the invocation point warnings
 -// will be generated. While this makes perfect sense from a type safety
 -// point of view it causes a lot of warnings on old code using C header
 -// files. Here are some typedefs to make the job of silencing warnings
@@ -1755,16 +1690,7 @@
  #include <netinet/in.h>
 --- old/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:48.214999546 -0700
 +++ new/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:47.822992019 -0700
-@@ -94,7 +94,7 @@
-   "JAVA_HOME", "JAVA_TOOL_OPTIONS", "_JAVA_OPTIONS", "CLASSPATH",
-   "PATH", "USERNAME",
- 
--  // Env variables that are defined on Solaris/Linux/BSD
-+  // Env variables that are defined on Linux/BSD
-   "LD_LIBRARY_PATH", "LD_PRELOAD", "SHELL", "DISPLAY",
-   "HOSTTYPE", "OSTYPE", "ARCH", "MACHTYPE",
-   "LANG", "LC_ALL", "LC_CTYPE", "LC_NUMERIC", "LC_TIME",
-@@ -1611,8 +1611,6 @@
+@@ -1791,8 +1791,6 @@
        out.print_raw   ("#   Executing ");
  #if defined(LINUX) || defined(_ALLBSD_SOURCE)
        out.print_raw   ("/bin/sh -c ");
@@ -1773,7 +1699,7 @@
  #elif defined(_WINDOWS)
        out.print_raw   ("cmd /C ");
  #endif
-@@ -1674,8 +1672,6 @@
+@@ -1854,8 +1852,6 @@
      tty->print("#   Executing ");
  #if defined(LINUX)
      tty->print  ("/bin/sh -c ");
@@ -1828,21 +1754,13 @@
     identifiers matching a C constant. The PREFIX_ is filtered out in the
 --- old/src/java.base/share/conf/security/java.security	2020-05-20 18:00:54.519120590 -0700
 +++ new/src/java.base/share/conf/security/java.security	2020-05-20 18:00:54.183114138 -0700
-@@ -60,9 +60,6 @@
- #
- # List of providers and their preference orders (see above):
- #
--#ifdef solaris
--security.provider.tbd=SunPKCS11 ${java.home}/conf/security/sunpkcs11-solaris.cfg
--#endif
- security.provider.tbd=SUN
- security.provider.tbd=SunRsaSign
- security.provider.tbd=SunEC
-@@ -83,9 +77,7 @@
+@@ -80,11 +80,7 @@
  #ifdef macosx
  security.provider.tbd=Apple
  #endif
--#ifndef solaris
+-#ifdef solaris
+-security.provider.tbd=SunPKCS11 ${java.home}/conf/security/sunpkcs11-solaris.cfg
+-#else
  security.provider.tbd=SunPKCS11
 -#endif
  
@@ -2203,7 +2121,7 @@
  }
  
  static const char*
-@@ -452,7 +445,7 @@
+@@ -456,7 +449,7 @@
  #endif
  
  /* vfork(2) is deprecated on Darwin */
@@ -2212,7 +2130,7 @@
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -585,7 +576,7 @@
+@@ -612,7 +605,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
  /* vfork(2) is deprecated on Darwin*/
@@ -2589,7 +2507,7 @@
  #elif defined(_AIX)
  
  static char *
-@@ -824,15 +505,6 @@
+@@ -823,15 +504,6 @@
              free((void *) freetz);
          }
  #else
@@ -2787,7 +2705,7 @@
    sigused = sigismember(&jvmsigs, sig);
    if (jvm_signal_installed && sigused) {
      /* jvm has installed its signal handler for this signal. */
-@@ -340,7 +289,6 @@
+@@ -351,7 +300,6 @@
  }
  
  JNIEXPORT struct sigaction *JVM_get_signal_action(int sig) {
@@ -3800,7 +3718,7 @@
  #ifdef _AIX
      if (level == SOL_SOCKET) {
          if (opt == SO_SNDBUF || opt == SO_RCVBUF) {
-@@ -908,19 +675,10 @@
+@@ -910,19 +677,10 @@
   *
   * Linux allows a socket to bind to 127.0.0.255 which must be
   * caught.
@@ -3820,7 +3738,7 @@
      int rv;
      int arg, alen;
  
-@@ -938,61 +696,8 @@
+@@ -940,61 +698,8 @@
      }
  #endif
  
@@ -4024,7 +3942,7 @@
  #else
 --- old/src/java.base/unix/native/libnio/ch/Net.c	2020-05-20 18:01:34.943896775 -0700
 +++ new/src/java.base/unix/native/libnio/ch/Net.c	2020-05-20 18:01:34.515888557 -0700
-@@ -170,7 +170,7 @@
+@@ -215,7 +215,7 @@
  JNIEXPORT jboolean JNICALL
  Java_sun_nio_ch_Net_canIPv6SocketJoinIPv4Group0(JNIEnv* env, jclass cl)
  {
@@ -4033,7 +3951,7 @@
      /* IPv6 sockets can join IPv4 multicast groups */
      return JNI_TRUE;
  #else
-@@ -182,7 +182,7 @@
+@@ -227,7 +227,7 @@
  JNIEXPORT jboolean JNICALL
  Java_sun_nio_ch_Net_canJoin6WithIPv4Group0(JNIEnv* env, jclass cl)
  {
@@ -4073,8 +3991,8 @@
 -
  #ifdef __linux__
  #include <sys/syscall.h>
- #endif
-@@ -267,8 +260,7 @@
+ #include <sys/sysmacros.h> // makedev macros
+@@ -390,8 +383,7 @@
  
      /* system calls that might not be available at run time */
  
@@ -4096,7 +4014,7 @@
   * Since winsock doesn't have the equivalent of strerror(errno)
 --- old/src/java.desktop/share/classes/sun/awt/FontConfiguration.java	2020-05-20 18:01:41.588024347 -0700
 +++ new/src/java.desktop/share/classes/sun/awt/FontConfiguration.java	2020-05-20 18:01:41.204016974 -0700
-@@ -1431,22 +1431,6 @@
+@@ -1440,22 +1440,6 @@
                  }
              }
          }
@@ -4202,7 +4120,7 @@
       */
 --- old/src/java.desktop/share/classes/sun/font/FileFontStrike.java	2020-05-20 18:01:46.908126498 -0700
 +++ new/src/java.desktop/share/classes/sun/font/FileFontStrike.java	2020-05-20 18:01:46.528119201 -0700
-@@ -222,24 +222,6 @@
+@@ -224,24 +224,6 @@
              !((TrueTypeFont)fileFont).useEmbeddedBitmapsForSize(intPtSize)) {
              useNatives = true;
          }
@@ -4229,8 +4147,8 @@
                   " use natives = " + useNatives +
 --- old/src/java.desktop/share/classes/sun/font/FontUtilities.java	2020-05-20 18:01:48.020147849 -0700
 +++ new/src/java.desktop/share/classes/sun/font/FontUtilities.java	2020-05-20 18:01:47.620140168 -0700
-@@ -41,8 +41,6 @@
- @SuppressWarnings("removal")
+@@ -40,8 +40,6 @@
+  */
  public final class FontUtilities {
  
 -    public static boolean isSolaris;
@@ -4238,7 +4156,7 @@
      public static boolean isLinux;
  
      public static boolean isMacOSX;
-@@ -64,7 +62,6 @@
+@@ -67,7 +65,6 @@
              @Override
              public Object run() {
                  String osName = System.getProperty("os.name", "unknownOS");
@@ -4734,7 +4652,7 @@
      static boolean isLinux() {
          return (osname.equals("Linux"));
      }
-@@ -302,7 +298,7 @@
+@@ -307,7 +303,7 @@
                  }
              }
          } else {
@@ -4743,7 +4661,7 @@
                  printers = getAllPrinterNamesSysV();
              } else if (isAIX()) {
                  printers = getAllPrinterNamesAIX();
-@@ -486,7 +482,7 @@
+@@ -491,7 +487,7 @@
          }
          /* fallback if nothing not having a printer at this point */
          PrintService printer = null;
@@ -4752,7 +4670,7 @@
              printer = getNamedPrinterNameSysV(name);
          } else if (isAIX()) {
              printer = getNamedPrinterNameAIX(name);
-@@ -654,7 +650,7 @@
+@@ -662,7 +658,7 @@
                  psuri = printerInfo[1];
              }
          } else {
@@ -4761,7 +4679,7 @@
                  defaultPrinter = getDefaultPrinterNameSysV();
              } else if (isAIX()) {
                  defaultPrinter = getDefaultPrinterNameAIX();
-@@ -873,7 +869,7 @@
+@@ -882,7 +878,7 @@
          ArrayList<String> results = null;
          try {
              final String[] cmd = new String[3];
@@ -4772,7 +4690,7 @@
                  cmd[2] = "env LC_ALL=C " + command;
 --- old/src/java.desktop/unix/classes/sun/print/UnixPrintJob.java	2020-05-20 18:02:39.605138318 -0700
 +++ new/src/java.desktop/unix/classes/sun/print/UnixPrintJob.java	2020-05-20 18:02:39.221130945 -0700
-@@ -881,51 +881,25 @@
+@@ -882,51 +882,25 @@
                          isAttributeCategorySupported(JobSheets.class)) {
              ncomps+=1;
          }
@@ -4845,7 +4763,7 @@
          if (IPPPrintService.debugPrint) {
 --- old/src/java.desktop/unix/classes/sun/print/UnixPrintService.java	2020-05-20 18:02:40.629157980 -0700
 +++ new/src/java.desktop/unix/classes/sun/print/UnixPrintService.java	2020-05-20 18:02:40.293151529 -0700
-@@ -223,31 +223,6 @@
+@@ -220,31 +220,6 @@
          return name;
      }
  
@@ -4877,7 +4795,7 @@
      private PrinterIsAcceptingJobs getPrinterIsAcceptingJobsBSD() {
          if (PrintServiceLookupProvider.cmdIndex ==
              PrintServiceLookupProvider.UNINITIALIZED) {
-@@ -325,9 +300,7 @@
+@@ -322,9 +297,7 @@
      }
  
      private PrinterIsAcceptingJobs getPrinterIsAcceptingJobs() {
@@ -4888,7 +4806,7 @@
              return getPrinterIsAcceptingJobsBSD();
          } else if (PrintServiceLookupProvider.isAIX()) {
              return getPrinterIsAcceptingJobsAIX();
-@@ -354,14 +327,6 @@
+@@ -351,14 +324,6 @@
          }
      }
  
@@ -4903,7 +4821,7 @@
      private QueuedJobCount getQueuedJobCountBSD() {
          if (PrintServiceLookupProvider.cmdIndex ==
              PrintServiceLookupProvider.UNINITIALIZED) {
-@@ -418,9 +383,7 @@
+@@ -415,9 +380,7 @@
      }
  
      private QueuedJobCount getQueuedJobCount() {
@@ -4914,7 +4832,7 @@
              return getQueuedJobCountBSD();
          } else if (PrintServiceLookupProvider.isAIX()) {
              return getQueuedJobCountAIX();
-@@ -429,13 +392,6 @@
+@@ -426,13 +389,6 @@
          }
      }
  
@@ -4928,7 +4846,7 @@
      private PrintServiceAttributeSet getBSDServiceAttributes() {
          PrintServiceAttributeSet attrs = new HashPrintServiceAttributeSet();
          attrs.add(getQueuedJobCountBSD());
-@@ -473,9 +429,7 @@
+@@ -471,9 +427,7 @@
      }
  
      private PrintServiceAttributeSet getDynamicAttributes() {
@@ -5143,7 +5061,7 @@
                                      "libgssapi_krb5.so",
 --- old/src/java.security.jgss/share/classes/sun/security/krb5/Config.java	2020-05-20 18:02:50.089339623 -0700
 +++ new/src/java.security.jgss/share/classes/sun/security/krb5/Config.java	2020-05-20 18:02:49.705332249 -0700
-@@ -927,8 +927,6 @@
+@@ -933,8 +933,6 @@
              if (name == null) {
                  name = "c:\\winnt\\krb5.ini";
              }
@@ -5244,16 +5162,18 @@
  }
 --- old/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2020-05-20 18:02:59.697524107 -0700
 +++ new/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2020-05-20 18:02:59.357517578 -0700
-@@ -696,15 +696,10 @@
+@@ -700,17 +700,10 @@
          lib = expand(lib);
          int i = lib.indexOf("/$ISA/");
          if (i != -1) {
--            // replace "/$ISA/" with "/amd64/" on Solaris AMD64.
+-            // replace "/$ISA/" on 64-bit Solaris.
 -            // On all other platforms, just turn it into a "/"
 +            // replace "/$ISA/" with "/"
              String prefix = lib.substring(0, i);
              String suffix = lib.substring(i + 5);
--            if (osName.equals("SunOS") && osArch.equals("amd64")) {
+-            if (osName.equals("SunOS") && osArch.equals("sparcv9")) {
+-                lib = prefix + "/sparcv9" + suffix;
+-            } else if (osName.equals("SunOS") && osArch.equals("amd64")) {
 -                lib = prefix + "/amd64" + suffix;
 -            } else {
 -                lib = prefix + suffix;
@@ -5264,7 +5184,7 @@
  
 --- old/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java	2020-05-20 18:03:09.173706056 -0700
 +++ new/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java	2020-05-20 18:03:08.789698683 -0700
-@@ -40,7 +40,6 @@
+@@ -41,7 +41,6 @@
  import sun.jvm.hotspot.debugger.NoSuchSymbolException;
  import sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal;
  import sun.jvm.hotspot.debugger.linux.LinuxDebuggerLocal;
@@ -5272,7 +5192,7 @@
  import sun.jvm.hotspot.debugger.remote.RemoteDebugger;
  import sun.jvm.hotspot.debugger.remote.RemoteDebuggerClient;
  import sun.jvm.hotspot.debugger.remote.RemoteDebuggerServer;
-@@ -364,9 +361,7 @@
+@@ -363,9 +362,7 @@
                  } catch (UnsupportedPlatformException e) {
                     throw new DebuggerException(e);
                  }
@@ -5283,7 +5203,7 @@
                      setupDebuggerWin32();
                  } else if (os.equals("linux")) {
                      setupDebuggerLinux();
-@@ -418,11 +413,7 @@
+@@ -417,11 +414,7 @@
          // configure the VM.
  
          try {
@@ -5296,7 +5216,7 @@
                  db = new HotSpotTypeDataBase(machDesc,
                  new Win32VtblAccess(debugger, jvmLibNames),
                  debugger, jvmLibNames);
-@@ -507,29 +498,6 @@
+@@ -506,29 +499,6 @@
          System.err.println("Loaded alternate HotSpot SA Debugger: " + alternateName);
      }
  
@@ -5326,7 +5246,7 @@
      private void connectRemoteDebugger() throws DebuggerException {
          RemoteDebugger remote =
          (RemoteDebugger) RMIHelper.lookup(debugServerID);
-@@ -545,9 +509,7 @@
+@@ -540,9 +510,7 @@
      }
  
      private void setupJVMLibNames(String os) {
@@ -5337,7 +5257,7 @@
              setupJVMLibNamesWin32();
          } else if (os.equals("linux")) {
              setupJVMLibNamesLinux();
-@@ -570,10 +522,6 @@
+@@ -555,10 +523,6 @@
          }
      }
  
@@ -5359,7 +5279,7 @@
  import sun.jvm.hotspot.runtime.win32_x86.Win32X86JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.win32_amd64.Win32AMD64JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.win32_aarch64.Win32AARCH64JavaThreadPDAccess;
-@@ -100,13 +96,7 @@
+@@ -99,13 +97,7 @@
  
          access = null;
          // FIXME: find the platform specific PD class by reflection?
@@ -5489,42 +5409,24 @@
  long
  dbgsysCurrentTimeMillis() {
      struct timeval t;
---- old/src/jdk.jdwp.agent/unix/native/libjdwp/exec_md.c	2020-05-20 18:03:33.146166346 -0700
-+++ new/src/jdk.jdwp.agent/unix/native/libjdwp/exec_md.c	2020-05-20 18:03:32.810159893 -0700
-@@ -30,14 +30,6 @@
- #include "sys.h"
- #include "util.h"
- 
--#if defined(LINUX) || defined(_ALLBSD_SOURCE) || defined(AIX)
--  /* Linux, BSD, AIX */
--  #define FORK() fork()
--#else
--  /* Solaris (make sure we always get the POSIX-specified behavior) */
--  #define FORK() fork1()
--#endif
--
- static char *skipWhitespace(char *p) {
-     while ((*p != '\0') && isspace(*p)) {
-         p++;
-@@ -100,7 +92,7 @@
-     }
-     argv[i] = NULL;  /* NULL terminate */
- 
--    if ((pid = FORK()) == 0) {
-+    if ((pid = fork()) == 0) {
-         /* Child process */
-         int i;
-         long max_fd;
 --- old/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java	2020-05-20 18:03:35.234206438 -0700
 +++ new/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java	2020-05-20 18:03:34.898199985 -0700
 @@ -34,7 +34,6 @@
- public enum Platform {
-     WINDOWS,
-     LINUX,
--    SOLARIS,
-     MACOS,
-     AIX,
-     UNKNOWN;
+     public enum OperatingSystem {
+         WINDOWS,
+         LINUX,
+-        SOLARIS,
+         MACOS,
+         AIX,
+         UNKNOWN;
+@@ -105,7 +104,6 @@
+         OperatingSystem os = switch (osName) {
+             case "win" -> OperatingSystem.WINDOWS;
+             case "lin" -> OperatingSystem.LINUX;
+-            case "sun" -> OperatingSystem.SOLARIS;
+             case "mac" -> OperatingSystem.MACOS;
+             case "aix" -> OperatingSystem.AIX;
+             default    -> OperatingSystem.UNKNOWN;
 --- old/src/jdk.management/unix/native/libmanagement_ext/OperatingSystemImpl.c	2020-05-20 18:03:36.322227327 -0700
 +++ new/src/jdk.management/unix/native/libmanagement_ext/OperatingSystemImpl.c	2020-05-20 18:03:35.934219877 -0700
 @@ -85,63 +85,7 @@
@@ -5690,7 +5592,7 @@
 -#endif
 -
 -/* Function types to support dynamic linking of socket API extension functions
-- * for SCTP. This is so that there is no linkage depandancy during build or
+- * for SCTP. This is so that there is no linkage dependency during build or
 - * runtime for libsctp.*/
 -typedef int sctp_getladdrs_func(int sock, sctp_assoc_t id, void **addrs);
 -typedef int sctp_freeladdrs_func(void* addrs);
@@ -5716,7 +5618,7 @@
  extern sctp_getpaddrs_func* nio_sctp_getpaddrs;
 --- old/src/jdk.sctp/unix/native/libsctp/SctpChannelImpl.c	2020-05-20 18:03:40.558308663 -0700
 +++ new/src/jdk.sctp/unix/native/libsctp/SctpChannelImpl.c	2020-05-20 18:03:40.174301290 -0700
-@@ -334,10 +334,11 @@
+@@ -331,10 +331,11 @@
              break;
          case SCTP_ADDR_MADE_PRIM :
              event = sun_nio_ch_sctp_PeerAddrChange_SCTP_ADDR_MADE_PRIM;
@@ -5731,7 +5633,7 @@
  
 --- old/src/jdk.sctp/unix/native/libsctp/SctpNet.c	2020-05-20 18:03:41.630329248 -0700
 +++ new/src/jdk.sctp/unix/native/libsctp/SctpNet.c	2020-05-20 18:03:41.242321797 -0700
-@@ -364,11 +364,7 @@
+@@ -371,11 +371,7 @@
      int i, addrCount;
      jobjectArray isaa;
  
@@ -5740,10 +5642,10 @@
 -#else /* __linux__ */
      if ((addrCount = nio_sctp_getladdrs(fd, 0, (struct sockaddr **)&addr_buf)) == -1) {
 -#endif
-         handleSocketError(env, errno);
+         sctpHandleSocketError(env, errno);
          return NULL;
      }
-@@ -413,11 +409,7 @@
+@@ -420,11 +416,7 @@
      int i, addrCount;
      jobjectArray isaa;
  
@@ -5752,7 +5654,7 @@
 -#else /* __linux__ */
      if ((addrCount = nio_sctp_getpaddrs(fd, id, (struct sockaddr **)&addr_buf)) == -1) {
 -#endif
-         handleSocketError(env, errno);
+         sctpHandleSocketError(env, errno);
          return NULL;
      }
 --- old/src/jdk.security.auth/share/classes/com/sun/security/auth/module/Krb5LoginModule.java	2020-05-20 18:03:42.730350368 -0700
@@ -6410,7 +6312,7 @@
 -endif
 --- old/make/hotspot/lib/JvmDtraceObjects.gmk	2020-05-20 18:08:17.355623374 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,132 +0,0 @@
+@@ -1,135 +0,0 @@
 -#
 -# Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
 -# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -6540,12 +6442,15 @@
 -	    > $(DTRACE_SUPPORT_DIR)/$(@F).dt))
 -	$(call ExecuteWithLog, $@, $(DTRACE) $(DTRACE_FLAGS) -o $@ \
 -	    -s $(DTRACE_SUPPORT_DIR)/$(@F).dt)
+-        ifeq ($(call isTargetCpuArch, sparc), true)
+-	  $(call ExecuteWithLog, $@.elfedit, $(ELFEDIT) $(call GetElfeditCommands) $@)
+-        endif
 -
 -  endif
 -endif
 --- old/make/hotspot/src/native/dtrace/generateJvmOffsets.cpp	2020-05-20 18:08:18.051636738 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,316 +0,0 @@
+@@ -1,321 +0,0 @@
 -/*
 - * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -6715,7 +6620,7 @@
 -
 -  GEN_VALUE(DATA_MODEL, data_model);
 -  GEN_VALUE(POINTER_SIZE, pointer_size);
--#if defined(TIERED)
+-#if COMPILER1_AND_COMPILER2
 -  GEN_VALUE(COMPILER, 3);
 -#elif COMPILER1
 -  GEN_VALUE(COMPILER, 1);
@@ -6739,7 +6644,12 @@
 -  printf("\n");
 -
 -  GEN_VALUE(MAX_METHOD_CODE_SIZE, max_method_code_size);
--#if defined(i386) || defined(__i386) || defined(__amd64)
+-#if defined(sparc) || defined(__sparc)
+-  GEN_VALUE(OFFSET_interpreter_frame_method, 2 * pointer_size);     /* L2 in saved window */
+-  GEN_VALUE(OFFSET_interpreter_frame_sender_sp, 13 * pointer_size); /* I5 in saved window */
+-  // Fake value for consistency. It is not going to be used.
+-  GEN_VALUE(OFFSET_interpreter_frame_bcp_offset, 0xFFFF);
+-#elif defined(i386) || defined(__i386) || defined(__amd64)
 -  GEN_VALUE(OFFSET_interpreter_frame_sender_sp, -1 * pointer_size);
 -  GEN_VALUE(OFFSET_interpreter_frame_method, -3 * pointer_size);
 -  GEN_VALUE(OFFSET_interpreter_frame_bcp_offset, -7 * pointer_size);
@@ -7016,7 +6926,7 @@
 -################################################################################
 --- old/src/hotspot/os/solaris/attachListener_solaris.cpp	2020-05-20 18:09:27.484969868 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,760 +0,0 @@
+@@ -1,755 +0,0 @@
 -/*
 - * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -7065,7 +6975,7 @@
 -
 -// The attach mechanism on Solaris is implemented using the Doors IPC
 -// mechanism. The first tool to attempt to attach causes the attach
--// listener thread to startup. This thread creats a door that is
+-// listener thread to startup. This thread creates a door that is
 -// associated with a function that enqueues an operation to the attach
 -// listener. The door is attached to a file in the file system so that
 -// client (tools) can locate it. To enqueue an operation to the VM the
@@ -7304,11 +7214,6 @@
 -  return op;
 -}
 -
--// create special operation to indicate all clients have detached
--static SolarisAttachOperation* create_detachall_operation() {
--  return new SolarisAttachOperation(AttachOperation::detachall_operation_name());
--}
--
 -// This is door function which the client executes via a door_call.
 -extern "C" {
 -  static void enqueue_proc(void* cookie, char* argp, size_t arg_size,
@@ -7357,7 +7262,7 @@
 -
 -    // create a pair of connected sockets. Store the file descriptor
 -    // for one end in the operation and enqueue the operation. The
--    // file descriptor for the other end wil be returned to the client.
+-    // file descriptor for the other end will be returned to the client.
 -    if (res == 0) {
 -      int s[2];
 -      if (socketpair(PF_UNIX, SOCK_STREAM, 0, s) < 0) {
@@ -7451,14 +7356,14 @@
 -    if (::rename(initial_path, door_path) == -1) {
 -        ::close(dd);
 -        ::fdetach(initial_path);
--        log_debug(attach)("unable to create door - rename %s to %s failed (%d)", errno);
+-        log_debug(attach)("unable to create door - rename %s to %s failed (%d)", initial_path, door_path, errno);
 -        dd = -1;
 -    }
 -  }
 -  if (dd >= 0) {
 -    set_door_descriptor(dd);
 -    set_door_path(door_path);
--    log_trace(attach)("door file %s created succesfully", door_path);
+-    log_trace(attach)("door file %s created successfully", door_path);
 -  } else {
 -    // unable to create door, attach it to file, or rename file into place
 -    ::unlink(initial_path);
@@ -7892,7 +7797,7 @@
 -
 --- old/src/hotspot/os/solaris/dtrace/jhelper.d	2020-05-20 18:09:30.445026698 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,540 +0,0 @@
+@@ -1,546 +0,0 @@
 -/*
 - * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -8039,7 +7944,13 @@
 -   */
 -  this->pc = arg0;
 -
--#if defined(__i386) || defined(__amd64)
+-  /*
+-   * The methodPtr is in %l2 on SPARC.  This can be found at
+-   * offset 8 from the frame pointer on 32-bit processes.
+-   */
+-#if   defined(__sparc)
+-  this->methodPtr = copyin_ptr(arg1 + 2 * sizeof(pointer) + STACK_BIAS);
+-#elif defined(__i386) || defined(__amd64)
 -  this->methodPtr = copyin_ptr(arg1 + OFFSET_interpreter_frame_method);
 -#else
 -#error "Don't know architecture"
@@ -9489,7 +9400,7 @@
 -#endif // OS_SOLARIS_OS_SHARE_SOLARIS_HPP
 --- old/src/hotspot/os/solaris/os_solaris.cpp	2020-05-20 18:09:34.749109332 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,4056 +0,0 @@
+@@ -1,4010 +0,0 @@
 -/*
 - * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -9645,9 +9556,6 @@
 -
 -// System parameters used internally
 -static clock_t clock_tics_per_sec = 100;
--
--// Track if we have called enable_extended_FILE_stdio (on Solaris 10u4+)
--static bool enabled_extended_FILE_stdio = false;
 -
 -// For diagnostics to print a message once. see run_periodic_checks
 -static bool check_addr0_done = false;
@@ -9946,7 +9854,7 @@
 -    path = &info->dls_serpath[0];
 -
 -    // Note: Due to a legacy implementation, most of the library path
--    // is set in the launcher. This was to accomodate linking restrictions
+-    // is set in the launcher. This was to accommodate linking restrictions
 -    // on legacy Solaris implementations (which are no longer supported).
 -    // Eventually, all the library path setting will be done here.
 -    //
@@ -10273,11 +10181,11 @@
 -
 -  char buf[64];
 -  if (status == 0) {
--    log_info(os, thread)("Thread started (tid: " UINTX_FORMAT ", attributes: %s). ",
--      (uintx) tid, describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
+-    log_info(os, thread)("Thread \"%s\" started (tid: " UINTX_FORMAT ", attributes: %s). ",
+-      thread->name(), (uintx) tid, describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
 -  } else {
--    log_warning(os, thread)("Failed to start thread - thr_create failed (%s) for attributes: %s.",
--      os::errno_name(status), describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
+-    log_warning(os, thread)("Failed to start thread \"%s\" - thr_create failed (%s) for attributes: %s.",
+-      thread->name(), os::errno_name(status), describe_thr_create_attributes(buf, sizeof(buf), stack_size, flags));
 -    // Log some OS information which might explain why creating the thread failed.
 -    log_info(os, thread)("Number of threads approx. running in the VM: %d", Threads::number_of_threads());
 -    LogStream st(Log(os, thread)::info());
@@ -11594,7 +11502,7 @@
 -    if (_illumos_page_sizes[beg] <= size_limit) {
 -      _page_sizes.add(_illumos_page_sizes[beg]);
 -      if (_illumos_page_sizes[beg] > *page_size) {
--	*page_size = _illumos_page_sizes[beg];
+-        *page_size = _illumos_page_sizes[beg];
 -      }
 -    }
 -  }
@@ -11695,11 +11603,11 @@
 -// meaningless in this mode so we must adjust the real lwp's priority.
 -// The routines below implement the getting and setting of lwp priorities.
 -//
--// Note: There are three priority scales used on Solaris.  Java priotities
+-// Note: There are three priority scales used on Solaris.  Java priorities
 -//       which range from 1 to 10, libthread "thr_setprio" scale which range
 -//       from 0 to 127, and the current scheduling class of the process we
 -//       are running in.  This is typically from -60 to +60.
--//       The setting of the lwp priorities in done after a call to thr_setprio
+-//       The setting of the lwp priorities is done after a call to thr_setprio
 -//       so Java priorities are mapped to libthread priorities and we map from
 -//       the latter to lwp priorities.  We don't keep priorities stored in
 -//       Java priorities since some of our worker threads want to set priorities
@@ -11719,7 +11627,7 @@
 -//
 -// Assumptions:
 -// +    We assume that all threads in the process belong to the same
--//              scheduling class.   IE. an homogenous process.
+-//              scheduling class.   IE. a homogeneous process.
 -// +    Must be root or in IA group to change change "interactive" attribute.
 -//              Priocntl() will fail silently.  The only indication of failure is when
 -//              we read-back the value and notice that it hasn't changed.
@@ -12080,8 +11988,8 @@
 -//
 -// ThreadPriorityPolicy=1
 -// This mode causes the priority table to get filled with
--// linear values.  NormPriority get's mapped to 50% of the
--// Maximum priority an so on.  This will cause VM threads
+-// linear values.  NormPriority gets mapped to 50% of the
+-// Maximum priority and so on.  This will cause VM threads
 -// to get unfair treatment against other Solaris processes
 -// which do not explicitly alter their thread priorities.
 -
@@ -12200,7 +12108,7 @@
 -static address resolve_symbol(const char* name) {
 -  address addr = resolve_symbol_lazy(name);
 -  if (addr == NULL) {
--    fatal(dlerror());
+-    fatal("resolve_symbol failed (%s)", dlerror());
 -  }
 -  return addr;
 -}
@@ -12441,7 +12349,7 @@
 -  }
 -
 -  // Calculate theoretical max. size of Threads to guard gainst
--  // artifical out-of-memory situations, where all available address-
+-  // artificial out-of-memory situations, where all available address-
 -  // space has been reserved by thread stacks. Default stack size is 1Mb.
 -  size_t pre_thread_stack_size = (JavaThread::stack_size_at_create()) ?
 -    JavaThread::stack_size_at_create() : (1*K*K);
@@ -12514,49 +12422,6 @@
 -      return -1;
 -    }
 -  }
--
--  // 32-bit Solaris systems suffer from:
--  //
--  // - an historical default soft limit of 256 per-process file
--  //   descriptors that is too low for many Java programs.
--  //
--  // - a design flaw where file descriptors created using stdio
--  //   fopen must be less than 256, _even_ when the first limit above
--  //   has been raised.  This can cause calls to fopen (but not calls to
--  //   open, for example) to fail mysteriously, perhaps in 3rd party
--  //   native code (although the JDK itself uses fopen).  One can hardly
--  //   criticize them for using this most standard of all functions.
--  //
--  // We attempt to make everything work anyways by:
--  //
--  // - raising the soft limit on per-process file descriptors beyond
--  //   256
--  //
--  // - As of Solaris 10u4, we can request that Solaris raise the 256
--  //   stdio fopen limit by calling function enable_extended_FILE_stdio.
--  //   This is done in init_2 and recorded in enabled_extended_FILE_stdio
--  //
--  // - If we are stuck on an old (pre 10u4) Solaris system, we can
--  //   workaround the bug by remapping non-stdio file descriptors below
--  //   256 to ones beyond 256, which is done below.
--  //
--  // See:
--  // 1085341: 32-bit stdio routines should support file descriptors >255
--  // 6533291: Work around 32-bit Solaris stdio limit of 256 open files
--  // 6431278: Netbeans crash on 32 bit Solaris: need to call
--  //          enable_extended_FILE_stdio() in VM initialisation
--  // Giri Mandalika's blog
--  // http://technopark02.blogspot.com/2005_05_01_archive.html
--  //
--#ifndef  _LP64
--  if ((!enabled_extended_FILE_stdio) && fd < 256) {
--    int newfd = ::fcntl(fd, F_DUPFD, 256);
--    if (newfd != -1) {
--      ::close(fd);
--      fd = newfd;
--    }
--  }
--#endif // 32-bit Solaris
 -
 -  // All file descriptors that are opened in the JVM and not
 -  // specifically destined for a subprocess should have the
@@ -13873,7 +13738,7 @@
 -#endif // OS_SOLARIS_OS_SOLARIS_HPP
 --- old/src/hotspot/os/solaris/os_solaris.inline.hpp	2020-05-20 18:09:36.197137133 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,63 +0,0 @@
+@@ -1,67 +0,0 @@
 -/*
 - * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -13929,6 +13794,10 @@
 -// Bang the shadow pages if they need to be touched to be mapped.
 -inline void os::map_stack_shadow_pages(address sp) {
 -}
+-
+-// Trim-native support, stubbed out for now, may be enabled later
+-inline bool os::can_trim_native_heap() { return false; }
+-inline bool os::trim_native_heap(os::size_change_t* rss_change) { return false; }
 -
 -//////////////////////////////////////////////////////////////////////////////
 -////////////////////////////////////////////////////////////////////////////////
@@ -15079,11 +14948,6 @@
 -    // factor me: getPCfromContext
 -    pc = (address) uc->uc_mcontext.gregs[REG_PC];
 -
--    if (StubRoutines::is_safefetch_fault(pc)) {
--      os::Posix::ucontext_set_pc(uc, StubRoutines::continuation_for_safefetch_fault(pc));
--      return true;
--    }
--
 -    // Handle ALL stack overflow variations here
 -    if (sig == SIGSEGV && info->si_code == SEGV_ACCERR) {
 -      address addr = (address) info->si_addr;
@@ -15387,10 +15251,15 @@
 -#endif // AMD64
 -  st->cr();
 -  st->cr();
+-}
 -
--  intptr_t *sp = (intptr_t *)os::Solaris::ucontext_get_sp(uc);
--  st->print_cr("Top of Stack: (sp=" INTPTR_FORMAT ")", (intptr_t)sp);
--  print_hex_dump(st, (address)sp, (address)(sp + 8*sizeof(intptr_t)), sizeof(intptr_t));
+-void os::print_tos_pc(outputStream *st, const void *context) {
+-  if (context == NULL) return;
+-
+-  const ucontext_t* uc = (const ucontext_t*)context;
+-
+-  address sp = (address)os::Solaris::ucontext_get_sp(uc);
+-  print_tos(st, sp);
 -  st->cr();
 -
 -  // Note: it may be unsafe to inspect memory near pc. For example, pc may
@@ -17220,7 +17089,7 @@
 -class EventPortSelectorImpl
 -    extends SelectorImpl
 -{
--    // maximum number of events to retrive in one call to port_getn
+-    // maximum number of events to retrieve in one call to port_getn
 -    static final int MAX_EVENTS = Math.min(IOUtil.fdLimit()-1, 1024);
 -
 -    // port file descriptor
@@ -20038,7 +19907,7 @@
 -
 --- old/src/java.base/solaris/native/libjvm_db/libjvm_db.c	2020-05-20 18:10:25.750088494 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,1552 +0,0 @@
+@@ -1,1566 +0,0 @@
 -/*
 - * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -21425,7 +21294,21 @@
 -  if (debug)
 -      fprintf(stderr, "Jlookup_by_regs: BEGINs: fp=%#lx, pc=%#lx\n", regs[R_FP], pc);
 -
--#if defined(i386) || defined(__i386) || defined(__amd64)
+-#if defined(sparc) || defined(__sparc)
+-    /* The following workaround is for SPARC. CALL instruction occupates 8 bytes.
+-     * In the pcDesc structure return pc offset is recorded for CALL instructions.
+-     * regs[R_PC] contains a CALL instruction pc offset.
+-     */
+-    pc += 8;
+-    bcp          = (uintptr_t) regs[R_L1];
+-    methodPtr = (uintptr_t) regs[R_L2];
+-    sender_sp = regs[R_I5];
+-    fp = (uintptr_t) regs[R_FP];
+-    if (debug > 2) {
+-        fprintf(stderr, "\nregs[R_I1]=%lx, regs[R_I2]=%lx, regs[R_I5]=%lx, regs[R_L1]=%lx, regs[R_L2]=%lx\n",
+-                         regs[R_I1], regs[R_I2], regs[R_I5], regs[R_L1], regs[R_L2]);
+-    }
+-#elif defined(i386) || defined(__i386) || defined(__amd64)
 -
 -    fp = (uintptr_t) regs[R_FP];
 -    if (J->prev_fr.fp == 0) {
@@ -21455,7 +21338,7 @@
 -  J->bcp = bcp;
 -
 -  /* On x86 with C2 JVM: native frame may have wrong regs[R_FP]
--   * For example: JVM_SuspendThread frame poins to the top interpreted frame.
+-   * For example: JVM_SuspendThread frame points to the top interpreted frame.
 -   * If we call is_method(J, methodPtr) before codecache_contains(J, pc)
 -   * then we go over and omit both: nmethod and I2CAdapter frames.
 -   * Note, that regs[R_PC] is always correct if frame defined correctly.
@@ -21717,7 +21600,7 @@
 -// generic error messages
 -#define JVM_ERR_OUT_OF_MEMORY            "out of memory (native heap)"
 -#define JVM_ERR_INVALID_PARAM            "invalid input parameter(s)"
--#define JVM_ERR_NULL_PARAM               "input paramater is NULL"
+-#define JVM_ERR_NULL_PARAM               "input parameter is NULL"
 -
 -// error messages for attach
 -#define JVM_ERR_CANT_OPEN_DOOR           "cannot open door file"
@@ -26554,7 +26437,7 @@
 -}
 --- old/src/jdk.hotspot.agent/solaris/native/libsaproc/libproc.h	2020-05-20 18:11:14.967033405 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,471 +0,0 @@
+@@ -1,483 +0,0 @@
 -/*
 - * Copyright (c) 2002, 2017, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -26846,6 +26729,18 @@
 -extern int Plwp_getfpregs(struct ps_prochandle *, lwpid_t, prfpregset_t *);
 -extern int Plwp_setfpregs(struct ps_prochandle *, lwpid_t,
 -    const prfpregset_t *);
+-
+-#if defined(sparc) || defined(__sparc)
+-
+-extern int Plwp_getxregs(struct ps_prochandle *, lwpid_t, prxregset_t *);
+-extern int Plwp_setxregs(struct ps_prochandle *, lwpid_t, const prxregset_t *);
+-
+-#if defined(__sparcv9)
+-extern int Plwp_getasrs(struct ps_prochandle *, lwpid_t, asrset_t);
+-extern int Plwp_setasrs(struct ps_prochandle *, lwpid_t, const asrset_t);
+-#endif  /* __sparcv9 */
+-
+-#endif  /* __sparc */
 -
 -extern int Plwp_getpsinfo(struct ps_prochandle *, lwpid_t, lwpsinfo_t *);
 -

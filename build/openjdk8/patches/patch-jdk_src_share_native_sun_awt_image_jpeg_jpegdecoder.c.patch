@@ -2,7 +2,7 @@ $NetBSD: patch-jdk_src_share_native_sun_awt_image_jpeg_jpegdecoder.c,v 1.2 2015/
 
 Ensure we use the bundled jpeg.
 
-diff -wpruN '--exclude=*.orig' a~/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c a/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c a/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c
 --- a~/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c	1970-01-01 00:00:00
 +++ a/jdk/src/share/native/sun/awt/image/jpeg/jpegdecoder.c	1970-01-01 00:00:00
 @@ -44,7 +44,7 @@

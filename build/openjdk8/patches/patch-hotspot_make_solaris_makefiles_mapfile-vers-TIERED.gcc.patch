@@ -2,7 +2,7 @@ $NetBSD: patch-hotspot_make_solaris_makefiles_mapfile-vers-TIERED.gcc,v 1.1 2015
 
 GCC support.
 
-diff -wpruN '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc a/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc a/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc
 --- a~/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc	1970-01-01 00:00:00
 +++ a/hotspot/make/solaris/makefiles/mapfile-vers-TIERED.gcc	1970-01-01 00:00:00
 @@ -0,0 +1,48 @@

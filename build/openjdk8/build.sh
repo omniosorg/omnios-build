@@ -12,14 +12,14 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=openjdk
 VER=1.8
-UPDATE=372
-BUILD=07
+UPDATE=432
+BUILD=06
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
 
@@ -104,6 +104,7 @@ MAKE_ARGS="
     FULL_DEBUG_SYMBOLS=0
     ENABLE_FULL_DEBUG_SYMBOLS=0
     NO_DOCS=1
+    X_CFLAGS=-I$OOCEPREFIX/include
 "
 
 export PATH=$GNUBIN:$PATH

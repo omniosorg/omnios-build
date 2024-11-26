@@ -7,6 +7,111 @@ Most patches -p0
 
 JDK17:
 
+17.0.12
+
+Removed last remnants of extended_FILE_stdio, it's unused as 32-bit
+only, and the code to enable it had already been removed.
+
+Extensive rework of
+src/jdk.jlink/share/classes/jdk/tools/jlink/internal/Platform.java
+
+17.0.11
+
+Needed to restore src/hotspot/share/services/dtraceAttacher.hpp
+Copied illumos-port-17.patch from the original fix in jdk 19+11,
+here as illumos-port-19.patch
+This file should have been removed in the original solaris
+deprecation along with the corresponding cpp file, but was forgotten
+about, and has recently been cleaned up. As we still #include it, we
+need to put it back. As we disable DTrace in any case, it would be
+cleaner to simply remove all of it.
+
+
+Cleanup: Restore the necessary parts of sparc into the main patch, to
+ease future maintenance.
+
+Cleanup: missed the dropping of TIERED in 17+8, it's now
+COMPILER1_AND_COMPILER2
+
+17.0.10
+
+Drop the make/modules/jdk.net/Lib.gmk patch, as it's guarded in such a
+way as will never be used on solaris.
+
+Need to add illumos-port-18.patch (derived from jdk21's
+illumos-port-24.patch) so that test/jdk/java/io/File/libGetXSpace.c
+will compile.
+
+17.0.9
+
+Much rework around safefetch. Removed illumos-port-12.patch, and
+removed the is_safefetch_fault() block entirely. (Looked at the
+Windows port, and that block was removed there in this release. It
+wasn't present at all in other platforms.) Copied the new assembler
+src/hotspot/os_cpu/linux_x86/safefetch_linux_x86_64.S to
+src/hotspot/os_cpu/solaris_x86/safefetch_solaris_x86_64.S, see
+illumos-port-17.patch
+
+In os_solaris_x86.cpp, the end of print_context() is now split off
+into print_tos_pc()
+
+We need an implementation of os::can_trim_native_heap() and
+trim_native_heap(); simply add a stub in os_solaris.inline.hpp to
+return false like pretty much every other platform except linux does.
+
+17.0.8
+
+Reinstate make/data/charsetmapping/stdcs-solaris, removal broke the
+build.
+See illumos-port-16.patch
+
+Cleanup: remove TAR_CREATE_FILE_PARAM TAR_CREATE_EXTRA_PARAM
+
+Cleanup: Removed another STLPORT reference
+
+17.0.7
+
+Minor patch noise. Removed an STLPORT patch.
+
+17.0.6
+
+Minor patch noise.
+
+17.0.5
+
+A number of functions centralised into os_posix
+
+17.0.4
+
+Build broken by https://www.illumos.org/issues/14418. That did 2
+things -  (1) exposed memcntl and meminfo by default, and (2) changed
+the signature for memcntl from caddr_t to void so there's a
+mismatch. The fix adopted is to modify the internal java signature for
+memcntl to the new version, which still allows builds on older
+releases as the old definition in sys/mman.h was effectively invisible
+there.
+
+
+Remove some unnecessary patches
+src/java.base/unix/native/libjli/java_md.h
+ - new comment is good
+src/java.desktop/unix/native/common/awt/fontpath.c
+ - shouldn't need to check for SunOS 5.8/5.9
+Remove HS_DTRACE_WORKAROUND_TAIL_CALL_BUG, the bug it works around
+  was fixed in 2008
+Remove remaining SUNPRO and related MLIB_NO_LIBSUNMATH checks
+src/java.desktop/unix/native/common/awt/X11Color.c
+ - the complexity is over 20 years old and no longer relevant
+make/autoconf/flags-cflags.m4
+ - adding -DTRIMMED is useless
+src/java.desktop/unix/native/libawt_xawt/awt/awt_InputMethod.c
+ - unnecessary on illumos and current Solaris (and my S10 system too)
+use the 64-bit rdtsc variant
+
+17.0.2
+
+illumos-port-15.patch to fix the broken ld check
+
 17-35
 
 RC1, no changes
@@ -230,7 +335,7 @@ _large_page_size) is initialized to the largest valid page size.
 Build:
 
 env PATH=/usr/bin:/usr/sbin:/usr/sfw/bin:/usr/gnu/bin bash ./configure \
---enable-unlimited-crypto --with-boot-jdk=/usr/jdk/instances/jdk16 \
+--enable-unlimited-crypto --with-boot-jdk=/usr/jdk/instances/jdk17 \
 --with-native-debug-symbols=none \
 --with-toolchain-type=gcc \
 --disable-dtrace \

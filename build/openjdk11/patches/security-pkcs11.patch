@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/java.base/share/conf/security/java.security a/src/java.base/share/conf/security/java.security
 --- a~/src/java.base/share/conf/security/java.security	1970-01-01 00:00:00
 +++ a/src/java.base/share/conf/security/java.security	1970-01-01 00:00:00
-@@ -62,7 +62,6 @@
+@@ -65,7 +65,6 @@
  #
  #ifdef solaris
  security.provider.tbd=OracleUcrypto
@@ -9,7 +9,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/java.base/share/conf/secu
  #endif
  security.provider.tbd=SUN
  security.provider.tbd=SunRsaSign
-@@ -83,6 +82,8 @@ security.provider.tbd=Apple
+@@ -86,6 +85,8 @@ security.provider.tbd=Apple
  #endif
  #ifndef solaris
  security.provider.tbd=SunPKCS11
