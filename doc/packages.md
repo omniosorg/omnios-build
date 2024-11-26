@@ -119,7 +119,7 @@
 | text/less				| 668			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.11.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
-| web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
+| web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.2		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.43.1		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
