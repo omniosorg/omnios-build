@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=libtool
-VER=2.5.3
+VER=2.5.4
 PKG=developer/build/libtool  ##IGNORE##
 SUMMARY="unused; replaced below"
 DESC="$SUMMARY"
