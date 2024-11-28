@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=wget2
-VER=2.1.0
+VER=2.2.0
 PKG=web/wget2
 SUMMARY="GNU Wget2"
 DESC="Retrieving files using HTTP, HTTPS, FTP and FTPS "

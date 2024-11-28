@@ -12,11 +12,11 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.6			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3470000		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3470100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
-| developer/build/libtool		| 2.5.3			| https://www.gnu.org/software/libtool/
+| developer/build/libtool		| 2.5.4			| https://www.gnu.org/software/libtool/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc7			| 7.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
@@ -27,7 +27,7 @@
 | developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.47.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.47.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 6.8.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -54,7 +54,7 @@
 | library/nettle			| 3.10			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.64.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.106			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.107			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.36			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.44			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
@@ -82,7 +82,7 @@
 | runtime/perl				| 5.40.0		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.10		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.7		| https://www.python.org/downloads/source/
-| security/sudo				| 1.9.16p1		| https://www.sudo.ws/
+| security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.13			| https://github.com/corecode/dma/tags
@@ -119,7 +119,7 @@
 | text/less				| 668			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.11.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
-| web/wget2				| 2.1.0			| https://ftp.gnu.org/gnu/wget/
+| web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.2		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.43.1		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
