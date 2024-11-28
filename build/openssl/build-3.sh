@@ -43,8 +43,6 @@ LDFLAGS[base]="-shared -Wl,-z,text,-z,aslr,-z,ignore"
 declare -A OPENSSL_CONFIG_OPTS
 OPENSSL_CONFIG_OPTS="shared threads zlib"
 OPENSSL_CONFIG_OPTS+=" --prefix=$PREFIX"
-# Build with support for the previous 1.1.1 API
-OPENSSL_CONFIG_OPTS+=" --api=1.1.1"
 
 # Configure options specific to a particular arch.
 OPENSSL_CONFIG_OPTS[i386]="--libdir=$PREFIX/lib"
