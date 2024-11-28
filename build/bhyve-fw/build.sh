@@ -47,7 +47,7 @@ trap "pkill -T0; exit" SIGINT
 
 # Build the UEFI firmware
 
-tag=il-edk2-stable202308-1
+tag=il-edk2-stable202411-1
 XFORM_ARGS+=" -D UEFITAG=$tag"
 
 typeset -A jobs
