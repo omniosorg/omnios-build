@@ -7,7 +7,7 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 license CDDL.Schily.txt license=CDDL
 license GPL-2.0.txt license=GPLv2
@@ -20,21 +20,19 @@ license GPL-2.0.txt license=GPLv2
 <transform dir path=usr/ccs$ -> set mode 0755>
 <transform dir path=usr/ccs/bin$ -> set mode 0755>
 
-# Drop diff binaries and man pages
-<transform file path=usr/ccs/bin/b?diff$ -> drop>
-<transform file path=usr/share/man/man1/b?diff.1$ -> drop>
-
-# Drop patch man page
-<transform file path=usr/share/man/man1/patch.1$ -> drop>
-
 # Links to /usr/bin
-<transform link path=usr/bin/sccs -> drop>
-<transform file link hardlink path=usr/ccs/bin/(.*) -> emit \
+<transform file link hardlink path=usr/ccs/bin/(?!sccs)(.*)$ -> emit \
     link path=usr/bin/%<1> target=../ccs/bin/%<1> >
 
 # We do not want such a generic command as 'help' in usr/bin, rename it
 <transform link path=usr/bin/help -> edit path help sccshelp>
-<transform file path=usr/share/man/man1/help.1 -> edit path help sccshelp>
+<transform file path=usr/share/man/man1/help\.1 -> edit path help sccshelp>
+
+# We don't want to replace the system diff binaries, drop
+<transform link path=usr/bin/b?diff -> drop>
+
+# Drop conflicting man pages
+<transform file path=usr/share/man/man1/(b?diff|patch)\.1$ -> drop>
 
 # Relocate section 4 manpages to section 5
 <transform file path=usr/share/man/man4 -> edit path 4 5>

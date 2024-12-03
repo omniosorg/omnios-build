@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -39,16 +39,23 @@ configure_arch() { :; }
 MAKE="dmake"
 MAKE_ARGS="CCOM=gcc32"
 MAKE_ARGS_WS="
-    COPTX=\"$CTF_CFLAGS $SSPFLAGS\"
-    LDOPTX=\"$CTF_CFLAGS $SSPFLAGS\"
+    COPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive\"
+    LDOPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive\"
 "
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
+
+run_test() {
+    $EGREP -s '#[[:space:]]*define[[:space:]]*SIZEOF_INT[[:space:]]*4$' \
+        $TMPDIR/$BUILDDIR/include/schily/xmconfig.h \
+        || logerr "Configure failed to detect type sizes"
+}
 
 init
 prep_build
 download_source $PROG $PROG $VER
 patch_source
 build
+run_test
 make_package
 clean_up
 
