@@ -66,8 +66,8 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20240710		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20240910		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.31		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.9p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.3.0			| https://rsync.samba.org/
@@ -80,7 +80,7 @@
 | runtime/java/openjdk21		| 21.0.5+11		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.432-06		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.40.0		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.10		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.11		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.8		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
