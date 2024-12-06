@@ -78,6 +78,7 @@ omnios driver/graphics/dcam1394/devfsadm-dcam1394
 omnios driver/graphics/usbvc
 omnios driver/ktest
 omnios driver/misc/ccid
+omnios driver/misc/viommionex
 omnios driver/misc/virtio
 omnios driver/network/afe
 omnios driver/network/arbel o
@@ -496,7 +497,6 @@ omnios system/kernel
 omnios system/kernel/cpu-counters
 omnios system/kernel/dtrace/providers
 omnios system/kernel/platform
-omnios system/kernel/platform/meson-gxbb
 omnios system/kernel/platform/qemu-virtual
 omnios system/kernel/platform/raspberry-pi-4
 omnios system/kernel/power

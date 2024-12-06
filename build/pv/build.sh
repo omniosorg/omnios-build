@@ -42,6 +42,13 @@ CONFIGURE_OPTS="
     --disable-nls
 "
 
+# can be removed once we can drop the configure.ac patch
+pre_configure() {
+    ! cross_arch $1 && return
+
+    run_autoreconf -fi
+}
+
 init
 download_source $PROG $PROG $VER
 patch_source
