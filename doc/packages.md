@@ -28,7 +28,7 @@
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.47.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.8.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 6.9			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
@@ -66,8 +66,8 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20240710		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20240910		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.31		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.9p1			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.3.0			| https://rsync.samba.org/
@@ -80,8 +80,8 @@
 | runtime/java/openjdk21		| 21.0.5+11		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.432-06		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.40.0		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.10		| https://www.python.org/downloads/source/
-| runtime/python-312			| 3.12.7		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.11		| https://www.python.org/downloads/source/
+| runtime/python-312			| 3.12.8		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
@@ -89,8 +89,8 @@
 | shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.9.0			| http://www.ivarch.com/programs/pv.shtml
-| shell/tcsh				| 6.24.13		| https://github.com/tcsh-org/tcsh/tags
+| shell/pipe-viewer			| 1.9.7			| http://www.ivarch.com/programs/pv.shtml
+| shell/tcsh				| 6.24.14		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
@@ -103,7 +103,7 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.13.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2410.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2412.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.38			| https://github.com/axboe/fio/tags
 | system/watch				| 3.3.16		| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases

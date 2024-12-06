@@ -48,7 +48,7 @@ PASS: dnscache-TTL-0.sh
 PASS: invalid_nested_include.sh
 SKIP: omfwd-lb-1target-retry-full_buf.sh
 SKIP: omfwd-lb-1target-retry-1_byte_buf.sh
-SKIP: omfwd-lb-1target-retry-1_byte_buf-TargetFail
+SKIP: omfwd-lb-1target-retry-1_byte_buf-TargetFail.sh
 PASS: omfwd-lb-susp.sh
 PASS: omfwd-lb-2target-basic.sh
 PASS: omfwd-lb-2target-retry.sh
@@ -420,7 +420,7 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2410.0
+Testsuite summary for rsyslog 8.2412.0
 ============================================================================
 # TOTAL: 422
 # PASS:  379
