@@ -39,12 +39,12 @@ license LICENSE license=PSFv2
 
 # Set mediators on links in shared directories
 <transform link path=usr/(bin|share) -> set mediator python3>
-<transform link path=usr/lib/(?:amd64/)?.*3\.so -> set mediator python3>
+<transform link path=usr/lib/(?:amd64/)?.*python3\.so -> set mediator python3>
 <transform link path=.*/pkgconfig/.+\.pc$ -> set mediator python3>
 
 <transform link mediator=python3 -> set mediator-version $(PYTHONVER)>
 
-<transform link mediator=python3 -> set mediator-priority vendor>
+#<transform link mediator=python3 -> set mediator-priority vendor>
 
 # Add mediated link for /usr/bin/python and python-config
 link path=usr/bin/python target=python3
