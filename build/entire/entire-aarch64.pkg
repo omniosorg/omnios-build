@@ -222,7 +222,6 @@ system/fru-id
 system/fru-id/platform
 system/ipc
 system/kernel/dtrace/providers				O
-system/kernel/platform/meson-gxbb
 system/kernel/platform/qemu-virtual
 system/kernel/platform/raspberry-pi-4
 system/kernel/suspend-resume
