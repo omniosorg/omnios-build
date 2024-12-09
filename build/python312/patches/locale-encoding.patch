@@ -27,7 +27,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Include/unicodeobject.h a/Inc
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Objects/unicodeobject.c
 --- a~/Objects/unicodeobject.c	1970-01-01 00:00:00
 +++ a/Objects/unicodeobject.c	1970-01-01 00:00:00
-@@ -1792,6 +1792,15 @@ unicode_char(Py_UCS4 ch)
+@@ -1959,6 +1959,15 @@ unicode_char(Py_UCS4 ch)
      return unicode;
  }
  
@@ -43,7 +43,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Obj
  PyObject *
  PyUnicode_FromWideChar(const wchar_t *u, Py_ssize_t size)
  {
-@@ -1828,6 +1837,58 @@ PyUnicode_FromWideChar(const wchar_t *u,
+@@ -1995,6 +2004,58 @@ PyUnicode_FromWideChar(const wchar_t *u,
          return unicode;
      }
  #endif
