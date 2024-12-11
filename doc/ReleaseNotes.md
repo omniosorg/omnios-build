@@ -4,6 +4,30 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046cg (2024-12-11)
+Weekly release for w/c 9th of December 2024.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU microcode updated to version 20241121
+
+* Intel CPU microcode updated to version 20241112
+
+* Python updated to 3.11.11
+
+### Other Changes
+
+* Curl updated to version 8.11.1
+
+* Coinciding with the illumos project's
+  [shift to using gcc 14 as the new shadow compiler](https://illumos.topicbox.com/groups/developer/T71928f9a75a9072b-Me061567b7ec00c399231018d/heads-up-gcc-14-will-be-the-new-shadow-compiler-wednesday)
+  this is now included in the `illumos-tools` bundle.
+
+<br>
+
+---
+
 ## r151046cd (2024-11-20)
 Weekly release for w/c 18th of November 2024.
 > This is a non-reboot update
