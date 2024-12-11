@@ -55,6 +55,19 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-312 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-312 \
     type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/packaging-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pycurl-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyopenssl-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-313 \
+    type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/liboqs type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-11 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-3 type=require
@@ -65,6 +78,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk21 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-312 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/service/network/tftp type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/header/header-audio type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library type=require
