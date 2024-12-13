@@ -62,8 +62,8 @@ RUN_DEPENDS_IPS="
     developer/gnu-binutils
     system/header
     system/library/c-runtime
-    system/library/g++-runtime
-    system/library/gcc-runtime
+    system/library/g++-runtime@$GCCMAJOR
+    system/library/gcc-runtime@$GCCMAJOR
 "
 
 BUILD_DEPENDS_IPS="
