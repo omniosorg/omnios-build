@@ -32,6 +32,8 @@ ARCH=aarch64
 [ "$CLIBUILDARCH" = $ARCH ] || logerr "Incorrect arch selected, use -a $ARCH"
 
 set_arch 64
+# Needed for X/Open curses/termcap
+set_standard -xcurses XPG6 CFLAGS
 set_patchdir patches.$ARCH
 CTF_FLAGS+=" -s"
 
