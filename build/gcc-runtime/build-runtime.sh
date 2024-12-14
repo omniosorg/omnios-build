@@ -37,6 +37,9 @@ if is_cross; then
     NO_SONAME_EXPECTED=1
     pushd $DESTDIR.$BUILDARCH >/dev/null
     logcmd mkdir -p usr/lib
+    for v in 10; do
+        install_lib $v "$libs" "" "${SYSROOT[$BUILDARCH]}/usr/gcc/$v/lib"
+    done
     install_lib $CROSS_GCC_VER "$libs" "" $CROSSLIB
     install_unversioned $CROSS_GCC_VER "$libs" "" $CROSSLIB
     popd >/dev/null

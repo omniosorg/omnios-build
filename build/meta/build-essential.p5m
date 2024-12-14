@@ -1,8 +1,7 @@
 set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/developer/build-essential@11,5.11-$(PVER)
 set name=pkg.summary value="Meta-package containing common development tools."
 set name=pkg.description value="Meta-package containing common development tools."
-$(i386_ONLY)depend fmri=developer/gcc14 type=require
-$(aarch64_ONLY)depend fmri=developer/gcc10 type=require
+depend fmri=developer/gcc14 type=require
 depend fmri=developer/build/autoconf type=require
 depend fmri=developer/build/automake type=require
 depend fmri=developer/build/gnu-make type=require

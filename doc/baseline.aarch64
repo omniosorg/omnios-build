@@ -36,7 +36,7 @@ omnios developer/debug/mdb/module/module-fibre-channel
 omnios developer/driver/ftsafe
 omnios developer/dtrace
 omnios developer/exuberant-ctags
-omnios developer/gcc10
+omnios developer/gcc14
 omnios developer/gnu-binutils
 omnios developer/lexer/flex
 omnios developer/library/lint o
