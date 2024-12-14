@@ -18,3 +18,5 @@ sshd_config.patch
 0029-Accept-LANG-and-LC_-environment-variables-from-clien.patch
 0031-Restore-tcpwrappers-libwrap-support.patch
 test.patch
+pam-illumos.patch
+gcc14.patch

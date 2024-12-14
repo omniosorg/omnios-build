@@ -1,0 +1,19 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solaris.c
+--- a~/audit-solaris.c	1970-01-01 00:00:00
++++ a/audit-solaris.c	1970-01-01 00:00:00
+@@ -37,6 +37,7 @@
+ #include <errno.h>
+ #include <pwd.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include <bsm/adt.h>
+ #include <bsm/adt_event.h>
+@@ -49,7 +50,6 @@
+ #include <errno.h>
+ #include <pwd.h>
+ #include <stdio.h>
+-#include <unistd.h>
+ #include <stdarg.h>
+ #include <string.h>
+ #include <ucred.h>
