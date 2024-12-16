@@ -15,7 +15,7 @@ pth=
 max=0
 
 CROSSLIB=$CROSSTOOLS/$BUILDARCH/${TRIPLETS[$BUILDARCH]}/lib
-CROSS_GCC_VER=10
+CROSS_GCC_VER=14
 
 # Find the library file in the specified gcc version
 function find_lib {
