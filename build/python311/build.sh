@@ -31,7 +31,7 @@ BUILD_DEPENDS_IPS="
 RUN_DEPENDS_IPS="
     compress/bzip2
     database/sqlite-3
-    library/expat
+    library/expat@`pkg_ver expat`
     library/libffi
     library/libxml2
     library/ncurses
