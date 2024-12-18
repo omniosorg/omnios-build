@@ -1,0 +1,15 @@
+diff -wpruN '--exclude=*.orig' a~/make/lib/Awt2dLibraries.gmk a/make/lib/Awt2dLibraries.gmk
+--- a~/make/modules/java.desktop/lib/Awt2dLibraries.gmk	1970-01-01 00:00:00
++++ a/make/modules/java.desktop/lib/Awt2dLibraries.gmk	1970-01-01 00:00:00
+@@ -788,11 +788,9 @@ else # OPENJDK_TARGET_OS not windows
+       JAWT_LIBS += -lawt_xawt
+     else
+       JAWT_LIBS += -lawt_headless
+-      ifeq ($(call isTargetOs, linux), true)
+         JAWT_CFLAGS += -DHEADLESS
+       endif
+     endif
+-  endif
+ 
+   $(eval $(call SetupJdkLibrary, BUILD_LIBJAWT, \
+       NAME := jawt, \
