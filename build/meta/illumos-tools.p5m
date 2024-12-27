@@ -9,7 +9,6 @@ depend fmri=developer/build/onbld type=require
 depend fmri=developer/debug/ctf type=require
 depend fmri=developer/gcc10 type=require
 depend fmri=developer/gcc14 type=require
-depend fmri=developer/gcc7 type=require
 depend fmri=developer/gnu-binutils type=require
 depend fmri=developer/illumos-closed type=require
 depend fmri=developer/lexer/flex type=require

@@ -18,7 +18,6 @@
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.5.4			| https://www.gnu.org/software/libtool/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
-| developer/gcc7			| 7.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc13			| 13.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.2			| https://ftp.gnu.org/gnu/gcc/
