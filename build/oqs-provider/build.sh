@@ -17,12 +17,19 @@
 . ../../lib/build.sh
 
 PROG=oqs-provider
-VER=0.6.0
+VER=0.8.0
 PKG=library/security/oqs-provider
 SUMMARY="$PROG"
 DESC="Open Quantum Safe provider for OpenSSL (3.x)"
 
-TESTSUITE_SED='s/  *[0-9][0-9]*\.[0-9][0-9]*  *sec//'
+TESTSUITE_SED='
+    s/  *[0-9][0-9]*\.[0-9][0-9]*  *sec//
+    /^Test project/d
+'
+
+# add an incorporation to tie the oqs-provider to the tested liboqs release
+LIBOQSVER=`pkg_ver liboqs`
+RUN_DEPENDS_IPS="=library/security/liboqs@$LIBOQSVER"
 
 CONFIGURE_OPTS="
     -DCMAKE_BUILD_TYPE=Release
@@ -34,7 +41,7 @@ CONFIGURE_OPTS[i386]=
 # will pick /usr/lib/64 and install the provider library there instead of amd64
 CONFIGURE_OPTS[amd64]="
     -DCMAKE_LIBRARY_ARCHITECTURE=amd64
-    -DOPENSSL_CRYPTO_LIBRARY=$PREFIX/lib/amd64/libcrypto.so
+    -DOPENSSL_CRYPTO_LIBRARY=$PREFIX/${LIBDIRS[amd64]}/libcrypto.so
 "
 
 init
