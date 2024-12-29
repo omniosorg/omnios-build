@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=liboqs
-VER=0.11.0
+VER=0.12.0
 PKG=library/security/liboqs
 SUMMARY="$PROG"
 DESC="An open source C library for quantum-safe cryptographic algorithms"
@@ -29,11 +29,10 @@ CONFIGURE_OPTS="
 "
 CONFIGURE_OPTS[i386]=
 CONFIGURE_OPTS[amd64]="
-    -DCMAKE_INSTALL_LIBDIR=lib/amd64
+    -DCMAKE_INSTALL_LIBDIR=${LIBDIRS[amd64]}
 "
 
 _run_testsuite() {
-
     local _site=$PREFIX/lib/$PROG/python$PYTHONVER
     local _pip="$PYTHON -mpip install -Ut $TMPDIR/_deproot/$_site"
 
