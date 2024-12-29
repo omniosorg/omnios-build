@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=watch
-VER=3.3.16
+VER=4.0.5
 PKG=system/watch
 SUMMARY="execute a program repeatedly, displaying output fullscreen"
 DESC="GNU watch - $SUMMARY"
@@ -30,15 +30,21 @@ export NCURSES_CFLAGS=-I/usr/include/ncurses
 export NCURSES_LIBS="-lncurses"
 CONFIGURE_OPTS="
     --disable-dependency-tracking
+    --enable-colorwatch
+    --disable-pidof
+    --disable-pidwait
+    --disable-kill
+    --disable-w
+    --disable-skill
 "
 
-MAKE_ARGS=watch
+MAKE_ARGS=src/watch
 
 make_install() {
     pushd $TMPDIR/$BUILDDIR > /dev/null
-    logcmd mkdir -p $DESTDIR/usr/bin $DESTDIR/usr/share/man/man1
-    logcmd cp watch $DESTDIR/usr/bin/ || logerr "cp watch"
-    logcmd cp watch.1 $DESTDIR/usr/share/man/man1/ || logerr "cp watch.1"
+    logcmd $MKDIR -p $DESTDIR/usr/bin $DESTDIR/usr/share/man/man1
+    logcmd $CP src/watch $DESTDIR/usr/bin/ || logerr "cp watch"
+    logcmd $CP man/watch.1 $DESTDIR/usr/share/man/man1/ || logerr "cp watch.1"
     popd > /dev/null
 }
 
