@@ -1,4 +1,3 @@
-Test project /build/tmp/oqs-provider-0.6.0/oqs-provider-0.6.0-build/build.amd64
     Start 1: oqs_signatures
 1/6 Test #1: oqs_signatures ...................   Passed
     Start 2: oqs_kems
