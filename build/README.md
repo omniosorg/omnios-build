@@ -1,9 +1,6 @@
 
 The following packages are currently stuck:
 
-- pycurl
-  stuck on 7.44.1 - https://github.com/pycurl/pycurl/issues/748
-
 - jsonschema
   stuck on 4.17.3.
   4.18.0 brings in a new dependency on "referencing" which itself has a
