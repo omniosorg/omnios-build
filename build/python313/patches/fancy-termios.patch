@@ -1,0 +1,20 @@
+We need to deep copy the control characters list in the terminal state
+so that it is properly restored. On illumos VMIN and VTIME overlap with VEOF
+and VEOL (which is perfectly legal). That means that when python sets VMIN to
+1 and then fails to restore it, we end up with VEOF being set to ^a
+
+Submitted upstream: https://github.com/python/cpython/issues/128330
+
+diff --git a/Lib/_pyrepl/fancy_termios.py b/Lib/_pyrepl/fancy_termios.py
+index 5b85cb0..056437b 100644
+--- a/Lib/_pyrepl/fancy_termios.py
++++ b/Lib/_pyrepl/fancy_termios.py
+@@ -40,7 +40,7 @@ class TermState:
+             self.lflag,
+             self.ispeed,
+             self.ospeed,
+-            self.cc,
++            self.cc[:],
+         ]
+ 
+     def copy(self):
