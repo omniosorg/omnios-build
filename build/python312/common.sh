@@ -45,6 +45,8 @@ TMPDIR+="/python$PYVER"
 DTMPDIR+="/python$PYVER"
 BASE_TMPDIR=$TMPDIR
 
+PEP518OPTS+=" --ignore-installed"
+
 # Use the same python version for dependency resolution
 PKGDEPEND="/usr/bin/python$PYTHONVER -Es $PKGDEPEND"
 
