@@ -513,7 +513,6 @@ omnios network/telnet
 omnios network/test/iperf
 omnios network/test/netperf
 omnios package/pkg
-omnios package/pkg-35 o
 omnios package/pkg/zones-proxy o
 omnios package/svr4
 omnios print/lp
