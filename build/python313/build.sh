@@ -75,6 +75,7 @@ CONFIGURE_OPTS[amd64]+="
 
 CONFIGURE_OPTS[aarch64]+="
     --build=${TRIPLETS[amd64]%.*}
+    --host=${TRIPLETS[aarch64]%.*}
     --with-build-python=$PYTHON
     ac_cv_file__dev_ptmx=yes
     ac_cv_file__dev_ptc=no
@@ -122,6 +123,7 @@ pre_configure() {
     ! cross_arch $arch && return
 
     CC+=" --sysroot=${SYSROOT[$arch]}"
+    export PKG_CROSS_DEPEND=${TRIPLETS[$arch]%.*}
 }
 
 post_configure() {
@@ -129,7 +131,7 @@ post_configure() {
 }
 
 post_install() {
-    typeset arch=$1
+    typeset arch="$1"
 
     # Check that the platform triplet is being properly detected by looking
     # for a zlib module with the correct name.

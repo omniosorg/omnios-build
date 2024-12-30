@@ -46,7 +46,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	wasm32-*-* | wasm64-*-*)
  		_host_ident=$host_cpu
  		;;
-+	*-*-solaris2)
++	*-*-solaris*)
 +		case "$host_cpu" in
 +			aarch64)
 +				_host_ident=aarch64-unknown-solaris2 ;;

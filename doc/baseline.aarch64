@@ -401,6 +401,7 @@ omnios runtime/perl
 omnios runtime/perl/module/sun-solaris
 omnios runtime/python-311 r
 omnios runtime/python-312
+omnios runtime/python-313
 omnios security/bart
 omnios security/sudo
 omnios service/fault-management

@@ -94,6 +94,7 @@ library/mpc
 media/xorriso
 network/dns/bind
 runtime/python-312
+runtime/python-313
 service/network/chrony
 shell/zsh
 system/library/mozilla-nss
