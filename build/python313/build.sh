@@ -35,7 +35,7 @@ RUN_DEPENDS_IPS="
 XFORM_ARGS="-D PYTHONVER=$MVER"
 
 HARDLINK_TARGETS="
-    usr/bin/python$MVER
+    ${PREFIX#/}/bin/python$MVER
 "
 SKIP_RTIME_CHECK=1
 NO_SONAME_EXPECTED=1
@@ -51,13 +51,15 @@ CFLAGS[amd64]+=" -msave-args"
 CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
 export CCSHARED="-fPIC"
-CPPFLAGS+=" -I/usr/include/ncurses"
+CPPFLAGS+=" -I$PREFIX/include/ncurses"
 export DFLAGS=-64
+SHAREDUSR=${PREFIX#/}/lib/python$MVER
+SHAREDLIB=$SHAREDUSR/lib-dynload
 MAKE_ARGS="
     DFLAGS=-64
-    DESTSHARED=/usr/lib/python$MVER/lib-dynload
+    DESTSHARED=/$SHAREDLIB
 "
-MAKE_INSTALL_ARGS=DESTSHARED=/usr/lib/python$MVER/lib-dynload
+MAKE_INSTALL_ARGS=DESTSHARED=/$SHAREDLIB
 
 CONFIGURE_OPTS="
     --enable-shared
@@ -73,6 +75,7 @@ CONFIGURE_OPTS[amd64]+="
 
 CONFIGURE_OPTS[aarch64]+="
     --build=${TRIPLETS[amd64]%.*}
+    --host=${TRIPLETS[aarch64]%.*}
     --with-build-python=$PYTHON
     ac_cv_file__dev_ptmx=yes
     ac_cv_file__dev_ptc=no
@@ -104,8 +107,8 @@ export CURSES_CFLAGS LIBREADLINE_LIBS
 build_init() {
     typeset s=${SYSROOT[aarch64]}
 
-    addpath PKG_CONFIG_PATH[aarch64] $s/usr/lib/pkgconfig
-    CONFIGURE_OPTS[aarch64]+=" --with-openssl=$s/usr"
+    addpath PKG_CONFIG_PATH[aarch64] $s$PREFIX/lib/pkgconfig
+    CONFIGURE_OPTS[aarch64]+=" --with-openssl=$s$PREFIX"
 }
 
 pre_configure() {
@@ -120,6 +123,7 @@ pre_configure() {
     ! cross_arch $arch && return
 
     CC+=" --sysroot=${SYSROOT[$arch]}"
+    export PKG_CROSS_DEPEND=${TRIPLETS[$arch]%.*}
 }
 
 post_configure() {
@@ -127,6 +131,20 @@ post_configure() {
 }
 
 post_install() {
+    typeset arch="$1"
+
+    # Check that the platform triplet is being properly detected by looking
+    # for a zlib module with the correct name.
+    typeset v=${MVER//./}
+    typeset t=${TRIPLETS[$arch]%.*}
+    typeset f=$DESTDIR/$SHAREDLIB/zlib.cpython-$v-$t.so
+    [ -f "$f" ] || logerr "No zlib module with correct triplet ($f)"
+
+    # Check that the vendor-packages path is correctly set
+    f=$DESTDIR/$SHAREDUSR/site-packages/vendor-packages.pth
+    $EGREP -s "/$SHAREDUSR/vendor-packages" $f \
+        || logerr "Vendor-packages path not correctly set"
+
     python_compile \
         -o0 -o1 -o2 \
         -x 'bad_coding|badsyntax|site-packages|lib2to3/tests/data'

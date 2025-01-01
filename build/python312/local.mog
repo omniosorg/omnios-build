@@ -44,8 +44,6 @@ license LICENSE license=PSFv2
 
 <transform link mediator=python3 -> set mediator-version $(PYTHONVER)>
 
-<transform link mediator=python3 -> set mediator-priority vendor>
-
 # Add mediated link for /usr/bin/python and python-config
 link path=usr/bin/python target=python3
 link path=usr/bin/python-config target=python3-config
