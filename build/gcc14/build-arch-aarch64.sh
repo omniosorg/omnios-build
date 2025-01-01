@@ -13,14 +13,14 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
 # Copyright 2023 Richard Lowe <richlowe@richlowe.net>
 
 . ../../lib/build.sh
 
-PKG=developer/gcc10
+PKG=developer/gcc14
 PROG=gcc
-VER=10.4.0
+VER=14.2.0
 ILVER=il-1
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"
@@ -32,7 +32,7 @@ ARCH=aarch64
 GCCMAJOR=${VER%%.*}
 OPT=/opt/gcc-$GCCMAJOR
 
-XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=${OPT#/} -D GCCVER=$VER"
+XFORM_ARGS="-D MAJOR=$GCCMAJOR -D OPT=${OPT#/} -D GCCVER=$VER -D TRIPLET=$ARCH"
 BMI_EXPECTED=1
 NO_SONAME_EXPECTED=1
 
