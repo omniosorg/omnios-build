@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046cj (2025-01-02)
+Weekly release for w/c 30th of December 2024.
+> This is a non-reboot update
+
+### Changes
+
+* Updated `developer/build/onbld` with new shadow compiler settings for
+  building illumos-gate.
+
+* Corrected the runtime dependency in the new gcc 14 compiler package.
+
+* Added new OpenJDK 21 package.
+
+* Fixed missing dependency in the python package that could cause breakage
+  when doing a two-stage package update (updating just `pkg` first).
+
+<br>
+
+---
+
 ## r151046cg (2024-12-11)
 Weekly release for w/c 9th of December 2024.
 > This update requires a reboot
