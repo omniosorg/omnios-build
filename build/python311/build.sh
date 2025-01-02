@@ -18,6 +18,7 @@
 
 PROG=Python
 VER=3.11.11
+DASHREV=1
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
@@ -28,17 +29,8 @@ BUILD_DEPENDS_IPS="
     developer/pkg-config
     ooce/developer/autoconf-archive
 "
+# The python ctypes module runs '/usr/bin/dump' from here.
 RUN_DEPENDS_IPS="
-    compress/bzip2
-    database/sqlite-3
-    library/expat@`pkg_ver expat`
-    library/libffi
-    library/libxml2
-    library/ncurses
-    library/readline
-    library/security/openssl-3
-    library/zlib
-    system/library/gcc-runtime
     developer/object-file
 "
 XFORM_ARGS="-D PYTHONVER=$MVER"
