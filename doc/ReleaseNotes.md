@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052i (2025-01-02)
+Weekly release for w/c 30th of December 2024.
+> This is a non-reboot update
+
+### Security Fixes
+
+* Updated liboqs and oqs-provider to versions 0.12.0 and 0.8.0 respectively.
+
+### Other Changes
+
+* Updated `developer/build/onbld` with new shadow compiler settings for
+  building illumos-gate.
+
+* Updated JSON-PP module within the perl package to treat options as
+  case-sensitive.
+
+* Updated `library/python-3/packaging-312` to support new userland build
+  requirements.
+
+<br>
+
+---
+
 ## r151052f (2024-12-11)
 Weekly release for w/c 9th of December 2024.
 > This update requires a reboot
