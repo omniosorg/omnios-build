@@ -200,7 +200,7 @@ security/sudo
 #
 ###############################################################################
 # TO DO
-# compress/p7zip
+# compress/7zip
 # developer/pkg-config
 # developer/versioning/mercurial
 # developer/versioning/sccs

@@ -1,0 +1,27 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source. A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+
+# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+
+license DOC/copying.txt license=LGPLv2.1
+license DOC/unRarLicense.txt license=unRar
+
+file files/7zz.1 path=$(PREFIX)/share/man/man1/7zz.1 \
+    group=bin mode=0644 owner=root
+
+# These are variants that were provided by the old p7zip package. We retain
+# them, and links to man pages, for backwards compatibility.
+link path=$(PREFIX)/bin/7z target=7zz
+link path=$(PREFIX)/bin/7za target=7zz
+link path=$(PREFIX)/bin/7zr target=7zz
+link path=$(PREFIX)/share/man/man1/7z.1 target=7zz.1
+link path=$(PREFIX)/share/man/man1/7za.1 target=7zz.1
+link path=$(PREFIX)/share/man/man1/7zr.1 target=7zz.1
+
