@@ -22,6 +22,8 @@ PKG=compress/7zip
 SUMMARY="The 7-Zip compression and archiving utility"
 DESC="7-Zip is a file archiver with a high compression ratio"
 
+set_arch 64
+
 BUNDLEDIR=CPP/7zip/Bundles/Alone2
 
 SKIP_SSP_CHECK=1
@@ -31,16 +33,45 @@ XFORM_ARGS="
     -DPREFIX=${PREFIX#/}
 "
 
-pre_configure() { false; }
+pre_configure() {
+    typeset arch=$1
+
+    # Specifying a debug build means that the symbol table will not be stripped
+    MAKE_ARGS="DEBUG_BUILD=1"
+
+    case $arch in
+        amd64)
+            # In order to use `gcc_x64` which uses assembly components
+            # we would need either `asmc` or `uasm`. For now, use
+            # plain `gcc` which skips the assembly.
+            tmpl=gcc
+            odir=b
+            ;;
+        aarch64)
+            # On the other hand, in aarch64 we /can/ use the optimised
+            # assembly since it is in GNU assembler syntax.
+            tmpl=gcc_arm64
+            odir=g_arm64
+            ;;
+        *)
+            logerr "Unknown arch $arch"
+            ;;
+    esac
+
+    # Specifying a debug build means that the symbol table will not be stripped
+    MAKE_ARGS+=" -f ../../cmpl_$tmpl.mak"
+    MAKE_ARGS+=" CC=$CC"
+    MAKE_ARGS+=" CXX=$CXX"
+
+    # There is no real configure program
+    false
+}
 pre_make() { pushd $BUNDLEDIR; }
 post_make() { popd; }
 
-# Specifying a debug build means that the symbol table will not be stripped
-MAKE_ARGS="-f ../../cmpl_gcc.mak DEBUG_BUILD=1"
-
 make_install() {
     logcmd $MKDIR -p $DESTDIR/$PREFIX/bin
-    logcmd $CP $BUNDLEDIR/b/g/7zz $DESTDIR/$PREFIX/bin/7zz \
+    logcmd $CP $BUNDLEDIR/b/$odir/7zz $DESTDIR/$PREFIX/bin/7zz \
         || logerr "Cannot copy 7zz"
 }
 
