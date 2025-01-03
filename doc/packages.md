@@ -1,12 +1,12 @@
 | Package | Version | Link | Notes |
 | :------ | :------ | :--- | :---- |
 | archiver/gnu-tar			| 1.35			| https://ftp.gnu.org/gnu/tar/ https://www.gnu.org/software/tar/
+| compress/7zip				| 24.09			| https://www.7-zip.org/download.html
 | compress/brotli			| 1.1.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.24.1		| https://download.savannah.gnu.org/releases/lzip/
-| compress/p7zip			| 16.02			| https://sourceforge.net/projects/p7zip/files/p7zip
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
 | compress/xz				| 5.6.3			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html

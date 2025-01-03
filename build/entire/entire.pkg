@@ -18,9 +18,9 @@
 SUNWcs
 SUNWcsd
 compatibility/ucb					O
+compress/7zip						O
 compress/bzip2						O
 compress/gzip						O
-compress/p7zip						O
 compress/unzip						O
 compress/xz						O
 compress/zip						O
