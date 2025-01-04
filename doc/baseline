@@ -4,12 +4,13 @@ omnios archiver/gnu-tar
 omnios audio/audio-utilities
 omnios benchmark/filebench o
 omnios compatibility/ucb
+omnios compress/7zip
 omnios compress/brotli
 omnios compress/bzip2
 omnios compress/gzip
 omnios compress/lz4
 omnios compress/lzip
-omnios compress/p7zip
+omnios compress/p7zip r
 omnios compress/unzip
 omnios compress/xz
 omnios compress/zip

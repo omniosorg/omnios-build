@@ -1,0 +1,30 @@
+diff --git a/C/CpuArch.c b/C/CpuArch.c
+index 2560f90..d8aaf59 100755
+--- a/C/CpuArch.c
++++ b/C/CpuArch.c
+@@ -854,6 +854,25 @@ BoolInt CPU_IsSupported_SHA1(void) { return APPLE_CRYPTO_SUPPORT_VAL; }
+ BoolInt CPU_IsSupported_SHA2(void) { return APPLE_CRYPTO_SUPPORT_VAL; }
+ BoolInt CPU_IsSupported_AES (void) { return APPLE_CRYPTO_SUPPORT_VAL; }
+ 
++#elif defined (__illumos__) && defined(MY_CPU_ARM64)
++
++#include <sys/auxv.h>
++
++static
++BoolInt z7_feat(unsigned int f)
++{
++	uint32_t u = 0;
++
++	(void) getisax(&u, 1);
++	return ((u & f) != 0);
++}
++
++BoolInt CPU_IsSupported_CRC32(void) { return z7_feat(AV_AARCH64_CRC32); }
++BoolInt CPU_IsSupported_NEON(void) { return z7_feat(AV_AARCH64_ADVSIMD); }
++BoolInt CPU_IsSupported_SHA512(void) { return z7_feat(AV_AARCH64_SHA512); }
++BoolInt CPU_IsSupported_SHA1(void) { return z7_feat(AV_AARCH64_SHA1); }
++BoolInt CPU_IsSupported_SHA2(void) { return z7_feat(AV_AARCH64_SHA256); }
++BoolInt CPU_IsSupported_AES (void) { return z7_feat(AV_AARCH64_AES); }
+ 
+ #else // __APPLE__
+ 
