@@ -1,7 +1,7 @@
-diff -wpruN '--exclude=*.orig' a~/conf.c a/conf.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/conf.c a/conf.c
 --- a~/conf.c	1970-01-01 00:00:00
 +++ a/conf.c	1970-01-01 00:00:00
-@@ -243,8 +243,10 @@ parse_conf(const char *config_path)
+@@ -244,8 +244,10 @@ parse_conf(const char *config_path)
  			config.features |= INSECURE;
  		else if (strcmp(word, "FULLBOUNCE") == 0 && data == NULL)
  			config.features |= FULLBOUNCE;
@@ -10,10 +10,10 @@ diff -wpruN '--exclude=*.orig' a~/conf.c a/conf.c
  			config.features |= NULLCLIENT;
 +			config.domain = data;
 +		}
+ 		else if (strcmp(word, "VERIFYCERT") == 0 && data == NULL)
+ 			config.features |= VERIFYCERT;
  		else {
- 			errlogx(EX_CONFIG, "syntax error in %s:%d", config_path, lineno);
- 			/* NOTREACHED */
-diff -wpruN '--exclude=*.orig' a~/dma.c a/dma.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/dma.c a/dma.c
 --- a~/dma.c	1970-01-01 00:00:00
 +++ a/dma.c	1970-01-01 00:00:00
 @@ -85,6 +85,7 @@ struct config config = {
@@ -24,7 +24,7 @@ diff -wpruN '--exclude=*.orig' a~/dma.c a/dma.c
  	.fingerprint = NULL,
  };
  
-@@ -230,6 +231,18 @@ add_recp(struct dma_queue *queue, const
+@@ -257,6 +258,18 @@ add_recp(struct dma_queue *queue, const
  		}
  	} else {
  		it->remote = 1;
@@ -43,7 +43,7 @@ diff -wpruN '--exclude=*.orig' a~/dma.c a/dma.c
  	}
  
  	return (0);
-diff -wpruN '--exclude=*.orig' a~/dma.conf a/dma.conf
+diff -wpruN --no-dereference '--exclude=*.orig' a~/dma.conf a/dma.conf
 --- a~/dma.conf	1970-01-01 00:00:00
 +++ a/dma.conf	1970-01-01 00:00:00
 @@ -1,9 +1,5 @@
@@ -56,7 +56,7 @@ diff -wpruN '--exclude=*.orig' a~/dma.conf a/dma.conf
  #SMARTHOST
  
  # Use this SMTP port.  Most users will be fine with the default (25)
-@@ -63,8 +59,15 @@
+@@ -67,8 +63,15 @@
  # Format: MASQUERADE [user@][host]
  # Examples:
  # MASQUERADE john@  on host "hamlet" will send all mails as john@hamlet
@@ -74,10 +74,10 @@ diff -wpruN '--exclude=*.orig' a~/dma.conf a/dma.conf
 +# sending to the smarthost.
 +#NULLCLIENT example.net
 +
-diff -wpruN '--exclude=*.orig' a~/dma.h a/dma.h
+diff -wpruN --no-dereference '--exclude=*.orig' a~/dma.h a/dma.h
 --- a~/dma.h	1970-01-01 00:00:00
 +++ a/dma.h	1970-01-01 00:00:00
-@@ -136,6 +136,7 @@ struct config {
+@@ -137,6 +137,7 @@ struct config {
  	const char *certfile;
  	int features;
  	const char *mailname;

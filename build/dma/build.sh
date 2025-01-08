@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=dma
-VER=0.13
+VER=0.14
 PKG=service/network/smtp/dma
 SUMMARY="The DragonFly Mail Agent"
 DESC="A small lightweight Mail Transport Agent (MTA)"

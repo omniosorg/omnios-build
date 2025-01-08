@@ -2,7 +2,7 @@
 A user reported DMA spinning closing millions of file descriptors when
 attempting to create a mailbox.
 
-diff -wpruN '--exclude=*.orig' a~/local.c a/local.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/local.c a/local.c
 --- a~/local.c	1970-01-01 00:00:00
 +++ a/local.c	1970-01-01 00:00:00
 @@ -75,12 +75,16 @@ create_mbox(const char *name)
@@ -20,5 +20,5 @@ diff -wpruN '--exclude=*.orig' a~/local.c a/local.c
 +		closefrom(3);
 +#endif
  
- 		execl(LIBEXEC_PATH "/dma-mbox-create", "dma-mbox-create", name, NULL);
+ 		execl(LIBEXEC_PATH "/dma-mbox-create", "dma-mbox-create", name, (char *)NULL);
  		syslog(LOG_ERR, "cannot execute "LIBEXEC_PATH"/dma-mbox-create: %m");
