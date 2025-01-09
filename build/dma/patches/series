@@ -1,5 +1,4 @@
 dma-illumos-port.patch
 mxpref.patch
-strlcpy.patch
 rcpt_domain.patch
 closefrom.patch

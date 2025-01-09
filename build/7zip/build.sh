@@ -45,7 +45,7 @@ pre_configure() {
             # we would need either `asmc` or `uasm`. For now, use
             # plain `gcc` which skips the assembly.
             tmpl=gcc
-            odir=b
+            odir=g
             ;;
         aarch64)
             # On the other hand, in aarch64 we /can/ use the optimised
