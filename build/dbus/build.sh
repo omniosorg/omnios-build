@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=dbus
-VER=1.14.10
+VER=1.16.0
 PKG=dbus ##IGNORE##
 SUMMARY="filled in below"
 DESC="$SUMMARY"
@@ -27,27 +27,47 @@ set_standard XPG6
 CPPFLAGS+=" -D_REENTRANT"
 
 CONFIGURE_OPTS="
-    --with-dbus-daemondir=/usr/lib
-    --bindir=/usr/bin
+    --prefix=$PREFIX
     --localstatedir=/var
     --libexecdir=/usr/libexec
-    --with-x=no
-    --with-dbus-user=root
-    --disable-static
-    --disable-inotify
+    -Druntime_dir=/var/run
+    -Ddbus_daemondir=/usr/lib
+    -Ddbus_user=root
+    -Depoll=disabled
+    -Dinotify=disabled
+    -Dc_link_args=-lsocket
 "
 
-# configure checks whether the socketpair() function exists in libc, doesn't
-# find it and then does not build the _dbus_socketpair() function. That
-# function is in libsocket on illumos. Since there are other checks in
-# configure that determine that libsocket is required, we can just force
-# configure to mark the function as available.
-#
-# Reported upstream at https://gitlab.freedesktop.org/dbus/dbus/-/issues/382
-#
-CONFIGURE_OPTS+=" ac_cv_func_socketpair=yes"
+CONFIGURE_OPTS[i386]="
+    --bindir=$PREFIX/bin
+    --libdir=$PREFIX/${LIBDIRS[i386]}
+"
+CONFIGURE_OPTS[amd64]="
+    --bindir=$PREFIX/bin
+    --libdir=$PREFIX/${LIBDIRS[amd64]}
+"
+CONFIGURE_OPTS[aarch64]="
+    --bindir=$PREFIX/bin
+    --libdir=$PREFIX/${LIBDIRS[aarch64]}
+"
 
-export MAKE
+TESTSUITE_SED="
+    /^ninja:/d
+    /Full log written to/d
+    s/  *$//
+    s/\<[0-9][0-9]*\.[0-9][0-9]*s\>//
+"
+
+pre_configure() {
+    typeset arch=$1
+
+    ! cross_arch $arch && return
+
+    CONFIGURE_CMD+=" --cross-file $SRCDIR/files/aarch64-gcc.txt"
+
+    # use GNU msgfmt; otherwise the build fails
+    PATH="$GNUBIN:$PATH:$OOCEBIN"
+}
 
 post_install() {
     [ $1 = i386 ] && return
@@ -73,9 +93,9 @@ post_install() {
 init
 download_source $PROG $PROG $VER
 patch_source
-prep_build
+prep_build meson
 build
-run_testsuite check
+TESTSUITE_MAKE="$PYTHONLIB/python$PYTHONVER/bin/meson" run_testsuite test
 make_isa_stub
 
 PKG=system/library/dbus

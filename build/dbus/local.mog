@@ -8,9 +8,9 @@
 # http://www.illumos.org/license/CDDL.
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=GPLv2
+license LICENSES/GPL-2.0-or-later.txt license=GPLv2
 
 <transform path=usr/lib/cmake -> drop>
 <transform path=usr/share/doc -> drop>

@@ -94,7 +94,7 @@
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
-| system/library/dbus			| 1.14.10		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
+| system/library/dbus			| 1.16.0		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.112			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/pcap			| 1.10.5		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 23.4.1		| https://github.com/canonical/cloud-init/releases
