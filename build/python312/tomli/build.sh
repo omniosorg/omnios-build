@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../../lib/build.sh
 
 PKG=library/python-3/tomli-312
 PROG=tomli
-VER=2.1.0
+VER=2.2.1
 SUMMARY="Python TOML parser"
 DESC="Tomli is a Python library for parsing TOML"
 
