@@ -18,7 +18,7 @@
 
 PKG=library/python-3/meson-313
 PROG=meson
-inherit_ver python312/meson
+VER=1.6.1
 SUMMARY="The Meson Build system"
 DESC="An open source build system meant to be both extremely fast, "
 DESC+="and, even more importantly, as user friendly as possible"

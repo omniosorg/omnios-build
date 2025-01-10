@@ -18,7 +18,7 @@
 
 PKG=library/python-3/setuptools-rust-312
 PROG=setuptools_rust
-VER=1.10.2
+inherit_ver python313/setuptools-rust
 SUMMARY="Python setuptools rust extension plugin"
 DESC="Compile and distribute Python extensions written in rust as easily "
 DESC+="as if they were written in C."

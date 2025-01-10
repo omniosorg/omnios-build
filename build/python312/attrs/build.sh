@@ -18,7 +18,7 @@
 
 PKG=library/python-3/attrs-312
 PROG=attrs
-VER=24.3.0
+inherit_ver python313/attrs
 SUMMARY="Python attrs"
 DESC="Classes Without Boilerplate"
 

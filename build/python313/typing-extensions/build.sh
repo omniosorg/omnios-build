@@ -18,7 +18,7 @@
 
 PKG=library/python-3/typing-extensions-313
 PROG=typing-extensions
-inherit_ver python312/typing-extensions
+VER=4.12.2
 SUMMARY="Python typing extensions"
 DESC="Backported and Experimental Type Hints for Python 3.6+"
 
