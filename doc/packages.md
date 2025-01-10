@@ -63,7 +63,7 @@
 | library/security/openssl-3		| 3.4.0			| https://www.openssl.org/source/
 | library/security/oqs-provider		| 0.8.0			| https://github.com/open-quantum-safe/oqs-provider/releases
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
-| library/xxhash			| 0.8.2			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
+| library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
