@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -21,7 +21,7 @@ VER=4.5
 PKG=service/network/chrony
 SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
-NETTLEVER=3.10
+NETTLEVER=3.10.1
 
 BUILD_DEPENDS_IPS="ooce/text/asciidoctor"
 
