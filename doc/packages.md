@@ -41,7 +41,7 @@
 | library/mpc				| 1.3.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.1			| http://www.mpfr.org/mpfr-current/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
-| library/libedit			| 20240808-3.1		| https://thrysoee.dk/editline/
+| library/libedit			| 20250104-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.42			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
