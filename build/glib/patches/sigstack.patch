@@ -1,0 +1,21 @@
+
+The definition of `MINSIGSTKSZ` in `/usr/include/sys/signal.h` is actually
+too small to save complex state like AVX-512. This is something that is
+discussed in
+https://github.com/illumos/ipd/blob/master/ipd/0038/README.adoc#45-signal-stack-sizing
+
+For now, have the test use the larger `SIGSTKSZ`.
+
+diff --git a/glib/tests/unix.c b/glib/tests/unix.c
+index d3ef514..bbfba06 100644
+--- a/glib/tests/unix.c
++++ b/glib/tests/unix.c
+@@ -588,7 +588,7 @@ test_signal_alternate_stack (int signal)
+ #ifndef SA_ONSTACK
+   g_test_skip ("alternate stack is not supported");
+ #else
+-  size_t minsigstksz = MINSIGSTKSZ;
++  size_t minsigstksz = SIGSTKSZ;
+   guint8 *stack_memory = NULL;
+   guint8 *zero_mem = NULL;
+   stack_t stack = { 0 };
