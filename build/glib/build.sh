@@ -111,7 +111,7 @@ pre_configure() {
 
     ! cross_arch $arch && return
 
-    CONFIGURE_CMD+=" --cross-file $SRCDIR/files/aarch64-gcc.txt"
+    CONFIGURE_CMD+=" --cross-file $BLIBDIR/meson-$arch-gcc"
 
     # use GNU msgfmt; otherwise the build fails
     PATH="$GNUBIN:$PATH:$OOCEBIN"
