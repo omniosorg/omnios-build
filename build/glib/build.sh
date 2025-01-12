@@ -56,15 +56,15 @@ CONFIGURE_OPTS="
 "
 CONFIGURE_OPTS[i386]="
     --bindir=$PREFIX/bin
-    --libdir=$PREFIX/lib
+    --libdir=$PREFIX/${LIBDIRS[i386]}
 "
 CONFIGURE_OPTS[amd64]="
     --bindir=$PREFIX/bin
-    --libdir=$PREFIX/lib/amd64
+    --libdir=$PREFIX/${LIBDIRS[amd64]}
 "
 CONFIGURE_OPTS[aarch64]="
     --bindir=$PREFIX/bin
-    --libdir=$PREFIX/lib
+    --libdir=$PREFIX/${LIBDIRS[aarch64]}
 "
 
 clean_testsuite() {
@@ -111,7 +111,7 @@ pre_configure() {
 
     ! cross_arch $arch && return
 
-    CONFIGURE_CMD+=" --cross-file $SRCDIR/files/aarch64-gcc.txt"
+    CONFIGURE_CMD+=" --cross-file $BLIBDIR/meson-$arch-gcc"
 
     # use GNU msgfmt; otherwise the build fails
     PATH="$GNUBIN:$PATH:$OOCEBIN"

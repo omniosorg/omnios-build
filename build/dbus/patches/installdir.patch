@@ -1,0 +1,12 @@
+diff --git a/bus/meson.build b/bus/meson.build
+index 176894d..6f2b15f 100644
+--- a/bus/meson.build
++++ b/bus/meson.build
+@@ -139,6 +139,7 @@ dbus_daemon = executable('dbus-daemon',
+     include_directories: root_include,
+     link_with: libdbus_daemon_internal,
+     install: true,
++    install_dir: get_option('dbus_daemondir')
+ )
+ 
+ 
