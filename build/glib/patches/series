@@ -7,3 +7,4 @@ strftime.patch
 printf.patch
 test-credentials-clear-error.patch
 standards.patch
+sigstack.patch

@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../../lib/build.sh
 
 PKG=library/python-3/six-312
 PROG=six
-VER=1.16.0
+inherit_ver python313/six
 SUMMARY="A Python 2 and 3 compatibility library"
 DESC="$SUMMARY"
 

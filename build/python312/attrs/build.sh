@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../../lib/build.sh
 
 PKG=library/python-3/attrs-312
 PROG=attrs
-VER=24.2.0
+inherit_ver python313/attrs
 SUMMARY="Python attrs"
 DESC="Classes Without Boilerplate"
 

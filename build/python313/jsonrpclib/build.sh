@@ -18,7 +18,7 @@
 
 PKG=library/python-3/jsonrpclib-313
 PROG=jsonrpclib
-inherit_ver python312/jsonrpclib
+VER=0.4.3.3
 SUMMARY="A Python JSON-RPC over HTTP that mirrors xmlrpclib syntax"
 DESC="$SUMMARY"
 

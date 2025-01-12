@@ -21,12 +21,12 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=iperf
-VER=3.17.1
+VER=3.18
 PKG=network/test/iperf
 SUMMARY="iperf network testing tool"
 DESC="A tool for active measurements of the maximum achievable bandwidth on "

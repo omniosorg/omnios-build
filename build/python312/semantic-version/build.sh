@@ -18,7 +18,7 @@
 
 PKG=library/python-3/semantic-version-312
 PROG=semantic_version
-VER=2.10.0
+inherit_ver python313/semantic-version
 SUMMARY="A library implementing the 'SemVer' scheme."
 DESC="This small python library provides a few tools to handle SemVer in "
 DESC+="Python. It follows strictly the 2.0.0 version of the SemVer scheme."

@@ -18,7 +18,7 @@
 
 PKG=library/python-3/packaging-312
 PROG=packaging
-VER=24.2
+inherit_ver python313/packaging
 SUMMARY="Core utilities for Python packages"
 DESC="Reusable core utilities for various Python Packaging interoperability "
 DESC+="specifications"

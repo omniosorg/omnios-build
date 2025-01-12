@@ -23,7 +23,7 @@ PKG=network/rsync
 SUMMARY="rsync - faster, flexible replacement for rcp"
 DESC="An open source utility that provides fast incremental file transfer"
 
-XXHASHVER=0.8.2
+XXHASHVER=0.8.3
 XFORM_ARGS+=" -DXXHASH=$XXHASHVER"
 
 set_arch 64
