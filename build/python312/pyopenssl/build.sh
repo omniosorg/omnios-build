@@ -26,7 +26,12 @@ DESC="$SUMMARY"
 
 RUN_DEPENDS_IPS+=" library/python-$PYMVER/cryptography-$SPYVER"
 
-[ "$BUILDARCH" = aarch64 ] && set_patchdir patches.aarch64
+if [ "$BUILDARCH" = aarch64 ]; then
+    # This is the last version that does work with the version-locked
+    # cryptography for aarch64
+    VER=24.2.1
+    set_patchdir patches.aarch64
+fi
 
 init
 download_source pymodules/$PROG $PROG $VER
