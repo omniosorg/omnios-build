@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050ak (2025-01-14)
+Weekly release for w/c 13th of January 2025.
+> This is a non-reboot update
+
+### Security Fixes
+
+* git updated to version 2.44.3, fixing
+  [CVE-2024-50349](https://www.cve.org/CVERecord?id=CVE-2024-50349),
+  [CVE-2024-52006](https://www.cve.org/CVERecord?id=CVE-2024-52006).
+
+* rsync updated to version 3.4.0, fixing
+  [CVE-2024-12084](https://www.cve.org/CVERecord?id=CVE-2024-12084),
+  [CVE-2024-12085](https://www.cve.org/CVERecord?id=CVE-2024-12085),
+  [CVE-2024-12086](https://www.cve.org/CVERecord?id=CVE-2024-12086),
+  [CVE-2024-12087](https://www.cve.org/CVERecord?id=CVE-2024-12087),
+  [CVE-2024-12088](https://www.cve.org/CVERecord?id=CVE-2024-12088),
+  [CVE-2024-12747](https://www.cve.org/CVERecord?id=CVE-2024-12747).
+
+<br>
+
+---
+
 ## r151050af (2024-12-11)
 Weekly release for w/c 9th of December 2024.
 > This update requires a reboot
