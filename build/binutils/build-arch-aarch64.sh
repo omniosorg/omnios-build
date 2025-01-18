@@ -13,20 +13,20 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 # Copyright 2023 Richard Lowe <richlowe@richlowe.net>
 
 . ../../lib/build.sh
 
 PROG=binutils
-VER=2.39
+VER=2.41
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "
 DESC+="object files, libraries, etc."
 
 REPO=$GITHUB/richlowe/binutils-gdb
-BRANCH=illumos-arm64
+BRANCH=illumos-arm64-${VER//./-}
 ARCH=aarch64
 
 [ "$CLIBUILDARCH" = $ARCH ] || logerr "Incorrect arch selected, use -a $ARCH"
@@ -80,10 +80,8 @@ CFLAGS+=" $CFLAGS_FOR_TARGET"
 CXXFLAGS+=" $CFLAGS_FOR_TARGET"
 
 build_init() {
-    typeset d=${SYSROOT[$ARCH]}/usr
-
     CONFIGURE_OPTS+="
-        --with-libgmp-prefix=$d
+        --with-gmp-include=${SYSROOT[$ARCH]}/usr/include/gmp
     "
 }
 
