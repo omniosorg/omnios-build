@@ -1,0 +1,208 @@
+From afc5d71244ef6ef4c1c672153ac1040181f58b40 Mon Sep 17 00:00:00 2001
+From: Alex Suykov <alex.suykov@gmail.com>
+Date: Mon, 20 Jan 2025 20:08:56 +0200
+Subject: [PATCH] patches for perl 5.38.3 and 5.40.1
+
+---
+ cnf/diffs/perl5-5.38.3/constant.patch       | 1 +
+ cnf/diffs/perl5-5.38.3/dynaloader.patch     | 1 +
+ cnf/diffs/perl5-5.38.3/findext.patch        | 1 +
+ cnf/diffs/perl5-5.38.3/installscripts.patch | 1 +
+ cnf/diffs/perl5-5.38.3/liblist.patch        | 1 +
+ cnf/diffs/perl5-5.38.3/makemaker.patch      | 1 +
+ cnf/diffs/perl5-5.38.3/posix-makefile.patch | 1 +
+ cnf/diffs/perl5-5.38.3/test-checkcase.patch | 1 +
+ cnf/diffs/perl5-5.38.3/test-makemaker.patch | 1 +
+ cnf/diffs/perl5-5.38.3/xconfig.patch        | 1 +
+ cnf/diffs/perl5-5.40.1/constant.patch       | 1 +
+ cnf/diffs/perl5-5.40.1/dynaloader.patch     | 1 +
+ cnf/diffs/perl5-5.40.1/findext.patch        | 1 +
+ cnf/diffs/perl5-5.40.1/installscripts.patch | 1 +
+ cnf/diffs/perl5-5.40.1/liblist.patch        | 1 +
+ cnf/diffs/perl5-5.40.1/makemaker.patch      | 1 +
+ cnf/diffs/perl5-5.40.1/posix-makefile.patch | 1 +
+ cnf/diffs/perl5-5.40.1/test-checkcase.patch | 1 +
+ cnf/diffs/perl5-5.40.1/test-makemaker.patch | 1 +
+ cnf/diffs/perl5-5.40.1/xconfig.patch        | 1 +
+ 20 files changed, 20 insertions(+)
+ create mode 120000 cnf/diffs/perl5-5.38.3/constant.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/dynaloader.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/findext.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/installscripts.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/liblist.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/posix-makefile.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/test-checkcase.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/test-makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.38.3/xconfig.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/constant.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/dynaloader.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/findext.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/installscripts.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/liblist.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/posix-makefile.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/test-checkcase.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/test-makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.40.1/xconfig.patch
+
+diff --git a/cnf/diffs/perl5-5.38.3/constant.patch b/cnf/diffs/perl5-5.38.3/constant.patch
+new file mode 120000
+index 0000000..065e198
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/constant.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/constant.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/dynaloader.patch b/cnf/diffs/perl5-5.38.3/dynaloader.patch
+new file mode 120000
+index 0000000..ffb73eb
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/dynaloader.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/dynaloader.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/findext.patch b/cnf/diffs/perl5-5.38.3/findext.patch
+new file mode 120000
+index 0000000..9efbe5b
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/findext.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/findext.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/installscripts.patch b/cnf/diffs/perl5-5.38.3/installscripts.patch
+new file mode 120000
+index 0000000..1c05e0f
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/installscripts.patch
+@@ -0,0 +1 @@
++../perl5-5.36.0/installscripts.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/liblist.patch b/cnf/diffs/perl5-5.38.3/liblist.patch
+new file mode 120000
+index 0000000..e90c0a3
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/liblist.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/liblist.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/makemaker.patch b/cnf/diffs/perl5-5.38.3/makemaker.patch
+new file mode 120000
+index 0000000..d7bd609
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/posix-makefile.patch b/cnf/diffs/perl5-5.38.3/posix-makefile.patch
+new file mode 120000
+index 0000000..29463b7
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/posix-makefile.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/posix-makefile.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/test-checkcase.patch b/cnf/diffs/perl5-5.38.3/test-checkcase.patch
+new file mode 120000
+index 0000000..36c5186
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/test-checkcase.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/test-checkcase.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/test-makemaker.patch b/cnf/diffs/perl5-5.38.3/test-makemaker.patch
+new file mode 120000
+index 0000000..4e970ff
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/test-makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.34.0/test-makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.38.3/xconfig.patch b/cnf/diffs/perl5-5.38.3/xconfig.patch
+new file mode 120000
+index 0000000..2f1bd07
+--- /dev/null
++++ b/cnf/diffs/perl5-5.38.3/xconfig.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/xconfig.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/constant.patch b/cnf/diffs/perl5-5.40.1/constant.patch
+new file mode 120000
+index 0000000..065e198
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/constant.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/constant.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/dynaloader.patch b/cnf/diffs/perl5-5.40.1/dynaloader.patch
+new file mode 120000
+index 0000000..ffb73eb
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/dynaloader.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/dynaloader.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/findext.patch b/cnf/diffs/perl5-5.40.1/findext.patch
+new file mode 120000
+index 0000000..9efbe5b
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/findext.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/findext.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/installscripts.patch b/cnf/diffs/perl5-5.40.1/installscripts.patch
+new file mode 120000
+index 0000000..1c05e0f
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/installscripts.patch
+@@ -0,0 +1 @@
++../perl5-5.36.0/installscripts.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/liblist.patch b/cnf/diffs/perl5-5.40.1/liblist.patch
+new file mode 120000
+index 0000000..e90c0a3
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/liblist.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/liblist.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/makemaker.patch b/cnf/diffs/perl5-5.40.1/makemaker.patch
+new file mode 120000
+index 0000000..d7bd609
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/posix-makefile.patch b/cnf/diffs/perl5-5.40.1/posix-makefile.patch
+new file mode 120000
+index 0000000..29463b7
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/posix-makefile.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/posix-makefile.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/test-checkcase.patch b/cnf/diffs/perl5-5.40.1/test-checkcase.patch
+new file mode 120000
+index 0000000..36c5186
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/test-checkcase.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/test-checkcase.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/test-makemaker.patch b/cnf/diffs/perl5-5.40.1/test-makemaker.patch
+new file mode 120000
+index 0000000..4e970ff
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/test-makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.34.0/test-makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.40.1/xconfig.patch b/cnf/diffs/perl5-5.40.1/xconfig.patch
+new file mode 120000
+index 0000000..132c3a5
+--- /dev/null
++++ b/cnf/diffs/perl5-5.40.1/xconfig.patch
+@@ -0,0 +1 @@
++../perl5-5.40.0/xconfig.patch
+\ No newline at end of file
