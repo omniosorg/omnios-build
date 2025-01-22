@@ -1695,7 +1695,7 @@ cpan/Filter-Util-Call/t/rt_101033 ................................ ok
 cpan/Filter-Util-Call/t/rt_54452-rebless ......................... ok
 cpan/Getopt-Long/t/gol-basic ..................................... ok
 cpan/Getopt-Long/t/gol-linkage ................................... ok
-cpan/Getopt-Long/t/gol-load1 ..................................... # Testing Getopt::Long 2.57, Perl 5.040000, /build/tmp/perl-5.40.0/perl-5.40.0/perl
+cpan/Getopt-Long/t/gol-load1 ..................................... # Testing Getopt::Long 2.57, Perl 5.040001, /build/tmp/perl-5.40.1/perl-5.40.1/perl
 ok
 cpan/Getopt-Long/t/gol-load2 ..................................... ok
 cpan/Getopt-Long/t/gol-oo ........................................ ok
@@ -2908,5 +2908,5 @@ t/porting/test_testlist .......................................... ok
 t/porting/update_authors ......................................... skipped
 t/porting/utils .................................................. skipped
 All tests successful.
-Elapsed: 1136 sec
-u=9.92  s=7.30  cu=838.38  cs=118.07  scripts=2731  tests=1197933
+Elapsed: 1119 sec
+u=10.27  s=7.29  cu=803.02  cs=114.70  scripts=2731  tests=1198064
