@@ -59,7 +59,7 @@ process_opts() {
     SKIP_CHECKSUM=
     EXTRACT_MODE=0
     MOG_TEST=
-    while getopts "bcimPpstf:ha:d:Llr:x" opt; do
+    while getopts "bcimM:Ppstf:ha:d:Llr:x" opt; do
         case $opt in
             a)
                 set_arch "$OPTARG"
@@ -95,6 +95,11 @@ process_opts() {
                 ;;
             m)
                 MOG_TEST=1
+                ;;
+            M)
+                logmsg -n "-- Will retrieve files from $OPTARG"
+                set_mirror "$OPTARG"
+                set_checksum none
                 ;;
             P)
                 REBASE_PATCHES=1
@@ -139,6 +144,8 @@ show_usage() {
   -l        : skip pkglint check
   -L        : skip hardlink target check
   -m        : re-generate final mog from local.mog (mog test mode)
+  -M URL    : retrieve files from URL instead of OmniOS mirror
+  -M /PATH  : retrieve files from (absolute) PATH instead of OmniOS mirror
   -p        : output all commands to the screen as well as log file
   -P        : re-base patches on latest source
   -r REPO   : specify the IPS repo to use
