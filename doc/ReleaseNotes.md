@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046cm (2025-01-23)
+Weekly release for w/c 20th of January 2025.
+> This is a non-reboot update
+
+### Other Changes
+
+* Updated `rsync` to 3.4.1 fixing regressions introduced in 3.4.0.
+
+<br>
+
+---
+
 ## r151046cl (2025-01-14)
 Weekly release for w/c 13th of January 2025.
 > This is a non-reboot update
