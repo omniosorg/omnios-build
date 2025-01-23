@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052l (2025-01-23)
+Weekly release for w/c 20th of January 2025.
+> This is a non-reboot update
+
+### Other Changes
+
+* Updated `rsync` to 3.4.1 fixing regressions introduced in 3.4.0.
+
+* Updated `perl` to 5.40.1.
+
+<br>
+
+---
+
 ## r151052k (2025-01-14)
 Weekly release for w/c 13th of January 2025.
 > This is a non-reboot update
