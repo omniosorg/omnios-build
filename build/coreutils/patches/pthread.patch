@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/m4/threadlib.m4 a/m4/threadlib.m4
 --- a~/m4/threadlib.m4	1970-01-01 00:00:00
 +++ a/m4/threadlib.m4	1970-01-01 00:00:00
-@@ -242,6 +242,7 @@ AC_DEFUN([gl_PTHREADLIB_BODY],
+@@ -244,6 +244,7 @@ AC_DEFUN([gl_PTHREADLIB_BODY],
              [gl_pthread_in_glibc=yes],
              [])
            ;;

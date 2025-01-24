@@ -1,42 +1,22 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/df/no-mtab-status.sh a/tests/df/no-mtab-status.sh
 --- a~/tests/df/no-mtab-status.sh	1970-01-01 00:00:00
 +++ a/tests/df/no-mtab-status.sh	1970-01-01 00:00:00
-@@ -35,9 +35,13 @@ cat > k.c <<EOF || framework_failure_
+@@ -24,9 +24,6 @@ require_gcc_shared_
+ # Protect against inaccessible remote mounts etc.
+ timeout 10 df || skip_ "df fails"
+ 
+-grep '^#define HAVE_GETMNTENT 1' $CONFIG_HEADER > /dev/null \
+-      || skip_ "getmntent is not used on this system"
+-
+ # Simulate "mtab" failure.
+ cat > k.c <<EOF || framework_failure_
  #define _GNU_SOURCE
- #include <stdio.h>
+@@ -34,7 +31,7 @@ cat > k.c <<EOF || framework_failure_
+ #include <stdlib.h>
  #include <errno.h>
+ #include <fcntl.h>
 -#include <mntent.h>
- #include <string.h>
- #include <dlfcn.h>
-+#ifdef __illumos__
 +#include <sys/mnttab.h>
-+#else
-+#include <mntent.h>
-+#endif
- 
- #define STREQ(a, b) (strcmp (a, b) == 0)
- 
-@@ -69,7 +73,11 @@ FILE* fopen(const char *path, const char
-     return fopen_func(path, mode);
- }
- 
-+#ifdef __illumos__
-+int getmntent (FILE *fp, struct mnttab *mp)
-+#else
- struct mntent *getmntent (FILE *fp)
-+#end
- {
-   /* Prove that LD_PRELOAD works. */
-   static int done = 0;
-@@ -80,7 +88,11 @@ struct mntent *getmntent (FILE *fp)
-     }
-   /* Now simulate the failure. */
-   errno = ENOENT;
-+#ifdef __illumos__
-+  return -1;
-+#else
-   return NULL;
-+#endif
- }
- EOF
- 
+ #include <string.h>
+ #include <stdarg.h>
+ #include <dlfcn.h>

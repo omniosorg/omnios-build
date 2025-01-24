@@ -100,6 +100,7 @@ PASS: tests/ptx/ptx-overrun.sh
 PASS: tests/misc/xstrtol.pl
 PASS: tests/tail/overlay-headers.sh
 PASS: tests/tail/pid.sh
+PASS: tests/tail/pid-pipe.sh
 PASS: tests/od/od.pl
 PASS: tests/od/od-endian.sh
 PASS: tests/od/od-float.sh
@@ -186,6 +187,7 @@ PASS: tests/misc/printenv.sh
 PASS: tests/printf/printf.sh
 PASS: tests/printf/printf-cov.pl
 PASS: tests/printf/printf-hex.sh
+PASS: tests/printf/printf-indexed.sh
 PASS: tests/printf/printf-mb.sh
 PASS: tests/printf/printf-surprise.sh
 PASS: tests/printf/printf-quote.sh
@@ -470,7 +472,6 @@ PASS: tests/ls/m-option.sh
 PASS: tests/ls/w-option.sh
 PASS: tests/ls/multihardlink.sh
 PASS: tests/ls/no-arg.sh
-SKIP: tests/ls/no-cap.sh
 PASS: tests/ls/selinux-segfault.sh
 PASS: tests/ls/quote-align.sh
 PASS: tests/ls/size-align.sh
@@ -479,6 +480,7 @@ PASS: tests/ls/recursive.sh
 SKIP: tests/ls/removed-directory.sh
 PASS: tests/ls/root-rel-symlink-color.sh
 PASS: tests/ls/rt-1.sh
+SKIP: tests/ls/selinux.sh
 SKIP: tests/ls/slink-acl.sh
 SKIP: tests/ls/stat-dtype.sh
 PASS: tests/ls/stat-failed.sh
@@ -596,6 +598,7 @@ SKIP: tests/du/bind-mount-dir-cycle-v2.sh
 SKIP: tests/id/setgid.sh
 SKIP: tests/install/install-C-root.sh
 SKIP: tests/ls/capability.sh
+SKIP: tests/ls/no-cap.sh
 SKIP: tests/ls/nameless-uid.sh
 SKIP: tests/chcon/chcon.sh
 SKIP: tests/chroot/chroot-credentials.sh
@@ -651,13 +654,22 @@ SKIP: tests/factor/t33.sh
 SKIP: tests/factor/t34.sh
 SKIP: tests/factor/t35.sh
 SKIP: tests/factor/t36.sh
-# TOTAL: 653
-# PASS:  500
-# SKIP:  152
+SKIP: tests/factor/t37.sh
+# TOTAL: 657
+# PASS:  502
+# SKIP:  154
 # XFAIL: 0
 # FAIL:  1
 # XPASS: 0
 # ERROR: 0
+NAME="OmniOS"
+PRETTY_NAME="OmniOS Community Edition v11 r151053"
+CPE_NAME="cpe:/o:omniosce:omnios:11:151053:0"
+ID=omnios
+VERSION=r151053
+VERSION_ID=r151053
+BUILD_ID=151053.0.2025.01.12
+HOME_URL="https://omnios.org/"
 SKIP: tests/tail/inotify-race
 SKIP tests/tail/inotify-race.sh (exit status: 77)
 SKIP: tests/tail/inotify-race2
@@ -825,10 +837,10 @@ SKIP: tests/install/install-Z-selinux
 SKIP tests/install/install-Z-selinux.sh (exit status: 77)
 SKIP: tests/ls/acl
 SKIP tests/ls/acl.sh (exit status: 77)
-SKIP: tests/ls/no-cap
-SKIP tests/ls/no-cap.sh (exit status: 77)
 SKIP: tests/ls/removed-directory
 SKIP tests/ls/removed-directory.sh (exit status: 77)
+SKIP: tests/ls/selinux
+SKIP tests/ls/selinux.sh (exit status: 77)
 SKIP: tests/ls/slink-acl
 SKIP tests/ls/slink-acl.sh (exit status: 77)
 SKIP: tests/ls/stat-dtype
@@ -889,6 +901,8 @@ SKIP: tests/install/install-C-root
 SKIP tests/install/install-C-root.sh (exit status: 77)
 SKIP: tests/ls/capability
 SKIP tests/ls/capability.sh (exit status: 77)
+SKIP: tests/ls/no-cap
+SKIP tests/ls/no-cap.sh (exit status: 77)
 SKIP: tests/ls/nameless-uid
 SKIP tests/ls/nameless-uid.sh (exit status: 77)
 SKIP: tests/chcon/chcon
@@ -999,9 +1013,11 @@ SKIP: tests/factor/t35
 SKIP tests/factor/t35.sh (exit status: 77)
 SKIP: tests/factor/t36
 SKIP tests/factor/t36.sh (exit status: 77)
-# TOTAL: 653
-# PASS:  500
-# SKIP:  152
+SKIP: tests/factor/t37
+SKIP tests/factor/t37.sh (exit status: 77)
+# TOTAL: 657
+# PASS:  502
+# SKIP:  154
 # XFAIL: 0
 # FAIL:  1
 # XPASS: 0
