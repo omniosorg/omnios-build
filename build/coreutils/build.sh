@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=coreutils
-VER=9.5
+VER=9.6
 PKG=file/gnu-coreutils
 SUMMARY="coreutils - GNU core utilities"
 DESC="GNU core utilities"
@@ -69,7 +69,8 @@ function post_install {
 init
 download_source $PROG $PROG $VER
 patch_source
-run_autoreconf -fi
+run_aclocal --force -I m4
+run_autoconf
 prep_build
 build
 run_testsuite check

@@ -6,13 +6,13 @@
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
-| compress/lzip				| 1.24.1		| https://download.savannah.gnu.org/releases/lzip/
+| compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.6.3			| https://tukaani.org/xz/
+| compress/xz				| 5.6.4			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.6			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3470200		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3480000		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -27,11 +27,11 @@
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.48.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.9			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 6.9.1			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
-| file/gnu-coreutils			| 9.5			| https://ftp.gnu.org/gnu/coreutils/
+| file/gnu-coreutils			| 9.6			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.6.4			| https://github.com/libexpat/libexpat/releases
@@ -49,7 +49,7 @@
 | library/libuv				| 1.49.2		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.13.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.42		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
-| library/lzlib				| 1.14			| https://download.savannah.gnu.org/releases/lzip/lzlib/
+| library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.1		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.64.0		| https://github.com/nghttp2/nghttp2/releases
@@ -89,7 +89,7 @@
 | shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.9.25		| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.9.27		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.14		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.2			| https://github.com/tycho/cpuid/tags
