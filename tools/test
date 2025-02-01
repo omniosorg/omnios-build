@@ -220,6 +220,7 @@ check_packages_md()
 			runtime/python-39)	continue ;;
 			runtime/python-310)	continue ;;
 			runtime/python-311)	continue ;;
+			runtime/python-312)	continue ;;
 			*/libedit)		ver=${ver#*-} ;;
 		esac
 
