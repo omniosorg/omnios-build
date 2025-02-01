@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=openjdk
-VER=17.0.13+11
+VER=17.0.14+7
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the seventeenth edition of the "
