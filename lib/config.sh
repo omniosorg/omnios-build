@@ -251,10 +251,7 @@ CW=$ONBLDBIN/i386/cw
 GENOFFSETS=$ONBLDBIN/genoffsets
 CTF_FLAGS=
 typeset -A CTFCFLAGS
-CTFCFLAGS[_]="-gdwarf-2"
-CTFCFLAGS[10]="-gstrict-dwarf"
-CTFCFLAGS[13]="-gstrict-dwarf"
-CTFCFLAGS[14]="-gstrict-dwarf"
+CTFCFLAGS[_]="-gdwarf-4 -gstrict-dwarf"
 GENOFFSETS_CFLAGS="
     ${CTFCFLAGS[_]}
     -_gcc=-fno-eliminate-unused-debug-symbols
