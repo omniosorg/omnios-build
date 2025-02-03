@@ -1,9 +1,0 @@
-#!/bin/ksh
-
-set -- `echo $@ | sed '
-	s/-m64//g
-	s/-msave-args//g
-	'`
-
-exec /opt/cross/aarch64/bin/gcc "$@"
-

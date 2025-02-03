@@ -1,0 +1,3 @@
+set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/library/python-3/six-312@1.17.0,$(SUNOSVER)-$(PVER)
+set name=pkg.obsolete value=true
+set name=publisher value=$(PKGPUBEMAIL)
