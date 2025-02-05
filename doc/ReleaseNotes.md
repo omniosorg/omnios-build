@@ -4,6 +4,31 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046co (2025-02-05)
+Weekly release for w/c 03rd of February 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenJDK packages updated to versions 1.8.442-06, 11.0.26+4, 17.0.14+17 and
+  21.0.6+7.
+
+* Fix for P == Q corner case in ECC; see
+  [illumos 17137](https://www.illumos.org/issues/17137).
+
+* Curl updated to 8.12.0, addressing
+  [CVE-2025-0167](https://curl.se/docs/CVE-2025-0167.html),
+  [CVE-2025-0665](https://curl.se/docs/CVE-2025-0665.html),
+  [CVE-2025-0725](https://curl.se/docs/CVE-2025-0725.html).
+
+### Other Changes
+
+* ESX offline disk resize previously prevented growing zpool.
+
+<br>
+
+---
+
 ## r151046cm (2025-01-23)
 Weekly release for w/c 20th of January 2025.
 > This is a non-reboot update
