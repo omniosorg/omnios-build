@@ -25,6 +25,7 @@ compress/xz						O
 compress/zip						O
 compress/zstd						O
 developer/debug/mdb					O
+developer/dtc						O
 developer/dtrace					O
 developer/linker					O
 diagnostic/diskinfo					O

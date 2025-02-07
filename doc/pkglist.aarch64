@@ -84,6 +84,7 @@ text/gnu-sed
 .SYSROOT
 archiver/gnu-tar
 compress/gzip
+developer/dtc
 library/glib2
 library/libxslt
 library/mpc
