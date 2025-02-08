@@ -17,6 +17,7 @@
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.5.4			| https://www.gnu.org/software/libtool/
+| developer/dtc				| 1.7.2			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc13			| 13.3			| https://ftp.gnu.org/gnu/gcc/

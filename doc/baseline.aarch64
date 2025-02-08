@@ -35,6 +35,7 @@ omnios developer/debug/ctf
 omnios developer/debug/mdb
 omnios developer/debug/mdb/module/module-fibre-channel
 omnios developer/driver/ftsafe
+omnios developer/dtc
 omnios developer/dtrace
 omnios developer/exuberant-ctags
 omnios developer/gcc14
