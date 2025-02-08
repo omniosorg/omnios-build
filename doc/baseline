@@ -40,6 +40,7 @@ omnios developer/debug/mdb
 omnios developer/debug/mdb/module/module-fibre-channel
 omnios developer/debug/mdb/module/module-qlc
 omnios developer/driver/ftsafe
+omnios developer/dtc
 omnios developer/dtrace
 omnios developer/dtrace/toolkit
 omnios developer/exuberant-ctags
