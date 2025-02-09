@@ -183,8 +183,11 @@ runtime/python-311
 runtime/python-312
 #
 system/library/python/libbe-311
+system/library/python/libbe-312
 system/library/python/solaris-311
+system/library/python/solaris-312
 system/library/python/zfs-311
+system/library/python/zfs-312
 ###############################################################################
 .SYSROOT
 library/python-3/cryptography-313
