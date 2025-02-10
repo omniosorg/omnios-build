@@ -13,13 +13,13 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/arch.sh
 . ../../lib/build.sh
 
 PROG=binutils
-VER=2.43.1
+VER=2.44
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "
@@ -32,7 +32,6 @@ HARDLINK_TARGETS="
     usr/bin/gar
     usr/bin/gas
     usr/bin/gld
-    usr/bin/gld.gold
     usr/bin/gnm
     usr/bin/gobjcopy
     usr/bin/gobjdump
@@ -44,7 +43,6 @@ HARDLINK_TARGETS="
 CONFIGURE_OPTS="
     --exec-prefix=/usr/gnu
     --program-prefix=g
-    --enable-gold=yes
     --enable-largefile
     --with-system-zlib
 "
