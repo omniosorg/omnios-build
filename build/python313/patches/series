@@ -9,7 +9,6 @@ encoding-alias.patch
 locale-encoding.patch
 pyc-timestamp.patch
 asyncio-watcher.patch
-fancy-termios.patch
 #XXX py_db.patch
 restore-dtrace.patch
 #
