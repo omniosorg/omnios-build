@@ -1,3 +1,21 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Misc/platform_triplet.c a/Misc/platform_triplet.c
+--- a~/Misc/platform_triplet.c	1970-01-01 00:00:00
++++ a/Misc/platform_triplet.c	1970-01-01 00:00:00
+@@ -285,6 +285,14 @@ PLATFORM_TRIPLET=wasm64-wasi
+ #  else
+ #    error unknown wasm64 platform
+ #  endif
++#elif defined(__illumos__)
++#  if defined(__x86_64__)
++PLATFORM_TRIPLET=x86_64-pc-solaris2
++#  elif defined(__aarch64__)
++PLATFORM_TRIPLET=aarch64-unknown-solaris2
++#  else
++#    error unknown illumos platform
++#  endif
+ #else
+ # error unknown platform triplet
+ #endif
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
@@ -57,22 +75,3 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	*)
  		# for now, limit cross builds to known configurations
  		MACHDEP="unknown"
-diff --git a/Misc/platform_triplet.c b/Misc/platform_triplet.c
-index ec0857a..d4c1bd0 100644
---- a/Misc/platform_triplet.c
-+++ b/Misc/platform_triplet.c
-@@ -285,6 +285,14 @@ PLATFORM_TRIPLET=wasm64-wasi
- #  else
- #    error unknown wasm64 platform
- #  endif
-+#elif defined(__illumos__)
-+#  if defined(__x86_64__)
-+PLATFORM_TRIPLET=x86_64-pc-solaris2
-+#  elif defined(__aarch64__)
-+PLATFORM_TRIPLET=aarch64-unknown-solaris2
-+#  else
-+#    error unknown illumos platform
-+#  endif
- #else
- # error unknown platform triplet
- #endif

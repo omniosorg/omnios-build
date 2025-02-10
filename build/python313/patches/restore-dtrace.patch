@@ -77,7 +77,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/bytecodes.c a/Python/b
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval.c a/Python/ceval.c
 --- a~/Python/ceval.c	1970-01-01 00:00:00
 +++ a/Python/ceval.c	1970-01-01 00:00:00
-@@ -106,6 +106,70 @@
+@@ -103,6 +103,70 @@
      } while (0)
  #endif
  
@@ -148,7 +148,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval.c a/Python/ceval
  
  #ifdef LLTRACE
  static void
-@@ -732,6 +796,7 @@ _PyEval_EvalFrameDefault(PyThreadState *
+@@ -733,6 +797,7 @@ _PyEval_EvalFrameDefault(PyThreadState *
          if (_Py_EnterRecursivePy(tstate)) {
              goto exit_unwind;
          }
@@ -156,7 +156,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval.c a/Python/ceval
          /* Because this avoids the RESUME,
           * we need to update instrumentation */
          _Py_Instrument(_PyFrame_GetCode(frame), tstate->interp);
-@@ -757,6 +822,7 @@ start_frame:
+@@ -758,6 +823,7 @@ start_frame:
      }
  
      next_instr = frame->instr_ptr;
@@ -164,7 +164,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval.c a/Python/ceval
  resume_frame:
      stack_pointer = _PyFrame_GetStackPointer(frame);
  
-@@ -893,6 +959,7 @@ exception_unwind:
+@@ -894,6 +960,7 @@ exception_unwind:
                  }
                  assert(STACK_LEVEL() == 0);
                  _PyFrame_SetStackPointer(frame, stack_pointer);
