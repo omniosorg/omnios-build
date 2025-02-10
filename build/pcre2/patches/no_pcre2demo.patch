@@ -46,7 +46,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2.3 a/doc/pcre2.3
 diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2api.3 a/doc/pcre2api.3
 --- a~/doc/pcre2api.3	1970-01-01 00:00:00
 +++ a/doc/pcre2api.3	1970-01-01 00:00:00
-@@ -409,18 +409,7 @@ against a non-dll PCRE2 library, you mus
+@@ -418,18 +418,7 @@ against a non-dll PCRE2 library, you mus
  \fBpcre2.h\fP.
  .P
  The functions \fBpcre2_compile()\fP and \fBpcre2_match()\fP are used for
@@ -66,7 +66,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2api.3 a/doc/pcre2api
  .P
  The compiling and matching functions recognize various options that are passed
  as bits in an options argument. There are also some more complicated parameters
-@@ -2796,12 +2785,8 @@ Finding all the matches in a subject is
+@@ -2961,12 +2950,8 @@ Finding all the matches in a subject is
  empty string. It is possible to emulate Perl's /g behaviour by first trying the
  match again at the same offset, with the PCRE2_NOTEMPTY_ATSTART and
  PCRE2_ANCHORED options, and then if that fails, advancing the starting offset
@@ -81,7 +81,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/pcre2api.3 a/doc/pcre2api
  newline convention recognizes CRLF as a newline, and if so, and the current
  character is CR followed by LF, advance the starting offset by two characters
  instead of one.
-@@ -4163,9 +4148,8 @@ fail, this error is given.
+@@ -4458,9 +4443,8 @@ fail, this error is given.
  .SH "SEE ALSO"
  .rs
  .sp
