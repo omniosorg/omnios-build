@@ -4,8 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050ao (2025-02-11)
+Weekly release for w/c 10th of February 2025.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to version 3.1.8, addressing:
+  [CVE-2024-13176](https://www.openssl.org/news/vulnerabilities.html#CVE-2024-13176),
+  [CVE-2024-9143](https://www.openssl.org/news/vulnerabilities.html#CVE-2024-9143).
+
+* Python updated to version 3.12.9.
+
+<br>
+
+---
+
 ## r151050an (2025-02-05)
-Weekly release for w/c 03rd of February 2025.
+Weekly release for w/c 3rd of February 2025.
 > This update requires a reboot
 
 ### Security Fixes
