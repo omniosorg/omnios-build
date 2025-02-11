@@ -17,7 +17,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a
  
  def get_python_source_dir():
      src_dir = sysconfig.get_config_var('abs_srcdir')
-@@ -18,7 +18,7 @@ TESTS_DIR = os.path.dirname(__file__)
+@@ -18,7 +19,7 @@ TESTS_DIR = os.path.dirname(__file__)
  TOOL_ROOT = os.path.dirname(TESTS_DIR)
  SRCDIR = get_python_source_dir()
  
@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Tools/freeze/test/freeze.py a
  FREEZE = os.path.join(TOOL_ROOT, 'freeze.py')
  OUTDIR = os.path.join(TESTS_DIR, 'outdir')
  
-@@ -129,6 +129,7 @@ def prepare(script=None, outdir=None):
+@@ -129,6 +130,7 @@ def prepare(script=None, outdir=None):
      print(f'configuring python in {builddir}...')
      config_args = shlex.split(sysconfig.get_config_var('CONFIG_ARGS') or '')
      cmd = [os.path.join(srcdir, 'configure'), *config_args]
