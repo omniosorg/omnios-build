@@ -8,9 +8,9 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
-license LICENCE license=modified-BSD
+license LICENCE.md license=modified-BSD
 
 <transform path=usr/share/doc -> drop>
 <transform path=usr/share/man/man3/pcre2(?:demo|sample)\.3$ -> drop>

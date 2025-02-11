@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=nss
-VER=3.107
+VER=3.108
 PKG=system/library/mozilla-nss
 SUMMARY="Network Security Services"
 DESC="Network Security Services (NSS) is a set of libraries designed to "
