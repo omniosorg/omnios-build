@@ -4,8 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046cp (2025-02-11)
+Weekly release for w/c 10th of February 2025.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to version 3.0.16, addressing:
+  [CVE-2024-13176](https://www.openssl.org/news/vulnerabilities.html#CVE-2024-13176),
+  [CVE-2024-9143](https://www.openssl.org/news/vulnerabilities.html#CVE-2024-9143).
+
+<br>
+
+---
+
 ## r151046co (2025-02-05)
-Weekly release for w/c 03rd of February 2025.
+Weekly release for w/c 3rd of February 2025.
 > This update requires a reboot
 
 ### Security Fixes
