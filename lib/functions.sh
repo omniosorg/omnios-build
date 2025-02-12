@@ -3413,6 +3413,8 @@ check_libabi() {
     local pkg="$1"
     local mf="$2"
 
+    [ -n "$SKIP_ABICHECK" ] && return
+
     logmsg "-- Checking for library ABI changes"
 
     # Build list of libraries and ABIs from this package on disk
