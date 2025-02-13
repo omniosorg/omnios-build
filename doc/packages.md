@@ -84,7 +84,7 @@
 | runtime/python-312			| 3.12.8		| https://www.python.org/downloads/source/
 | runtime/python-313			| 3.13.2		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
-| service/network/chrony		| 4.5			| https://download.tuxfamily.org/chrony/
+| service/network/chrony		| 4.6.1			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
