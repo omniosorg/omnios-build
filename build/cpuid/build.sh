@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=cpuid
-VER=1.8.2
+VER=1.8.3
 PKG=system/cpuid
 SUMMARY="A simple CPUID decoder/dumper for x86/x86_64"
 DESC="A program which can dump and extract information from the x86 "
