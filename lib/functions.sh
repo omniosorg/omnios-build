@@ -178,6 +178,11 @@ EOM
 #############################################################################
 # Log output of a command to a file
 #############################################################################
+
+pipelog() {
+    $TEE -a $LOGFILE 2>&1
+}
+
 logcmd() {
     typeset preserve_stdout=0
     [ "$1" = "-p" ] && shift && preserve_stdout=1
@@ -191,16 +196,12 @@ logcmd() {
     else
         if [ "$preserve_stdout" = 0 ]; then
             echo Running: "$@"
-            "$@" | $TEE -a $LOGFILE 2>&1
+            "$@" | pipelog
             return ${PIPESTATUS[0]}
         else
             "$@"
         fi
     fi
-}
-
-pipelog() {
-    $TEE -a $LOGFILE 2>&1
 }
 
 c_highlight="`$TPUT setaf 2`"
@@ -3596,7 +3597,7 @@ check_rtime() {
         -f $TMPDIR/rtime.files
 
     if [ -s "$TMPDIR/rtime.err" ]; then
-        $CAT $TMPDIR/rtime.err | $TEE -a $LOGFILE
+        $CAT $TMPDIR/rtime.err | pipelog
         logerr "ELF runtime problems detected"
     fi
 }
@@ -3614,7 +3615,7 @@ check_ssp() {
     done < <(rtime_objects)
     wait
     if [ -s "$TMPDIR/rtime.ssp" ]; then
-        $CAT $TMPDIR/rtime.ssp | $TEE -a $LOGFILE
+        $CAT $TMPDIR/rtime.ssp | pipelog
         logerr "Found object(s) without SSP"
     fi
 }
@@ -3653,7 +3654,7 @@ check_soname() {
     done < <(rtime_objects -f)
     wait
     if [ -s "$TMPDIR/rtime.soname" ]; then
-        $CAT $TMPDIR/rtime.soname | $TEE -a $LOGFILE
+        $CAT $TMPDIR/rtime.soname | pipelog
         logerr "Found SONAME problems"
     fi
 }
@@ -3678,7 +3679,7 @@ check_bmi() {
     done < <(rtime_objects)
     wait
     if [ -s "$TMPDIR/rtime.bmi" ]; then
-        $CAT $TMPDIR/rtime.bmi | $TEE -a $LOGFILE
+        $CAT $TMPDIR/rtime.bmi | pipelog
         logerr "BMI instruction set found"
     fi
 }
