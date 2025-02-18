@@ -488,7 +488,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  #endif
  	{ "pamauthenticationviakbdint", sDeprecated, SSHCFG_GLOBAL },
  	/* Standard Options */
-@@ -1365,6 +1394,21 @@ process_server_config_line_depth(ServerO
+@@ -1394,6 +1423,21 @@ process_server_config_line_depth(ServerO
  		intptr = &options->use_pam;
  		goto parse_flag;
  #endif
@@ -510,7 +510,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	case sPAMServiceName:
  		charptr = &options->pam_service_name;
  		arg = argv_next(&ac, &av);
-@@ -1372,8 +1416,20 @@ process_server_config_line_depth(ServerO
+@@ -1401,8 +1445,20 @@ process_server_config_line_depth(ServerO
  			fatal("%s line %d: missing argument.",
  			    filename, linenum);
  		}

@@ -26,7 +26,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	if (options->pam_service_name == NULL)
  		options->pam_service_name = xstrdup(SSHD_PAM_SERVICE);
  
-@@ -1345,8 +1350,17 @@ process_server_config_line_depth(ServerO
+@@ -1374,8 +1379,17 @@ process_server_config_line_depth(ServerO
  	switch (opcode) {
  	/* Portable-specific options */
  	case sUsePAM:

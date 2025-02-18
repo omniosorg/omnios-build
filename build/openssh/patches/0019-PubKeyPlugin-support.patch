@@ -226,7 +226,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	{ "securitykeyprovider", sSecurityKeyProvider, SSHCFG_GLOBAL },
  	{ "requiredrsasize", sRequiredRSASize, SSHCFG_ALL },
  	{ "channeltimeout", sChannelTimeout, SSHCFG_ALL },
-@@ -2755,6 +2758,18 @@ process_server_config_line_depth(ServerO
+@@ -2784,6 +2787,18 @@ process_server_config_line_depth(ServerO
  		multistate_ptr = multistate_flag;
  		goto parse_multistate;
  
