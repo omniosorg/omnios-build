@@ -80,6 +80,7 @@ ok known hosts command
 ok agent restrictions
 ok channel timeout
 ok unused connection timeout
+ok sshd_config match subsystem
 test_sshbuf: ...................................................................................................... 103 tests ok
 test_sshkey: ........................................................................................................ 104 tests ok
 test_sshsig: ........ 8 tests ok

@@ -21,3 +21,5 @@ sshd_config.patch
 0031-Restore-tcpwrappers-libwrap-support.patch
 test.patch
 sshsigdie-async-signal-unsafe.patch
+CVE-2025-26465.patch
+CVE-2025-26466.patch
