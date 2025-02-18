@@ -33,7 +33,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -127,7 +127,7 @@ SSHDOBJS=sshd.o \
+@@ -128,7 +128,7 @@ SSHDOBJS=sshd.o \
  	$(SKOBJS)
  
  SSHD_SESSION_OBJS=sshd-session.o auth-rhosts.o auth-passwd.o \
@@ -725,7 +725,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
 --- a~/defines.h	1970-01-01 00:00:00
 +++ a/defines.h	1970-01-01 00:00:00
-@@ -715,6 +715,11 @@ struct winsize {
+@@ -741,6 +741,11 @@ struct winsize {
  # define CUSTOM_SSH_AUDIT_EVENTS
  #endif
  
