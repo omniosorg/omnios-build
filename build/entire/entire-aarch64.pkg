@@ -207,7 +207,6 @@ service/file-system/nfs
 service/hal						F
 service/network/chrony					O
 service/network/network-clients
-service/network/smtp/dma				F
 service/storage/removable-media				OSZ
 shell/bash						O
 shell/pipe-viewer					O
