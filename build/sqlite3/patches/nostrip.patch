@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -65,7 +65,7 @@ LDFLAGS.libsqlite3.soname = @LDFLAGS_LIB
+@@ -74,7 +74,7 @@ CFLAGS.icu = @CFLAGS_ICU@
  # When cross-compiling, we need to avoid the -s flag because it only
  # works on the build host's platform.
  INSTALL.strip.1 = $(INSTALL)
