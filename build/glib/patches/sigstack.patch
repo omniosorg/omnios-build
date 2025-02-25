@@ -6,10 +6,9 @@ https://github.com/illumos/ipd/blob/master/ipd/0038/README.adoc#45-signal-stack-
 
 For now, have the test use the larger `SIGSTKSZ`.
 
-diff --git a/glib/tests/unix.c b/glib/tests/unix.c
-index d3ef514..bbfba06 100644
---- a/glib/tests/unix.c
-+++ b/glib/tests/unix.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/glib/tests/unix.c a/glib/tests/unix.c
+--- a~/glib/tests/unix.c	1970-01-01 00:00:00
++++ a/glib/tests/unix.c	1970-01-01 00:00:00
 @@ -588,7 +588,7 @@ test_signal_alternate_stack (int signal)
  #ifndef SA_ONSTACK
    g_test_skip ("alternate stack is not supported");

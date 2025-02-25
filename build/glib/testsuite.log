@@ -254,7 +254,7 @@ glib:glib+core+cpp / cxx-17                                            OK   22 s
 glib:glib+core+cpp / cxx-20                                            OK   22 subtests passed
 glib:glib+core+cpp / cxx-2b                                            OK   21 subtests passed
 glib:glib+core+cpp / cxx-98                                            OK   22 subtests passed
-glib:glib+core+no-valgrind / assert-msg-test.py                        OK   2 subtests passed
+glib:glib+core+no-valgrind / assert-msg-test.py                        ERROR   exit status 1
 glib:glib+core+no-valgrind / messages-low-memory.py                    OK   1 subtests passed
 glib:glib+core+no-valgrind+pkg-config / glib-2.0-pkg-config            OK
 glib:glib+core+slow / 1bit-emufutex                                    OK   2 subtests passed
@@ -355,14 +355,15 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
+glib:glib+core+no-valgrind / assert-msg-test.py                        ERROR   exit status 1
 glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 334 
+Ok:                 333 
 Expected Fail:      0   
-Fail:               9   
+Fail:               10  
 Unexpected Pass:    0   
 Skipped:            6   
 Timeout:            0   

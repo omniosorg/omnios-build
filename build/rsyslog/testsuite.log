@@ -363,7 +363,6 @@ PASS: omhttp-batch-jsonarray-retry.sh
 PASS: omhttp-batch-jsonarray.sh
 PASS: omhttp-batch-kafkarest-retry.sh
 PASS: omhttp-batch-kafkarest.sh
-PASS: omhttp-batch-retry-metadata.sh
 PASS: omhttp-batch-lokirest-retry.sh
 PASS: omhttp-batch-lokirest.sh
 PASS: omhttp-batch-newline.sh
@@ -420,10 +419,10 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2412.0
+Testsuite summary for rsyslog 8.2502.0
 ============================================================================
-# TOTAL: 422
-# PASS:  379
+# TOTAL: 421
+# PASS:  378
 # SKIP:  43
 # XFAIL: 0
 # FAIL:  0

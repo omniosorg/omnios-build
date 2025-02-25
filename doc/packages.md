@@ -12,7 +12,7 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3490000		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3490100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -68,11 +68,11 @@
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.32		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.34		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.9p2			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
-| network/socat				| 1.8.0.2		| http://www.dest-unreach.org/socat/download/
+| network/socat				| 1.8.0.3		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.18			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.26+4		| https://github.com/openjdk/jdk11u/tags
@@ -104,9 +104,9 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.13.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2412.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2502.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
-| system/test/fio			| 3.38			| https://github.com/axboe/fio/tags
+| system/test/fio			| 3.39			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.5			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
@@ -118,10 +118,10 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 668			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.12.0		| https://curl.haxx.se/download.html
+| web/curl				| 8.12.1		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.82.4		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| library/glib2				| 2.82.5		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.44			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.5.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
