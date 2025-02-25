@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052p (2025-02-24)
+Weekly release for w/c 17th of February 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSH updated to version 9.9p2, addressing
+  [CVE-2025-26465](https://www.cve.org/CVERecord?id=CVE-2025-26465),
+  [CVE-2025-26466](https://www.cve.org/CVERecord?id=CVE-2025-26466).
+
+* libxml2 updated to version 2.13.6
+
+### Other Changes
+
+* Fix for elf header parsing in lx zones.
+
+<br>
+
+---
+
 ## r151052o (2025-02-11)
 Weekly release for w/c 10th of February 2025.
 > This is a non-reboot update
