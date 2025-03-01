@@ -3,7 +3,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1819022
 diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreconf/config.gypi
 --- a~/coreconf/config.gypi	1970-01-01 00:00:00
 +++ a/coreconf/config.gypi	1970-01-01 00:00:00
-@@ -183,7 +183,7 @@
+@@ -182,7 +182,7 @@
            'NSS_FIPS_MODULE_ID="<(fips_module_id)"'
          ],
        }],
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
          'libraries': [
            '-lpthread',
          ],
-@@ -291,6 +291,9 @@
+@@ -290,6 +290,9 @@
              'sources': [
                '<(INTERMEDIATE_DIR)/out.>(mapfile)',
              ],
@@ -22,7 +22,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
              'actions': [{
                'action_name': 'generate_mapfile',
                'inputs': [
-@@ -425,6 +428,11 @@
+@@ -424,6 +427,11 @@
                '-z', 'noexecstack',
              ],
            }],
