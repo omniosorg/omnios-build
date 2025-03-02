@@ -18,8 +18,8 @@
 18/28 dbus:dbus / userdb                            OK                  1 subtests passed
 19/28 dbus:dbus / variant                           OK                  2 subtests passed
 20/28 dbus:dbus / sysdeps                           OK                  3 subtests passed
-21/28 dbus:dbus / hash                              OK                  1 subtests passed
-22/28 dbus:runs-dbus-daemon+slow / header-fields    OK                  5 subtests passed
+21/28 dbus:runs-dbus-daemon+slow / header-fields    OK                  5 subtests passed
+22/28 dbus:dbus / hash                              OK                  1 subtests passed
 23/28 dbus:dbus / relay                             OK                  6 subtests passed
 24/28 dbus:dbus / test-dbus-daemon-fork.sh          OK               
 25/28 dbus:runs-dbus-daemon / sd-activation         OK                  8 subtests passed

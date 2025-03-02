@@ -28,7 +28,7 @@
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.48.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 6.9.1			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 6.9.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
@@ -54,7 +54,7 @@
 | library/nettle			| 3.10.1		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.64.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.108			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nss				| 3.109			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | library/nspr				| 4.36			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.45			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
@@ -95,7 +95,7 @@
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
-| system/library/dbus			| 1.16.0		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
+| system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.112			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/pcap			| 1.10.5		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
@@ -112,7 +112,7 @@
 | terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.11			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.23.1		| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.24			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed

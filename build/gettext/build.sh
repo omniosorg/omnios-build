@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=gettext
-VER=0.23.1
+VER=0.24
 PKG=text/gnu-gettext
 SUMMARY="gettext - GNU gettext utility"
 DESC="GNU gettext - GNU gettext utility"
@@ -49,6 +49,7 @@ PKGDIFF_HELPER='
 init
 download_source $PROG $PROG $VER
 patch_source
+run_autoreconf -fi
 prep_build
 build
 run_testsuite check
