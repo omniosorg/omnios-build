@@ -2,7 +2,7 @@
 c = '/opt/cross/aarch64/bin/aarch64-unknown-solaris2.11-gcc'
 cpp = '/opt/cross/aarch64/bin/aarch64-unknown-solaris2.11-g++'
 ar = '/opt/cross/aarch64/bin/aarch64-unknown-solaris2.11-ar'
-pkgconfig = 'pkg-config'
+pkg-config = 'pkg-config'
 
 [host_machine]
 system = 'sunos'
