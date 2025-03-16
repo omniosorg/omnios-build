@@ -22,37 +22,35 @@ PKG=developer/dtc
 SUMMARY="Device Tree Compiler"
 DESC="$PROG - $SUMMARY"
 
-set_arch 64
+forgo_isaexec
 
 NO_SONAME_EXPECTED=1
 
 pre_configure() {
     typeset arch=$1
 
-    # TODO: no debug info/SSP for shared library
-    MAKE_ARGS="
-        NO_YAML=1
-        NO_PYTHON=1
-        PREFIX=$PREFIX
-    "
-    MAKE_ARGS_WS="
-        EXTRA_CFLAGS=\"$CFLAGS ${CFLAGS[$arch]}\"
-        SHAREDLIB_LDFLAGS=\"-shared -Wl,-soname\"
-        LDFLAGS=\"-R$PREFIX/${LIBDIRS[$arch]}\"
-    "
-    MAKE_INSTALL_ARGS="
-        $MAKE_ARGS
-        LIBDIR=$PREFIX/${LIBDIRS[$arch]}/libfdt
+    CONFIGURE_OPTS[$arch]="
+        --prefix=$PREFIX
+        --libdir=$PREFIX/${LIBDIRS[$arch]}
+        -Dyaml=disabled
+        -Dpython=disabled
+        -Dtests=false
     "
 
-    # no configure
-    false
+    ! cross_arch $arch && return
+
+    CONFIGURE_CMD+=" --cross-file $BLIBDIR/meson-$arch-gcc"
+
+    # ninja
+    PATH+=:$OOCEBIN
 }
+
+LDFLAGS[i386]+=" -lssp_ns"
 
 init
 download_source $PROG $PROG $VER
 patch_source
-prep_build
+prep_build meson
 build
 make_package
 clean_up

@@ -11,6 +11,7 @@
 # Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 license GPL license=GPLv2
+license BSD-2-Clause license=simplified-BSD
 
 # drop static lib
 <transform file path=.*\.a$ -> drop>
