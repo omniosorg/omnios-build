@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151050
 
+## r151050at (2025-03-18)
+Weekly release for w/c 17th of March 2025.
+> This update requires a reboot
+
+### Changes
+
+* `tar` could create corrupt archives for large files with ACLs.
+
+* Fix for `bhyve` e1000g network interface emulation alongside TSO.
+
+<br>
+
+---
+
 ## r151050ap (2025-02-24)
 Weekly release for w/c 17th of February 2025.
 > This update requires a reboot
