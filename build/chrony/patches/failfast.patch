@@ -1,0 +1,101 @@
+From 83f268396a8042f18d2524ae2e7bef8437061cc2 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Thu, 27 Feb 2025 21:05:26 +0000
+Subject: [PATCH] Add failfast source option for faster fallback to local
+ source.
+
+This adds a new "failfast" option to the source definition commands
+(peer/server) that causes them to be marked as unselectable as soon
+as they are deemed unreachable (the last X attempts to communicate
+have all failed). This causes a rapid fallback to any configured
+local source.
+---
+ cmdparse.c  |  2 ++
+ reference.c |  6 ++++++
+ reference.h |  1 +
+ sources.c   | 11 +++++++++++
+ srcparams.h |  1 +
+ 5 files changed, 21 insertions(+)
+
+diff --git a/cmdparse.c b/cmdparse.c
+index 77447dc2..32742595 100644
+--- a/cmdparse.c
++++ b/cmdparse.c
+@@ -210,6 +210,8 @@ CPS_GetSelectOption(char *option)
+     return SRC_SELECT_REQUIRE;
+   } else if (!strcasecmp(option, "trust")) {
+     return SRC_SELECT_TRUST;
++  } else if (!strcasecmp(option, "failfast")) {
++    return SRC_SELECT_FAILFAST;
+   }
+   return 0;
+ }
+diff --git a/reference.c b/reference.c
+index efce3679..9da8963b 100644
+--- a/reference.c
++++ b/reference.c
+@@ -1285,6 +1285,12 @@ REF_DisableLocal(void)
+   LOG(LOGS_INFO, "%s local reference mode", "Disabled");
+ }
+ 
++int
++REF_LocalEnabled(void)
++{
++  return (enable_local_stratum);
++}
++
+ /* ================================================== */
+ 
+ #define LEAP_SECOND_CLOSE 5
+diff --git a/reference.h b/reference.h
+index 2eddcae9..ca30ea4a 100644
+--- a/reference.h
++++ b/reference.h
+@@ -187,6 +187,7 @@ extern void REF_ModifyMakestep(int limit, double threshold);
+ 
+ extern void REF_EnableLocal(int stratum, double distance, int orphan, double activate);
+ extern void REF_DisableLocal(void);
++extern int REF_LocalEnabled(void);
+ 
+ /* Check if either of the current raw and cooked time, and optionally a
+    provided timestamp with an offset, is close to a leap second */
+diff --git a/sources.c b/sources.c
+index e292e4d6..f6de91c7 100644
+--- a/sources.c
++++ b/sources.c
+@@ -960,6 +960,15 @@ SRC_SelectSource(SRC_Instance updated_inst)
+       continue;
+     }
+ 
++    /* If the source is configured to fail fast and is currently unreachable,
++     * mark it as unselectable. */
++    if ((sources[i]->sel_options & SRC_SELECT_FAILFAST) &&
++	sources[i]->reachability == 0 &&
++	sources[i]->reachability_size == SOURCE_REACH_BITS) {
++          mark_source(sources[i], SRC_UNSELECTABLE);
++          continue;
++    }
++
+     sources[i]->status = SRC_OK; /* For now */
+ 
+     if (sources[i]->reachability && max_reach_sample_ago < first_sample_ago)
+@@ -1083,6 +1092,8 @@ SRC_SelectSource(SRC_Instance updated_inst)
+   if (n_endpoints == 0) {
+     /* No sources provided valid endpoints */
+     unselect_selected_source(LOGS_INFO, "Can't synchronise: no selectable sources", NULL);
++    if (REF_LocalEnabled())
++      REF_SetUnsynchronised();
+     return;
+   }
+ 
+diff --git a/srcparams.h b/srcparams.h
+index 31baed77..9c384b33 100644
+--- a/srcparams.h
++++ b/srcparams.h
+@@ -89,5 +89,6 @@ typedef struct {
+ #define SRC_SELECT_PREFER 0x2
+ #define SRC_SELECT_TRUST 0x4
+ #define SRC_SELECT_REQUIRE 0x8
++#define SRC_SELECT_FAILFAST 0x10
+ 
+ #endif /* GOT_SRCPARAMS_H */

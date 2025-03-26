@@ -5,15 +5,16 @@ Testing cmac                           PASS
 Testing hash                           PASS
 Testing hwclock                        SKIP (on line 115)
 Testing keys                           PASS
+Testing leapdb                         PASS
 Testing ntp_auth                       PASS
 Testing ntp_core                       PASS
 Testing ntp_ext                        PASS
 Testing ntp_sources                    PASS
-Testing nts_ke_client                  SKIP (on line 145)
-Testing nts_ke_server                  SKIP (on line 233)
-Testing nts_ke_session                 SKIP (on line 222)
+Testing nts_ke_client                  SKIP (on line 193)
+Testing nts_ke_server                  SKIP (on line 238)
+Testing nts_ke_session                 SKIP (on line 239)
 Testing nts_ntp_auth                   SKIP (on line 133)
-Testing nts_ntp_client                 SKIP (on line 300)
+Testing nts_ntp_client                 SKIP (on line 308)
 Testing nts_ntp_server                 SKIP (on line 178)
 Testing quantiles                      PASS
 Testing regress                        PASS
