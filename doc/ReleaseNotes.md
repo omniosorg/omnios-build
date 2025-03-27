@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046cv (2025-03-28)
+Weekly release for w/c 24th of March 2025.
+> This update requires a reboot
+
+### Changes
+
+- Expat library updated to version 2.7.1
+
+- gcc 10.5.0-il2 package published.
+
+- Backport fix for NULL pointer dereference in getallifaddrs()
+
+- Add support for Emulex LPe35000/LPe36000 32Gb/64Gb fibre channel chipsets
+
+<br>
+
+---
+
 ## r151046cu (2025-03-18)
 Weekly release for w/c 17th of March 2025.
 > This update requires a reboot
