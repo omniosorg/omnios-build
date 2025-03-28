@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052u (2025-03-28)
+Weekly release for w/c 24th of March 2025.
+> This is a non-reboot update
+
+### Changes
+
+- Expat library updated to version 2.7.1
+
+<br>
+
+---
+
 ## r151052t (2025-03-18)
 Weekly release for w/c 17th of March 2025.
 > This update requires a reboot
