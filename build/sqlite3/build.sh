@@ -41,6 +41,10 @@ logmsg "-- Building version $VERHUMAN"
 
 CONFIGURE_OPTS="
     --disable-static
+    --enable-fts4
+    --enable-fts5
+    --enable-rtree
+    --enable-json
 "
 
 # The new sqlite autoconf system delivers the shared library as
