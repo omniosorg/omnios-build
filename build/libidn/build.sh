@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=libidn
-VER=1.42
+VER=1.43
 PKG=library/libidn
 SUMMARY="The Internationalized Domains Library"
 DESC="IDN - The Internationalized Domains Library"
@@ -33,6 +33,11 @@ MAKE_ARGS="MAKEINFO=/usr/bin/true"
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 
 set_standard XPG6
+
+# The build generates a .png file using `dot` from graphviz. We don't ship
+# this but it's easier to let it generate than manage the required patches to
+# the build files.
+PATH+=:$OOCEBIN
 
 init
 prep_build
