@@ -47,7 +47,7 @@
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.49.2		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.50.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.13.6		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.42		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
@@ -68,7 +68,7 @@
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.34		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.35		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 9.9p2			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
