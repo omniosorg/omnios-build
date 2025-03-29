@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../../lib/build.sh
 
 PKG=library/python-3/setuptools-rust-313
 PROG=setuptools_rust
-VER=1.10.2
+VER=1.11.0
 SUMMARY="Python setuptools rust extension plugin"
 DESC="Compile and distribute Python extensions written in rust as easily "
 DESC+="as if they were written in C."

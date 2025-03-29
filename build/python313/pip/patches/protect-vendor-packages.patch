@@ -77,7 +77,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
 --- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
-@@ -228,6 +228,7 @@ def pip_self_version_check(session: PipS
+@@ -232,6 +232,7 @@ def pip_self_version_check(session: PipS
      the active virtualenv or in the user's USER_CACHE_DIR keyed off the prefix
      of the pip script path.
      """

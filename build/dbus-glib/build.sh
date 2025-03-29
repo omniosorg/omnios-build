@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=dbus-glib
-VER=0.112
+VER=0.114
 PKG=system/library/libdbus-glib
 SUMMARY="$PROG - GNOME GLib DBUS integration library"
 DESC="$SUMMARY"
@@ -32,6 +32,7 @@ CONFIGURE_OPTS="
     --disable-fam
     --disable-dtrace
     --disable-tests
+    --disable-static
     GLIB_GENMARSHAL=$USRBIN/glib-genmarshal
 "
 CONFIGURE_OPTS[WS]="
