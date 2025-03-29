@@ -135,7 +135,7 @@
 | library/python-3/cryptography-313	| 44.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.10			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
-| library/python-3/jsonrpclib-313	| 0.4.3.3		| https://github.com/tcalmant/jsonrpclib/releases
+| library/python-3/jsonrpclib-313	| 0.4.3.4		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.17.3		| https://pypi.org/rss/project/jsonschema/releases.xml
 | library/python-3/meson-313		| 1.6.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-313		| 3.10.14		| https://github.com/ijl/orjson/releases
