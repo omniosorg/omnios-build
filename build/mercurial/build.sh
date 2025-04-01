@@ -18,16 +18,12 @@
 . ../../lib/build.sh
 
 PROG=mercurial
-VER=6.9.2
+VER=7.0
 PKG=developer/versioning/mercurial
 SUMMARY="Mercurial source control management"
 DESC="Free, distributed source control management tool"
 
 RUN_DEPENDS_IPS="web/curl library/security/openssl"
-
-# Force using the legacy setup.py backend as the PEP518 build fails
-# to install. This will presumably be fixed upstream at some point.
-PYTHON_BUILD_BACKEND=setuppy
 
 # Mercurial bundles a zstd python module which is a fat binary supporting
 # different architectures.
