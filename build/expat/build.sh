@@ -25,7 +25,10 @@ DESC="Fast streaming XML parser written in C"
 
 forgo_isaexec
 
-CONFIGURE_OPTS="--disable-static"
+CONFIGURE_OPTS="
+    --disable-static
+    ac_cv_lib_m_cos=no
+"
 
 TESTSUITE_SED="
     /^[^#]/d
