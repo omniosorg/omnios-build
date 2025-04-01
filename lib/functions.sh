@@ -2127,13 +2127,13 @@ make_package_impl() {
             # actions while avoiding duplicates (except maybe by running it
             # twice, using drop transform on the first run)
             if $GREP -q "^depend .*fmri=[^ ]*$depname" "${P5M_DEPGEN}.res"; then
-                autoresolved=true
+                autoresolved=1
             else
-                autoresolved=false
+                autoresolved=0
             fi
-            if $autoresolved && [ "$DEPTYPE" = "require" ]; then
+            if ((autoresolved)) && [ "$DEPTYPE" = "require" ]; then
                 if $explicit_ver; then
-                    escaped_depname="$(python -c "import re; print re.escape(r'$depname')")"
+                    escaped_depname="$(python3 -c "import re; print(re.escape(r'$depname'))")"
                     echo "<transform depend fmri=(.+/)?$escaped_depname -> set fmri $i>" >> $MANUAL_DEPS
                 fi
             else
