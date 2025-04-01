@@ -2840,13 +2840,20 @@ python_vendor_relocate() {
 
 python_compile() {
     logmsg "Compiling python modules"
-    logcmd $PYTHON \
-        -m compileall \
-        -j0 \
-        -f \
-        --invalidation-mode timestamp \
-        "$@" \
-        $DESTDIR
+    case $PYTHONVER in
+        2.*) logcmd $PYTHON \
+                -m compileall \
+                -f \
+                "$@" \
+                $DESTDIR ;;
+        *) logcmd $PYTHON \
+                -m compileall \
+                -j0 \
+                -f \
+                --invalidation-mode timestamp \
+                "$@" \
+                $DESTDIR ;;
+    esac
 }
 
 python_pep518() {
