@@ -51,6 +51,11 @@ build() {
     export CODE_WS=$TMPDIR/$BUILDDIR/pkg
     pushd $CODE_WS/src > /dev/null || logerr "Cannot chdir"
 
+    subsume_arch $ARCH LDFLAGS
+    LDFLAGS+=" -L${SYSROOT[$ARCH]}/usr/${LIBDIRS[$ARCH]}"
+    LDFLAGS+=" -L${SYSROOT[$ARCH]}/${LIBDIRS[$ARCH]}"
+    export LDFLAGS
+
     # Run the CFFI build with native python to generate the source files
     # that we'll later cross compile. We can't use FFI in the cross python
     # environment.
@@ -98,7 +103,7 @@ build() {
         python_cross_end
     done
 
-    for d in po man svc web; do
+    for d in po man svc web brand/ipkg brand/lipkg brand/sparse; do
         logmsg "--- running install in $d"
         logcmd $MAKE -C $d -e install || logerr "Failed to install $d"
     done
