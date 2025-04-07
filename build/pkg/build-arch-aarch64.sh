@@ -51,6 +51,11 @@ build() {
     export CODE_WS=$TMPDIR/$BUILDDIR/pkg
     pushd $CODE_WS/src > /dev/null || logerr "Cannot chdir"
 
+    subsume_arch $ARCH LDFLAGS
+    LDFLAGS+=" -L${SYSROOT[$ARCH]}/usr/${LIBDIRS[$ARCH]}"
+    LDFLAGS+=" -L${SYSROOT[$ARCH]}/${LIBDIRS[$ARCH]}"
+    export LDFLAGS
+
     # Run the CFFI build with native python to generate the source files
     # that we'll later cross compile. We can't use FFI in the cross python
     # environment.
@@ -103,6 +108,11 @@ build() {
         logcmd $MAKE -C $d -e install || logerr "Failed to install $d"
     done
 
+    for d in etc shared ipkg lipkg sparse; do
+        logmsg "--- running install in brand/$d"
+        logcmd $MAKE -C brand/$d -e install || logerr "Failed to install $d"
+    done
+
     logmsg "--- running install in util"
     logcmd $MAKE -C util -e \
         SUBDIRS="misc publish/transforms" install \
@@ -115,6 +125,12 @@ build() {
 package() {
     pushd $TMPDIR/$BUILDDIR/pkg/src/pkg > /dev/null
     note -n "Packaging"
+    manifests=" \
+        package\\:pkg.p5m \
+        system\\:zones\\:brand\\:ipkg.p5m \
+        system\\:zones\\:brand\\:lipkg.p5m \
+        system\\:zones\\:brand\\:sparse.p5m \
+    "
     logcmd $MAKE publish-pkgs \
         BUILDNUM=$BUILDNUM \
         PKGSEND_OPTS="" \
@@ -123,7 +139,7 @@ package() {
         PKGREPOLOC="${REPOS[$ARCH]}" \
 		ARCH=$ARCH \
 		PKGCMDENV=/usr/bin \
-		MANIFESTS='package\:pkg.p5m' \
+		MANIFESTS="$manifests" \
 		PKG_IMAGE=${SYSROOT[$ARCH]} \
         || logerr "publication failed"
     popd > /dev/null

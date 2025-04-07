@@ -238,6 +238,8 @@ system/storage/fibre-channel/port-utility		O
 system/defaults						SZ
 system/watch						O
 system/xopen/xcu4					O
+system/zones/brand/ipkg
+system/zones/brand/lipkg
 terminal/resize						O
 terminal/screen						O
 text/doctools
