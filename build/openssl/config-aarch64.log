@@ -1,0 +1,280 @@
+
+Command line (with current working directory = .):
+
+    /usr/perl5/5.40/bin/perl ./Configure solaris-aarch64-gcc shared threads zlib --prefix=/usr --libdir=/usr/lib --cross-compile-prefix=aarch64-unknown-solaris2.11- enable-ec_nistp_64_gcc_128 no-asm
+
+Perl information:
+
+    /usr/perl5/5.40/bin/perl
+    5.40.1 for i86pc-solaris-thread-multi-64
+
+Enabled features:
+
+    apps
+    argon2
+    aria
+    async
+    atexit
+    autoalginit
+    autoerrinit
+    autoload-config
+    bf
+    blake2
+    bulk
+    cached-fetch
+    camellia
+    capieng
+    cast
+    chacha
+    cmac
+    cmp
+    cms
+    comp
+    ct
+    default-thread-pool
+    deprecated
+    des
+    dgram
+    dh
+    docs
+    dsa
+    dso
+    dtls
+    dynamic-engine
+    ec
+    ec2m
+    ec_nistp_64_gcc_128
+    ecdh
+    ecdsa
+    ecx
+    engine
+    err
+    filenames
+    gost
+    http
+    idea
+    integrity-only-ciphers
+    legacy
+    loadereng
+    makedepend
+    md4
+    mdc2
+    ml-dsa
+    ml-kem
+    module
+    multiblock
+    nextprotoneg
+    ocb
+    ocsp
+    padlockeng
+    pic
+    pinshared
+    poly1305
+    posix-io
+    psk
+    quic
+    unstable-qlog
+    rc2
+    rc4
+    rdrand
+    rfc3779
+    rmd160
+    scrypt
+    secure-memory
+    seed
+    shared
+    siphash
+    siv
+    slh-dsa
+    sm2
+    sm2-precomp
+    sm3
+    sm4
+    sock
+    srp
+    srtp
+    sse2
+    ssl
+    ssl-trace
+    static-engine
+    stdio
+    tests
+    thread-pool
+    threads
+    tls
+    tls-deprecated-ec
+    ts
+    ui-console
+    whirlpool
+    zlib
+    tls1
+    tls1-method
+    tls1_1
+    tls1_1-method
+    tls1_2
+    tls1_2-method
+    tls1_3
+    dtls1
+    dtls1-method
+    dtls1_2
+    dtls1_2-method
+
+Disabled features:
+
+    acvp-tests             [cascade]        OPENSSL_NO_ACVP_TESTS
+    afalgeng               [not-linux]      OPENSSL_NO_AFALGENG
+    asan                   [default]        OPENSSL_NO_ASAN
+    asm                    [option]         OPENSSL_NO_ASM
+    brotli                 [default]        OPENSSL_NO_BROTLI
+    brotli-dynamic         [default]        OPENSSL_NO_BROTLI_DYNAMIC
+    buildtest-c++          [default]        
+    winstore               [not-windows]    OPENSSL_NO_WINSTORE
+    crypto-mdebug          [default]        OPENSSL_NO_CRYPTO_MDEBUG
+    demos                  [default]        OPENSSL_NO_DEMOS
+    h3demo                 [default]        OPENSSL_NO_H3DEMO
+    hqinterop              [default]        OPENSSL_NO_HQINTEROP
+    devcryptoeng           [default]        OPENSSL_NO_DEVCRYPTOENG
+    egd                    [default]        OPENSSL_NO_EGD
+    external-tests         [default]        OPENSSL_NO_EXTERNAL_TESTS
+    fips                   [default]        
+    fips-securitychecks    [cascade]        OPENSSL_NO_FIPS_SECURITYCHECKS
+    fips-post              [cascade]        OPENSSL_NO_FIPS_POST
+    fips-jitter            [default]        OPENSSL_NO_FIPS_JITTER
+    fuzz-afl               [default]        OPENSSL_NO_FUZZ_AFL
+    fuzz-libfuzzer         [default]        OPENSSL_NO_FUZZ_LIBFUZZER
+    jitter                 [default]        OPENSSL_NO_JITTER
+    ktls                   [default]        OPENSSL_NO_KTLS
+    md2                    [default]        OPENSSL_NO_MD2 (skip crypto/md2)
+    msan                   [default]        OPENSSL_NO_MSAN
+    pie                    [default]        OPENSSL_NO_PIE
+    rc5                    [default]        OPENSSL_NO_RC5 (skip crypto/rc5)
+    sctp                   [default]        OPENSSL_NO_SCTP
+    sslkeylog              [default]        OPENSSL_NO_SSLKEYLOG
+    tfo                    [default]        OPENSSL_NO_TFO
+    trace                  [default]        OPENSSL_NO_TRACE
+    ubsan                  [default]        OPENSSL_NO_UBSAN
+    unit-test              [default]        OPENSSL_NO_UNIT_TEST
+    uplink                 [no uplink_arch] OPENSSL_NO_UPLINK
+    weak-ssl-ciphers       [default]        OPENSSL_NO_WEAK_SSL_CIPHERS
+    zlib-dynamic           [default]        OPENSSL_NO_ZLIB_DYNAMIC
+    zstd                   [default]        OPENSSL_NO_ZSTD
+    zstd-dynamic           [default]        OPENSSL_NO_ZSTD_DYNAMIC
+    ssl3                   [default]        OPENSSL_NO_SSL3
+    ssl3-method            [default]        OPENSSL_NO_SSL3_METHOD
+
+Config target attributes:
+
+    AR => "ar",
+    ARFLAGS => "qc",
+    CC => "gcc",
+    CFLAGS => "-Wall -O3",
+    HASHBANGPERL => "/usr/bin/env perl",
+    OBJCOPY => "objcopy",
+    RANLIB => "ranlib",
+    RC => "windres",
+    asm_arch => "aarch64",
+    bin_cflags => "",
+    bin_lflags => "",
+    bn_ops => "SIXTY_FOUR_BIT_LONG",
+    build_file => "Makefile",
+    build_scheme => [ "unified", "unix" ],
+    cflags => "-fpic -pthread",
+    cppflags => "-D_REENTRANT",
+    defines => [ "OPENSSL_BUILDING_OPENSSL", "ZLIB" ],
+    disable => [  ],
+    dso_scheme => "dlfcn",
+    enable => [  ],
+    ex_libs => "-lz -lsocket -lnsl -pthread",
+    includes => [  ],
+    lflags => "",
+    lib_cflags => "",
+    lib_cppflags => "-DFILIO_H -DL_ENDIAN",
+    lib_defines => [  ],
+    module_cflags => "-fpic",
+    module_cxxflags => undef,
+    module_ldflags => "-shared -Wl,-Bsymbolic",
+    perl_platform => "Unix",
+    perlasm_scheme => "elf",
+    shared_cflag => "-fpic",
+    shared_defflag => "-Wl,-M,",
+    shared_defines => [  ],
+    shared_ldflag => "-shared -Wl,-Bsymbolic",
+    shared_rcflag => "",
+    shared_sonameflag => "-Wl,-h,",
+    shared_target => "solaris-gcc-shared",
+    thread_defines => [  ],
+    thread_scheme => "pthreads",
+    unistd => "<unistd.h>",
+
+Recorded environment:
+
+    AR = 
+    ARFLAGS = 
+    AS = 
+    ASFLAGS = 
+    BUILDFILE = 
+    CC = 
+    CFLAGS = 
+    CPP = 
+    CPPDEFINES = 
+    CPPFLAGS = 
+    CPPINCLUDES = 
+    CROSS_COMPILE = 
+    CXX = 
+    CXXFLAGS = 
+    HASHBANGPERL = 
+    LD = 
+    LDFLAGS = 
+    LDLIBS = 
+    MT = 
+    MTFLAGS = 
+    OBJCOPY = 
+    OPENSSL_LOCAL_CONFIG_DIR = 
+    PERL = 
+    RANLIB = 
+    RC = 
+    RCFLAGS = 
+    RM = 
+    WINDRES = 
+    __CNF_CFLAGS = -O2 -fno-omit-frame-pointer -fno-aggressive-loop-optimizations -fstack-protector-strong -gdwarf-4 -gstrict-dwarf   --sysroot=/data/omnios-build/omniosorg/bloody/_build/sysroot.aarch64
+    __CNF_CPPDEFINES = 
+    __CNF_CPPFLAGS = 
+    __CNF_CPPINCLUDES = 
+    __CNF_CXXFLAGS = 
+    __CNF_LDFLAGS = 
+    __CNF_LDLIBS = 
+
+Makevars:
+
+    AR              = aarch64-unknown-solaris2.11-ar
+    ARFLAGS         = qc
+    ASFLAGS         = 
+    CC              = aarch64-unknown-solaris2.11-gcc
+    CFLAGS          = -Wall -O3
+    CPPDEFINES      = 
+    CPPFLAGS        = 
+    CPPINCLUDES     = 
+    CROSS_COMPILE   = aarch64-unknown-solaris2.11-
+    CXXFLAGS        = 
+    HASHBANGPERL    = /usr/bin/env perl
+    LDFLAGS         = 
+    LDLIBS          = 
+    OBJCOPY         = objcopy
+    PERL            = /usr/perl5/5.40/bin/perl
+    RANLIB          = aarch64-unknown-solaris2.11-ranlib
+    RC              = aarch64-unknown-solaris2.11-windres
+    RCFLAGS         = 
+
+NOTE: These variables only represent the configuration view.  The build file
+template may have processed these variables further, please have a look at the
+build file for more exact data:
+    Makefile
+
+build file:
+
+    Makefile
+
+build file templates:
+
+    Configurations/common0.tmpl
+    Configurations/unix-Makefile.tmpl
