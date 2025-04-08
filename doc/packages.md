@@ -8,7 +8,7 @@
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.8.0			| https://tukaani.org/xz/
+| compress/xz				| 5.8.1			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
