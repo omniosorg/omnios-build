@@ -1,0 +1,10 @@
+set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/developer/aarch64-build-tools@11,5.11-$(PVER)
+set name=pkg.depend.install-hold value=core-os.omnios
+set name=pkg.summary value="Single meta-package containing required tools to build omnios for aarch64."
+set name=pkg.description value="Single meta-package containing required tools to build omnios for aarch64."
+
+depend fmri=pkg://$(PKGPUBLISHER)/developer/omnios-build-tools type=require
+# libmagic needs a native version of its file command in order to compile the
+# magic number database during cross complication.
+depend fmri=pkg://$(PKGPUBLISHER)/system/file type=require
+

@@ -65,6 +65,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/service/network/tftp type=require
+depend fmri=pkg://$(PKGPUBLISHER)/system/file type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/header/header-audio type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/library/gfortran-runtime type=require
