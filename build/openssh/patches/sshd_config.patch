@@ -10,7 +10,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config a/sshd_config
  #StrictModes yes
  #MaxAuthTries 6
  #MaxSessions 10
-@@ -88,7 +88,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
+@@ -90,7 +90,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
  #X11DisplayOffset 10
  #X11UseLocalhost yes
  #PermitTTY yes

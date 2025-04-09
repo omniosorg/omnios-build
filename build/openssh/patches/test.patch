@@ -9,7 +9,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/regress/cfgparse.sh a/regress
 diff -wpruN --no-dereference '--exclude=*.orig' a~/regress/test-exec.sh a/regress/test-exec.sh
 --- a~/regress/test-exec.sh	1970-01-01 00:00:00
 +++ a/regress/test-exec.sh	1970-01-01 00:00:00
-@@ -543,7 +543,7 @@ save_debug_log ()
+@@ -554,7 +554,7 @@ save_debug_log ()
  			logfiles="$logfiles $i"
  		fi
  	  done
