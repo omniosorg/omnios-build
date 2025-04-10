@@ -8,7 +8,7 @@
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.8.0			| https://tukaani.org/xz/
+| compress/xz				| 5.8.1			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.17.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
@@ -61,7 +61,7 @@
 | library/readline			| 8.2.13		| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/liboqs		| 0.12.0		| https://github.com/open-quantum-safe/liboqs/releases
-| library/security/openssl-3		| 3.4.1			| https://www.openssl.org/source/
+| library/security/openssl-3		| 3.5.0			| https://www.openssl.org/source/
 | library/security/oqs-provider		| 0.8.0			| https://github.com/open-quantum-safe/oqs-provider/releases
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
@@ -69,7 +69,7 @@
 | meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.35		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
-| network/openssh			| 9.9p2			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
+| network/openssh			| 10.0p2			| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.0.3		| http://www.dest-unreach.org/socat/download/
@@ -118,7 +118,7 @@
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 668			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.12.1		| https://curl.haxx.se/download.html
+| web/curl				| 8.13.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.5		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable

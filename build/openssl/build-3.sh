@@ -19,7 +19,7 @@
 . common.sh
 
 PROG=openssl
-VER=3.4.1
+VER=3.5.0
 PKG=library/security/openssl-3
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
@@ -92,6 +92,8 @@ configure_arch() {
         SHARED_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
         LIB_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
     "
+
+    $PERL configdata.pm --dump > $SRCDIR/config-$arch.log
 }
 
 # Preserve the opensslconf.h file from each build since there will be

@@ -7,8 +7,9 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 license LICENCE license=OpenSSH
 <transform dir path=etc/ssh -> set group sys>
+<transform file path=etc/ssh/ -> set preserve renamenew>
 

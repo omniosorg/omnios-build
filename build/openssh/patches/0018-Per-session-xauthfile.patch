@@ -49,7 +49,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	/* Set custom environment options from pubkey authentication. */
  	if (options.permit_user_env) {
  		for (n = 0 ; n < auth_opts->nenv; n++) {
-@@ -1985,6 +1999,11 @@ session_x11_req(struct ssh *ssh, Session
+@@ -1984,6 +1998,11 @@ session_x11_req(struct ssh *ssh, Session
  	int r, success;
  	u_char single_connection = 0;
  
@@ -61,7 +61,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	if (s->auth_proto != NULL || s->auth_data != NULL) {
  		error("session_x11_req: session %d: "
  		    "x11 forwarding already active", s->self);
-@@ -1999,19 +2018,78 @@ session_x11_req(struct ssh *ssh, Session
+@@ -1998,19 +2017,78 @@ session_x11_req(struct ssh *ssh, Session
  
  	s->single_connection = single_connection;
  
@@ -144,7 +144,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	return success;
  }
  
-@@ -2291,6 +2369,51 @@ session_pty_cleanup(Session *s)
+@@ -2287,6 +2365,51 @@ session_pty_cleanup(Session *s)
  	mm_session_pty_cleanup2(s);
  }
  
@@ -196,7 +196,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  static char *
  sig2name(int sig)
  {
-@@ -2438,6 +2561,9 @@ session_close(struct ssh *ssh, Session *
+@@ -2434,6 +2557,9 @@ session_close(struct ssh *ssh, Session *
  	free(s->auth_display);
  	free(s->auth_data);
  	free(s->auth_proto);
@@ -206,7 +206,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	free(s->subsys);
  	if (s->env != NULL) {
  		for (i = 0; i < s->num_env; i++) {
-@@ -2693,6 +2819,10 @@ do_cleanup(struct ssh *ssh, Authctxt *au
+@@ -2689,6 +2815,10 @@ do_cleanup(struct ssh *ssh, Authctxt *au
  		auth_info_file = NULL;
  	}
  

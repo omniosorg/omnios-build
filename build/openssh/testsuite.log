@@ -40,6 +40,7 @@ ok sftp invalid commands
 ok sftp batchfile
 ok sftp glob
 ok sftp permissions
+ok sftp resume
 ok sftp-uri
 ok simple connect after reconfigure
 ok dynamic forwarding
