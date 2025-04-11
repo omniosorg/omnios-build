@@ -4,7 +4,7 @@
 | compress/7zip				| 24.09			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.1.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
-| compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
+| compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
