@@ -82,7 +82,7 @@
 | runtime/perl				| 5.40.1		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.11		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.9		| https://www.python.org/downloads/source/
-| runtime/python-313			| 3.13.2		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.3		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.6.1			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
