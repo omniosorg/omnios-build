@@ -9,7 +9,7 @@ when a failure occurs.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_regrtest.py a/Lib/test/test_regrtest.py
 --- a~/Lib/test/test_regrtest.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_regrtest.py	1970-01-01 00:00:00
-@@ -805,7 +805,7 @@ class ProgramsTestCase(BaseTestCase):
+@@ -815,7 +815,7 @@ class ProgramsTestCase(BaseTestCase):
          self.tests = [self.create_test() for index in range(self.NTEST)]
  
          self.python_args = ['-Wd', '-E', '-bb']

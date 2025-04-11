@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=gzip
-VER=1.13
+VER=1.14
 PKG=compress/gzip
 SUMMARY="GNU zip"
 DESC="The GNU Zip (gzip) compression utility"

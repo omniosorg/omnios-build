@@ -3,19 +3,21 @@ Making check in doc
 Making check in .
 gtroff:/usr/lib/amd64/groff/site-tmac/an.tmac:1: fatal error: input stack limit exceeded (probable infinite loop)
 Making check in tests
+PASS: list-big
 PASS: gzip-env
+PASS: reference
 PASS: helin-segv
 PASS: help-version
 PASS: hufts
 PASS: keep
 PASS: list
-PASS: list-big
 PASS: memcpy-abuse
 PASS: mixed
 PASS: null-suffix-clobber
 PASS: pipe-output
 PASS: reproducible
 PASS: stdin
+PASS: synchronous
 PASS: timestamp
 PASS: two-files
 PASS: trailing-nul
@@ -32,10 +34,10 @@ PASS: zgrep-context
 PASS: zgrep-signal
 PASS: znew-k
 ============================================================================
-Testsuite summary for gzip 1.13
+Testsuite summary for gzip 1.14
 ============================================================================
-# TOTAL: 28
-# PASS:  28
+# TOTAL: 30
+# PASS:  30
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0

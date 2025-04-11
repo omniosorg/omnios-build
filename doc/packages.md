@@ -4,7 +4,7 @@
 | compress/7zip				| 24.09			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.1.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
-| compress/gzip				| 1.13			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
+| compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
@@ -83,7 +83,7 @@
 | runtime/perl				| 5.40.1		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.11		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.9		| https://www.python.org/downloads/source/
-| runtime/python-313			| 3.13.2		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.3		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.6.1			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.3			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
