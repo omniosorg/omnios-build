@@ -91,6 +91,7 @@ compress/gzip
 developer/dtc
 developer/swig
 library/glib2
+library/libmagic
 library/libxslt
 library/mpc
 media/xorriso

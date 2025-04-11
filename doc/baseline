@@ -22,6 +22,7 @@ omnios consolidation/osnet/osnet-message-files
 omnios consolidation/osnet/osnet-redistributable
 omnios data/iso-codes
 omnios database/sqlite-3
+omnios developer/aarch64-build-tools
 omnios developer/acpi
 omnios developer/acpi/compiler r
 omnios developer/appcert
@@ -275,6 +276,7 @@ omnios library/libadt_jni
 omnios library/libedit
 omnios library/libffi
 omnios library/libidn
+omnios library/libmagic
 omnios library/libpsl
 omnios library/libtecla
 omnios library/libtool/libltdl
@@ -622,6 +624,7 @@ omnios system/dtrace/tests
 omnios system/extended-system-utilities
 omnios system/fault-management/eversholt-utilities
 omnios system/ficl
+omnios system/file
 omnios system/file-system/autofs
 omnios system/file-system/nfs
 omnios system/file-system/ntfsprogs o

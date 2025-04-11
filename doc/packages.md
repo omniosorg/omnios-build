@@ -46,6 +46,7 @@
 | library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags | Currently used solely by tmux
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
+| library/libmagic			| 5.46			| https://github.com/file/file/tags
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.50.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.13.6		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html

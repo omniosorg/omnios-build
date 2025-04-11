@@ -179,6 +179,7 @@ PERL_MAKE_TEST=1
 # Paths to common tools
 #############################################################################
 USRBIN=/usr/bin
+USRHASBIN=/usr/has/bin
 OOCEOPT=/opt/ooce
 OOCEBIN=$OOCEOPT/bin
 SFWBIN=/usr/sfw/bin
@@ -199,6 +200,7 @@ done
 
 CURL=$USRBIN/curl
 ELFEDIT=$USRBIN/elfedit
+FILE=$USRHASBIN/file
 GIT=$USRBIN/git
 LZIP=$USRBIN/lzip
 NAWK=$USRBIN/awk
