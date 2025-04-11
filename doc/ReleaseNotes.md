@@ -2,23 +2,23 @@
 <img src="https://omnios.org/OmniOSce_logo.svg" height="128">
 </a>
 
-# Release Notes for OmniOSce v11 r1510XX
+# Release Notes for OmniOSce v11 r151054
 
 +## $\color{red}{\textit{These are DRAFT release notes}}$
 
-Stable `?and Long-Term-Supported (LTS)?` Release, TBC of May/Nov 20XX
+Stable and Long-Term-Supported (LTS) Release, TBC of May 2025
 
-`uname -a` shows `omnios-r1510XX-XXX`
+`uname -a` shows `omnios-r151054-TBC`
 
-r1510XX release repository: https://pkg.omnios.org/r1510XX/core
+r151054 release repository: https://pkg.omnios.org/r151054/core
 
 ## Upgrade Notes
 
-Upgrades are supported from the r1510... releases
-only. If upgrading from an earlier version, upgrade in stages, referring to the
-table at <https://omnios.org/upgrade>.
+Upgrades are supported from the r151046, r151050 and r151052 releases only. If
+upgrading from an earlier version, upgrade in stages, referring to the table at
+<https://omnios.org/upgrade>.
 
-## New features since r1510XX
+## New features since r151052
 
 ### System Features
 
