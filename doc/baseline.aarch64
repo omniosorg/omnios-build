@@ -641,9 +641,9 @@ omnios system/watch
 omnios system/xopen/xcu4
 omnios system/xopen/xcu6
 omnios system/zones
-omnios system/zones/brand/sn1
 omnios system/zones/brand/ipkg
 omnios system/zones/brand/lipkg
+omnios system/zones/brand/sn1
 omnios system/zones/brand/sparse
 omnios system/zones/internal
 omnios terminal/resize
