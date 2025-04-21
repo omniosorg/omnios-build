@@ -19,12 +19,13 @@
 
 PROG=perl
 PKG=runtime/perl
-VER=5.40.1
+VER=5.40.2
 MAJVER=${VER%.*}
 SUMMARY="Perl $MAJVER Programming Language"
 DESC="A highly capable, feature-rich programming language"
 
-CROSSVER=1.6
+# https://github.com/arsv/perl-cross/releases
+CROSSVER=1.6.2
 
 set_arch 64
 CTF_FLAGS+=" -s"
