@@ -509,6 +509,7 @@ omnios system/file-system/smb
 omnios system/file-system/udfs
 omnios system/file-system/zfs
 omnios system/file-system/zfs/tests
+omnios system/firmware/aarch64
 omnios system/flash/fwflash
 omnios system/fru-id
 omnios system/fru-id/platform

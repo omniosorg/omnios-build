@@ -46,9 +46,6 @@ clone_source() {
     clone_github_source $PROG \
         "$GFX_DRM_SOURCE_REPO" "$GFX_DRM_SOURCE_BRANCH" "$GFX_DRM_CLONE"
 
-    GITREV=`$GIT -C $WORKDIR log -1  --format=format:%at`
-    COMMIT=`$GIT -C $WORKDIR log -1  --format=format:%h`
-    REVDATE=`echo $GITREV | gawk '{ print strftime("%c %Z",$1) }'`
     VERHUMAN="${COMMIT:0:7} from $REVDATE"
     ((EXTRACT_MODE)) && exit
 }
