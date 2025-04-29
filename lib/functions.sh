@@ -1588,6 +1588,11 @@ clone_github_source() {
 
     ((EXTRACT_MODE == 1 && dependency == 0)) && exit
 
+    GITREV=`$GIT -C $prog log -1  --format=format:%at`
+    COMMIT=`$GIT -C $prog log -1  --format=format:%h`
+    REVSTAMP=`echo $GITREV | $AWK '{ print strftime("%Y%m%d",$1) }'`
+    REVDATE=`echo $GITREV | $AWK '{ print strftime("%c %Z",$1) }'`
+
     popd > /dev/null
 }
 
@@ -1994,6 +1999,7 @@ make_package_impl() {
         pkgmeta pkg.description     "$DESCSTR"
         pkgmeta publisher           "$PUBLISHER_EMAIL"
         pkgmeta pkg.human-version   "$VERHUMAN"
+        [ -n "$PKG_ARCH" ] && pkgmeta variant.arch $PKG_ARCH
         [ $legacy -eq 1 ] && pkgmeta pkg.legacy true
         if [[ $_ARC_SOURCE = *\ * ]]; then
             _asindex=0

@@ -217,6 +217,7 @@ system/data/hardware-registry
 system/extended-system-utilities			O
 system/file-system/autofs				O
 system/file-system/udfs					O
+system/firmware/aarch64					SZ
 system/flash/fwflash					OS
 system/fru-id
 system/fru-id/platform

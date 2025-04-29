@@ -202,6 +202,7 @@ library/python-3/pyopenssl-313
 illumos-gate
 package/pkg
 entire
+aarch64-fw
 ###############################################################################
 .SYSROOT
 security/sudo

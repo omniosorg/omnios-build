@@ -38,11 +38,6 @@ RUN_DEPENDS_IPS="
 clone_source() {
     clone_github_source kayak \
         "$KAYAK_SOURCE_REPO" "$KAYAK_SOURCE_BRANCH" "$KAYAK_CLONE"
-
-    gdir=$TMPDIR/$BUILDDIR/kayak
-    GITREV=`$GIT -C $gdir log -1  --format=format:%at`
-    COMMIT=`$GIT -C $gdir log -1  --format=format:%h`
-    REVDATE=`echo $GITREV | gawk '{ print strftime("%c %Z",$1) }'`
     VERHUMAN="${COMMIT:0:7} from $REVDATE"
     ((EXTRACT_MODE)) && exit
 }
