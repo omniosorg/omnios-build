@@ -253,7 +253,6 @@ service/storage/removable-media				OSZ
 shell/bash						O
 shell/pipe-viewer					O
 system/accounting/legacy
-system/boot/grub					OS
 system/boot/real-mode
 system/data/hardware-registry
 system/data/urxvt-terminfo				O
