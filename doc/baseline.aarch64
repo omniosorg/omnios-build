@@ -486,7 +486,6 @@ omnios storage/storage-nas o
 omnios storage/storage-server o
 omnios storage/svm o
 omnios system/accounting/legacy
-omnios system/boot/grub
 omnios system/boot/loader
 omnios system/boot/network
 omnios system/boot/real-mode
