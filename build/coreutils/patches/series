@@ -7,3 +7,4 @@ who.c.patch
 tests_df_no-mtab-status.sh.patch
 set-permission.c.patch
 stdbuf.c.patch
+getlocalename.patch
