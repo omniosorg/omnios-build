@@ -84,6 +84,9 @@ publish_pkgs() {
             ${FLAVOR:-'*'}
     fi
 
+    # We don't want these packages
+    logcmd $PKGREPO -s $repo remove system/grub boot/grub
+
     logmsg "Leaving $root"
     popd > /dev/null
 }
@@ -162,7 +165,7 @@ build_aarch64() {
             usr/src/pkg/packages.aarch64/osnet-{redist,incorporation}.mog
 
         # We don't want these packages
-        logcmd $PKGREPO -s $repo remove osnet ssh-common
+        logcmd $PKGREPO -s $repo remove osnet ssh-common system/grub boot/grub
     fi
 
     popd >/dev/null
