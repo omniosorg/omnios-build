@@ -165,7 +165,7 @@ build_aarch64() {
             usr/src/pkg/packages.aarch64/osnet-{redist,incorporation}.mog
 
         # We don't want these packages
-        logcmd $PKGREPO -s $repo remove osnet ssh-common boot/grub
+        logcmd $PKGREPO -s $repo remove osnet ssh-common
     fi
 
     popd >/dev/null
