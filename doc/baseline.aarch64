@@ -632,6 +632,7 @@ omnios system/test/ostest
 omnios system/test/smbclient
 omnios system/test/smbsrvtest
 omnios system/test/testrunner
+omnios system/test/tztest
 omnios system/test/utiltest
 omnios system/test/zfstest
 omnios system/tnf o
