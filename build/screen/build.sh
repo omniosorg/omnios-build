@@ -13,12 +13,13 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=screen
 VER=4.9.1
+DASHREV=1
 PKG=terminal/screen
 SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
