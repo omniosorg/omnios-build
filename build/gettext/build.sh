@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=gettext
-VER=0.24
+VER=0.25
 PKG=text/gnu-gettext
 SUMMARY="gettext - GNU gettext utility"
 DESC="GNU gettext - GNU gettext utility"
