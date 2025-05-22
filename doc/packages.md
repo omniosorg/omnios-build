@@ -111,7 +111,7 @@
 | system/watch				| 4.0.5			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
-| text/gawk				| 5.3.1			| https://ftp.gnu.org/gnu/gawk/
+| text/gawk				| 5.3.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.25			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
