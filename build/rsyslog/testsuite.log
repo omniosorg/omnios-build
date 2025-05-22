@@ -136,17 +136,6 @@ PASS: allowed-sender-tcp-fail.sh
 PASS: allowed-sender-tcp-hostname-ok.sh
 PASS: allowed-sender-tcp-hostname-fail.sh
 PASS: imtcp-discard-truncated-msg.sh
-PASS: imtcp-basic.sh
-PASS: imtcp-basic-hup.sh
-PASS: imtcp-maxFrameSize.sh
-PASS: imtcp-msg-truncation-on-number.sh
-PASS: imtcp-msg-truncation-on-number2.sh
-PASS: imtcp-NUL.sh
-PASS: imtcp-NUL-rawmsg.sh
-PASS: imtcp_incomplete_frame_at_end.sh
-PASS: imtcp-multiport.sh
-PASS: imtcp-bigmessage-octetcounting.sh
-PASS: imtcp-bigmessage-octetstuffing.sh
 PASS: da-queue-persist.sh
 SKIP: daqueue-persist.sh
 SKIP: daqueue-invld-qi.sh
@@ -162,12 +151,6 @@ SKIP: rulesetmultiqueue-v6.sh
 SKIP: manytcp.sh
 PASS: rsf_getenv.sh
 PASS: msg-deadlock-headerless-noappname.sh
-PASS: imtcp_conndrop.sh
-PASS: imtcp_addtlframedelim.sh
-PASS: imtcp_no_octet_counted.sh
-PASS: imtcp_addtlframedelim_on_input.sh
-PASS: imtcp_spframingfix.sh
-PASS: imtcp-connection-msg-recieved.sh
 PASS: sndrcv.sh
 PASS: sndrcv_failover.sh
 PASS: sndrcv_gzip.sh
@@ -352,6 +335,26 @@ PASS: parsertest-parse-nodate.sh
 PASS: parsertest-parse-nodate-udp.sh
 PASS: parsertest-snare_ccoff_udp.sh
 PASS: parsertest-snare_ccoff_udp2.sh
+PASS: imtcp-basic.sh
+PASS: imtcp-basic-hup.sh
+PASS: imtcp-impstats-single-thread.sh
+PASS: imtcp-starvation-0.sh
+PASS: imtcp-starvation-1.sh
+PASS: imtcp-maxFrameSize.sh
+PASS: imtcp-msg-truncation-on-number.sh
+PASS: imtcp-msg-truncation-on-number2.sh
+PASS: imtcp-NUL.sh
+PASS: imtcp-NUL-rawmsg.sh
+PASS: imtcp_incomplete_frame_at_end.sh
+PASS: imtcp-multiport.sh
+PASS: imtcp-bigmessage-octetcounting.sh
+PASS: imtcp-bigmessage-octetstuffing.sh
+PASS: imtcp_conndrop.sh
+PASS: imtcp_addtlframedelim.sh
+PASS: imtcp_no_octet_counted.sh
+PASS: imtcp_addtlframedelim_on_input.sh
+PASS: imtcp_spframingfix.sh
+PASS: imtcp-connection-msg-recieved.sh
 PASS: ommail_errmsg_no_params.sh
 PASS: rscript_http_request.sh
 PASS: omhttp-auth.sh
@@ -419,11 +422,11 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2502.0
+Testsuite summary for rsyslog 8.2504.0
 ============================================================================
-# TOTAL: 421
-# PASS:  378
-# SKIP:  43
+# TOTAL: 437
+# PASS:  393
+# SKIP:  44
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
