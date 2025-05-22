@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=coreutils
-VER=9.6
+VER=9.7
 PKG=file/gnu-coreutils
 SUMMARY="coreutils - GNU core utilities"
 DESC="GNU core utilities"
