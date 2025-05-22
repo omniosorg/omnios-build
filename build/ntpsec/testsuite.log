@@ -217,14 +217,10 @@ Test decryption failure:
    xorend part 2: fcac8eb7 6dea9f69 48d7636e 8bad1dd9 
      CMAC(final): 9db0951a f98393d7 8766c419 4c706d68 
 
-*** stderr ***
-
 
 
 BINARY      : test_agentx.py
 RETURN VALUE: 0
-
-*** stdout ***
 
 *** stderr ***
 .............................
@@ -237,8 +233,6 @@ OK
 
 BINARY      : test_agentx_packet.py
 RETURN VALUE: 0
-
-*** stdout ***
 
 *** stderr ***
 ........................................
@@ -357,6 +351,7 @@ TEST(socktoa, HashNotEqual) PASS
 TEST(socktoa, IgnoreIPv6Fields) PASS
 TEST(statestr, ResMatchFlags) PASS
 TEST(statestr, ResAccessFlags) PASS
+TEST(statestr, ResAccessFlags2) PASS
 TEST(statestr, KSTFlags) PASS
 TEST(statestr, StatusToA) PASS
 TEST(statestr, PeerRestart) PASS
@@ -406,10 +401,8 @@ TEST(ymd2yd, LeapYearFebruary) PASS
 TEST(ymd2yd, LeapYearDecember) PASS
 
 -----------------------
-150 Tests 0 Failures 0 Ignored 
+151 Tests 0 Failures 0 Ignored 
 OK
-
-*** stderr ***
 
 
 
@@ -478,14 +471,10 @@ TEST(ieee754io, test_order64) PASS
 55 Tests 0 Failures 0 Ignored 
 OK
 
-*** stderr ***
-
 
 
 BINARY      : test_ntpc.py
 RETURN VALUE: 0
-
-*** stdout ***
 
 *** stderr ***
 ....
@@ -591,14 +580,10 @@ TEST(nts_extens, extens_server_recv) PASS
 62 Tests 0 Failures 0 Ignored 
 OK
 
-*** stderr ***
-
 
 
 BINARY      : test_packet.py
 RETURN VALUE: 0
-
-*** stdout ***
 
 *** stderr ***
 ...............................................................
@@ -612,8 +597,6 @@ OK
 BINARY      : test_statfiles.py
 RETURN VALUE: 0
 
-*** stdout ***
-
 *** stderr ***
 ..............
 ----------------------------------------------------------------------
@@ -625,8 +608,6 @@ OK
 
 BINARY      : test_util.py
 RETURN VALUE: 0
-
-*** stdout ***
 
 *** stderr ***
 .............................................

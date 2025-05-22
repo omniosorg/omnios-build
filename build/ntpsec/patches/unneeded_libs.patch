@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/wscript a/wscript
 --- a~/wscript	1970-01-01 00:00:00
 +++ a/wscript	1970-01-01 00:00:00
-@@ -276,8 +276,8 @@ def configure(ctx):
+@@ -261,8 +261,8 @@ def configure(ctx):
      # check for some libs first.  some options, like stack protector,
      # may depend on some libs, like -lssp
      ctx.check_cc(lib="m", comment="Math library")
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/wscript a/wscript
      ctx.check_cc(lib="execinfo", mandatory=False,
                   comment="BSD backtrace library")
      ret = ctx.check_cc(lib="bsd", mandatory=False,
-@@ -285,18 +285,6 @@ def configure(ctx):
+@@ -270,18 +270,6 @@ def configure(ctx):
      if ret:
          ctx.env.LDFLAGS += ["-lbsd"]
  
