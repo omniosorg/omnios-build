@@ -26,7 +26,7 @@
 . ../../lib/build.sh
 
 PROG=diffutils
-VER=3.11
+VER=3.12
 PKG=text/gnu-diffutils
 SUMMARY="GNU diffutils - Finds differences between and among files"
 DESC="$SUMMARY"
