@@ -1,14 +1,14 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/autosetup/proj.tcl a/autosetup/proj.tcl
 --- a~/autosetup/proj.tcl	1970-01-01 00:00:00
 +++ a/autosetup/proj.tcl	1970-01-01 00:00:00
-@@ -923,6 +923,10 @@ proc proj-check-emsdk {} {
- # checked here will work but then fails at build-time, and the current
- # order of checks reflects that.
+@@ -956,6 +956,10 @@ proc proj-cc-check-Wl-flag {args} {
+ # configure then [get-define libdir] is used (noting that it derives
+ # from exec-prefix by default).
  proc proj-check-rpath {} {
 +  if {[proj-is-cross-compiling]} {
 +    define LDFLAGS_RPATH ""
 +    return 0
 +  }
-   set rc 1
    if {[proj-opt-was-provided libdir]
        || [proj-opt-was-provided exec-prefix]} {
+     set lp "[get-define libdir]"
