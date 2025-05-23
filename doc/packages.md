@@ -68,7 +68,7 @@
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20241121		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20241112		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode/intel		| 20250512		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.37		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.0p2		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
@@ -81,8 +81,8 @@
 | runtime/java/openjdk21		| 21.0.6+7		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.442-06		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.40.2		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.11		| https://www.python.org/downloads/source/
-| runtime/python-312			| 3.12.9		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
+| runtime/python-312			| 3.12.10		| https://www.python.org/downloads/source/
 | runtime/python-313			| 3.13.3		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.6.1			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
@@ -131,7 +131,7 @@
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 25.3.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 1.17.1		| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.7.1		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-313		| 7.7.1			| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.5.0			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 44.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.10			| https://pypi.org/rss/project/idna/releases.xml
