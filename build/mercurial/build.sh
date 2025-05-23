@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=mercurial
-VER=7.0
+VER=7.0.2
 PKG=developer/versioning/mercurial
 SUMMARY="Mercurial source control management"
 DESC="Free, distributed source control management tool"
