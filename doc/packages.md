@@ -126,7 +126,7 @@
 | developer/gnu-binutils		| 2.44			| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 12.5.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
-| developer/swig			| 4.3.0			| http://www.swig.org/download.html
+| developer/swig			| 4.3.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 25.3.0		| https://pypi.org/rss/project/attrs/releases.xml
