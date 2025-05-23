@@ -6,6 +6,7 @@ PASS: bug-64316
 PASS: cmp
 PASS: colliding-file-names
 PASS: diff3
+PASS: empty-file
 PASS: excess-slash
 PASS: expand-tabs
 PASS: help-version
@@ -21,6 +22,7 @@ PASS: new-file
 PASS: no-dereference
 PASS: no-newline-at-eof
 PASS: side-by-side
+PASS: side-by-side-seq
 PASS: starting-file
 PASS: stdin
 PASS: strcoll-0-names
@@ -29,8 +31,8 @@ SKIP: strip-trailing-cr
 PASS: timezone
 PASS: colors
 SKIP: y2038-vs-32bit
-# TOTAL: 31
-# PASS:  27
+# TOTAL: 33
+# PASS:  29
 # SKIP:  3
 # XFAIL: 1
 # FAIL:  0
@@ -55,8 +57,9 @@ PASS: test-btowc-3.sh
 PASS: test-c-ctype
 PASS: test-c-stack.sh
 PASS: test-c-stack2.sh
-PASS: test-c-strcase.sh
+PASS: test-c-strcasecmp.sh
 PASS: test-c-strcasestr
+PASS: test-c-strncasecmp.sh
 PASS: test-c32_apply_type_test
 PASS: test-c32_get_type_test
 PASS: test-c32isalnum.sh
@@ -87,7 +90,7 @@ PASS: test-chdir
 PASS: test-cloexec
 PASS: test-close
 PASS: test-connect
-PASS: test-ctype
+PASS: test-ctype-h
 PASS: test-dirent-h
 PASS: test-dirfd
 PASS: test-dirname
@@ -291,10 +294,14 @@ PASS: test-stdint-h
 PASS: test-stdio-h
 PASS: test-stdlib-h
 PASS: test-str_startswith
+PASS: test-strcasecmp-1.sh
+PASS: test-strcasecmp-2.sh
 PASS: test-strerror
 PASS: test-strerror_r
 PASS: test-string-h
 PASS: test-strings-h
+PASS: test-strncasecmp-1.sh
+PASS: test-strncasecmp-2.sh
 PASS: test-strnlen
 PASS: test-strtoimax
 PASS: test-strtoll
@@ -375,8 +382,8 @@ PASS: test-xstdopen.sh
 PASS: test-xstrtoimax.sh
 PASS: test-xstrtol.sh
 PASS: test-year2038
-# TOTAL: 339
-# PASS:  292
+# TOTAL: 344
+# PASS:  297
 # SKIP:  47
 # XFAIL: 0
 # FAIL:  0

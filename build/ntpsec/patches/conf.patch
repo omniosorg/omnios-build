@@ -82,7 +82,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/ntpclients/ntpleapfetch a/ntp
 diff -wpruN --no-dereference '--exclude=*.orig' a~/pylib/packet.py a/pylib/packet.py
 --- a~/pylib/packet.py	1970-01-01 00:00:00
 +++ a/pylib/packet.py	1970-01-01 00:00:00
-@@ -1723,7 +1723,7 @@ class Authenticator:
+@@ -1728,7 +1728,7 @@ class Authenticator:
                  return (keyid,) + self.passwords[keyid]
              else:
                  return (keyid, None, None)

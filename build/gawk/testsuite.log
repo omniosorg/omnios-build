@@ -262,6 +262,7 @@ splitarr
 splitdef
 splitvar
 splitwht
+splitwht2
 status-close
 strcat1
 strfieldnum
@@ -322,6 +323,11 @@ aadelete2
 aarray1
 aasort
 aasorti
+ar2fn_elnew_sc
+ar2fn_elnew_sc2
+ar2fn_fmod
+ar2fn_unxptyp_aref
+ar2fn_unxptyp_val
 argtest
 arraysort
 arraysort2
@@ -357,6 +363,7 @@ dbugeval3
 dbugeval4
 dbugtypedre1
 dbugtypedre2
+delmessy
 delsub
 devfd
 devfd1
@@ -422,6 +429,10 @@ incdupe7
 include
 include2
 indirectbuiltin
+indirectbuiltin3
+indirectbuiltin4
+indirectbuiltin5
+indirectbuiltin6
 indirectcall
 indirectcall2
 indirectcall3
@@ -453,6 +464,8 @@ mdim5
 mdim6
 mdim7
 mdim8
+memleak2
+memleak3
 mixed1
 mktime
 modifiers
@@ -572,6 +585,7 @@ typeof5
 typeof6
 typeof7
 typeof8
+typeof9
 unicode1
 watchpoint1
 gawk is not compiled to support the array debug tests
@@ -672,10 +686,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 2 TESTS FAILED
-make[3]: *** [Makefile:5785: pass-fail] Error 1
+make[3]: *** [Makefile:5906: pass-fail] Error 1
 ============== _cmdlinefsbacknl2 =============
---- cmdlinefsbacknl2.ok	Thu Aug 29 06:52:19 2024
-+++ _cmdlinefsbacknl2	Wed Sep 25 14:19:34 2024
+--- cmdlinefsbacknl2.ok	2024-08-29 06:52:19.000000000 +0000
++++ _cmdlinefsbacknl2	2025-05-22 22:16:25.310580107 +0000
 @@ -1,12 +1,19 @@
   5c 0a
 +
@@ -697,8 +711,8 @@ make[3]: *** [Makefile:5785: pass-fail] Error 1
  right: literal ? is literal
  gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
---- localenl.ok	Thu Dec 14 17:49:00 2017
-+++ _localenl	Wed Sep 25 14:19:47 2024
+--- localenl.ok	2017-12-14 17:49:00.000000000 +0000
++++ _localenl	2025-05-22 22:16:38.484032368 +0000
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -706,6 +720,6 @@ make[3]: *** [Makefile:5785: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2223: check] Error 1
+make[2]: *** [Makefile:2269: check] Error 1
 make[1]: *** [Makefile:805: check-recursive] Error 1
 make: *** [Makefile:1104: check] Error 2

@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=swig
-VER=4.3.0
+VER=4.3.1
 PKG=developer/swig
 SUMMARY="The Simplified Wrapper and Interface Generator (swig)"
 DESC="A compiler that integrates C and C++ with languages including Perl, "

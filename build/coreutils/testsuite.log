@@ -385,6 +385,7 @@ PASS: tests/dd/misc.sh
 PASS: tests/dd/no-allocate.sh
 PASS: tests/dd/nocache.sh
 SKIP: tests/dd/nocache_eof.sh
+PASS: tests/dd/nocache_fail.sh
 PASS: tests/dd/not-rewound.sh
 PASS: tests/dd/reblock.sh
 PASS: tests/dd/skip-seek.pl
@@ -655,20 +656,20 @@ SKIP: tests/factor/t34.sh
 SKIP: tests/factor/t35.sh
 SKIP: tests/factor/t36.sh
 SKIP: tests/factor/t37.sh
-# TOTAL: 657
-# PASS:  502
+# TOTAL: 658
+# PASS:  503
 # SKIP:  154
 # XFAIL: 0
 # FAIL:  1
 # XPASS: 0
 # ERROR: 0
 NAME="OmniOS"
-PRETTY_NAME="OmniOS Community Edition v11 r151053"
-CPE_NAME="cpe:/o:omniosce:omnios:11:151053:0"
+PRETTY_NAME="OmniOS Community Edition v11 r151055"
+CPE_NAME="cpe:/o:omniosce:omnios:11:151055:0"
 ID=omnios
-VERSION=r151053
-VERSION_ID=r151053
-BUILD_ID=151053.0.2025.01.12
+VERSION=r151055
+VERSION_ID=r151055
+BUILD_ID=151055.0.2025.05.14
 HOME_URL="https://omnios.org/"
 SKIP: tests/tail/inotify-race
 SKIP tests/tail/inotify-race.sh (exit status: 77)
@@ -1015,8 +1016,8 @@ SKIP: tests/factor/t36
 SKIP tests/factor/t36.sh (exit status: 77)
 SKIP: tests/factor/t37
 SKIP tests/factor/t37.sh (exit status: 77)
-# TOTAL: 657
-# PASS:  502
+# TOTAL: 658
+# PASS:  503
 # SKIP:  154
 # XFAIL: 0
 # FAIL:  1

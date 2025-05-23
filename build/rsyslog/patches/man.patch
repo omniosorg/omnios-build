@@ -7,8 +7,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/tools/rsyslog.conf.5 a/tools/
  .\" along with this program; if not, write to the Free Software
  .\" Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111, USA.
  .\"
--.TH RSYSLOG.CONF 5 "22 October 2012" "Version 7.2.0" "Linux System Administration"
-+.TH RSYSLOG.CONF 5 "22 October 2012" "Version 7.2.0" "System Administration"
+-.TH RSYSLOG.CONF 5 "18 February 2025" "Version 8.2502.0" "Linux System Administration"
++.TH RSYSLOG.CONF 5 "18 February 2025" "Version 8.2502.0" "System Administration"
  .SH NAME
  rsyslog.conf \- rsyslogd(8) configuration file
  .SH DESCRIPTION
@@ -29,8 +29,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/tools/rsyslogd.8 a/tools/rsys
  .\" Copyright 2004-2014 Rainer Gerhards and Adiscon for the rsyslog modifications
  .\" May be distributed under the GNU General Public License
  .\"
--.TH RSYSLOGD 8 "28 May 2014" "Version 8.1905.0" "Linux System Administration"
-+.TH RSYSLOGD 8 "28 May 2014" "Version 8.1905.0" "System Administration"
+-.TH RSYSLOGD 8 "18 February 2025" "Version 8.2502.0" "Linux System Administration"
++.TH RSYSLOGD 8 "18 February 2025" "Version 8.2502.0" "System Administration"
  .SH NAME
  rsyslogd \- reliable and extended syslogd 
  .SH SYNOPSIS

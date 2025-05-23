@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/wafhelpers/asciidoc.py a/wafhelpers/asciidoc.py
 --- a~/wafhelpers/asciidoc.py	1970-01-01 00:00:00
 +++ a/wafhelpers/asciidoc.py	1970-01-01 00:00:00
-@@ -37,8 +37,7 @@ def configure(ctx):
+@@ -41,8 +41,7 @@ def configure(ctx):
      # asciidoc versions 8.6.5-8.6.7 throw warnings for warp.adoc and versions
      # < 8.6.4 have no HTML5 backend.
      # asciidoc3 versions < 3.0.2 throw errors.
