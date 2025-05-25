@@ -23,6 +23,7 @@ illumos-port-24.patch
 illumos-port-25.patch
 illumos-port-26.patch
 illumos-port-27.patch
+illumos-port-28.patch
 illumos-signal-1.patch
 patch-make_autoconf_flags-cflags.m4 -p0
 patch-make_autoconf_jdk-options.m4 -p0

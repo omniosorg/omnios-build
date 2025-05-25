@@ -78,7 +78,7 @@
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.27+6		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.15+6		| https://github.com/openjdk/jdk17u/tags
-| runtime/java/openjdk21		| 21.0.6+7		| https://github.com/openjdk/jdk21u/tags
+| runtime/java/openjdk21		| 21.0.7+6		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.452-09		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.40.2		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
