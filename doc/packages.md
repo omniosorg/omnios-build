@@ -79,7 +79,7 @@
 | runtime/java/openjdk11		| 11.0.26+4		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.14+7		| https://github.com/openjdk/jdk17u/tags
 | runtime/java/openjdk21		| 21.0.6+7		| https://github.com/openjdk/jdk21u/tags
-| runtime/java/openjdk8			| 1.8.442-06		| https://github.com/openjdk/jdk8u/tags
+| runtime/java/openjdk8			| 1.8.452-09		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.40.2		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.10		| https://www.python.org/downloads/source/
