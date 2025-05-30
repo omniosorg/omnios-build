@@ -123,6 +123,7 @@ omnios driver/network/iwn
 omnios driver/network/iwp
 omnios driver/network/ixgbe
 omnios driver/network/llc2 o
+omnios driver/network/mwl
 omnios driver/network/mxfe
 omnios driver/network/nge
 omnios driver/network/ntxn
@@ -486,6 +487,7 @@ omnios storage/storage-nas o
 omnios storage/storage-server o
 omnios storage/svm o
 omnios system/accounting/legacy
+omnios system/boot/grub
 omnios system/boot/loader
 omnios system/boot/network
 omnios system/boot/real-mode
