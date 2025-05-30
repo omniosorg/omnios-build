@@ -39,6 +39,14 @@ CONFIGURE_OPTS="--program-prefix=g"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 
+# This is what a native configure decides, and it can't run the test
+# while cross compiling so we provide the same hint. We should, at some point,
+# look at why it thinks strcasecmp() is broken -- it seems to be hard coded
+# based on "Solaris"
+CONFIGURE_OPTS[aarch64]+="
+    gl_cv_func_strcasecmp_works=no
+"
+
 init
 download_source $PROG $PROG $VER
 patch_source
