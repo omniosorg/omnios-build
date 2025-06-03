@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054e (2025-06-04)
+Weekly release for w/c 2nd of June 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* `curl` updated to version 8.14.0
+
+* Intel CPU microcode updated to version 20250512
+
+* OpenJDK packages updated to versions 1.8.452-09, 11.0.27+6, 17.0.15+6 and
+  21.0.7+6
+
+* `screen` updated to fix CVE-2025-46802, CVE-2025-46804, CVE-2025-46805
+
+* `libxml2` updated to version 2.13.8.
+
+<br>
+
+---
+
 Stable and Long-Term-Supported (LTS) Release, 5th of May 2025
 
 `uname -a` shows `omnios-r151054-6ad70ba62c`
