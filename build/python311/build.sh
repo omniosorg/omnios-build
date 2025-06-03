@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.10
+VER=3.11.12
 PKG=runtime/python-311
 MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
