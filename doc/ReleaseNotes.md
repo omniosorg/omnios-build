@@ -4,6 +4,31 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052ae (2025-06-04)
+Weekly release for w/c 2nd of June 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* `curl` updated to version 8.14.0
+
+* Intel CPU microcode updated to version 20250512
+
+* OpenJDK packages updated to versions 1.8.452-09, 11.0.27+6, 17.0.15+6 and
+  21.0.7+6
+
+* `screen` updated to fix CVE-2025-46802, CVE-2025-46804, CVE-2025-46805
+
+* `libxml2` updated to version 2.13.8.
+
+* `perl` updated to 5.40.2
+
+* `python` updated to 3.12.10
+
+<br>
+
+---
+
 ## r151052u (2025-03-28)
 Weekly release for w/c 24th of March 2025.
 > This is a non-reboot update
