@@ -1,4 +1,4 @@
-From 999792f54ee3cd23d6ea6ee3ad255dcb2cddb782 Mon Sep 17 00:00:00 2001
+From 5c92eeed0c8733da3583223b397ee96bc2c14338 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Fri, 10 Apr 2020 16:00:43 +0000
 Subject: Correct path to elfdump

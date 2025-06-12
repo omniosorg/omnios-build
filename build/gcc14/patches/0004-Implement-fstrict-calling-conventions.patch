@@ -1,4 +1,4 @@
-From 8cd8ef6b2ba1ef2f3886dca29aa83bfd977b328c Mon Sep 17 00:00:00 2001
+From eb5901eac5d1c84bf861af1a55780ccf65ec1d40 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sat, 27 Oct 2012 02:44:09 +0100
 Subject: Implement -fstrict-calling-conventions
@@ -36,10 +36,10 @@ index ad3488447752..a4a04b0aa81d 100644
  Common
  Treat signed overflow as undefined.  Negated as -fwrapv -fwrapv-pointer.
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 35a282433892..92b8fa7b7329 100644
+index 2e1a31d05403..41c936c6c724 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
-@@ -1207,6 +1207,7 @@ ix86_function_regparm (const_tree type, const_tree decl)
+@@ -1213,6 +1213,7 @@ ix86_function_regparm (const_tree type, const_tree decl)
  	 and callee not, or vice versa.  Instead look at whether the callee
  	 is optimized or not.  */
        if (target && opt_for_fn (target->decl, optimize)
@@ -47,7 +47,7 @@ index 35a282433892..92b8fa7b7329 100644
  	  && !(profile_flag && !flag_fentry))
  	{
  	  if (target->local && target->can_change_signature)
-@@ -1303,6 +1304,7 @@ ix86_function_sseregparm (const_tree type, const_tree decl, bool warn)
+@@ -1309,6 +1310,7 @@ ix86_function_sseregparm (const_tree type, const_tree decl, bool warn)
        /* TARGET_SSE_MATH */
        && (target_opts_for_fn (target->decl)->x_ix86_fpmath & FPMATH_SSE)
        && opt_for_fn (target->decl, optimize)
@@ -56,7 +56,7 @@ index 35a282433892..92b8fa7b7329 100644
      {
        if (target->local && target->can_change_signature)
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index f82f7d2817bb..150d822a8747 100644
+index 64728fead512..6c9b28eda1f8 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -8036,6 +8036,12 @@ with multiple statement cases using flow-sensitive points-to information.

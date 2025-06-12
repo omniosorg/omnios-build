@@ -1,4 +1,4 @@
-From 472fd2ca2679693bed698782aea3692bbe33edee Mon Sep 17 00:00:00 2001
+From 5545ec8aec7e5fed336e3a61b05789e34ea2c5ca Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 4 Mar 2014 02:58:33 +0000
 Subject: strict-cc2: check that disabling function cloning

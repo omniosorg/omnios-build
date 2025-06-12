@@ -1,4 +1,4 @@
-From 53556e7d196e6324ea8d25a8c8b52658bc5a691f Mon Sep 17 00:00:00 2001
+From f4b5a437c45982a873fd1ee7e2e575be0fa811cc Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 28 Apr 2021 11:40:25 +0000
 Subject: 13726 distinguish ourselves with a macro (__illumos__)

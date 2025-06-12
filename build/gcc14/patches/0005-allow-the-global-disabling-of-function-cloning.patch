@@ -1,4 +1,4 @@
-From 6d3b4e586fcc1bebef3a4b01921c80a564bd9813 Mon Sep 17 00:00:00 2001
+From e7a2184aa4a90f2159ca462be503d9fc7a6fd6ef Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Sun, 30 Sep 2012 16:44:14 -0400
 Subject: allow the global disabling of function cloning
@@ -54,7 +54,7 @@ index a4a04b0aa81d..3998e9c427f5 100644
  Common Var(flag_combine_stack_adjustments) Optimization
  Looks for opportunities to reduce stack adjustments and stack references.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 150d822a8747..2f2f3700057b 100644
+index 6c9b28eda1f8..37c9cccdc25f 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -552,6 +552,7 @@ Objective-C and Objective-C++ Dialects}.

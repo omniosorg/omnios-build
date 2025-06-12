@@ -1,4 +1,4 @@
-From 09e1d8748f9321bae39811e0f51683d330098cf0 Mon Sep 17 00:00:00 2001
+From eab2fc42655532a6d2d965bd5398a97a7b1eb36e Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 31 Aug 2021 21:40:48 +0000
 Subject: libstdc++ must use thread-local errno
@@ -9,10 +9,10 @@ Subject: libstdc++ must use thread-local errno
  2 files changed, 11 insertions(+)
 
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index 21abaeb07788..b6fc2d463061 100755
+index 18053ab7eae6..8d79a329d170 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
-@@ -55103,6 +55103,12 @@ done
+@@ -55105,6 +55105,12 @@ done
  tmake_file="${tmake_file_}"
  
  
@@ -26,10 +26,10 @@ index 21abaeb07788..b6fc2d463061 100755
   # Check whether --enable-cet was given.
  if test "${enable_cet+set}" = set; then :
 diff --git a/libstdc++-v3/configure.ac b/libstdc++-v3/configure.ac
-index 37396bd6ebbe..d6079dcd4a4b 100644
+index a6525a9d3e46..f9cb5d7ff424 100644
 --- a/libstdc++-v3/configure.ac
 +++ b/libstdc++-v3/configure.ac
-@@ -655,6 +655,11 @@ done
+@@ -658,6 +658,11 @@ done
  tmake_file="${tmake_file_}"
  AC_SUBST(tmake_file)
  

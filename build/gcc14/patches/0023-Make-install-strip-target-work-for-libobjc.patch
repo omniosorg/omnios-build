@@ -1,4 +1,4 @@
-From cc069c8a4eba8e6dae3356d2d1d418f2366ee96b Mon Sep 17 00:00:00 2001
+From 3c556a67d20c9e25a5da86d19264d38bff75c5d4 Mon Sep 17 00:00:00 2001
 From: Keith Marshall <keith.marshall@mailinator.com>
 Date: Fri, 15 Nov 2019 12:21:51 +0000
 Subject: Make install-strip target work for libobjc
