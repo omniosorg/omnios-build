@@ -54,7 +54,7 @@
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.1		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.65.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nghttp2			| 1.66.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.36			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.45			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
