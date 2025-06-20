@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -208,6 +208,11 @@ get_features () {
+@@ -206,6 +206,11 @@ get_features () {
  
  
  OPERATINGSYSTEM=`uname -s`
@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
  VERSION=`uname -r`
  MACHINE=`uname -m`
  
-@@ -472,7 +477,7 @@ case $OPERATINGSYSTEM in
+@@ -461,7 +466,7 @@ case $OPERATINGSYSTEM in
          fi
          echo "Configuring for macOS (" $SYSTEM "macOS version" $VERSION ")"
      ;;
@@ -22,7 +22,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
          EXTRA_OBJECTS="sys_generic.o sys_solaris.o sys_timex.o sys_posix.o"
          LIBS="$LIBS -lsocket -lnsl -lkvm -lelf -lresolv"
          try_setsched=1
-@@ -488,6 +493,21 @@ case $OPERATINGSYSTEM in
+@@ -477,6 +482,21 @@ case $OPERATINGSYSTEM in
          fi
          echo "Configuring for illumos (" $SYSTEM "SunOS version" $VERSION ")"
      ;;                                                                        
@@ -55,7 +55,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/privops.c a/privops.c
  #include "util.h"
  
  #define OP_ADJUSTTIME     1024
-@@ -667,6 +668,8 @@ PRV_StartHelper(void)
+@@ -668,6 +669,8 @@ PRV_StartHelper(void)
      /* ignore signals, the process will exit on OP_QUIT request */
      UTI_SetQuitSignalsHandler(SIG_IGN, 1);
  
