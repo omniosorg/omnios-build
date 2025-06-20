@@ -78,9 +78,6 @@ add_target()
 				bld=`pver BUILD`
 				ver="$ver.$update-$bld"
 				;;
-			system/library/mozilla-nss:*)
-				targets["library/nss"]=$ver
-				;;
 			library/*idnkit:*)	ver=${ver//-src/} ;;
 			*idnconv*)		ver=${ver//-src/} ;;
 			library/ncurses:*)	ver=${ver//-/.} ;;
