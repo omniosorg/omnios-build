@@ -21,12 +21,12 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=m4
-VER=1.4.19
+VER=1.4.20
 PKG=developer/macro/gnu-m4
 SUMMARY="GNU m4"
 DESC="GNU m4 - A macro processor (gm4)"
