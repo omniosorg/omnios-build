@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=liboqs
-VER=0.12.0
+VER=0.13.0
 PKG=library/security/liboqs
 SUMMARY="$PROG"
 DESC="An open source C library for quantum-safe cryptographic algorithms"
