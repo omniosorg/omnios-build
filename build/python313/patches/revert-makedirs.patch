@@ -16,7 +16,7 @@ For reference:
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
 --- a~/Lib/os.py	1970-01-01 00:00:00
 +++ a/Lib/os.py	1970-01-01 00:00:00
-@@ -214,7 +214,7 @@ def makedirs(name, mode=0o777, exist_ok=
+@@ -215,7 +215,7 @@ def makedirs(name, mode=0o777, exist_ok=
          head, tail = path.split(head)
      if head and tail and not path.exists(head):
          try:
@@ -28,7 +28,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/os.py a/Lib/os.py
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_os.py a/Lib/test/test_os.py
 --- a~/Lib/test/test_os.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_os.py	1970-01-01 00:00:00
-@@ -1764,12 +1764,12 @@ class MakedirTests(unittest.TestCase):
+@@ -1763,12 +1763,12 @@ class MakedirTests(unittest.TestCase):
              base = os_helper.TESTFN
              parent = os.path.join(base, 'dir1')
              path = os.path.join(parent, 'dir2')
