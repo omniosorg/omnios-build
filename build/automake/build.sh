@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=automake
-VER=1.17
+VER=1.18
 PKG=developer/build/automake
 SUMMARY="GNU Automake"
 DESC="GNU Automake - A Makefile generator"
@@ -32,6 +32,11 @@ MAKE_TESTSUITE_ARGS_WS="
 "
 
 set_arch 64
+
+PKGDIFF_HELPER="
+    s:$PROG-1\.[0-9][0-9]:${PROG}VER:
+    s:aclocal-1\.[0-9][0-9]:${PROG}VER:
+"
 
 TESTSUITE_SED="
     /\/bash -n t\//d
