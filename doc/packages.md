@@ -73,7 +73,7 @@
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.0.3		| http://www.dest-unreach.org/socat/download/
-| network/test/iperf			| 3.18			| https://github.com/esnet/iperf/releases
+| network/test/iperf			| 3.19			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.27+6		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.15+6		| https://github.com/openjdk/jdk17u/tags

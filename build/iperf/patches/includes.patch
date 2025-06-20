@@ -1,0 +1,11 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/iperf_api.h a/src/iperf_api.h
+--- a~/src/iperf_api.h	1970-01-01 00:00:00
++++ a/src/iperf_api.h	1970-01-01 00:00:00
+@@ -32,6 +32,7 @@
+ #include <setjmp.h>
+ #include <stdio.h>
+ #include <stdint.h>
++#include <stdarg.h>
+ #ifdef __cplusplus
+ extern "C" { /* open extern "C" */
+ #endif
