@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=grep
-VER=3.11
+VER=3.12
 PKG=text/gnu-grep
 SUMMARY="GNU grep"
 DESC="GNU grep utilities"
