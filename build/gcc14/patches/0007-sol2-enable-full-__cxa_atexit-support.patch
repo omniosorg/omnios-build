@@ -1,4 +1,4 @@
-From 67a20c8211756b20918ec598532c0cc166b6af23 Mon Sep 17 00:00:00 2001
+From deb09f6924be6bcdd8669779aa517e00a6b05938 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 4 Mar 2014 22:11:03 +0000
 Subject: sol2: enable full __cxa_atexit support
@@ -31,10 +31,10 @@ index 85c1f9daf6a9..7f01b22d2229 100644
  
  #undef  ENDFILE_SPEC
 diff --git a/libgcc/config.host b/libgcc/config.host
-index e75a7af647f6..78443a65e19f 100644
+index ee10e99b0a66..5e9d66d0c12f 100644
 --- a/libgcc/config.host
 +++ b/libgcc/config.host
-@@ -336,7 +336,7 @@ case ${host} in
+@@ -342,7 +342,7 @@ case ${host} in
  *-*-solaris2*)
    # Unless linker support and dl_iterate_phdr are present,
    # unwind-dw2-fde-dip.c automatically falls back to unwind-dw2-fde.c.
@@ -43,7 +43,7 @@ index e75a7af647f6..78443a65e19f 100644
    if test $with_gnu_ld = yes; then
      tmake_file="$tmake_file t-slibgcc-gld"
    else
-@@ -356,6 +356,7 @@ case ${host} in
+@@ -362,6 +362,7 @@ case ${host} in
        i?86-*-solaris2* | x86_64-*-solaris2*)
          # Solaris 10+/x86 provides crt1.o, crti.o, crtn.o, and gcrt1.o as
          # part of the base system.
