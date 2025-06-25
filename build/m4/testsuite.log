@@ -1,5 +1,5 @@
-m4 (GNU M4) 1.4.19
-Copyright (C) 2021 Free Software Foundation, Inc.
+m4 (GNU M4) 1.4.20
+Copyright (C) 2025 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -52,30 +52,30 @@ Checking ./044.pseudo_arg
 Checking ./045.pseudo_arg
 Checking ./046.undefine
 Checking ./047.undefine
-Checking ./048.defn
+Checking ./048.undefine
 Checking ./049.defn
 Checking ./050.defn
 Checking ./051.defn
 Checking ./052.defn
 Checking ./053.defn
 Checking ./054.defn
-Checking ./055.pushdef
+Checking ./055.defn
 Checking ./056.pushdef
-Checking ./057.indir
+Checking ./057.pushdef
 Checking ./058.indir
 Checking ./059.indir
-Checking ./060.builtin
+Checking ./060.indir
 Checking ./061.builtin
 Checking ./062.builtin
 Checking ./063.builtin
 Checking ./064.builtin
-Checking ./065.ifdef
-Checking ./066.ifelse
+Checking ./065.builtin
+Checking ./066.ifdef
 Checking ./067.ifelse
 Checking ./068.ifelse
 Checking ./069.ifelse
 Checking ./070.ifelse
-Checking ./071.shift
+Checking ./071.ifelse
 Checking ./072.shift
 Checking ./073.shift
 Checking ./074.shift
@@ -83,36 +83,36 @@ Checking ./075.shift
 Checking ./076.shift
 Checking ./077.shift
 Checking ./078.shift
-Checking ./079.forloop
+Checking ./079.shift
 Checking ./080.forloop
 Checking ./081.forloop
-Checking ./082.foreach
+Checking ./082.forloop
 Checking ./083.foreach
 Checking ./084.foreach
 Checking ./085.foreach
 Checking ./086.foreach
 Checking ./087.foreach
-Checking ./088.stacks
+Checking ./088.foreach
 Checking ./089.stacks
-Checking ./090.compositio
+Checking ./090.stacks
 Checking ./091.compositio
 Checking ./092.compositio
 Checking ./093.compositio
-Checking ./094.dumpdef
+Checking ./094.compositio
 Checking ./095.dumpdef
-Checking ./096.trace
+Checking ./096.dumpdef
 Checking ./097.trace
 Checking ./098.trace
 Checking ./099.trace
 Checking ./100.trace
-Checking ./101.debug_leve
+Checking ./101.trace
 Checking ./102.debug_leve
 Checking ./103.debug_leve
-Checking ./104.debug_outp
-Checking ./105.dnl
+Checking ./104.debug_leve
+Checking ./105.debug_outp
 Checking ./106.dnl
 Checking ./107.dnl
-Checking ./108.changequot
+Checking ./108.dnl
 Checking ./109.changequot
 Checking ./110.changequot
 Checking ./111.changequot
@@ -123,16 +123,14 @@ Checking ./115.changequot
 Checking ./116.changequot
 Checking ./117.changequot
 Checking ./118.changequot
-Checking ./119.changecom
-Checking ./120.changecom
+Checking ./119.changequot
+Checking ./120.changequot
 Checking ./121.changecom
 Checking ./122.changecom
 Checking ./123.changecom
 Checking ./124.changecom
-Checking ./125.changeword
- skipping: no changeword support
-Checking ./126.changeword
- skipping: no changeword support
+Checking ./125.changecom
+Checking ./126.changecom
 Checking ./127.changeword
  skipping: no changeword support
 Checking ./128.changeword
@@ -141,100 +139,97 @@ Checking ./129.changeword
  skipping: no changeword support
 Checking ./130.changeword
  skipping: no changeword support
-Checking ./131.m4wrap
-Checking ./132.m4wrap
-Checking ./133.m4wrap
+Checking ./131.changeword
+ skipping: no changeword support
+Checking ./132.changeword
+ skipping: no changeword support
+Checking ./133.changeword
+ skipping: no changeword support
 Checking ./134.m4wrap
 Checking ./135.m4wrap
 Checking ./136.m4wrap
-Checking ./137.include
-Checking ./138.include
-Checking ./139.include
+Checking ./137.m4wrap
+Checking ./138.m4wrap
+Checking ./139.m4wrap
 Checking ./140.include
 Checking ./141.include
 Checking ./142.include
-Checking ./143.diversions
-Checking ./144.diversions
-Checking ./145.diversions
+Checking ./143.include
+Checking ./144.include
+Checking ./145.include
 Checking ./146.diversions
-Checking ./147.divert
-Checking ./148.divert
-Checking ./149.divert
+Checking ./147.diversions
+Checking ./148.diversions
+Checking ./149.diversions
 Checking ./150.divert
 Checking ./151.divert
-Checking ./152.undivert
-Checking ./153.undivert
-Checking ./154.undivert
+Checking ./152.divert
+Checking ./153.divert
+Checking ./154.divert
 Checking ./155.undivert
 Checking ./156.undivert
 Checking ./157.undivert
-Checking ./158.divnum
-Checking ./159.cleardiver
-Checking ./160.cleardiver
-Checking ./161.len
-Checking ./162.index_macr
-Checking ./163.index_macr
-Checking ./164.index_macr
+Checking ./158.undivert
+Checking ./159.undivert
+Checking ./160.undivert
+Checking ./161.divnum
+Checking ./162.cleardiver
+Checking ./163.cleardiver
+Checking ./164.len
 Checking ./165.index_macr
-Checking ./166.regexp
-Checking ./167.regexp
-Checking ./168.regexp
-Checking ./169.substr
-Checking ./170.substr
-Checking ./171.translit
-Checking ./172.translit
-Checking ./173.translit
+Checking ./166.index_macr
+Checking ./167.index_macr
+Checking ./168.index_macr
+Checking ./169.regexp
+Checking ./170.regexp
+Checking ./171.regexp
+Checking ./172.substr
+Checking ./173.substr
 Checking ./174.translit
-Checking ./175.patsubst
-Checking ./176.patsubst
-Checking ./177.patsubst
+Checking ./175.translit
+Checking ./176.translit
+Checking ./177.translit
 Checking ./178.patsubst
 Checking ./179.patsubst
-Checking ./180.format
-Checking ./181.format
-Checking ./182.format
+Checking ./180.patsubst
+Checking ./181.patsubst
+Checking ./182.patsubst
 Checking ./183.format
-Checking ./184.incr
-Checking ./185.eval
-Checking ./186.eval
-Checking ./187.eval
-Checking ./188.eval
+Checking ./184.format
+Checking ./185.format
+Checking ./186.format
+Checking ./187.incr
+Checking ./188.incr
 Checking ./189.eval
 Checking ./190.eval
-Checking ./191.platform_m
-Checking ./192.platform_m
-Checking ./193.platform_m
-Checking ./194.syscmd
-Checking ./195.syscmd
-Checking ./196.esyscmd
-Checking ./197.sysval
-Checking ./198.sysval
-@ ../doc/m4.texi:6751: Origin of test
-./198.sysval: stderr mismatch
---- m4-tmp.222568/m4-xerr	Mon Jun 21 12:17:36 2021
-+++ m4-tmp.222568/m4-err	Mon Jun 21 12:17:36 2021
-@@ -1,0 +1,1 @@
-+sh: 224158: Killed
-Checking ./199.mkstemp
-Checking ./200.mkstemp
-Checking ./201.mkstemp
-Checking ./202.errprint
-Checking ./203.location
-Checking ./204.location
-Checking ./205.location
-Checking ./206.m4exit
-Checking ./207.m4exit
-Checking ./208.using_froz
-Checking ./209.using_froz
-Checking ./210.using_froz
-Checking ./211.extensions
-Checking ./212.other_inco
-Checking ./213.other_inco
-Checking ./214.improved_e
-Checking ./215.improved_f
-Checking ./216.improved_f
-Checking ./217.improved_f
-Checking ./218.improved_f
+Checking ./191.eval
+Checking ./192.eval
+Checking ./193.eval
+Checking ./194.eval
+Checking ./195.platform_m
+Checking ./196.platform_m
+Checking ./197.platform_m
+Checking ./198.syscmd
+Checking ./199.syscmd
+Checking ./200.esyscmd
+Checking ./201.sysval
+Checking ./202.sysval
+Checking ./203.mkstemp
+Checking ./204.mkstemp
+Checking ./205.mkstemp
+Checking ./206.errprint
+Checking ./207.location
+Checking ./208.location
+Checking ./209.location
+Checking ./210.m4exit
+Checking ./211.m4exit
+Checking ./212.using_froz
+Checking ./213.using_froz
+Checking ./214.using_froz
+Checking ./215.extensions
+Checking ./216.other_inco
+Checking ./217.other_inco
+Checking ./218.improved_e
 Checking ./219.improved_f
 Checking ./220.improved_f
 Checking ./221.improved_f
@@ -245,19 +240,507 @@ Checking ./225.improved_f
 Checking ./226.improved_f
 Checking ./227.improved_f
 Checking ./228.improved_f
-Checking ./229.improved_c
-Checking ./230.improved_c
-Checking ./231.improved_m
-Checking ./232.improved_m
+Checking ./229.improved_f
+Checking ./230.improved_f
+Checking ./231.improved_f
+Checking ./232.improved_f
 Checking ./233.improved_c
 Checking ./234.improved_c
-Checking ./235.improved_c
-Checking ./236.improved_f
+Checking ./235.improved_m
+Checking ./236.improved_m
+Checking ./237.improved_c
+Checking ./238.improved_c
+Checking ./239.improved_c
+Checking ./240.improved_f
 Checking ./stackovf.test
 Stack soft limit set to 300K
 Pass
 
 Skipped checks were:
-  ./125.changeword ./126.changeword ./127.changeword ./128.changeword ./129.changeword ./130.changeword
-Failed checks were:
-  ./198.sysval:err
+  ./127.changeword ./128.changeword ./129.changeword ./130.changeword ./131.changeword ./132.changeword ./133.changeword
+All checks successful
+## ---------------------------------------------------------------------- ##
+## ---------------------------- Gnulib tests ---------------------------- ##
+## Please report test failures in this directory to <bug-gnulib@gnu.org>. ##
+## ---------------------------------------------------------------------- ##
+In file included from test-execute-main.c:36:
+test-execute-main.c: In function 'main':
+test-execute-main.c:201:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  201 |         ASSERT (fclose (stdin) == 0);
+      |                 ^~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+In file included from /usr/include/stdio.h:83,
+                 from ../lib/stdio.h:55,
+                 from ../lib/getopt-pfx-core.h:38,
+                 from ../lib/unistd.h:717,
+                 from ../lib/fcntl.h:93,
+                 from test-execute-main.c:22:
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-execute-main.c:220:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  220 |         ASSERT (fclose (stdin) == 0);
+      |                 ^~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-execute-main.c:235:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  235 |         ASSERT (fclose (stdout) == 0);
+      |                 ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-execute-main.c:267:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  267 |         ASSERT (fclose (stdout) == 0);
+      |                 ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-execute-main.c:287:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  287 |         ASSERT (fclose (stderr) == 0);
+      |                 ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-execute-main.c:319:17: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  319 |         ASSERT (fclose (stderr) == 0);
+      |                 ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+test-freadahead.c: In function 'main':
+test-freadahead.c:74:3: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+   74 |   fclose (stdin);
+      |   ^~~~~~~~~~~~~~
+In file included from /usr/include/stdio.h:83,
+                 from ../lib/stdio.h:55,
+                 from ../lib/freadahead.h:23,
+                 from test-freadahead.c:21:
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+In file included from test-getopt-main.h:33,
+                 from test-getopt-gnu.c:45:
+test-getopt-main.h: In function 'main':
+test-getopt-main.h:72:11: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+   72 |   ASSERT (fclose (stderr) == 0);
+      |           ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+In file included from /usr/include/stdio.h:83,
+                 from ../lib/stdio.h:55,
+                 from ../lib/getopt-pfx-core.h:38,
+                 from ../lib/getopt.h:90,
+                 from test-getopt-gnu.c:30:
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+In file included from test-perror2.c:35:
+test-perror2.c: In function 'main':
+test-perror2.c:134:11: warning: 'fclose' called on unallocated object '__iob' [-Wfree-nonheap-object]
+  134 |   ASSERT (fclose (stderr) == 0);
+      |           ^~~~~~~~~~~~~~~
+macros.h:84:13: note: in definition of macro 'ASSERT'
+   84 |       if (!(expr))                                                           \
+      |             ^~~~
+In file included from /usr/include/stdio.h:83,
+                 from ../lib/stdio.h:55,
+                 from test-perror2.c:19:
+/usr/include/iso/stdio_iso.h:156:17: note: declared here
+  156 | extern __FILE   __iob[_NFILE];
+      |                 ^~~~~
+PASS: test-accept
+PASS: test-access
+PASS: test-alignasof
+PASS: test-alloca-opt
+PASS: test-arpa_inet-h
+PASS: test-array_list
+PASS: test-array_oset
+PASS: test-assert
+PASS: test-asyncsafe-spin1
+SKIP: test-asyncsafe-spin2
+PASS: test-avltree_oset
+PASS: test-binary-io.sh
+PASS: test-bind
+PASS: test-bitrotate
+PASS: test-bool
+PASS: test-btoc32-1.sh
+PASS: test-btoc32-2.sh
+PASS: test-btoc32-3.sh
+PASS: test-btowc-1.sh
+PASS: test-btowc-2.sh
+PASS: test-btowc-3.sh
+PASS: test-c-ctype
+PASS: test-c-stack.sh
+PASS: test-c-stack2.sh
+PASS: test-c-strcasecmp.sh
+PASS: test-c-strcasestr
+PASS: test-c-strncasecmp.sh
+PASS: test-c32isalnum.sh
+PASS: test-c32isalpha.sh
+PASS: test-c32isblank.sh
+PASS: test-c32iscntrl.sh
+PASS: test-c32isdigit.sh
+PASS: test-c32isgraph.sh
+PASS: test-c32islower.sh
+PASS: test-c32isprint.sh
+PASS: test-c32ispunct.sh
+PASS: test-c32isspace.sh
+PASS: test-c32isupper.sh
+PASS: test-c32isxdigit.sh
+PASS: test-c32rtomb.sh
+SKIP: test-c32rtomb-w32-2.sh
+SKIP: test-c32rtomb-w32-3.sh
+SKIP: test-c32rtomb-w32-4.sh
+SKIP: test-c32rtomb-w32-5.sh
+SKIP: test-c32rtomb-w32-6.sh
+SKIP: test-c32rtomb-w32-7.sh
+SKIP: test-c32rtomb-w32-8.sh
+PASS: test-c32tolower.sh
+PASS: test-c32width
+PASS: test-calloc-gnu
+PASS: test-calloc-posix
+PASS: test-canonicalize-lgpl
+PASS: test-canonicalize
+PASS: test-chdir
+PASS: test-cloexec
+PASS: test-close
+PASS: test-closein.sh
+PASS: test-connect
+PASS: test-creat
+PASS: test-ctype-h
+PASS: test-dirent-h
+PASS: test-dirfd
+PASS: test-dirname
+PASS: test-dup
+PASS: test-dup2
+PASS: test-environ
+PASS: test-errno-h
+PASS: test-error.sh
+PASS: test-execute.sh
+PASS: test-execute-script
+PASS: test-fchdir
+PASS: test-fclose
+PASS: test-fcntl-h
+PASS: test-fcntl
+PASS: test-fdopen
+PASS: test-fdopendir
+PASS: test-fflush
+PASS: test-fflush2.sh
+PASS: test-fgetc
+PASS: test-filenamecat
+PASS: test-float-h
+PASS: test-fopen-gnu
+PASS: test-fopen-safer
+PASS: test-fopen
+PASS: test-fpending.sh
+PASS: test-fpurge
+PASS: test-fputc
+PASS: test-fread
+PASS: test-freadahead.sh
+PASS: test-freading
+PASS: test-free
+PASS: test-freopen
+PASS: test-frexp-nolibm
+PASS: test-frexpl-nolibm
+PASS: test-fseek.sh
+PASS: test-fseek2.sh
+PASS: test-fseeko.sh
+PASS: test-fseeko2.sh
+PASS: test-fseeko3.sh
+PASS: test-fseeko4.sh
+PASS: test-fseterr
+PASS: test-fstat
+PASS: test-fstatat
+PASS: test-ftell.sh
+PASS: test-ftell2.sh
+PASS: test-ftell3
+PASS: test-ftello.sh
+PASS: test-ftello2.sh
+PASS: test-ftello3
+PASS: test-ftello4.sh
+PASS: test-ftruncate.sh
+PASS: test-funclib-quote.sh
+PASS: test-fwrite
+PASS: test-getcwd-lgpl
+PASS: test-getcwd.sh
+PASS: test-getdtablesize
+PASS: test-getopt-gnu
+PASS: test-getprogname
+PASS: test-getrandom
+PASS: test-gettext-h
+PASS: test-gettimeofday
+PASS: test-dynarray
+PASS: test-scratch-buffer
+PASS: test-hard-locale
+PASS: test-hash
+PASS: test-iconv-h
+PASS: test-iconv
+PASS: test-ignore-value
+PASS: test-inet_pton
+PASS: test-intprops
+PASS: test-inttostr
+PASS: test-inttypes-h
+PASS: test-ioctl
+PASS: test-isblank
+PASS: test-isnand-nolibm
+PASS: test-isnanf-nolibm
+PASS: test-isnanl-nolibm
+PASS: test-iswblank
+PASS: test-iswctype
+PASS: test-iswdigit.sh
+PASS: test-iswpunct.sh
+PASS: test-iswxdigit.sh
+PASS: test-langinfo-h
+PASS: test-largefile
+PASS: test-limits-h
+PASS: test-link
+PASS: test-linked_list
+PASS: test-linkedhash_list
+PASS: test-listen
+PASS: test-locale-h
+PASS: test-localeconv
+SKIP: test-localeconv-mt
+PASS: test-localename
+PASS: test-lseek.sh
+PASS: test-lstat
+PASS: test-malloc-gnu
+PASS: test-malloc-posix
+PASS: test-malloca
+PASS: test-math-h
+PASS: test-mbrtoc32-1.sh
+PASS: test-mbrtoc32-2.sh
+PASS: test-mbrtoc32-3.sh
+SKIP: test-mbrtoc32-4.sh
+PASS: test-mbrtoc32-5.sh
+SKIP: test-mbrtoc32-w32-2.sh
+SKIP: test-mbrtoc32-w32-3.sh
+SKIP: test-mbrtoc32-w32-4.sh
+SKIP: test-mbrtoc32-w32-5.sh
+SKIP: test-mbrtoc32-w32-6.sh
+SKIP: test-mbrtoc32-w32-7.sh
+SKIP: test-mbrtoc32-w32-8.sh
+PASS: test-mbrtowc-1.sh
+PASS: test-mbrtowc-2.sh
+PASS: test-mbrtowc-3.sh
+SKIP: test-mbrtowc-4.sh
+PASS: test-mbrtowc-5.sh
+SKIP: test-mbrtowc-w32-2.sh
+SKIP: test-mbrtowc-w32-3.sh
+SKIP: test-mbrtowc-w32-4.sh
+SKIP: test-mbrtowc-w32-5.sh
+SKIP: test-mbrtowc-w32-6.sh
+SKIP: test-mbrtowc-w32-7.sh
+SKIP: test-mbrtowc-w32-8.sh
+PASS: test-mbsinit.sh
+PASS: test-mbslen.sh
+PASS: test-mbsnlen.sh
+PASS: test-mbsstr1
+PASS: test-mbsstr2.sh
+PASS: test-mbsstr3.sh
+PASS: test-memchr
+PASS: test-memchr2
+PASS: test-memrchr
+PASS: test-memset_explicit
+PASS: test-mkdir
+PASS: test-nanosleep
+PASS: test-netinet_in-h
+PASS: test-next-prime
+PASS: test-nl_langinfo1.sh
+PASS: test-nl_langinfo2.sh
+SKIP: test-nl_langinfo-mt
+PASS: test-once1
+PASS: test-once2
+PASS: test-open
+PASS: test-openat
+PASS: test-option-parser.sh
+PASS: test-pathmax
+PASS: test-perror.sh
+PASS: test-perror2
+PASS: test-pipe
+PASS: test-pipe2
+PASS: test-posix_spawn-open1
+PASS: test-posix_spawn-open2
+PASS: test-posix_spawn-inherit0
+PASS: test-posix_spawn-inherit1
+PASS: test-posix_spawn-script
+PASS: test-posix_spawn_file_actions_addchdir
+PASS: test-posix_spawn-chdir
+PASS: test-posix_spawn_file_actions_addclose
+PASS: test-posix_spawn_file_actions_adddup2
+PASS: test-posix_spawn_file_actions_addopen
+PASS: test-posix_spawn-dup2-stdout
+PASS: test-posix_spawn-dup2-stdin
+PASS: test-posix_spawnp-script
+PASS: test-printf-frexp
+PASS: test-printf-frexpl
+PASS: test-pselect
+SKIP: test-pthread-cond
+PASS: test-pthread
+SKIP: test-pthread-mutex
+PASS: test-pthread-mutex-type
+PASS: test-pthread-once1
+SKIP: test-pthread-once2
+SKIP: test-pthread-rwlock
+PASS: test-pthread-thread
+PASS: test-pthread_sigmask1
+SKIP: test-pthread_sigmask2
+PASS: test-putenv
+PASS: test-quotearg-simple
+PASS: test-raise
+PASS: test-random
+SKIP: test-random-mt
+PASS: test-random_r
+PASS: test-rawmemchr
+PASS: test-read-file
+PASS: test-readlink
+PASS: test-realloc-posix
+PASS: test-reallocarray
+PASS: test-regex
+PASS: test-rename
+PASS: test-rmdir
+PASS: test-sched-h
+PASS: test-select
+PASS: test-select-in.sh
+PASS: test-select-out.sh
+PASS: test-setenv
+PASS: test-setlocale_null
+SKIP: test-setlocale_null-mt-one
+SKIP: test-setlocale_null-mt-all
+PASS: test-setlocale_null-unlocked
+PASS: test-setlocale1.sh
+PASS: test-setlocale2.sh
+SKIP: test-setlocale-w32
+PASS: test-setsockopt
+PASS: test-sigaction
+PASS: test-signal-h
+PASS: test-signbit
+PASS: test-sigpipe.sh
+PASS: test-sigprocmask
+PASS: test-sigsegv-catch-segv1
+PASS: test-sigsegv-catch-segv2
+PASS: test-sigsegv-catch-stackoverflow1
+PASS: test-sigsegv-catch-stackoverflow2
+PASS: test-sleep
+PASS: test-snprintf
+PASS: test-sockets
+PASS: test-spawn-h
+PASS: test-spawn-pipe.sh
+PASS: test-spawn-pipe-script
+PASS: test-stat
+PASS: test-stat-time
+PASS: test-stdckdint-h
+PASS: test-stddef-h
+PASS: test-stdint-h
+PASS: test-stdio-h
+PASS: test-stdlib-h
+PASS: test-str_endswith
+PASS: test-str_startswith
+PASS: test-strchrnul
+PASS: test-strerror
+PASS: test-strerror_r
+PASS: test-striconv
+PASS: test-string-h
+PASS: test-strnlen
+PASS: test-strsignal
+PASS: test-strstr
+PASS: test-strtod
+PASS: test-strtod1.sh
+PASS: test-symlink
+PASS: test-sys_ioctl-h
+PASS: test-sys_random-h
+PASS: test-sys_select-h
+PASS: test-sys_socket-h
+PASS: test-sys_stat-h
+PASS: test-sys_time-h
+PASS: test-sys_types-h
+PASS: test-sys_uio-h
+PASS: test-sys_wait-h
+PASS: test-init.sh
+PASS: test-thread_self
+SKIP: test-thread_create
+PASS: test-time-h
+PASS: test-time
+PASS: test-trim1.sh
+PASS: test-trim2.sh
+PASS: test-trim3.sh
+PASS: test-uchar-h
+PASS: test-uc_tolower
+PASS: test-ctype_alnum
+PASS: test-ctype_alpha
+PASS: test-ctype_blank
+PASS: test-ctype_cntrl
+PASS: test-ctype_digit
+PASS: test-ctype_graph
+PASS: test-ctype_lower
+PASS: test-ctype_print
+PASS: test-ctype_punct
+PASS: test-ctype_space
+PASS: test-ctype_upper
+PASS: test-ctype_xdigit
+PASS: test-unistd-h
+PASS: test-dup-safer
+PASS: test-u8-mbtoucr
+PASS: test-u8-uctomb
+PASS: test-uc_width
+PASS: uniwidth/test-uc_width2.sh
+PASS: test-unsetenv
+PASS: test-update-copyright.sh
+PASS: test-vasnprintf
+PASS: test-vasprintf-posix
+PASS: test-vasprintf
+PASS: test-vc-list-files-git.sh
+SKIP: test-vc-list-files-cvs.sh
+PASS: test-verify
+PASS: test-verify.sh
+PASS: test-verror.sh
+PASS: test-version-etc.sh
+PASS: test-wchar-h
+PASS: test-wcrtomb.sh
+SKIP: test-wcrtomb-w32-2.sh
+SKIP: test-wcrtomb-w32-3.sh
+SKIP: test-wcrtomb-w32-4.sh
+SKIP: test-wcrtomb-w32-5.sh
+SKIP: test-wcrtomb-w32-6.sh
+SKIP: test-wcrtomb-w32-7.sh
+SKIP: test-wcrtomb-w32-8.sh
+PASS: test-wctype-h
+PASS: test-wctype
+PASS: test-wcwidth
+SKIP: test-windows-mutex-type
+SKIP: test-windows-recmutex-type
+SKIP: test-windows-timedmutex-type
+SKIP: test-windows-timedrecmutex-type
+PASS: test-write
+PASS: test-xalloc-die.sh
+PASS: test-xmemdup0
+PASS: test-xvasprintf
+============================================================================
+Testsuite summary for GNU M4 1.4.20
+============================================================================
+# TOTAL: 366
+# PASS:  318
+# SKIP:  48
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================

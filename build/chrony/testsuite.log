@@ -13,7 +13,7 @@ Testing ntp_sources                    PASS
 Testing nts_ke_client                  SKIP (on line 193)
 Testing nts_ke_server                  SKIP (on line 238)
 Testing nts_ke_session                 SKIP (on line 239)
-Testing nts_ntp_auth                   SKIP (on line 133)
+Testing nts_ntp_auth                   SKIP (on line 162)
 Testing nts_ntp_client                 SKIP (on line 308)
 Testing nts_ntp_server                 SKIP (on line 178)
 Testing quantiles                      PASS

@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=oqs-provider
-VER=0.8.0
+VER=0.9.0
 PKG=library/security/oqs-provider
 SUMMARY="$PROG"
 DESC="Open Quantum Safe provider for OpenSSL (3.x)"

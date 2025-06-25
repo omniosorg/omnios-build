@@ -12,9 +12,9 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.18.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3490200		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3500100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
-| developer/build/automake		| 1.17			| https://ftp.gnu.org/gnu/automake/
+| developer/build/automake		| 1.18			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.5.4			| https://www.gnu.org/software/libtool/
 | developer/dtc				| 1.7.2			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
@@ -23,11 +23,11 @@
 | developer/gcc13			| 13.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
-| developer/macro/gnu-m4		| 1.4.19		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
+| developer/macro/gnu-m4		| 1.4.20		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
 | developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.49.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.50.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 7.0.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -54,16 +54,15 @@
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.1		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.65.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nss				| 3.111			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| library/nghttp2			| 1.66.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.36			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.45			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.2.13		| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
-| library/security/liboqs		| 0.12.0		| https://github.com/open-quantum-safe/liboqs/releases
+| library/security/liboqs		| 0.13.0		| https://github.com/open-quantum-safe/liboqs/releases
 | library/security/openssl-3		| 3.5.0			| https://www.openssl.org/source/
-| library/security/oqs-provider		| 0.8.0			| https://github.com/open-quantum-safe/oqs-provider/releases
+| library/security/oqs-provider		| 0.9.0			| https://github.com/open-quantum-safe/oqs-provider/releases
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
@@ -74,7 +73,7 @@
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.0.3		| http://www.dest-unreach.org/socat/download/
-| network/test/iperf			| 3.18			| https://github.com/esnet/iperf/releases
+| network/test/iperf			| 3.19			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.27+6		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.15+6		| https://github.com/openjdk/jdk17u/tags
@@ -83,9 +82,9 @@
 | runtime/perl				| 5.40.2		| https://www.cpan.org/src/README.html
 | runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.10		| https://www.python.org/downloads/source/
-| runtime/python-313			| 3.13.3		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.5		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.16p2		| https://www.sudo.ws/
-| service/network/chrony		| 4.6.1			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
+| service/network/chrony		| 4.7			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.4			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
@@ -98,6 +97,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
+| system/library/mozilla-nss		| 3.113			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.5		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -105,7 +105,7 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.13.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2504.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2506.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.40			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.5			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
@@ -114,12 +114,12 @@
 | text/gawk				| 5.3.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.25			| https://ftp.gnu.org/pub/gnu/gettext/
-| text/gnu-grep				| 3.11			| https://ftp.gnu.org/gnu/grep/
-| text/gnu-patch			| 2.7.6			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
+| text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
+| text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
-| text/less				| 678			| http://www.greenwoodsoftware.com/less/download.html
-| web/curl				| 8.14.0		| https://curl.haxx.se/download.html
+| text/less				| 679			| http://www.greenwoodsoftware.com/less/download.html
+| web/curl				| 8.14.1		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.82.5		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable

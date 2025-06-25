@@ -1,4 +1,3 @@
-  GEN      public-submodule-commit
 Making check in lib
 Making check in src
 Making check in tests
@@ -17,6 +16,7 @@ PASS: criss-cross
 SKIP: crlf-handling
 XFAIL: dash-o-append
 PASS: deep-directories
+PASS: ed-style
 PASS: empty-files
 PASS: false-match
 PASS: fifo
@@ -27,6 +27,7 @@ PASS: git-binary-diff
 PASS: git-cleanup
 PASS: garbage
 PASS: global-reject-files
+PASS: hardlinks
 PASS: inname
 PASS: line-numbers
 SKIP: merge
@@ -34,24 +35,27 @@ PASS: mangled-numbers-abort
 PASS: mixed-patch-types
 PASS: munged-context-format
 PASS: need-filename
+PASS: no-backup
 PASS: no-mode-change-git-diff
 PASS: no-newline-triggers-assert
-SKIP: preserve-c-function-names
+PASS: preserve-c-function-names
 PASS: preserve-mode-and-timestamp
 PASS: quoted-filenames
 PASS: read-only-files
-SKIP: reject-format
+PASS: regression-abe92e8010ab
+PASS: reject-format
 PASS: remember-backup-files
 PASS: remember-reject-files
 PASS: remove-directories
 PASS: symlinks
 PASS: unmodified-files
+PASS: unusual-blanks
 ============================================================================
-Testsuite summary for GNU patch 2.7.6
+Testsuite summary for GNU patch 2.8
 ============================================================================
-# TOTAL: 44
-# PASS:  38
-# SKIP:  4
+# TOTAL: 49
+# PASS:  45
+# SKIP:  2
 # XFAIL: 2
 # FAIL:  0
 # XPASS: 0
