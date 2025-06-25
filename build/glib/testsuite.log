@@ -1,8 +1,12 @@
 glib:fuzzing / fuzz_bookmark                                           OK
 glib:fuzzing / fuzz_canonicalize_filename                              OK
+glib:fuzzing / fuzz_data_input_stream_read_line                        OK
+glib:fuzzing / fuzz_data_input_stream_read_line_utf8                   OK
+glib:fuzzing / fuzz_data_input_stream_read_upto                        OK
 glib:fuzzing / fuzz_date_parse                                         OK
 glib:fuzzing / fuzz_date_time_new_from_iso8601                         OK
 glib:fuzzing / fuzz_dbus_message                                       OK
+glib:fuzzing / fuzz_get_locale_variants                                OK
 glib:fuzzing / fuzz_inet_address_mask_new_from_string                  OK
 glib:fuzzing / fuzz_inet_address_new_from_string                       OK
 glib:fuzzing / fuzz_inet_socket_address_new_from_string                OK
@@ -11,6 +15,7 @@ glib:fuzzing / fuzz_network_address_parse                              OK
 glib:fuzzing / fuzz_network_address_parse_uri                          OK
 glib:fuzzing / fuzz_paths                                              OK
 glib:fuzzing / fuzz_resolver                                           OK
+glib:fuzzing / fuzz_string                                             OK
 glib:fuzzing / fuzz_uri_escape                                         OK
 glib:fuzzing / fuzz_uri_parse                                          OK
 glib:fuzzing / fuzz_uri_parse_params                                   OK
@@ -28,18 +33,18 @@ glib:gio / async-splice-output-stream                                  OK   5 su
 glib:gio / autoptr-gio                                                 OK   1 subtests passed
 glib:gio / buffered-input-stream                                       OK   10 subtests passed
 glib:gio / buffered-output-stream                                      OK   5 subtests passed
-glib:gio / cancellable                                                 OK   9 subtests passed
+glib:gio / cancellable                                                 OK   17 subtests passed
 glib:gio / contenttype                                                 OK   3 subtests passed
 glib:gio / contexts                                                    OK   5 subtests passed
-glib:gio / converter                                                   OK   1 subtests passed
-glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
+glib:gio / converter                                                   OK   2 subtests passed
+glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
 glib:gio / credentials                                                 OK   1 subtests passed
 glib:gio / data-input-stream                                           OK   10 subtests passed
 glib:gio / data-output-stream                                          OK   7 subtests passed
 glib:gio / desktop-app-info                                            OK   49 subtests passed
 glib:gio / error                                                       OK   2 subtests passed
-glib:gio / file                                                        OK   41 subtests passed
-glib:gio / file-thumbnail                                              OK   7 subtests passed
+glib:gio / file                                                        ERROR   killed by signal 6 SIGABRT
+glib:gio / file-thumbnail                                              ERROR   killed by signal 6 SIGABRT
 glib:gio / fileattributematcher                                        OK   3 subtests passed
 glib:gio / filter-streams                                              OK   4 subtests passed
 glib:gio / g-file                                                      OK   8 subtests passed
@@ -61,10 +66,10 @@ glib:gio / glistmodel                                                  OK   18 s
 glib:gio / gschema-compile                                             OK   82 subtests passed
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsocketclient-slow                                          OK   4 subtests passed
-glib:gio / gsubprocess                                                 OK   82 subtests passed
+glib:gio / gsubprocess                                                 OK   83 subtests passed
 glib:gio / inet-address                                                OK   11 subtests passed
 glib:gio / io-stream                                                   OK   3 subtests passed
-glib:gio / live-g-file                                                 OK   12 subtests passed
+glib:gio / live-g-file                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / max-version                                                 OK   1 subtests passed
 glib:gio / memory-input-stream                                         OK   6 subtests passed
 glib:gio / memory-monitor                                              OK   1 subtests passed
@@ -82,7 +87,7 @@ glib:gio / power-profile-monitor                                       OK   1 su
 glib:gio / proxy-test                                                  OK   11 subtests passed
 glib:gio / readwrite                                                   OK   3 subtests passed
 glib:gio / resolver-parsing                                            OK   21 subtests passed
-glib:gio / resources                                                   OK   16 subtests passed
+glib:gio / resources                                                   OK   18 subtests passed
 glib:gio / sandbox                                                     OK   4 subtests passed
 glib:gio / simple-async-result                                         OK   2 subtests passed
 glib:gio / simple-proxy                                                OK   3 subtests passed
@@ -126,6 +131,7 @@ glib:gio+portal-support / portal-support-flatpak-none                  OK   1 su
 glib:gio+portal-support / portal-support-none                          OK   1 subtests passed
 glib:gio+portal-support / portal-support-snap                          OK   7 subtests passed
 glib:gio+portal-support / portal-support-snap-classic                  OK   3 subtests passed
+glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 glib:girepository+core / cmph-bdz                                      OK   2 subtests passed
 glib:girepository+core / dump                                          OK   4 subtests passed
 glib:girepository+core / gthash                                        OK   1 subtests passed
@@ -184,7 +190,7 @@ glib:glib+core / node                                                  OK   6 su
 glib:glib+core / once                                                  OK   5 subtests passed
 glib:glib+core / onceinit                                              OK   1 subtests passed
 glib:glib+core / option-argv0                                          OK   1 subtests passed
-glib:glib+core / option-context                                        OK   57 subtests passed
+glib:glib+core / option-context                                        OK   58 subtests passed
 glib:glib+core / overflow                                              OK   6 subtests passed
 glib:glib+core / overflow-fallback                                     OK   6 subtests passed
 glib:glib+core / pathbuf                                               OK   3 subtests passed
@@ -197,7 +203,7 @@ glib:glib+core / rcbox                                                 OK   8 su
 glib:glib+core / rec-mutex                                             OK   29 subtests passed
 glib:glib+core / refcount                                              OK   4 subtests passed
 glib:glib+core / refcount-macro                                        OK   4 subtests passed
-glib:glib+core / refstring                                             OK   6 subtests passed
+glib:glib+core / refstring                                             OK   8 subtests passed
 glib:glib+core / regex                                                 OK   848 subtests passed
 glib:glib+core / relation                                              OK   1 subtests passed
 glib:glib+core / rwlock                                                OK   8 subtests passed
@@ -211,11 +217,12 @@ glib:glib+core / spawn-multithreaded                                   OK   4 su
 glib:glib+core / spawn-path-search                                     OK   7 subtests passed
 glib:glib+core / spawn-singlethread                                    OK   9 subtests passed
 glib:glib+core / spawn-test                                            OK   2 subtests passed
-glib:glib+core / strfuncs                                              OK   50 subtests passed
+glib:glib+core / strfuncs                                              OK   51 subtests passed
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / strvbuilder                                           OK   7 subtests passed
 glib:glib+core / test-printf                                           OK   20 subtests passed
 glib:glib+core / testing                                               OK   43 subtests passed
+glib:glib+core / testing-nonfatal                                      OK
 glib:glib+core / thread                                                OK   6 subtests passed
 glib:glib+core / thread-deprecated                                     OK   6 subtests passed
 glib:glib+core / thread-pool                                           OK   5 subtests passed
@@ -231,8 +238,8 @@ glib:glib+core / uri                                                   OK   24 s
 glib:glib+core / utf8-misc                                             OK   7 subtests passed
 glib:glib+core / utf8-performance                                      OK   36 subtests passed
 glib:glib+core / utf8-pointer                                          OK   3 subtests passed
-glib:glib+core / utf8-validate                                         OK   216 subtests passed
-glib:glib+core / utils                                                 OK   40 subtests passed
+glib:glib+core / utf8-validate                                         OK   238 subtests passed
+glib:glib+core / utils                                                 OK   41 subtests passed
 glib:glib+core / utils-isolated                                        OK   11 subtests passed
 glib:glib+core+cc / atomic-c-11                                        OK   2 subtests passed
 glib:glib+core+cc / atomic-c-17                                        OK   2 subtests passed
@@ -242,26 +249,26 @@ glib:glib+core+cc / macros-c-11                                        OK   4 su
 glib:glib+core+cc / macros-c-17                                        OK   4 subtests passed
 glib:glib+core+cc / macros-c-89                                        OK   4 subtests passed
 glib:glib+core+cc / macros-c-99                                        OK   4 subtests passed
-glib:glib+core+cc / utils-c-11                                         OK   40 subtests passed
-glib:glib+core+cc / utils-c-17                                         OK   40 subtests passed
-glib:glib+core+cc / utils-c-89                                         OK   40 subtests passed
-glib:glib+core+cc / utils-c-99                                         OK   40 subtests passed
-glib:glib+core+cpp / cxx                                               OK   21 subtests passed
+glib:glib+core+cc / utils-c-11                                         OK   41 subtests passed
+glib:glib+core+cc / utils-c-17                                         OK   41 subtests passed
+glib:glib+core+cc / utils-c-89                                         OK   41 subtests passed
+glib:glib+core+cc / utils-c-99                                         OK   41 subtests passed
+glib:glib+core+cpp / cxx                                               OK   22 subtests passed
 glib:glib+core+cpp / cxx-03                                            OK   22 subtests passed
 glib:glib+core+cpp / cxx-11                                            OK   22 subtests passed
-glib:glib+core+cpp / cxx-14                                            OK   22 subtests passed
-glib:glib+core+cpp / cxx-17                                            OK   22 subtests passed
-glib:glib+core+cpp / cxx-20                                            OK   22 subtests passed
-glib:glib+core+cpp / cxx-2b                                            OK   21 subtests passed
+glib:glib+core+cpp / cxx-14                                            OK   23 subtests passed
+glib:glib+core+cpp / cxx-17                                            OK   23 subtests passed
+glib:glib+core+cpp / cxx-20                                            OK   23 subtests passed
+glib:glib+core+cpp / cxx-2b                                            OK   22 subtests passed
 glib:glib+core+cpp / cxx-98                                            OK   22 subtests passed
-glib:glib+core+no-valgrind / assert-msg-test.py                        ERROR   exit status 1
+glib:glib+core+no-valgrind / assert-msg-test.py                        OK   2 subtests passed
 glib:glib+core+no-valgrind / messages-low-memory.py                    OK   1 subtests passed
 glib:glib+core+no-valgrind+pkg-config / glib-2.0-pkg-config            OK
 glib:glib+core+slow / 1bit-emufutex                                    OK   2 subtests passed
 glib:glib+core+slow / 642026                                           OK   1 subtests passed
 glib:glib+core+slow / 642026-ec                                        OK   1 subtests passed
 glib:glib+core+slow / gdatetime                                        OK   58 subtests passed
-glib:glib+core+slow / gvariant                                         OK   64 subtests passed
+glib:glib+core+slow / gvariant                                         OK   69 subtests passed
 glib:glib+core+slow / sequence                                         OK   16 subtests passed
 glib:glib+core+slow / thread-pool-slow                                 OK   7 subtests passed
 glib:gmodule / max-version                                             OK   1 subtests passed
@@ -303,7 +310,7 @@ glib:gobject / object                                                  OK   2 su
 glib:gobject / objects-refcount1                                       OK   1 subtests passed
 glib:gobject / override                                                OK   1 subtests passed
 glib:gobject / param                                                   OK   31 subtests passed
-glib:gobject / properties                                              OK   13 subtests passed
+glib:gobject / properties                                              OK   14 subtests passed
 glib:gobject / properties-introspection                                OK   2 subtests passed
 glib:gobject / properties-refcount1                                    OK   1 subtests passed
 glib:gobject / properties-refcount4                                    OK   1 subtests passed
@@ -355,15 +362,18 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
-glib:glib+core+no-valgrind / assert-msg-test.py                        ERROR   exit status 1
-glib:gio / converter-stream                                            ERROR   killed by signal 11 SIGSEGV
+glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
+glib:gio / file-thumbnail                                              ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
+glib:gio / file                                                        ERROR   killed by signal 6 SIGABRT
 glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio / live-g-file                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 333 
+Ok:                 337 
 Expected Fail:      0   
-Fail:               10  
+Fail:               13  
 Unexpected Pass:    0   
 Skipped:            6   
 Timeout:            0   

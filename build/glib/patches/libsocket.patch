@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/tests/meson.build
 --- a~/gio/tests/meson.build	1970-01-01 00:00:00
 +++ a/gio/tests/meson.build	1970-01-01 00:00:00
-@@ -109,7 +109,11 @@ gio_tests = {
+@@ -106,7 +106,11 @@ gio_tests = {
    'memory-output-stream' : {},
    'memory-settings-backend' : {},
    'mount-operation' : {},
@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
    'network-monitor' : {},
    'network-monitor-race' : {},
    'null-settings-backend' : {},
-@@ -129,6 +133,8 @@ gio_tests = {
+@@ -126,6 +130,8 @@ gio_tests = {
      # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/1392
      # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/3148
      'can_fail' : host_system in ['darwin', 'gnu'],
@@ -23,7 +23,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
    },
    'socket-listener' : {},
    'socket-service' : {},
-@@ -143,7 +149,10 @@ gio_tests = {
+@@ -144,7 +150,10 @@ gio_tests = {
    'tls-interaction' : {'extra_sources' : ['gtesttlsbackend.c']},
    'tls-database' : {'extra_sources' : ['gtesttlsbackend.c']},
    'tls-bindings' : {'extra_sources' : ['gtesttlsbackend.c']},
@@ -35,7 +35,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
    'gdbus-address-get-session' : {
      'extra_programs': host_system != 'windows' ? ['dbus-launch'] : [],
      # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/1392
-@@ -257,7 +266,10 @@ if host_machine.system() != 'windows'
+@@ -260,7 +269,10 @@ if host_machine.system() != 'windows'
        # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/3148
        'can_fail' : host_system == 'gnu',
      },
@@ -47,7 +47,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
      'gdbus-sasl' : {},
      'live-g-file' : {},
      'portal-support-flatpak-none' : {
-@@ -304,6 +316,8 @@ if host_machine.system() != 'windows'
+@@ -307,6 +319,8 @@ if host_machine.system() != 'windows'
      'stream-rw_all' : {
        # FIXME: https://gitlab.gnome.org/GNOME/glib/-/issues/3148
        'can_fail' : host_system == 'gnu',
@@ -56,7 +56,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/meson.build a/gio/t
      },
      'unix-mounts' : {},
      'unix-streams' : {},
-@@ -576,8 +590,8 @@ if host_machine.system() != 'windows'
+@@ -606,8 +620,8 @@ if host_machine.system() != 'windows'
  
    # This test is currently unreliable
    executable('gdbus-overflow', 'gdbus-overflow.c',
