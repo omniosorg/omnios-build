@@ -1,4 +1,4 @@
-From 6f9f97ad4717f3f472c6dc8934fd30a7177babcf Mon Sep 17 00:00:00 2001
+From ccbeb2c2e07b1acab607ec4322e74e54527a88ee Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 25 Oct 2018 18:19:36 +0000
 Subject: We never want to omit the frame pointer, regardless of
@@ -11,10 +11,10 @@ Subject: We never want to omit the frame pointer, regardless of
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index 6148128eee83..62ee2f4aec2e 100644
+index 369991629c86..739100e0b2e1 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
-@@ -3004,6 +3004,15 @@ ix86_option_override_internal (bool main_args_p,
+@@ -3033,6 +3033,15 @@ ix86_option_override_internal (bool main_args_p,
        free (str);
      }
  

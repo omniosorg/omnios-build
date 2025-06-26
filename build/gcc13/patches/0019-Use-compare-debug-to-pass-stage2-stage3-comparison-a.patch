@@ -1,4 +1,4 @@
-From 61a7dcbb8512cd4a9e953596a4676dfe580a07af Mon Sep 17 00:00:00 2001
+From 663718f34030aa06dd22f78c31e213541eaa706f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Aur=C3=A9lien=20Larcher?= <aurelien.larcher@gmail.com>
 Date: Thu, 25 Oct 2018 20:59:37 +0200
 Subject: Use compare-debug to pass stage2/stage3 comparison as

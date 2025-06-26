@@ -20,7 +20,7 @@
 | developer/dtc				| 1.7.2			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
-| developer/gcc13			| 13.3			| https://ftp.gnu.org/gnu/gcc/
+| developer/gcc13			| 13.4			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.20		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
@@ -83,7 +83,7 @@
 | runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
 | runtime/python-312			| 3.12.10		| https://www.python.org/downloads/source/
 | runtime/python-313			| 3.13.5		| https://www.python.org/downloads/source/
-| security/sudo				| 1.9.16p2		| https://www.sudo.ws/
+| security/sudo				| 1.9.17		| https://www.sudo.ws/
 | service/network/chrony		| 4.7			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.4			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
