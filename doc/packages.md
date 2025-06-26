@@ -20,7 +20,7 @@
 | developer/dtc				| 1.7.2			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
-| developer/gcc13			| 13.3			| https://ftp.gnu.org/gnu/gcc/
+| developer/gcc13			| 13.4			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.20		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
