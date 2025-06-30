@@ -13,14 +13,14 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 # Copyright 2023 Richard Lowe <richlowe@richlowe.net>
 
 . ../../lib/build.sh
 
 PKG=developer/gcc14
 PROG=gcc
-VER=14.2.0
+VER=14.3.0
 ILVER=il-1
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"
@@ -76,7 +76,7 @@ export LD_FOR_BUILD=/opt/cross/$ARCH/bin/ld
 export LD_FOR_TARGET=/bin/ld
 export AS_FOR_BUILD=/opt/cross/$ARCH/bin/$TRIPLET-as
 export CFLAGS_FOR_TARGET="-mtls-dialect=trad"
-export CXXFLAGS_FOR_TARGET="-mtls-dialect=trad"
+export CXXFLAGS_FOR_TARGET="-mno-outline-atomics -mtls-dialect=trad"
 export STRIP="/usr/bin/strip -x"
 export STRIP_FOR_TARGET="$STRIP"
 
