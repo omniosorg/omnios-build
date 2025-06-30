@@ -34,6 +34,9 @@ CONFIGURE_OPTS+="
     --disable-static
     --without-python
     --with-legacy
+    --with-lzma
+    --with-zlib
+    --with-http
 "
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
