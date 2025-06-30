@@ -1,3 +1,4 @@
 audit-event.patch
 Makefile.in.patch
 mansections.patch
+CVE-2025-32462.patch
