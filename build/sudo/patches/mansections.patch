@@ -4,7 +4,7 @@ Solaris/illumos scheme. Adjust sudo to suit.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1800,9 +1800,9 @@ case "$host" in
+@@ -1806,9 +1806,9 @@ case "$host" in
  		AS_IF([test "$with_AFS" = "yes"], [
  		    AFS_LIBS="-lc -lucb"
  		])
