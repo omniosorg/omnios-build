@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052ai (2025-07-03)
+Weekly release for w/c 30th of June 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* `openssl` has been updated to version 3.3.4, fixing a low severity CVE.
+
+* `sudo` has been updated to version 1.9.17p1, fixing two CVEs.
+
+### Other Changes
+
+* [ed(1)](https://man.omnios.org/man1/ed) would segfault when asked to write
+  an empty file.
+
+<br>
+
+---
+
 ## r151052ae (2025-06-04)
 Weekly release for w/c 2nd of June 2025.
 > This update requires a reboot
