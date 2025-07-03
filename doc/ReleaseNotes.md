@@ -4,38 +4,6 @@
 
 # Release Notes for OmniOSce v11 r151054
 
-## r151054i (2025-07-03)
-Weekly release for w/c 30th of June 2025.
-> This update requires a reboot
-
-### Security Fixes
-
-* `openssl` has been updated to version 3.5.1, fixing a low severity CVE.
-
-* `sudo` has been updated to version 1.9.17p1, fixing two CVEs.
-
-### Other Changes
-
-* The behaviour of the `FD_CLOFORK` flag (introduced in r151054) has been
-  changed so that the flag is unset on file descriptors upon exec(1). This is
-  a deviation from the POSIX standard but the change has been made on a number
-  of operating systems including \*BSD and Solaris - see
-  https://austingroupbugs.net/view.php?id=1851
-
-* It was not possible to install an lx zone if the darwinsys `file` command
-  was installed and selected via mediator.
-
-* [pkg(1)](https://man.omnios.org/man1/pkg) honours a new environment variable
-  `PKG_SUCCESS_ON_NOP` that causes it to exit with a status code of 0 instead
-  of 4 when no changes are necessary to satisfy the proposed plan.
-
-* [ed(1)](https://man.omnios.org/man1/ed) would segfault when asked to write
-  an empty file.
-
-<br>
-
----
-
 ## r151054e (2025-06-04)
 Weekly release for w/c 2nd of June 2025.
 > This update requires a reboot
