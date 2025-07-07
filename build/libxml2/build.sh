@@ -33,7 +33,6 @@ RUN_DEPENDS_IPS="compress/xz library/zlib"
 CONFIGURE_OPTS+="
     --disable-static
     --without-python
-    --with-legacy
 "
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
@@ -47,7 +46,8 @@ prep_build
 pre_build() { ! cross_arch $1; }
 
 # Build previous versions
-save_variables BUILDDIR EXTRACTED_SRC
+save_variables BUILDDIR EXTRACTED_SRC CONFIGURE_OPTS
+CONFIGURE_OPTS+=" --with-legacy"
 for pver in $PVERS; do
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
@@ -55,7 +55,7 @@ for pver in $PVERS; do
     patch_source patches-${pver%%.*}
     ((EXTRACT_MODE == 0)) && build
 done
-restore_variables BUILDDIR EXTRACTED_SRC
+restore_variables BUILDDIR EXTRACTED_SRC CONFIGURE_OPTS
 unset -f pre_build
 
 note -n "Building current version: $VER"
