@@ -1,8 +1,7 @@
-diff --git a/C/CpuArch.c b/C/CpuArch.c
-index 2560f90..d8aaf59 100755
---- a/C/CpuArch.c
-+++ b/C/CpuArch.c
-@@ -854,6 +854,25 @@ BoolInt CPU_IsSupported_SHA1(void) { return APPLE_CRYPTO_SUPPORT_VAL; }
+diff -wpruN --no-dereference '--exclude=*.orig' a~/C/CpuArch.c a/C/CpuArch.c
+--- a~/C/CpuArch.c	1970-01-01 00:00:00
++++ a/C/CpuArch.c	1970-01-01 00:00:00
+@@ -854,6 +854,25 @@ BoolInt CPU_IsSupported_SHA1(void) { ret
  BoolInt CPU_IsSupported_SHA2(void) { return APPLE_CRYPTO_SUPPORT_VAL; }
  BoolInt CPU_IsSupported_AES (void) { return APPLE_CRYPTO_SUPPORT_VAL; }
  

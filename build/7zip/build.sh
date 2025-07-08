@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=7zip
-VER=24.09
+VER=25.00
 PKG=compress/7zip
 SUMMARY="The 7-Zip compression and archiving utility"
 DESC="7-Zip is a file archiver with a high compression ratio"

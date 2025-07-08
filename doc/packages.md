@@ -1,7 +1,7 @@
 | Package | Version | Link | Notes |
 | :------ | :------ | :--- | :---- |
 | archiver/gnu-tar			| 1.35			| https://ftp.gnu.org/gnu/tar/ https://www.gnu.org/software/tar/
-| compress/7zip				| 24.09			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
+| compress/7zip				| 25.00			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.1.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
@@ -103,7 +103,7 @@
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.4			| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
-| system/pciutils			| 3.13.0		| https://www.kernel.org/pub/software/utils/pciutils/
+| system/pciutils			| 3.14.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2506.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
