@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  in interactively.
 -The default is
 -.Cm yes .
-+On OmniOS this option is always ignored since pam_unix_session(7)
++On Helios this option is always ignored since pam_unix_session(7)
 +reports the last login time.
  .It Cm PrintMotd
  Specifies whether

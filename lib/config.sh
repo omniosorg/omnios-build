@@ -64,16 +64,16 @@ LC_TIME=C;      export LC_TIME
 SUNOSVER=`uname -r`
 
 # Default branch
-RELVER=151054
+RELVER=3
 DASHREV=0
 PVER=$RELVER.$DASHREV
 
-DISTRO=OmniOS
+DISTRO=Helios
 DISTRO_LC=${DISTRO,,}
-DISTRO_LONG="OmniOS Community Edition"
-HOMEURL=https://omnios.org
+DISTRO_LONG="Oxide Helios"
+HOMEURL=https://oxide.computer
 # Default package publisher
-PKGPUBLISHER=omnios
+PKGPUBLISHER=helios-dev
 
 # Supported architectures, and the default set.
 ARCH_LIST="i386 amd64 aarch64"
@@ -107,18 +107,7 @@ MIRROR=$SRCMIRROR
 
 # The production IPS repository for this branch (may be overridden in site.sh)
 # Used for package contents diffing.
-if [ $((RELVER % 2)) == 0 ]; then
-    IPS_REPO=https://pkg.omnios.org/r$RELVER/core
-else
-    IPS_REPO=https://pkg.omnios.org/bloody/core
-    IPS_REPOS=(
-        [$NATIVE_ARCH]=$IPS_REPO
-        [aarch64]=https://pkg.omnios.org/bloody/braich
-    )
-    IPS_MIRRORS=(
-        [aarch64]=https://us-west.mirror.omnios.org/bloody/braich
-    )
-fi
+IPS_REPO=https://pkg.oxide.computer/helios/$RELVER/dev
 
 ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.lz tar.gz tgz tar zip"
 

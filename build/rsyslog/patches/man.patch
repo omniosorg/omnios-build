@@ -17,7 +17,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/tools/rsyslog.conf.5 a/tools/
  
  .TP
 +.I imsolaris
-+Input module for Solaris/illumos/OmniOS kernel logging.
++Input module for Solaris/illumos/Helios kernel logging.
 +.TP
  .I omsnmp
  SNMP trap output module

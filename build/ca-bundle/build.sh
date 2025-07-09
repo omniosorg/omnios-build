@@ -28,7 +28,6 @@ NSSVER="`grep '^VER=' $nsbuild | sed 's/.*=//;q'`"
 MAKECAVER=0.6
 
 DESC="Root CA certificates extracted from mozilla-nss $NSSVER source"
-DESC+=", plus $DISTRO CA cert."
 
 # Continue using the JDK 1.8 keytool to generate the java key store, as long
 # as we continue to ship Java 1.8
@@ -98,23 +97,6 @@ make_install() {
     logmsg "Re-hashing certificates"
     logcmd openssl rehash -v . || logerr "rehash failed"
     popd >/dev/null
-
-    # Install the OmniOS CA certs, to be used by pkg(1)
-    logmsg "Installing $DISTRO CA certs"
-
-    logcmd mkdir -p $DESTDIR/etc/ssl/pkg
-
-    for cert in $SRCDIR/files/*.pem; do
-        local file=`basename $cert`
-        local subj_hash=`openssl x509 -hash -noout -in $cert`
-
-        logmsg "--- Copying $file"
-        logcmd cp $cert $DESTDIR/etc/ssl/pkg/ || \
-            logerr "--- Failed to copy CA cert $file"
-
-        logcmd ln -s $file $DESTDIR/etc/ssl/pkg/$subj_hash.0 || \
-            logerr "--- Failed to create subject hash link for $file"
-    done
 
     [ `$KEYTOOL -rfc -list -keystore $DESTDIR/etc/ssl/java/cacerts \
         -storepass changeit | grep -c 'BEGIN CERT'` -ge $SAFETY_THRESH ] \

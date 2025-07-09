@@ -638,7 +638,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  as a non-root user.
 -The default is
 -.Cm no .
-+On OmniOS, the option is always enabled.
++On Helios, the option is always enabled.
  .It Cm VersionAddendum
  Optionally specifies additional text to append to the SSH protocol banner
  sent by the server upon connection.

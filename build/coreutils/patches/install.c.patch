@@ -7,7 +7,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/install.c a/src/install.c
  locations you choose.  If you want to download and install a ready-to-use\n\
 -package on a GNU/Linux system, you should instead be using a package manager\n\
 -like yum(1) or apt-get(1).\n\
-+package on an OmniOS system, you should instead be using a package manager\n\
++package on a Helios system, you should instead be using a package manager\n\
 +like pkg(1).\n\
  \n\
  In the first three forms, copy SOURCE to DEST or multiple SOURCE(s) to\n\

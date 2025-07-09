@@ -1040,7 +1040,7 @@ diff -pruN '--exclude=*.orig' Python-2.7.14~/Modules/privileges.c Python-2.7.14/
 +
 +static char pyprivileges__doc__[];
 +PyDoc_STRVAR(pyprivileges__doc__,
-+"Provides functions for interacting with the OmniOS privileges(7) framework\n\
++"Provides functions for interacting with the Helios privileges(7) framework\n\
 +Functions provided:\n\
 +setppriv\n\
 +getppriv\n\
@@ -1149,7 +1149,7 @@ diff -pruN '--exclude=*.orig' Python-2.7.14~/Modules/pyrbac.c Python-2.7.14/Modu
 +static char pyrbac__doc__[];
 +
 +PyDoc_STRVAR(pyrbac__doc__, "provides access to some objects \
-+for interaction with the OmniOS Role-Based Access Control \
++for interaction with the Helios Role-Based Access Control \
 +framework.\n\nDynamic objects:\n\
 +userattr -- for interacting with user_attr(5)\n\
 +authattr -- for interacting with auth_attr(5)\n\

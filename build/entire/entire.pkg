@@ -37,11 +37,9 @@ driver/crypto/viorand					S
 driver/firewire						S
 driver/graphics/atiatom					S
 driver/graphics/drm					S
-driver/hyperv/pv					OSZ
 driver/i86pc/fipe					S
 driver/i86pc/ioat					S
 driver/i86pc/platform					S
-driver/inotify						OS
 driver/network/afe					S
 driver/network/amd8111s					S
 driver/network/atge					S

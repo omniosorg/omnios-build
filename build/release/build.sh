@@ -25,7 +25,7 @@ DESC="$DISTRO /etc/release and /etc/os-release files"
 set_arch 64
 
 # Update the following line with the current release suffix
-RELSUFFIX=am
+RELSUFFIX=
 
 RELEASE=${RELVER}${RELSUFFIX}
 RELDATE="`date +%Y.%m.%d`"
@@ -62,23 +62,20 @@ make_install() {
     logcmd mkdir -p etc || logerr "-- mkdir failed"
 
     cat <<- EOM > etc/release
-  $DISTRO v11 r$RELEASE
-  Copyright (c) 2012-2017 OmniTI Computer Consulting, Inc.
-  `copyright_string`
-  All rights reserved. Use is subject to licence terms.
+  $DISTRO_LONG $RELEASE
 	EOM
 
     cat <<- EOM > etc/os-release
 NAME="$DISTRO"
-PRETTY_NAME="$DISTRO_LONG v11 r$RELEASE"
-CPE_NAME="cpe:/o:omniosce:$DISTRO_LC:11:$RELNUM:$RELREV"
+PRETTY_NAME="$DISTRO_LONG $RELEASE"
+CPE_NAME="cpe:/o:oxide:$DISTRO_LC:$RELNUM:$RELREV"
 ID=$DISTRO_LC
-VERSION=r$RELEASE
-VERSION_ID=r$RELEASE
+VERSION=$RELEASE
+VERSION_ID=$RELEASE
 BUILD_ID=$RELNUM.$RELREV.$RELDATE
 HOME_URL="$HOMEURL/"
 SUPPORT_URL="$HOMEURL/"
-BUG_REPORT_URL="$OOCEGITHUB/omnios-build/issues/new"
+BUG_REPORT_URL="$GITHUB/oxidecomputer/helios/issues/new"
 	EOM
 
     popd >/dev/null
