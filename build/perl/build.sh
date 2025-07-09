@@ -73,7 +73,7 @@ configure_amd64() {
         -Dmyhostname=localhost \
         -Umydomain \
         -Dmyuname=sunos \
-        -Dcf_by=omnios-builder \
+        -Dcf_by=$DISTRO_LC-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
         -Dcc=gcc \
         -Dld=/usr/ccs/bin/ld \
@@ -134,7 +134,7 @@ configure_aarch64() {
         -Umydomain \
         -Dmyuname=sunos \
         -Dosname=solaris \
-        -Dcf_by=omnios-builder \
+        -Dcf_by=$DISTRO_LC-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
         -Doptimize="-O3 $CTF_CFLAGS" \
         -Dprefix=${PREFIX} \
