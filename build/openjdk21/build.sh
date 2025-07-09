@@ -81,7 +81,7 @@ NO_PARALLEL_MAKE=1
 
 CONFIGURE_OPTS="
     --with-version-string=$VER
-    --with-version-opt=omnios-$RELVER
+    --with-version-opt=$DISTRO_LC-$RELVER
     --with-toolchain-type=gcc
     --with-boot-jdk=/$IFULL
     --enable-deprecated-ports=yes

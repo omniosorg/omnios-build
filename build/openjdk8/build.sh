@@ -63,7 +63,7 @@ prep_build autoconf -oot
 
 CONFIGURE_OPTS="
     --with-milestone=fcs
-    --with-user-release-suffix=omnios-$RELVER
+    --with-user-release-suffix=$DISTRO_LC-$RELVER
     --with-update-version=$UPDATE
     --with-build-number=b$BUILD
     --with-toolchain-type=gcc

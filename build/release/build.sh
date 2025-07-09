@@ -71,8 +71,8 @@ make_install() {
     cat <<- EOM > etc/os-release
 NAME="$DISTRO"
 PRETTY_NAME="$DISTRO_LONG v11 r$RELEASE"
-CPE_NAME="cpe:/o:omniosce:omnios:11:$RELNUM:$RELREV"
-ID=omnios
+CPE_NAME="cpe:/o:omniosce:$DISTRO_LC:11:$RELNUM:$RELREV"
+ID=$DISTRO_LC
 VERSION=r$RELEASE
 VERSION_ID=r$RELEASE
 BUILD_ID=$RELNUM.$RELREV.$RELDATE
