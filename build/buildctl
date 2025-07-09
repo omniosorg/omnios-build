@@ -651,7 +651,7 @@ parallel_build() {
     for tgt in "${order[@]}"; do
         [[ "$tgt" = "#"* ]] && continue
         # Defer this until last
-        [ "$tgt" = "system/install/kayak-kernel" ] && continue
+        [ "$tgt" = "$KAYAK_PKG" ] && continue
         # If nightly is running, defer dependent services to last
         if nightly_running && [[ $tgt = *illumos-gate ]]; then
                 defer+=("$tgt")
@@ -665,7 +665,7 @@ parallel_build() {
     done
 
     [ -z "$SKIP_KAYAK_KERNEL" ] && \
-        queue+=(.REBUILD system/install/kayak-kernel)
+        queue+=(.REBUILD $KAYAK_PKG)
 
     pkgcount=${#queue[@]}
 
