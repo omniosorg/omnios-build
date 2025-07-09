@@ -59,8 +59,8 @@ BUILD_DEPENDS_IPS="
 MAKE=$USRBIN/dmake
 
 # Respect environmental overrides for these to ease development.
-: ${PKG_SOURCE_REPO:=$OOCEGITHUB/pkg5}
-: ${PKG_SOURCE_BRANCH:=r$RELVER}
+: ${PKG_SOURCE_REPO:=$GITHUB/oxidecomputer/pkg5}
+: ${PKG_SOURCE_BRANCH:=helios3}
 VER+="-$PKG_SOURCE_BRANCH"
 
 # some python modules require rust to be built
