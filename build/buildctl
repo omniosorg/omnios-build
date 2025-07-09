@@ -110,7 +110,6 @@ buildorder() {
         mapfile -t -O ${#list[@]} list \
             < <( printf '%s\n' ${!fulltargets[@]} | sort | \
            egrep -v 'kayak-kernel|net-snmp')
-        list+=($KAYAK_PKG)
     fi
 }
 
@@ -663,9 +662,6 @@ parallel_build() {
     for tgt in "${defer[@]}"; do
         queue+=("$tgt")
     done
-
-    [ -z "$SKIP_KAYAK_KERNEL" ] && \
-        queue+=(.REBUILD $KAYAK_PKG)
 
     pkgcount=${#queue[@]}
 
