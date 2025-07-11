@@ -69,6 +69,7 @@ DASHREV=0
 PVER=$RELVER.$DASHREV
 
 DISTRO=OmniOS
+DISTRO_LC=${DISTRO,,}
 DISTRO_LONG="OmniOS Community Edition"
 HOMEURL=https://omnios.org
 # Default package publisher
