@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -8930,6 +8930,8 @@ case "$target" in
+@@ -8925,6 +8925,8 @@ case "$target" in
              else
                 PR_MD_ASFILES=os_SunOS_x86.s
              fi
@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.in a/configure.in
 --- a~/configure.in	1970-01-01 00:00:00
 +++ a/configure.in	1970-01-01 00:00:00
-@@ -2431,6 +2431,8 @@ case "$target" in
+@@ -2427,6 +2427,8 @@ case "$target" in
              else
                 PR_MD_ASFILES=os_SunOS_x86.s
              fi

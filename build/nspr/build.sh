@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=nspr
-VER=4.36
+VER=4.37
 PKG=library/nspr
 SUMMARY="Netscape Portable Runtime"
 DESC="The $SUMMARY"
