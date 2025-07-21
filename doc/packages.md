@@ -58,7 +58,7 @@
 | library/nspr				| 4.37			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.45			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
-| library/readline			| 8.2.13		| https://ftp.gnu.org/gnu/readline/
+| library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/liboqs		| 0.13.0		| https://github.com/open-quantum-safe/liboqs/releases
 | library/security/openssl-3		| 3.5.1			| https://www.openssl.org/source/
