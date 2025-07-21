@@ -87,7 +87,7 @@
 | service/network/chrony		| 4.7			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.4			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
-| shell/bash				| 5.2.37		| https://ftp.gnu.org/gnu/bash/
+| shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.9.31		| http://www.ivarch.com/programs/pv.shtml

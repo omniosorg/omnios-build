@@ -22,12 +22,12 @@
 #
 # Copyright 2011-2013 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright (c) 2013 by Delphix. All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=bash
-VER=5.2.37
+VER=5.3
 PATCHLVL=32
 PKG=shell/bash
 SUMMARY="GNU Bash"
