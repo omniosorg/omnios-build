@@ -43,7 +43,9 @@ init
 prep_build
 
 # Skip previous versions for cross compilation
-pre_build() { ! cross_arch $1; }
+# XXXARM: since illumos depends on libxml2, we ship the previous version
+# for now to ease transition
+#pre_build() { ! cross_arch $1; }
 
 # Build previous versions
 save_variables BUILDDIR EXTRACTED_SRC CONFIGURE_OPTS
