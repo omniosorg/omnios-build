@@ -21,7 +21,7 @@ VER=4.7
 PKG=service/network/chrony
 SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
-NETTLEVER=3.10.1
+NETTLEVER=3.10.2
 
 BUILD_DEPENDS_IPS="ooce/text/asciidoctor"
 

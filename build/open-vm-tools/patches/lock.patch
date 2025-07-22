@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c a/lib/file/fileLockPrimitive.c
 --- a~/lib/file/fileLockPrimitive.c	1970-01-01 00:00:00
 +++ a/lib/file/fileLockPrimitive.c	1970-01-01 00:00:00
-@@ -60,8 +60,8 @@
+@@ -62,8 +62,8 @@
  #define LOGLEVEL_MODULE main
  #include "loglevel_user.h"
  
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
  #define FILELOCK_PROGRESS_DEARTH 8000 // Dearth of progress time in milliseconds
  #define FILELOCK_PROGRESS_SAMPLE 200  // Progress sampling time in milliseconds
  
-@@ -474,8 +474,8 @@ fixedUp:
+@@ -476,8 +476,8 @@ fixedUp:
        goto corrupt;
     }
  
@@ -23,7 +23,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
        goto corrupt;
     }
  
-@@ -1101,8 +1101,8 @@ FileLockWaitForPossession(const char *lo
+@@ -1103,8 +1103,8 @@ FileLockWaitForPossession(const char *lo
         ((memberValues->lamportNumber == myValues->lamportNumber) &&
            (Unicode_Compare(memberValues->memberName,
                             myValues->memberName) < 0))) &&
@@ -34,7 +34,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
        Bool thisMachine = FileLockMachineIDMatch(myValues->machineID,
                                                  memberValues->machineID);
        char *path = Unicode_Join(lockDir, DIRSEPS, fileName, NULL);
-@@ -1698,7 +1698,7 @@ FileLockIntrinsicPortable(const char *pa
+@@ -1713,7 +1713,7 @@ FileLockIntrinsicPortable(const char *pa
            */
  
           Warning(LGPFX" %s implicit %s lock succeeded on '%s'.\n",
@@ -43,7 +43,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/file/fileLockPrimitive.c 
  
           *err = 0;
           memberFilePath = &implicitReadToken;
-@@ -1862,7 +1862,7 @@ FileLockIntrinsic(const char *pathName,
+@@ -1877,7 +1877,7 @@ FileLockIntrinsic(const char *pathName,
     /* Construct the locking directory path */
     lockBase = Unicode_Append(pathName, FILELOCK_SUFFIX);
  
