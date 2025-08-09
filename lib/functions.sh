@@ -466,16 +466,16 @@ set_crossgcc() {
         [ -x $CCACHE_PATH/ccache ] || logerr "Ccache is not installed"
         PATH="$CCACHE_PATH:$PATH"
     fi
-    [[ ${CFLAGS[$arch]} =~ *--sysroot* ]] \
+    [[ ${CFLAGS[$arch]} == *--sysroot* ]] \
         || CFLAGS[$arch]+=" --sysroot=${SYSROOT[$arch]}"
-    [[ ${CXXFLAGS[$arch]} =~ *--sysroot* ]] \
+    [[ ${CXXFLAGS[$arch]} == *--sysroot* ]] \
         || CXXFLAGS[$arch]+=" --sysroot=${SYSROOT[$arch]}"
 
     PKG_CONFIG_SYSROOT_DIR=${SYSROOT[$arch]}
     PKG_CONFIG_LIBDIR="${SYSROOT[$arch]}/usr/${LIBDIRS[$arch]}/pkgconfig"
     export PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_LIBDIR
 
-    [[ $CONFIGURE_CMD =~ $CMAKE* ]] && CONFIGURE_OPTS[$arch]+="
+    [[ $CONFIGURE_CMD == $CMAKE* ]] && CONFIGURE_OPTS[$arch]+="
         -DCMAKE_FIND_ROOT_PATH=${SYSROOT[$arch]}
         -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
         -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY
