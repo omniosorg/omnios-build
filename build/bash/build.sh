@@ -75,7 +75,7 @@ pre_configure() {
 
 post_install() {
     clone_github_source -dependency illumos-completion \
-        $OOCEGITHUB/completions master
+        $OOCEGITHUB/completions master $BASH_COMPLETION_CLONE
 
     if ((EXTRACT_MODE == 0)); then
         logcmd rm -f $TMPDIR/$BUILDDIR/illumos-completion/*.md
