@@ -40,7 +40,7 @@ XFORM_ARGS+="
 "
 
 clone_source() {
-    clone_github_source $PROG "$SOURCE_REPO" "$SOURCE_BRANCH"
+    clone_github_source $PROG "$SOURCE_REPO" "$SOURCE_BRANCH" "$EPOLL_TEST_CLONE"
     append_builddir $PROG
     ((EXTRACT_MODE)) && exit
 }
