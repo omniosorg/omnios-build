@@ -101,7 +101,11 @@ buildorder() {
     typeset var=$1
     typeset -n list=$var
     list=()
-    if [ -f "$ROOTDIR/doc/pkglist.$CLIBUILDARCH" ]; then
+    if [ -n "$OMNIOS_PKGLIST" ]; then
+        SKIP_KAYAK_KERNEL=1
+        mapfile -t list \
+            < <(egrep -v '^#|^ *$' $OMNIOS_PKGLIST)
+    elif [ -f "$ROOTDIR/doc/pkglist.$CLIBUILDARCH" ]; then
         SKIP_KAYAK_KERNEL=1
         mapfile -t list \
             < <(egrep -v '^#|^ *$' $ROOTDIR/doc/pkglist.$CLIBUILDARCH)
@@ -341,7 +345,9 @@ baseline() {
     init_repos
 
     typeset baselinef=$ROOTDIR/doc/baseline
-    if [ -n "$CLIBUILDARCH" -a -f "$baselinef.$CLIBUILDARCH" ]; then
+    if [ -n "$OMNIOS_BASELINE" ]; then
+        baselinef="$OMNIOS_BASELINE"
+    elif [ -n "$CLIBUILDARCH" -a -f "$baselinef.$CLIBUILDARCH" ]; then
         baselinef+=.$CLIBUILDARCH
         PKGSRVR=${REPOS[$CLIBUILDARCH]}
     fi
