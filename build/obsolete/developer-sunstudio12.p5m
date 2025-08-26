@@ -1,3 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/developer/sunstudio12.1@12.1,$(SUNOSVER)-$(PVER)
-set name=publisher value=$(PKGPUBEMAIL)
-set name=pkg.obsolete value=true

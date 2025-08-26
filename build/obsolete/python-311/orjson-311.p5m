@@ -1,3 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/library/python-3/orjson-311@3.9.10,$(SUNOSVER)-$(PVER)
-set name=pkg.obsolete value=true
-set name=publisher value=$(PKGPUBEMAIL)

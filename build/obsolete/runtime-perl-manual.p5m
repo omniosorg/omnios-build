@@ -1,2 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/runtime/perl/manual@5.30.99,$(SUNOSVER)-$(PVER)
-set name=pkg.obsolete value=true

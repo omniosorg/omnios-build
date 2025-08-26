@@ -1,2 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/incorporation/jeos/illumos-gate@11,$(SUNOSVER)-$(PVER)
-set name=pkg.obsolete value=true

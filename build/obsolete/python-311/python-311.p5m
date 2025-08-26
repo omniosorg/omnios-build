@@ -1,7 +1,0 @@
-# The version is set to .99 here as it is likely that python 3.11 will continue
-# to be updated in older releases, and this obsolete package needs to be newer
-# for the upgrade to succeed.
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/runtime/python-311@3.11.99,$(SUNOSVER)-$(PVER)
-set name=pkg.renamed value=true
-set name=publisher value=$(PKGPUBEMAIL)
-depend type=require fmri=pkg:/runtime/python-313
