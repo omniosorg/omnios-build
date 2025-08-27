@@ -26,7 +26,7 @@
 . ../../lib/build.sh
 
 PROG=iperf
-VER=3.19
+VER=3.19.1
 PKG=network/test/iperf
 SUMMARY="iperf network testing tool"
 DESC="A tool for active measurements of the maximum achievable bandwidth on "
@@ -54,7 +54,7 @@ pre_build() {
 }
 
 init
-download_source $PROG $VER
+download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
