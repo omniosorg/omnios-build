@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054q (2025-08-28)
+Weekly release for w/c 25th of August 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* Openssl updated to version 3.5.2.
+
+### Other Changes
+
+* The DHCP client has gained support for the _interface MTU_ option.
+
+* The performance of [gethrtime(3C)](https://man.omnios.org/man3c/gethrtime)
+  has been improved through use of the comm page.
+
+* The nvme driver has been updated to work around some device quirks.
+
+* The bhyve `virtio-cons` virtual device did not work; this has been remedied.
+
+<br>
+
+---
+
 ## r151054i (2025-07-03)
 Weekly release for w/c 30th of June 2025.
 > This update requires a reboot
