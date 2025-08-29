@@ -1,5 +1,0 @@
-set name=pkg.fmri value=pkg://$(PKGPUBLISHER)/text/auto_ef@0.5.11,$(SUNOSVER)-$(PVER)
-set name=info.classification value="org.opensolaris.category.2008:System/Text Tools"
-set name=publisher value=$(PKGPUBEMAIL)
-set name=pkg.obsolete value=true
-
