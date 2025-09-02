@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046ds (2025-09-04)
+Weekly release for w/c 1st of September 2025.
+> This is a non-reboot update
+
+### Changes
+
+* SMB failed to authenticate to Windows Server 2025.
+
+<br>
+
+---
+
 ## r151046dj (2025-07-03)
 Weekly release for w/c 30th of June 2025.
 > This update requires a reboot
