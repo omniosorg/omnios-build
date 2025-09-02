@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054r (2025-09-04)
+Weekly release for w/c 1st of September 2025.
+> This update requires a reboot
+
+### Changes
+
+* SMB failed to authenticate to Windows Server 2025.
+
+* Systems which map the linear framebuffer above 32-bits caused dboot to
+  overwrite arbitrary memory, often resulting in a system which did not boot.
+
+* The `rge` driver could access device statistics before the chip was set up.
+
+* The `rge` driver would mistakenly bind to a Realtek BMC device.
+
+<br>
+
+---
+
 ## r151054q (2025-08-28)
 Weekly release for w/c 25th of August 2025.
 > This update requires a reboot
