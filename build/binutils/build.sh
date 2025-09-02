@@ -19,7 +19,7 @@
 . ../../lib/build.sh
 
 PROG=binutils
-VER=2.44
+VER=2.45
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "
