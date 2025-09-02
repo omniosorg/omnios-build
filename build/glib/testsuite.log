@@ -366,8 +366,8 @@ glib:gio / converter-stream                                            ERROR   k
 glib:gio / file-thumbnail                                              ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / file                                                        ERROR   killed by signal 6 SIGABRT
-glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / live-g-file                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 

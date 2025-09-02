@@ -29,6 +29,7 @@ PASS: func-substring-large-neg-endpos.sh
 PASS: func-substring-relative-endpos.sh
 PASS: hostname-with-slash-dflt-slash-valid.sh
 PASS: empty-app-name.sh
+PASS: endswith-basic.sh
 PASS: stop-localvar.sh
 PASS: stop-msgvar.sh
 PASS: glbl-ruleset-queue-defaults.sh
@@ -55,6 +56,7 @@ PASS: omfwd-lb-2target-retry.sh
 PASS: omfwd-lb-2target-one_fail.sh
 PASS: omfwd-tls-invalid-permitExpiredCerts.sh
 PASS: omfwd-keepalive.sh
+PASS: omfwd-subtree-tpl.sh
 PASS: omusrmsg-errmsg-no-params.sh
 PASS: omusrmsg-noabort.sh
 PASS: omfile-module-params.sh
@@ -111,6 +113,8 @@ PASS: pmrfc3164-AtSignsInHostname.sh
 PASS: pmrfc3164-AtSignsInHostname_off.sh
 PASS: pmrfc3164-tagEndingByColon.sh
 PASS: pmrfc3164-defaultTag.sh
+PASS: pmrfc3164-headerless.sh
+PASS: pmrfc3164-drop.sh
 PASS: pmrfc3164-json.sh
 PASS: tcp_forwarding_tpl.sh
 PASS: tcp_forwarding_dflt_tpl.sh
@@ -385,6 +389,7 @@ PASS: dynstats_nometric.sh
 PASS: no-dynstats-json.sh
 PASS: no-dynstats.sh
 PASS: stats-json.sh
+PASS: stats-prometheus.sh
 PASS: dynstats-json.sh
 PASS: stats-cee.sh
 PASS: stats-json-es.sh
@@ -422,10 +427,10 @@ PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2506.0
+Testsuite summary for rsyslog 8.2508.0
 ============================================================================
-# TOTAL: 437
-# PASS:  393
+# TOTAL: 442
+# PASS:  398
 # SKIP:  44
 # XFAIL: 0
 # FAIL:  0

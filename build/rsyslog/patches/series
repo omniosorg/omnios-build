@@ -3,4 +3,3 @@ runtime-rsyslog.h.patch
 logonly.patch
 man.patch
 test.patch
-UT_LINESIZE.patch

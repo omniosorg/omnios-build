@@ -8,7 +8,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/plugins/imsolaris/imsolaris.c
 +++ a/plugins/imsolaris/imsolaris.c	1970-01-01 00:00:00
 @@ -93,6 +93,24 @@ MODULE_CNFNAME("imsolaris")
  /* defines */
- #define PATH_LOG	"/dev/log"
+ #define PATH_LOG "/dev/log"
  
 +/*
 + * Public flags for log messages
@@ -30,42 +30,43 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/plugins/imsolaris/imsolaris.c
 +#define	SL_PANICMSG	0x8000  /* message was created while panicking */
  
  /* Module static data */
- DEF_IMOD_STATIC_DATA
-@@ -214,6 +232,8 @@ readLog(int fd, uchar *pRcv, int iMaxLin
- 		MsgSetHOSTNAME(pMsg, glbl.GetLocalHostName(), ustrlen(glbl.GetLocalHostName()));
- 		msgSetPRI(pMsg, hdr.pri);
- 		pMsg->msgFlags = NEEDS_PARSING | NO_PRI_IN_RAW | IGNDATE;
-+		if (hdr.flags & SL_LOGONLY)
-+			pMsg->msgFlags |= LOGONLY;
+ DEF_IMOD_STATIC_DATA;
+@@ -205,6 +223,8 @@ static rsRetVal readLog(int fd, uchar *p
+         MsgSetHOSTNAME(pMsg, glbl.GetLocalHostName(), ustrlen(glbl.GetLocalHostName()));
+         msgSetPRI(pMsg, hdr.pri);
+         pMsg->msgFlags = NEEDS_PARSING | NO_PRI_IN_RAW | IGNDATE;
++	if (hdr.flags & SL_LOGONLY)
++		pMsg->msgFlags |= LOGONLY;
  
- 		/* Construct timestamp from msg ctl struct */
- 		tim.tv_usec = 0;
+         /* Construct timestamp from msg ctl struct */
+         tim.tv_usec = 0;
 diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/msg.h a/runtime/msg.h
 --- a~/runtime/msg.h	1970-01-01 00:00:00
 +++ a/runtime/msg.h	1970-01-01 00:00:00
-@@ -158,6 +158,10 @@ struct msg {
- /* rawmsg does not include a PRI (Solaris!), but PRI is already set correctly in the msg object */
- #define PRESERVE_CASE	0x200
- /* preserve case in fromhost */
-+#define LOGONLY			0x300
-+/* send message only to /var/adm/messages */
-+
-+#define	SYSMSG		"/dev/sysmsg"
+@@ -160,6 +160,11 @@ struct msg {
+     #define PRESERVE_CASE 0x200
+     /* preserve case in fromhost */
  
- /* (syslog) protocol types */
- #define MSG_LEGACY_PROTOCOL 0
++    #define LOGONLY 0x300
++    /* send message only to /var/adm/messages */
++
++    #define SYSMSG "/dev/sysmsg"
++
+     /* (syslog) protocol types */
+     #define MSG_LEGACY_PROTOCOL 0
+     #define MSG_RFC5424_PROTOCOL 1
 diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/ruleset.c a/runtime/ruleset.c
 --- a~/runtime/ruleset.c	1970-01-01 00:00:00
 +++ a/runtime/ruleset.c	1970-01-01 00:00:00
-@@ -586,6 +586,11 @@ scriptExec(struct cnfstmt *const root, s
- 				  "force terminating\n");
- 			ABORT_FINALIZE(RS_RET_FORCE_TERM);
- 		}
-+		if (stmt->printable != NULL &&
-+		    (pMsg->msgFlags & LOGONLY) != 0 &&
-+		    strcmp(stmt->printable, SYSMSG) == 0) {
-+			goto finalize_it;
-+		}
- 		if(Debug) {
- 			cnfstmtPrintOnly(stmt, 2, 0);
- 		}
+@@ -510,6 +510,11 @@ static rsRetVal ATTR_NONNULL(2, 3) scrip
+                 "force terminating\n");
+             ABORT_FINALIZE(RS_RET_FORCE_TERM);
+         }
++	if (stmt->printable != NULL &&
++	    (pMsg->msgFlags & LOGONLY) != 0 &&
++	    strcmp(stmt->printable, SYSMSG) == 0) {
++		goto finalize_it;
++	}
+         if (Debug) {
+             cnfstmtPrintOnly(stmt, 2, 0);
+         }

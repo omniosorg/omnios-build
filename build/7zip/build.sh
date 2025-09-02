@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=7zip
-VER=25.00
+VER=25.01
 PKG=compress/7zip
 SUMMARY="The 7-Zip compression and archiving utility"
 DESC="7-Zip is a file archiver with a high compression ratio"
