@@ -1,8 +1,17 @@
-$d_nanosleep somehow ends up empty (instead of define/undef)
+these variables somehow end up empty (instead of define/undef)
 for cross builds which leads to a syntax error
 diff -wpruN --no-dereference '--exclude=*.orig' a~/config_h.SH a/config_h.SH
 --- a~/config_h.SH	1970-01-01 00:00:00
 +++ a/config_h.SH	1970-01-01 00:00:00
+@@ -146,7 +146,7 @@
+  * This symbol, if defined, indicates that the fdopendir routine is
+  * available to open a directory descriptor.
+  */
+-#$d_fdopendir HAS_FDOPENDIR		/**/
++#define HAS_FDOPENDIR		/**/
+ 
+ /* HAS_FGETPOS:
+  *	This symbol, if defined, indicates that the fgetpos routine is
 @@ -3116,7 +3116,7 @@ sed <<!GROK!THIS! >$CONFIG_H -e 's!^#und
   *	This symbol, if defined, indicates that the nanosleep
   *	system call is available to sleep with 1E-9 sec accuracy.
