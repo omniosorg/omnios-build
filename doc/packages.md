@@ -130,29 +130,29 @@
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 25.3.0		| https://pypi.org/rss/project/attrs/releases.xml
-| library/python-3/cffi-313		| 1.17.1		| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.7.1			| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/cffi-313		| 2.0.0b1		| https://pypi.org/rss/project/cffi/releases.xml
+| library/python-3/coverage-313		| 7.10.6			| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.5.0			| https://pypi.org/rss/project/crossenv/releases.xml
-| library/python-3/cryptography-313	| 44.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
+| library/python-3/cryptography-313	| 45.0.7		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.10			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
 | library/python-3/jsonrpclib-313	| 0.4.3.4		| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.17.3		| https://pypi.org/rss/project/jsonschema/releases.xml
-| library/python-3/meson-313		| 1.7.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-313		| 3.10.16		| https://github.com/ijl/orjson/releases
-| library/python-3/packaging-313	| 24.2			| https://pypi.org/rss/project/packaging/releases.xml
-| library/python-3/pip-313		| 25.0.1		| https://pypi.org/rss/project/pip/releases.xml
-| library/python-3/pycodestyle-313	| 2.12.1		| https://pypi.org/rss/project/pycodestyle/releases.xml
+| library/python-3/meson-313		| 1.9.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/orjson-313		| 3.11.3		| https://github.com/ijl/orjson/releases
+| library/python-3/packaging-313	| 25.0			| https://pypi.org/rss/project/packaging/releases.xml
+| library/python-3/pip-313		| 25.2		| https://pypi.org/rss/project/pip/releases.xml
+| library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 2.22			| https://pypi.org/rss/project/pycparser/releases.xml
 | library/python-3/pycurl-313		| 7.45.6		| https://pypi.org/rss/project/pycurl/releases.xml
-| library/python-3/pyopenssl-313	| 25.0.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
+| library/python-3/pyopenssl-313	| 25.1.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
 | library/python-3/pyrsistent-313	| 0.20.0		| https://pypi.org/rss/project/pyrsistent/releases.xml
 | library/python-3/pyyaml-313		| 6.0.2			| https://pypi.org/rss/project/PyYAML/releases.xml
 | library/python-3/rapidjson-313	| 1.20			| https://pypi.org/rss/project/python-rapidjson/releases.xml
 | library/python-3/semantic-version-313	| 2.10.0		| https://pypi.org/rss/project/semantic-version/releases.xml
-| library/python-3/setuptools-313	| 78.1.0		| https://pypi.org/rss/project/setuptools/releases.xml
-| library/python-3/setuptools-rust-313	| 1.11.0		| https://pypi.org/rss/project/setuptools-rust/releases.xml
+| library/python-3/setuptools-313	| 80.9.0		| https://pypi.org/rss/project/setuptools/releases.xml
+| library/python-3/setuptools-rust-313	| 1.12.0		| https://pypi.org/rss/project/setuptools-rust/releases.xml
 | library/python-3/six-313		| 1.17.0		| https://pypi.org/rss/project/six/releases.xml
 | library/python-3/tomli-313		| 2.2.1			| https://pypi.org/rss/project/tomli/releases.xml
-| library/python-3/typing-extensions-313| 4.13.0		| https://pypi.org/rss/project/typing-extensions/releases.xml
+| library/python-3/typing-extensions-313| 4.15.0		| https://pypi.org/rss/project/typing-extensions/releases.xml
 

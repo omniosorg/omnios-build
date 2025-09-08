@@ -31,7 +31,7 @@ python_vendor_relocate() in lib/functions.sh for more details.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdoptions.py a/src/pip/_internal/cli/cmdoptions.py
 --- a~/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
-@@ -892,7 +892,7 @@ disable_pip_version_check: Callable[...,
+@@ -955,7 +955,7 @@ disable_pip_version_check: Callable[...,
      "--disable-pip-version-check",
      dest="disable_pip_version_check",
      action="store_true",
@@ -43,7 +43,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdopti
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.py a/src/pip/_internal/exceptions.py
 --- a~/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
-@@ -771,9 +771,8 @@ class LegacyDistutilsInstall(DiagnosticP
+@@ -775,9 +775,8 @@ class LegacyDistutilsInstall(DiagnosticP
          super().__init__(
              message=Text(f"Cannot uninstall {distribution}"),
              context=(
@@ -58,7 +58,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uninstall.py a/src/pip/_internal/req/req_uninstall.py
 --- a~/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
-@@ -313,6 +313,15 @@ class UninstallPathSet:
+@@ -316,6 +316,15 @@ class UninstallPathSet:
          remove/modify, False otherwise.
  
          """
@@ -77,7 +77,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
 --- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
-@@ -232,6 +232,7 @@ def pip_self_version_check(session: PipS
+@@ -234,6 +234,7 @@ def pip_self_version_check(session: PipS
      the active virtualenv or in the user's USER_CACHE_DIR keyed off the prefix
      of the pip script path.
      """
