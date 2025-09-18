@@ -1,12 +1,12 @@
 
 Command line (with current working directory = .):
 
-    /usr/perl5/5.40/bin/perl ./Configure solaris-x86-gcc shared threads zlib --prefix=/usr --libdir=/usr/lib
+    /usr/perl5/5.42/bin/perl ./Configure solaris-x86-gcc shared threads zlib --prefix=/usr --libdir=/usr/lib
 
 Perl information:
 
-    /usr/perl5/5.40/bin/perl
-    5.40.2 for i86pc-solaris-thread-multi-64
+    /usr/perl5/5.42/bin/perl
+    5.42.0 for i86pc-solaris-thread-multi-64
 
 Enabled features:
 
@@ -259,7 +259,7 @@ Makevars:
     LDFLAGS         = 
     LDLIBS          = 
     OBJCOPY         = objcopy
-    PERL            = /usr/perl5/5.40/bin/perl
+    PERL            = /usr/perl5/5.42/bin/perl
     RANLIB          = ranlib
     RC              = windres
     RCFLAGS         = 
