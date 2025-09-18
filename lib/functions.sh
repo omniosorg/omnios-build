@@ -1828,6 +1828,9 @@ convert_version() {
     elif [[ $var = *-P[0-9] ]]; then
         # Convert trailing -P (as used by ISC bind)
         var=${var//-P/.}
+    elif [[ $var = *b[0-9] ]]; then
+        # Convert trailing bX (as used by python cffi)
+        var=${var//b/.}
     fi
 
     ## Strip leading zeros in version components.
