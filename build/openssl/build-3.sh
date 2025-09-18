@@ -25,6 +25,8 @@ SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
 DESC+="and general purpose cryptographic library"
 
+DASHREV=1
+
 # Required for the testsuite - not yet in ooce/omnios-build-tools
 BUILD_DEPENDS_IPS+=" ooce/file/lsof"
 
@@ -101,32 +103,8 @@ configure_arch() {
 post_install() {
     typeset arch=$1
 
-    logcmd cp ${DUH}{,.$1}
+    logcmd cp ${DUH}{,.$arch}
     patch_pc $MAJVER $DESTDIR$PREFIX/lib || logerr "patch_pc failed"
-
-    [ $arch = amd64 ] || return
-
-    RUN_DEPENDS_IPS+=" library/security/oqs-provider"
-
-    logcmd $SED -i '
-        # Add "oqsprovider" to the list of providers in [provider_sect]
-        /^\[provider_sect\]/,/^$/ {
-                /^default *=/a\
-oqsprovider = oqsprovider_sect
-        }
-        /^\[default_sect\]/,/^$/ {
-                # Activate [default_sect]
-                /# *activate/ {
-                        s/# *//
-                        # Add the new [oqsprovider_sect]
-                        a\
-\
-[oqsprovider_sect]\
-activate = 1
-                }
-        }
-        ' $DESTDIR$PREFIX/ssl/$PROG.cnf \
-        || logerr "activating oqsprovider failed"
 }
 
 build_fini() {
