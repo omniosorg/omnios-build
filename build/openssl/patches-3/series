@@ -1,2 +1,3 @@
 libs.patch
 cross-aarch64.patch
+version.patch
