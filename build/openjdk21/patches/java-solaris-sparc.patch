@@ -1,29 +1,3 @@
---- old/bin/unshuffle_list.txt	2020-05-20 17:58:14.636050719 -0700
-+++ new/bin/unshuffle_list.txt	2020-05-20 17:58:14.240043115 -0700
-@@ -101,7 +100,6 @@
- src/langtools/sample : langtools/src/sample
- src/linux : jdk/src/linux
- src/sample : jdk/src/sample
--src/solaris : jdk/src/solaris
- src/hotspot/share : hotspot/src/share/vm
- src/hotspot/cpu/aarch64 : hotspot/src/cpu/aarch64/vm
- src/hotspot/cpu/arm : hotspot/src/cpu/arm/vm
-@@ -114,7 +112,6 @@
- src/hotspot/os/linux : hotspot/src/os/linux/vm
- src/hotspot/os/posix/dtrace : hotspot/src/os/posix/dtrace
- src/hotspot/os/posix : hotspot/src/os/posix/vm
--src/hotspot/os/solaris : hotspot/src/os/solaris/vm
- src/hotspot/os/windows : hotspot/src/os/windows/vm
- src/hotspot/os_cpu/aix_ppc : hotspot/src/os_cpu/aix_ppc/vm
- src/hotspot/os_cpu/bsd_x86 : hotspot/src/os_cpu/bsd_x86/vm
-@@ -125,7 +122,6 @@
- src/hotspot/os_cpu/linux_s390 : hotspot/src/os_cpu/linux_s390/vm
- src/hotspot/os_cpu/linux_x86 : hotspot/src/os_cpu/linux_x86/vm
- src/hotspot/os_cpu/linux_zero : hotspot/src/os_cpu/linux_zero/vm
--src/hotspot/os_cpu/solaris_x86 : hotspot/src/os_cpu/solaris_x86/vm
- src/hotspot/os_cpu/windows_x86 : hotspot/src/os_cpu/windows_x86/vm
- src/hotspot : hotspot/src
- src/utils/IdealGraphVisualizer : hotspot/src/share/tools/IdealGraphVisualizer
 --- old/make/RunTestsPrebuilt.gmk	2020-05-20 17:58:24.212234589 -0700
 +++ new/make/RunTestsPrebuilt.gmk	2020-05-20 17:58:23.828227215 -0700
 @@ -168,8 +168,6 @@
@@ -160,13 +134,13 @@
      CFLAGS_OS_DEF_JDK="-D_GNU_SOURCE -D_REENTRANT -D_LARGEFILE64_SOURCE"
 -  elif test "x$OPENJDK_TARGET_OS" = xsolaris; then
 -    CFLAGS_OS_DEF_JVM="-DSOLARIS"
--    CFLAGS_OS_DEF_JDK="-D__solaris__"
+-    CFLAGS_OS_DEF_JDK="-D__solaris__ -D_REENTRANT"
    elif test "x$OPENJDK_TARGET_OS" = xmacosx; then
      CFLAGS_OS_DEF_JVM="-D_ALLBSD_SOURCE -D_DARWIN_C_SOURCE -D_XOPEN_SOURCE"
      CFLAGS_OS_DEF_JDK="-D_ALLBSD_SOURCE -D_DARWIN_UNLIMITED_SELECT"
 --- old/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.812457321 -0700
 +++ new/make/autoconf/jdk-options.m4	2020-05-20 17:58:35.432450025 -0700
-@@ -285,7 +285,7 @@
+@@ -284,7 +284,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xexternal; then
  
@@ -175,7 +149,7 @@
        if test "x$OBJCOPY" = x; then
          # enabling of enable-debug-symbols and can't find objcopy
          # this is an error
-@@ -298,7 +298,7 @@
+@@ -297,7 +297,7 @@
      ZIP_EXTERNAL_DEBUG_SYMBOLS=false
    elif test "x$with_native_debug_symbols" = xzipped; then
  
@@ -348,7 +322,7 @@
    # set. Some files get their write permissions removed after being copied to the
 --- old/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.780687120 -0700
 +++ new/make/common/NativeCompilation.gmk	2020-05-20 17:58:47.440680591 -0700
-@@ -1058,7 +1058,7 @@
+@@ -1072,7 +1072,7 @@
            $1_DEBUGINFO_FILES := $$($1_SYMBOLS_DIR)/$$($1_BASENAME).pdb \
                $$($1_SYMBOLS_DIR)/$$($1_BASENAME).map
  
@@ -518,9 +492,9 @@
 -    # Additional mapfiles that are only used when dtrace is enabled
 -    ifeq ($(call check-jvm-feature, compiler2), true)
 -      # This also covers the case of compiler1+compiler2.
--      SYMBOLS_SRC += $(TOPDIR)/make/hotspot/symbols/symbols-solaris-dtrace-compiler2
+-      SYMBOLS_SRC += $(TOPDIR)/make/data/hotspot-symbols/symbols-solaris-dtrace-compiler2
 -    else ifeq ($(call check-jvm-feature, compiler1), true)
--      SYMBOLS_SRC += $(TOPDIR)/make/hotspot/symbols/symbols-solaris-dtrace-compiler1
+-      SYMBOLS_SRC += $(TOPDIR)/make/data/hotspot-symbols/symbols-solaris-dtrace-compiler1
 -    endif
 -  endif
 -endif
@@ -583,15 +557,7 @@
        DEST := $(CONF_DST_DIR)/sdp, \
 --- old/make/modules/java.base/Launcher.gmk	2020-05-20 17:59:09.001094567 -0700
 +++ new/make/modules/java.base/Launcher.gmk	2020-05-20 17:59:08.617087194 -0700
-@@ -64,7 +64,6 @@
-       CFLAGS := $(CFLAGS_JDKEXE) \
-           -I$(TOPDIR)/src/$(MODULE)/share/native/libjli, \
-       CFLAGS_linux := -fPIC, \
--      CFLAGS_solaris := -KPIC, \
-       LDFLAGS := $(LDFLAGS_JDKEXE), \
-       OUTPUT_DIR := $(SUPPORT_OUTPUTDIR)/modules_libs/$(MODULE), \
-   ))
-@@ -74,7 +73,7 @@
+@@ -73,7 +73,7 @@
  
  ################################################################################
  
@@ -845,7 +811,7 @@
      LIBS_windows := $(JDKLIB_LIBS) ws2_32.lib iphlpapi.lib, \
  ))
  
-@@ -66,7 +65,6 @@
+@@ -67,7 +66,6 @@
          $(call SET_SHARED_LIBRARY_ORIGIN), \
      LIBS := $(JDKLIB_LIBS), \
      LIBS_linux := $(LIBDL), \
@@ -997,7 +963,7 @@
  EXP="${EXP}|Note: Recompile with -Xlint:deprecation for details."
 --- old/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:33.301561154 -0700
 +++ new/make/test/JtregNativeHotspot.gmk	2020-05-20 17:59:32.909553627 -0700
-@@ -865,10 +865,6 @@
+@@ -866,10 +866,6 @@
  
  BUILD_HOTSPOT_JTREG_EXECUTABLES_LIBS_exesigtest := -ljvm
  
@@ -1007,10 +973,10 @@
 -
  ifeq ($(call isTargetOs, windows), true)
    BUILD_HOTSPOT_JTREG_EXECUTABLES_CFLAGS_exeFPRegs := -MT
-   BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c libCompleteExit.c libMonitorWithDeadObjectTest.c libTestPsig.c libnativeStack.c exeGetCreatedJavaVMs.c
+   BUILD_HOTSPOT_JTREG_EXCLUDE += exesigtest.c libterminatedThread.c libTestJNI.c libCompleteExit.c libMonitorWithDeadObjectTest.c libTestPsig.c libnativeStack.c exeGetCreatedJavaVMs.c libTestUnloadedClass.cpp
 --- old/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.437582966 -0700
 +++ new/make/test/JtregNativeJdk.gmk	2020-05-20 17:59:34.045575440 -0700
-@@ -107,9 +107,6 @@
+@@ -92,9 +92,6 @@
    ifeq ($(call isTargetOs, linux), true)
      BUILD_JDK_JTREG_LIBRARIES_LIBS_libInheritedChannel := -ljava
      BUILD_JDK_JTREG_EXECUTABLES_LIBS_exelauncher := -ldl
@@ -1042,7 +1008,7 @@
  #define JVM_MAXPATHLEN MAXPATHLEN
  #else
  // Hack: MAXPATHLEN is 4095 on some Linux and 4096 on others. This may
-@@ -87,14 +87,8 @@
+@@ -87,9 +87,6 @@
  #define JVM_SIGTERM    SIGTERM
  
  #define BREAK_SIGNAL     SIGQUIT           /* Thread dumping support.    */
@@ -1052,11 +1018,6 @@
  #define SHUTDOWN1_SIGNAL SIGHUP            /* Shutdown Hooks support.    */
  #define SHUTDOWN2_SIGNAL SIGINT
  #define SHUTDOWN3_SIGNAL SIGTERM
- 
--/* With 1.4.1 libjsig added versioning: used in os_solaris.cpp and jsig.c */
--#define JSIG_VERSION_1_4_1   0x30140100
--
- #endif /* !_JAVASOFT_JVM_MD_H_ */
 --- old/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.965746713 -0700
 +++ new/src/hotspot/os/posix/os_posix.cpp	2020-05-20 17:59:42.629740261 -0700
 @@ -517,7 +517,7 @@
@@ -1253,7 +1214,7 @@
    tty->print_cr("class metadata.");
 --- old/src/hotspot/share/utilities/globalDefinitions_gcc.hpp	2020-05-20 18:00:44.978937412 -0700
 +++ new/src/hotspot/share/utilities/globalDefinitions_gcc.hpp	2020-05-20 18:00:44.586929885 -0700
-@@ -39,36 +39,15 @@
+@@ -39,32 +39,15 @@
  #include <stdlib.h>
  #include <wchar.h>
  
@@ -1282,10 +1243,6 @@
 -#include <setjmp.h>
 -#include <inttypes.h>
 -#endif // SOLARIS
--
--# ifdef SOLARIS_MUTATOR_LIBTHREAD
--# include <sys/procfs.h>
--# endif
 -
  #if defined(LINUX) || defined(_ALLBSD_SOURCE)
  #include <inttypes.h>
@@ -1325,46 +1282,9 @@
  // NULL vs NULL_WORD:
  // On Linux NULL is defined as a special type '__null'. Assigning __null to
  // integer variable will cause gcc warning. Use NULL_WORD in places where a
-@@ -150,52 +101,8 @@
- 
+@@ -147,15 +102,7 @@
  #endif // !LINUX && !_ALLBSD_SOURCE
  
--
--#ifdef SOLARIS
--// ANSI C++ fixes
--// NOTE:In the ANSI committee's continuing attempt to make each version
--// of C++ incompatible with the previous version, you can no longer cast
--// pointers to functions without specifying linkage unless you want to get
--// warnings.
--//
--// This also means that pointers to functions can no longer be "hidden"
--// in opaque types like void * because at the invocation point warnings
--// will be generated. While this makes perfect sense from a type safety
--// point of view it causes a lot of warnings on old code using C header
--// files. Here are some typedefs to make the job of silencing warnings
--// a bit easier.
--//
--// The final kick in the teeth is that you can only have extern "C" linkage
--// specified at file scope. So these typedefs are here rather than in the
--// .hpp for the class (os:Solaris usually) that needs them.
--
--extern "C" {
--   typedef int (*int_fnP_thread_t_iP_uP_stack_tP_gregset_t)(thread_t, int*, unsigned *, stack_t*, gregset_t);
--   typedef int (*int_fnP_thread_t_i_gregset_t)(thread_t, int, gregset_t);
--   typedef int (*int_fnP_thread_t_i)(thread_t, int);
--   typedef int (*int_fnP_thread_t)(thread_t);
--
--   typedef int (*int_fnP_cond_tP_mutex_tP_timestruc_tP)(cond_t *cv, mutex_t *mx, timestruc_t *abst);
--   typedef int (*int_fnP_cond_tP_mutex_tP)(cond_t *cv, mutex_t *mx);
--
--   // typedef for missing API in libc
--   typedef int (*int_fnP_mutex_tP_i_vP)(mutex_t *, int, void *);
--   typedef int (*int_fnP_mutex_tP)(mutex_t *);
--   typedef int (*int_fnP_cond_tP_i_vP)(cond_t *cv, int scope, void *arg);
--   typedef int (*int_fnP_cond_tP)(cond_t *cv);
--};
--#endif // SOLARIS
--
  // checking for nanness
 -#ifdef SOLARIS
 -#ifdef SPARC
@@ -1398,7 +1318,7 @@
  #define NOT_WINDOWS(code)
 --- old/src/hotspot/share/utilities/ostream.cpp	2020-05-20 18:00:47.142978963 -0700
 +++ new/src/hotspot/share/utilities/ostream.cpp	2020-05-20 18:00:46.754971513 -0700
-@@ -1082,7 +1082,7 @@
+@@ -1083,7 +1083,7 @@
  
  #ifndef PRODUCT
  
@@ -1409,7 +1329,7 @@
  #include <netinet/in.h>
 --- old/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:48.214999546 -0700
 +++ new/src/hotspot/share/utilities/vmError.cpp	2020-05-20 18:00:47.822992019 -0700
-@@ -1891,8 +1891,6 @@
+@@ -1910,8 +1910,6 @@
        out.print_raw   ("#   Executing ");
  #if defined(LINUX) || defined(_ALLBSD_SOURCE)
        out.print_raw   ("/bin/sh -c ");
@@ -1418,7 +1338,7 @@
  #elif defined(_WINDOWS)
        out.print_raw   ("cmd /C ");
  #endif
-@@ -1957,8 +1955,6 @@
+@@ -1976,8 +1974,6 @@
      tty->print("#   Executing ");
  #if defined(LINUX)
      tty->print  ("/bin/sh -c ");
@@ -1819,7 +1739,7 @@
  static pid_t
  vforkChild(ChildStuff *c) {
      volatile pid_t resultPid;
-@@ -618,7 +611,7 @@
+@@ -620,7 +613,7 @@
  startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
      switch (c->mode) {
  /* vfork(2) is deprecated on Darwin*/
@@ -2140,25 +2060,6 @@
  #ifdef MACOSX
          /*
           * For the case on MacOS X where encoding is set to US-ASCII, but we
---- old/src/java.base/unix/native/libjava/jlong_md.h	2020-05-20 18:01:15.935531801 -0700
-+++ new/src/java.base/unix/native/libjava/jlong_md.h	2020-05-20 18:01:15.547524351 -0700
-@@ -23,8 +23,8 @@
-  * questions.
-  */
- 
--#ifndef _SOLARIS_JLONG_MD_H_
--#define _SOLARIS_JLONG_MD_H_
-+#ifndef _UNIX_JLONG_MD_H_
-+#define _UNIX_JLONG_MD_H_
- 
- /* Make sure ptrdiff_t is defined */
- #include <stddef.h>
-@@ -97,4 +97,4 @@
- #define size_to_jlong(a)    ((jlong)(a))
- #define long_to_jlong(a)    ((jlong)(a))
- 
--#endif /* !_SOLARIS_JLONG_MD_H_ */
-+#endif /* !_UNIX_JLONG_MD_H_ */
 --- old/src/java.base/unix/native/libjsig/jsig.c	2020-05-20 18:01:20.019610218 -0700
 +++ new/src/java.base/unix/native/libjsig/jsig.c	2020-05-20 18:01:19.603602231 -0700
 @@ -35,16 +35,6 @@
@@ -3023,7 +2924,7 @@
 -            }
 -
 -            /*
--             * We try to get tcp_maxbuf (and udp_max_buf) using
+-             * We try to get tcp_max_buf (and udp_max_buf) using
 -             * an ioctl() that isn't available on all versions of Solaris.
 -             * If that fails, we use the search algorithm in findMaxBuf()
 -             */
@@ -3520,7 +3421,15 @@
      static boolean isLinux() {
          return OSInfo.getOSType() == OSInfo.OSType.LINUX;
      }
-@@ -305,7 +301,7 @@
+@@ -160,7 +156,6 @@
+ 
+     static boolean isBSD() {
+         return (OSInfo.getOSType() == OSInfo.OSType.LINUX ||
+-                OSInfo.getOSType() == OSInfo.OSType.SOLARIS ||
+                 OSInfo.getOSType() == OSInfo.OSType.MACOSX);
+     }
+ 
+@@ -306,7 +301,7 @@
                  }
              }
          } else {
@@ -3529,7 +3438,7 @@
                  printers = getAllPrinterNamesSysV();
              } else if (isAIX()) {
                  printers = getAllPrinterNamesAIX();
-@@ -489,7 +485,7 @@
+@@ -490,7 +485,7 @@
          }
          /* fallback if nothing not having a printer at this point */
          PrintService printer = null;
@@ -3538,7 +3447,7 @@
              printer = getNamedPrinterNameSysV(name);
          } else if (isAIX()) {
              printer = getNamedPrinterNameAIX(name);
-@@ -660,7 +656,7 @@
+@@ -661,7 +656,7 @@
                  psuri = printerInfo[1];
              }
          } else {
@@ -3547,184 +3456,6 @@
                  defaultPrinter = getDefaultPrinterNameSysV();
              } else if (isAIX()) {
                  defaultPrinter = getDefaultPrinterNameAIX();
-@@ -880,7 +876,7 @@
-         ArrayList<String> results = null;
-         try {
-             final String[] cmd = new String[3];
--            if (isSysV() || isAIX()) {
-+            if (isAIX()) {
-                 cmd[0] = "/usr/bin/sh";
-                 cmd[1] = "-c";
-                 cmd[2] = "env LC_ALL=C " + command;
---- old/src/java.desktop/unix/classes/sun/print/UnixPrintJob.java	2020-05-20 18:02:39.605138318 -0700
-+++ new/src/java.desktop/unix/classes/sun/print/UnixPrintJob.java	2020-05-20 18:02:39.221130945 -0700
-@@ -872,51 +872,25 @@
-                         isAttributeCategorySupported(JobSheets.class)) {
-             ncomps+=1;
-         }
--        if (PrintServiceLookupProvider.isSysV()) {
--            ncomps+=1; // lp uses 1 more arg than lpr (make a copy)
--            execCmd = new String[ncomps];
--            execCmd[n++] = "/usr/bin/lp";
--            execCmd[n++] = "-c";           // make a copy of the spool file
--            if ((pFlags & PRINTER) != 0) {
--                execCmd[n++] = "-d" + printer;
--            }
--            if ((pFlags & JOBTITLE) != 0) {
--                String quoteChar = "\"";
--                execCmd[n++] = "-t "  + quoteChar+jobTitle+quoteChar;
--            }
--            if ((pFlags & COPIES) != 0) {
--                execCmd[n++] = "-n " + copies;
--            }
--            if ((pFlags & NOSHEET) != 0) {
--                execCmd[n++] = "-o nobanner";
--            } else if (getPrintService().
--                        isAttributeCategorySupported(JobSheets.class)) {
--                execCmd[n++] = "-o job-sheets=standard";
--            }
--            if ((pFlags & OPTIONS) != 0) {
--                execCmd[n++] = "-o " + options;
--            }
--        } else {
--            execCmd = new String[ncomps];
--            execCmd[n++] = "/usr/bin/lpr";
--            if ((pFlags & PRINTER) != 0) {
--                execCmd[n++] = "-P" + printer;
--            }
--            if ((pFlags & JOBTITLE) != 0) {
--                execCmd[n++] = "-J "  + jobTitle;
--            }
--            if ((pFlags & COPIES) != 0) {
--                execCmd[n++] = "-#" + copies;
--            }
--            if ((pFlags & NOSHEET) != 0) {
--                execCmd[n++] = "-h";
--            } else if (getPrintService().
--                        isAttributeCategorySupported(JobSheets.class)) {
--                execCmd[n++] = "-o job-sheets=standard";
--            }
--            if ((pFlags & OPTIONS) != 0) {
--                execCmd[n++] = "-o" + options;
--            }
-+        execCmd = new String[ncomps];
-+        execCmd[n++] = "/usr/bin/lpr";
-+        if ((pFlags & PRINTER) != 0) {
-+            execCmd[n++] = "-P" + printer;
-+        }
-+        if ((pFlags & JOBTITLE) != 0) {
-+            execCmd[n++] = "-J "  + jobTitle;
-+        }
-+        if ((pFlags & COPIES) != 0) {
-+            execCmd[n++] = "-#" + copies;
-+        }
-+        if ((pFlags & NOSHEET) != 0) {
-+            execCmd[n++] = "-h";
-+        } else if (getPrintService().
-+                   isAttributeCategorySupported(JobSheets.class)) {
-+            execCmd[n++] = "-o job-sheets=standard";
-+        }
-+        if ((pFlags & OPTIONS) != 0) {
-+            execCmd[n++] = "-o" + options;
-         }
-         execCmd[n++] = spoolFile;
-         if (IPPPrintService.debugPrint) {
---- old/src/java.desktop/unix/classes/sun/print/UnixPrintService.java	2020-05-20 18:02:40.629157980 -0700
-+++ new/src/java.desktop/unix/classes/sun/print/UnixPrintService.java	2020-05-20 18:02:40.293151529 -0700
-@@ -220,31 +220,6 @@
-         return name;
-     }
- 
--    private PrinterIsAcceptingJobs getPrinterIsAcceptingJobsSysV() {
--        String command = "/usr/bin/lpstat -a " + printer;
--        String[] results= PrintServiceLookupProvider.execCmd(command);
--
--        if (results != null && results.length > 0) {
--            if (results[0].startsWith(printer + " accepting requests")) {
--                return PrinterIsAcceptingJobs.ACCEPTING_JOBS;
--            }
--            else if (results[0].startsWith(printer)) {
--                /* As well as "myprinter accepting requests", look for
--                 * "myprinter@somehost accepting requests".
--                 */
--                int index = printer.length();
--                String str = results[0];
--                if (str.length() > index &&
--                    str.charAt(index) == '@' &&
--                    str.indexOf(" accepting requests", index) > 0 &&
--                    str.indexOf(" not accepting requests", index) == -1) {
--                   return PrinterIsAcceptingJobs.ACCEPTING_JOBS;
--                }
--            }
--        }
--        return PrinterIsAcceptingJobs.NOT_ACCEPTING_JOBS ;
--    }
--
-     private PrinterIsAcceptingJobs getPrinterIsAcceptingJobsBSD() {
-         if (PrintServiceLookupProvider.cmdIndex ==
-             PrintServiceLookupProvider.UNINITIALIZED) {
-@@ -322,9 +297,7 @@
-     }
- 
-     private PrinterIsAcceptingJobs getPrinterIsAcceptingJobs() {
--        if (PrintServiceLookupProvider.isSysV()) {
--            return getPrinterIsAcceptingJobsSysV();
--        } else if (PrintServiceLookupProvider.isBSD()) {
-+        if (PrintServiceLookupProvider.isBSD()) {
-             return getPrinterIsAcceptingJobsBSD();
-         } else if (PrintServiceLookupProvider.isAIX()) {
-             return getPrinterIsAcceptingJobsAIX();
-@@ -351,14 +324,6 @@
-         }
-     }
- 
--    private QueuedJobCount getQueuedJobCountSysV() {
--        String command = "/usr/bin/lpstat -R " + printer;
--        String[] results= PrintServiceLookupProvider.execCmd(command);
--        int qlen = (results == null) ? 0 : results.length;
--
--        return new QueuedJobCount(qlen);
--    }
--
-     private QueuedJobCount getQueuedJobCountBSD() {
-         if (PrintServiceLookupProvider.cmdIndex ==
-             PrintServiceLookupProvider.UNINITIALIZED) {
-@@ -415,9 +380,7 @@
-     }
- 
-     private QueuedJobCount getQueuedJobCount() {
--        if (PrintServiceLookupProvider.isSysV()) {
--            return getQueuedJobCountSysV();
--        } else if (PrintServiceLookupProvider.isBSD()) {
-+        if (PrintServiceLookupProvider.isBSD()) {
-             return getQueuedJobCountBSD();
-         } else if (PrintServiceLookupProvider.isAIX()) {
-             return getQueuedJobCountAIX();
-@@ -426,13 +389,6 @@
-         }
-     }
- 
--    private PrintServiceAttributeSet getSysVServiceAttributes() {
--        PrintServiceAttributeSet attrs = new HashPrintServiceAttributeSet();
--        attrs.add(getQueuedJobCountSysV());
--        attrs.add(getPrinterIsAcceptingJobsSysV());
--        return attrs;
--    }
--
-     private PrintServiceAttributeSet getBSDServiceAttributes() {
-         PrintServiceAttributeSet attrs = new HashPrintServiceAttributeSet();
-         attrs.add(getQueuedJobCountBSD());
-@@ -471,9 +427,7 @@
-     }
- 
-     private PrintServiceAttributeSet getDynamicAttributes() {
--        if (PrintServiceLookupProvider.isSysV()) {
--            return getSysVServiceAttributes();
--        } else if (PrintServiceLookupProvider.isAIX()) {
-+        if (PrintServiceLookupProvider.isAIX()) {
-             return getAIXServiceAttributes();
-         } else {
-             return getBSDServiceAttributes();
 --- old/src/java.desktop/unix/native/common/awt/fontpath.c	2020-05-20 18:02:43.805218963 -0700
 +++ new/src/java.desktop/unix/native/common/awt/fontpath.c	2020-05-20 18:02:43.465212435 -0700
 @@ -57,57 +57,7 @@
@@ -4029,7 +3760,7 @@
  }
 --- old/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2020-05-20 18:02:59.697524107 -0700
 +++ new/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java	2020-05-20 18:02:59.357517578 -0700
-@@ -711,15 +711,10 @@
+@@ -720,15 +720,10 @@
          lib = expand(lib);
          int i = lib.indexOf("/$ISA/");
          if (i != -1) {
@@ -4049,25 +3780,20 @@
              System.out.println(keyword + ": " + lib);
 --- old/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java	2020-05-20 18:03:16.561847914 -0700
 +++ new/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java	2020-05-20 18:03:16.225841462 -0700
-@@ -28,8 +28,6 @@
+@@ -28,7 +28,6 @@
  
  import sun.jvm.hotspot.debugger.*;
  import sun.jvm.hotspot.types.*;
--import sun.jvm.hotspot.runtime.solaris_x86.SolarisX86JavaThreadPDAccess;
 -import sun.jvm.hotspot.runtime.solaris_amd64.SolarisAMD64JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.win32_x86.Win32X86JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.win32_amd64.Win32AMD64JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.win32_aarch64.Win32AARCH64JavaThreadPDAccess;
-@@ -101,13 +97,7 @@
+@@ -98,9 +97,7 @@
  
          access = null;
          // FIXME: find the platform specific PD class by reflection?
 -        if (os.equals("solaris")) {
--            if (cpu.equals("x86")) {
--                access = new SolarisX86JavaThreadPDAccess();
--            } else if (cpu.equals("amd64")) {
--                access = new SolarisAMD64JavaThreadPDAccess();
--            }
+-            access = new SolarisAMD64JavaThreadPDAccess();
 -        } else if (os.equals("win32")) {
 +        if (os.equals("win32")) {
              if (cpu.equals("x86")) {
@@ -4283,15 +4009,6 @@
      struct task_basic_info t_info;
      mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
  
-@@ -276,7 +190,7 @@
-      * BSDNOTE: FreeBSD implements _SC_CLK_TCK since FreeBSD 5, so
-      *          add a magic to handle it
-      */
--#if defined(__solaris__) || defined(_SC_CLK_TCK)
-+#if defined(_SC_CLK_TCK)
-     clk_tck = (jlong) sysconf(_SC_CLK_TCK);
- #elif defined(__linux__) || defined(_ALLBSD_SOURCE)
-     clk_tck = 100;
 --- old/src/jdk.sctp/unix/classes/sun/nio/ch/sctp/SctpNet.java	2020-05-20 18:03:38.442268035 -0700
 +++ new/src/jdk.sctp/unix/classes/sun/nio/ch/sctp/SctpNet.java	2020-05-20 18:03:38.054260584 -0700
 @@ -44,12 +44,6 @@
@@ -5084,9 +4801,9 @@
 -        classLoadingService.o \
 -        compileBroker.o \
 -        gcVMOperations.o \
--        hashtable.o \
 -        instanceKlass.o \
 -        java.o \
+-        javaThread.o \
 -        jni.o \
 -        jvm.o \
 -        memoryManager.o \
@@ -5095,7 +4812,7 @@
 -        runtimeService.o \
 -        sharedRuntime.o \
 -        synchronizer.o \
--        thread.o \
+-        threads.o \
 -        unsafe.o \
 -        vmThread.o \
 -    )
@@ -5460,9 +5177,9 @@
 -    }
 -    return generateJvmOffsets(gen_var);
 -}
---- old/make/hotspot/symbols/symbols-solaris	2020-05-20 18:08:18.759650332 -0700
+--- old/make/data/hotspot-symbols/symbols-solaris	2020-05-20 18:08:18.759650332 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,25 +0,0 @@
+@@ -1,24 +0,0 @@
 -#
 -# Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
 -# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -5487,8 +5204,7 @@
 -#
 -
 -JVM_handle_solaris_signal
--sysThreadAvailableStackWithSlack
---- old/make/hotspot/symbols/symbols-solaris-dtrace-compiler1	2020-05-20 18:08:19.459663773 -0700
+--- old/make/data/hotspot-symbols/symbols-solaris-dtrace-compiler1	2020-05-20 18:08:19.459663773 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
 @@ -1,34 +0,0 @@
 -#
@@ -5525,7 +5241,7 @@
 -__1cSDeoptimizationBlobG__vtbl_
 -
 -__JvmOffsets
---- old/make/hotspot/symbols/symbols-solaris-dtrace-compiler2	2020-05-20 18:08:20.203678058 -0700
+--- old/make/data/hotspot-symbols/symbols-solaris-dtrace-compiler2	2020-05-20 18:08:20.203678058 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
 @@ -1,36 +0,0 @@
 -#
@@ -12704,7 +12420,7 @@
 -#endif // USE_DAUDIO
 --- old/src/java.desktop/solaris/native/libjsound/PLATFORM_API_SolarisOS_Ports.c	2020-05-20 18:10:35.750280487 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,600 +0,0 @@
+@@ -1,579 +0,0 @@
 -/*
 - * Copyright (c) 2002, 2016, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -12741,9 +12457,6 @@
 -#define MONITOR_GAIN_STRING "Monitor Gain"
 -
 -#define ALL_TARGET_PORT_COUNT 6
--
--// define the following to not use audio_prinfo_t.mod_ports
--#define SOLARIS7_COMPATIBLE
 -
 -// Solaris audio defines
 -static int targetPorts[ALL_TARGET_PORT_COUNT] = {
@@ -12931,28 +12644,18 @@
 -                        info->ports[info->targetPortCount] = i;
 -                        info->targetPortCount++;
 -                    }
--#ifdef SOLARIS7_COMPATIBLE
--                    TRACE3("Target %d %s: avail=%d\n", i, targetPortNames[i],
--                           info->audioInfo.play.avail_ports & targetPorts[i]);
--#else
 -                    TRACE4("Target %d %s: avail=%d  mod=%d\n", i, targetPortNames[i],
 -                           info->audioInfo.play.avail_ports & targetPorts[i],
 -                           info->audioInfo.play.mod_ports & targetPorts[i]);
--#endif
 -                }
 -                for (i = 0; i < ALL_SOURCE_PORT_COUNT; i++) {
 -                    if (info->audioInfo.record.avail_ports & sourcePorts[i]) {
 -                        info->ports[info->targetPortCount + info->sourcePortCount] = i;
 -                        info->sourcePortCount++;
 -                    }
--#ifdef SOLARIS7_COMPATIBLE
--                    TRACE3("Source %d %s: avail=%d\n", i, sourcePortNames[i],
--                           info->audioInfo.record.avail_ports & sourcePorts[i]);
--#else
 -                    TRACE4("Source %d %s: avail=%d  mod=%d\n", i, sourcePortNames[i],
 -                           info->audioInfo.record.avail_ports & sourcePorts[i],
 -                           info->audioInfo.record.mod_ports & sourcePorts[i]);
--#endif
 -                }
 -            }
 -        }
@@ -13121,18 +12824,10 @@
 -                              type | PORT_CONTROL_TYPE_OUTPUT_MUTED,
 -                              controls, &controlCount);
 -            addAllControls(info, creator, controls, &controlCount);
--#ifdef SOLARIS7_COMPATIBLE
--            selectable = info->audioInfo.play.avail_ports & targetPorts[info->ports[portIndex]];
--#else
 -            selectable = info->audioInfo.play.mod_ports & targetPorts[info->ports[portIndex]];
--#endif
 -        } else {
 -            type = PORT_CONTROL_TYPE_RECORD;
--#ifdef SOLARIS7_COMPATIBLE
--            selectable = info->audioInfo.record.avail_ports & sourcePorts[info->ports[portIndex]];
--#else
 -            selectable = info->audioInfo.record.mod_ports & sourcePorts[info->ports[portIndex]];
--#endif
 -        }
 -        // add a mixer strip with volume, ...
 -        createPortControl(info, creator, portIndex,
@@ -13503,7 +13198,7 @@
 -}
 --- old/src/java.desktop/solaris/native/libjsound/PLATFORM_API_SolarisOS_Utils.h	2020-05-20 18:10:37.194308211 -0700
 +++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,97 +0,0 @@
+@@ -1,85 +0,0 @@
 -/*
 - * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
 - * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -13533,7 +13228,6 @@
 -#include <string.h>
 -#include <stdlib.h>
 -#include <fcntl.h>
--/* does not work on Solaris 2.7 */
 -#include <sys/audio.h>
 -#include <sys/mixer.h>
 -#include <sys/types.h>
@@ -13546,17 +13240,6 @@
 -
 -#ifndef PLATFORM_API_SOLARISOS_UTILS_H_INCLUDED
 -#define PLATFORM_API_SOLARISOS_UTILS_H_INCLUDED
--
--/* defines for Solaris 2.7
--   #ifndef AUDIO_AUX1_OUT
--   #define AUDIO_AUX1_OUT   (0x08)  // output to aux1 out
--   #define AUDIO_AUX2_OUT   (0x10)  // output to aux2 out
--   #define AUDIO_SPDIF_OUT  (0x20)  // output to SPDIF port
--   #define AUDIO_AUX1_IN    (0x08)    // input from aux1 in
--   #define AUDIO_AUX2_IN    (0x10)    // input from aux2 in
--   #define AUDIO_SPDIF_IN   (0x20)    // input from SPDIF port
--   #endif
--*/
 -
 -/* input from Codec inter. loopback */
 -#ifndef AUDIO_CODEC_LOOPB_IN
@@ -14585,151 +14268,6 @@
 -        JVMDebugger debugger = VM.getVM().getDebugger();
 -        return debugger.getThreadForIdentifierAddress(tidAddr);
 -    }
--
--}
---- old/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/solaris_x86/SolarisX86JavaThreadPDAccess.java	2020-05-20 18:11:12.654989017 -0700
-+++ /dev/null	2020-03-09 18:57:19.455001459 -0700
-@@ -1,142 +0,0 @@
--/*
-- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
-- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-- *
-- * This code is free software; you can redistribute it and/or modify it
-- * under the terms of the GNU General Public License version 2 only, as
-- * published by the Free Software Foundation.
-- *
-- * This code is distributed in the hope that it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-- * version 2 for more details (a copy is included in the LICENSE file that
-- * accompanied this code).
-- *
-- * You should have received a copy of the GNU General Public License version
-- * 2 along with this work; if not, write to the Free Software Foundation,
-- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-- *
-- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-- * or visit www.oracle.com if you need additional information or have any
-- * questions.
-- *
-- */
--
--package sun.jvm.hotspot.runtime.solaris_x86;
--
--import java.io.*;
--import java.util.*;
--import sun.jvm.hotspot.debugger.*;
--import sun.jvm.hotspot.debugger.x86.*;
--import sun.jvm.hotspot.runtime.*;
--import sun.jvm.hotspot.runtime.x86.*;
--import sun.jvm.hotspot.types.*;
--import sun.jvm.hotspot.utilities.*;
--import sun.jvm.hotspot.utilities.Observable;
--import sun.jvm.hotspot.utilities.Observer;
--
--/** Placeholder for now to allow us to start the SA without support
--    for stack traces */
--
--public class SolarisX86JavaThreadPDAccess implements JavaThreadPDAccess {
--  private static AddressField lastJavaFPField;
--  private static AddressField osThreadField;
--  private static AddressField baseOfStackPointerField;
--
--  // Field from OSThread
--  private static CIntegerField osThreadThreadIDField;
--
--  // This is currently unneeded but is being kept in case we change
--  // the currentFrameGuess algorithm
--  private static final long GUESS_SCAN_RANGE = 128 * 1024;
--
--
--  static {
--    VM.registerVMInitializedObserver(new Observer() {
--        public void update(Observable o, Object data) {
--          initialize(VM.getVM().getTypeDataBase());
--        }
--      });
--  }
--
--  private static synchronized void initialize(TypeDataBase db) {
--    Type type = db.lookupType("JavaThread");
--    Type anchorType = db.lookupType("JavaFrameAnchor");
--
--    lastJavaFPField    = anchorType.getAddressField("_last_Java_fp");
--    osThreadField      = type.getAddressField("_osthread");
--
--    type = db.lookupType("OSThread");
--    osThreadThreadIDField   = type.getCIntegerField("_thread_id");
--  }
--
--  public    Address getLastJavaFP(Address addr) {
--    return lastJavaFPField.getValue(addr.addOffsetTo(sun.jvm.hotspot.runtime.JavaThread.getAnchorField().getOffset()));
--  }
--
--  public    Address getLastJavaPC(Address addr) {
--    return null;
--  }
--
--  public Address getBaseOfStackPointer(Address addr) {
--    return null;
--  }
--
--  public Frame getLastFramePD(JavaThread thread, Address addr) {
--    Address fp = thread.getLastJavaFP();
--    if (fp == null) {
--      return null; // no information
--    }
--    Address pc =  thread.getLastJavaPC();
--    if ( pc != null ) {
--      return new X86Frame(thread.getLastJavaSP(), fp, pc);
--    } else {
--      return new X86Frame(thread.getLastJavaSP(), fp);
--    }
--  }
--
--  public RegisterMap newRegisterMap(JavaThread thread, boolean updateMap) {
--    return new X86RegisterMap(thread, updateMap);
--  }
--
--  public Frame getCurrentFrameGuess(JavaThread thread, Address addr) {
--    ThreadProxy t = getThreadProxy(addr);
--    X86ThreadContext context = (X86ThreadContext) t.getContext();
--    X86CurrentFrameGuess guesser = new X86CurrentFrameGuess(context, thread);
--    if (!guesser.run(GUESS_SCAN_RANGE)) {
--      return null;
--    }
--    if (guesser.getPC() == null) {
--      return new X86Frame(guesser.getSP(), guesser.getFP());
--    } else {
--      return new X86Frame(guesser.getSP(), guesser.getFP(), guesser.getPC());
--    }
--  }
--
--
--  public void printThreadIDOn(Address addr, PrintStream tty) {
--    tty.print(getThreadProxy(addr));
--  }
--
--
--  public void printInfoOn(Address threadAddr, PrintStream tty) {
--  }
--
--  public Address getLastSP(Address addr) {
--    ThreadProxy t = getThreadProxy(addr);
--    X86ThreadContext context = (X86ThreadContext) t.getContext();
--    return context.getRegisterAsAddress(X86ThreadContext.ESP);
--  }
--
--  public ThreadProxy getThreadProxy(Address addr) {
--    // Fetch the OSThread (for now and for simplicity, not making a
--    // separate "OSThread" class in this package)
--    Address osThreadAddr = osThreadField.getValue(addr);
--    // Get the address of the thread ID from the OSThread
--    Address tidAddr = osThreadAddr.addOffsetTo(osThreadThreadIDField.getOffset());
--
--    JVMDebugger debugger = VM.getVM().getDebugger();
--    return debugger.getThreadForIdentifierAddress(tidAddr);
--  }
 -
 -}
 --- old/src/jdk.management/solaris/native/libmanagement_ext/UnixOperatingSystem.c	2020-05-20 18:12:18.112245724 -0700
