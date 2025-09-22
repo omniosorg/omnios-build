@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=libxslt
-VER=1.1.42
+VER=1.1.43
 PKG=library/libxslt
 SUMMARY="The XSLT C library"
 DESC="The portable XSLT C library built on libxml2"
@@ -34,6 +34,7 @@ CONFIGURE_OPTS="
     --disable-static
     --with-pic
     --without-crypto
+    --without-plugins
     --without-python
 "
 
