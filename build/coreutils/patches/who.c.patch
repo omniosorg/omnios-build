@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/who.c a/src/who.c
 --- a~/src/who.c	1970-01-01 00:00:00
 +++ a/src/who.c	1970-01-01 00:00:00
-@@ -509,8 +509,8 @@ print_runlevel (struct gl_utmp const *ut
+@@ -509,8 +509,8 @@ print_runlevel (STRUCT_UTMP const *utmp_
    unsigned char curr = utmp_ent->ut_pid % 256;
  
    if (!runlevline)
