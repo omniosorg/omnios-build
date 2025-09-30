@@ -32,7 +32,7 @@
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
-| file/gnu-coreutils			| 9.7			| https://ftp.gnu.org/gnu/coreutils/
+| file/gnu-coreutils			| 9.8			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.7.1			| https://github.com/libexpat/libexpat/releases
@@ -49,14 +49,14 @@
 | library/libmagic			| 5.46			| https://github.com/file/file/tags
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.51.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
-| library/libxml2			| 2.14.5		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
-| library/libxslt			| 1.1.42		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
+| library/libxml2			| 2.14.6		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
+| library/libxslt			| 1.1.43		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.66.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nghttp2			| 1.67.1		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.37			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
-| library/pcre2				| 10.45			| https://github.com/PhilipHazel/pcre2/releases
+| library/pcre2				| 10.46			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
@@ -73,16 +73,16 @@
 | network/socat				| 1.8.0.3		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.19.1		| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
-| runtime/java/openjdk11		| 11.0.27+6		| https://github.com/openjdk/jdk11u/tags
-| runtime/java/openjdk17		| 17.0.15+6		| https://github.com/openjdk/jdk17u/tags
-| runtime/java/openjdk21		| 21.0.7+6		| https://github.com/openjdk/jdk21u/tags
-| runtime/java/openjdk8			| 1.8.452-09		| https://github.com/openjdk/jdk8u/tags
+| runtime/java/openjdk11		| 11.0.28+6		| https://github.com/openjdk/jdk11u/tags
+| runtime/java/openjdk17		| 17.0.16+8		| https://github.com/openjdk/jdk17u/tags
+| runtime/java/openjdk21		| 21.0.8+9		| https://github.com/openjdk/jdk21u/tags
+| runtime/java/openjdk8			| 1.8.462-08		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.42.0		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.12		| https://www.python.org/downloads/source/
-| runtime/python-312			| 3.12.10		| https://www.python.org/downloads/source/
+| runtime/python-311			| 3.11.13		| https://www.python.org/downloads/source/
+| runtime/python-312			| 3.12.11		| https://www.python.org/downloads/source/
 | runtime/python-313			| 3.13.7		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.17p2		| https://www.sudo.ws/
-| service/network/chrony		| 4.7			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
+| service/network/chrony		| 4.8			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.4			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
@@ -95,7 +95,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.115.1		| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.116			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.5		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -105,13 +105,13 @@
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2508.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
-| system/test/fio			| 3.40			| https://github.com/axboe/fio/tags
+| system/test/fio			| 3.41			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.5			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.5			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.25			| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 0.26			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed

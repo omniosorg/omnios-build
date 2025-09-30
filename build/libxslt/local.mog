@@ -8,8 +8,8 @@
 # http://www.illumos.org/license/CDDL.
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=MIT
+license Copyright license=MIT
 <transform path=usr/share/(gtk-)?doc -> drop>
 

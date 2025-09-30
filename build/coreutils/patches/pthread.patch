@@ -1,11 +1,14 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/m4/threadlib.m4 a/m4/threadlib.m4
 --- a~/m4/threadlib.m4	1970-01-01 00:00:00
 +++ a/m4/threadlib.m4	1970-01-01 00:00:00
-@@ -244,6 +244,7 @@ AC_DEFUN([gl_PTHREADLIB_BODY],
+@@ -225,6 +225,10 @@ AC_DEFUN([gl_PTHREADLIB_BODY],
+             ],
              [gl_pthread_in_glibc=yes],
              [])
-           ;;
-+        solaris*) gl_pthread_in_glibc=yes ;;
-       esac
++	 ],
++	[solaris*],
++	 [
++            gl_pthread_in_glibc=yes
+          ])
        echo "$as_me:__oline__: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&AS_MESSAGE_LOG_FD
  

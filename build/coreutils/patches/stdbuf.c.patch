@@ -13,7 +13,7 @@ turned it into a comment explaining why it's not included by default.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/stdbuf.c a/src/stdbuf.c
 --- a~/src/stdbuf.c	1970-01-01 00:00:00
 +++ a/src/stdbuf.c	1970-01-01 00:00:00
-@@ -216,7 +216,7 @@ set_LD_PRELOAD (void)
+@@ -219,7 +219,7 @@ set_LD_PRELOAD (void)
       system (and that of stdbuf itself).  */
    char const *const search_path[] = {
      program_path,
