@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151052
 
+## r151052av (2025-10-01)
+Weekly release for w/c 29th of September 2025.
+> This is a non-reboot update
+
+### Security Fixes
+
+* OpenSSL updated to version 3.3.5
+
+* Unsupported OpenSSL 1.0 and 1.1 packages updated to mitigate CVE-2025-9230
+
+* Curl updated to version 8.16.0
+
+* Expat updated to version 2.7.2
+
+* OpenJDK packages updated to versions 1.8.462-08, 11.0.28+6, 17.0.16+8
+  and 21.0.8+9
+
+<br>
+
+---
+
 ## r151052ar (2025-09-04)
 Weekly release for w/c 1st of September 2025.
 > This is a non-reboot update
