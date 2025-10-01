@@ -25,8 +25,6 @@ SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
 DESC+="and general purpose cryptographic library"
 
-DASHREV=1
-
 # Required for the testsuite - not yet in ooce/omnios-build-tools
 BUILD_DEPENDS_IPS+=" ooce/file/lsof"
 
