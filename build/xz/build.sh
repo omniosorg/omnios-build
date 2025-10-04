@@ -26,6 +26,7 @@ DESC+="high compression ratio"
 SKIP_LICENCES=xz
 
 forgo_isaexec
+set_standard XPG6
 
 post_configure() {
     logcmd gmake -C $TMPDIR/$BUILDDIR/src/liblzma foo
