@@ -57,6 +57,19 @@ CONFIGURE_OPTS[WS]="
 
 # NTPsec uses the 'waf' build system
 
+build_init() {
+    # ntpsec 1.2.4 includes a broken version of "waf" which does not honour
+    # --libdir. Replace it.
+    typeset newver=2.1.6
+    typeset oldver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
+    [ "$oldver" = "2.1.4" ] || logerr "Unexpected waf version $oldver"
+    logmsg "-- updating 'waf' from $oldver to $newver"
+    logcmd $CURL -Lo $TMPDIR/$BUILDDIR/waf https://waf.io/waf-$newver \
+        || logerr "Could not download updated waf binary"
+    typeset nowver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
+    [ "$nowver" = "$newver" ] || logerr "Unexpected new waf version $nowver"
+}
+
 make_clean() {
     logcmd ./waf distclean
 }

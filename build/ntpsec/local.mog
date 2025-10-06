@@ -8,12 +8,12 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
 
 license LICENSES/Apache-2.0.txt license=Apache2
 license LICENSES/BSD-2-Clause.txt license=simplified-BSD
-license LICENSES/BSD-3-Clause.txt license=modified-BSD
-license LICENSES/BSD-4-Clause.txt license=modified-BSD
+license LICENSES/BSD-3-Clause.txt license=modified-BSD/3
+license LICENSES/BSD-4-Clause.txt license=modified-BSD/4
 license LICENSES/ISC.txt license=ISC
 license LICENSES/MIT.txt license=MIT
 license LICENSES/Beerware.txt license=skip/beerware
