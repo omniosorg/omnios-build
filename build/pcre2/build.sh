@@ -64,6 +64,7 @@ unset -f pre_build
 CONFIGURE_OPTS+="
     --enable-pcre2-16
     --enable-pcre2-32
+    --enable-jit
 "
 
 # Make ISA binaries for pcre2-config, to allow software to find the
