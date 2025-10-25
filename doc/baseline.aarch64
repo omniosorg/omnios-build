@@ -388,8 +388,6 @@ omnios release/name
 omnios release/notices
 omnios runtime/perl
 omnios runtime/perl/module/sun-solaris
-omnios runtime/python-311 r
-omnios runtime/python-312 r
 omnios runtime/python-313
 omnios security/bart
 omnios security/sudo
@@ -524,11 +522,11 @@ omnios system/library/pcap
 omnios system/library/platform
 omnios system/library/policykit
 omnios system/library/processor o
+omnios system/library/python/libbe-27 o
 omnios system/library/python/libbe-313
+omnios system/library/python/solaris-27 o
 omnios system/library/python/solaris-313
 omnios system/library/python/zfs-27 o
-omnios system/library/python/zfs-311 o
-omnios system/library/python/zfs-312 o
 omnios system/library/python/zfs-313
 omnios system/library/security/crypto/pkcs11_kms o
 omnios system/library/security/gss
