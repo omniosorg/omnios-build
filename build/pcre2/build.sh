@@ -18,6 +18,7 @@
 
 PROG=pcre2
 VER=10.46
+DASHREV=1
 PKG=library/pcre2
 SUMMARY="Perl-Compatible Regular Expressions, version 2"
 DESC="The PCRE library is a set of functions that implement regular expression"
@@ -64,6 +65,7 @@ unset -f pre_build
 CONFIGURE_OPTS+="
     --enable-pcre2-16
     --enable-pcre2-32
+    --enable-jit
 "
 
 # Make ISA binaries for pcre2-config, to allow software to find the

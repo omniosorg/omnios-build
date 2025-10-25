@@ -16,7 +16,7 @@ license LICENCE.md license=modified-BSD
 <transform path=usr/share/man/man3/pcre2(?:demo|sample)\.3$ -> drop>
 
 # Drop 32-bit binaries
-<transform path=$(PREFIX)/bin/i386/(?!pcre2-config) -> drop>
+<transform path=usr/bin/i386/(?!pcre2-config) -> drop>
 
 # See build.sh for notes on why we ship files from 10.36. Not all of these
 # files need to be packaged - this drops the unecessary ones.
