@@ -159,7 +159,7 @@ CONFIGURE_OPTS+=" bash_cv_strtold_broken=no"
 download_source $PROG $PROG $VER
 patch_source
 build
-VER="${VER%.*}.$PATCHLVL" make_package
+VER+=".$PATCHLVL" make_package
 clean_up
 
 # Vim hints
