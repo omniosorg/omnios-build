@@ -104,7 +104,7 @@ DESC="A simple system for interprocess communication and coordination"
 [ "$FLAVOR" != libsandheaders ] \
     && make_package -seed $TMPDIR/manifest.dbus dbus.mog
 
-PKG=system/library/libdbus
+PKG=system/library/libdbus ##IGNORE##
 SUMMARY+=" - client libraries"
 DESC+=" - client libraries"
 make_package -seed $TMPDIR/manifest.libdbus

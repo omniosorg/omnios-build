@@ -27,6 +27,7 @@ test-os.patch
 test-email.patch
 test-filecomments.patch
 test-freeze.patch
+test-generators.patch
 test-metadata.patch
 test-opts.patch
 test-pkgutil.patch
