@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/auth-pam.c a/auth-pam.c
 --- a~/auth-pam.c	1970-01-01 00:00:00
 +++ a/auth-pam.c	1970-01-01 00:00:00
-@@ -1213,6 +1213,20 @@ do_pam_account(void)
+@@ -1239,6 +1239,20 @@ do_pam_account(void)
  	return (sshpam_account_status);
  }
  
@@ -78,7 +78,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-hostbased.c a/auth2-hos
 diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor.c a/monitor.c
 --- a~/monitor.c	1970-01-01 00:00:00
 +++ a/monitor.c	1970-01-01 00:00:00
-@@ -399,6 +399,12 @@ monitor_child_preauth(struct ssh *ssh, s
+@@ -389,6 +389,12 @@ monitor_child_preauth(struct ssh *ssh, s
  		}
  	}
  
@@ -91,7 +91,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor.c a/monitor.c
  	if (!authctxt->valid)
  		fatal_f("authenticated invalid user");
  	if (strcmp(auth_method, "unknown") == 0)
-@@ -605,14 +611,16 @@ monitor_reset_key_state(void)
+@@ -613,14 +619,16 @@ monitor_reset_key_state(void)
  {
  	/* reset state */
  	free(key_blob);
@@ -109,9 +109,9 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/monitor.c a/monitor.c
  	hostbased_chost = NULL;
  }
  
-@@ -1183,6 +1191,11 @@ mm_answer_pam_account(struct ssh *ssh, i
+@@ -1189,6 +1197,11 @@ mm_answer_pam_account(struct ssh *ssh, i
  	if (!options.use_pam)
- 		fatal("%s: PAM not enabled", __func__);
+ 		fatal_f("PAM not enabled");
  
 +#ifdef HAVE_PAM_AUSER
 +	if (hostbased_cuser != NULL)

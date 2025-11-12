@@ -10,7 +10,7 @@ behaviour (at least the parts that are most commonly used).
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -202,6 +202,7 @@ initialize_server_options(ServerOptions
+@@ -200,6 +200,7 @@ initialize_server_options(ServerOptions
  	options->client_alive_count_max = -1;
  	options->num_authkeys_files = 0;
  	options->num_accept_env = 0;
@@ -18,7 +18,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	options->num_setenv = 0;
  	options->permit_tun = -1;
  	options->permitted_opens = NULL;
-@@ -538,6 +539,32 @@ fill_default_server_options(ServerOption
+@@ -532,6 +533,32 @@ fill_default_server_options(ServerOption
  		options->max_sessions = DEFAULT_SESSIONS_MAX;
  	if (options->use_dns == -1)
  		options->use_dns = 0;
@@ -51,7 +51,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	if (options->client_alive_interval == -1)
  		options->client_alive_interval = 0;
  	if (options->client_alive_count_max == -1)
-@@ -2373,9 +2400,12 @@ process_server_config_line_depth(ServerO
+@@ -2363,9 +2390,12 @@ process_server_config_line_depth(ServerO
  			if (*arg == '\0' || strchr(arg, '=') != NULL)
  				fatal("%s line %d: Invalid environment name.",
  				    filename, linenum);
@@ -78,7 +78,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
 --- a~/session.c	1970-01-01 00:00:00
 +++ a/session.c	1970-01-01 00:00:00
-@@ -831,6 +831,18 @@ check_quietlogin(Session *s, const char
+@@ -793,6 +793,18 @@ check_quietlogin(Session *s, const char
  }
  
  /*
@@ -97,7 +97,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
   * Reads environment variables from the given file and adds/overrides them
   * into the environment.  If the file does not exist, this does nothing.
   * Otherwise, it must consist of empty lines, comments (line starts with '#')
-@@ -1014,6 +1026,16 @@ do_setup_env(struct ssh *ssh, Session *s
+@@ -976,6 +988,16 @@ do_setup_env(struct ssh *ssh, Session *s
  	ssh_gssapi_do_child(&env, &envsize);
  #endif
  
@@ -114,7 +114,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/session.c a/session.c
  	/* Set basic environment. */
  	for (i = 0; i < s->num_env; i++)
  		child_set_env(&env, &envsize, s->env[i].name, s->env[i].val);
-@@ -1057,8 +1079,7 @@ do_setup_env(struct ssh *ssh, Session *s
+@@ -1019,8 +1041,7 @@ do_setup_env(struct ssh *ssh, Session *s
  	/* Normal systems set SHELL by default. */
  	child_set_env(&env, &envsize, "SHELL", shell);
  

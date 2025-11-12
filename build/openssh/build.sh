@@ -18,16 +18,10 @@
 . ../../lib/build.sh
 
 PROG=openssh
-VER=10.0p2
+VER=10.2p1
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
-
-# There was a mistake in the release process for OpenSSH 10.0p1 in that it
-# identifies itself as 10.0p2. There was no corrected release made so we
-# have to change the build directory back to 10.0p1. This can be removed on
-# the next update.
-set_builddir $PROG-10.0p1
 
 set_arch 64
 

@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1706,6 +1706,62 @@ else
+@@ -1776,6 +1776,62 @@ else
  	AC_MSG_RESULT([no])
  fi
  
@@ -64,7 +64,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  # Check whether user wants to use ldns
  LDNS_MSG="no"
  AC_ARG_WITH(ldns,
-@@ -5797,6 +5853,7 @@ echo "                       PAM support
+@@ -5879,6 +5935,7 @@ echo "                       PAM support
  echo "                   OSF SIA support: $SIA_MSG"
  echo "                 KerberosV support: $KRB5_MSG"
  echo "                   SELinux support: $SELINUX_MSG"
@@ -75,7 +75,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session.c
 --- a~/sshd-session.c	1970-01-01 00:00:00
 +++ a/sshd-session.c	1970-01-01 00:00:00
-@@ -70,6 +70,11 @@
+@@ -64,6 +64,11 @@
  #include <prot.h>
  #endif
   
@@ -87,7 +87,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  #include "xmalloc.h"
  #include "ssh.h"
  #include "ssh2.h"
-@@ -1238,6 +1243,25 @@ main(int ac, char **av)
+@@ -1216,6 +1221,25 @@ main(int ac, char **av)
  	audit_connection_from(ssh, remote_ip, remote_port);
  #endif
  
