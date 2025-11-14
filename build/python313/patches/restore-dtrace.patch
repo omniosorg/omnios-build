@@ -190,7 +190,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/ceval_macros.h a/Pytho
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/Python/generated_cases.c.h
 --- a~/Python/generated_cases.c.h	1970-01-01 00:00:00
 +++ a/Python/generated_cases.c.h	1970-01-01 00:00:00
-@@ -996,6 +996,7 @@
+@@ -999,6 +999,7 @@
                  new_frame->previous = frame;
                  CALL_STAT_INC(inlined_py_calls);
                  frame = tstate->current_frame = new_frame;
@@ -198,7 +198,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  tstate->py_recursion_remaining--;
                  LOAD_SP();
                  LOAD_IP(0);
-@@ -1087,6 +1088,7 @@
+@@ -1094,6 +1095,7 @@
                  new_frame->previous = frame;
                  CALL_STAT_INC(inlined_py_calls);
                  frame = tstate->current_frame = new_frame;
@@ -206,7 +206,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  tstate->py_recursion_remaining--;
                  LOAD_SP();
                  LOAD_IP(0);
-@@ -1925,6 +1927,7 @@
+@@ -1935,6 +1937,7 @@
                  new_frame->previous = frame;
                  CALL_STAT_INC(inlined_py_calls);
                  frame = tstate->current_frame = new_frame;
@@ -214,7 +214,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  tstate->py_recursion_remaining--;
                  LOAD_SP();
                  LOAD_IP(0);
-@@ -1997,6 +2000,7 @@
+@@ -2011,6 +2014,7 @@
                  new_frame->previous = frame;
                  CALL_STAT_INC(inlined_py_calls);
                  frame = tstate->current_frame = new_frame;
@@ -222,7 +222,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  tstate->py_recursion_remaining--;
                  LOAD_SP();
                  LOAD_IP(0);
-@@ -2850,6 +2854,7 @@
+@@ -2864,6 +2868,7 @@
                  new_frame->previous = frame;
                  CALL_STAT_INC(inlined_py_calls);
                  frame = tstate->current_frame = new_frame;
@@ -230,7 +230,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  tstate->py_recursion_remaining--;
                  LOAD_SP();
                  LOAD_IP(0);
-@@ -3501,6 +3506,7 @@
+@@ -3515,6 +3520,7 @@
              Py_INCREF(retval);
              assert(EMPTY());
              _PyFrame_SetStackPointer(frame, stack_pointer);
@@ -238,7 +238,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
              _Py_LeaveRecursiveCallPy(tstate);
              assert(frame != &entry_frame);
              // GH-99729: We need to unlink the frame *before* clearing it:
-@@ -3526,6 +3532,7 @@
+@@ -3540,6 +3546,7 @@
              STACK_SHRINK(1);
              assert(EMPTY());
              _PyFrame_SetStackPointer(frame, stack_pointer);
@@ -246,7 +246,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
              _Py_LeaveRecursiveCallPy(tstate);
              assert(frame != &entry_frame);
              // GH-99729: We need to unlink the frame *before* clearing it:
-@@ -3551,6 +3558,7 @@
+@@ -3565,6 +3572,7 @@
              assert(oparg == 0 || oparg == 1);
              gen->gi_frame_state = FRAME_SUSPENDED + oparg;
              _PyFrame_SetStackPointer(frame, stack_pointer - 1);
@@ -254,7 +254,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
              int err = _Py_call_instrumentation_arg(
                  tstate, PY_MONITORING_EVENT_PY_YIELD,
                  frame, this_instr, retval);
-@@ -5201,6 +5209,7 @@
+@@ -5215,6 +5223,7 @@
                  #endif
                  _PyFrame_SetStackPointer(frame, stack_pointer);
                  assert(EMPTY());
@@ -262,7 +262,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
                  _Py_LeaveRecursiveCallPy(tstate);
                  // GH-99729: We need to unlink the frame *before* clearing it:
                  _PyInterpreterFrame *dying = frame;
-@@ -5258,6 +5267,7 @@
+@@ -5272,6 +5281,7 @@
              stack_pointer += -1;
              _PyFrame_SetStackPointer(frame, stack_pointer);
              assert(EMPTY());
@@ -270,7 +270,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Python/generated_cases.c.h a/
              _Py_LeaveRecursiveCallPy(tstate);
              // GH-99729: We need to unlink the frame *before* clearing it:
              _PyInterpreterFrame *dying = frame;
-@@ -6234,6 +6244,7 @@
+@@ -6248,6 +6258,7 @@
              gen->gi_frame_state = FRAME_SUSPENDED + oparg;
              stack_pointer += -1;
              _PyFrame_SetStackPointer(frame, stack_pointer);
