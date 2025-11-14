@@ -4,7 +4,6 @@ vendor-packages.patch
 dont-use-ccs.patch
 default-lib-path.patch
 disable_epoll.patch
-strxfrm-fix.patch
 encoding-alias.patch
 locale-encoding.patch
 pyc-timestamp.patch
@@ -18,7 +17,6 @@ module-dlpi.patch
 module-priv-rbac.patch
 #
 # Module fixes
-mod-posix-sched_priority.patch
 mod-shutil-sendfile.patch
 termios-set-before-get.patch
 #

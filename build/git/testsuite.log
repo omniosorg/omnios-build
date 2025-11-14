@@ -25,7 +25,7 @@
 *** t0013-sha1dc.sh ***
 # passed all 1 test(s)
 *** t0014-alias.sh ***
-# passed all 5 test(s)
+# passed all 9 test(s)
 *** t0017-env-helper.sh ***
 # passed all 5 test(s)
 *** t0018-advice.sh ***
@@ -137,4 +137,4 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 # failed 2 among 8 test(s)
 make[2]: *** [Makefile:82: t0204-gettext-reencode-sanity.sh] Error 1
 make[1]: *** [Makefile:63: test] Error 2
-make: *** [Makefile:3280: test] Error 2
+make: *** [Makefile:3282: test] Error 2
