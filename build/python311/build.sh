@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=Python
-VER=3.11.12
+VER=3.11.14
 DASHREV=1
 PKG=runtime/python-311
 MVER=${VER%.*}
