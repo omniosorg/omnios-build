@@ -5,10 +5,10 @@ Author: Bill Sommerfeld <sommerfeld@hamachi.org>
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_termios.py a/Lib/test/test_termios.py
 --- a~/Lib/test/test_termios.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_termios.py	1970-01-01 00:00:00
-@@ -13,6 +13,16 @@ class TestFunctions(unittest.TestCase):
+@@ -16,6 +16,16 @@ class TestFunctions(unittest.TestCase):
  
      def setUp(self):
-         master_fd, self.fd = os.openpty()
+         self.master_fd, self.fd = os.openpty()
 +        # some systems will not let you get the window size unless it's been
 +        # set first, so try to set it if we can't get it
 +        try:
@@ -19,7 +19,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_termios.py a/Li
 +            except termios.error:
 +                pass
 +
-         self.addCleanup(os.close, master_fd)
+         self.addCleanup(os.close, self.master_fd)
          self.stream = self.enterContext(open(self.fd, 'wb', buffering=0))
          tmp = self.enterContext(tempfile.TemporaryFile(mode='wb', buffering=0))
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/termios.c a/Modules/termios.c
