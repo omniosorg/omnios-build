@@ -6,8 +6,8 @@ Subject: [PATCH 27/34] Set default sshd options based on /etc/default/login
 diff -wpruN --no-dereference '--exclude=*.orig' a~/pathnames.h a/pathnames.h
 --- a~/pathnames.h	1970-01-01 00:00:00
 +++ a/pathnames.h	1970-01-01 00:00:00
-@@ -42,6 +42,7 @@
- #define _PATH_HOST_XMSS_KEY_FILE	SSHDIR "/ssh_host_xmss_key"
+@@ -40,6 +40,7 @@
+ #define _PATH_HOST_ED25519_KEY_FILE	SSHDIR "/ssh_host_ed25519_key"
  #define _PATH_HOST_RSA_KEY_FILE		SSHDIR "/ssh_host_rsa_key"
  #define _PATH_DH_MODULI			SSHDIR "/moduli"
 +#define _PATH_DEFAULT_LOGIN		ETCDIR "/default/login"
@@ -23,9 +23,9 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  #include <stdarg.h>
 +#include <deflt.h>
  #include <errno.h>
- #ifdef HAVE_UTIL_H
  #include <util.h>
-@@ -238,6 +239,64 @@ option_clear_or_none(const char *o)
+ #ifdef USE_SYSTEM_GLOB
+@@ -236,6 +237,64 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -90,7 +90,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  static void
  assemble_algorithms(ServerOptions *o)
  {
-@@ -325,6 +384,8 @@ fill_default_server_options(ServerOption
+@@ -323,6 +382,8 @@ fill_default_server_options(ServerOption
  		options->pam_service_name = xstrdup(SSHD_PAM_SERVICE);
  #endif
  
@@ -102,7 +102,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
 --- a~/sshd_config.5	1970-01-01 00:00:00
 +++ a/sshd_config.5	1970-01-01 00:00:00
-@@ -1350,7 +1350,14 @@ Specifies the maximum number of authenti
+@@ -1349,7 +1349,14 @@ Specifies the maximum number of authenti
  connection.
  Once the number of failures reaches half this value,
  additional failures are logged.
@@ -118,7 +118,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd_config.5 a/sshd_config.5
  .It Cm MaxSessions
  Specifies the maximum number of open shell, login or subsystem (e.g. sftp)
  sessions permitted per network connection.
-@@ -1425,7 +1432,14 @@ The default is
+@@ -1424,7 +1431,14 @@ The default is
  When password authentication is allowed, it specifies whether the
  server allows login to accounts with empty password strings.
  The default is
