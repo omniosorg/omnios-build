@@ -18,7 +18,7 @@
 
 PROG=openjdk
 VER=1.8
-UPDATE=462
+UPDATE=472
 BUILD=08
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
