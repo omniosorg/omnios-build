@@ -111,7 +111,7 @@ web/wget2
 developer/gcc14
 developer/gnu-binutils
 developer/versioning/git
-system/library/libdbus -f libsandheaders
+system/library/dbus -f libsandheaders
 ###############################################################################
 .SYSROOT
 library/python-3/asn1crypto-313

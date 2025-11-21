@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/common/autoconf/generated-configure.sh a/common/autoconf/generated-configure.sh
 --- a~/common/autoconf/generated-configure.sh	1970-01-01 00:00:00
 +++ a/common/autoconf/generated-configure.sh	1970-01-01 00:00:00
-@@ -43516,7 +43516,7 @@ $as_echo "$supports" >&6; }
+@@ -43537,7 +43537,7 @@ $as_echo "$supports" >&6; }
        # Enabling pie on 32 bit builds prevents the JVM from allocating a continuous
        # java heap.
        if test "x$OPENJDK_TARGET_CPU_BITS" != "x32"; then

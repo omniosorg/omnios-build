@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=openjdk
-VER=17.0.16+8
+VER=17.0.17+10
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the seventeenth edition of the "
