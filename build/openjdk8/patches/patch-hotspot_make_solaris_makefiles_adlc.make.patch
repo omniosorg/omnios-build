@@ -20,4 +20,4 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefile
 +endif
  CFLAGS += $(CFLAGS_WARN)
  
- ifeq ("${Platform_compiler}", "sparcWorks")
+ # Extra flags from gnumake's invocation or environment
