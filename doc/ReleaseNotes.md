@@ -4,6 +4,39 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056d (2025-11-26)
+Weekly release for w/c 24th of November 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* Update Intel CPU microcode to 20251111.
+
+* Disable the faulty `RDSEED` instruction on vulnerable Zen5 processors.
+
+### Other Changes
+
+* Under specific circumstances, transactions in the ZFS transaction log could
+  be replayed out of order following an unexpected system restart, potentially
+  resulting in data corruption.
+
+* Unloading the `softmac` driver could result in a system panic.
+
+* The `pcieadm` utility can now decode Virtio vendor-specific capabilities.
+
+* Fix for a NFS client regression with macOS 14 server.
+
+* `git` updated to version 2.51.2
+
+* `OpenJDK` packages updated to versions 1.8.472-08, 11.0.29+7, 17.0.17+10 and
+  21.0.9+10.
+
+* `Python` updated to version 3.13.9.
+
+<br>
+
+---
+
 Stable Release, 3rd of Nov 2025
 
 `uname -a` shows `omnios-r151056-128de81dcd`
