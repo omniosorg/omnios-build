@@ -4,6 +4,33 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046ee (2025-11-26)
+Weekly release for w/c 24th of November 2025.
+> This update requires a reboot
+
+### Security Fixes
+
+* Update Intel CPU microcode to 20251111.
+
+### Other Changes
+
+* Under specific circumstances, transactions in the ZFS transaction log could
+  be replayed out of order following an unexpected system restart, potentially
+  resulting in data corruption.
+
+* Unloading the `softmac` driver could result in a system panic.
+
+* Fix for a NFS client regression with macOS 14 server.
+
+* `OpenJDK` packages updated to versions 1.8.472-08, 11.0.29+7, 17.0.17+10 and
+  21.0.9+10.
+
+* `Python` updated to version 3.11.4.
+
+<br>
+
+---
+
 ## r151046dw (2025-10-01)
 Weekly release for w/c 29th of September 2025.
 > This is a non-reboot update
