@@ -12,6 +12,8 @@ Weekly release for w/c 24th of November 2025.
 
 * Update Intel CPU microcode to 20251111.
 
+* Update AMD CPU microcode to 20251030.
+
 * Disable the faulty `RDSEED` instruction on vulnerable Zen5 processors.
 
 ### Other Changes
