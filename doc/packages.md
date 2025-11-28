@@ -2,7 +2,7 @@
 | :------ | :------ | :--- | :---- |
 | archiver/gnu-tar			| 1.35			| https://ftp.gnu.org/gnu/tar/ https://www.gnu.org/software/tar/
 | compress/7zip				| 25.01			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
-| compress/brotli			| 1.1.0			| https://github.com/google/brotli/releases
+| compress/brotli			| 1.2.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
