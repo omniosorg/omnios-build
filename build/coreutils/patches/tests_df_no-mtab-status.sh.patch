@@ -9,9 +9,9 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/df/no-mtab-status.sh a/
 -      || skip_ "getmntent is not used on this system"
 -
  # Simulate "mtab" failure.
- cat > k.c <<EOF || framework_failure_
- #define _GNU_SOURCE
-@@ -34,7 +31,7 @@ cat > k.c <<EOF || framework_failure_
+ # Replace gnulib streq and C23 nullptr as that are not available here.
+ sed 's/streq/0==str''cmp/; s/nullptr/NU''LL/' > k.c <<EOF || framework_failure_
+@@ -35,7 +32,7 @@ sed 's/streq/0==str''cmp/; s/nullptr/NU'
  #include <stdlib.h>
  #include <errno.h>
  #include <fcntl.h>

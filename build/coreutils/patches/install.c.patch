@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/install.c a/src/install.c
 --- a~/src/install.c	1970-01-01 00:00:00
 +++ a/src/install.c	1970-01-01 00:00:00
-@@ -585,8 +585,8 @@ Usage: %s [OPTION]... [-T] SOURCE DEST\n
+@@ -606,8 +606,8 @@ Usage: %s [OPTION]... [-T] SOURCE DEST\n
  \n\
  This install program copies files (often just compiled) into destination\n\
  locations you choose.  If you want to download and install a ready-to-use\n\
