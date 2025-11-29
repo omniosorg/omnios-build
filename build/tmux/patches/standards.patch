@@ -9,3 +9,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/server-client.c a/server-clie
  
  #include "tmux.h"
  
+diff -wpruN --no-dereference '--exclude=*.orig' a~/server-fn.c a/server-fn.c
+--- a~/server-fn.c	1970-01-01 00:00:00
++++ a/server-fn.c	1970-01-01 00:00:00
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <signal.h>
+ 
+ #include "tmux.h"
+ 
