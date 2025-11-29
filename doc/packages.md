@@ -64,8 +64,8 @@
 | library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20251030		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
-| meta/data/microcode/intel		| 20250512		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
+| meta/data/microcode/amd		| 20251113		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/intel		| 20251111		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.42		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.2p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
@@ -128,7 +128,7 @@
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 25.3.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 2.0.0b1		| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.10.6			| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-313		| 7.10.6		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.5.0			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 45.0.7		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.10			| https://pypi.org/rss/project/idna/releases.xml
@@ -138,7 +138,7 @@
 | library/python-3/meson-313		| 1.9.0			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-313		| 3.11.3		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-313	| 25.0			| https://pypi.org/rss/project/packaging/releases.xml
-| library/python-3/pip-313		| 25.2		| https://pypi.org/rss/project/pip/releases.xml
+| library/python-3/pip-313		| 25.2			| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 2.22			| https://pypi.org/rss/project/pycparser/releases.xml
 | library/python-3/pycurl-313		| 7.45.6		| https://pypi.org/rss/project/pycurl/releases.xml
