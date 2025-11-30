@@ -15,6 +15,7 @@ glib:fuzzing / fuzz_network_address_parse                              OK
 glib:fuzzing / fuzz_network_address_parse_uri                          OK
 glib:fuzzing / fuzz_paths                                              OK
 glib:fuzzing / fuzz_resolver                                           OK
+glib:fuzzing / fuzz_special_dirs                                       OK
 glib:fuzzing / fuzz_string                                             OK
 glib:fuzzing / fuzz_uri_escape                                         OK
 glib:fuzzing / fuzz_uri_parse                                          OK
@@ -36,16 +37,18 @@ glib:gio / buffered-output-stream                                      OK   5 su
 glib:gio / cancellable                                                 OK   17 subtests passed
 glib:gio / contenttype                                                 OK   3 subtests passed
 glib:gio / contexts                                                    OK   5 subtests passed
-glib:gio / converter                                                   OK   2 subtests passed
+glib:gio / converter                                                   OK   3 subtests passed
 glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
 glib:gio / credentials                                                 OK   1 subtests passed
 glib:gio / data-input-stream                                           OK   10 subtests passed
 glib:gio / data-output-stream                                          OK   7 subtests passed
 glib:gio / desktop-app-info                                            OK   49 subtests passed
 glib:gio / error                                                       OK   2 subtests passed
-glib:gio / file                                                        ERROR   killed by signal 6 SIGABRT
-glib:gio / file-thumbnail                                              ERROR   killed by signal 6 SIGABRT
+glib:gio / file                                                        OK   41 subtests passed
+glib:gio / file-enumerator                                             OK   1 subtests passed
+glib:gio / file-thumbnail                                              OK   7 subtests passed
 glib:gio / fileattributematcher                                        OK   3 subtests passed
+glib:gio / filenamecompleter                                           ERROR   killed by signal 6 SIGABRT
 glib:gio / filter-streams                                              OK   4 subtests passed
 glib:gio / g-file                                                      OK   8 subtests passed
 glib:gio / g-file-info                                                 OK   4 subtests passed
@@ -67,15 +70,15 @@ glib:gio / gschema-compile                                             OK   82 s
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 glib:gio / gsocketclient-slow                                          OK   4 subtests passed
 glib:gio / gsubprocess                                                 OK   83 subtests passed
-glib:gio / inet-address                                                OK   11 subtests passed
+glib:gio / inet-address                                                ERROR   killed by signal 6 SIGABRT
 glib:gio / io-stream                                                   OK   3 subtests passed
-glib:gio / live-g-file                                                 ERROR   killed by signal 6 SIGABRT
+glib:gio / live-g-file                                                 OK   12 subtests passed
 glib:gio / max-version                                                 OK   1 subtests passed
 glib:gio / memory-input-stream                                         OK   6 subtests passed
 glib:gio / memory-monitor                                              OK   1 subtests passed
 glib:gio / memory-output-stream                                        OK   10 subtests passed
 glib:gio / memory-settings-backend                                     OK   1 subtests passed
-glib:gio / mimeapps                                                    OK   7 subtests passed
+glib:gio / mimeapps                                                    OK   13 subtests passed
 glib:gio / mount-operation                                             OK   2 subtests passed
 glib:gio / network-address                                             OK   72 subtests passed
 glib:gio / network-monitor                                             OK   4 subtests passed
@@ -92,9 +95,9 @@ glib:gio / sandbox                                                     OK   4 su
 glib:gio / simple-async-result                                         OK   2 subtests passed
 glib:gio / simple-proxy                                                OK   3 subtests passed
 glib:gio / sleepy-stream                                               OK   2 subtests passed
-glib:gio / socket                                                      OK   27 subtests passed
+glib:gio / socket                                                      OK   29 subtests passed
 glib:gio / socket-address                                              OK   2 subtests passed
-glib:gio / socket-listener                                             OK   1 subtests passed
+glib:gio / socket-listener                                             OK   4 subtests passed
 glib:gio / socket-service                                              OK   4 subtests passed
 glib:gio / srvtarget                                                   OK   1 subtests passed
 glib:gio / stream-rw_all                                               OK   3 subtests passed
@@ -119,7 +122,7 @@ glib:gio+cpp / cxx-17                                                  OK
 glib:gio+cpp / cxx-20                                                  OK
 glib:gio+cpp / cxx-2b                                                  OK
 glib:gio+cpp / cxx-98                                                  OK
-glib:gio+no-valgrind / gio-tool.py                                     OK   3 subtests passed
+glib:gio+no-valgrind / gio-tool.py                                     OK   9 subtests passed
 glib:gio+no-valgrind+gdbus-codegen+slow / codegen.py                   OK   39 subtests passed
 glib:gio+no-valgrind+pkg-config / gio-2.0-pkg-config                   OK
 glib:gio+no-valgrind+pkg-config / gio-unix-2.0-pkg-config              OK
@@ -136,12 +139,12 @@ glib:girepository+core / cmph-bdz                                      OK   2 su
 glib:girepository+core / dump                                          OK   4 subtests passed
 glib:girepository+core / gthash                                        OK   1 subtests passed
 glib:glib+core / 1bit-mutex                                            OK   2 subtests passed
-glib:glib+core / array-test                                            OK   109 subtests passed
+glib:glib+core / array-test                                            OK   116 subtests passed
 glib:glib+core / asyncqueue                                            OK   7 subtests passed
 glib:glib+core / atomic                                                OK   2 subtests passed
 glib:glib+core / autoptr                                               OK   57 subtests passed
 glib:glib+core / base64                                                OK   28 subtests passed
-glib:glib+core / bitlock                                               OK   1 subtests passed
+glib:glib+core / bitlock                                               OK   2 subtests passed
 glib:glib+core / bookmarkfile                                          OK   96 subtests passed
 glib:glib+core / bytes                                                 OK   21 subtests passed
 glib:glib+core / cache                                                 OK   1 subtests passed
@@ -152,8 +155,8 @@ glib:glib+core / completion                                            OK   1 su
 glib:glib+core / cond                                                  OK   3 subtests passed
 glib:glib+core / constructor                                           OK   2 subtests passed
 glib:glib+core / convert                                               ERROR   killed by signal 6 SIGABRT
-glib:glib+core / dataset                                               OK   14 subtests passed
-glib:glib+core / date                                                  OK   118 subtests passed
+glib:glib+core / dataset                                               OK   15 subtests passed
+glib:glib+core / date                                                  OK   119 subtests passed
 glib:glib+core / dir                                                   OK   3 subtests passed
 glib:glib+core / environment                                           OK   6 subtests passed
 glib:glib+core / error                                                 OK   10 subtests passed
@@ -166,15 +169,15 @@ glib:glib+core / gwakeup-fallback                                      OK   2 su
 glib:glib+core / hash                                                  OK   34 subtests passed
 glib:glib+core / hmac                                                  OK   37 subtests passed
 glib:glib+core / hook                                                  OK   2 subtests passed
-glib:glib+core / hostutils                                             OK   3 subtests passed
+glib:glib+core / hostutils                                             OK   4 subtests passed
 glib:glib+core / include                                               OK   1 subtests passed
 glib:glib+core / io-channel                                            OK   2 subtests passed
 glib:glib+core / io-channel-basic                                      OK   1 subtests passed
 glib:glib+core / keyfile                                               OK   36 subtests passed
 glib:glib+core / list                                                  OK   20 subtests passed
-glib:glib+core / logging                                               OK   17 subtests passed
+glib:glib+core / logging                                               OK   20 subtests passed
 glib:glib+core / macros                                                OK   3 subtests passed
-glib:glib+core / mainloop                                              OK   44 subtests passed
+glib:glib+core / mainloop                                              OK   46 subtests passed
 glib:glib+core / mappedfile                                            OK   7 subtests passed
 glib:glib+core / mapping                                               ERROR   killed by signal 16 SIGUSR1
 glib:glib+core / markup                                                OK   1 subtests passed
@@ -190,11 +193,12 @@ glib:glib+core / node                                                  OK   6 su
 glib:glib+core / once                                                  OK   5 subtests passed
 glib:glib+core / onceinit                                              OK   1 subtests passed
 glib:glib+core / option-argv0                                          OK   1 subtests passed
-glib:glib+core / option-context                                        OK   58 subtests passed
+glib:glib+core / option-context                                        OK   61 subtests passed
 glib:glib+core / overflow                                              OK   6 subtests passed
 glib:glib+core / overflow-fallback                                     OK   6 subtests passed
 glib:glib+core / pathbuf                                               OK   3 subtests passed
 glib:glib+core / pattern                                               OK   90 subtests passed
+glib:glib+core / print                                                 SKIP   0 subtests passed
 glib:glib+core / private                                               OK   8 subtests passed
 glib:glib+core / protocol                                              OK   9 subtests passed
 glib:glib+core / queue                                                 OK   12 subtests passed
@@ -204,12 +208,12 @@ glib:glib+core / rec-mutex                                             OK   29 s
 glib:glib+core / refcount                                              OK   4 subtests passed
 glib:glib+core / refcount-macro                                        OK   4 subtests passed
 glib:glib+core / refstring                                             OK   8 subtests passed
-glib:glib+core / regex                                                 OK   848 subtests passed
+glib:glib+core / regex                                                 OK   849 subtests passed
 glib:glib+core / relation                                              OK   1 subtests passed
 glib:glib+core / rwlock                                                OK   8 subtests passed
-glib:glib+core / scannerapi                                            OK   4 subtests passed
+glib:glib+core / scannerapi                                            OK   8 subtests passed
 glib:glib+core / search-utils                                          OK   6 subtests passed
-glib:glib+core / shell                                                 OK   51 subtests passed
+glib:glib+core / shell                                                 OK   52 subtests passed
 glib:glib+core / slice                                                 OK   3 subtests passed
 glib:glib+core / slist                                                 OK   14 subtests passed
 glib:glib+core / sort                                                  OK   5 subtests passed
@@ -220,8 +224,8 @@ glib:glib+core / spawn-test                                            OK   2 su
 glib:glib+core / strfuncs                                              OK   51 subtests passed
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / strvbuilder                                           OK   7 subtests passed
-glib:glib+core / test-printf                                           OK   20 subtests passed
-glib:glib+core / testing                                               OK   43 subtests passed
+glib:glib+core / test-printf                                           OK   22 subtests passed
+glib:glib+core / testing                                               OK   44 subtests passed
 glib:glib+core / testing-nonfatal                                      OK
 glib:glib+core / thread                                                OK   6 subtests passed
 glib:glib+core / thread-deprecated                                     OK   6 subtests passed
@@ -238,9 +242,11 @@ glib:glib+core / uri                                                   OK   24 s
 glib:glib+core / utf8-misc                                             OK   7 subtests passed
 glib:glib+core / utf8-performance                                      OK   36 subtests passed
 glib:glib+core / utf8-pointer                                          OK   3 subtests passed
+glib:glib+core / utf8-private                                          OK   2 subtests passed
 glib:glib+core / utf8-validate                                         OK   238 subtests passed
 glib:glib+core / utils                                                 OK   41 subtests passed
 glib:glib+core / utils-isolated                                        OK   11 subtests passed
+glib:glib+core / utils-unisolated                                      OK   1 subtests passed
 glib:glib+core+cc / atomic-c-11                                        OK   2 subtests passed
 glib:glib+core+cc / atomic-c-17                                        OK   2 subtests passed
 glib:glib+core+cc / atomic-c-89                                        OK   2 subtests passed
@@ -316,7 +322,7 @@ glib:gobject / properties-refcount1                                    OK   1 su
 glib:gobject / properties-refcount4                                    OK   1 subtests passed
 glib:gobject / qdata                                                   OK   2 subtests passed
 glib:gobject / reference                                               OK   29 subtests passed
-glib:gobject / references                                              OK   1 subtests passed
+glib:gobject / references                                              OK   4 subtests passed
 glib:gobject / signal-handler                                          OK   7 subtests passed
 glib:gobject / signalgroup                                             OK   9 subtests passed
 glib:gobject / signals                                                 OK   31 subtests passed
@@ -362,19 +368,15 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
+glib:gio / filenamecompleter                                           ERROR   killed by signal 6 SIGABRT
 glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
-glib:gio / file-thumbnail                                              ERROR   killed by signal 6 SIGABRT
+glib:gio / inet-address                                                ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
-glib:gio / file                                                        ERROR   killed by signal 6 SIGABRT
-glib:gio / live-g-file                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                 337 
-Expected Fail:      0   
-Fail:               13  
-Unexpected Pass:    0   
-Skipped:            6   
-Timeout:            0   
+Ok:                343 
+Fail:              12  
+Skipped:           7   
 

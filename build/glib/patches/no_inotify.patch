@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/meson.build a/meson.build
 --- a~/meson.build	1970-01-01 00:00:00
 +++ a/meson.build	1970-01-01 00:00:00
-@@ -431,7 +431,6 @@ headers = [
+@@ -432,7 +432,6 @@ headers = [
    'sys/event.h',
    'sys/uio.h',
    'sys/filio.h',
@@ -9,7 +9,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/meson.build a/meson.build
    'sys/mkdev.h',
    'sys/mntctl.h',
    'sys/mnttab.h',
-@@ -721,7 +720,6 @@ functions = [
+@@ -731,7 +730,6 @@ functions = [
    'getvfsstat',
    'gmtime_r',
    'hasmntopt',
