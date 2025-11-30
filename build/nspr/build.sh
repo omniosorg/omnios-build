@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=nspr
-VER=4.37
+VER=4.38.2
 PKG=library/nspr
 SUMMARY="Netscape Portable Runtime"
 DESC="The $SUMMARY"

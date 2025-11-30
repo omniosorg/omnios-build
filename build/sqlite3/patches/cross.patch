@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/autosetup/proj.tcl a/autosetup/proj.tcl
 --- a~/autosetup/proj.tcl	1970-01-01 00:00:00
 +++ a/autosetup/proj.tcl	1970-01-01 00:00:00
-@@ -1117,6 +1117,10 @@ proc proj-cc-check-Wl-flag {args} {
+@@ -1152,6 +1152,10 @@ proc proj-cc-check-Wl-flag {args} {
  # from exec-prefix by default).
  #
  proc proj-check-rpath {} {

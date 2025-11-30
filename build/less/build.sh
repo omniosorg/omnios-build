@@ -26,7 +26,7 @@
 . ../../lib/build.sh
 
 PROG=less
-VER=679
+VER=685
 PKG=text/less
 SUMMARY="less - paginator"
 DESC="A program similar to more, but which allows backward movement "

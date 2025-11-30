@@ -10,6 +10,7 @@ SKIP: tests/cp/no-ctx.sh
 SKIP: tests/tty/tty-eof.pl
 PASS: tests/misc/read-errors.sh
 PASS: tests/misc/write-errors.sh
+PASS: tests/tail/basic-seek.sh
 PASS: tests/tail/inotify-hash-abuse.sh
 PASS: tests/tail/inotify-hash-abuse2.sh
 PASS: tests/tail/F-vs-missing.sh
@@ -109,7 +110,7 @@ PASS: tests/misc/mktemp.pl
 SKIP: tests/misc/arch.sh
 PASS: tests/pr/pr-tests.pl
 PASS: tests/pwd/pwd-option.sh
-PASS: tests/chcon/chcon-fail.sh
+SKIP: tests/chcon/chcon-fail.sh
 SKIP: tests/misc/coreutils.sh
 PASS: tests/cut/cut.pl
 PASS: tests/cut/cut-huge-range.sh
@@ -128,12 +129,15 @@ PASS: tests/cat/cat-self.sh
 PASS: tests/misc/basename.pl
 PASS: tests/basenc/base64.pl
 PASS: tests/basenc/basenc.pl
+PASS: tests/basenc/bounded-memory.sh
+PASS: tests/basenc/large-input.sh
 PASS: tests/misc/close-stdout.sh
 PASS: tests/chroot/chroot-fail.sh
 PASS: tests/cksum/cksum.sh
 PASS: tests/cksum/cksum-a.sh
 PASS: tests/cksum/cksum-c.sh
 PASS: tests/cksum/cksum-base64.pl
+PASS: tests/cksum/cksum-base64-untagged.sh
 PASS: tests/cksum/cksum-raw.sh
 PASS: tests/misc/comm.pl
 PASS: tests/csplit/csplit.sh
@@ -144,6 +148,9 @@ PASS: tests/csplit/csplit-suppress-matched.pl
 PASS: tests/date/date-debug.sh
 SKIP: tests/date/date-ethiopia.sh
 SKIP: tests/date/date-iran.sh
+SKIP: tests/date/date-locale-hour.sh
+PASS: tests/date/reference.sh
+PASS: tests/date/resolution.sh
 PASS: tests/date/date-sec.sh
 PASS: tests/date/date-thailand.sh
 PASS: tests/date/date-tz.sh
@@ -185,7 +192,8 @@ PASS: tests/misc/nohup.sh
 PASS: tests/nproc/nproc-avail.sh
 PASS: tests/nproc/nproc-positive.sh
 PASS: tests/nproc/nproc-override.sh
-PASS: tests/misc/numfmt.pl
+PASS: tests/numfmt/numfmt.pl
+PASS: tests/numfmt/mb-non-utf8.sh
 SKIP: tests/misc/option-aliases.sh
 PASS: tests/od/od-N.sh
 PASS: tests/od/od-j.sh
@@ -207,7 +215,7 @@ PASS: tests/readlink/readlink-posix.sh
 PASS: tests/readlink/readlink-root.sh
 PASS: tests/misc/realpath.sh
 SKIP: tests/runcon/runcon-compute.sh
-PASS: tests/runcon/runcon-no-reorder.sh
+SKIP: tests/runcon/runcon-no-reorder.sh
 PASS: tests/cksum/sha1sum.pl
 PASS: tests/cksum/sha1sum-vec.pl
 PASS: tests/cksum/sha224sum.pl
@@ -284,6 +292,7 @@ PASS: tests/tail/tail.pl
 PASS: tests/misc/tee.sh
 PASS: tests/test/test-N.sh
 PASS: tests/test/test-diag.pl
+PASS: tests/test/test-file.sh
 PASS: tests/misc/time-style.sh
 PASS: tests/timeout/timeout.sh
 PASS: tests/timeout/timeout-blocked.pl
@@ -416,7 +425,7 @@ SKIP: tests/du/2g.sh
 PASS: tests/du/8gb.sh
 PASS: tests/du/apparent.sh
 PASS: tests/du/basic.sh
-SKIP: tests/du/bigtime.sh
+PASS: tests/du/bigtime.sh
 PASS: tests/du/deref.sh
 PASS: tests/du/deref-args.sh
 PASS: tests/du/exclude.sh
@@ -672,9 +681,11 @@ SKIP: tests/factor/t35.sh
 SKIP: tests/factor/t36.sh
 SKIP: tests/factor/t37.sh
 SKIP: tests/factor/t38.sh
-# TOTAL: 674
-# PASS:  514
-# SKIP:  160
+SKIP: tests/factor/t39.sh
+SKIP: tests/factor/t40.sh
+# TOTAL: 685
+# PASS:  521
+# SKIP:  164
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
@@ -974,6 +985,9 @@ SKIP: test-mbrtowc-w32-5.sh
 SKIP: test-mbrtowc-w32-6.sh
 SKIP: test-mbrtowc-w32-7.sh
 SKIP: test-mbrtowc-w32-8.sh
+PASS: test-mbs_endswith1
+PASS: test-mbs_endswith2.sh
+SKIP: test-mbs_endswith3.sh
 SKIP: test-mbscasecmp.sh
 SKIP: test-mbschr.sh
 PASS: test-mbsinit.sh
@@ -989,6 +1003,9 @@ PASS: test-mbsrtowcs-2.sh
 PASS: test-mbsrtowcs-3.sh
 SKIP: test-mbsrtowcs-4.sh
 SKIP: test-mbsrtowcs-5.sh
+PASS: test-mbsstr1
+PASS: test-mbsstr2.sh
+SKIP: test-mbsstr3.sh
 PASS: test-mcel-1.sh
 PASS: test-mcel-2.sh
 PASS: test-mcel-3.sh
@@ -1033,6 +1050,17 @@ PASS: test-physmem
 PASS: test-pipe
 PASS: test-pipe2
 PASS: test-posix_memalign
+PASS: test-posix_spawn-open1
+PASS: test-posix_spawn-open2
+PASS: test-posix_spawn-inherit0
+PASS: test-posix_spawn-inherit1
+PASS: test-posix_spawn-script
+PASS: test-posix_spawn_file_actions_addclose
+PASS: test-posix_spawn_file_actions_adddup2
+PASS: test-posix_spawn_file_actions_addopen
+PASS: test-posix_spawn-dup2-stdout
+PASS: test-posix_spawn-dup2-stdin
+PASS: test-posix_spawnp-script
 PASS: test-posixtm
 PASS: test-printf-frexp
 PASS: test-printf-frexpl
@@ -1071,6 +1099,7 @@ PASS: test-rename
 PASS: test-renameat
 PASS: test-renameatu
 PASS: test-rmdir
+PASS: test-savedir
 PASS: test-sched-h
 PASS: test-select
 PASS: test-select-in.sh
@@ -1093,6 +1122,7 @@ PASS: test-sigprocmask
 PASS: test-sleep
 PASS: test-snprintf
 PASS: test-sockets
+PASS: test-spawn-h
 PASS: test-stat
 PASS: test-stat-time
 PASS: test-stdbit-h
@@ -1100,12 +1130,14 @@ PASS: test-stdc_bit_width
 PASS: test-stdc_leading_zeros
 PASS: test-stdc_trailing_zeros
 PASS: test-stdckdint-h
+PASS: test-stdcountof-h
 PASS: test-stddef-h
 PASS: test-stdint-h
 PASS: test-stdio-h
 PASS: test-stdlib-h
 PASS: test-str_endswith
 PASS: test-str_startswith
+PASS: test-strchrnul
 PASS: test-strerror
 PASS: test-strerror_r
 PASS: test-string-h
@@ -1150,10 +1182,12 @@ PASS: test-truncl
 PASS: test-u64
 PASS: test-uchar-h
 PASS: test-uname
+PASS: test-unicase-h
 PASS: test-uc_tolower
 PASS: test-unicodeio1.sh
 PASS: test-unicodeio2.sh
 SKIP: test-unicodeio3.sh
+PASS: test-unictype-h
 PASS: test-ctype_alnum
 PASS: test-ctype_alpha
 PASS: test-ctype_blank
@@ -1166,8 +1200,10 @@ PASS: test-ctype_punct
 PASS: test-ctype_space
 PASS: test-ctype_upper
 PASS: test-ctype_xdigit
+PASS: test-uninorm-h
 PASS: test-unistd-h
 PASS: test-dup-safer
+PASS: test-unistr-h
 PASS: test-u32-chr
 PASS: test-u32-cpy
 PASS: test-u32-pcpy
@@ -1176,6 +1212,7 @@ PASS: test-u32-strcat
 PASS: test-u32-strlen
 PASS: test-u8-mbtoucr
 PASS: test-u8-uctomb
+PASS: test-uniwidth-h
 PASS: test-uc_width
 PASS: uniwidth/test-uc_width2.sh
 PASS: test-unlink
@@ -1227,9 +1264,9 @@ PASS: test-xstrtoumax.sh
 PASS: test-xvasprintf
 PASS: test-year2038
 PASS: test-yesno.sh
-# TOTAL: 548
-# PASS:  481
-# SKIP:  67
+# TOTAL: 574
+# PASS:  505
+# SKIP:  69
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
