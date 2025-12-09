@@ -3,7 +3,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1819022
 diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreconf/config.gypi
 --- a~/coreconf/config.gypi	1970-01-01 00:00:00
 +++ a/coreconf/config.gypi	1970-01-01 00:00:00
-@@ -187,7 +187,7 @@
+@@ -186,7 +186,7 @@
            'NSS_FIPS_MODULE_ID="<(fips_module_id)"'
          ],
        }],
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
          'libraries': [
            '-lpthread',
          ],
-@@ -295,6 +295,9 @@
+@@ -294,6 +294,9 @@
              'sources': [
                '<(INTERMEDIATE_DIR)/out.>(mapfile)',
              ],
@@ -22,7 +22,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
              'actions': [{
                'action_name': 'generate_mapfile',
                'inputs': [
-@@ -429,6 +432,11 @@
+@@ -428,6 +431,11 @@
                '-z', 'noexecstack',
              ],
            }],
@@ -37,7 +37,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/freebl.gyp a/lib/freebl/freebl.gyp
 --- a~/lib/freebl/freebl.gyp	1970-01-01 00:00:00
 +++ a/lib/freebl/freebl.gyp	1970-01-01 00:00:00
-@@ -83,7 +83,7 @@
+@@ -98,7 +98,7 @@
            ],
          }],
          [ 'OS=="linux" or OS=="android" or OS=="dragonfly" or OS=="freebsd" or \
@@ -46,7 +46,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/freebl.gyp a/lib/f
            'cflags': [
              '-mpclmul',
              '-maes',
-@@ -150,7 +150,7 @@
+@@ -165,7 +165,7 @@
            ],
          }],
          [ 'OS=="linux" or OS=="android" or OS=="dragonfly" or OS=="freebsd" or \
@@ -55,7 +55,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/freebl.gyp a/lib/f
            'cflags': [
              '-mpclmul',
              '-maes',
-@@ -204,7 +204,7 @@
+@@ -219,7 +219,7 @@
          '-mpclmul', '-maes'
        ],
        'conditions': [
