@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=libxslt
-VER=1.1.43
+VER=1.1.45
 PKG=library/libxslt
 SUMMARY="The XSLT C library"
 DESC="The portable XSLT C library built on libxml2"
