@@ -129,6 +129,7 @@ Disabled features:
     buildtest-c++          [default]        
     winstore               [not-windows]    OPENSSL_NO_WINSTORE
     crypto-mdebug          [default]        OPENSSL_NO_CRYPTO_MDEBUG
+    allocfail-tests        [default]        OPENSSL_NO_ALLOCFAIL_TESTS
     demos                  [default]        OPENSSL_NO_DEMOS
     h3demo                 [default]        OPENSSL_NO_H3DEMO
     hqinterop              [default]        OPENSSL_NO_HQINTEROP
@@ -144,6 +145,7 @@ Disabled features:
     fuzz-libfuzzer         [default]        OPENSSL_NO_FUZZ_LIBFUZZER
     jitter                 [default]        OPENSSL_NO_JITTER
     ktls                   [default]        OPENSSL_NO_KTLS
+    lms                    [default]        OPENSSL_NO_LMS (skip crypto/lms)
     md2                    [default]        OPENSSL_NO_MD2 (skip crypto/md2)
     msan                   [default]        OPENSSL_NO_MSAN
     pie                    [default]        OPENSSL_NO_PIE
