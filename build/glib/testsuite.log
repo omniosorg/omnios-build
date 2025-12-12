@@ -6,6 +6,8 @@ glib:fuzzing / fuzz_data_input_stream_read_upto                        OK
 glib:fuzzing / fuzz_date_parse                                         OK
 glib:fuzzing / fuzz_date_time_new_from_iso8601                         OK
 glib:fuzzing / fuzz_dbus_message                                       OK
+glib:fuzzing / fuzz_filename_from_uri                                  OK
+glib:fuzzing / fuzz_filename_to_uri                                    OK
 glib:fuzzing / fuzz_get_locale_variants                                OK
 glib:fuzzing / fuzz_inet_address_mask_new_from_string                  OK
 glib:fuzzing / fuzz_inet_address_new_from_string                       OK
@@ -48,7 +50,7 @@ glib:gio / file                                                        OK   41 s
 glib:gio / file-enumerator                                             OK   1 subtests passed
 glib:gio / file-thumbnail                                              OK   7 subtests passed
 glib:gio / fileattributematcher                                        OK   3 subtests passed
-glib:gio / filenamecompleter                                           ERROR   killed by signal 6 SIGABRT
+glib:gio / filenamecompleter                                           OK   1 subtests passed
 glib:gio / filter-streams                                              OK   4 subtests passed
 glib:gio / g-file                                                      OK   8 subtests passed
 glib:gio / g-file-info                                                 OK   4 subtests passed
@@ -368,7 +370,6 @@ glib:glib+core / mapping                                               ERROR   k
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
-glib:gio / filenamecompleter                                           ERROR   killed by signal 6 SIGABRT
 glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
 glib:gio / inet-address                                                ERROR   killed by signal 6 SIGABRT
 glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
@@ -376,7 +377,7 @@ glib:gio / unix-mounts                                                 ERROR   k
 glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
 
-Ok:                343 
-Fail:              12  
+Ok:                346 
+Fail:              11  
 Skipped:           7   
 
