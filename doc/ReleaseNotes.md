@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046el (2026-01-14)
+Weekly release for w/c 12th of January 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* Curl updated to version 8.18.0.
+
+* The bhyve mouse driver could de-reference a NULL pointer in some
+  circumstances.
+
+### Other Changes
+
+* SMB Active Directory joins now fall back to seting the machine password via
+  LDAP if kerberos fails. Many AD sites block kerberos for this.
+
+* NVMe devices could incorrectly return an error on queue saturation that
+  is interpreted by ZFS as a device failure.
+
+* The IP Filter fragment cache table could become corrupt, resulting in a
+  kernel panic.
+
+<br>
+
+---
+
 ## r151046ee (2025-11-26)
 Weekly release for w/c 24th of November 2025.
 > This update requires a reboot
