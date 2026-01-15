@@ -2,5 +2,4 @@ runtime-parser.c.patch
 runtime-rsyslog.h.patch
 logonly.patch
 man.patch
-template.patch
 test.patch

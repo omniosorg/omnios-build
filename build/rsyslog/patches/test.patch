@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/tcpflood.c a/tests/tcpflood.c
 --- a~/tests/tcpflood.c	1970-01-01 00:00:00
 +++ a/tests/tcpflood.c	1970-01-01 00:00:00
-@@ -826,7 +826,7 @@ int sendMessages(struct instdata *inst)
+@@ -865,7 +865,7 @@ int sendMessages(struct instdata *inst)
              }
              lenSend = sendPlainTCP(socknum, buf, lenBuf, &error_number);
          } else if (transport == TP_UDP) {

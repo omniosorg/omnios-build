@@ -57,6 +57,7 @@ PASS: omfwd-lb-2target-one_fail.sh
 PASS: omfwd-tls-invalid-permitExpiredCerts.sh
 PASS: omfwd-keepalive.sh
 PASS: omfwd-subtree-tpl.sh
+PASS: omfile-subtree-jsonf.sh
 PASS: omusrmsg-errmsg-no-params.sh
 PASS: omusrmsg-noabort.sh
 PASS: omfile-module-params.sh
@@ -84,6 +85,7 @@ PASS: json-nonstring.sh
 PASS: json-onempty-at-end.sh
 PASS: template-json.sh
 PASS: template-pure-json.sh
+PASS: template-jsonf-nested.sh
 PASS: template-pos-from-to.sh
 PASS: template-pos-from-to-lowercase.sh
 PASS: template-pos-from-to-oversize.sh
@@ -231,6 +233,7 @@ PASS: suspend-via-file.sh
 PASS: suspend-omfwd-via-file.sh
 PASS: externalstate-failed-rcvr.sh
 PASS: rcvr_fail_restore.sh
+PASS: rscript_b64_decode.sh
 PASS: rscript_contains.sh
 PASS: rscript_bare_var_root.sh
 PASS: rscript_bare_var_root-empty.sh
@@ -282,6 +285,7 @@ PASS: rscript_num2ipv4.sh
 PASS: rscript_int2Hex.sh
 PASS: rscript_trim.sh
 PASS: rscript_substring.sh
+PASS: rscript_toupper.sh
 PASS: rscript_format_time.sh
 PASS: rscript_parse_time.sh
 PASS: rscript_is_time.sh
@@ -339,6 +343,9 @@ PASS: parsertest-parse-nodate.sh
 PASS: parsertest-parse-nodate-udp.sh
 PASS: parsertest-snare_ccoff_udp.sh
 PASS: parsertest-snare_ccoff_udp2.sh
+PASS: fromhost-port.sh
+PASS: fromhost-port-tuple.sh
+PASS: fromhost-port-async-ruleset.sh
 PASS: imtcp-basic.sh
 PASS: imtcp-basic-hup.sh
 PASS: imtcp-impstats-single-thread.sh
@@ -347,6 +354,7 @@ PASS: imtcp-starvation-1.sh
 PASS: imtcp-maxFrameSize.sh
 PASS: imtcp-msg-truncation-on-number.sh
 PASS: imtcp-msg-truncation-on-number2.sh
+SKIP: imtcp-netns.sh
 PASS: imtcp-NUL.sh
 PASS: imtcp-NUL-rawmsg.sh
 PASS: imtcp_incomplete_frame_at_end.sh
@@ -372,6 +380,7 @@ PASS: omhttp-batch-kafkarest-retry.sh
 PASS: omhttp-batch-kafkarest.sh
 PASS: omhttp-batch-lokirest-retry.sh
 PASS: omhttp-batch-lokirest.sh
+PASS: omhttp-profile-loki.sh
 PASS: omhttp-batch-newline.sh
 PASS: omhttp-retry.sh
 PASS: omhttp-retry-timeout.sh
@@ -418,6 +427,7 @@ PASS: sndrcv_tls_ossl_certvalid_expired.sh
 PASS: sndrcv_tls_ossl_certvalid_tlscommand.sh
 PASS: sndrcv_tls_ossl_certvalid_ciphers.sh
 PASS: sndrcv_tls_ossl_certvalid_revoked.sh
+PASS: sndrcv_tls_ossl_intermediate_ca_chain.sh
 PASS: imtcp-tls-ossl-x509valid.sh
 PASS: imtcp-tls-ossl-x509name.sh
 PASS: imtcp-tls-ossl-x509fingerprint.sh
@@ -426,12 +436,15 @@ PASS: imtcp-tls-ossl-error-cert.sh
 PASS: imtcp-tls-ossl-error-key.sh
 PASS: imtcp-tls-ossl-error-key2.sh
 PASS: uxsock_simple.sh
+SKIP: uxsock_simple_abstract.sh
+SKIP: uxsock_multiple.sh
+SKIP: uxsock_multiple_netns.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2508.0
+Testsuite summary for rsyslog 8.2512.0
 ============================================================================
-# TOTAL: 442
-# PASS:  398
-# SKIP:  44
+# TOTAL: 454
+# PASS:  406
+# SKIP:  48
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
