@@ -571,6 +571,7 @@ omnios system/file-system/zfs/tests
 omnios system/flash/fwflash
 omnios system/fru-id
 omnios system/fru-id/platform
+omnios system/gpio
 omnios system/header
 omnios system/header/header-agp
 omnios system/header/header-audio
@@ -581,6 +582,7 @@ omnios system/header/header-storage
 omnios system/header/header-ugen
 omnios system/header/header-usb
 omnios system/hyperv/tools
+omnios system/i2c
 omnios system/install/kayak
 omnios system/install/kayak-kernel
 omnios system/io/tests
@@ -698,6 +700,7 @@ omnios system/test/cryptotest
 omnios system/test/elftest
 omnios system/test/epolltest
 omnios system/test/fio
+omnios system/test/i2ctest
 omnios system/test/ksh93
 omnios system/test/libctest
 omnios system/test/libmlrpctest
