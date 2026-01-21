@@ -87,7 +87,7 @@
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.10.2		| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.10.3		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
