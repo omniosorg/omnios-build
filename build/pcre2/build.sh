@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=pcre2
-VER=10.46
+VER=10.47
 DASHREV=1
 PKG=library/pcre2
 SUMMARY="Perl-Compatible Regular Expressions, version 2"
