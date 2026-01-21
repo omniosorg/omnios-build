@@ -21,12 +21,12 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=less
-VER=685
+VER=691
 PKG=text/less
 SUMMARY="less - paginator"
 DESC="A program similar to more, but which allows backward movement "
@@ -37,6 +37,7 @@ set_arch 64
 CONFIGURE_OPTS="
     --with-regex=pcre2
 "
+CPPFLAGS+=" -I/usr/include/ncurses"
 
 build_init() {
     for arch in $CROSS_ARCH; do
