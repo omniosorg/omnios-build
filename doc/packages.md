@@ -53,7 +53,7 @@
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
-| library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
+| library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.68.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.38.2		| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.46			| https://github.com/PhilipHazel/pcre2/releases

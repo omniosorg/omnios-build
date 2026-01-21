@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/gen-pkgconfig.in a/misc/
 diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/ncurses-config.in a/misc/ncurses-config.in
 --- a~/misc/ncurses-config.in	1970-01-01 00:00:00
 +++ a/misc/ncurses-config.in	1970-01-01 00:00:00
-@@ -101,7 +101,7 @@ fi
+@@ -110,7 +110,7 @@ fi
  # There is no portable way to find the list of standard library directories.
  # Require a POSIX shell anyway, to keep this simple.
  lib_flags=

@@ -10,7 +10,7 @@ See also http://invisible-island.net/ncurses/ncurses.faq.html#xterm_generic
 diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
-@@ -4946,7 +4946,7 @@ xterm-xfree86|xterm terminal emulator (X
+@@ -5072,7 +5072,7 @@ xterm-xfree86|xterm terminal emulator (X
  
  xterm+nofkeys|building block for xterm fkey-variants,
  	npc,
@@ -19,10 +19,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/term
  	use=ecma+strikeout, use=vt420+lrmm, use=xterm+focus,
  	use=xterm+sm+1006, use=xterm+tmux, use=ecma+italics,
  	use=xterm+keypad, use=xterm-basic,
-@@ -4954,7 +4954,7 @@ xterm+nofkeys|building block for xterm f
+@@ -5080,7 +5080,7 @@ xterm+nofkeys|building block for xterm f
  xterm-p370|xterm patch #370,
- 	rv=\E\\[41;[1-6][0-9][0-9];0c,
- 	xr=\EP>\\|XTerm\\([1-9][0-9]+\\)\E\\\\,
+ 	rv=\E\\[>41;[1-6][0-9][0-9];0c,
+ 	xr=\EP>\\|XTerm\\(([1-9][0-9]+)\\)\E\\\\,
 -	use=ecma+index, use=ansi+rep, use=ecma+strikeout,
 +	use=ecma+index, use=ecma+strikeout,
  	use=xterm+pcfkeys, use=xterm+nofkeys,
