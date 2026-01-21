@@ -8,9 +8,9 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=LGPLv2.1
+license LICENSES/LGPL-2.1-or-later.txt license=LGPLv2.1
 
 # Upstream doesn't ship any of the translations, so we won't either
 <transform path=usr/share/locale -> drop>
