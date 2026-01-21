@@ -1,0 +1,16 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doxygen.conf a/doxygen.conf
+--- a~/doxygen.conf	1970-01-01 00:00:00
++++ a/doxygen.conf	1970-01-01 00:00:00
+@@ -422,6 +422,12 @@ HTML_FOOTER            =
+ 
+ HTML_STYLESHEET        = 
+ 
++# If the HTML_TIMESTAMP tag is set to YES then the footer of
++# each generated HTML page will contain the date and time when the page
++# was generated. Setting this to NO can help when comparing the output of
++# multiple runs.
++HTML_TIMESTAMP         = NO
++
+ # If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, 
+ # files or namespaces will be aligned in HTML using tables. If set to 
+ # NO a bullet list will be used.

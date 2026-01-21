@@ -1,0 +1,17 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/mibgroup/ucd-snmp/vmstat_solaris2.c a/agent/mibgroup/ucd-snmp/vmstat_solaris2.c
+--- a~/agent/mibgroup/ucd-snmp/vmstat_solaris2.c	1970-01-01 00:00:00
++++ a/agent/mibgroup/ucd-snmp/vmstat_solaris2.c	1970-01-01 00:00:00
+@@ -598,6 +598,13 @@ update_stats(unsigned int registrationNu
+         }
+ 
+         /*
++	 * Assign a minimum value to get around divide by zero case
++	 */
++	if (cpu_sum == 0) {
++		cpu_sum = 1;
++	}
++
++        /*
+          * Now calculate the absolute percentage values 
+          * Looks somewhat complicated sometimes but tries to get around using floats to increase speed 
+          */

@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/perl/agent/Makefile.PL a/perl/agent/Makefile.PL
+--- a~/perl/agent/Makefile.PL	1970-01-01 00:00:00
++++ a/perl/agent/Makefile.PL	1970-01-01 00:00:00
+@@ -88,7 +88,7 @@ sub AgentInitMakeParams {
+                 " -L" . abs_path("../../agent") .
+                 " " . $Params{'LIBS'};
+ #	} else {
+-	    $Params{'LIBS'} = `$opts->{'nsconfig'} --libdir` . $Params{'LIBS'};
++	    $Params{'LIBS'} = $Params{'LIBS'} . `$opts->{'nsconfig'} --libdir`;
+ #	    $Params{'PREREQ_PM'} = {'NetSNMP::OID' => '0.1'};
+ 	}
+     }

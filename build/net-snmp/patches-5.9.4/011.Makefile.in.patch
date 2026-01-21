@@ -1,0 +1,75 @@
+The Net-SNMP libraries are built without -zdefs and are missing a large
+number of dependency specifications (DT_NEEDED).  This makes it
+impossible to build plugin modules against these libraries using -zdefs,
+which should work. One such example is FMA in ON gate.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/Makefile.in a/agent/Makefile.in
+--- a~/agent/Makefile.in	1970-01-01 00:00:00
++++ a/agent/Makefile.in	1970-01-01 00:00:00
+@@ -280,9 +280,13 @@ LOBJS		= $(LLIBAGENTOBJS) $(LMIBOBJS)  $
+ FTOBJS		= $(LLIBAGENTFTS)  $(FTMIBOBJS) $(FTAGENTOBJS) \
+ 		  mib_modules.ft auto_nlist.ft
+ 
++LIB_LD_ADD_AGENT   =-lnetsnmp -lnetsnmphelpers
++
++LIB_LD_ADD_PATH_MIBS   =-Lhelpers -L../snmplib
++
+ FEATUREFILE     = $(top_builddir)/include/net-snmp/agent/features.h
+ 
+-all: agentlib subdirs miblib $(INSTALLBINPROGS) $(INSTALLSBINPROGS)
++all: agentlib subdirs miblib relinklib $(INSTALLBINPROGS) $(INSTALLSBINPROGS)
+ 
+ #
+ # build stuff targets
+@@ -312,6 +316,10 @@ libnetsnmpmibs.$(LIB_EXTENSION)$(LIB_VER
+ 
+ agentlib: $(AGENTLIB)
+ 
++relinklib:	${LLIBAGENTOBJS} $(USELIBS)
++	$(LIB_LD_CMD) $(AGENTLIB) $(LIB_LD_ADD_PATH_MIBS) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} $(LDFLAGS) $(PERLLDOPTS_FOR_LIBS) $(LIB_LD_LIBS) $(LIB_LD_ADD_AGENT)
++	$(RANLIB) $(AGENTLIB) $(LIB_LD_ADD_AGENT)
++
+ miblib: $(MIBLIB)
+ 
+ libs: $(AGENTLIB) $(MIBLIB)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/helpers/Makefile.in a/agent/helpers/Makefile.in
+--- a~/agent/helpers/Makefile.in	1970-01-01 00:00:00
++++ a/agent/helpers/Makefile.in	1970-01-01 00:00:00
+@@ -29,8 +29,11 @@ OBJS = dummy.o
+ 
+ LOBJS = dummy.lo
+ 
++LIB_LD_ADD	=-lnetsnmp
++LIB_LD_ADD_PATH	=-L../../snmplib
++
+ all: standardall
+ 
+ libnetsnmphelpers.$(LIB_EXTENSION)$(LIB_VERSION):    $(LOBJS)
+-	$(LIB_LD_CMD) $@ $(LOBJS) $(LDFLAGS)
+-	$(RANLIB) $@
++	$(LIB_LD_CMD) $@ $(LIB_LD_ADD_PATH) $(LOBJS) $(LDFLAGS)
++	$(RANLIB) $@ $(LIB_LD_ADD)
+diff -wpruN --no-dereference '--exclude=*.orig' a~/snmplib/Makefile.in a/snmplib/Makefile.in
+--- a~/snmplib/Makefile.in	1970-01-01 00:00:00
++++ a/snmplib/Makefile.in	1970-01-01 00:00:00
+@@ -221,6 +221,9 @@ FTOBJS=	snmp_client.ft mib.ft parse.ft s
+ # just in case someone wants to remove libtool, change this to OBJS.
+ TOBJS=$(LOBJS)
+ 
++# To satisfy -zdefs
++LIB_LD_ADD =-lnsl -lsocket -L$(libdir)
++
+ FEATUREFILE     = $(top_builddir)/include/net-snmp/library/features.h
+ 
+ # 
+@@ -230,8 +233,8 @@ all: standardall
+ 
+ # how to build the libraries.
+ libnetsnmp.$(LIB_EXTENSION)$(LIB_VERSION):    $(TOBJS)
+-	$(LIB_LD_CMD) $@ $(TOBJS) $(LDFLAGS) @LNETSNMPLIBS@
+-	$(RANLIB) $@
++	$(LIB_LD_CMD) $@ $(TOBJS) $(LDFLAGS) @LNETSNMPLIBS@ $(LIB_LD_ADD)
++	$(RANLIB) $@ $(LIB_LD_ADD)
+ 
+ libsnmp.$(LIB_EXTENSION)$(LIB_VERSION):    $(TOBJS)
+ 	$(LIB_LD_CMD) $@ $(TOBJS) $(LDFLAGS) @LNETSNMPLIBS@

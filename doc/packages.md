@@ -98,7 +98,7 @@
 | system/library/pcap			| 1.10.6		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
-| system/management/snmp/net-snmp	| 5.9.4			| https://github.com/net-snmp/net-snmp/tags
+| system/management/snmp/net-snmp	| 5.9.5.2		| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.14.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
