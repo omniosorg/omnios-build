@@ -13,12 +13,13 @@
 # }}}
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=make
 VER=4.4.1
+DASHREV=1
 PKG=developer/build/gnu-make
 SUMMARY="gmake - GNU make"
 DESC="GNU make - A utility used to build software"
@@ -38,6 +39,14 @@ TESTSUITE_SED="
     /1-minute/d
     /~~~~~~~~~/d
 "
+
+post_install() {
+    pushd $TMPDIR >/dev/null
+    env - $DESTDIR/$PREFIX/bin/gmake -p 2>/dev/null \
+        | $EGREP '^(CC|CXX)' | $EGREP / \
+        && logerr "CC or CXX contains an absolute path"
+    popd >/dev/null
+}
 
 init
 download_source $PROG $PROG $VER
