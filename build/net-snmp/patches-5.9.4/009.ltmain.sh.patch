@@ -1,0 +1,27 @@
+# RPATH issues when upgrading net-snmp to version 5.4.1
+#
+# Developed in-house. Solaris-specific; not suitable for upstream
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/ltmain.sh a/ltmain.sh
+--- a~/ltmain.sh	1970-01-01 00:00:00
++++ a/ltmain.sh	1970-01-01 00:00:00
+@@ -6828,7 +6828,9 @@ func_mode_link ()
+ 	  if test rpath = "$prev"; then
+ 	    case "$rpath " in
+ 	    *" $arg "*) ;;
+-	    *) func_append rpath " $arg" ;;
++	    *) func_append rpath " $arg"
++		# This is make sure only $libdir path is encoded in RUNPATH
++			sma_rpath="$rpath" ;;
+ 	    esac
+ 	  else
+ 	    case "$xrpath " in
+@@ -9557,7 +9559,7 @@ EOF
+ 		fi
+ 	      else
+ 		eval flag=\"$hardcode_libdir_flag_spec\"
+-		func_append dep_rpath " $flag"
++#func_append dep_rpath " $flag"
+ 	      fi
+ 	    elif test -n "$runpath_var"; then
+ 	      case "$perm_rpath " in

@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=net-snmp
-VER=5.9.4
+VER=5.9.5.2
 PKG=system/management/snmp/net-snmp
 SUMMARY="Net-SNMP Agent files and libraries"
 DESC="$SUMMARY"
@@ -31,7 +31,7 @@ NO_PARALLEL_MAKE=1
 
 # Previous versions that also need to be built and the libraries packaged
 # since compiled software may depend on them.
-PVERS="5.7.3 5.8"
+PVERS="5.7.3 5.8 5.9.4"
 
 MIB_MODULES="host disman/event-mib ucd-snmp/diskio udp-mib tcp-mib if-mib"
 
@@ -97,6 +97,7 @@ save_buildenv
 CONFIGURE_OPTS[amd64]+=" $LIBRARIES_ONLY"
 # Be permissive when building the old versions
 CFLAGS+=" -fpermissive"
+CPPFLAGS+=" -D__fd_mask=long"
 for pver in $PVERS; do
     [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"
@@ -119,10 +120,10 @@ note -n "Building current version: $VER"
 
 # As of 5.9.4, the configure script tries to determine the type of the bits
 # element of `fd_set`. It tries a few types, but not the correct 'long' type.
-# However, it does try `__int32_t` which is undefined on illumos. We take
+# However, it does try `__fd_mask` which is undefined on illumos. We take
 # advantage of this to override the test and derived type, and avoid having
 # to patch -- and regenerate -- configure.
-CPPFLAGS+=" -D__int32_t=long"
+CPPFLAGS+=" -D__fd_mask=long"
 
 download_source $PROG $PROG $VER
 patch_source

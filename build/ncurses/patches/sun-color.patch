@@ -8,7 +8,7 @@ See: https://www.illumos.org/issues/10359
 diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
 --- a~/misc/terminfo.src	1970-01-01 00:00:00
 +++ a/misc/terminfo.src	1970-01-01 00:00:00
-@@ -8915,14 +8915,19 @@ sun-type4|Sun Workstation console with t
+@@ -9361,15 +9361,20 @@ sun-type4|Sun Workstation console with t
  #	dim=\E[2m
  #	blink=\E[5m
  # It supports bold, but not underline -TD (2009-09-19)
@@ -23,9 +23,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/term
  	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}
  	     %=%t3%e%p1%d%;m,
  	sgr=\E[0%?%p6%t;1%;%?%p1%p3%|%t;7%;m, use=ansi+local,
--	use=sun, use=klone+color,
+-	use=ansi+rca, use=ansi+tabs, use=ecma+index, use=sun,
+-	use=klone+color,
++	use=ansi+rca, use=ansi+tabs, use=ecma+index,
 +	smso=\E[7m, smul=\E[4m, rmul=\E[24m,
 +	use=sun,
  
- #### Iris consoles
- #
+ # These date from March 2017:
+ # https://www.illumos.org/issues/10360 terminfo: sun-color has 256 colors

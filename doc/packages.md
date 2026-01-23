@@ -8,11 +8,11 @@
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.25			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.8.1			| https://tukaani.org/xz/
+| compress/xz				| 5.8.2			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
-| data/iso-codes			| 4.19.0		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3510100		| https://www.sqlite.org/download.html
+| data/iso-codes			| 4.20.1		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
+| database/sqlite-3			| 3510200		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.72			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.18.1		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
@@ -53,20 +53,20 @@
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
-| library/ncurses			| 6.5			| https://ftp.gnu.org/gnu/ncurses/
+| library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.68.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.38.2		| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
-| library/pcre2				| 10.46			| https://github.com/PhilipHazel/pcre2/releases
+| library/pcre2				| 10.47			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/openssl-3		| 3.6.0			| https://www.openssl.org/source/
-| library/unixodbc			| 2.3.12		| http://www.unixodbc.org/download.html
+| library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20251113		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20251111		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.18.42		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.18.44		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.2p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -87,18 +87,18 @@
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.10.2		| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.10.3		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.119			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
-| system/library/pcap			| 1.10.5		| http://www.tcpdump.org/#latest-releases
+| system/library/mozilla-nss		| 3.120			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/pcap			| 1.10.6		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
-| system/management/snmp/net-snmp	| 5.9.4			| https://github.com/net-snmp/net-snmp/tags
+| system/management/snmp/net-snmp	| 5.9.5.2		| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.14.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
@@ -115,10 +115,10 @@
 | text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
-| text/less				| 685			| http://www.greenwoodsoftware.com/less/download.html
+| text/less				| 691			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.18.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
-| web/wget2				| 2.2.0			| https://ftp.gnu.org/gnu/wget/
+| web/wget2				| 2.2.1			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.86.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.45.1		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
