@@ -468,7 +468,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 +void
 +audit_session_open(struct logininfo *li)
 +{
-+	const char *t = li->line ? li->line : "(no tty)";
++	const char *t = *li->line ? li->line : "(no tty)";
 +
 +	debug("adt audit_session_open: user=%s:tty=%s", audit_username(),
 +	    t);
@@ -489,7 +489,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 +void
 +audit_session_close(struct logininfo *li)
 +{
-+	const char *t = li->line ? li->line : "(no tty)";
++	const char *t = *li->line ? li->line : "(no tty)";
 +
 +	debug("adt audit_session_close: user=%s:tty=%s", audit_username(),
 +	    t);
@@ -769,3 +769,15 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  
  #ifdef GSSAPI
  	if (options.gss_authentication) {
+@@ -1327,6 +1329,11 @@ main(int ac, char **av)
+ 	}
+ #endif
+ 
++#ifdef USE_SOLARIS_AUDIT
++	/* Audit should take place after all successful pam */
++	audit_event(ssh, SSH_AUTH_SUCCESS);
++#endif
++
+ 	/*
+ 	 * In privilege separation, we fork another child and prepare
+ 	 * file descriptor passing.
