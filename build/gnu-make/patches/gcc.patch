@@ -2,17 +2,28 @@ The native compiler on OmniOS is gcc. Modify GNU make to suit.
 We don't define GCC_IS_NATIVE since this also modifies the native
 lex and yacc defitions and makes the POSIX tests fail.
 
-diff -wpruN '--exclude=*.orig' a~/src/default.c a/src/default.c
---- a~/src/default.c	1970-01-01 00:00:00
-+++ a/src/default.c	1970-01-01 00:00:00
-@@ -529,8 +529,8 @@ static const char *default_variables[] =
+GNU make also uses whatever `CXX` is at build time to set the default `CXX`
+variable which can be a full path to a specific version of gcc. Override this
+and always use just `g++`.
+
+diff --git a/src/default.c b/src/default.c
+index e396269..1b9e889 100644
+--- a/src/default.c
++++ b/src/default.c
+@@ -525,14 +525,14 @@ static const char *default_variables[] =
+     "ARFLAGS", "-rv",
+ #endif
+     "AS", "as",
+-#ifdef GCC_IS_NATIVE
++#if defined(GCC_IS_NATIVE) || defined(__illumos__)
      "CC", "gcc",
      "OBJC", "gcc",
  #else
--    "CC", "cc",
--    "OBJC", "cc",
-+    "CC", "gcc",
-+    "OBJC", "gcc",
+     "CC", "cc",
+     "OBJC", "cc",
  #endif
- #ifdef MAKE_CXX
+-#ifdef MAKE_CXX
++#if defined(MAKE_CXX) && !defined(__illumos__)
      "CXX", MAKE_CXX,
+ #else
+ # ifdef GCC_IS_NATIVE
