@@ -45,6 +45,7 @@ CONFIGURE_OPTS_COMMON="
     --with-terminfo-dirs=$GPREFIX/share/terminfo
     --with-default-terminfo-dir=$GPREFIX/share/terminfo
     cf_cv_struct_dirent64=no
+    TIC=$GNUBIN/tic
 "
 CONFIGURE_OPTS_ABI6="$CONFIGURE_OPTS_COMMON"
 CONFIGURE_OPTS_ABI5="$CONFIGURE_OPTS_COMMON --with-abi-version=5"
@@ -64,9 +65,6 @@ CONFIGURE_OPTS[aarch64]="
     --libdir=$GPREFIX/lib
     --with-pkg-config-libdir=$PREFIX/lib/pkgconfig
 "
-
-# Always use the GNU version of tic for compiling terminfo
-export TIC_PATH=$GNUBIN/tic
 
 build_abi5() {
     logmsg -n '--- Building backward-compatible ABI version 5 libraries.'
