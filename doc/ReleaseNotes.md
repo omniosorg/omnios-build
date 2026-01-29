@@ -4,6 +4,36 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054am (2026-01-29)
+Weekly release for w/c 26th of January 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* AMD CPU microcode has been updated to version 20251202.
+
+* OpenSSL updated to version 3.5.5
+
+* OpenSSH was failing to generate login audit events.
+
+### Other Changes
+
+* Various Zen5 CPUs now have the RDSEED instruction re-enabled if they are
+  running sufficiently new microcode.
+
+* AMX-equipped CPUs had excessive stack size requirements in order to
+* successfully store floating-point register state. That has been remedied.
+
+* The GNU make utility previously contained a hard-coded compiler version in
+  its default `CXX` variable.
+
+* A rarely occurring buffer overflow in rsyslog related to JSON encoding has
+  been fixed.
+
+<br>
+
+---
+
 ## r151054ak (2026-01-13)
 Weekly release for w/c 12th of January 2026.
 > This update requires a reboot
