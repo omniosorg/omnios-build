@@ -1,827 +1,839 @@
-omnios SUNWcs
-omnios SUNWcsd
-omnios archiver/gnu-tar
-omnios audio/audio-utilities
-omnios benchmark/filebench o
-omnios compatibility/ucb
-omnios compress/7zip
-omnios compress/brotli
-omnios compress/bzip2
-omnios compress/gzip
-omnios compress/lz4
-omnios compress/lzip
-omnios compress/p7zip r
-omnios compress/unzip
-omnios compress/xz
-omnios compress/zip
-omnios compress/zstd
-omnios consolidation/l10n/l10n-incorporation
-omnios consolidation/man/man-incorporation o
-omnios consolidation/osnet/osnet-incorporation
-omnios consolidation/osnet/osnet-message-files
-omnios consolidation/osnet/osnet-redistributable
-omnios data/iso-codes
-omnios database/sqlite-3
-omnios developer/aarch64-build-tools
-omnios developer/acpi
-omnios developer/acpi/compiler r
-omnios developer/appcert
-omnios developer/apptrace
-omnios developer/apptrace/ucblib
-omnios developer/as
-omnios developer/astdev
-omnios developer/build-essential
-omnios developer/build/autoconf
-omnios developer/build/automake
-omnios developer/build/gnu-make
-omnios developer/build/libtool
-omnios developer/build/make
-omnios developer/build/onbld
-omnios developer/debug/ctf
-omnios developer/debug/mdb
-omnios developer/debug/mdb/module/module-fibre-channel
-omnios developer/debug/mdb/module/module-qlc
-omnios developer/driver/ftsafe
-omnios developer/dtc
-omnios developer/dtrace
-omnios developer/dtrace/toolkit
-omnios developer/exuberant-ctags
-omnios developer/gcc10
-omnios developer/gcc13
-omnios developer/gcc14
-omnios developer/gnu-binutils
-omnios developer/illumos-closed
-omnios developer/illumos-tools
-omnios developer/java/jdk r
-omnios developer/java/openjdk8
-omnios developer/lexer/flex
-omnios developer/library/lint o
-omnios developer/library/profiled-libc o
-omnios developer/linker
-omnios developer/macro/cpp
-omnios developer/macro/gnu-m4
-omnios developer/nasm
-omnios developer/object-file
-omnios developer/omnios-build-tools
-omnios developer/opensolaris/osnet
-omnios developer/parser/bison
-omnios developer/pkg-config
-omnios developer/sunstudio12.1 o
-omnios developer/swig
-omnios developer/tnf o
-omnios developer/versioning/git
-omnios developer/versioning/mercurial
-omnios developer/versioning/sccs
-omnios diagnostic/cpu-counters
-omnios diagnostic/diskinfo
-omnios diagnostic/latencytop
-omnios diagnostic/pci
-omnios diagnostic/powertop
-omnios driver/audio
-omnios driver/audio/audio810
-omnios driver/audio/audiocmi
-omnios driver/audio/audiocmihd
-omnios driver/audio/audioemu10k
-omnios driver/audio/audiohd
-omnios driver/audio/audioixp
-omnios driver/audio/audiols
-omnios driver/audio/audiop16x
-omnios driver/audio/audiosolo
-omnios driver/audio/audiovia823x
-omnios driver/audio/audiovia97 o
-omnios driver/cpu/amd/zen
-omnios driver/cpu/mc
-omnios driver/cpu/sensor
-omnios driver/crypto/dca
-omnios driver/crypto/dprov
-omnios driver/crypto/tpm
-omnios driver/crypto/viorand
-omnios driver/developer/amd/zen
-omnios driver/firewire
-omnios driver/graphics/agpgart
-omnios driver/graphics/atiatom
-omnios driver/graphics/av1394
-omnios driver/graphics/dcam1394
-omnios driver/graphics/dcam1394/devfsadm-dcam1394
-omnios driver/graphics/drm
-omnios driver/graphics/usbvc
-omnios driver/hyperv/pv
-omnios driver/i86pc/fipe
-omnios driver/i86pc/ioat
-omnios driver/i86pc/platform
-omnios driver/inotify
-omnios driver/ipmi
-omnios driver/ktest
-omnios driver/misc/ccid
-omnios driver/misc/virtio
-omnios driver/network/afe
-omnios driver/network/amd8111s
-omnios driver/network/arbel o
-omnios driver/network/arn
-omnios driver/network/atge
-omnios driver/network/ath
-omnios driver/network/atu
-omnios driver/network/axf
-omnios driver/network/bfe
-omnios driver/network/bge
-omnios driver/network/bnx
-omnios driver/network/bnxe
-omnios driver/network/bpf
-omnios driver/network/chxge
-omnios driver/network/cxgbe
-omnios driver/network/dmfe
-omnios driver/network/dnet
-omnios driver/network/e1000g
-omnios driver/network/efe
-omnios driver/network/elxl
-omnios driver/network/emlxs
-omnios driver/network/ena
-omnios driver/network/eoib
-omnios driver/network/fcip
-omnios driver/network/fcoe
-omnios driver/network/fcoei
-omnios driver/network/fcoet
-omnios driver/network/fcp
-omnios driver/network/fcsm
-omnios driver/network/fp
-omnios driver/network/hermon
-omnios driver/network/hme
-omnios driver/network/hxge
-omnios driver/network/i40e
-omnios driver/network/ib
-omnios driver/network/ibdma
-omnios driver/network/ibp
-omnios driver/network/igb
-omnios driver/network/igc
-omnios driver/network/iprb
-omnios driver/network/ipw
-omnios driver/network/iwh
-omnios driver/network/iwi
-omnios driver/network/iwk
-omnios driver/network/iwn
-omnios driver/network/iwp
-omnios driver/network/ixgb
-omnios driver/network/ixgbe
-omnios driver/network/llc2 o
-omnios driver/network/mlxcx
-omnios driver/network/mwl
-omnios driver/network/mxfe
-omnios driver/network/myri10ge
-omnios driver/network/nge
-omnios driver/network/ntxn
-omnios driver/network/nxge
-omnios driver/network/ofk
-omnios driver/network/pcan o
-omnios driver/network/pcn
-omnios driver/network/pcwl o
-omnios driver/network/platform r
-omnios driver/network/qede
-omnios driver/network/qlc
-omnios driver/network/ral
-omnios driver/network/rds
-omnios driver/network/rdsv3
-omnios driver/network/rge
-omnios driver/network/rpcib
-omnios driver/network/rtls
-omnios driver/network/rtw
-omnios driver/network/rum
-omnios driver/network/rwd
-omnios driver/network/rwn
-omnios driver/network/sdp
-omnios driver/network/sdpib
-omnios driver/network/sfe
-omnios driver/network/sfxge
-omnios driver/network/srpt
-omnios driver/network/tavor
-omnios driver/network/uath
-omnios driver/network/udmf
-omnios driver/network/upf
-omnios driver/network/ural
-omnios driver/network/urf
-omnios driver/network/urtw
-omnios driver/network/usbecm
-omnios driver/network/vioif
-omnios driver/network/vmxnet3s
-omnios driver/network/vr
-omnios driver/network/wpi
-omnios driver/network/xge
-omnios driver/network/yge
-omnios driver/network/zyd
-omnios driver/pcmcia
-omnios driver/serial/pcser o
-omnios driver/serial/usbftdi
-omnios driver/serial/usbsacm
-omnios driver/serial/usbser
-omnios driver/serial/usbser_edge
-omnios driver/serial/usbsksp
-omnios driver/serial/usbsksp/usbs49_fw
-omnios driver/serial/usbsprl
-omnios driver/storage/aac
-omnios driver/storage/adpu320
-omnios driver/storage/ahci
-omnios driver/storage/amr
-omnios driver/storage/arcmsr
-omnios driver/storage/ata
-omnios driver/storage/bcm_sata
-omnios driver/storage/blkdev
-omnios driver/storage/cpqary3
-omnios driver/storage/glm
-omnios driver/storage/lmrc
-omnios driver/storage/lsimega
-omnios driver/storage/marvell88sx
-omnios driver/storage/mega_sas
-omnios driver/storage/mpt_sas
-omnios driver/storage/mr_sas
-omnios driver/storage/nv_sata
-omnios driver/storage/nvme
-omnios driver/storage/pcata o
-omnios driver/storage/pmcs
-omnios driver/storage/pvscsi
-omnios driver/storage/sbp2
-omnios driver/storage/scsa1394
-omnios driver/storage/sdcard
-omnios driver/storage/ses
-omnios driver/storage/si3124
-omnios driver/storage/skd
-omnios driver/storage/smartpqi
-omnios driver/storage/smp
-omnios driver/storage/smrt
-omnios driver/storage/sv o
-omnios driver/storage/vio9p
-omnios driver/storage/vioblk
-omnios driver/storage/vioscsi
-omnios driver/tuntap
-omnios driver/usb
-omnios driver/usb/ugen
-omnios driver/usb/usbgem
-omnios driver/virtualization/kvm
-omnios driver/x11/winlock o
-omnios driver/x11/xsvc
-omnios driver/xvm/pv
-omnios editor/vim
-omnios entire
-omnios file/gnu-coreutils
-omnios file/gnu-findutils
-omnios incorporation/jeos/illumos-gate o
-omnios incorporation/jeos/omnios-userland o
-omnios install/beadm
-omnios library/c++/sigcpp
-omnios library/demo/audio-samples
-omnios library/expat
-omnios library/glib2
-omnios library/gmp
-omnios library/idnkit
-omnios library/idnkit/header-idnkit r
-omnios library/libadt_jni
-omnios library/libedit
-omnios library/libffi
-omnios library/libidn
-omnios library/libmagic
-omnios library/libpsl
-omnios library/libtecla
-omnios library/libtool/libltdl
-omnios library/libxml2
-omnios library/libxslt
-omnios library/lzlib
-omnios library/mpc
-omnios library/mpfr
-omnios library/ncurses
-omnios library/nghttp2
-omnios library/nspr
-omnios library/nspr/header-nspr r
-omnios library/pcre
-omnios library/pcre2
-omnios library/perl-5/xml-parser
-omnios library/print/open-printing
-omnios library/print/open-printing/ipp
-omnios library/print/open-printing/lpd
-omnios library/python-2/setuptools-27
-omnios library/python-3/asn1crypto-311 o
-omnios library/python-3/asn1crypto-312 o
-omnios library/python-3/asn1crypto-313
-omnios library/python-3/attrs-311 o
-omnios library/python-3/attrs-312 o
-omnios library/python-3/attrs-313
-omnios library/python-3/cffi-311 o
-omnios library/python-3/cffi-312 o
-omnios library/python-3/cffi-313
-omnios library/python-3/coverage-311 o
-omnios library/python-3/coverage-312 o
-omnios library/python-3/coverage-313
-omnios library/python-3/crossenv-311 o
-omnios library/python-3/crossenv-312 o
-omnios library/python-3/crossenv-313
-omnios library/python-3/cryptography-311 o
-omnios library/python-3/cryptography-312 o
-omnios library/python-3/cryptography-313
-omnios library/python-3/idna-311 o
-omnios library/python-3/idna-312 o
-omnios library/python-3/idna-313
-omnios library/python-3/js-regex-311 o
-omnios library/python-3/js-regex-312 o
-omnios library/python-3/js-regex-313
-omnios library/python-3/jsonrpclib-311 o
-omnios library/python-3/jsonrpclib-312 o
-omnios library/python-3/jsonrpclib-313
-omnios library/python-3/jsonschema-311 o
-omnios library/python-3/jsonschema-312 o
-omnios library/python-3/jsonschema-313
-omnios library/python-3/meson-311 o
-omnios library/python-3/meson-312 o
-omnios library/python-3/meson-313
-omnios library/python-3/orjson-311 o
-omnios library/python-3/orjson-312 o
-omnios library/python-3/orjson-313
-omnios library/python-3/packaging-312 o
-omnios library/python-3/packaging-313
-omnios library/python-3/pip-311 o
-omnios library/python-3/pip-312 o
-omnios library/python-3/pip-313
-omnios library/python-3/pycodestyle-311 o
-omnios library/python-3/pycodestyle-312 o
-omnios library/python-3/pycodestyle-313
-omnios library/python-3/pycparser-311 o
-omnios library/python-3/pycparser-312 o
-omnios library/python-3/pycparser-313
-omnios library/python-3/pycurl-311 o
-omnios library/python-3/pycurl-312 o
-omnios library/python-3/pycurl-313
-omnios library/python-3/pyopenssl-311 o
-omnios library/python-3/pyopenssl-312 o
-omnios library/python-3/pyopenssl-313
-omnios library/python-3/pyrsistent-311 o
-omnios library/python-3/pyrsistent-312 o
-omnios library/python-3/pyrsistent-313
-omnios library/python-3/pyyaml-311 o
-omnios library/python-3/pyyaml-312 o
-omnios library/python-3/pyyaml-313
-omnios library/python-3/rapidjson-311 o
-omnios library/python-3/rapidjson-312 o
-omnios library/python-3/rapidjson-313
-omnios library/python-3/semantic-version-311 o
-omnios library/python-3/semantic-version-312 o
-omnios library/python-3/semantic-version-313
-omnios library/python-3/setuptools-311 o
-omnios library/python-3/setuptools-312 o
-omnios library/python-3/setuptools-313
-omnios library/python-3/setuptools-rust-311 o
-omnios library/python-3/setuptools-rust-312 o
-omnios library/python-3/setuptools-rust-313
-omnios library/python-3/six-311 o
-omnios library/python-3/six-312 o
-omnios library/python-3/six-313
-omnios library/python-3/tomli-311 o
-omnios library/python-3/tomli-312 o
-omnios library/python-3/tomli-313
-omnios library/python-3/typing-extensions-311 o
-omnios library/python-3/typing-extensions-312 o
-omnios library/python-3/typing-extensions-313
-omnios library/readline
-omnios library/security/openssl
-omnios library/security/openssl-10 l
-omnios library/security/openssl-11
-omnios library/security/openssl-3
-omnios library/security/openssl/preview o
-omnios library/security/tcp-wrapper
-omnios library/security/trousers
-omnios library/unixodbc
-omnios library/zlib
-omnios locale/af
-omnios locale/ar
-omnios locale/ar-extra o
-omnios locale/as
-omnios locale/az
-omnios locale/be
-omnios locale/bg
-omnios locale/bg-extra
-omnios locale/bn
-omnios locale/bo
-omnios locale/bs
-omnios locale/ca
-omnios locale/ca-extra
-omnios locale/cs
-omnios locale/cs-extra
-omnios locale/da
-omnios locale/da-extra
-omnios locale/de
-omnios locale/de-extra
-omnios locale/el
-omnios locale/el-extra
-omnios locale/en
-omnios locale/en-extra
-omnios locale/es
-omnios locale/es-extra
-omnios locale/et
-omnios locale/fi
-omnios locale/fi-extra
-omnios locale/fil
-omnios locale/fr
-omnios locale/fr-extra
-omnios locale/ga
-omnios locale/gu
-omnios locale/he
-omnios locale/hi
-omnios locale/hr
-omnios locale/hr-extra
-omnios locale/hu
-omnios locale/hu-extra
-omnios locale/hy
-omnios locale/id
-omnios locale/ii
-omnios locale/is
-omnios locale/is-extra
-omnios locale/it
-omnios locale/it-extra
-omnios locale/ja
-omnios locale/ka
-omnios locale/kk
-omnios locale/km
-omnios locale/kn
-omnios locale/ko
-omnios locale/kok
-omnios locale/lt
-omnios locale/lt-extra
-omnios locale/lv
-omnios locale/lv-extra
-omnios locale/mk
-omnios locale/mk-extra
-omnios locale/ml
-omnios locale/mn
-omnios locale/mr
-omnios locale/ms
-omnios locale/mt
-omnios locale/nb
-omnios locale/ne
-omnios locale/nl
-omnios locale/nl-extra
-omnios locale/nn
-omnios locale/or
-omnios locale/pa
-omnios locale/pl
-omnios locale/pl-extra
-omnios locale/pt
-omnios locale/pt-extra
-omnios locale/ro
-omnios locale/ru
-omnios locale/ru-extra
-omnios locale/sa
-omnios locale/si
-omnios locale/sk
-omnios locale/sl
-omnios locale/sq
-omnios locale/sq-extra
-omnios locale/sr
-omnios locale/sv
-omnios locale/sv-extra
-omnios locale/ta
-omnios locale/te
-omnios locale/th
-omnios locale/th-extra
-omnios locale/tr
-omnios locale/tr-extra
-omnios locale/ug
-omnios locale/uk
-omnios locale/ur
-omnios locale/vi
-omnios locale/zh_cn
-omnios locale/zh_cn-extra
-omnios locale/zh_hk
-omnios locale/zh_mo
-omnios locale/zh_sg
-omnios locale/zh_tw
-omnios media/cdrtools r
-omnios media/cdrw
-omnios media/xorriso
-omnios naming/ldap
-omnios network/bridging
-omnios network/dhcp/dhcpmgr o
-omnios network/dns/bind
-omnios network/dns/idnconv
-omnios network/ftp
-omnios network/ipd
-omnios network/ipfilter
-omnios network/ipfilter/header-ipfilter
-omnios network/iscsi/initiator
-omnios network/iscsi/iser
-omnios network/iscsi/target
-omnios network/netcat
-omnios network/openssh
-omnios network/openssh-server
-omnios network/rsync
-omnios network/service/isc-dhcp
-omnios network/snoop
-omnios network/socat
-omnios network/telnet
-omnios network/test/iperf
-omnios network/test/netperf
-omnios package/pkg
-omnios package/pkg/zones-proxy o
-omnios package/svr4
-omnios print/lp
-omnios print/lp/compatibility/sunos4
-omnios print/lp/filter/postscript-lp-filter
-omnios print/lp/ipp/libipp
-omnios print/lp/print-client-commands
-omnios print/lp/print-manager/legacy
-omnios release/name
-omnios release/notices
-omnios runtime/java r
-omnios runtime/java/jexec
-omnios runtime/java/openjdk11
-omnios runtime/java/openjdk17
-omnios runtime/java/openjdk21
-omnios runtime/java/openjdk8
-omnios runtime/java/runtime64 r
-omnios runtime/perl
-omnios runtime/perl-64 r
-omnios runtime/perl/manual o
-omnios runtime/perl/module/sun-solaris
-omnios runtime/python-27 l
-omnios runtime/python-311 r
-omnios runtime/python-312 r
-omnios runtime/python-313
-omnios security/bart
-omnios security/sudo
-omnios service/fault-management
-omnios service/fault-management/smtp-notify
-omnios service/fault-management/snmp-notify
-omnios service/file-system/nfs
-omnios service/file-system/smb
-omnios service/hal
-omnios service/network/chrony
-omnios service/network/dhcp o
-omnios service/network/dhcp/datastore/binfiles o
-omnios service/network/dns/mdns
-omnios service/network/ftp o
-omnios service/network/legacy
-omnios service/network/load-balancer/ilb
-omnios service/network/network-clients
-omnios service/network/network-servers
-omnios service/network/nis
-omnios service/network/ntp r
-omnios service/network/ntpsec
-omnios service/network/slp o
-omnios service/network/smtp/dma
-omnios service/network/smtp/sendmail
-omnios service/network/snmp/mibiisa o
-omnios service/network/telnet
-omnios service/network/tftp
-omnios service/network/uucp
-omnios service/network/wpa
-omnios service/picl
-omnios service/resource-cap
-omnios service/resource-pools
-omnios service/resource-pools/poold
-omnios service/security/gss
-omnios service/security/kerberos-5
-omnios service/storage/avs/cache-management o
-omnios service/storage/fibre-channel/fc-fabric
-omnios service/storage/isns
-omnios service/storage/media-volume-manager
-omnios service/storage/ndmp
-omnios service/storage/removable-media
-omnios service/storage/virus-scan
-omnios shell/bash
-omnios shell/ksh93
-omnios shell/pipe-viewer
-omnios shell/tcsh
-omnios shell/zsh
-omnios source/demo/mdb-examples
-omnios source/demo/system
-omnios source/network/pppdump o
-omnios source/security/tcp-wrapper o
-omnios storage/avs o
-omnios storage/avs/point-in-time-copy o
-omnios storage/avs/remote-mirror o
-omnios storage/metassist o
-omnios storage/mpathadm
-omnios storage/stmf
-omnios storage/storage-nas o
-omnios storage/storage-server o
-omnios storage/svm o
-omnios system/accounting/legacy
-omnios system/bhyve
-omnios system/bhyve/firmware
-omnios system/bhyve/tests
-omnios system/boot/loader
-omnios system/boot/network
-omnios system/boot/real-mode
-omnios system/boot/wanboot o
-omnios system/boot/wanboot/internal o
-omnios system/cpuid
-omnios system/data/console/fonts
-omnios system/data/hardware-registry
-omnios system/data/keyboard/keytables
-omnios system/data/terminfo
-omnios system/data/urxvt-terminfo
-omnios system/data/zoneinfo
-omnios system/defaults
-omnios system/dtrace/tests
-omnios system/extended-system-utilities
-omnios system/fault-management/eversholt-utilities
-omnios system/ficl
-omnios system/file
-omnios system/file-system/autofs
-omnios system/file-system/nfs
-omnios system/file-system/ntfsprogs o
-omnios system/file-system/smb
-omnios system/file-system/udfs
-omnios system/file-system/zfs
-omnios system/file-system/zfs/tests
-omnios system/flash/fwflash
-omnios system/fru-id
-omnios system/fru-id/platform
-omnios system/header
-omnios system/header/header-agp
-omnios system/header/header-audio
-omnios system/header/header-drm
-omnios system/header/header-firewire
-omnios system/header/header-picl
-omnios system/header/header-storage
-omnios system/header/header-ugen
-omnios system/header/header-usb
-omnios system/hyperv/tools
-omnios system/install/kayak
-omnios system/install/kayak-kernel
-omnios system/io/tests
-omnios system/ipc
-omnios system/kernel
-omnios system/kernel/cpu-counters
-omnios system/kernel/dtrace/providers
-omnios system/kernel/dynamic-reconfiguration/i86pc
-omnios system/kernel/platform
-omnios system/kernel/power
-omnios system/kernel/rsmops
-omnios system/kernel/secure-rpc
-omnios system/kernel/security/gss
-omnios system/kernel/suspend-resume
-omnios system/kernel/ultra-wideband o
-omnios system/ksensor
-omnios system/kvm
-omnios system/library
-omnios system/library/bhyve
-omnios system/library/c++/sunpro
-omnios system/library/c-runtime
-omnios system/library/dbus
-omnios system/library/demangle
-omnios system/library/g++-runtime
-omnios system/library/gcc-runtime
-omnios system/library/gccgo-runtime
-omnios system/library/gfortran-runtime
-omnios system/library/gobjc-runtime
-omnios system/library/iconv/extra
-omnios system/library/iconv/unicode
-omnios system/library/iconv/utf-8
-omnios system/library/iconv/utf-8/manual o
-omnios system/library/iconv/xsh4/latin
-omnios system/library/install/libinstzones
-omnios system/library/libdbus
-omnios system/library/libdbus-glib
-omnios system/library/libdiskmgt
-omnios system/library/libdiskmgt/header-libdiskmgt
-omnios system/library/libfcoe
-omnios system/library/liblayout o
-omnios system/library/libpcsc
-omnios system/library/libutempter
-omnios system/library/math
-omnios system/library/math/header-math r
-omnios system/library/mozilla-nss
-omnios system/library/mozilla-nss/header-nss r
-omnios system/library/mtsk
-omnios system/library/pcap
-omnios system/library/platform
-omnios system/library/policykit
-omnios system/library/processor o
-omnios system/library/python/libbe-27 o
-omnios system/library/python/libbe-311 o
-omnios system/library/python/libbe-312 o
-omnios system/library/python/libbe-313
-omnios system/library/python/solaris-27 o
-omnios system/library/python/solaris-311 o
-omnios system/library/python/solaris-312 o
-omnios system/library/python/solaris-313
-omnios system/library/python/zfs-27 o
-omnios system/library/python/zfs-311 o
-omnios system/library/python/zfs-312 o
-omnios system/library/python/zfs-313
-omnios system/library/security/crypto/pkcs11_kms o
-omnios system/library/security/gss
-omnios system/library/security/gss/diffie-hellman
-omnios system/library/security/gss/spnego
-omnios system/library/security/libsasl
-omnios system/library/security/rpcsec
-omnios system/library/storage/fibre-channel/hbaapi
-omnios system/library/storage/fibre-channel/libsun_fc
-omnios system/library/storage/ima
-omnios system/library/storage/ima/header-ima
-omnios system/library/storage/libmpapi
-omnios system/library/storage/libmpscsi_vhci
-omnios system/library/storage/scsi-plugin r
-omnios system/library/storage/scsi-plugins
-omnios system/library/svm-rcm o
-omnios system/man
-omnios system/management/cloud-init
-omnios system/management/intel-amt o
-omnios system/management/ipmitool
-omnios system/management/mdata-client
-omnios system/management/pcitool
-omnios system/management/snmp/net-snmp
-omnios system/management/snmp/sea o
-omnios system/management/snmp/sea/sea-config o
-omnios system/management/wbem/data-management
-omnios system/management/wbem/resource-management o
-omnios system/manual o
-omnios system/microcode/amd
-omnios system/microcode/intel
-omnios system/monitoring/arcstat
-omnios system/network
-omnios system/network/cdp
-omnios system/network/http-cache-accelerator o
-omnios system/network/ipqos
-omnios system/network/ipqos/ipqos-config
-omnios system/network/lldp
-omnios system/network/mailwrapper
-omnios system/network/nis
-omnios system/network/overlay
-omnios system/network/ppp
-omnios system/network/ppp/pppdump
-omnios system/network/ppp/tunnel
-omnios system/network/routing
-omnios system/network/routing/vrrp
-omnios system/network/spdadm r
-omnios system/network/tests r
-omnios system/network/udapl
-omnios system/network/udapl/udapl-tavor
-omnios system/network/wificonfig
-omnios system/pciutils
-omnios system/pciutils/pci.ids o
-omnios system/pkgtree
-omnios system/prerequisite/gnu
-omnios system/remote-shared-memory
-omnios system/rsyslog
-omnios system/scheduler/fss
-omnios system/security/kerberos-5
-omnios system/storage/fibre-channel/port-utility
-omnios system/storage/luxadm
-omnios system/storage/parted o
-omnios system/storage/sasinfo
-omnios system/test/cryptotest
-omnios system/test/elftest
-omnios system/test/epolltest
-omnios system/test/fio
-omnios system/test/ksh93
-omnios system/test/libctest
-omnios system/test/libmlrpctest
-omnios system/test/libproctest
-omnios system/test/libsectest
-omnios system/test/nettest
-omnios system/test/nvmetest
-omnios system/test/ostest
-omnios system/test/smbclient
-omnios system/test/smbsrvtest
-omnios system/test/testrunner
-omnios system/test/tztest
-omnios system/test/utiltest
-omnios system/test/zfstest
-omnios system/tnf o
-omnios system/trusted
-omnios system/trusted/global-zone
-omnios system/virtualization/open-vm-tools
-omnios system/watch
-omnios system/xopen/xcu4
-omnios system/xopen/xcu6
-omnios system/xvm/ipagent
-omnios system/zones
-omnios system/zones/brand/bhyve
-omnios system/zones/brand/emu
-omnios system/zones/brand/illumos
-omnios system/zones/brand/ipkg
-omnios system/zones/brand/kvm
-omnios system/zones/brand/lipkg
-omnios system/zones/brand/lx
-omnios system/zones/brand/lx/platform
-omnios system/zones/brand/pkgsrc
-omnios system/zones/brand/s10
-omnios system/zones/brand/sn1
-omnios system/zones/brand/sparse
-omnios system/zones/internal
-omnios terminal/resize
-omnios terminal/screen
-omnios terminal/tmux
-omnios text/auto_ef o
-omnios text/doctools
-omnios text/gawk
-omnios text/gnu-diffutils
-omnios text/gnu-gettext
-omnios text/gnu-grep
-omnios text/gnu-patch
-omnios text/gnu-sed
-omnios text/groff
-omnios text/intltool
-omnios text/less
-omnios text/locale
-omnios text/words
-omnios web/ca-bundle
-omnios web/curl
-omnios web/wget
-omnios web/wget2
+helios SUNWcs
+helios SUNWcsd
+helios archiver/gnu-tar
+helios audio/audio-utilities
+helios benchmark/filebench o
+helios compatibility/ucb
+helios compress/7zip
+helios compress/brotli
+helios compress/bzip2
+helios compress/gzip
+helios compress/lz4
+helios compress/lzip
+helios compress/p7zip r
+helios compress/unzip
+helios compress/xz
+helios compress/zip
+helios compress/zstd
+helios consolidation/l10n/l10n-incorporation
+helios consolidation/man/man-incorporation o
+helios consolidation/osnet/osnet-incorporation
+helios consolidation/osnet/osnet-message-files
+helios consolidation/osnet/osnet-redistributable
+helios consolidation/sunpro/sunpro-incorporation
+helios data/iso-codes
+helios database/sqlite-3
+helios developer/aarch64-build-tools
+helios developer/acpi
+helios developer/acpi/compiler r
+helios developer/appcert
+helios developer/apptrace
+helios developer/apptrace/ucblib
+helios developer/as
+helios developer/astdev
+helios developer/build-essential
+helios developer/build/autoconf
+helios developer/build/automake
+helios developer/build/gnu-make
+helios developer/build/libtool
+helios developer/build/make
+helios developer/build/onbld
+helios developer/debug/ctf
+helios developer/debug/mdb
+helios developer/debug/mdb/module/module-fibre-channel
+helios developer/debug/mdb/module/module-qlc
+helios developer/driver/ftsafe
+helios developer/dtc
+helios developer/dtrace
+helios developer/dtrace/toolkit
+helios developer/exuberant-ctags
+helios developer/gcc10
+helios developer/gcc13
+helios developer/gcc14
+helios developer/gnu-binutils
+helios developer/illumos-closed
+helios developer/illumos-tools
+helios developer/java/jdk r
+helios developer/java/openjdk8
+helios developer/lexer/flex
+helios developer/library/lint o
+helios developer/library/profiled-libc o
+helios developer/linker
+helios developer/macro/cpp
+helios developer/macro/gnu-m4
+helios developer/nasm
+helios developer/object-file
+helios developer/omnios-build-tools
+helios developer/opensolaris/osnet
+helios developer/parser/bison
+helios developer/pkg-config
+helios developer/sunstudio12.1 o
+helios developer/swig
+helios developer/tnf o
+helios developer/versioning/git
+helios developer/versioning/mercurial
+helios developer/versioning/sccs
+helios diagnostic/cpu-counters
+helios diagnostic/diskinfo
+helios diagnostic/latencytop
+helios diagnostic/pci
+helios diagnostic/powertop
+helios driver/audio
+helios driver/audio/audio810
+helios driver/audio/audiocmi
+helios driver/audio/audiocmihd
+helios driver/audio/audioemu10k
+helios driver/audio/audiohd
+helios driver/audio/audioixp
+helios driver/audio/audiols
+helios driver/audio/audiop16x
+helios driver/audio/audiosolo
+helios driver/audio/audiovia823x
+helios driver/audio/audiovia97 o
+helios driver/cpu/amd/psp
+helios driver/cpu/amd/zen
+helios driver/cpu/mc
+helios driver/cpu/sensor
+helios driver/crypto/dca
+helios driver/crypto/dprov
+helios driver/crypto/tpm
+helios driver/crypto/viorand
+helios driver/developer/amd/psp/einj
+helios driver/developer/amd/zen
+helios driver/firewire
+helios driver/gpio/amd/zen
+helios driver/graphics/agpgart
+helios driver/graphics/atiatom
+helios driver/graphics/av1394
+helios driver/graphics/dcam1394
+helios driver/graphics/dcam1394/devfsadm-dcam1394
+helios driver/graphics/drm
+helios driver/graphics/usbvc
+helios driver/i86pc/fipe
+helios driver/i86pc/ioat
+helios driver/i86pc/platform
+helios driver/ipmi
+helios driver/ktest
+helios driver/misc/ccid
+helios driver/misc/tofino
+helios driver/misc/virtio
+helios driver/network/afe
+helios driver/network/amd8111s
+helios driver/network/arbel o
+helios driver/network/arn
+helios driver/network/atge
+helios driver/network/ath
+helios driver/network/atu
+helios driver/network/axf
+helios driver/network/bfe
+helios driver/network/bge
+helios driver/network/bnx
+helios driver/network/bnxe
+helios driver/network/bpf
+helios driver/network/chxge
+helios driver/network/cxgbe
+helios driver/network/dmfe
+helios driver/network/dnet
+helios driver/network/e1000g
+helios driver/network/efe
+helios driver/network/elxl
+helios driver/network/emlxs
+helios driver/network/ena
+helios driver/network/eoib
+helios driver/network/fcip
+helios driver/network/fcoe
+helios driver/network/fcoei
+helios driver/network/fcoet
+helios driver/network/fcp
+helios driver/network/fcsm
+helios driver/network/fp
+helios driver/network/hermon
+helios driver/network/hme
+helios driver/network/hxge
+helios driver/network/i40e
+helios driver/network/ib
+helios driver/network/ibdma
+helios driver/network/ibp
+helios driver/network/igb
+helios driver/network/igc
+helios driver/network/iprb
+helios driver/network/ipw
+helios driver/network/iwh
+helios driver/network/iwi
+helios driver/network/iwk
+helios driver/network/iwn
+helios driver/network/iwp
+helios driver/network/ixgb
+helios driver/network/ixgbe
+helios driver/network/llc2 o
+helios driver/network/mlxcx
+helios driver/network/mwl
+helios driver/network/mxfe
+helios driver/network/myri10ge
+helios driver/network/nge
+helios driver/network/ntxn
+helios driver/network/nxge
+helios driver/network/ofk
+helios driver/network/pcan o
+helios driver/network/pcn
+helios driver/network/pcwl o
+helios driver/network/platform r
+helios driver/network/qede
+helios driver/network/qlc
+helios driver/network/ral
+helios driver/network/rds
+helios driver/network/rdsv3
+helios driver/network/rge
+helios driver/network/rpcib
+helios driver/network/rtls
+helios driver/network/rtw
+helios driver/network/rum
+helios driver/network/rwd
+helios driver/network/rwn
+helios driver/network/sdp
+helios driver/network/sdpib
+helios driver/network/sfe
+helios driver/network/sfxge
+helios driver/network/srpt
+helios driver/network/tavor
+helios driver/network/uath
+helios driver/network/udmf
+helios driver/network/upf
+helios driver/network/ural
+helios driver/network/urf
+helios driver/network/urtw
+helios driver/network/usbecm
+helios driver/network/vioif
+helios driver/network/vmxnet3s
+helios driver/network/vr
+helios driver/network/wpi
+helios driver/network/xge
+helios driver/network/yge
+helios driver/network/zyd
+helios driver/pcmcia
+helios driver/serial/pcser o
+helios driver/serial/usbftdi
+helios driver/serial/usbsacm
+helios driver/serial/usbser
+helios driver/serial/usbser_edge
+helios driver/serial/usbsksp
+helios driver/serial/usbsksp/usbs49_fw
+helios driver/serial/usbsprl
+helios driver/storage/aac
+helios driver/storage/adpu320
+helios driver/storage/ahci
+helios driver/storage/amr
+helios driver/storage/arcmsr
+helios driver/storage/ata
+helios driver/storage/bcm_sata
+helios driver/storage/blkdev
+helios driver/storage/cpqary3
+helios driver/storage/glm
+helios driver/storage/lmrc
+helios driver/storage/lsimega
+helios driver/storage/marvell88sx
+helios driver/storage/mega_sas
+helios driver/storage/mpt_sas
+helios driver/storage/mr_sas
+helios driver/storage/nv_sata
+helios driver/storage/nvme
+helios driver/storage/pcata o
+helios driver/storage/pmcs
+helios driver/storage/pvscsi
+helios driver/storage/sbp2
+helios driver/storage/scsa1394
+helios driver/storage/sdcard
+helios driver/storage/ses
+helios driver/storage/si3124
+helios driver/storage/skd
+helios driver/storage/smartpqi
+helios driver/storage/smp
+helios driver/storage/smrt
+helios driver/storage/sv o
+helios driver/storage/vio9p
+helios driver/storage/vioblk
+helios driver/storage/vioscsi
+helios driver/tuntap
+helios driver/usb
+helios driver/usb/ugen
+helios driver/usb/usbgem
+helios driver/virtualization/kvm
+helios driver/x11/winlock o
+helios driver/x11/xsvc
+helios driver/xvm/pv
+helios editor/vim
+helios entire
+helios file/gnu-coreutils
+helios file/gnu-findutils
+helios incorporation/jeos/illumos-gate o
+helios incorporation/jeos/omnios-userland o
+helios install/beadm
+helios library/c++/sigcpp
+helios library/demo/audio-samples
+helios library/expat
+helios library/glib2
+helios library/gmp
+helios library/idnkit
+helios library/idnkit/header-idnkit r
+helios library/libadt_jni
+helios library/libedit
+helios library/libffi
+helios library/libidn
+helios library/libmagic
+helios library/libpsl
+helios library/libtecla
+helios library/libtool/libltdl
+helios library/libxml2
+helios library/libxslt
+helios library/lzlib
+helios library/mpc
+helios library/mpfr
+helios library/ncurses
+helios library/nghttp2
+helios library/nspr
+helios library/nspr/header-nspr r
+helios library/pcre
+helios library/pcre2
+helios library/perl-5/xml-parser
+helios library/print/open-printing
+helios library/print/open-printing/ipp
+helios library/print/open-printing/lpd
+helios library/python-2/setuptools-27
+helios library/python-3/asn1crypto-311 o
+helios library/python-3/asn1crypto-312 o
+helios library/python-3/asn1crypto-313
+helios library/python-3/attrs-311 o
+helios library/python-3/attrs-312 o
+helios library/python-3/attrs-313
+helios library/python-3/cffi-311 o
+helios library/python-3/cffi-312 o
+helios library/python-3/cffi-313
+helios library/python-3/coverage-311 o
+helios library/python-3/coverage-312 o
+helios library/python-3/coverage-313
+helios library/python-3/crossenv-311 o
+helios library/python-3/crossenv-312 o
+helios library/python-3/crossenv-313
+helios library/python-3/cryptography-311 o
+helios library/python-3/cryptography-312 o
+helios library/python-3/cryptography-313
+helios library/python-3/idna-311 o
+helios library/python-3/idna-312 o
+helios library/python-3/idna-313
+helios library/python-3/js-regex-311 o
+helios library/python-3/js-regex-312 o
+helios library/python-3/js-regex-313
+helios library/python-3/jsonrpclib-311 o
+helios library/python-3/jsonrpclib-312 o
+helios library/python-3/jsonrpclib-313
+helios library/python-3/jsonschema-311 o
+helios library/python-3/jsonschema-312 o
+helios library/python-3/jsonschema-313
+helios library/python-3/meson-311 o
+helios library/python-3/meson-312 o
+helios library/python-3/meson-313
+helios library/python-3/orjson-311 o
+helios library/python-3/orjson-312 o
+helios library/python-3/orjson-313
+helios library/python-3/packaging-312 o
+helios library/python-3/packaging-313
+helios library/python-3/pip-311 o
+helios library/python-3/pip-312 o
+helios library/python-3/pip-313
+helios library/python-3/pycodestyle-311 o
+helios library/python-3/pycodestyle-312 o
+helios library/python-3/pycodestyle-313
+helios library/python-3/pycparser-311 o
+helios library/python-3/pycparser-312 o
+helios library/python-3/pycparser-313
+helios library/python-3/pycurl-311 o
+helios library/python-3/pycurl-312 o
+helios library/python-3/pycurl-313
+helios library/python-3/pyopenssl-311 o
+helios library/python-3/pyopenssl-312 o
+helios library/python-3/pyopenssl-313
+helios library/python-3/pyrsistent-311 o
+helios library/python-3/pyrsistent-312 o
+helios library/python-3/pyrsistent-313
+helios library/python-3/pyyaml-311 o
+helios library/python-3/pyyaml-312 o
+helios library/python-3/pyyaml-313
+helios library/python-3/rapidjson-311 o
+helios library/python-3/rapidjson-312 o
+helios library/python-3/rapidjson-313
+helios library/python-3/semantic-version-311 o
+helios library/python-3/semantic-version-312 o
+helios library/python-3/semantic-version-313
+helios library/python-3/setuptools-311 o
+helios library/python-3/setuptools-312 o
+helios library/python-3/setuptools-313
+helios library/python-3/setuptools-rust-311 o
+helios library/python-3/setuptools-rust-312 o
+helios library/python-3/setuptools-rust-313
+helios library/python-3/six-311 o
+helios library/python-3/six-312 o
+helios library/python-3/six-313
+helios library/python-3/tomli-311 o
+helios library/python-3/tomli-312 o
+helios library/python-3/tomli-313
+helios library/python-3/typing-extensions-311 o
+helios library/python-3/typing-extensions-312 o
+helios library/python-3/typing-extensions-313
+helios library/readline
+helios library/security/openssl o
+helios library/security/openssl-10 o
+helios library/security/openssl-11 o
+helios library/security/openssl-3
+helios library/security/openssl/preview o
+helios library/security/tcp-wrapper
+helios library/security/trousers
+helios library/unixodbc
+helios library/zlib
+helios locale/af
+helios locale/ar
+helios locale/ar-extra o
+helios locale/as
+helios locale/az
+helios locale/be
+helios locale/bg
+helios locale/bg-extra
+helios locale/bn
+helios locale/bo
+helios locale/bs
+helios locale/ca
+helios locale/ca-extra
+helios locale/cs
+helios locale/cs-extra
+helios locale/da
+helios locale/da-extra
+helios locale/de
+helios locale/de-extra
+helios locale/el
+helios locale/el-extra
+helios locale/en
+helios locale/en-extra
+helios locale/es
+helios locale/es-extra
+helios locale/et
+helios locale/fi
+helios locale/fi-extra
+helios locale/fil
+helios locale/fr
+helios locale/fr-extra
+helios locale/ga
+helios locale/gu
+helios locale/he
+helios locale/hi
+helios locale/hr
+helios locale/hr-extra
+helios locale/hu
+helios locale/hu-extra
+helios locale/hy
+helios locale/id
+helios locale/ii
+helios locale/is
+helios locale/is-extra
+helios locale/it
+helios locale/it-extra
+helios locale/ja
+helios locale/ka
+helios locale/kk
+helios locale/km
+helios locale/kn
+helios locale/ko
+helios locale/kok
+helios locale/lt
+helios locale/lt-extra
+helios locale/lv
+helios locale/lv-extra
+helios locale/mk
+helios locale/mk-extra
+helios locale/ml
+helios locale/mn
+helios locale/mr
+helios locale/ms
+helios locale/mt
+helios locale/nb
+helios locale/ne
+helios locale/nl
+helios locale/nl-extra
+helios locale/nn
+helios locale/or
+helios locale/pa
+helios locale/pl
+helios locale/pl-extra
+helios locale/pt
+helios locale/pt-extra
+helios locale/ro
+helios locale/ru
+helios locale/ru-extra
+helios locale/sa
+helios locale/si
+helios locale/sk
+helios locale/sl
+helios locale/sq
+helios locale/sq-extra
+helios locale/sr
+helios locale/sv
+helios locale/sv-extra
+helios locale/ta
+helios locale/te
+helios locale/th
+helios locale/th-extra
+helios locale/tr
+helios locale/tr-extra
+helios locale/ug
+helios locale/uk
+helios locale/ur
+helios locale/vi
+helios locale/zh_cn
+helios locale/zh_cn-extra
+helios locale/zh_hk
+helios locale/zh_mo
+helios locale/zh_sg
+helios locale/zh_tw
+helios media/cdrtools r
+helios media/cdrw
+helios media/xorriso
+helios naming/ldap
+helios network/bridging
+helios network/dhcp/dhcpmgr o
+helios network/dns/bind
+helios network/dns/idnconv
+helios network/ftp
+helios network/ipd
+helios network/ipfilter
+helios network/ipfilter/header-ipfilter
+helios network/iscsi/initiator
+helios network/iscsi/iser
+helios network/iscsi/target
+helios network/netcat
+helios network/openssh
+helios network/openssh-server
+helios network/rsync
+helios network/service/isc-dhcp
+helios network/snoop
+helios network/socat
+helios network/ssh o
+helios network/ssh/ssh-key o
+helios network/telnet
+helios network/test/iperf
+helios network/test/netperf
+helios package/pkg
+helios package/pkg/zones-proxy o
+helios package/svr4
+helios print/lp
+helios print/lp/compatibility/sunos4
+helios print/lp/filter/postscript-lp-filter
+helios print/lp/ipp/ipp-listener o
+helios print/lp/ipp/libipp
+helios print/lp/print-client-commands
+helios print/lp/print-manager/legacy
+helios release/name
+helios release/notices
+helios runtime/java r
+helios runtime/java/jexec
+helios runtime/java/openjdk11
+helios runtime/java/openjdk17
+helios runtime/java/openjdk21
+helios runtime/java/openjdk8
+helios runtime/java/runtime64 r
+helios runtime/perl
+helios runtime/perl-64 r
+helios runtime/perl/manual o
+helios runtime/perl/module/sun-solaris
+helios runtime/python-27 l
+helios runtime/python-311 r
+helios runtime/python-312 r
+helios runtime/python-313
+helios security/bart
+helios security/sudo
+helios service/fault-management
+helios service/fault-management/smtp-notify
+helios service/fault-management/snmp-notify
+helios service/file-system/nfs
+helios service/file-system/smb
+helios service/hal
+helios service/network/chrony
+helios service/network/dhcp o
+helios service/network/dhcp/datastore/binfiles o
+helios service/network/dns/mdns
+helios service/network/ftp o
+helios service/network/legacy
+helios service/network/load-balancer/ilb
+helios service/network/network-clients
+helios service/network/network-servers
+helios service/network/nis
+helios service/network/ntp r
+helios service/network/ntpsec
+helios service/network/slp
+helios service/network/smtp/dma
+helios service/network/smtp/sendmail
+helios service/network/snmp/mibiisa o
+helios service/network/ssh o
+helios service/network/ssh-common
+helios service/network/telnet
+helios service/network/tftp
+helios service/network/uucp
+helios service/network/wpa
+helios service/picl
+helios service/resource-cap
+helios service/resource-pools
+helios service/resource-pools/poold
+helios service/security/gss
+helios service/security/kerberos-5
+helios service/storage/avs/cache-management o
+helios service/storage/fibre-channel/fc-fabric
+helios service/storage/isns
+helios service/storage/media-volume-manager
+helios service/storage/ndmp
+helios service/storage/removable-media
+helios service/storage/virus-scan
+helios shell/bash
+helios shell/ksh93
+helios shell/pipe-viewer
+helios shell/tcsh
+helios shell/zsh
+helios source/demo/mdb-examples
+helios source/demo/system
+helios source/network/pppdump o
+helios source/security/tcp-wrapper o
+helios source/system/grub
+helios storage/avs o
+helios storage/avs/point-in-time-copy o
+helios storage/avs/remote-mirror o
+helios storage/metassist o
+helios storage/mpathadm
+helios storage/stmf
+helios storage/storage-nas o
+helios storage/storage-server o
+helios storage/svm o
+helios system/accounting/legacy
+helios system/bhyve
+helios system/bhyve/firmware
+helios system/bhyve/tests
+helios system/boot/grub
+helios system/boot/loader
+helios system/boot/network
+helios system/boot/real-mode
+helios system/boot/wanboot o
+helios system/boot/wanboot/internal o
+helios system/cpuid
+helios system/data/console/fonts
+helios system/data/hardware-registry
+helios system/data/keyboard/keytables
+helios system/data/terminfo
+helios system/data/urxvt-terminfo
+helios system/data/zoneinfo
+helios system/defaults
+helios system/dtrace/tests
+helios system/extended-system-utilities
+helios system/fault-management/eversholt-utilities
+helios system/ficl
+helios system/file
+helios system/file-system/autofs
+helios system/file-system/nfs
+helios system/file-system/ntfsprogs o
+helios system/file-system/smb
+helios system/file-system/udfs
+helios system/file-system/zfs
+helios system/file-system/zfs/tests
+helios system/flash/fwflash
+helios system/fru-id
+helios system/fru-id/platform
+helios system/gpio
+helios system/header
+helios system/header/header-agp
+helios system/header/header-audio
+helios system/header/header-drm
+helios system/header/header-firewire
+helios system/header/header-picl
+helios system/header/header-storage
+helios system/header/header-ugen
+helios system/header/header-usb
+helios system/i2c
+helios system/install/kayak
+helios system/io/tests
+helios system/ipc
+helios system/kernel
+helios system/kernel/cpu-counters
+helios system/kernel/dtrace/providers
+helios system/kernel/dtrace/providers/xdt
+helios system/kernel/dynamic-reconfiguration/i86pc
+helios system/kernel/platform
+helios system/kernel/power
+helios system/kernel/rsmops
+helios system/kernel/secure-rpc
+helios system/kernel/security/gss
+helios system/kernel/suspend-resume
+helios system/kernel/ultra-wideband o
+helios system/ksensor
+helios system/kvm
+helios system/library
+helios system/library/bhyve
+helios system/library/c++/sunpro
+helios system/library/c-runtime
+helios system/library/dbus
+helios system/library/demangle
+helios system/library/g++-runtime
+helios system/library/gcc-runtime
+helios system/library/gccgo-runtime
+helios system/library/gfortran-runtime
+helios system/library/gobjc-runtime
+helios system/library/iconv/extra
+helios system/library/iconv/unicode
+helios system/library/iconv/utf-8
+helios system/library/iconv/utf-8/manual o
+helios system/library/iconv/xsh4/latin
+helios system/library/install/libinstzones
+helios system/library/libdbus
+helios system/library/libdbus-glib
+helios system/library/libdiskmgt
+helios system/library/libdiskmgt/header-libdiskmgt
+helios system/library/libfcoe
+helios system/library/libispi
+helios system/library/liblayout o
+helios system/library/libpcsc
+helios system/library/libutempter
+helios system/library/math
+helios system/library/math/header-math r
+helios system/library/mozilla-nss
+helios system/library/mozilla-nss/header-nss r
+helios system/library/mtsk
+helios system/library/pcap
+helios system/library/platform
+helios system/library/policykit
+helios system/library/processor o
+helios system/library/python/libbe-27 o
+helios system/library/python/libbe-311 o
+helios system/library/python/libbe-312 o
+helios system/library/python/libbe-313
+helios system/library/python/solaris-27 o
+helios system/library/python/solaris-311 o
+helios system/library/python/solaris-312 o
+helios system/library/python/solaris-313
+helios system/library/python/zfs-27 o
+helios system/library/python/zfs-311 o
+helios system/library/python/zfs-312 o
+helios system/library/python/zfs-313
+helios system/library/security/crypto/pkcs11_kms o
+helios system/library/security/gss
+helios system/library/security/gss/diffie-hellman
+helios system/library/security/gss/spnego
+helios system/library/security/libsasl
+helios system/library/security/rpcsec
+helios system/library/storage/fibre-channel/hbaapi
+helios system/library/storage/fibre-channel/libsun_fc
+helios system/library/storage/ima
+helios system/library/storage/ima/header-ima
+helios system/library/storage/libmpapi
+helios system/library/storage/libmpscsi_vhci
+helios system/library/storage/scsi-plugin r
+helios system/library/storage/scsi-plugins
+helios system/library/svm-rcm o
+helios system/man
+helios system/management/cloud-init
+helios system/management/intel-amt o
+helios system/management/ipmitool
+helios system/management/mdata-client
+helios system/management/pcitool
+helios system/management/snmp/net-snmp
+helios system/management/snmp/sea o
+helios system/management/snmp/sea/sea-config o
+helios system/management/wbem/data-management
+helios system/management/wbem/resource-management o
+helios system/manual o
+helios system/microcode/amd
+helios system/microcode/intel
+helios system/microcode/oxide
+helios system/monitoring/arcstat
+helios system/network
+helios system/network/http-cache-accelerator o
+helios system/network/ipqos
+helios system/network/ipqos/ipqos-config
+helios system/network/lldp
+helios system/network/mailwrapper
+helios system/network/nis
+helios system/network/overlay
+helios system/network/ppp
+helios system/network/ppp/pppdump
+helios system/network/ppp/tunnel
+helios system/network/routing
+helios system/network/routing/vrrp
+helios system/network/spdadm r
+helios system/network/udapl
+helios system/network/udapl/udapl-tavor
+helios system/network/wificonfig
+helios system/pciutils
+helios system/pciutils/pci.ids o
+helios system/pkgtree
+helios system/prerequisite/gnu
+helios system/remote-shared-memory
+helios system/rsyslog
+helios system/scheduler/fss
+helios system/security/kerberos-5
+helios system/storage/fibre-channel/port-utility
+helios system/storage/luxadm
+helios system/storage/parted o
+helios system/storage/sasinfo
+helios system/test/cryptotest
+helios system/test/elftest
+helios system/test/epolltest
+helios system/test/fio
+helios system/test/i2ctest
+helios system/test/ksh93
+helios system/test/libctest
+helios system/test/libmlrpctest
+helios system/test/libproctest
+helios system/test/libsectest
+helios system/test/nettest
+helios system/test/nvmetest
+helios system/test/ostest
+helios system/test/smbclient
+helios system/test/smbsrvtest
+helios system/test/testrunner
+helios system/test/tztest
+helios system/test/utiltest
+helios system/test/zfstest
+helios system/tnf o
+helios system/trusted
+helios system/trusted/global-zone
+helios system/virtualization/open-vm-tools
+helios system/watch
+helios system/xopen/xcu4
+helios system/xopen/xcu6
+helios system/xvm/ipagent
+helios system/zones
+helios system/zones/brand/bhyve
+helios system/zones/brand/emu
+helios system/zones/brand/illumos
+helios system/zones/brand/ipkg
+helios system/zones/brand/kvm
+helios system/zones/brand/lipkg
+helios system/zones/brand/lx o
+helios system/zones/brand/lx/platform
+helios system/zones/brand/pkgsrc
+helios system/zones/brand/s10
+helios system/zones/brand/sn1
+helios system/zones/brand/sparse
+helios system/zones/internal
+helios terminal/resize
+helios terminal/screen
+helios terminal/tmux
+helios text/auto_ef o
+helios text/doctools
+helios text/gawk
+helios text/gnu-diffutils
+helios text/gnu-gettext
+helios text/gnu-grep
+helios text/gnu-patch
+helios text/gnu-sed
+helios text/groff
+helios text/intltool
+helios text/less
+helios text/locale
+helios text/words
+helios web/ca-bundle
+helios web/curl
+helios web/wget
+helios web/wget2
