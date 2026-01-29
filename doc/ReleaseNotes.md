@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046en (2026-01-29)
+Weekly release for w/c 26th of January 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSL updated to version 3.0.19
+
+### Other Changes
+
+* AMX-equipped CPUs had excessive stack size requirements in order to
+* successfully store floating-point register state. That has been remedied.
+
+* The GNU make utility previously contained a hard-coded compiler version in
+  its default `CXX` variable.
+
+* A rarely occurring buffer overflow in rsyslog related to JSON encoding has
+  been fixed.
+
+<br>
+
+---
+
 ## r151046el (2026-01-14)
 Weekly release for w/c 12th of January 2026.
 > This update requires a reboot
