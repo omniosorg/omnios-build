@@ -352,5 +352,5 @@ Result: NOTESTS
 99-test_fuzz_v3name.t .................... ok
 99-test_fuzz_x509.t ...................... ok
 All tests successful.
-Files=350, Tests=4491, 
+Files=350, Tests=4518, 
 Result: PASS
