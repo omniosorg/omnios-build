@@ -27,6 +27,16 @@ DESC+="(e.g. country, language, language scripts, and currency names)"
 set_builddir $PROG-v$VER
 set_arch 64
 
+pre_configure() {
+    typeset arch=$1
+
+    ! cross_arch $arch && return
+
+    CONFIGURE_OPTS[$arch]="--prefix=$PREFIX"
+
+    PATH+=:$OOCEBIN
+}
+
 init
 download_source $PROG $PROG v$VER
 patch_source
