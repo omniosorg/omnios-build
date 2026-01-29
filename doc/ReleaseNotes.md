@@ -15,7 +15,7 @@ Weekly release for w/c 26th of January 2026.
 ### Other Changes
 
 * AMX-equipped CPUs had excessive stack size requirements in order to
-* successfully store floating-point register state. That has been remedied.
+  successfully store floating-point register state. That has been remedied.
 
 * The GNU make utility previously contained a hard-coded compiler version in
   its default `CXX` variable.
