@@ -474,6 +474,7 @@ omnios system/firmware/aarch64
 omnios system/flash/fwflash
 omnios system/fru-id
 omnios system/fru-id/platform
+omnios system/gpio
 omnios system/header
 omnios system/header/header-audio
 omnios system/header/header-firewire
@@ -481,6 +482,7 @@ omnios system/header/header-picl
 omnios system/header/header-storage
 omnios system/header/header-ugen
 omnios system/header/header-usb
+omnios system/i2c
 omnios system/io/tests
 omnios system/ipc
 omnios system/kernel
@@ -577,6 +579,7 @@ omnios system/storage/luxadm
 omnios system/storage/sasinfo
 omnios system/test/cryptotest
 omnios system/test/elftest
+omnios system/test/i2ctest
 omnios system/test/ksh93
 omnios system/test/libctest
 omnios system/test/libmlrpctest
