@@ -1,0 +1,21 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
+--- a~/configure	1970-01-01 00:00:00
++++ a/configure	1970-01-01 00:00:00
+@@ -16404,7 +16404,7 @@ rm -rf conftest*
+         # that too in a future libc.)  So we'll check first for the
+         # standard Solaris way of linking pthreads (-mt -lpthread).
+ 
+-        ax_pthread_flags="-mt,-lpthread pthread $ax_pthread_flags"
++        ax_pthread_flags="none -mt,-lpthread pthread $ax_pthread_flags"
+         ;;
+ esac
+ 
+@@ -16454,7 +16454,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
+ 
+ if test "x$GCC" = "xyes"
+ then :
+-  ax_pthread_flags="-pthread,-lpthread -pthread -pthreads $ax_pthread_flags"
++  ax_pthread_flags="-pthread -pthreads $ax_pthread_flags"
+ fi
+ 
+ # Clang takes -pthread (never supported any other flag), but we'll try with -lpthread first
