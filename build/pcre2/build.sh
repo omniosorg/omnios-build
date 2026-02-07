@@ -56,7 +56,7 @@ for pver in $PVERS; do
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
     download_source -dependency pcre $PROG $pver
-    patch_source patches-${pver%%.*}
+    patch_source patches-$pver
     ((EXTRACT_MODE == 0)) && build
 done
 restore_variables BUILDDIR EXTRACTED_SRC
