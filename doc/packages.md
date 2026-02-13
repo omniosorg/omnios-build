@@ -70,7 +70,7 @@
 | network/openssh			| 10.2p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
-| network/socat				| 1.8.1.0		| http://www.dest-unreach.org/socat/download/
+| network/socat				| 1.8.1.1		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.20			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.29+7		| https://github.com/openjdk/jdk11u/tags
