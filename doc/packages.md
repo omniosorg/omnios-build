@@ -64,7 +64,7 @@
 | library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20251113		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20251202		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20251111		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.44		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.2p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
