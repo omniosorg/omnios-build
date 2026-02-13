@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=expat
-VER=2.7.3
+VER=2.7.4
 PKG=library/expat
 SUMMARY="XML parser library"
 DESC="Fast streaming XML parser written in C"
