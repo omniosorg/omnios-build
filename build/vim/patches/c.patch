@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/syntax/c.vim a/runtime/syntax/c.vim
 --- a~/runtime/syntax/c.vim	1970-01-01 00:00:00
 +++ a/runtime/syntax/c.vim	1970-01-01 00:00:00
-@@ -412,6 +412,8 @@ if !exists("c_no_ansi") || exists("c_ans
+@@ -415,6 +415,8 @@ if !exists("c_no_ansi") || exists("c_ans
    " Add POSIX signals as well...
    syn keyword cConstant SIGABRT SIGALRM SIGCHLD SIGCONT SIGFPE SIGHUP SIGILL SIGINT SIGKILL SIGPIPE SIGQUIT SIGSEGV
    syn keyword cConstant SIGSTOP SIGTERM SIGTRAP SIGTSTP SIGTTIN SIGTTOU SIGUSR1 SIGUSR2

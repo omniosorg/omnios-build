@@ -1,7 +1,7 @@
 | Package | Version | Link | Notes |
 | :------ | :------ | :--- | :---- |
 | archiver/gnu-tar			| 1.35			| https://ftp.gnu.org/gnu/tar/ https://www.gnu.org/software/tar/
-| compress/7zip				| 25.01			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
+| compress/7zip				| 26.00			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.2.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
@@ -23,19 +23,19 @@
 | developer/gcc13			| 13.4			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
-| developer/macro/gnu-m4		| 1.4.20		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
+| developer/macro/gnu-m4		| 1.4.21		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
 | developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.52.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 7.0.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/git		| 2.53.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/mercurial	| 7.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.1			| https://www.vim.org/download.php https://github.com/vim/vim
-| file/gnu-coreutils			| 9.9			| https://ftp.gnu.org/gnu/coreutils/
+| file/gnu-coreutils			| 9.10			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.7.3			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.7.4			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
@@ -48,7 +48,7 @@
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libmagic			| 5.46			| https://github.com/file/file/tags
 | library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.51.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.52.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.1		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.15			| https://download.savannah.gnu.org/releases/lzip/lzlib/
@@ -64,13 +64,13 @@
 | library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.1			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20251113		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20251202		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20251111		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.44		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.2p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.4.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
-| network/socat				| 1.8.1.0		| http://www.dest-unreach.org/socat/download/
+| network/socat				| 1.8.1.1		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.20			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.29+7		| https://github.com/openjdk/jdk11u/tags
@@ -105,7 +105,7 @@
 | system/rsyslog			| 8.2512.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.41			| https://github.com/axboe/fio/tags
-| system/watch				| 4.0.5			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
+| system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.6			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.3.2			| https://ftp.gnu.org/gnu/gawk/
@@ -115,15 +115,15 @@
 | text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.9			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.23.0		| https://ftp.gnu.org/gnu/groff/
-| text/less				| 691			| http://www.greenwoodsoftware.com/less/download.html
+| text/less				| 692			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.18.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.1			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.86.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
-| developer/gnu-binutils		| 2.45.1		| https://ftp.gnu.org/gnu/binutils
+| developer/gnu-binutils		| 2.46.0		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.6.pl02		| https://www.gnu.org/software/xorriso/
-| system/virtualization/open-vm-tools	| 13.0.5		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
-| developer/swig			| 4.4.0			| http://www.swig.org/download.html
+| system/virtualization/open-vm-tools	| 13.0.10		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
+| developer/swig			| 4.4.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 25.3.0		| https://pypi.org/rss/project/attrs/releases.xml

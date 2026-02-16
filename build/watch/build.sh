@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=watch
-VER=4.0.5
+VER=4.0.6
 PKG=system/watch
 SUMMARY="execute a program repeatedly, displaying output fullscreen"
 DESC="GNU watch - $SUMMARY"

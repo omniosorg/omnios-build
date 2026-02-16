@@ -8,6 +8,7 @@ PASS: tests/rm/cycle.sh
 SKIP: tests/cp/link-heap.sh
 SKIP: tests/cp/no-ctx.sh
 SKIP: tests/tty/tty-eof.pl
+PASS: tests/misc/io-errors.sh
 PASS: tests/misc/read-errors.sh
 PASS: tests/misc/write-errors.sh
 PASS: tests/tail/basic-seek.sh
@@ -38,7 +39,6 @@ PASS: tests/rm/empty-inacc.sh
 PASS: tests/rm/empty-name.pl
 PASS: tests/rm/f-1.sh
 PASS: tests/rm/fail-eacces.sh
-PASS: tests/rm/fail-eperm.xpl
 PASS: tests/tail/assert.sh
 SKIP: tests/rm/hash.sh
 PASS: tests/rm/i-1.sh
@@ -78,6 +78,7 @@ PASS: tests/fmt/base.pl
 PASS: tests/fmt/goal-option.sh
 PASS: tests/fmt/long-line.sh
 PASS: tests/fmt/non-space.sh
+PASS: tests/fmt/width.sh
 PASS: tests/misc/echo.sh
 PASS: tests/env/env.sh
 PASS: tests/env/env-signal-handler.sh
@@ -99,20 +100,23 @@ PASS: tests/date/date.pl
 PASS: tests/date/date-next-dow.pl
 PASS: tests/ptx/ptx-overrun.sh
 PASS: tests/misc/xstrtol.pl
-PASS: tests/tail/overlay-headers.sh
+SKIP: tests/tail/overlay-headers.sh
 PASS: tests/tail/pid.sh
 PASS: tests/tail/pid-pipe.sh
 SKIP: tests/od/big-w.sh
 PASS: tests/od/od.pl
 PASS: tests/od/od-endian.sh
 PASS: tests/od/od-float.sh
-PASS: tests/misc/mktemp.pl
+PASS: tests/mktemp/bad-unicode.sh
+PASS: tests/mktemp/mktemp.pl
 SKIP: tests/misc/arch.sh
+PASS: tests/pr/bounded-memory.sh
 PASS: tests/pr/pr-tests.pl
 PASS: tests/pwd/pwd-option.sh
 SKIP: tests/chcon/chcon-fail.sh
 SKIP: tests/misc/coreutils.sh
 PASS: tests/cut/cut.pl
+PASS: tests/cut/bounded-memory.sh
 PASS: tests/cut/cut-huge-range.sh
 PASS: tests/wc/wc.pl
 PASS: tests/wc/wc-cpu.sh
@@ -149,6 +153,7 @@ PASS: tests/date/date-debug.sh
 SKIP: tests/date/date-ethiopia.sh
 SKIP: tests/date/date-iran.sh
 SKIP: tests/date/date-locale-hour.sh
+PASS: tests/date/percent-percent.sh
 PASS: tests/date/reference.sh
 PASS: tests/date/resolution.sh
 PASS: tests/date/date-sec.sh
@@ -159,7 +164,8 @@ PASS: tests/misc/dirname.pl
 PASS: tests/env/env-null.sh
 PASS: tests/env/env-S.pl
 PASS: tests/env/env-S-script.sh
-PASS: tests/misc/expand.pl
+PASS: tests/expand/expand.pl
+PASS: tests/expand/bounded-memory.sh
 PASS: tests/expr/expr.pl
 PASS: tests/expr/expr-multibyte.pl
 PASS: tests/factor/factor.pl
@@ -176,7 +182,7 @@ PASS: tests/groups/groups-version.sh
 PASS: tests/head/head-c.sh
 PASS: tests/head/head-pos.sh
 PASS: tests/head/head-write-error.sh
-PASS: tests/misc/kill.sh
+SKIP: tests/misc/kill.sh
 PASS: tests/cksum/b2sum.sh
 PASS: tests/cksum/md5sum.pl
 PASS: tests/cksum/md5sum-bsd.sh
@@ -199,9 +205,10 @@ PASS: tests/od/od-N.sh
 PASS: tests/od/od-j.sh
 PASS: tests/od/od-multiple-t.sh
 PASS: tests/od/od-x8.sh
-PASS: tests/misc/paste.pl
 PASS: tests/misc/pathchk.sh
 PASS: tests/misc/printenv.sh
+PASS: tests/paste/paste.pl
+PASS: tests/paste/multi-byte.sh
 PASS: tests/printf/printf.sh
 PASS: tests/printf/printf-cov.pl
 PASS: tests/printf/printf-hex.sh
@@ -244,6 +251,7 @@ PASS: tests/sort/sort-field-limit.sh
 PASS: tests/sort/sort-files0-from.pl
 PASS: tests/sort/sort-float.sh
 SKIP: tests/sort/sort-h-thousands-sep.sh
+PASS: tests/sort/sort-locale.sh
 PASS: tests/sort/sort-merge.pl
 PASS: tests/sort/sort-merge-fdlimit.sh
 SKIP: tests/sort/sort-month.sh
@@ -269,6 +277,7 @@ PASS: tests/split/r-chunk.sh
 PASS: tests/split/record-sep.sh
 PASS: tests/split/numeric.sh
 PASS: tests/split/guard-input.sh
+PASS: tests/split/split-io-err.sh
 PASS: tests/stat/stat-birthtime.sh
 PASS: tests/stat/stat-fmt.sh
 PASS: tests/stat/stat-hyphen.sh
@@ -286,10 +295,11 @@ PASS: tests/cksum/sum.pl
 PASS: tests/cksum/sum-sysv.sh
 PASS: tests/misc/sync.sh
 PASS: tests/tac/tac.pl
-SKIP: tests/tac/tac-continue.sh
+PASS: tests/tac/tac-locale.sh
 PASS: tests/tac/tac-2-nonseekable.sh
 PASS: tests/tail/tail.pl
-PASS: tests/misc/tee.sh
+PASS: tests/tee/append.sh
+PASS: tests/tee/tee.sh
 PASS: tests/test/test-N.sh
 PASS: tests/test/test-diag.pl
 PASS: tests/test/test-file.sh
@@ -312,7 +322,10 @@ PASS: tests/truncate/truncate-relative.sh
 PASS: tests/misc/tsort.pl
 PASS: tests/tty/tty.sh
 PASS: tests/misc/usage_vs_getopt.sh
-PASS: tests/misc/unexpand.pl
+PASS: tests/misc/getopt_vs_usage.sh
+PASS: tests/misc/usage_vs_refs.sh
+PASS: tests/unexpand/unexpand.pl
+PASS: tests/unexpand/bounded-memory.sh
 PASS: tests/uniq/uniq.pl
 PASS: tests/uniq/uniq-perf.sh
 PASS: tests/uniq/uniq-collate.sh
@@ -329,6 +342,7 @@ PASS: tests/chmod/equals.sh
 PASS: tests/chmod/ignore-symlink.sh
 PASS: tests/chmod/inaccessible.sh
 PASS: tests/chmod/octal.sh
+PASS: tests/chmod/partial-fail.sh
 PASS: tests/chmod/setgid.sh
 PASS: tests/chmod/silent.sh
 PASS: tests/chmod/thru-dangling.sh
@@ -369,7 +383,7 @@ PASS: tests/cp/link-deref.sh
 PASS: tests/cp/link-no-deref.sh
 PASS: tests/cp/link-preserve.sh
 PASS: tests/cp/link-symlink.sh
-SKIP: tests/cp/nfs-removal-race.sh
+PASS: tests/cp/nfs-removal-race.sh
 PASS: tests/cp/no-deref-link1.sh
 PASS: tests/cp/no-deref-link2.sh
 PASS: tests/cp/no-deref-link3.sh
@@ -400,10 +414,13 @@ SKIP: tests/df/df-symlink.sh
 PASS: tests/df/unreadable.sh
 PASS: tests/df/total-unprocessed.sh
 SKIP: tests/df/no-mtab-status.sh
+SKIP: tests/df/no-mtab-status-masked-proc.sh
 SKIP: tests/df/skip-duplicates.sh
 SKIP: tests/df/skip-rootfs.sh
 PASS: tests/dd/ascii.sh
+PASS: tests/dd/conv-case.sh
 PASS: tests/dd/direct.sh
+PASS: tests/dd/fail-ftruncate-fstat.sh
 PASS: tests/dd/misc.sh
 PASS: tests/dd/no-allocate.sh
 PASS: tests/dd/nocache.sh
@@ -585,6 +602,7 @@ PASS: tests/rmdir/symlink-errors.sh
 PASS: tests/rmdir/t-slash.sh
 PASS: tests/tail/assert-2.sh
 SKIP: tests/tail/big-4gb.sh
+SKIP: tests/tail/debug.sh
 PASS: tests/tail/flush-initial.sh
 PASS: tests/tail/follow-name.sh
 PASS: tests/tail/follow-stdin.sh
@@ -625,6 +643,7 @@ SKIP: tests/ls/capability.sh
 SKIP: tests/ls/no-cap.sh
 SKIP: tests/ls/nameless-uid.sh
 SKIP: tests/nproc/nproc-quota.sh
+SKIP: tests/nproc/nproc-quota-systemd.sh
 SKIP: tests/chcon/chcon.sh
 SKIP: tests/chroot/chroot-credentials.sh
 SKIP: tests/misc/selinux.sh
@@ -633,12 +652,15 @@ SKIP: tests/mkdir/writable-under-readonly.sh
 SKIP: tests/mkdir/smack-root.sh
 SKIP: tests/mv/hardlink-case.sh
 SKIP: tests/mv/sticky-to-xpart.sh
+SKIP: tests/mv/meta-to-xpart.sh
+SKIP: tests/mv/mv-special-2.sh
 SKIP: tests/rm/fail-2eperm.sh
 SKIP: tests/rm/no-give-up.sh
 SKIP: tests/rm/one-file-system.sh
 SKIP: tests/rm/read-only.sh
 SKIP: tests/rm/empty-immutable-skip.sh
 SKIP: tests/split/l-chunk-root.sh
+SKIP: tests/tac/tac-continue.sh
 SKIP: tests/tail/append-only.sh
 SKIP: tests/tail/end-of-device.sh
 SKIP: tests/touch/now-owned-by-other.sh
@@ -683,9 +705,9 @@ SKIP: tests/factor/t37.sh
 SKIP: tests/factor/t38.sh
 SKIP: tests/factor/t39.sh
 SKIP: tests/factor/t40.sh
-# TOTAL: 685
-# PASS:  521
-# SKIP:  164
+# TOTAL: 707
+# PASS:  537
+# SKIP:  170
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
@@ -898,7 +920,7 @@ PASS: test-getprogname
 PASS: test-getrandom
 PASS: test-getrusage
 PASS: test-gettext-h
-PASS: test-gettime-res
+FAIL: test-gettime-res
 PASS: test-gettimeofday
 PASS: test-dynarray
 PASS: test-scratch-buffer
@@ -1061,6 +1083,7 @@ PASS: test-posix_spawn_file_actions_addopen
 PASS: test-posix_spawn-dup2-stdout
 PASS: test-posix_spawn-dup2-stdin
 PASS: test-posix_spawnp-script
+PASS: test-posix_spawnp-vfork
 PASS: test-posixtm
 PASS: test-printf-frexp
 PASS: test-printf-frexpl
@@ -1104,6 +1127,9 @@ PASS: test-sched-h
 PASS: test-select
 PASS: test-select-in.sh
 PASS: test-select-out.sh
+PASS: test-selinux-context-h
+PASS: test-selinux-label-h
+PASS: test-selinux-selinux-h
 PASS: test-servent
 PASS: test-setenv
 PASS: test-setlocale_null
@@ -1141,6 +1167,7 @@ PASS: test-strchrnul
 PASS: test-strerror
 PASS: test-strerror_r
 PASS: test-string-h
+PASS: test-strncpy
 PASS: test-strnlen
 PASS: test-strsignal
 PASS: test-strtod
@@ -1255,6 +1282,7 @@ SKIP: test-windows-timedrecmutex-type
 PASS: test-wmemchr
 PASS: test-write
 PASS: test-xalloc-die.sh
+PASS: test-xmemdup0
 PASS: test-xprintf-posix.sh
 PASS: test-xstrtod
 PASS: test-xstrtoimax.sh
@@ -1264,10 +1292,27 @@ PASS: test-xstrtoumax.sh
 PASS: test-xvasprintf
 PASS: test-year2038
 PASS: test-yesno.sh
-# TOTAL: 574
-# PASS:  505
+# TOTAL: 580
+# PASS:  510
 # SKIP:  69
 # XFAIL: 0
-# FAIL:  0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+NAME="OmniOS"
+PRETTY_NAME="OmniOS Community Edition v11 r151057"
+CPE_NAME="cpe:/o:omniosce:omnios:11:151057:0"
+ID=omnios
+VERSION=r151057
+VERSION_ID=r151057
+BUILD_ID=151057.0.2026.01.13
+HOME_URL="https://omnios.org/"
+FAIL: test-gettime-res
+FAIL test-gettime-res (exit status: 1)
+# TOTAL: 580
+# PASS:  510
+# SKIP:  69
+# XFAIL: 0
+# FAIL:  1
 # XPASS: 0
 # ERROR: 0
