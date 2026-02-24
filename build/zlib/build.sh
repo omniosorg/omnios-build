@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=zlib
-VER=1.3.1
+VER=1.3.2
 PKG=library/zlib
 SUMMARY="$PROG compression library"
 DESC="A patent-free compression library"
