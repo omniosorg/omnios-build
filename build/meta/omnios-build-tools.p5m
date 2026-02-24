@@ -54,7 +54,6 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-313 \
     type=require
-depend fmri=pkg://$(PKGPUBLISHER)/library/security/liboqs type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-11 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-3 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/zlib type=require
