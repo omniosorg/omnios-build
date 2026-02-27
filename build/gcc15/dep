@@ -1,0 +1,21 @@
+#!/bin/ksh
+
+tf=test$$.c
+
+cat << EOM > $tf
+int main(){return(0);}
+EOM
+
+for gcc in {10..15}; do
+       for a in 32 64; do
+                [ $a = 32 ] && lib=/lib || lib=/lib/amd64
+                echo
+                echo "+ gcc $gcc, $a" 
+                [ $gcc = 4.4.4 ] && b=/opt/gcc-4.4.4/bin/gcc || b=gcc-$gcc
+                $b -m$a -o /dev/null -L$lib \
+                    -Wl,-zassert-deflib -Wl,-zfatal-warnings $tf -lmtmalloc
+        done
+done
+
+rm -f $tf
+
