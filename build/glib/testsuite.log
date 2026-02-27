@@ -276,7 +276,7 @@ glib:glib+core+slow / 1bit-emufutex                                    OK   2 su
 glib:glib+core+slow / 642026                                           OK   1 subtests passed
 glib:glib+core+slow / 642026-ec                                        OK   1 subtests passed
 glib:glib+core+slow / gdatetime                                        OK   58 subtests passed
-glib:glib+core+slow / gvariant                                         OK   69 subtests passed
+glib:glib+core+slow / gvariant                                         OK   70 subtests passed
 glib:glib+core+slow / sequence                                         OK   16 subtests passed
 glib:glib+core+slow / thread-pool-slow                                 OK   7 subtests passed
 glib:gmodule / max-version                                             OK   1 subtests passed
@@ -365,17 +365,17 @@ glib:lint+no-valgrind / shellcheck.sh                                  SKIP
 
 Summary of Failures:
 
-glib:glib+core / convert                                               ERROR   killed by signal 6 SIGABRT
 glib:glib+core / mapping                                               ERROR   killed by signal 16 SIGUSR1
+glib:glib+core / convert                                               ERROR   killed by signal 6 SIGABRT
 glib:glib+core / string                                                ERROR   killed by signal 6 SIGABRT
 glib:glib+core / unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib:glib+core / gutils-user-database                                  ERROR   killed by signal 5 SIGTRAP
 glib:gio / converter-stream                                            ERROR   killed by signal 6 SIGABRT
 glib:gio / inet-address                                                ERROR   killed by signal 6 SIGABRT
-glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
-glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
+glib:gio / appmonitor                                                  ERROR   killed by signal 6 SIGABRT
 glib:gio / gsettings                                                   ERROR   killed by signal 5 SIGTRAP
+glib:gio+slow / testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
 
 Ok:                346 
 Fail:              11  
