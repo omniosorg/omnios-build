@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=rsyslog
-VER=8.2512.0
+VER=8.2602.0
 PKG=system/rsyslog
 SUMMARY="rsyslog - the rocket-fast system for log processing."
 DESC="A high-performance, modular syslog implementation."
@@ -75,6 +75,7 @@ CONFIGURE_OPTS="
 
     --enable-imsolaris
     --enable-impstats
+    --disable-impstats-push
 
     --enable-omstdout
     --enable-omhttp

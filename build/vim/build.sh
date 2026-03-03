@@ -18,8 +18,8 @@
 . ../../lib/build.sh
 
 PROG=vim
-VER=9.1
-PATCHLEVEL=2147
+VER=9.2
+PATCHLEVEL=0068
 PKG=editor/vim
 SUMMARY="Vi IMproved"
 DESC="Advanced text editor that provides the power of the UNIX vi editor "
