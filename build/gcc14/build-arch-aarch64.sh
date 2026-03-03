@@ -132,6 +132,10 @@ CPPFLAGS+=" -D_TS_ERRNO"
 export glibcxx_cv_math11_int_overload=no
 export glibcxx_cv_math11_fp_overload=no
 
+pre_configure() {
+    CONFIGURE_OPTS+=" --with-build-sysroot=${SYSROOT[aarch64]}"
+}
+
 make_install() {
     logmsg "--- make install"
     logcmd $MAKE DESTDIR=${DESTDIR} install-strip || \
