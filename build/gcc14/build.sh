@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/arch.sh
 . ../../lib/build.sh
@@ -106,6 +106,7 @@ CONFIGURE_OPTS="
     --with-build-time-tools=/usr/gnu/${TRIPLETS[amd64]}/bin
     --with-build-config=no
     --enable-languages=$LANGUAGES
+    --enable-clocale=dragonfly
     --with-arch-32=i586
     --enable-shared
     --with-system-zlib
