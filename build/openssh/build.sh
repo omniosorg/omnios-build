@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -23,10 +23,8 @@ PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_arch 64
+set_cstandard gnu17
 
 SKIP_LICENCES=OpenSSH
 
