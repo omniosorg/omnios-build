@@ -23,6 +23,9 @@ PKG=library/libidn
 SUMMARY="The Internationalized Domains Library"
 DESC="IDN - The Internationalized Domains Library"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 # The library major version changed from 11 to 12 with 1.35. We need to
 # continue shipping the older version of the library to support anything
 # linked against it.

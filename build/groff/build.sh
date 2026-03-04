@@ -23,6 +23,9 @@ PKG=text/groff
 SUMMARY="GNU troff"
 DESC="GNU Troff typesetting package"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 RUN_DEPENDS_IPS="
     system/prerequisite/gnu
 "
