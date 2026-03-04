@@ -23,6 +23,9 @@ PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 set_arch 64
 
 SKIP_LICENCES=OpenSSH

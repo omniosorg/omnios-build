@@ -27,6 +27,9 @@ VER=20241101
 SUMMARY="UEFI-EDK2(+CSM) firmware for bhyve"
 DESC="$SUMMARY"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 init
 prep_build
 

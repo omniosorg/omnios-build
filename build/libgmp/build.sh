@@ -23,6 +23,9 @@ PKG=library/gmp
 SUMMARY="GNU MP"
 DESC="The GNU Multiple Precision (Bignum) Library"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 # Build library to use only common CPU features rather than those supported
 # on the build machine.
 MPN32="x86/pentium x86 generic"

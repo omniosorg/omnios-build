@@ -23,6 +23,9 @@ PKG=developer/build/gnu-make
 SUMMARY="gmake - GNU make"
 DESC="GNU make - A utility used to build software"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 RUN_DEPENDS_IPS="system/prerequisite/gnu"
 
 set_arch 64

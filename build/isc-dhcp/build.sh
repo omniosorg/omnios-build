@@ -24,6 +24,9 @@ PKG=network/service/isc-dhcp
 SUMMARY="ISC DHCP"
 DESC="$SUMMARY $VER"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 DEPENDS_IPS="system/library"
 
 set_arch 64

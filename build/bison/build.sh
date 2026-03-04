@@ -24,6 +24,9 @@ SUMMARY="General-purpose parser generator"
 DESC="A general-purpose parser generator that converts an annotated "
 DESC+="context-free grammar into a deterministic or generalised parser"
 
+# This does not yet build with gcc 15
+set_gccver 14
+
 set_arch 64
 set_standard XPG6
 

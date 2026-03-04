@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -24,6 +24,9 @@ DESC="$SUMMARY"
 
 # Aspell is built just to obtain the word list decompression utility
 ASPELL_VER=0.60.8
+
+# This does not yet build with gcc 15
+set_gccver 14
 
 set_arch 64
 
