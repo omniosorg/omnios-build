@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -22,12 +22,11 @@ PKG=terminal/resize
 SUMMARY="resize - adjust terminal settings to current window size"
 DESC="Set environment and terminal settings to current window size"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 SKIP_LICENCES=xterm
 
 set_arch 64
+# This prevents /usr/include/curses.h from trying to create a typedef for bool
+CPPFLAGS+=" -D_BOOL"
 
 pre_build() {
     typeset arch=$1
