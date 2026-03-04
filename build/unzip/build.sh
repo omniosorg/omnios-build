@@ -23,9 +23,6 @@ PKG=compress/unzip
 SUMMARY="The Info-Zip (unzip) compression utility"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_builddir "$PROG${VER//./}"
 set_arch 64
 
