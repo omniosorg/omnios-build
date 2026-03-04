@@ -23,9 +23,6 @@ PKG=developer/macro/cpp
 SUMMARY="The C Pre-Processor (cpp)"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 BUILD_DEPENDS_IPS="developer/parser/bison"
 SKIP_LICENCES="*.licence"
 
