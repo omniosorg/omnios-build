@@ -1,0 +1,23 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/src/pthreads/ptio.c a/pr/src/pthreads/ptio.c
+--- a~/pr/src/pthreads/ptio.c	1970-01-01 00:00:00
++++ a/pr/src/pthreads/ptio.c	1970-01-01 00:00:00
+@@ -73,7 +73,9 @@ typedef struct sendfilevec {
+ /*
+  * extern ssize_t sendfilev(int, const struct sendfilevec *, int, size_t *);
+  */
+-static ssize_t (*pt_solaris_sendfilev_fptr)() = NULL;
++#define SOLARIS_SENDFILE_CAST (ssize_t (*)(int, const struct sendfilevec *, int, size_t *))
++static ssize_t (*pt_solaris_sendfilev_fptr)(int, const struct sendfilevec *,
++    int, size_t *) = NULL;
+ 
+ #      define SOLARIS_SENDFILEV(a, b, c, d) \
+         (*pt_solaris_sendfilev_fptr)((a), (b), (c), (d))
+@@ -2369,7 +2371,7 @@ static void pt_solaris_sendfilev_init_ro
+     PR_LOG(_pr_io_lm, PR_LOG_DEBUG, ("dlopen(0) returns %p", handle));
+     close_it = PR_TRUE;
+   }
+-  pt_solaris_sendfilev_fptr = (ssize_t(*)())dlsym(handle, "sendfilev");
++  pt_solaris_sendfilev_fptr = SOLARIS_SENDFILE_CAST dlsym(handle, "sendfilev");
+   PR_LOG(_pr_io_lm, PR_LOG_DEBUG,
+          ("dlsym(sendfilev) returns %p", pt_solaris_sendfilev_fptr));
+ 

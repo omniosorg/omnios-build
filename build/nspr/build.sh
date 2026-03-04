@@ -22,9 +22,6 @@ PKG=library/nspr
 SUMMARY="Netscape Portable Runtime"
 DESC="The $SUMMARY"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_ssp none
 # required for getopt
 set_standard XPG6
