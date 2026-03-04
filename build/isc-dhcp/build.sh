@@ -14,7 +14,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -24,12 +24,10 @@ PKG=network/service/isc-dhcp
 SUMMARY="ISC DHCP"
 DESC="$SUMMARY $VER"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 DEPENDS_IPS="system/library"
 
 set_arch 64
+set_cstandard gnu17
 
 # Doesn't work with parallel gmake
 NO_PARALLEL_MAKE=1
@@ -42,6 +40,7 @@ CONFIGURE_OPTS="
     --enable-use-sockets
     --enable-ipv4-pktinfo
 "
+CPPFLAGS+=" -Wno-old-style-definition"
 
 # With the move of inet_aton and friends from libnsl to libc, configure
 # no longer detects that -lnsl is required; however it is still required for
