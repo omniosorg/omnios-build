@@ -12367,3 +12367,25 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/autoconf/configure a/autoconf
    rm -rf conftest*
    ac_cv_broken_src_scsi_sg_h=no
  else
+diff -wpruN --no-dereference '--exclude=*.orig' a~/patch/common.h a/patch/common.h
+--- a~/patch/common.h	1970-01-01 00:00:00
++++ a/patch/common.h	1970-01-01 00:00:00
+@@ -109,7 +109,6 @@
+ 
+ /* typedefs */
+ 
+-typedef int	bool;
+ typedef off_t	LINENUM;		/* must be signed */
+ typedef unsigned MEM;			/* what to feed malloc */
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sccs/sccs/cmd/src/sccs.c a/sccs/sccs/cmd/src/sccs.c
+--- a~/sccs/sccs/cmd/src/sccs.c	1970-01-01 00:00:00
++++ a/sccs/sccs/cmd/src/sccs.c	1970-01-01 00:00:00
+@@ -232,7 +232,6 @@ static	int	didvfork;
+ 
+ /****************  End of Configuration Information  ****************/
+ 
+-typedef int	bool;
+ #define	TRUE	1
+ #define	FALSE	0
+ 
