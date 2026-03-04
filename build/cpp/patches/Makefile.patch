@@ -1,0 +1,13 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
+--- a~/Makefile	1970-01-01 00:00:00
++++ a/Makefile	1970-01-01 00:00:00
+@@ -24,7 +24,8 @@ OBJDIR =		obj
+ CERRWARN =		-Wall -Wextra -Werror \
+ 			-Wno-unknown-pragmas \
+ 			-Wno-sign-compare \
+-			-Wno-unused-label
++			-Wno-unused-label \
++			-Wno-old-style-definition
+ CFLAGS +=		-O2 $(CERRWARN) -I$(TOP)/src
+ 
+ CC =			gcc
