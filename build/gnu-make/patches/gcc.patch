@@ -6,10 +6,9 @@ GNU make also uses whatever `CXX` is at build time to set the default `CXX`
 variable which can be a full path to a specific version of gcc. Override this
 and always use just `g++`.
 
-diff --git a/src/default.c b/src/default.c
-index e396269..1b9e889 100644
---- a/src/default.c
-+++ b/src/default.c
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/default.c a/src/default.c
+--- a~/src/default.c	1970-01-01 00:00:00
++++ a/src/default.c	1970-01-01 00:00:00
 @@ -525,14 +525,14 @@ static const char *default_variables[] =
      "ARFLAGS", "-rv",
  #endif
