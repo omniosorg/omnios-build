@@ -14,7 +14,7 @@
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 
 #############################################################################
@@ -655,6 +655,13 @@ reset_configure_opts() {
 
 clear_archflags() {
     flatten_variables CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
+}
+
+set_cstandard() {
+    typeset st="$1"
+    typeset var="${2:-CFLAGS}"
+    declare -n _var=$var
+    _var[0]+=" -std=$st"
 }
 
 set_standard() {
