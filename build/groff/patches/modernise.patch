@@ -1,0 +1,15 @@
+diff --git a/src/libs/libgroff/getopt.c b/src/libs/libgroff/getopt.c
+index 6efa529..49692f7 100644
+--- a/src/libs/libgroff/getopt.c
++++ b/src/libs/libgroff/getopt.c
+@@ -121,10 +121,6 @@ static struct _getopt_data getopt_data;
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-#ifndef getenv
+-extern char *getenv ();
+-#endif
+-
+ #endif /* not __GNU_LIBRARY__ */
+ 
+ #ifdef _LIBC
