@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -24,9 +24,6 @@ SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
 DESC+="terminal between several processes"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_arch 64
 # Need access to additional fields in struct msghdr
 set_standard XPG6
@@ -35,6 +32,8 @@ CONFIGURE_OPTS+="
     --with-sys-screenrc=/etc/screenrc
     --enable-colors256
 "
+# This prevents /usr/include/curses.h from trying to create a typedef for bool
+CPPFLAGS+=" -D_BOOL"
 
 build_init() {
     CONFIGURE_OPTS[amd64_WS]="
