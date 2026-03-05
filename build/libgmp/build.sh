@@ -13,7 +13,7 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -23,8 +23,7 @@ PKG=library/gmp
 SUMMARY="GNU MP"
 DESC="The GNU Multiple Precision (Bignum) Library"
 
-# This does not yet build with gcc 15
-set_gccver 14
+set_cstandard gnu17
 
 # Build library to use only common CPU features rather than those supported
 # on the build machine.
