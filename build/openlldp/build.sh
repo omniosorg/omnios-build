@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,10 +23,8 @@ SUMMARY="Link-layer Discovery Daemon"
 DESC="A comprehensive implementation of the IEEE standard 802.1AB "
 DESC+="Link Layer Discovery Protocol"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_arch 64
+set_cstandard gnu17
 
 init
 download_source $PROG $PROG $VER
