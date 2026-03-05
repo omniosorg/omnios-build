@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,8 +23,7 @@ PKG=runtime/python-27
 SUMMARY="$PROG ${VER%.*}"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 15
-set_gccver 14
+set_cstandard gnu17
 
 set_python_version $PYTHON2VER
 
