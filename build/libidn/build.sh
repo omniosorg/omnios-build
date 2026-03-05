@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -47,15 +47,16 @@ prep_build
 # Skip previous versions for cross compilation
 pre_build() { ! cross_arch $1; }
 
-save_variables BUILDDIR EXTRACTED_SRC
+save_buildenv BUILDDIR EXTRACTED_SRC
 for pver in $PVERS; do
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
+    set_cstandard gnu17
     download_source $PROG $PROG $pver
     patch_source
     build
 done
-restore_variables BUILDDIR EXTRACTED_SRC
+restore_buildenv BUILDDIR EXTRACTED_SRC
 unset -f pre_build
 
 note -n "Building current version: $VER"

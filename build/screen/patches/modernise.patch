@@ -1,0 +1,39 @@
+diff --git a/logfile.c b/logfile.c
+index 1cc87ba..da351da 100644
+--- a/logfile.c
++++ b/logfile.c
+@@ -85,7 +85,7 @@ static int logfile_reopen(char *name, int wantfd, struct logfile *l) {
+   return 0;
+ }
+ 
+-static int (* lf_reopen_fn)() = logfile_reopen;
++static int (* lf_reopen_fn)(char *, int, struct logfile *) = logfile_reopen;
+ 
+ /* 
+  * Whenever logfwrite discoveres that it is required to close and
+diff --git a/pty.c b/pty.c
+index 6791fd5..cda52ce 100644
+--- a/pty.c
++++ b/pty.c
+@@ -256,7 +256,7 @@ OpenPTY(ttyn)
+ char **ttyn;
+ {
+   register int f;
+-  char *m, *ptsname();
++  char *m;
+   int unlockpt __P((int)), grantpt __P((int));
+ #if defined(HAVE_GETPT) && defined(linux)
+   int getpt __P((void));
+diff --git a/socket.c b/socket.c
+index d6621fa..a2aa9e3 100644
+--- a/socket.c
++++ b/socket.c
+@@ -89,8 +89,6 @@ extern char *multi;
+ #endif
+ extern int maxwin;
+ 
+-extern char *getenv();
+-
+ extern char SockPath[];
+ extern struct event serv_read;
+ extern char *rc_name;

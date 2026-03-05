@@ -12,18 +12,18 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=words
-VER=20200724
+VER=20260225
 PKG=text/words
 SUMMARY="A collection of international words files for /usr/share/lib/dict"
 DESC="$SUMMARY"
 
 # Aspell is built just to obtain the word list decompression utility
-ASPELL_VER=0.60.8
+ASPELL_VER=0.60.8.2
 
 set_arch 64
 
@@ -31,7 +31,7 @@ SKIP_LICENCES='*'
 
 XFORM_ARGS="-D ROOT=usr/share/lib/dict"
 
-pr_EN=aspell6;      ver_EN="2020.12.07-0"
+pr_EN=aspell6;      ver_EN="2026.02.25-0"
 pr_DE=aspell6;      ver_DE="20161207-7-0"
 pr_DE_alt=aspell6;  ver_DE_alt="2.1-1"
 pr_ES=aspell6;      ver_ES="1.11-2"

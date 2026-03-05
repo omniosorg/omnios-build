@@ -25,6 +25,7 @@ DESC="UnixODBC - The UnixODBC Subsystem and SDK"
 
 # Requires the new definition of getpwuid_r()
 set_standard XPG6
+set_cstandard gnu17
 
 CONFIGURE_OPTS="
     --includedir=$PREFIX/include/odbc

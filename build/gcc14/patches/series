@@ -32,4 +32,7 @@
 0033-Add-fforce-omit-frame-pointer.patch
 0034-cmn_err-supports-h-and-hh-6333936.patch
 0035-16768-kernel-printf-should-know-about-j-and-z-size-s.patch
-0036-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0036-Avoid-undefined-symbols-when-using-the-dragonfly-loc.patch
+0037-Handle-a-few-cases-where-fields-in-struct-lconv-may-.patch
+0038-Let-enable-clocale-dragonfly-work-as-a-configure-opt.patch
+0039-OOCE-Adjust-default-library-paths-for-OmniOS.patch

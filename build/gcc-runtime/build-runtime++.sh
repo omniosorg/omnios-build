@@ -12,14 +12,14 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 . common.sh
 
 PKG=system/library/g++-runtime
 PROG=libstdc++
-VER=14
+VER=15
 SUMMARY="GNU C++ compiler runtime dependencies"
 DESC="$SUMMARY"
 

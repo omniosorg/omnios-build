@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -32,6 +32,8 @@ CONFIGURE_OPTS+="
     --with-sys-screenrc=/etc/screenrc
     --enable-colors256
 "
+# This prevents /usr/include/curses.h from trying to create a typedef for bool
+CPPFLAGS+=" -D_BOOL"
 
 build_init() {
     CONFIGURE_OPTS[amd64_WS]="

@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -27,6 +27,7 @@ SKIP_LICENCES=HP
 
 set_arch 64
 set_standard XPG6
+set_cstandard gnu17
 
 init
 download_source $PROG $PROG $VER

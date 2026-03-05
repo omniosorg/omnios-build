@@ -21,6 +21,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/developer/dtrace type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc10 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc13 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc14 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/developer/gcc15 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/illumos-tools type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/java/openjdk8 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/developer/lexer/flex type=require
