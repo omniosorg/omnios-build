@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -31,10 +31,9 @@ PKG=developer/lexer/flex
 SUMMARY="$PROG - A fast lexical analyser generator"
 DESC="$SUMMARY"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 BUILD_DEPENDS_IPS="developer/macro/gnu-m4"
+
+set_cstandard gnu17
 
 CONFIGURE_OPTS="
 	--mandir=$PREFIX/share/man
