@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -22,9 +22,6 @@ VER=1.43
 PKG=library/libidn
 SUMMARY="The Internationalized Domains Library"
 DESC="IDN - The Internationalized Domains Library"
-
-# This does not yet build with gcc 15
-set_gccver 14
 
 # The library major version changed from 11 to 12 with 1.35. We need to
 # continue shipping the older version of the library to support anything
@@ -50,15 +47,16 @@ prep_build
 # Skip previous versions for cross compilation
 pre_build() { ! cross_arch $1; }
 
-save_variables BUILDDIR EXTRACTED_SRC
+save_buildenv BUILDDIR EXTRACTED_SRC
 for pver in $PVERS; do
     note -n "Building previous version: $pver"
     set_builddir $PROG-$pver
+    set_cstandard gnu17
     download_source $PROG $PROG $pver
     patch_source
     build
 done
-restore_variables BUILDDIR EXTRACTED_SRC
+restore_buildenv BUILDDIR EXTRACTED_SRC
 unset -f pre_build
 
 note -n "Building current version: $VER"
