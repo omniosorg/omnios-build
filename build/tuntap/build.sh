@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,10 +23,8 @@ PKG=driver/tuntap
 SUMMARY="TUN/TAP driver for $DISTRO"
 DESC="TUN/TAP driver for $DISTRO based on the Universal TUN/TAP Driver"
 
-# This does not yet build with gcc 15
-set_gccver 14
-
 set_arch 64
+set_cstandard gnu17
 
 # Ensure that the standard function prologue remains at the very start of a
 # function, so DTrace fbt will instrument the right place.
