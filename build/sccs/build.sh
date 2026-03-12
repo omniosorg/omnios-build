@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -39,7 +39,7 @@ configure_arch() { :; }
 MAKE="dmake"
 MAKE_ARGS="CCOM=gcc32"
 MAKE_ARGS_WS="
-    COPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive\"
+    COPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive -Wno-old-style-definition\"
     LDOPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive\"
 "
 MAKE_INSTALL_ARGS="$MAKE_ARGS"

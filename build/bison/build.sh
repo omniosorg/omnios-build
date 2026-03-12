@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -26,6 +26,7 @@ DESC+="context-free grammar into a deterministic or generalised parser"
 
 set_arch 64
 set_standard XPG6
+set_cstandard gnu17
 
 CONFIGURE_OPTS="--disable-yacc"
 export M4=/usr/bin/gm4

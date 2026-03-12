@@ -1,0 +1,133 @@
+		=== g++ Summary for unix//-m32 ===
+# of expected passes		242742
+# of unexpected failures	174
+# of expected failures		2278
+# of unresolved testcases	9
+# of unsupported tests		2174
+		=== g++ Summary for unix//-m64 ===
+# of expected passes		247131
+# of unexpected failures	115
+# of expected failures		2235
+# of unresolved testcases	3
+# of unsupported tests		2100
+		=== g++ Summary for unix//-m64/-msave-args ===
+# of expected passes		245298
+# of unexpected failures	125
+# of expected failures		1941
+# of unsupported tests		2088
+		=== g++ Summary ===
+# of expected passes		735171
+# of unexpected failures	414
+# of expected failures		6454
+# of unresolved testcases	12
+# of unsupported tests		6362
+		=== gcc Summary for unix//-m32 ===
+# of expected passes		204331
+# of unexpected failures	188
+# of unexpected successes	1
+# of expected failures		1474
+# of unresolved testcases	71
+# of unsupported tests		5076
+		=== gcc Summary for unix//-m64 ===
+# of expected passes		200762
+# of unexpected failures	216
+# of expected failures		1452
+# of unsupported tests		4183
+		=== gcc Summary for unix//-m64/-msave-args ===
+# of expected passes		204008
+# of unexpected failures	309
+# of expected failures		1568
+# of unsupported tests		3738
+		=== gcc Summary ===
+# of expected passes		609101
+# of unexpected failures	713
+# of unexpected successes	1
+# of expected failures		4494
+# of unresolved testcases	71
+# of unsupported tests		12997
+		=== gfortran Summary for unix//-m32 ===
+# of expected passes		72586
+# of expected failures		335
+# of unsupported tests		288
+		=== gfortran Summary for unix//-m64 ===
+# of expected passes		72922
+# of expected failures		333
+# of unsupported tests		91
+		=== gfortran Summary for unix//-m64/-msave-args ===
+# of expected passes		72922
+# of expected failures		333
+# of unsupported tests		91
+		=== gfortran Summary ===
+# of expected passes		218430
+# of expected failures		1001
+# of unsupported tests		470
+		=== objc Summary for unix//-m32 ===
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+		=== objc Summary for unix//-m64 ===
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+		=== objc Summary for unix//-m64/-msave-args ===
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+		=== objc Summary ===
+# of expected passes		8529
+# of expected failures		18
+# of unsupported tests		210
+		=== libatomic Summary for unix//-m32 ===
+# of expected passes		44
+# of unsupported tests		5
+		=== libatomic Summary for unix//-m64 ===
+# of expected passes		54
+		=== libatomic Summary for unix//-m64/-msave-args ===
+# of expected passes		54
+		=== libatomic Summary ===
+# of expected passes		152
+# of unsupported tests		5
+		=== libgomp Summary for unix//-m32 ===
+# of expected passes		17132
+# of unexpected failures	1
+# of expected failures		285
+# of unsupported tests		704
+		=== libgomp Summary for unix//-m64 ===
+# of expected passes		17133
+# of unexpected failures	1
+# of expected failures		285
+# of unsupported tests		703
+		=== libgomp Summary for unix//-m64/-msave-args ===
+# of expected passes		17133
+# of unexpected failures	1
+# of expected failures		285
+# of unsupported tests		703
+		=== libgomp Summary ===
+# of expected passes		51398
+# of unexpected failures	3
+# of expected failures		855
+# of unsupported tests		2110
+		=== libstdc++ Summary for unix//-m32 ===
+# of expected passes		19024
+# of unexpected failures	7
+# of expected failures		132
+# of unresolved testcases	1
+# of unsupported tests		801
+		=== libstdc++ Summary for unix//-m64 ===
+# of expected passes		19010
+# of unexpected failures	9
+# of expected failures		132
+# of unresolved testcases	1
+# of unsupported tests		807
+		=== libstdc++ Summary for unix//-m64/-msave-args ===
+# of expected passes		19010
+# of unexpected failures	9
+# of expected failures		132
+# of unresolved testcases	1
+# of unsupported tests		807
+		=== libstdc++ Summary ===
+# of expected passes		57044
+# of unexpected failures	25
+# of expected failures		396
+# of unresolved testcases	3
+# of unsupported tests		2415

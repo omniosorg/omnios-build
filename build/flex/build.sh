@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -32,6 +32,8 @@ SUMMARY="$PROG - A fast lexical analyser generator"
 DESC="$SUMMARY"
 
 BUILD_DEPENDS_IPS="developer/macro/gnu-m4"
+
+set_cstandard gnu17
 
 CONFIGURE_OPTS="
 	--mandir=$PREFIX/share/man

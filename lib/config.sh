@@ -13,7 +13,7 @@
 #
 # Copyright (c) 2015 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 #############################################################################
 # Configuration for the build system
@@ -301,9 +301,9 @@ CC=gcc
 CXX=g++
 
 # Specify default versions for building packages
-DEFAULT_GCC_VER=14
+DEFAULT_GCC_VER=15
 ILLUMOS_GCC_VER=10
-DEFAULT_CLANG_VER=18
+DEFAULT_CLANG_VER=21
 
 PYTHON2VER=2.7
 PYTHON3VER=3.13
@@ -331,6 +331,7 @@ FCFLAGS[7]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[10]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[13]+=" -fno-aggressive-loop-optimizations"
 FCFLAGS[14]+=" -fno-aggressive-loop-optimizations"
+FCFLAGS[15]+=" -fno-aggressive-loop-optimizations"
 
 # Flags to enable particular standards; see standards(7)
 typeset -A STANDARDS

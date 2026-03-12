@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -25,6 +25,8 @@ DESC="Set environment and terminal settings to current window size"
 SKIP_LICENCES=xterm
 
 set_arch 64
+# This prevents /usr/include/curses.h from trying to create a typedef for bool
+CPPFLAGS+=" -D_BOOL"
 
 pre_build() {
     typeset arch=$1

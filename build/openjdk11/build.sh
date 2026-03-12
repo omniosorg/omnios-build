@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -22,6 +22,9 @@ PKG=runtime/java/openjdk11
 SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the eleventh edition of the "
 DESC+="Java SE Platform"
+
+# This does not yet build with gcc 15
+set_gccver 14
 
 # The full jdk version string is:
 #   feature.interim.update.patch.extra1.extra2.extra3-pre+build-opt
