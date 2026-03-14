@@ -4,6 +4,24 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046eu (2026-03-16)
+Weekly release for w/c 16th of March 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode updated to version 20260227.
+
+* Curl updated to version 8.19.0.
+
+### Other Changes
+
+* `lpsched` would dump core when using the traditional printing system.
+
+<br>
+
+---
+
 ## r151046en (2026-01-29)
 Weekly release for w/c 26th of January 2026.
 > This update requires a reboot
