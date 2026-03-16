@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056t (2026-03-16)
+Weekly release for w/c 16th of March 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* Intel CPU microcode updated to version 20260227.
+
+* Curl updated to version 8.19.0.
+
+### Other Changes
+
+* Setting the `bootnext` attribute in a bhyve-branded zone would cause the
+  zone to fail to boot.
+
+* `lpsched` would dump core when using the traditional printing system.
+
+<br>
+
+---
+
 ## r151056m (2026-01-29)
 Weekly release for w/c 26th of January 2026.
 > This update requires a reboot
