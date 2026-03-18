@@ -142,7 +142,7 @@
 | library/python-3/pip-313		| 26.0.1			| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
-| library/python-3/pycurl-313		| 7.45.6		| https://pypi.org/rss/project/pycurl/releases.xml
+| library/python-3/pycurl-313		| 7.45.7		| https://pypi.org/rss/project/pycurl/releases.xml
 | library/python-3/pyopenssl-313	| 26.0.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
 | library/python-3/pyrsistent-313	| 0.20.0		| https://pypi.org/rss/project/pyrsistent/releases.xml
 | library/python-3/pyyaml-313		| 6.0.3			| https://pypi.org/rss/project/PyYAML/releases.xml

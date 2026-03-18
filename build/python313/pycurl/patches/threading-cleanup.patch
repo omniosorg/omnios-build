@@ -9,7 +9,7 @@ https://github.com/pycurl/pycurl/issues/748
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/easy.c a/src/easy.c
 --- a~/src/easy.c	1970-01-01 00:00:00
 +++ a/src/easy.c	1970-01-01 00:00:00
-@@ -485,10 +485,17 @@ util_curl_xdecref(CurlObject *self, int
+@@ -491,10 +491,17 @@ util_curl_xdecref(CurlObject *self, int
                  from the multi object's easy_object_dict, but this
                  requires us to have a reference to the multi object
                  which right now we don't. */
