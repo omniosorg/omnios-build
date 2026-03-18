@@ -130,7 +130,7 @@
 | library/python-3/attrs-313		| 25.4.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 2.0.0		| https://pypi.org/rss/project/cffi/releases.xml
 | library/python-3/coverage-313		| 7.13.5		| https://pypi.org/rss/project/coverage/releases.xml
-| library/python-3/crossenv-313		| 1.5.0			| https://pypi.org/rss/project/crossenv/releases.xml
+| library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 45.0.7		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.10			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
