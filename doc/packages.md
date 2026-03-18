@@ -138,7 +138,7 @@
 | library/python-3/jsonschema-313	| 4.17.3		| https://pypi.org/rss/project/jsonschema/releases.xml
 | library/python-3/meson-313		| 1.10.2			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-313		| 3.11.7		| https://github.com/ijl/orjson/releases
-| library/python-3/packaging-313	| 25.0			| https://pypi.org/rss/project/packaging/releases.xml
+| library/python-3/packaging-313	| 26.0			| https://pypi.org/rss/project/packaging/releases.xml
 | library/python-3/pip-313		| 25.2			| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 2.22			| https://pypi.org/rss/project/pycparser/releases.xml
