@@ -32,7 +32,6 @@ test-pkgutil.patch
 test-processgroup.patch
 test-tarfile.patch
 test-zipfile.patch
-test-re.patch
 revert-makedirs.patch
 #
 # Do not add ustack.patch to this file, it is used to build the debug

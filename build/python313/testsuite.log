@@ -11,12 +11,12 @@
     test_tcl test_tkinter test_ttk test_ttk_textonly test_turtle
     test_winapi test_winconsoleio test_winreg test_wmi
 
-6 tests skipped (resource denied):
+7 tests skipped (resource denied):
     test_smtpnet test_socketserver test_urllib2net test_urllibnet
-    test_winsound test_zipfile64
+    test_winsound test_xpickle test_zipfile64
 
 446 tests OK.
 
-Total tests: run=44,350 (filtered) skipped=1,968
-Total test files: run=474/480 (filtered) skipped=28 resource_denied=6
+Total tests: run=45,070 (filtered) skipped=2,063
+Total test files: run=476/481 (filtered) skipped=28 resource_denied=7
 Result: SUCCESS

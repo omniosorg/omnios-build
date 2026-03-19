@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../../lib/build.sh
 
 PKG=library/python-3/crossenv-313
 PROG=crossenv
-VER=1.5.0
+VER=1.6.1
 SUMMARY="A cross-compiling tool for Python extension modules"
 DESC="$SUMMARY"
 
