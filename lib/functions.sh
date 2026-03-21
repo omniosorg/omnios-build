@@ -3856,20 +3856,14 @@ restore_variables() {
 
 save_buildenv() {
     local var
-    for var in $BUILDENV_OPTS; do
-        save_variable $var
-    done
-    for var in $*; do
+    for var in $BUILDENV_OPTS $*; do
         save_variable $var
     done
 }
 
 restore_buildenv() {
     local var
-    for var in $*; do
-        restore_variable $var
-    done
-    for var in $BUILDENV_varS; do
+    for var in $* $BUILDENV_OPTS; do
         restore_variable $var
     done
 }
