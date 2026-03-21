@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=cloud-init
 VER=24.4.1
-DASHREV=0
+DASHREV=1
 PKG=system/management/cloud-init
 SUMMARY="Cloud instance initialisation tools"
 DESC="Cloud-init is the industry standard multi-distribution method for "
@@ -57,12 +57,18 @@ function install_deps {
     PYINSTOPTS[amd64]+=" --install-lib=$_site"
 }
 
-function fixup_path {
+function fixup_bins {
     for f in cloud-id cloud-init; do
+        logmsg "--- patching command $f"
         logcmd sed -i "
             /^import sys/a\\
 from site import addsitedir\\
 addsitedir('$_site')
+#
+# pkg_resources was removed from setuptools in version v82.0.0
+# Until cloud-init is updated to support this we patch out the unused
+# fallback so that dependency resolution doesn't look for it.
+/from pkg_resources/s/from.*/raise ImportError('pkg_resources unavailable')/
         " $DESTDIR/usr/bin/$f || logerr "sed $f failed"
     done
 }
@@ -75,7 +81,7 @@ patch_source
 prep_build
 install_deps
 python_build
-fixup_path
+fixup_bins
 make_package
 clean_up
 
