@@ -41,6 +41,7 @@ CONFIGURE_OPTS="
 "
 CONFIGURE_OPTS[amd64]+=" --includedir=/usr/include"
 CONFIGURE_OPTS[aarch64]+=" CC_FOR_BUILD=$GCC"
+CONFIGURE_OPTS[aarch64]+=" CFLAGS_FOR_BUILD=-std=gnu17"
 
 # The configure script makes the wrong assumption about malloc/realloc when
 # cross compiling.
