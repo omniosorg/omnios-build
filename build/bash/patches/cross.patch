@@ -1,0 +1,12 @@
+diff --git a/buildconf.h.in b/buildconf.h.in
+index b99d26c..e199ea2 100644
+--- a/buildconf.h.in
++++ b/buildconf.h.in
+@@ -35,6 +35,7 @@
+ #define HAVE_UNISTD_H 1
+ #define HAVE_STRING_H 1
+ #define HAVE_STDLIB_H 1
++#define HAVE_STDBOOL_H 1
+ 
+ #define HAVE_RENAME
+ 
