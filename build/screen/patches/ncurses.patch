@@ -5,7 +5,7 @@ ncurses package.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -669,7 +669,7 @@ AC_TRY_LINK([
+@@ -669,7 +669,8 @@ AC_TRY_LINK([
      tgetent((char *)0, (char *)0);
  ],,
  olibs="$LIBS"
@@ -13,8 +13,9 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 +LIBS="-lncurses $olibs"
  AC_CHECKING(libcurses)
  AC_TRY_LINK([
++    #include <stdbool.h>
      #include <curses.h>
-@@ -713,7 +713,7 @@ AC_TRY_LINK([
+@@ -713,7 +713,8 @@ AC_TRY_LINK([
  ],[
      tgetent((char *)0, (char *)0);
  ],,
@@ -22,4 +23,5 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 +LIBS="-lcurses $olibs"
  AC_CHECKING(libncurses)
  AC_TRY_LINK([
++    #include <stdbool.h>
      #include <curses.h>
