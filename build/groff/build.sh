@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=groff
-VER=1.23.0
+VER=1.24.1
 PKG=text/groff
 SUMMARY="GNU troff"
 DESC="GNU Troff typesetting package"
@@ -33,6 +33,14 @@ CONFIGURE_OPTS="--without-x"
 PKGDIFF_HELPER="
     s:$PROG/[0-9]\.[0-9][0-9]*\.[0-9][0-9]*:$PROG/VERSION:
 "
+
+export MAKE
+
+function post_install {
+    # groff installs a dangling symlink that we must remove before packaging
+    logcmd $RM -f $DESTDIR/usr/share/doc/groff-1.24.1/pdf/mom-pdf.pdf
+
+}
 
 init
 download_source $PROG $PROG $VER
