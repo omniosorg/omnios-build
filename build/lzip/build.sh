@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=lzip
-VER=1.25
+VER=1.26
 PKG=compress/lzip
 SUMMARY="Lzip"
 DESC="Lossless data compressor"
