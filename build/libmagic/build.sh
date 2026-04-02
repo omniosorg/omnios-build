@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=file
-VER=5.46
+VER=5.47
 PKG=library/libmagic
 SUMMARY="File type guessing library"
 DESC="Library for determining the type of data contained in a file"

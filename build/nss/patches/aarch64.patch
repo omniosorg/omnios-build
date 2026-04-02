@@ -19,7 +19,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/fre
  /* clang-format on */
  
  #if defined(__aarch64__)
-@@ -563,7 +563,7 @@ FreeblInit(void)
+@@ -557,7 +557,7 @@ FreeblInit(void)
  {
  #ifdef NSS_X86_OR_X64
      CheckX86CPUSupport();
