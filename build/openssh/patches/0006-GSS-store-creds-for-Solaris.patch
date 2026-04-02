@@ -6,7 +6,7 @@ Subject: [PATCH 06/34] GSS store creds for Solaris
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1255,6 +1255,9 @@ if (setsockopt(s, IPPROTO_IP, IP_TOS, &o
+@@ -1283,6 +1283,9 @@ if (setsockopt(s, IPPROTO_IP, IP_TOS, &o
  		],
  	)
  	TEST_SHELL=$SHELL	# let configure find us a capable shell
@@ -51,7 +51,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv-krb5.c a/gss-serv-kr
 diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv.c a/gss-serv.c
 --- a~/gss-serv.c	1970-01-01 00:00:00
 +++ a/gss-serv.c	1970-01-01 00:00:00
-@@ -45,6 +45,7 @@
+@@ -46,6 +46,7 @@
  #include "session.h"
  #include "misc.h"
  #include "servconf.h"
@@ -59,7 +59,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv.c a/gss-serv.c
  
  #include "ssh-gss.h"
  
-@@ -320,22 +321,66 @@ ssh_gssapi_getclient(Gssctxt *ctx, ssh_g
+@@ -321,18 +322,61 @@ ssh_gssapi_getclient(Gssctxt *ctx, ssh_g
  void
  ssh_gssapi_cleanup_creds(void)
  {
@@ -118,7 +118,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv.c a/gss-serv.c
 +		sshbuf_free(b);
 +	}
 +#else	/* #ifdef USE_GSS_STORE_CRED */
- 	if (gssapi_client.mech && gssapi_client.mech->storecreds) {
+ 	if (options.gss_deleg_creds == 0) {
+ 		debug_f("delegate credential is disabled, doing nothing");
+ 		return;
+@@ -342,6 +386,7 @@ ssh_gssapi_storecreds(void)
  		(*gssapi_client.mech->storecreds)(&gssapi_client);
  	} else
  		debug("ssh_gssapi_storecreds: Not a GSSAPI mechanism");
@@ -129,7 +132,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/gss-serv.c a/gss-serv.c
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -651,7 +651,11 @@ static struct {
+@@ -654,7 +654,11 @@ static struct {
  	{ "afstokenpassing", sUnsupported, SSHCFG_GLOBAL },
  #ifdef GSSAPI
  	{ "gssapiauthentication", sGssAuthentication, SSHCFG_ALL },
@@ -138,13 +141,13 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 +#else /* USE_GSS_STORE_CRED */
  	{ "gssapicleanupcredentials", sGssCleanupCreds, SSHCFG_GLOBAL },
 +#endif /* USE_GSS_STORE_CRED */
+ 	{ "gssapidelegatecredentials", sGssDelegateCreds, SSHCFG_GLOBAL },
  	{ "gssapistrictacceptorcheck", sGssStrictAcceptor, SSHCFG_GLOBAL },
  #else
- 	{ "gssapiauthentication", sUnsupported, SSHCFG_ALL },
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session.c
 --- a~/sshd-session.c	1970-01-01 00:00:00
 +++ a/sshd-session.c	1970-01-01 00:00:00
-@@ -1301,9 +1301,23 @@ main(int ac, char **av)
+@@ -1269,9 +1269,23 @@ main(int ac, char **av)
  
  #ifdef GSSAPI
  	if (options.gss_authentication) {
