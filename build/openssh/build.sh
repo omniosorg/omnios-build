@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=openssh
-VER=10.2p1
+VER=10.3p1
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
