@@ -18,6 +18,9 @@
 
 PKG=library/python-3/cffi-313
 PROG=cffi
+# TODO: remove adding a .1 version suffix for packaging
+# this was required since the former version had a b1 suffix
+# which was translated to .1
 VER=2.0.0
 SUMMARY="cffi"
 DESC="Foreign Function Interface for Python calling C code"
@@ -38,7 +41,7 @@ download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
-make_package
+VER="$VER.1" make_package
 clean_up
 
 # Vim hints
