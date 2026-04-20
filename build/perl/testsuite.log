@@ -2927,5 +2927,5 @@ t/porting/test_testlist .......................................... ok
 t/porting/update_authors ......................................... skipped
 t/porting/utils .................................................. skipped
 All tests successful.
-Elapsed: 1175 sec
-u=11.18  s=7.64  cu=860.70  cs=128.91  scripts=2748  tests=1350967
+Elapsed: 1149 sec
+u=8.57  s=4.24  cu=823.77  cs=80.12  scripts=2749  tests=1350784
