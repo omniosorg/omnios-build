@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151046
 
+## r151046fa (2026-04-29)
+Weekly release for w/c 27th of April 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- openssl 3 has been updated to version 3.0.20, addressing
+  [multiple vulnerabilities](https://www.openssl-library.org/news/vulnerabilities-3.0/index.html).
+
+- The legacy openssl 1.0 and 1.1 packages have also been updated to address
+  vulnerabilities.
+
+<br>
+
+---
+
 ## r151046eu (2026-03-16)
 Weekly release for w/c 16th of March 2026.
 > This update requires a reboot
