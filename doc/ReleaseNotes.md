@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056z (2026-04-29)
+Weekly release for w/c 27th of April 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- openssl 3 has been updated to version 3.5.6, addressing
+  [multiple vulnerabilities](https://www.openssl-library.org/news/vulnerabilities-3.5/index.html).
+
+- The legacy openssl 1.0 and 1.1 packages have also been updated to address
+  vulnerabilities.
+
+- Perl has been updated to version 5.42.2
+
+### Other Changes
+
+- Bhyve virtio-console devices now defer additional configuration until after
+  the guest reports it is ready. This resolves an interoperability problem with
+  windows guests.
+
+- The timezone database has been updated.
+
+<br>
+
+---
+
 ## r151056t (2026-03-16)
 Weekly release for w/c 16th of March 2026.
 > This update requires a reboot
