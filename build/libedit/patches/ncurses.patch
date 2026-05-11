@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/sys.h a/src/sys.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/terminal.c a/src/terminal.c
 --- a~/src/terminal.c	1970-01-01 00:00:00
 +++ a/src/terminal.c	1970-01-01 00:00:00
-@@ -68,7 +68,7 @@ __RCSID("$NetBSD: terminal.c,v 1.46 2023
+@@ -68,7 +68,7 @@ __RCSID("$NetBSD: terminal.c,v 1.47 2025
  #include <term.h>
  #endif
  
