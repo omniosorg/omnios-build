@@ -40,7 +40,7 @@
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
-| library/mpc				| 1.3.1			| http://www.multiprecision.org/mpc/download.html
+| library/mpc				| 1.4.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.2			| http://www.mpfr.org/mpfr-current/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
 | library/libedit			| 20260508-3.1		| https://thrysoee.dk/editline/
