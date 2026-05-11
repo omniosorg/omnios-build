@@ -101,7 +101,7 @@
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.5.2		| https://github.com/net-snmp/net-snmp/tags
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
-| system/pciutils			| 3.14.0		| https://www.kernel.org/pub/software/utils/pciutils/
+| system/pciutils			| 3.15.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2602.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
