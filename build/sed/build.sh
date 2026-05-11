@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=sed
-VER=4.9
+VER=4.10
 PKG=text/gnu-sed
 SUMMARY="GNU sed"
 DESC="GNU implementation of sed, the Unix stream editor"
