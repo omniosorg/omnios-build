@@ -16,12 +16,12 @@
 # Use is subject to license terms.
 #
 # Copyright (c) 2014, 2016 by Delphix. All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=fio
-VER=3.41
+VER=3.42
 PKG=system/test/fio
 SUMMARY="Flexible IO Tester"
 DESC="A tool that is able to simulate a given I/O workload"
