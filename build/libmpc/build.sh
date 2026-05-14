@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=mpc
-VER=1.3.1
+VER=1.4.1
 PKG=library/mpc
 SUMMARY="The GNU complex number library"
 DESC="$SUMMARY"

@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=gawk
-VER=5.3.2
+VER=5.4.0
 PKG=text/gawk
 SUMMARY="GNU awk"
 DESC="gawk - GNU implementation of awk"

@@ -1,3 +1,8 @@
+PASS: runtime_unit_linkedlist
+PASS: runtime_unit_stringbuf
+PASS: runtime_unit_gss_token_util
+PASS: imgssapi-listen-port-file.sh
+PASS: imgssapi-maxsessions.sh
 PASS: preservefqdn-localhostname-internal.sh
 PASS: immark.sh
 PASS: immark-inputname.sh
@@ -31,12 +36,14 @@ PASS: func-substring-relative-endpos.sh
 PASS: hostname-with-slash-dflt-slash-valid.sh
 PASS: empty-app-name.sh
 PASS: endswith-basic.sh
+PASS: contains-longer-needle.sh
 PASS: stop-localvar.sh
 PASS: stop-msgvar.sh
 PASS: glbl-ruleset-queue-defaults.sh
 PASS: glbl-internalmsg_severity-info-shown.sh
 PASS: glbl-internalmsg_severity-debug-shown.sh
 PASS: glbl-internalmsg_severity-debug-not_shown.sh
+PASS: glbl-internalmsg_severity-invalid-long.sh
 PASS: glbl-umask.sh
 PASS: glbl-unloadmodules.sh
 PASS: glbl-invld-param.sh
@@ -61,7 +68,9 @@ PASS: omfwd-subtree-tpl.sh
 PASS: omfile-subtree-jsonf.sh
 PASS: omusrmsg-errmsg-no-params.sh
 PASS: omusrmsg-noabort.sh
+PASS: omusrmsg_ratelimit_name.sh
 PASS: omfile-module-params.sh
+PASS: omfile-dynafilecachesize-invalid.sh
 PASS: omfile-read-only-errmsg.sh
 PASS: omfile-null-filename.sh
 PASS: omfile-whitespace-filename.sh
@@ -146,12 +155,16 @@ PASS: imtcp-discard-truncated-msg.sh
 PASS: da-queue-persist.sh
 SKIP: daqueue-persist.sh
 SKIP: daqueue-invld-qi.sh
-PASS: daqueue-dirty-shutdown.sh
+PASS: daqueue-dirty-shutdown-recovery.sh
 SKIP: diskq-rfc5424.sh
+PASS: diskqueue-truncated-segment-startup.sh
 PASS: diskqueue.sh
 SKIP: diskqueue-fsync.sh
 PASS: diskqueue-full.sh
 PASS: diskqueue-fail.sh
+PASS: queue-invalid-spooldirectory-empty.sh
+PASS: queue-invalid-workerthreads-zero.sh
+PASS: diskqueue-oncorruption-missing-segment.sh
 PASS: diskqueue-non-unique-prefix.sh
 SKIP: rulesetmultiqueue.sh
 SKIP: rulesetmultiqueue-v6.sh
@@ -165,6 +178,13 @@ PASS: sndrcv_udp_nonstdpt.sh
 PASS: sndrcv_udp_nonstdpt_v6.sh
 PASS: imudp_thread_hang.sh
 PASS: imudp_ratelimit_name.sh
+PASS: omfwd_ratelimit_name.sh
+PASS: omelasticsearch_ratelimit_name.sh
+PASS: omhttp_ratelimit_name.sh
+PASS: imhttp_ratelimit_name.sh
+PASS: imjournal_ratelimit_name.sh
+SKIP: imklog_ratelimit_name.sh
+PASS: imuxsock_ratelimit_name.sh
 PASS: asynwr_simple.sh
 PASS: asynwr_simple_2.sh
 PASS: asynwr_timeout.sh
@@ -359,6 +379,7 @@ PASS: fromhost-port-tuple.sh
 PASS: fromhost-port-async-ruleset.sh
 PASS: imtcp-basic.sh
 PASS: imtcp_framing_regex.sh
+PASS: imtcp_framing_regex_maxmsg_overflow.sh
 PASS: imtcp-multiline.sh
 PASS: imtcp-basic-hup.sh
 PASS: imtcp-impstats-single-thread.sh
@@ -440,10 +461,12 @@ PASS: imtcp-tls-ossl-x509fingerprint.sh
 PASS: imtcp-tls-ossl-error-ca.sh
 PASS: imtcp-tls-ossl-error-cert.sh
 PASS: imtcp-tls-ossl-error-key.sh
+PASS: imtcp-tls-ossl-crl.sh
 PASS: imtcp-tls-ossl-basic.sh
 PASS: imtcp-tls-ossl-input-basic.sh
 PASS: imtcp-tls-ossl-basic-tlscommands.sh
 PASS: imtcp-tls-ossl-error-key2.sh
+PASS: sndrcv_tls_ossl_native_pq_group.sh
 PASS: sndrcv_tls_ossl_anon_ipv4.sh
 PASS: sndrcv_tls_ossl_anon_ipv6.sh
 PASS: sndrcv_tls_ossl_anon_rebind.sh
@@ -460,11 +483,11 @@ SKIP: uxsock_simple_abstract.sh
 SKIP: uxsock_multiple.sh
 SKIP: uxsock_multiple_netns.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2602.0
+Testsuite summary for rsyslog 8.2604.0
 ============================================================================
-# TOTAL: 472
-# PASS:  424
-# SKIP:  48
+# TOTAL: 496
+# PASS:  447
+# SKIP:  49
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0

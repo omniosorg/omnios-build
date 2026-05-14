@@ -84,6 +84,8 @@ dfastress
 divzero
 divzero2
 dynlj
+elemnew5
+elemnew6
 eofsplit
 eofsrc1
 escapebrace
@@ -136,6 +138,7 @@ gsubtst7
 gsubtst8
 hex
 hex2
+hex3
 hsprint
 inpref
 inputred
@@ -149,6 +152,9 @@ longsub
 longwrds
 manglprm
 match4
+match5
+matchbadarg1
+matchbadarg2
 matchuninitialized
 math
 membug1
@@ -230,6 +236,7 @@ regexpbad
 regexpbrack
 regexpbrack2
 regexprange
+regexpuparrow
 regrange
 reindops
 reparse
@@ -253,6 +260,7 @@ sclforin
 sclifin
 setrec0
 setrec1
+shortest-match
 sigpipe1
 sortempty
 sortglos
@@ -347,7 +355,6 @@ clos1way4
 clos1way5
 clos1way6
 colonwarn
-commas
 crlf
 csv1
 csv2
@@ -373,6 +380,8 @@ dumpvars
 elemnew1
 elemnew2
 elemnew3
+elemnew4
+equiv
 errno
 exit
 fieldwdth
@@ -411,6 +420,7 @@ gnuops2
 gnuops3
 gnureops
 gsubind
+hexfloat
 icasefs
 icasers
 id
@@ -449,13 +459,13 @@ lintplus
 lintplus2
 lintplus3
 lintset
+lintsubarray
+linttypeof
 lintwarn
 manyfiles
 match1
 match2
 match3
-mbstr1
-mbstr2
 mdim1
 mdim2
 mdim3
@@ -603,6 +613,7 @@ asorti
 backbigs1
 backsmalls1
 backsmalls2
+commas
 fmttest
 fnarydel
 fnparydl
@@ -614,6 +625,8 @@ mbprintf2
 mbprintf3
 mbprintf4
 mbprintf5
+mbstr1
+mbstr2
 mtchi18n
 mtchi18n2
 nlstringtest
@@ -622,7 +635,7 @@ rtlenmb
 sort1
 sprintfc
 ======== Done with tests that can vary based on character set or locale support ========
-======== Starting shared library tests ========
+======== Starting dynamic extension tests ========
 apiterm
 filefuncs
 fnmatch
@@ -651,7 +664,7 @@ revtwoway
 rwarray
 testext
 time
-======== Done with shared library tests ========
+======== Done with dynamic extension tests ========
 ======== Starting MPFR tests ========
 mpfranswer42
 mpfrbigint
@@ -686,10 +699,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 2 TESTS FAILED
-make[3]: *** [Makefile:5906: pass-fail] Error 1
+make[3]: *** [Makefile:6002: pass-fail] Error 1
 ============== _cmdlinefsbacknl2 =============
---- cmdlinefsbacknl2.ok	2024-08-29 06:52:19.000000000 +0000
-+++ _cmdlinefsbacknl2	2025-05-22 22:16:25.310580107 +0000
+--- cmdlinefsbacknl2.ok	Mon May 19 03:45:05 2025
++++ _cmdlinefsbacknl2	Mon May 11 19:30:12 2026
 @@ -1,12 +1,19 @@
   5c 0a
 +
@@ -711,8 +724,8 @@ make[3]: *** [Makefile:5906: pass-fail] Error 1
  right: literal ? is literal
  gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
---- localenl.ok	2017-12-14 17:49:00.000000000 +0000
-+++ _localenl	2025-05-22 22:16:38.484032368 +0000
+--- localenl.ok	Thu Dec 14 17:49:00 2017
++++ _localenl	Mon May 11 19:30:21 2026
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -720,6 +733,6 @@ make[3]: *** [Makefile:5906: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2269: check] Error 1
-make[1]: *** [Makefile:805: check-recursive] Error 1
-make: *** [Makefile:1104: check] Error 2
+make[2]: *** [Makefile:2304: check] Error 1
+make[1]: *** [Makefile:804: check-recursive] Error 1
+make: *** [Makefile:1103: check] Error 2

@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=xorriso
-VER=1.5.6.pl02
+VER=1.5.8.pl01
 PKG=media/xorriso
 SUMMARY="GNU xorriso"
 DESC="$SUMMARY - ISO 9660 Rock Ridge Filesystem Manipulator"

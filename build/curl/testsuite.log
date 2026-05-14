@@ -1,2 +1,3 @@
-TESTDONE: 1919 tests were considered during 483 seconds.
-TESTDONE: 1620 tests out of 1620 reported OK: 100%
+TESTDONE: 1968 tests were considered during 925 seconds.
+TESTDONE: 1538 tests out of 1540 reported OK: 99%
+TESTFAIL: These test cases failed: 19 504

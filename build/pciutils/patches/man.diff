@@ -1,11 +1,11 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lspci.man a/lspci.man
 --- a~/lspci.man	1970-01-01 00:00:00
 +++ a/lspci.man	1970-01-01 00:00:00
-@@ -337,10 +337,7 @@ in a single record. Please avoid using t
+@@ -349,10 +349,7 @@ in a single record. Please avoid using t
  .SH FILES
  .TP
  .B @IDSDIR@/pci.ids
--A list of all known PCI ID's (vendors, devices, classes and subclasses). Maintained
+-A list of all known PCI IDs (vendors, devices, classes and subclasses). Maintained
 -at https://pci-ids.ucw.cz/, use the
 -.B update-pciids
 -utility to download the most recent version.
@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lspci.man a/lspci.man
  .TP
  .B @IDSDIR@/pci.ids.gz
  If lspci is compiled with support for compression, this file is tried before pci.ids.
-@@ -362,10 +359,7 @@ Access to the extended configuration spa
+@@ -374,10 +371,7 @@ Access to the extended configuration spa
  back-end.
  
  .SH SEE ALSO
@@ -28,7 +28,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lspci.man a/lspci.man
 diff -wpruN --no-dereference '--exclude=*.orig' a~/setpci.man a/setpci.man
 --- a~/setpci.man	1970-01-01 00:00:00
 +++ a/setpci.man	1970-01-01 00:00:00
-@@ -184,8 +184,7 @@ corresponds to the second word of the po
+@@ -185,8 +185,7 @@ corresponds to the second word of the po
  asks for the first 32-bit word of the extended capability with ID 0x108.
  
  .SH SEE ALSO
