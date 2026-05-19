@@ -139,7 +139,7 @@
 | library/python-3/meson-313		| 1.11.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-313		| 3.11.9		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-313	| 26.2			| https://pypi.org/rss/project/packaging/releases.xml
-| library/python-3/pip-313		| 26.0.1			| https://pypi.org/rss/project/pip/releases.xml
+| library/python-3/pip-313		| 26.1.1			| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
 | library/python-3/pycurl-313		| 7.45.7		| https://pypi.org/rss/project/pycurl/releases.xml
