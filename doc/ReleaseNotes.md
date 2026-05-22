@@ -4,6 +4,38 @@
 
 # Release Notes for OmniOSce v11 r151058
 
+## r151058c (2026-05-22)
+Weekly release for w/c 18th of May 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* Fixed two vulnerabilities in the SCTP socket ioctl path -
+  see [illumos 18118](https://www.illumos.org/issues/18118).
+
+* Fixed a kernel panic due to a stack overflow in the event that too many
+  inotify watches were placed on the same vnode.
+
+* [curl(1)](https://man.omnios.org/curl) has been updated to version 8.2.0
+  fixing [multiple security issues](https://curl.se/docs/vuln-8.19.0.html).
+
+* [rsync(1)](https://man.omnios.org/rsync) has been updated to version 3.4.3
+  resolving
+  [multiple security issues](https://download.samba.org/pub/rsync/NEWS#3.4.3).
+
+### Other Changes
+
+* [swprintf(3c)](https://man.omnios.org/swprintf) functions were incorrectly
+  writing multibyte characters according to the `LC_CTYPE` of the current
+  locale.
+
+* [zonestat(1)](https://man.omnios.org/zonestat) was not honouring a provided
+  list of zones (the `-z` option), instead always printing all zones.
+
+<br>
+
+---
+
 Stable Release, 4th of May 2026
 
 `uname -a` shows `omnios-r151058-516f7694c9`
