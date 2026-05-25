@@ -31,7 +31,7 @@ python_vendor_relocate() in lib/functions.sh for more details.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdoptions.py a/src/pip/_internal/cli/cmdoptions.py
 --- a~/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
-@@ -1069,7 +1069,7 @@ disable_pip_version_check: Callable[...,
+@@ -1100,7 +1100,7 @@ disable_pip_version_check: Callable[...,
      "--disable-pip-version-check",
      dest="disable_pip_version_check",
      action="store_true",
@@ -77,11 +77,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
 --- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
-@@ -235,6 +235,7 @@ def pip_self_version_check(session: PipS
-     the active virtualenv or in the user's USER_CACHE_DIR keyed off the prefix
-     of the pip script path.
+@@ -215,6 +215,7 @@ def pip_self_version_check_fetch(
+     Pair with :func:`pip_self_version_check_emit`, which displays the prompt
+     after the command body runs.
      """
 +    return
      installed_dist = get_default_environment().get_distribution("pip")
      if not installed_dist:
-         return
+         return None
