@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056af (2026-06-12)
+Weekly release for w/c 8th of June 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+* OpenSSL Has been updated to version 3.6.3, fixing multiple vulnerabilities.
+
+* Updated Intel CPU microcode to 20260512
+
+* 7zip updated to version 26.01
+
+### Other Changes
+
+* Bhyve leaked some CPU leafs on AMD that could cause some recent Linux
+  guests to panic on a divide-by-zero.
+
+<br>
+
+---
+
 ## r151056ac (2026-05-22)
 Weekly release for w/c 18th of May 2026.
 > This update requires a reboot
