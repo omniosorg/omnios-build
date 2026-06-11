@@ -9,5 +9,7 @@
 
 # Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
-license files/LICENSE license=tmux
+license LICENSE license=modified-BSD
+
+<transform file dir  path=$(PREFIX)/bin -> drop>
 
