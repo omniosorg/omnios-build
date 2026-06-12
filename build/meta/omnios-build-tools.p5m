@@ -36,6 +36,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/file/gnu-coreutils type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/expat type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/glib2 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/gmp type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/libevent type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libffi type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libidn type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libpsl type=require

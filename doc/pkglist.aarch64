@@ -65,6 +65,7 @@ editor/vim
 file/gnu-coreutils
 library/idnkit
 library/libedit
+library/libevent
 library/libxml2
 library/mpfr
 library/nghttp2

@@ -203,6 +203,7 @@ omnios library/glib2
 omnios library/gmp
 omnios library/idnkit
 omnios library/libedit
+omnios library/libevent
 omnios library/libffi
 omnios library/libidn
 omnios library/libmagic

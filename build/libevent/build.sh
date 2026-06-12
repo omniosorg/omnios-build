@@ -12,41 +12,30 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
-PROG=tmux
-VER=3.6
-PKG=terminal/tmux
-SUMMARY="Terminal multiplexer"
-DESC="$SUMMARY"
+PROG=libevent
+VER=2.1.12
+PKG=library/libevent
+SUMMARY="libevent"
+DESC="$SUMMARY - Event notification library"
 
-BUILD_DEPENDS_IPS=library/ncurses
-SKIP_LICENCES=tmux
+XFORM_ARGS+=" -DPREFIX=${PREFIX#/}"
 
-set_arch 64
+set_builddir libevent-${VER}-stable
 
-CONFIGURE_OPTS+=" --enable-utempter"
-
-pre_build() {
-    typeset arch=$1
-
-    CPPFLAGS="-I $PREFIX/include/ncurses"
-    LDFLAGS="-lsocket -lnsl -lsendfile"
-
-    cross_arch $arch && addpath PKG_CONFIG_PATH \
-        ${SYSROOT[$arch]}/$PREFIX/${LIBDIRS[$arch]}/pkgconfig
-
-    true
-}
+CONFIGURE_OPTS="
+    --prefix=$PREFIX
+    --disable-static
+    ac_cv_lib_xnet_socket=no
+"
 
 init
-prep_build
-download_source $PROG $PROG $VER
+download_source $PROG $PROG $VER-stable
 patch_source
-run_autoreconf -i
+prep_build
 build
 make_package
 clean_up
