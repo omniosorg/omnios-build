@@ -75,7 +75,7 @@ configure_amd64() {
         -Dcf_by=omnios-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
         -Dcc=gcc \
-        -Dld=/usr/ccs/bin/ld \
+        -Dld=gcc \
         -Doptimize="-O3 $CTF_CFLAGS" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
