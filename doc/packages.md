@@ -107,7 +107,7 @@
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
-| terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
+| terminal/screen			| 5.0.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.6			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.4.0			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags

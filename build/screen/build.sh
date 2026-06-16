@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=screen
-VER=4.9.1
+VER=5.0.1
 PKG=terminal/screen
 SUMMARY="GNU Screen terminal multiplexer"
 DESC="A full-screen window manager that multiplexes a physical "
@@ -31,9 +31,15 @@ set_standard XPG6
 CONFIGURE_OPTS+="
     --with-sys-screenrc=/etc/screenrc
     --enable-colors256
+    --enable-utmp
+    --with-pty-rofs
+    --disable-socket-dir
 "
-# This prevents /usr/include/curses.h from trying to create a typedef for bool
-CPPFLAGS+=" -D_BOOL"
+
+CONFIGURE_OPTS[WS]+="
+    ac_cv_search_tgetent=-lncurses
+    ac_cv_search_openpty=\"none required\"
+"
 
 build_init() {
     CONFIGURE_OPTS[amd64_WS]="
