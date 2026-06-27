@@ -80,7 +80,6 @@ system/rsyslog
 system/watch
 terminal/resize
 terminal/screen
-terminal/tmux
 text/gnu-diffutils
 file/gnu-findutils
 text/gnu-sed
@@ -101,6 +100,7 @@ runtime/python-313
 service/network/chrony
 shell/zsh
 system/library/mozilla-nss
+terminal/tmux
 text/gawk
 text/gnu-grep
 text/less
