@@ -1,0 +1,25 @@
+Open the alternate debug log with O_APPEND so concurrent debug output
+from multiple worker threads does not overwrite each other.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/debug.c a/runtime/debug.c
+--- a~/runtime/debug.c	1970-01-01 00:00:00
++++ a/runtime/debug.c	1970-01-01 00:00:00
+@@ -404,7 +404,8 @@ void dbgSetDebugFile(uchar *fn) {
+         dbgprintf("switching to debug file %s\n", fn);
+         close(altdbg);
+     }
+-    if ((altdbg = open((char *)fn, O_WRONLY | O_CREAT | O_TRUNC | O_NOCTTY | O_CLOEXEC, S_IRUSR | S_IWUSR)) == -1) {
++    if ((altdbg = open((char *)fn, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND | O_NOCTTY | O_CLOEXEC,
++                       S_IRUSR | S_IWUSR)) == -1) {
+         fprintf(stderr, "alternate debug file could not be opened, ignoring. Error: %s\n", strerror(errno));
+     }
+ }
+@@ -434,7 +435,7 @@ rsRetVal dbgClassInit(void) {
+
+     if (pszAltDbgFileName != NULL) {
+         /* we have a secondary file, so let's open it) */
+-        if ((altdbg = open(pszAltDbgFileName, O_WRONLY | O_CREAT | O_TRUNC | O_NOCTTY | O_CLOEXEC,
++        if ((altdbg = open(pszAltDbgFileName, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND | O_NOCTTY | O_CLOEXEC,
+                            S_IRUSR | S_IWUSR)) == -1) {
+             fprintf(stderr, "alternate debug file could not be opened, ignoring. Error: %s\n", strerror(errno));
+         }

@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/tcpflood.c a/tests/tcpflood.c
 --- a~/tests/tcpflood.c	1970-01-01 00:00:00
 +++ a/tests/tcpflood.c	1970-01-01 00:00:00
-@@ -897,7 +897,7 @@ int sendMessages(struct instdata *inst)
+@@ -952,7 +952,7 @@ int sendMessages(struct instdata *inst)
              }
              lenSend = sendPlainTCP(socknum, buf, lenBuf, &error_number);
          } else if (transport == TP_UDP) {
@@ -10,3 +10,46 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/tcpflood.c a/tests/tcpf
              error_number = errno;
          } else if (transport == TP_TLS) {
              if (sockArray[socknum] == -1) {
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/diag.sh a/tests/diag.sh
+--- a~/tests/diag.sh	1970-01-01 00:00:00
++++ a/tests/diag.sh	1970-01-01 00:00:00
+@@ -4188,7 +4188,7 @@ omhttp_start_server() {
+     omhttp_server_portfile="$RSYSLOG_DYNNAME.omhttp_server_lstnport.file"
+     server_args="-p $omhttp_server_port ${*:2} --port-file $omhttp_server_portfile"
+
+-    setsid timeout 30m $PYTHON ${omhttp_server_py} ${server_args} >> ${omhttp_server_logfile} 2>&1 &
++    timeout 30m $PYTHON ${omhttp_server_py} ${server_args} >> ${omhttp_server_logfile} 2>&1 &
+     # shellcheck disable=SC2181 # Preserve the existing background-start check.
+     if [ $? -ne 0 ]; then
+         echo "Failed to start omhttp test server."
+@@ -4207,7 +4207,7 @@ omhttp_start_server() {
+         "${OMHTTP_SERVER_STARTUP_TIMEOUT:-1200}" "omhttp test server" "$omhttp_server_logfile"
+     omhttp_server_lstnport="$(cat "$omhttp_server_portfile")"
+     echo ${omhttp_server_pid} > ${omhttp_server_pidfile}
+-    echo "Started omhttp test server with args ${server_args} with process group ${omhttp_server_pid}, port {$omhttp_server_lstnport}"
++    echo "Started omhttp test server with args ${server_args} with pid ${omhttp_server_pid}, port {$omhttp_server_lstnport}"
+ }
+
+ omhttp_stop_server() {
+@@ -4223,16 +4223,16 @@ omhttp_stop_server() {
+                 return 1
+                 ;;
+         esac
+-        echo "Stopping omhttp server process group ${omhttp_server_pid}"
+-        kill -TERM -- -${omhttp_server_pid} > /dev/null 2>&1
++        echo "Stopping omhttp server pid ${omhttp_server_pid}"
++        kill -TERM ${omhttp_server_pid} > /dev/null 2>&1
+         wait ${omhttp_server_pid} 2>/dev/null || :
+         i=0
+-        while kill -0 -- -${omhttp_server_pid} > /dev/null 2>&1; do
++        while kill -0 ${omhttp_server_pid} > /dev/null 2>&1; do
+             $TESTTOOL_DIR/msleep 100
+             (( i++ ))
+             if test $i -gt $TB_TIMEOUT_STARTSTOP; then
+-                echo "omhttp server process group ${omhttp_server_pid} still running - Performing hard shutdown (-9)"
+-                kill -9 -- -${omhttp_server_pid} > /dev/null 2>&1
++                echo "omhttp server pid ${omhttp_server_pid} still running - Performing hard shutdown (-9)"
++                kill -9 ${omhttp_server_pid} > /dev/null 2>&1
+                 wait ${omhttp_server_pid} 2>/dev/null || :
+                 break
+             fi
