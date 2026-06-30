@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=tmux
-VER=3.6
+VER=3.7
 PKG=terminal/tmux
 SUMMARY="Terminal multiplexer"
 DESC="$SUMMARY"
