@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=zsh
-VER=5.9
+VER=5.9.1
 PKG=shell/zsh
 SUMMARY="Z shell"
 DESC="The Z shell"

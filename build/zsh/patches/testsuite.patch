@@ -108,15 +108,3 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Test/Y03arguments.ztst a/Test
  
   tst_arguments -s -{a,b,c} +{a,b,c}
   comptest $'tst -a +b +c\t'
-diff -wpruN --no-dereference '--exclude=*.orig' a~/Test/ztst.zsh a/Test/ztst.zsh
---- a~/Test/ztst.zsh	1970-01-01 00:00:00
-+++ a/Test/ztst.zsh	1970-01-01 00:00:00
-@@ -377,7 +377,7 @@ ZTST_diff() {
-       diff_ret=1
-     fi
-   else
--    diff_out=$(diff -a "$@")
-+    diff_out=$(gdiff -a "$@")
-     diff_ret="$?"
-     if [[ "$diff_ret" != "0" ]]; then
-       print -r -- "$diff_out"
