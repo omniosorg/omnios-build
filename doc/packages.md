@@ -56,7 +56,7 @@
 | library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.69.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nspr				| 4.39		| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
+| library/nspr				| 4.39			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.47			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
@@ -95,7 +95,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.123.1		| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.125			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.6		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -128,18 +128,18 @@
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
-| library/python-3/cffi-313		| 2.0.0		| https://pypi.org/rss/project/cffi/releases.xml
+| library/python-3/cffi-313		| 2.0.0			| https://pypi.org/rss/project/cffi/releases.xml
 | library/python-3/coverage-313		| 7.14.0		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 48.0.0		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.15			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
-| library/python-3/jsonrpclib-313	| 1.0.0		| https://github.com/tcalmant/jsonrpclib/releases
+| library/python-3/jsonrpclib-313	| 1.0.0			| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.17.3		| https://pypi.org/rss/project/jsonschema/releases.xml
-| library/python-3/meson-313		| 1.11.1			| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/meson-313		| 1.11.1		| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/orjson-313		| 3.11.9		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-313	| 26.2			| https://pypi.org/rss/project/packaging/releases.xml
-| library/python-3/pip-313		| 26.1.1			| https://pypi.org/rss/project/pip/releases.xml
+| library/python-3/pip-313		| 26.1.1		| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
 | library/python-3/pycurl-313		| 7.46.0		| https://pypi.org/rss/project/pycurl/releases.xml
