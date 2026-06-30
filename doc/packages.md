@@ -48,7 +48,7 @@
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libmagic			| 5.47			| https://github.com/file/file/tags
-| library/libpsl			| 0.21.5		| https://github.com/rockdaboot/libpsl/releases
+| library/libpsl			| 0.22.0		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
