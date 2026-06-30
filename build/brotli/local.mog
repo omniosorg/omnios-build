@@ -8,11 +8,14 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 license LICENSE license=MIT
 
 <transform path=.*\.a$ -> drop>
 
 link path=$(PREFIX)/bin/unbrotli target=brotli
+
+<transform file path=$(PREFIX)/share/man/man3/ -> \
+    edit path man3/ man3/brotli_>
 
