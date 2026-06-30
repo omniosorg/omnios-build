@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=autoconf
-VER=2.72
+VER=2.73
 PKG=developer/build/autoconf
 SUMMARY="GNU $PROG"
 DESC="$PROG - GNU autoconf utility"
@@ -34,7 +34,7 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-run_testsuite check
+PATH=$GNUBIN:$PATH run_testsuite check
 make_package
 clean_up
 
