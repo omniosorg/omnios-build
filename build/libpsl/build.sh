@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=libpsl
-VER=0.21.5
+VER=0.22.0
 PKG=library/libpsl
 SUMMARY="C library for the Public Suffix List"
 DESC="Library for access to the collection of TLD suffixes"

@@ -3,7 +3,7 @@
 *** t0000-basic.sh ***
 # passed all 92 test(s)
 *** t0001-init.sh ***
-# passed all 102 test(s)
+# passed all 103 test(s)
 *** t0002-gitfile.sh ***
 # passed all 14 test(s)
 *** t0003-attributes.sh ***
@@ -13,7 +13,7 @@
 *** t0005-signals.sh ***
 # passed all 5 test(s)
 *** t0006-date.sh ***
-# passed all 129 test(s)
+# passed all 149 test(s)
 *** t0007-git-var.sh ***
 # passed all 27 test(s)
 *** t0008-ignores.sh ***
@@ -23,11 +23,11 @@
 *** t0010-racy-git.sh ***
 # passed all 10 test(s)
 *** t0012-help.sh ***
-# passed all 179 test(s)
+# passed all 181 test(s)
 *** t0013-sha1dc.sh ***
 # passed all 1 test(s)
 *** t0014-alias.sh ***
-# passed all 21 test(s)
+# passed all 23 test(s)
 *** t0017-env-helper.sh ***
 # passed all 5 test(s)
 *** t0018-advice.sh ***
@@ -37,7 +37,7 @@
 *** t0020-crlf.sh ***
 # passed all 36 test(s)
 *** t0021-conversion.sh ***
-# passed all 42 test(s)
+# passed all 43 test(s)
 *** t0022-crlf-rename.sh ***
 # passed all 2 test(s)
 *** t0023-crlf-am.sh ***
@@ -61,7 +61,7 @@
 # passed all 22 test(s)
 *** t0034-root-safe-directory.sh ***
 *** t0035-safe-bare-repository.sh ***
-# passed all 12 test(s)
+# passed all 13 test(s)
 *** t0040-parse-options.sh ***
 # passed all 94 test(s)
 *** t0041-usage.sh ***
@@ -96,7 +96,7 @@
 *** t0081-find-pack.sh ***
 # passed all 4 test(s)
 *** t0090-cache-tree.sh ***
-# passed all 22 test(s)
+# passed all 23 test(s)
 *** t0091-bugreport.sh ***
 # passed all 13 test(s)
 *** t0092-diagnose.sh ***
@@ -141,4 +141,4 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 # failed 2 among 8 test(s)
 make[2]: *** [Makefile:82: t0204-gettext-reencode-sanity.sh] Error 1
 make[1]: *** [Makefile:63: test] Error 2
-make: *** [Makefile:3391: test] Error 2
+make: *** [Makefile:3381: test] Error 2

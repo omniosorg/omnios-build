@@ -179,7 +179,7 @@ glib+core - glib:io-channel                                            OK   3 su
 glib+core - glib:io-channel-basic                                      OK   1 subtests passed
 glib+core - glib:keyfile                                               OK   37 subtests passed
 glib+core - glib:list                                                  OK   20 subtests passed
-glib+core - glib:logging                                               TIMEOUT   killed by signal 15 SIGTERM
+glib+core - glib:logging                                               OK   20 subtests passed
 glib+core - glib:macros                                                OK   3 subtests passed
 glib+core - glib:mainloop                                              OK   47 subtests passed
 glib+core - glib:mappedfile                                            OK   7 subtests passed
@@ -384,13 +384,11 @@ gio - glib:converter-stream                                            ERROR   k
 gio - glib:inet-address                                                ERROR   killed by signal 6 SIGABRT
 gio - glib:iptosmessage                                                ERROR   killed by signal 6 SIGABRT
 gio - glib:unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
-gio - glib:gsettings                                                   ERROR   killed by signal 6 SIGABRT
 gio - glib:appmonitor                                                  ERROR   killed by signal 6 SIGABRT
+gio - glib:gsettings                                                   ERROR   killed by signal 6 SIGABRT
 gio+slow - glib:testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
-glib+core - glib:logging                                               TIMEOUT   killed by signal 15 SIGTERM
 
-Ok:                352 
+Ok:                353 
 Fail:              12  
 Skipped:           9   
-Timeout:           1   
 

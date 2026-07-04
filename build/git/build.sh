@@ -19,7 +19,7 @@
 . ../../lib/build.sh
 
 PROG=git
-VER=2.54.0
+VER=2.55.0
 PKG=developer/versioning/git
 SUMMARY="$PROG - distributed version control system"
 DESC="Git is a free and open source distributed version control system "
@@ -54,6 +54,8 @@ CONFIGURE_OPTS="
     --with-openssl=/usr
     --with-libpcre2
 "
+
+PATH+=:$OOCEBIN
 
 for arch in $CROSS_ARCH; do
     CONFIGURE_OPTS[$arch]+="

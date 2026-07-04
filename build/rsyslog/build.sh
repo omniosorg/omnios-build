@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=rsyslog
-VER=8.2604.0
+VER=8.2606.0
 PKG=system/rsyslog
 SUMMARY="rsyslog - the rocket-fast system for log processing."
 DESC="A high-performance, modular syslog implementation."
@@ -70,6 +70,7 @@ CONFIGURE_OPTS="
 
     --disable-libgcrypt
     --disable-gnutls
+    --disable-libyaml
     --enable-openssl
     --enable-gssapi-krb5
 

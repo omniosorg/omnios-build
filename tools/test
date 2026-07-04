@@ -87,7 +87,6 @@ add_target()
 				pkg=service/network/ssh
 				;;
 			terminal/tmux:*)
-				targets["library/libevent"]=`pver LIBEVENT_VER`
 				# Remove any trailing 'a'
 				ver=${ver/a/}
 				;;
