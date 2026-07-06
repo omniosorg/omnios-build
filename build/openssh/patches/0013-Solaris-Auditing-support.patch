@@ -33,7 +33,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/INSTALL a/INSTALL
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
 --- a~/Makefile.in	1970-01-01 00:00:00
 +++ a/Makefile.in	1970-01-01 00:00:00
-@@ -124,7 +124,7 @@ SSHDOBJS=sshd.o \
+@@ -125,7 +125,7 @@ SSHDOBJS=sshd.o \
  	$(P11OBJS) $(SKOBJS)
  
  SSHD_SESSION_OBJS=sshd-session.o auth-rhosts.o auth-passwd.o \
@@ -42,7 +42,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.in a/Makefile.in
  	sshpty.o sshlogin.o servconf.o serverloop.o \
  	auth.o auth2.o auth2-methods.o auth-options.o session.o \
  	auth2-chall.o groupaccess.o \
-@@ -144,7 +144,7 @@ SSHD_AUTH_OBJS=sshd-auth.o \
+@@ -145,7 +145,7 @@ SSHD_AUTH_OBJS=sshd-auth.o \
  	auth2-none.o auth2-passwd.o auth2-pubkey.o auth2-pubkeyfile.o \
  	auth2-gss.o gss-serv.o gss-serv-krb5.o \
  	monitor_wrap.o auth-krb5.o \
@@ -272,7 +272,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 +static void audit_logout(void);
 +static void audit_fail(int);
 +
-+/* Below is the sshd audit API Solaris adt interpretation */
++/* Below is the sshd audit API illumos adt interpretation */
 +
 +/*
 + * Called after a connection has been accepted but before any authentication
@@ -359,7 +359,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 +		tid = NULL;
 +		return;
 +
-+	/* Translate fail events to Solaris PAM errors */
++	/* Translate fail events to illumos PAM errors */
 +
 +	/* auth2.c: userauth_finish as audit_event(SSH_LOGIN_EXCEED_MAXTRIES) */
 +	/* auth1.c:do_authloop audit_event(SSH_LOGIN_EXCEED_MAXTRIES) */
@@ -380,7 +380,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 +		fail = PAM_USER_UNKNOWN;
 +		break;
 +
-+	/* seems unused, but translate to the Solaris PAM error */
++	/* seems unused, but translate to the illumos PAM error */
 +	case SSH_NOLOGIN:
 +		fail = PAM_ACCT_EXPIRED;
 +		break;
@@ -596,7 +596,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit-solaris.c a/audit-solar
 + *		tid = connection audit TID set by audit_connect_from();
 + *
 + *	N.B.	pam_strerror() prototype takes a pam handle and error number.
-+ *		At least on Solaris, pam_strerror never uses the pam handle.
++ *		At least on illumos, pam_strerror never uses the pam handle.
 + *		Since there doesn't seem to be a pam handle available, this
 + *		code just uses NULL.
 + */
@@ -726,7 +726,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 +        AUDIT_MODULE=solaris
 +        AC_CHECK_HEADERS([bsm/adt.h])
 +        SSHDLIBS="$SSHDLIBS -lbsm"
-+        AC_DEFINE([USE_SOLARIS_AUDIT], [1], [Use Solaris audit module])
++        AC_DEFINE([USE_SOLARIS_AUDIT], [1], [Use illumos audit module])
 +        ;;
  	  debug)
  		AUDIT_MODULE=debug
@@ -734,7 +734,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
 --- a~/defines.h	1970-01-01 00:00:00
 +++ a/defines.h	1970-01-01 00:00:00
-@@ -770,6 +770,11 @@ struct winsize {
+@@ -777,6 +777,11 @@ struct winsize {
  # define CUSTOM_SSH_AUDIT_EVENTS
  #endif
  
@@ -749,7 +749,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session.c
 --- a~/sshd-session.c	1970-01-01 00:00:00
 +++ a/sshd-session.c	1970-01-01 00:00:00
-@@ -1185,7 +1185,7 @@ main(int ac, char **av)
+@@ -1186,7 +1186,7 @@ main(int ac, char **av)
  	remote_ip = ssh_remote_ipaddr(ssh);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -758,7 +758,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  #endif
  
  	rdomain = ssh_packet_rdomain_in(ssh);
-@@ -1264,8 +1264,10 @@ main(int ac, char **av)
+@@ -1265,8 +1265,10 @@ main(int ac, char **av)
  		set_process_rdomain(ssh, options.routing_domain);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -769,7 +769,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  
  #ifdef GSSAPI
  	if (options.gss_authentication) {
-@@ -1295,6 +1297,11 @@ main(int ac, char **av)
+@@ -1296,6 +1298,11 @@ main(int ac, char **av)
  	}
  #endif
  

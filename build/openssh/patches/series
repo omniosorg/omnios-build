@@ -3,6 +3,7 @@ sshd_config.patch
 0002-PAM-Support.patch
 0003-lastlogin.patch
 0006-GSS-store-creds-for-Solaris.patch
+0032-Restore-keywords-lost-in-servconf-refactor.patch
 0007-DTrace-support-for-SFTP.patch
 0008-Add-DisableBanner-option.patch
 0009-PAM-conversation-fix.patch
