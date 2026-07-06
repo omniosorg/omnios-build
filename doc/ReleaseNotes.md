@@ -4,6 +4,56 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056aj (2026-07-08)
+Weekly release for w/c 06th of July 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- The `ZFS_IOC_USERSPACE_MANY` ioctl truncated a 64-bit output buffer size to
+  a 32-bit integer for the kernel allocation, which could result in a smaller
+  allocation than expected and a subsequent kernel buffer overrun
+  ([CVE-2026-49429](https://www.cve.org/CVERecord?id=CVE-2026-49429)) -
+  see [illumos 18207](https://www.illumos.org/issues/18207).
+
+- The `zfs` ioctl interface could mis-parse corrupt nvlists supplied from
+  userland, triggering a kernel panic -
+  see [illumos 18206](https://www.illumos.org/issues/18206).
+
+- An integer overflow in the `poll(4D)` driver's handling of a large `nfds`
+  value could bypass the buffer size check and result in a kernel heap
+  overflow
+  ([CVE-2026-35384](https://www.cve.org/CVERecord?id=CVE-2026-35384)) -
+  see [illumos 18003](https://www.illumos.org/issues/18003).
+
+- The `dld` ioctl framework performed a second `copyin(9F)` of data that had
+  already been copied in by its callers, creating a time-of-check/time-of-use
+  race in which userland could substitute different data after validation -
+  see [illumos 18020](https://www.illumos.org/issues/18020).
+
+- The SCTP `INIT ACK` chunk parameter parser did not fully validate address
+  list parameters, allowing a crafted `INIT ACK` chunk to trigger kernel
+  memory corruption - see [illumos 18117](https://www.illumos.org/issues/18117).
+
+- [curl(1)](https://man.omnios.org/curl) has been updated to version 8.21.0,
+  fixing [multiple security issues](https://curl.se/docs/vuln-8.21.0.html).
+
+- `expat` has been updated to version 2.8.2, addressing multiple security
+  issues in the XML parser.
+
+- [rsync(1)](https://man.omnios.org/rsync) has been updated to version 3.4.4,
+  resolving
+  [multiple security issues](https://download.samba.org/pub/rsync/NEWS#3.4.4).
+
+### Other Changes
+
+- `perl` now uses gcc to link extension module instead of driving the
+  illumos linker directly. The illumos linker is still used but using
+  `gcc` allows for the proper insertion of required modules into the
+  link path.
+
+---
+
 ## r151056af (2026-06-12)
 Weekly release for w/c 8th of June 2026.
 > This update requires a reboot
