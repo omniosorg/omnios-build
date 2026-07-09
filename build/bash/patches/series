@@ -1,2 +1,3 @@
 memalloc.patch
 cross.patch
+major-in-mkdev.patch
