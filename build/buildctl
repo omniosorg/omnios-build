@@ -226,13 +226,19 @@ start_built_listener() {
     fi
     export BUILDCTL_PARALLEL=1
     logmsg "-- Background built package thread started..."
+    # The pipe is held open read-write for the lifetime of the listener so
+    # that a reader always exists. Otherwise there is a window, while the
+    # listener is processing a line, in which a writer can open the pipe
+    # and then be killed by SIGPIPE when the read side is closed before
+    # the write lands; the writing job then exits with status 141 and
+    # loses any lines it had still to write.
     while :; do
-        if read line <$built_pipe; then
+        if read -u $built_fd line; then
             [ $line = "quit" ] && break
             already_built+=([$line]=1)
             echo $line >> "$BUILT_CACHE"
         fi
-    done &
+    done {built_fd}<>"$built_pipe" &
 }
 
 stop_built_listener() {
@@ -529,6 +535,16 @@ wait_for_slot() {
     while :; do
         wait -fn -p pid ${slots[*]}
         stat=$?
+
+        # If a pid was returned then a job has been reaped and its slot
+        # must always be cleared before calling `wait` again, regardless
+        # of the exit status.
+        if [ -n "$pid" ]; then
+            slot=${slotpid[$pid]}
+            [ -n "$slot" ] && [ "${slots[$slot]}" = "$pid" ] && break
+            logerr "wait returned pid $pid ($stat) which matches no slot"
+        fi
+
         case $stat in
             169)    continue ;;                         # SIGINFO
             141)    continue ;;                         # SIGPIPE
@@ -537,12 +553,9 @@ wait_for_slot() {
                 clear_slots $stat
                 nextslot=0
                 return ;;
+            *)  logmsg -e "-- wait returned status $stat with no pid"
+                continue ;;
         esac
-
-        [ -n "$pid" ] || continue
-        slot=${slotpid[$pid]}
-        [ -n "$slot" ] && break
-        logmsg -n "Unknown pid $pid terminated $stat"
     done
 
     if reap_slot $slot $stat; then
@@ -574,10 +587,22 @@ wait_for_jobs() {
 
     typeset slot=
     typeset -i stat=0
+    typeset pid=
 
     while (( ${#slots[*]} > 0 )); do
         wait -fn -p pid ${slots[*]}
         stat=$?
+        # As in wait_for_slot(), a returned pid means that a job has been
+        # reaped and its slot must always be cleared, regardless of the
+        # exit status.
+        if [ -n "$pid" ]; then
+            slot=${slotpid[$pid]}
+            [ -n "$slot" ] && [ "${slots[$slot]}" = "$pid" ] || \
+                logerr "wait returned pid $pid ($stat) which matches no slot"
+            reap_slot $slot $stat
+            job_status "($msg) "
+            continue
+        fi
         (( stat == 169 )) && continue               # SIGINFO
         (( stat == 141 )) && continue               # SIGPIPE
         (( stat == 144 )) && continue               # SIGUSR1
@@ -585,10 +610,7 @@ wait_for_jobs() {
             clear_slots $stat
             break
         fi
-        [ -n "$pid" ] || continue
-        slot=${slotpid[$pid]}
-        [ -n "$slot" ] && reap_slot $slot $stat
-        job_status "($msg) "
+        logmsg -e "-- wait returned status $stat with no pid"
     done
 }
 
