@@ -1,0 +1,22 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/hotspot/make/solaris/makefiles/vm.make a/hotspot/make/solaris/makefiles/vm.make
+--- a~/hotspot/make/solaris/makefiles/vm.make	1970-01-01 00:00:00
++++ a/hotspot/make/solaris/makefiles/vm.make	1970-01-01 00:00:00
+@@ -115,17 +115,7 @@ CFLAGS += $(CFLAGS/NOEX)
+ CFLAGS += $(EXTRA_CFLAGS)
+ ASFLAGS += $(EXTRA_ASFLAGS)
+ 
+-# Math Library (libm.so), do not use -lm.
+-#    There might be two versions of libm.so on the build system:
+-#    libm.so.1 and libm.so.2, and we want libm.so.1.
+-#    Depending on the Solaris release being used to build with,
+-#    /usr/lib/libm.so could point at a libm.so.2, so we are
+-#    explicit here so that the libjvm.so you have built will work on an
+-#    older Solaris release that might not have libm.so.2.
+-#    This is a critical factor in allowing builds on Solaris 10 or newer
+-#    to run on Solaris 8 or 9.
+-#
+-LIBM=/usr/lib$(ISA_DIR)/libm.so.1
++LIBM=-lm
+ 
+ ifeq ("${Platform_compiler}", "sparcWorks")
+ # The whole megilla:
