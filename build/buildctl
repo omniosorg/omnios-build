@@ -442,6 +442,11 @@ ljs=
 job_status() {
     local _stat="$*"
 
+    # This function is invoked from the SIGINFO trap handler and can run
+    # in the middle of the `wait` loops below, in their dynamic scope, so
+    # everything written here must be local.
+    typeset elapsed now i tm e p pid b
+
     if [ -z "$_stat" ]; then
         local now=`date +%s`
         [ -n "$ljs" ] && ((now - ljs < 60)) && return
@@ -525,6 +530,18 @@ clear_slots() {
     done
 }
 
+check_wait_result() {
+    [ -n "$pid" ] && (( stat > 128 )) || return 0
+
+    if kill -0 $pid 2>/dev/null; then
+        logmsg -n "-- wait interrupted ($stat), pid $pid is still running"
+        pid=
+    else
+        wait $pid 2>/dev/null
+        stat=$?
+    fi
+}
+
 nextslot=
 wait_for_slot() {
     typeset -i stat=0
@@ -535,6 +552,7 @@ wait_for_slot() {
     while :; do
         wait -fn -p pid ${slots[*]}
         stat=$?
+        check_wait_result
 
         # If a pid was returned then a job has been reaped and its slot
         # must always be cleared before calling `wait` again, regardless
@@ -592,6 +610,7 @@ wait_for_jobs() {
     while (( ${#slots[*]} > 0 )); do
         wait -fn -p pid ${slots[*]}
         stat=$?
+        check_wait_result
         # As in wait_for_slot(), a returned pid means that a job has been
         # reaped and its slot must always be cleared, regardless of the
         # exit status.
