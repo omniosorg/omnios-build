@@ -64,10 +64,14 @@ build_init() {
     typeset oldver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
     [ "$oldver" = "2.1.4" ] || logerr "Unexpected waf version $oldver"
     logmsg "-- updating 'waf' from $oldver to $newver"
-    logcmd $CURL -Lo $TMPDIR/$BUILDDIR/waf https://waf.io/waf-$newver \
-        || logerr "Could not download updated waf binary"
-    typeset nowver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
+    pushd $TMPDIR >/dev/null
+    get_resource $PROG/waf-$newver || logerr "Could not download waf-$newver"
+    DLDIR=$PROG FILENAME=waf-$newver verify_checksum
+    $CHMOD +x waf-$newver
+    popd >/dev/null
+    typeset nowver=`$TMPDIR/waf-$newver --version | $AWK '{print $2}'`
     [ "$nowver" = "$newver" ] || logerr "Unexpected new waf version $nowver"
+    cp $TMPDIR/waf-$newver $TMPDIR/$BUILDDIR/waf
 }
 
 make_clean() {
