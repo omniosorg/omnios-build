@@ -49,7 +49,6 @@ PKGDIFF_HELPER='
 init
 download_source $PROG $PROG $VER
 patch_source
-run_autoreconf -fi
 prep_build
 build
 run_testsuite check
