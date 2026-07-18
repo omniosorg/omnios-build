@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=libevent
-VER=2.1.12
+VER=2.1.13
 PKG=library/libevent
 SUMMARY="libevent"
 DESC="$SUMMARY - Event notification library"
