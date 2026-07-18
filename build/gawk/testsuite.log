@@ -50,12 +50,14 @@ aryunasgn
 asgext
 assignnumfield
 assignnumfield2
+assignnumfield3
 awkpath
 back89
 backgsub
 badassign1
 badbuild
 callparam
+case-check
 childin
 clobber
 close_status
@@ -96,9 +98,11 @@ exitval3
 fcall_exit
 fcall_exit2
 fieldassign
+fieldindex
 fldchg
 fldchgnf
 fldterm
+fmtmix
 fnamedat
 fnarray
 fnarray2
@@ -126,6 +130,8 @@ getlnbuf
 getlnfa
 getnr2tb
 getnr2tm
+greek-equiv
+greek-utf
 gsubasgn
 gsubnulli18n
 gsubtest
@@ -159,6 +165,7 @@ matchuninitialized
 math
 membug1
 memleak
+memleak4
 messages
 minusstr
 mmap8k
@@ -209,6 +216,7 @@ parse1
 parsefld
 parseme
 pcntplus
+posix-inf
 posix2008sub
 posix_compare
 prdupval
@@ -235,6 +243,7 @@ regex3minus
 regexpbad
 regexpbrack
 regexpbrack2
+regexpbrack3
 regexprange
 regexpuparrow
 regrange
@@ -265,6 +274,7 @@ sigpipe1
 sortempty
 sortglos
 spacere
+splitany
 splitargv
 splitarr
 splitdef
@@ -300,6 +310,7 @@ uninitialized
 unterm
 uparrfs
 uplus
+uplus2
 wideidx
 wideidx2
 widesub
@@ -415,6 +426,7 @@ gensub
 gensub2
 gensub3
 gensub4
+gensub5
 getlndir
 gnuops2
 gnuops3
@@ -474,6 +486,7 @@ mdim5
 mdim6
 mdim7
 mdim8
+mdim9
 memleak2
 memleak3
 mixed1
@@ -600,41 +613,8 @@ unicode1
 watchpoint1
 gawk is not compiled to support the array debug tests
 ======== Done with gawk extension tests ========
-======== Starting tests that can vary based on character set or locale support ========
-**************************************************************************
-* Some or all of these tests may fail if you have inadequate or missing  *
-* locale support. At least en_US.UTF-8, fr_FR.UTF-8, ru_RU.UTF-8 and     *
-* ja_JP.UTF-8 are needed. The el_GR.iso88597 is optional but helpful.    *
-* However, if you see this message, the Makefile thinks you have what    *
-* you need ...                                                           *
-**************************************************************************
-asort
-asorti
-backbigs1
-backsmalls1
-backsmalls2
-commas
-fmttest
-fnarydel
-fnparydl
-jarebug
-lc_num1
-mbfw1
-mbprintf1
-mbprintf2
-mbprintf3
-mbprintf4
-mbprintf5
-mbstr1
-mbstr2
-mtchi18n
-mtchi18n2
-nlstringtest
-rebt8b2
-rtlenmb
-sort1
-sprintfc
-======== Done with tests that can vary based on character set or locale support ========
+%%%%%%%%%% Inadequate locale support: skipping charset tests.
+%%%%%%%%%% At least en_US.UTF-8, fr_FR.UTF-8, ru_RU.UTF-8, ja_JP.UTF-8 and el_GR.iso88597@euro are needed.
 ======== Starting dynamic extension tests ========
 apiterm
 filefuncs
@@ -699,10 +679,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 2 TESTS FAILED
-make[3]: *** [Makefile:6002: pass-fail] Error 1
+make[3]: *** [Makefile:6104: pass-fail] Error 1
 ============== _cmdlinefsbacknl2 =============
---- cmdlinefsbacknl2.ok	Mon May 19 03:45:05 2025
-+++ _cmdlinefsbacknl2	Mon May 11 19:30:12 2026
+--- cmdlinefsbacknl2.ok	Mon Jun 22 12:28:22 2026
++++ _cmdlinefsbacknl2	Sat Jul 18 18:33:14 2026
 @@ -1,12 +1,19 @@
   5c 0a
 +
@@ -724,8 +704,8 @@ make[3]: *** [Makefile:6002: pass-fail] Error 1
  right: literal ? is literal
  gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
---- localenl.ok	Thu Dec 14 17:49:00 2017
-+++ _localenl	Mon May 11 19:30:21 2026
+--- localenl.ok	Mon Jun 22 12:28:22 2026
++++ _localenl	Sat Jul 18 18:33:24 2026
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -733,6 +713,6 @@ make[3]: *** [Makefile:6002: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2304: check] Error 1
-make[1]: *** [Makefile:804: check-recursive] Error 1
-make: *** [Makefile:1103: check] Error 2
+make[2]: *** [Makefile:2330: check] Error 1
+make[1]: *** [Makefile:803: check-recursive] Error 1
+make: *** [Makefile:1102: check] Error 2
