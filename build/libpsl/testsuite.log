@@ -7,7 +7,7 @@ PASS: libpsl_fuzzer
 PASS: libpsl_load_fuzzer
 PASS: libpsl_load_dafsa_fuzzer
 ============================================================================
-Testsuite summary for libpsl 0.22.0
+Testsuite summary for libpsl 0.23.0
 ============================================================================
 # TOTAL: 3
 # PASS:  3
@@ -24,7 +24,7 @@ PASS: test-is-cookie-domain-acceptable
 PASS: test-is-public-builtin
 PASS: test-registrable-domain
 ============================================================================
-Testsuite summary for libpsl 0.22.0
+Testsuite summary for libpsl 0.23.0
 ============================================================================
 # TOTAL: 5
 # PASS:  5
