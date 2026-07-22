@@ -16,6 +16,8 @@ This test takes 3 seconds and hangs the shell when it fails...
 ./A06assign.ztst: all tests successful.
 ./A07control.ztst: starting.
 ./A07control.ztst: all tests successful.
+./A09zwc.ztst: starting.
+./A09zwc.ztst: all tests successful.
 ./B01cd.ztst: starting.
 ./B01cd.ztst: all tests successful.
 ./B02typeset.ztst: starting.
@@ -45,6 +47,8 @@ This test takes 3 seconds and hangs the shell when it fails...
 ./C01arith.ztst: starting.
 ./C01arith.ztst: all tests successful.
 ./C02cond.ztst: starting.
+Warning: Not testing [[ -b blockdevice ]] (no devices found)
+Warning: Not testing [[ -f blockdevice ]] (no devices found)
 This test may take two seconds...
 ./C02cond.ztst: all tests successful.
 ./C03traps.ztst: starting.
@@ -64,7 +68,14 @@ Another test that takes three seconds
 This test hangs the shell when it fails...
 ./D03procsubst.ztst: all tests successful.
 ./D04parameter.ztst: starting.
-./D04parameter.ztst: all tests successful.
+Test ./D04parameter.ztst failed: bad status 0, expected 1 from:
+  if [[ ! -o multibyte ]]; then
+    ZTST_skip='(#X) accepts any byte if multibyte is off'
+  else
+    : ${(#X):-0x80}
+  fi
+Was testing: ${(#X)...}: out-of-range character
+./D04parameter.ztst: test failed.
 ./D05array.ztst: starting.
 ./D05array.ztst: all tests successful.
 ./D06subscript.ztst: starting.
@@ -143,5 +154,7 @@ This test may hang the shell when it fails...
 ./Z03run-help.ztst: starting.
 ./Z03run-help.ztst: all tests successful.
 **************************************
-62 successful test scripts, 0 failures, 2 skipped
+62 successful test scripts, 1 failure, 2 skipped
 **************************************
+make[1]: *** [Makefile:189: check] Error 1
+make: *** [Makefile:262: test] Error 2

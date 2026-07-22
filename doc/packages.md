@@ -34,7 +34,7 @@
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.2			| https://www.vim.org/download.php https://github.com/vim/vim
 | file/gnu-coreutils			| 9.11			| https://ftp.gnu.org/gnu/coreutils/
-| file/gnu-findutils			| 4.10.0		| https://ftp.gnu.org/pub/gnu/findutils/
+| file/gnu-findutils			| 4.11.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.8.2			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
@@ -44,11 +44,11 @@
 | library/mpfr				| 4.2.2			| http://www.mpfr.org/mpfr-current/
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
 | library/libedit			| 20260512-3.1		| https://thrysoee.dk/editline/
-| library/libevent			| 2.1.12		| https://github.com/libevent/libevent/tags
+| library/libevent			| 2.1.13		| https://github.com/libevent/libevent/tags
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libmagic			| 5.47			| https://github.com/file/file/tags
-| library/libpsl			| 0.22.0		| https://github.com/rockdaboot/libpsl/releases
+| library/libpsl			| 0.23.0		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
@@ -90,12 +90,12 @@
 | shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.11.0		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
-| shell/zsh				| 5.9.1			| https://sourceforge.net/projects/zsh/files/zsh
+| shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.125			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.126			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.6		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -109,7 +109,7 @@
 | system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 4.9.1			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.7			| https://github.com/tmux/tmux/releases http://tmux.github.io/
-| text/gawk				| 5.4.0			| https://ftp.gnu.org/gnu/gawk/
+| text/gawk				| 5.4.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
 | text/gnu-gettext			| 0.26			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/

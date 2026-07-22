@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=libpsl
-VER=0.22.0
+VER=0.23.0
 PKG=library/libpsl
 SUMMARY="C library for the Public Suffix List"
 DESC="Library for access to the collection of TLD suffixes"
