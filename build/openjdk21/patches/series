@@ -37,3 +37,4 @@ tribblix-flags-ldflags3.patch -p0
 xattrs.patch
 omnios-headless.patch
 fontpath.patch
+fix-ipv6.patch
