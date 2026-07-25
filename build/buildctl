@@ -10,6 +10,8 @@ fi
 
 BUILD_EXPENSIVE=0
 build_flags=
+
+cd $(realpath ${BASH_SOURCE[0]%/*}) || exit 1
 . ../lib/functions.sh
 
 basic_build_requirements
