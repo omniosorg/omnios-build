@@ -5,7 +5,7 @@ Fix DTrace object generation.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile.SH a/Makefile.SH
 --- a~/Makefile.SH	1970-01-01 00:00:00
 +++ a/Makefile.SH	1970-01-01 00:00:00
-@@ -289,6 +289,7 @@ LNS = $lns
+@@ -290,6 +290,7 @@ LNS = $lns
  # NOTE: some systems don't grok "cp -f". XXX Configure test needed?
  CPS = $cp
  RMS = rm -f
