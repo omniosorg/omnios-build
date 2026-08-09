@@ -19,6 +19,7 @@ Extracting runtests (with variable substitutions)
 t/test_pl/_num_to_alpha .......................................... ok
 t/test_pl/can_isa_ok ............................................. ok
 t/test_pl/display ................................................ ok
+t/test_pl/examples ............................................... ok
 t/test_pl/plan_skip_all .......................................... skipped
 t/test_pl/tempfile ............................................... ok
 t/base/cond ...................................................... ok
@@ -291,6 +292,7 @@ t/op/getpid ...................................................... ok
 t/op/getppid ..................................................... skipped
 t/op/glob ........................................................ ok
 t/op/gmagic ...................................................... ok
+t/op/goto-sub .................................................... ok
 t/op/goto ........................................................ ok
 t/op/goto_xs ..................................................... ok
 t/op/grent ....................................................... ok
@@ -594,7 +596,8 @@ lib/diagnostics .................................................. ok
 lib/DirHandle .................................................... ok
 lib/dumpvar ...................................................... ok
 lib/English ...................................................... ok
-lib/ExtUtils/t/Embed ............................................. ok
+lib/ExtUtils/t/Embed ............................................. Warning (mostly harmless): No library found for -lperl
+ok
 lib/feature ...................................................... ok
 lib/feature/unicode_strings ...................................... ok
 lib/File/Basename ................................................ ok
@@ -654,6 +657,7 @@ lib/vars_carp .................................................... ok
 lib/vmsish ....................................................... ok
 lib/warnings ..................................................... ok
 ext/B/t/b ........................................................ ok
+ext/B/t/b_uni .................................................... ok
 ext/B/t/bool ..................................................... ok
 ext/B/t/concise .................................................. ok
 ext/B/t/concise-xs ............................................... ok
@@ -667,6 +671,7 @@ ext/B/t/optree_constants ......................................... ok
 ext/B/t/optree_for ............................................... ok
 ext/B/t/optree_misc .............................................. ok
 ext/B/t/optree_samples ........................................... ok
+ext/B/t/optree_signatures ........................................ ok
 ext/B/t/optree_sort .............................................. ok
 ext/B/t/optree_specials .......................................... ok
 ext/B/t/optree_varinit ........................................... ok
@@ -794,6 +799,7 @@ ext/XS-APItest/t/callregexec ..................................... ok
 ext/XS-APItest/t/check_warnings .................................. ok
 ext/XS-APItest/t/cleanup ......................................... ok
 ext/XS-APItest/t/clone-with-stack ................................ ok
+ext/XS-APItest/t/cop_warnings .................................... ok
 ext/XS-APItest/t/cophh ........................................... ok
 ext/XS-APItest/t/coplabel ........................................ ok
 ext/XS-APItest/t/copstash ........................................ ok
@@ -876,7 +882,10 @@ ext/XS-APItest/t/stuff_modify_bug ................................ ok
 ext/XS-APItest/t/stuff_svcur_bug ................................. ok
 ext/XS-APItest/t/subcall ......................................... ok
 ext/XS-APItest/t/subsignature .................................... ok
+ext/XS-APItest/t/sv_numcmp ....................................... ok
 ext/XS-APItest/t/sv_numeq ........................................ ok
+ext/XS-APItest/t/sv_numlget ...................................... ok
+ext/XS-APItest/t/sv_numne ........................................ ok
 ext/XS-APItest/t/sv_streq ........................................ ok
 ext/XS-APItest/t/svcat ........................................... ok
 ext/XS-APItest/t/svcatpvf ........................................ ok
@@ -999,32 +1008,37 @@ dist/ExtUtils-CBuilder/t/01-basic ................................ ok
 dist/ExtUtils-CBuilder/t/02-link ................................. ok
 dist/ExtUtils-CBuilder/t/03-cplusplus ............................ ok
 dist/ExtUtils-CBuilder/t/04-base ................................. ok
-dist/ExtUtils-ParseXS/t/001-basic ................................ ok
-dist/ExtUtils-ParseXS/t/002-more ................................. ok
-dist/ExtUtils-ParseXS/t/003-usage ................................ ok
-dist/ExtUtils-ParseXS/t/101-standard_typemap_locations ........... ok
-dist/ExtUtils-ParseXS/t/102-trim_whitespace ...................... ok
-dist/ExtUtils-ParseXS/t/103-tidy_type ............................ ok
-dist/ExtUtils-ParseXS/t/104-map_type ............................. ok
-dist/ExtUtils-ParseXS/t/105-valid_proto_string ................... ok
-dist/ExtUtils-ParseXS/t/106-process_typemaps ..................... ok
-dist/ExtUtils-ParseXS/t/108-map_type ............................. ok
-dist/ExtUtils-ParseXS/t/109-standard_XS_defs ..................... ok
-dist/ExtUtils-ParseXS/t/111-analyze_preprocessor_statements ...... ok
-dist/ExtUtils-ParseXS/t/112-set_cond ............................. ok
-dist/ExtUtils-ParseXS/t/113-check_cond_preproc_statements ........ ok
-dist/ExtUtils-ParseXS/t/114-blurt_death_Warn ..................... ok
-dist/ExtUtils-ParseXS/t/115-avoid-noise .......................... ok
-dist/ExtUtils-ParseXS/t/501-t-compile ............................ ok
-dist/ExtUtils-ParseXS/t/510-t-bare ............................... ok
-dist/ExtUtils-ParseXS/t/511-t-whitespace ......................... ok
-dist/ExtUtils-ParseXS/t/512-t-file ............................... ok
-dist/ExtUtils-ParseXS/t/513-t-merge .............................. ok
-dist/ExtUtils-ParseXS/t/514-t-embed .............................. ok
-dist/ExtUtils-ParseXS/t/515-t-cmd ................................ ok
-dist/ExtUtils-ParseXS/t/516-t-clone .............................. ok
-dist/ExtUtils-ParseXS/t/517-t-targetable ......................... ok
-dist/ExtUtils-ParseXS/t/600-t-compat ............................. ok
+dist/ExtUtils-ParseXS/t/000-version .............................. ok
+dist/ExtUtils-ParseXS/t/001-parse-basic .......................... ok
+dist/ExtUtils-ParseXS/t/002-parse-file-scope ..................... ok
+dist/ExtUtils-ParseXS/t/003-parse-file-scope-keywords ............ ok
+dist/ExtUtils-ParseXS/t/004-parse-xsub-declaration ............... ok
+dist/ExtUtils-ParseXS/t/005-parse-parameters ..................... ok
+dist/ExtUtils-ParseXS/t/006-parse-return-type .................... ok
+dist/ExtUtils-ParseXS/t/007-parse-input-output ................... ok
+dist/ExtUtils-ParseXS/t/008-parse-xsub-keywords .................. ok
+dist/ExtUtils-ParseXS/t/009-parse-c-plusplus ..................... ok
+dist/ExtUtils-ParseXS/t/101-api-standard_typemap_locations ....... ok
+dist/ExtUtils-ParseXS/t/102-api-trim_whitespace .................. ok
+dist/ExtUtils-ParseXS/t/103-api-tidy_type ........................ ok
+dist/ExtUtils-ParseXS/t/104-api-map_type ......................... ok
+dist/ExtUtils-ParseXS/t/105-api-valid_proto_string ............... ok
+dist/ExtUtils-ParseXS/t/106-api-process_typemaps ................. ok
+dist/ExtUtils-ParseXS/t/113-api-check_cond_preproc_statements .... ok
+dist/ExtUtils-ParseXS/t/114-api-blurt_death_Warn ................. ok
+dist/ExtUtils-ParseXS/t/301-run-basic ............................ ok
+dist/ExtUtils-ParseXS/t/302-run-more ............................. ok
+dist/ExtUtils-ParseXS/t/303-run-usage ............................ ok
+dist/ExtUtils-ParseXS/t/501-typemaps-compile ..................... ok
+dist/ExtUtils-ParseXS/t/510-typemaps-bare ........................ ok
+dist/ExtUtils-ParseXS/t/511-typemaps-whitespace .................. ok
+dist/ExtUtils-ParseXS/t/512-typemaps-file ........................ ok
+dist/ExtUtils-ParseXS/t/513-typemaps-merge ....................... ok
+dist/ExtUtils-ParseXS/t/514-typemaps-embed ....................... ok
+dist/ExtUtils-ParseXS/t/515-typemaps-cmd ......................... ok
+dist/ExtUtils-ParseXS/t/516-typemaps-clone ....................... ok
+dist/ExtUtils-ParseXS/t/517-typemaps-targetable .................. ok
+dist/ExtUtils-ParseXS/t/518-typemaps-compat ...................... ok
 dist/Filter-Simple/t/code_no_comments ............................ ok
 dist/Filter-Simple/t/data ........................................ ok
 dist/Filter-Simple/t/export ...................................... ok
@@ -1493,6 +1507,8 @@ cpan/Config-Perl-V/t/43_plv53710rcs .............................. ok
 cpan/Config-Perl-V/t/44_plv5380tqm ............................... ok
 cpan/Config-Perl-V/t/45_plv5400tqm ............................... ok
 cpan/Config-Perl-V/t/46_plv5411tqmrcs ............................ ok
+cpan/Config-Perl-V/t/47_plv5420tqm ............................... ok
+cpan/Config-Perl-V/t/48_plv5437 .................................. ok
 cpan/CPAN/t/01loadme ............................................. ok
 cpan/CPAN/t/02nox ................................................ ok
 cpan/CPAN/t/03pkgs ............................................... ok
@@ -2109,6 +2125,8 @@ cpan/Pod-Simple/t/fcodes ......................................... ok
 cpan/Pod-Simple/t/fcodes_e ....................................... ok
 cpan/Pod-Simple/t/fcodes_l ....................................... ok
 cpan/Pod-Simple/t/fcodes_s ....................................... ok
+cpan/Pod-Simple/t/filter ......................................... ok
+cpan/Pod-Simple/t/filter-html .................................... ok
 cpan/Pod-Simple/t/for ............................................ ok
 cpan/Pod-Simple/t/fornot ......................................... ok
 cpan/Pod-Simple/t/github_issue_79 ................................ ok
@@ -2140,7 +2158,7 @@ cpan/Pod-Simple/t/search26 ....................................... ok
 cpan/Pod-Simple/t/search27 ....................................... ok
 cpan/Pod-Simple/t/search28 ....................................... ok
 cpan/Pod-Simple/t/search29 ....................................... ok
-cpan/Pod-Simple/t/search50 ....................................... ok
+cpan/Pod-Simple/t/search50 ....................................... skipped
 cpan/Pod-Simple/t/search60 ....................................... ok
 cpan/Pod-Simple/t/stree .......................................... ok
 cpan/Pod-Simple/t/strpvbtm ....................................... ok
@@ -2257,13 +2275,14 @@ cpan/Term-ANSIColor/t/taint/basic ................................ ok
 cpan/Term-Cap/test ............................................... ok
 cpan/Term-Table/t/bad_blank_line ................................. ok
 cpan/Term-Table/t/HashBase ....................................... ok
-cpan/Term-Table/t/honor_env_in_non_tty ........................... # Using Test2::Tools::Tiny 1.302210
-ok
+cpan/Term-Table/t/honor_env_in_non_tty ........................... skipped
 cpan/Term-Table/t/issue-9 ........................................ ok
 cpan/Term-Table/t/Table .......................................... ok
 cpan/Term-Table/t/Table/Cell ..................................... ok
 cpan/Term-Table/t/Table/CellStack ................................ ok
 cpan/Term-Table/t/Table/LineBreak ................................ ok
+cpan/Term-Table/t/Term-ReadKey ................................... skipped
+cpan/Term-Table/t/Term-Size-Any .................................. skipped
 cpan/Test-Harness/t/aggregator ................................... ok
 cpan/Test-Harness/t/bailout ...................................... ok
 cpan/Test-Harness/t/base ......................................... ok
@@ -2506,6 +2525,7 @@ cpan/Test-Simple/t/modules/Compare/Set ........................... ok
 cpan/Test-Simple/t/modules/Compare/String ........................ ok
 cpan/Test-Simple/t/modules/Compare/Undef ......................... ok
 cpan/Test-Simple/t/modules/Compare/Wildcard ...................... ok
+cpan/Test-Simple/t/modules/Handle ................................ ok
 cpan/Test-Simple/t/modules/Mock .................................. ok
 cpan/Test-Simple/t/modules/Plugin ................................ ok
 cpan/Test-Simple/t/modules/Plugin/BailOnFail ..................... ok
@@ -2562,6 +2582,9 @@ cpan/Test-Simple/t/modules/Util/Table/Cell ....................... ok
 cpan/Test-Simple/t/modules/Util/Table/LineBreak .................. ok
 cpan/Test-Simple/t/modules/Util/Times ............................ ok
 cpan/Test-Simple/t/modules/V0 .................................... ok
+cpan/Test-Simple/t/modules/V1 .................................... ok
+cpan/Test-Simple/t/modules/V1/Base ............................... ok
+cpan/Test-Simple/t/modules/V1/Handle ............................. ok
 cpan/Test-Simple/t/modules/Workflow .............................. skipped
 cpan/Test-Simple/t/modules/Workflow/BlockBase .................... skipped
 cpan/Test-Simple/t/modules/Workflow/Build ........................ skipped
@@ -2735,7 +2758,9 @@ cpan/Time-Piece/t/07arith ........................................ ok
 cpan/Time-Piece/t/08truncate ..................................... ok
 cpan/Time-Piece/t/09locales ...................................... skipped
 cpan/Time-Piece/t/10overload ..................................... ok
-cpan/Time-Piece/t/99legacy ....................................... ok
+cpan/Time-Piece/t/11strptime_defaults ............................ ok
+cpan/Time-Piece/t/12strptime_timezones ........................... skipped
+cpan/Time-Piece/t/13date_arithmetic_edge_cases ................... skipped
 cpan/Unicode-Collate/t/altern .................................... ok
 cpan/Unicode-Collate/t/backwds ................................... ok
 cpan/Unicode-Collate/t/cjk_b5 .................................... ok
@@ -2916,6 +2941,7 @@ t/porting/libperl ................................................ skipped
 t/porting/maintainers ............................................ ok
 t/porting/makerel ................................................ ok
 t/porting/manifest ............................................... ok
+t/porting/merge-deltas ........................................... ok
 t/porting/perlfunc ............................................... ok
 t/porting/pod_rules .............................................. ok
 t/porting/podcheck ............................................... ok
@@ -2928,5 +2954,5 @@ t/porting/test_testlist .......................................... ok
 t/porting/update_authors ......................................... skipped
 t/porting/utils .................................................. skipped
 All tests successful.
-Elapsed: 1149 sec
-u=8.57  s=4.24  cu=823.77  cs=80.12  scripts=2749  tests=1350784
+Elapsed: 1154 sec
+u=11.20  s=7.90  cu=836.82  cs=122.86  scripts=2769  tests=1392009

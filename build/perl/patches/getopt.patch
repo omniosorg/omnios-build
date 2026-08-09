@@ -6,14 +6,9 @@ Subject: [PATCH] Silence Getopt::Long warning
 Getopt::Long >= 2.55 produces the warning
 'Duplicate specification "V" for option "v"
 See issue #88 for prior report.
----
- bin/json_pp | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/cpan/JSON-PP/bin/json_pp b/cpan/JSON-PP/bin/json_pp
-index 72b9db7..85dd348 100644
---- a/cpan/JSON-PP/bin/json_pp
-+++ b/cpan/JSON-PP/bin/json_pp
+diff -wpruN --no-dereference '--exclude=*.orig' a~/cpan/JSON-PP/bin/json_pp a/cpan/JSON-PP/bin/json_pp
+--- a~/cpan/JSON-PP/bin/json_pp	1970-01-01 00:00:00
++++ a/cpan/JSON-PP/bin/json_pp	1970-01-01 00:00:00
 @@ -2,7 +2,7 @@
  
  BEGIN { pop @INC if $INC[-1] eq '.' }
