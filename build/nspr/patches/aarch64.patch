@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.in a/configure.in
 --- a~/configure.in	1970-01-01 00:00:00
 +++ a/configure.in	1970-01-01 00:00:00
-@@ -2285,6 +2285,8 @@ case "$target" in
+@@ -2266,6 +2266,8 @@ case "$target" in
              else
                 PR_MD_ASFILES=os_SunOS_x86.s
              fi
@@ -50,7 +50,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/include/md/_solaris.h a/pr
  #else
  #error unknown processor
  #endif
-@@ -292,6 +294,34 @@ NSPR_API(void)              _MD_SolarisI
+@@ -306,6 +308,34 @@ _MD_SolarisInit();
      PR_END_MACRO
  #endif
  
@@ -82,7 +82,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/include/md/_solaris.h a/pr
 +    _MD_SET_CURRENT_THREAD(_thread);	\
 +    longjmp(CONTEXT(_thread), 1);    \
 +}
- #else  /* x86 solaris */
+ #else /* x86 solaris */
  
  #ifdef USE_SETJMP
 diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/include/prcpucfg.h a/pr/include/prcpucfg.h
@@ -346,12 +346,12 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/src/md/unix/os_SunOS_aarch
 diff -wpruN --no-dereference '--exclude=*.orig' a~/pr/src/md/unix/unix.c a/pr/src/md/unix/unix.c
 --- a~/pr/src/md/unix/unix.c	1970-01-01 00:00:00
 +++ a/pr/src/md/unix/unix.c	1970-01-01 00:00:00
-@@ -2559,7 +2559,7 @@ static void _PR_InitIOV(void) {
- #  else
-   _md_iovector._open64 = open64;
- #  endif
--  _md_iovector._mmap64 = mmap64;
-+  _md_iovector._mmap64 = (_MD_Mmap64)mmap64;
- #  if (defined(ANDROID) && __ANDROID_API__ < 21)
-   /* Same as the open64 case for Android. */
-   _md_iovector._fstat64 = (_MD_Fstat64)fstat;
+@@ -2719,7 +2719,7 @@ _PR_InitIOV(void)
+ #else
+     _md_iovector._open64 = open64;
+ #endif
+-    _md_iovector._mmap64 = mmap64;
++    _md_iovector._mmap64 = (_MD_Mmap64)mmap64;
+ #if (defined(ANDROID) && __ANDROID_API__ < 21)
+     /* Same as the open64 case for Android. */
+     _md_iovector._fstat64 = (_MD_Fstat64)fstat;
