@@ -17,12 +17,13 @@
 . ../../lib/build.sh
 
 PROG=ntpsec
-VER=1.2.4
+VER=1.2.5
 PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
 
 set_arch 64
+set_standard XPG7 CFLAGS
 
 # Required to generate man pages
 BUILD_DEPENDS_IPS="ooce/text/asciidoc"
@@ -31,9 +32,6 @@ export PATH=$PATH:$OOCEBIN
 SKIP_LICENCES="skip*"
 
 export XML_CATALOG_FILES=$OOCEOPT/docbook-xsl/catalog.xml
-
-# Required to include struct timespec definition and constants.
-export CFLAGS+=" -D__EXTENSIONS__"
 
 # TODO: The code needs some updates to build without this option
 CFLAGS+=" -fpermissive"
@@ -56,23 +54,6 @@ CONFIGURE_OPTS[WS]="
 "
 
 # NTPsec uses the 'waf' build system
-
-build_init() {
-    # ntpsec 1.2.4 includes a broken version of "waf" which does not honour
-    # --libdir. Replace it.
-    typeset newver=2.1.6
-    typeset oldver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
-    [ "$oldver" = "2.1.4" ] || logerr "Unexpected waf version $oldver"
-    logmsg "-- updating 'waf' from $oldver to $newver"
-    pushd $TMPDIR >/dev/null
-    get_resource $PROG/waf-$newver || logerr "Could not download waf-$newver"
-    DLDIR=$PROG FILENAME=waf-$newver verify_checksum
-    $CHMOD +x waf-$newver
-    popd >/dev/null
-    typeset nowver=`$TMPDIR/waf-$newver --version | $AWK '{print $2}'`
-    [ "$nowver" = "$newver" ] || logerr "Unexpected new waf version $nowver"
-    cp $TMPDIR/waf-$newver $TMPDIR/$BUILDDIR/waf
-}
 
 make_clean() {
     logcmd ./waf distclean
