@@ -21,7 +21,6 @@ pkg
 		attrs
 		pyrsistent
 		js-regex
-	orjson
 	pycurl
 	rapidjson
 	coverage

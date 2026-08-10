@@ -306,7 +306,6 @@ omnios library/python-3/js-regex-313
 omnios library/python-3/jsonrpclib-313
 omnios library/python-3/jsonschema-313
 omnios library/python-3/meson-313
-omnios library/python-3/orjson-313
 omnios library/python-3/packaging-313
 omnios library/python-3/pip-313
 omnios library/python-3/pycodestyle-313
