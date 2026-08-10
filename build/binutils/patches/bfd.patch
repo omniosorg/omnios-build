@@ -13,18 +13,16 @@ https://illumos.topicbox.com/groups/developer/T5f37e8c8f0687062-Mcec43129fb017b7
 diff -wpruN --no-dereference '--exclude=*.orig' a~/bfd/config.bfd a/bfd/config.bfd
 --- a~/bfd/config.bfd	1970-01-01 00:00:00
 +++ a/bfd/config.bfd	1970-01-01 00:00:00
-@@ -596,8 +596,8 @@ case "${targ}" in
-     ;;
+@@ -565,7 +565,7 @@ case "${targ}" in
    i[3-7]86-*-solaris2*)
      targ_defvec=i386_elf32_sol2_vec
--    targ_selvecs=i386_elf32_vec
--    targ64_selvecs="x86_64_elf64_sol2_vec x86_64_elf64_vec"
-+    targ_selvecs="i386_elf32_vec i386_pei_vec"
-+    targ64_selvecs="x86_64_elf64_sol2_vec x86_64_elf64_vec x86_64_pe_vec x86_64_pei_vec"
      # Include 64-bit support to match GCC.
+-    targ_selvecs="i386_elf32_vec x86_64_elf64_sol2_vec x86_64_elf64_vec"
++    targ_selvecs="i386_elf32_vec x86_64_elf64_sol2_vec x86_64_elf64_vec i386_pei_vec x86_64_pe_vec x86_64_pei_vec"
      want64=true
      ;;
-@@ -729,7 +729,7 @@ case "${targ}" in
+   i[3-7]86-*-dicos* | i[3-7]86-*-dragonfly* |  i[3-7]86-*-netbsd* | i[3-7]86-*-knetbsd*-gnu | i[3-7]86-*-redox*)
+@@ -1378,7 +1378,7 @@ case "${targ}" in
      ;;
    x86_64-*-solaris2*)
      targ_defvec=x86_64_elf64_sol2_vec
@@ -32,4 +30,4 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/bfd/config.bfd a/bfd/config.b
 +    targ_selvecs="i386_elf32_sol2_vec x86_64_elf64_vec i386_elf32_vec i386_pei_vec x86_64_pe_vec x86_64_pei_vec"
      want64=true
      ;;
-   x86_64-*-gnu*)
+   x86_64-*-elf* | x86_64-*-fuchsia | x86_64-*-genode* | x86_64-*-gnu*)
