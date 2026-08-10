@@ -5,7 +5,7 @@ Author: Bill Sommerfeld <sommerfeld@hamachi.org>
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_dtrace.py a/Lib/test/test_dtrace.py
 --- a~/Lib/test/test_dtrace.py	1970-01-01 00:00:00
 +++ a/Lib/test/test_dtrace.py	1970-01-01 00:00:00
-@@ -126,7 +126,7 @@ class TraceTests:
+@@ -131,7 +131,7 @@ class TraceTests:
      def test_verify_call_opcodes(self):
          """Ensure our call stack test hits all function call opcodes"""
  
@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_dtrace.py a/Lib
  
          with open(abspath("call_stack.py")) as f:
              code_string = f.read()
-@@ -151,6 +151,7 @@ class TraceTests:
+@@ -156,6 +156,7 @@ class TraceTests:
      def test_gc(self):
          self.run_case("gc")
  
@@ -22,10 +22,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_dtrace.py a/Lib
      def test_line(self):
          self.run_case("line")
  
-@@ -183,6 +184,8 @@ class CheckDtraceProbes(unittest.TestCas
-                 print(f"readelf version: {readelf_major_version}.{readelf_minor_version}")
-         else:
-             raise unittest.SkipTest("CPython must be configured with the --with-dtrace option.")
+@@ -185,6 +186,8 @@ class CheckDtraceProbes(unittest.TestCas
+         readelf_major_version, readelf_minor_version = cls.get_readelf_version()
+         if support.verbose:
+             print(f"readelf version: {readelf_major_version}.{readelf_minor_version}")
 +        # These checks are only relevant with the SystemTap backend
 +        SystemTapBackend().assert_usable()
  
