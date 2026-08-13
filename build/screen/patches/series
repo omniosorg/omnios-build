@@ -1,8 +1,7 @@
 Makefile.in.patch
-ncurses.patch
-unneededlibs.patch
-gcc14.patch
-0001-attacher.c-prevent-temporary-0666-mode-on-PTYs-to-fi.patch
-0002-Avoid-file-existence-test-information-leaks-to-fix-C.patch
-0003-socket.c-don-t-send-signals-with-root-privileges-to-.patch
+openpty.patch
+closefiles.patch
+grabconsole.patch
+256colour.patch
+window.patch
 modernise.patch
