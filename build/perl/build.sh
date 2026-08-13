@@ -29,6 +29,7 @@ CROSSVER=1.6.4
 
 set_arch 64
 CTF_FLAGS+=" -s"
+set_standard XPG6 XPG6CFLAGS
 
 PREFIX=/usr/perl5/$MAJVER
 
@@ -77,7 +78,7 @@ configure_amd64() {
         -Dcf_email=$PUBLISHER_EMAIL \
         -Dcc=gcc \
         -Dld=gcc \
-        -Doptimize="-O3 $CTF_CFLAGS" \
+        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
         -Dbin=${PREFIX}/bin \
@@ -136,7 +137,7 @@ configure_aarch64() {
         -Dosname=solaris \
         -Dcf_by=$DISTRO_LC-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
-        -Doptimize="-O3 $CTF_CFLAGS" \
+        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
         -Dbin=${PREFIX}/bin \
