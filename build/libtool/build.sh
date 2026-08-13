@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=libtool
-VER=2.5.4
+VER=2.6.2
 PKG=developer/build/libtool  ##IGNORE##
 SUMMARY="unused; replaced below"
 DESC="$SUMMARY"

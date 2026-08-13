@@ -12,11 +12,11 @@
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.20.1		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
-| database/sqlite-3			| 3530300		| https://www.sqlite.org/download.html
+| database/sqlite-3			| 3530400		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.73			| https://ftp.gnu.org/gnu/autoconf/
 | developer/build/automake		| 1.18.1		| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
-| developer/build/libtool		| 2.5.4			| https://www.gnu.org/software/libtool/
+| developer/build/libtool		| 2.6.2			| https://www.gnu.org/software/libtool/
 | developer/dtc				| 1.8.1			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
 | developer/exuberant-ctags		| 5.8			| https://sourceforge.net/projects/ctags/files/ctags/ http://ctags.sourceforge.net/
 | developer/gcc10			| 10.5			| https://ftp.gnu.org/gnu/gcc/
@@ -48,15 +48,15 @@
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libmagic			| 5.47			| https://github.com/file/file/tags
-| library/libpsl			| 0.23.0		| https://github.com/rockdaboot/libpsl/releases
+| library/libpsl			| 0.23.1		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.16			| https://download.savannah.gnu.org/releases/lzip/lzlib/
 | library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
-| library/nghttp2			| 1.69.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nspr				| 4.39			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
+| library/nghttp2			| 1.70.0		| https://github.com/nghttp2/nghttp2/releases
+| library/nspr				| 4.40			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.47			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
@@ -79,11 +79,10 @@
 | runtime/java/openjdk21		| 21.0.9+10		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.472-08		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
-| runtime/python-311			| 3.11.14		| https://www.python.org/downloads/source/
-| runtime/python-313			| 3.13.12		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.15		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.17p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.8			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
-| service/network/ntpsec		| 1.2.4			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
+| service/network/ntpsec		| 1.2.5			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
@@ -120,10 +119,10 @@
 | web/curl				| 8.21.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.1			| https://ftp.gnu.org/gnu/wget/
-| library/glib2				| 2.88.2		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
-| developer/gnu-binutils		| 2.46.1		| https://ftp.gnu.org/gnu/binutils
+| library/glib2				| 2.88.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
+| developer/gnu-binutils		| 2.47		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.8.pl02		| https://www.gnu.org/software/xorriso/
-| system/virtualization/open-vm-tools	| 13.0.10		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
+| system/virtualization/open-vm-tools	| 13.1.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
 | developer/swig			| 4.4.1			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
@@ -137,7 +136,6 @@
 | library/python-3/jsonrpclib-313	| 1.0.0			| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.17.3		| https://pypi.org/rss/project/jsonschema/releases.xml
 | library/python-3/meson-313		| 1.11.1		| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/orjson-313		| 3.11.9		| https://github.com/ijl/orjson/releases
 | library/python-3/packaging-313	| 26.2			| https://pypi.org/rss/project/packaging/releases.xml
 | library/python-3/pip-313		| 26.1.1		| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml

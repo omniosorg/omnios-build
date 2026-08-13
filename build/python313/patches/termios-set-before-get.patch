@@ -25,7 +25,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_termios.py a/Li
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/termios.c a/Modules/termios.c
 --- a~/Modules/termios.c	1970-01-01 00:00:00
 +++ a/Modules/termios.c	1970-01-01 00:00:00
-@@ -518,9 +518,12 @@ termios_tcsetwinsize_impl(PyObject *modu
+@@ -519,9 +519,12 @@ termios_tcsetwinsize_impl(PyObject *modu
  #if defined(TIOCGWINSZ) && defined(TIOCSWINSZ)
      struct winsize w;
      /* Get the old winsize because it might have
