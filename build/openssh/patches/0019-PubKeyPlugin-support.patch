@@ -201,22 +201,22 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/auth2-pubkey.c a/auth2-pubkey
  /*
   * Check whether key authenticates and authorises the user.
   */
-@@ -857,6 +1015,11 @@ user_key_allowed(struct ssh *ssh, struct
+@@ -856,6 +1014,11 @@ user_key_allowed(struct ssh *ssh, struct
+ 		goto out;
  	sshauthopt_free(opts);
  	opts = NULL;
- 
++
 +	if ((success = user_key_allowed_from_plugin(pw, key, &opts)) != 0)
 +		goto out;
 +	sshauthopt_free(opts);
 +	opts = NULL;
-+
+ 
  	if ((success = user_key_command_allowed2(pw, key, remote_ip,
  	    remote_host, conn_id, rdomain, &opts)) != 0)
- 		goto out;
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
 --- a~/servconf.c	1970-01-01 00:00:00
 +++ a/servconf.c	1970-01-01 00:00:00
-@@ -2608,6 +2608,20 @@ process_server_config_line_depth(ServerO
+@@ -2606,6 +2606,20 @@ process_server_config_line_depth(ServerO
  		multistate_ptr = multistate_flag;
  		goto parse_multistate;
  
@@ -237,7 +237,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.c a/servconf.c
  	case sDeprecated:
  	case sIgnore:
  	case sUnsupported:
-@@ -4365,6 +4379,7 @@ dump_config(ServerOptions *o)
+@@ -4363,6 +4377,7 @@ dump_config(ServerOptions *o)
  	dump_cfg_string(sHostKeyAgent, o->host_key_agent);
  	dump_cfg_string(sKexAlgorithms, o->kex_algorithms);
  	dump_cfg_string(sCASignatureAlgorithms, o->ca_sign_algorithms);
