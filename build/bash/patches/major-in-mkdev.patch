@@ -1,0 +1,24 @@
+AC_HEADER_MAJOR defines MAJOR_IN_MKDEV when major/minor/makedev are found
+in <sys/mkdev.h>, as they are on illumos, but the hand-maintained template
+in config.h.in spells it MAJOR_IN_MAKEDEV, so config.status silently drops
+the define. As a result, examples/loadables/finfo.c does not include
+<sys/mkdev.h> and major()/minor() are implicitly declared. With gcc 14+
+this is a hard error, the loadable builtins fail to build, and the
+top-level Makefile ignores the failure, silently dropping them from the
+installation.
+
+This is already fixed in the upstream devel branch; this patch should be
+dropped when it appears in a release.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/config.h.in a/config.h.in
+--- a~/config.h.in	1970-01-01 00:00:00
++++ a/config.h.in	1970-01-01 00:00:00
+@@ -294,7 +294,7 @@
+ #undef HAVE_ALLOCA_H
+ 
+ /* Define if major/minor/makedev is defined in <sys/mkdev.h> */
+-#undef MAJOR_IN_MAKEDEV
++#undef MAJOR_IN_MKDEV
+ 
+ /* Define if major/minor/makedev is defined in <sys/sysmacros.h> */
+ #undef MAJOR_IN_SYSMACROS
