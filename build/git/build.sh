@@ -55,8 +55,6 @@ CONFIGURE_OPTS="
     --with-libpcre2
 "
 
-PATH+=:$OOCEBIN
-
 for arch in $CROSS_ARCH; do
     CONFIGURE_OPTS[$arch]+="
         ac_cv_iconv_omits_bom=no
@@ -73,7 +71,15 @@ MAKE_INSTALL_ARGS+=" perllibdir=$perllib"
 BMI_EXPECTED=$BATCH
 
 pre_configure() {
+    typeset arch=$1
+
+    PATH+=:$OOCEBIN
+
     make_param configure
+
+    ! cross_arch $arch && return
+
+    export NO_RUST=1
 }
 
 pre_make() {
