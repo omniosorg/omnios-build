@@ -164,6 +164,7 @@ pre_configure() {
     typeset arch=$1
 
     CPPFLAGS[$arch]+=" -DDEFAULT_LOADABLE_BUILTINS_PATH='\"$PREFIX/${LIBDIRS[$arch]}/bash:.\"'"
+    LDFLAGS[$arch]+=" -L${SYSROOT[$arch]}$PREFIX/${LIBDIRS[$arch]}"
 }
 
 # The loadable builtins are built and installed as part of `make install`,

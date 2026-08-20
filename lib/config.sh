@@ -151,6 +151,11 @@ typeset -A TRIPLETS=(
     [aarch64]=aarch64-unknown-solaris2.11
 )
 
+typeset -A RUSTTRIPLETS=(
+    [amd64]=x86_64-unknown-illumos
+    [aarch64]=aarch64-unknown-illumos
+)
+
 #############################################################################
 # Perl stuff
 #############################################################################
