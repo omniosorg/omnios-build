@@ -7,6 +7,78 @@ Most patches -p0
 
 JDK17:
 
+17.0.20.1
+
+No changes.
+
+17.0.19
+
+Trivial patch noise.
+
+Remove the deprecation check.
+
+17.0.18
+
+Minor patch noise.
+
+Cleanup: finish up UnixOperatingSystem.c in jdk.management, and align
+with changes in other platforms.
+
+17.0.17
+
+Minor patch noise.
+
+Don't use a fixed 32-bit path to dlopen libXrender
+
+17.0.16
+
+Minor patch noise.
+
+Cleanup: remove unused check_addr0_done.
+
+Cleanup: remove the unshuffle_list.txt hunk.
+
+Cleanup: Move the mapfiles (symbol files) to the right place.
+
+Cleanup: Remove /usr/bin/sh override in PrintServiceLookupProvider.java.
+
+Cleanup: remove unused register stack functions. See the bug
+8253457: Remove unimplemented register stack functions
+The change for that not only removed the itanium only register
+stack functions, but also the base_of_stack_pointer routines
+which I keep for now as they were implemented and used on sparc.
+
+Cleanup: Remove unused global UseOSErrorReporting.
+
+17.0.14
+
+Minor patch noise.
+
+Cleanup: remove SPARC_WORKS
+
+Cleanup: remove 32-bit SSE check
+
+Cleanup: os::is_allocatable() is always true on 64-bit
+
+Cleanup: src/hotspot/os/solaris and src/hotspot/os_cpu/solaris_x86
+split out into separate restore patches.
+
+Cleanup: remove audio solaris 7 compatibility code
+
+Cleanup: remove unused JSIG_VERSION_1_4_1 define
+
+Cleanup: remove unused SOLARIS_MUTATOR_LIBTHREAD hunk
+
+17.0.13
+
+Drop the png patch. It no longer applies and appears unnecessary with
+the png update.
+
+Pipewire has been added, so need to patch that like wed id in jdk21.
+See illumos-port-20.patch.
+
+Cleanup: Since Solaris 10, fork() has always been fork1()
+
 17.0.12
 
 Removed last remnants of extended_FILE_stdio, it's unused as 32-bit
