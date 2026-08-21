@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PKG=library/perl-5/xml-parser
 PROG=XML-Parser
-VER=2.47
+VER=2.59
 SUMMARY="XML::Parser perl module"
 DESC="A perl module for parsing XML documents"
 
@@ -33,6 +33,11 @@ RUN_DEPENDS_IPS="$BUILD_DEPENDS_IPS"
 init
 download_source perlmodules/$PROG $PROG $VER
 patch_source
+# The encoding maps live in share/ and are located via File::ShareDir,
+# which is not packaged; place them in Parser/Encodings/ so that MakeMaker
+# installs them where XML::Parser::Expat's @INC fallback finds them.
+cp $TMPDIR/$BUILDDIR/share/*.enc $TMPDIR/$BUILDDIR/Parser/Encodings/ \
+    || logerr "Failed to copy encoding maps"
 prep_build
 buildperl
 siteperl_to_vendor
