@@ -18,8 +18,8 @@
 
 PROG=openjdk
 VER=1.8
-UPDATE=472
-BUILD=08
+UPDATE=504
+BUILD=01
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
 
@@ -76,19 +76,14 @@ CONFIGURE_OPTS="
     --with-giflib=bundled
     --with-cups-include=$OOCEPREFIX/include
     --x-includes=$OOCEPREFIX/include
-    --enable-freetype-bundling
     --with-memory-size=768
     --disable-precompiled-headers
     --disable-ccache
     --with-native-debug-symbols=none
-    --with-freetype=$OOCEPREFIX
-    --with-freetype-include=$OOCEPREFIX/include/freetype2
+    --with-freetype=bundled
     --with-fontconfig=$OOCEPREFIX
     --with-fontconfig-include=$OOCEPREFIX/include
     --with-jobs=$MJOBS
-"
-CONFIGURE_OPTS[amd64]+="
-    --with-freetype-lib=$OOCEPREFIX/lib/amd64
 "
 CONFIGURE_OPTS[WS]="
     --with-extra-cflags=\"-std=gnu89 -std=gnu++98 -fno-lifetime-dse\"
