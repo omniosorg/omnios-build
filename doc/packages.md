@@ -128,7 +128,7 @@
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 2.1.1			| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.14.0		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-313		| 7.15.4		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 48.0.0		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.15			| https://pypi.org/rss/project/idna/releases.xml
