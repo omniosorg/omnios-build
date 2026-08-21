@@ -145,6 +145,27 @@ post_install() {
     $EGREP -s "/$SHAREDUSR/vendor-packages" $f \
         || logerr "Vendor-packages path not correctly set"
 
+    if cross_arch $arch; then
+        # The sysconfig data records the flags which were used to build
+        # python itself. For a cross build these embed the cross compiler
+        # and sysroot paths, which are only valid on the build machine.
+        # Scrub them so that the shipped data can be used to compile
+        # extensions natively on the target system.
+        for f in \
+            $DESTDIR/$SHAREDUSR/_sysconfigdata_*.py \
+            $DESTDIR/$SHAREDUSR/config-$MVER-*/Makefile \
+            $DESTDIR$PREFIX/bin/python$MVER-config
+        do
+            [ -f "$f" ] || continue
+            logmsg "--- scrubbing build machine paths from ${f##*/}"
+            logcmd $SED -i "
+                s|--sysroot=[^ '\\\"]*||g
+                s|${SYSROOT[$arch]}||g
+                s|$CROSSTOOLS/$arch/bin/||g
+            " $f || logerr "scrub $f failed"
+        done
+    fi
+
     python_compile \
         -o0 -o1 -o2 \
         -x 'bad_coding|badsyntax|site-packages|lib2to3/tests/data'
