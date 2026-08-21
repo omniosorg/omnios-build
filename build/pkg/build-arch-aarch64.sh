@@ -69,7 +69,13 @@ build() {
         python_cross_setup $ARCH
 
         export CC
-        export PYCFLAGS="-I`pyvar INCLUDEPY` `pyvar CFLAGS`"
+
+        # Compile against our sysroot, discarding any sysroot option found
+        # in the target python's sysconfig data.
+        typeset pycflags=`pyvar CFLAGS | $SED "s|--sysroot=[^ ]*||g"`
+        pycflags+=" --sysroot=${SYSROOT[$ARCH]}"
+
+        export PYCFLAGS="-I`pyvar INCLUDEPY` $pycflags"
         export PYLDFLAGS="`pyvar SHLIBS`"
         export PYVERSIONS=$v
         export USEPY=$v
