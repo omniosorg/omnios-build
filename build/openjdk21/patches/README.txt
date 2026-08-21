@@ -3,6 +3,31 @@ considerably modified. Cut from the jdk15 patches as of jdk15+32.
 
 See also README-zero.txt for note on a project zero variant.
 
+21.0.12.1
+
+No changes.
+
+Cleanup: defaultPath() no longer includes SUNWspro.
+
+21.0.12
+
+Types of physical_memory, free_memory, available_memory have changed.
+physical_memory() and _physical_memory are now size_t rather than
+julong.
+free_memory() is now a bool free_memory(&value), likewise
+available_memory, total_swap_space, free_swap_space
+
+21.0.11
+
+Trivial patch noise.
+
+21.0.10
+
+Minor patch noise.
+
+Cleanup: finish up UnixOperatingSystem.c in jdk.management, and align
+with changes in other platforms.
+
 Fix: restore support for extended attributes - see xattrs.patch
 
 21.0.9
