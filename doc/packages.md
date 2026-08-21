@@ -136,7 +136,7 @@
 | library/python-3/jsonrpclib-313	| 1.2.0			| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.26.0		| https://pypi.org/rss/project/jsonschema/releases.xml
 | library/python-3/meson-313		| 1.12.0		| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
-| library/python-3/packaging-313	| 26.2			| https://pypi.org/rss/project/packaging/releases.xml
+| library/python-3/packaging-313	| 26.3			| https://pypi.org/rss/project/packaging/releases.xml
 | library/python-3/pip-313		| 26.1.1		| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
