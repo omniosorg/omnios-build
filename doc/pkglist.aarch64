@@ -148,6 +148,7 @@ library/python-3/referencing-313
 system/management/snmp/net-snmp
 ###############################################################################
 .SYSROOT
+library/python-3/jsonschema-specifications-313
 library/python-3/pyopenssl-313
 ###############################################################################
 .SYSROOT
