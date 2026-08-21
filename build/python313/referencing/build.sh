@@ -16,20 +16,25 @@
 
 . ../../../lib/build.sh
 
-PKG=library/python-3/jsonrpclib-313
-PROG=jsonrpclib
-VER=1.2.0
-SUMMARY="A Python JSON-RPC over HTTP that mirrors xmlrpclib syntax"
-DESC="$SUMMARY"
+PKG=library/python-3/referencing-313
+PROG=referencing
+VER=0.37.0
+SUMMARY="JSON referencing and dereferencing for Python"
+DESC="An implementation-agnostic implementation of JSON reference resolution"
 
 . $SRCDIR/../common.sh
 
+RUN_DEPENDS_IPS+="
+    library/python-$PYMVER/attrs-$SPYVER
+    library/python-$PYMVER/rpds-py-$SPYVER
+"
+
 init
-download_source pymodules/$PROG v$VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
-make_package
+make_package $SRCDIR/../common.mog
 clean_up
 
 # Vim hints

@@ -1,0 +1,13 @@
+aarch64 is a supported architecture on illumos
+
+--- a/src/target/mod.rs
++++ b/src/target/mod.rs
+@@ -225,7 +225,7 @@ pub fn get_supported_architectures(os: &Os) -> &'static [Arch] {
+             Arch::Sparc64,
+         ],
+         Os::Dragonfly => &[Arch::X86_64],
+-        Os::Illumos => &[Arch::X86_64],
++        Os::Illumos => &[Arch::X86_64, Arch::Aarch64],
+         Os::Haiku => &[Arch::X86_64],
+         Os::Solaris => &[Arch::X86_64, Arch::Sparc64, Arch::Sparcv9],
+         Os::Emscripten | Os::Wasi => &[Arch::Wasm32],

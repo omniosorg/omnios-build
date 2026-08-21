@@ -18,20 +18,13 @@
 
 PKG=library/python-3/pyopenssl-313
 PROG=pyopenssl
-VER=26.2.0
+VER=26.4.0
 SUMMARY="pyOpenSSL - Python interface to the OpenSSL library"
 DESC="$SUMMARY"
 
 . $SRCDIR/../common.sh
 
 RUN_DEPENDS_IPS+=" library/python-$PYMVER/cryptography-$SPYVER"
-
-if [ "$BUILDARCH" = aarch64 ]; then
-    # This is the last version that does work with the version-locked
-    # cryptography for aarch64
-    VER=24.2.1
-    set_patchdir patches.aarch64
-fi
 
 init
 download_source pymodules/$PROG $PROG $VER

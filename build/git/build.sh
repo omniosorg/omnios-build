@@ -79,7 +79,12 @@ pre_configure() {
 
     ! cross_arch $arch && return
 
-    export NO_RUST=1
+    set_crossrust $arch
+    # cargo places the output for a cross-compilation target in a
+    # target-specific directory.
+    typeset rtd="RUST_TARGET_DIR=target/${RUSTTRIPLETS[$arch]}/release"
+    MAKE_ARGS+=" $rtd"
+    MAKE_INSTALL_ARGS+=" $rtd"
 }
 
 pre_make() {

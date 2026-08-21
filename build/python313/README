@@ -7,20 +7,20 @@ setuptools
 
 pkg
 	cryptography
-		setuptools-rust
-			semantic-version
-			typing-extensions
-			tomli
-		six
+		maturin (build)
+			setuptools-rust
+				semantic-version
+				typing-extensions
+				tomli
 		cffi
 			pycparser
-		asn1crypto
-		idna
 	jsonrpclib
 	jsonschema
 		attrs
-		pyrsistent
-		js-regex
+		jsonschema-specifications
+		referencing
+		rpds-py
+			maturin (build)
 	orjson
 	pycurl
 	rapidjson

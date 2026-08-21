@@ -13,26 +13,19 @@
 # }}}
 #
 # Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
-#
+
 . ../../../lib/build.sh
 
-PKG=library/python-3/cryptography-313
-PROG=cryptography
-VER=50.0.0
-SUMMARY="Cryptographic recipes and primitives"
-DESC="$SUMMARY"
+PKG=library/python-3/rpds-py-313
+PROG=rpds-py
+VER=2026.6.3
+SUMMARY="Python bindings to the rust rpds crate"
+DESC="Python bindings to the rust rpds crate for persistent data structures"
 
 . $SRCDIR/../common.sh
 
-RUN_DEPENDS_IPS+="
-    library/python-$PYMVER/cffi-$SPYVER
-"
-
-# The cryptography module includes rust code and is built with maturin
 BUILD_DEPENDS_IPS+="
-    library/python-$PYMVER/cffi-$SPYVER
     library/python-$PYMVER/maturin-$SPYVER
-    library/python-$PYMVER/setuptools-$SPYVER
 "
 
 # For cargo, and the maturin build tool which is delivered under the python
@@ -45,23 +38,23 @@ PATH+=:$OOCEBIN:$PREFIX/lib/python$PYVER/bin
 # for the target architecture and could not run on the build machine.
 PEP518OPTS+=" --no-build-isolation"
 
+set_builddir ${PROG/-/_}-$VER
+
 python_build_aarch64() {
     typeset arch=aarch64
 
     python_pyo3_cross_setup $arch
-
-    CFLAGS[$arch]+=" -mtls-dialect=trad"
 
     DESTDIR+=".$arch" \
         python_build_arch $arch
 }
 
 init
-download_source pymodules/$PROG $PROG $VER
+download_source pymodules/$PROG ${PROG/-/_} $VER
 patch_source
 prep_build
 python_build
-make_package
+make_package $SRCDIR/../common.mog
 clean_up
 
 # Vim hints

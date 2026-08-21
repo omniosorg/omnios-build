@@ -16,20 +16,26 @@
 
 . ../../../lib/build.sh
 
-PKG=library/python-3/jsonrpclib-313
-PROG=jsonrpclib
-VER=1.2.0
-SUMMARY="A Python JSON-RPC over HTTP that mirrors xmlrpclib syntax"
-DESC="$SUMMARY"
+PKG=library/python-3/jsonschema-specifications-313
+PROG=jsonschema-specifications
+VER=2025.9.1
+SUMMARY="The JSON Schema meta-schemas and vocabularies"
+DESC="The JSON Schema meta-schemas and vocabularies, exposed as a registry"
 
 . $SRCDIR/../common.sh
 
+RUN_DEPENDS_IPS+="
+    library/python-$PYMVER/referencing-$SPYVER
+"
+
+set_builddir ${PROG//-/_}-$VER
+
 init
-download_source pymodules/$PROG v$VER
+download_source pymodules/$PROG ${PROG//-/_} $VER
 patch_source
 prep_build
 python_build
-make_package
+make_package $SRCDIR/../common.mog
 clean_up
 
 # Vim hints

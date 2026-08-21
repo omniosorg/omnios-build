@@ -47,6 +47,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/maturin-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/packaging-313 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-313 type=require
