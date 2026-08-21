@@ -94,7 +94,7 @@ build() {
         logmsg "--- external modules"
 
         logcmd $MAKE -e \
-            REQUIREMENTS=requirements-aarch64.txt \
+            REQUIREMENTS=requirements.txt \
             extmodules/$PYTHONVER \
             || logerr "make extmodules failed"
 
