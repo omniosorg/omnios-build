@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=rsyslog
-VER=8.2606.0
+VER=8.2608.0
 PKG=system/rsyslog
 SUMMARY="rsyslog - the rocket-fast system for log processing."
 DESC="A high-performance, modular syslog implementation."
@@ -27,6 +27,9 @@ XFORM_ARGS+=" -DFJSON=$FJSONVER"
 
 ESTRVER=0.1.11
 XFORM_ARGS+=" -DESTR=$ESTRVER"
+
+YAMLVER=0.2.5
+XFORM_ARGS+=" -DYAML=$YAMLVER"
 
 set_arch 64
 set_standard XPG6
@@ -45,6 +48,7 @@ CONFIGURE_OPTS="--disable-shared"
 PATH=$GNUBIN:$PATH \
     build_dependency fastjson libfastjson-$FJSONVER $PROG/fastjson v$FJSONVER
 build_dependency estr libestr-$ESTRVER $PROG/estr v$ESTRVER
+build_dependency yaml libyaml-$YAMLVER $PROG/yaml $YAMLVER
 
 restore_buildenv
 
@@ -59,6 +63,8 @@ pre_build() {
     export LIBFASTJSON_LIBS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lfastjson"
     export LIBESTR_CFLAGS="-I$DEPROOT/usr/include"
     export LIBESTR_LIBS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lestr"
+    export LIBYAML_CFLAGS="-I$DEPROOT/usr/include"
+    export LIBYAML_LIBS="-L$DEPROOT/usr/${LIBDIRS[$arch]} -lyaml"
     addpath PKG_CONFIG_PATH[$arch] \
         $DEPROOT$PREFIX/${LIBDIRS[$arch]}/pkgconfig
 }
@@ -70,7 +76,7 @@ CONFIGURE_OPTS="
 
     --disable-libgcrypt
     --disable-gnutls
-    --disable-libyaml
+    --enable-libyaml
     --enable-openssl
     --enable-gssapi-krb5
 

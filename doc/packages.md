@@ -39,6 +39,7 @@
 | library/expat				| 2.8.3			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
+| library/yaml				| 0.2.5			| https://github.com/yaml/libyaml/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
 | library/mpc				| 1.4.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.2			| http://www.mpfr.org/mpfr-current/
@@ -102,7 +103,7 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.15.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2606.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2608.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
