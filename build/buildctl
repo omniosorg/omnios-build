@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+export PATH=/usr/bin:/usr/sbin:/usr/gnu/bin
+
 # Place this script into a new contract and configure it so that all child
 # processes are terminated on exit.
 
@@ -11,7 +13,7 @@ fi
 BUILD_EXPENSIVE=0
 build_flags=
 
-cd $(realpath ${BASH_SOURCE[0]%/*}) || exit 1
+cd "$(realpath "${BASH_SOURCE[0]%/*}")" || exit 1
 . ../lib/functions.sh
 
 basic_build_requirements
