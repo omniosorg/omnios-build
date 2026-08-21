@@ -147,7 +147,7 @@
 | library/python-3/pyopenssl-313	| 26.4.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
 | library/python-3/pyrsistent-313	| 0.20.0		| https://pypi.org/rss/project/pyrsistent/releases.xml
 | library/python-3/pyyaml-313		| 6.0.3			| https://pypi.org/rss/project/PyYAML/releases.xml
-| library/python-3/rapidjson-313	| 1.20			| https://pypi.org/rss/project/python-rapidjson/releases.xml
+| library/python-3/rapidjson-313	| 1.23			| https://pypi.org/rss/project/python-rapidjson/releases.xml
 | library/python-3/referencing-313	| 0.37.0		| https://pypi.org/rss/project/referencing/releases.xml
 | library/python-3/rpds-py-313		| 2026.6.3		| https://pypi.org/rss/project/rpds-py/releases.xml
 | library/python-3/semantic-version-313	| 2.10.0		| https://pypi.org/rss/project/semantic-version/releases.xml

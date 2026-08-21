@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../../lib/build.sh
 
 PKG=library/python-3/rapidjson-313
 PROG=rapidjson
-VER=1.20
+VER=1.23
 SUMMARY="rapidjson - Python interface to RapidJSON"
 DESC="RapidJSON is an extremely fast C++ JSON parser and serialization library"
 DESC+="; this module wraps it into a Python 3 extension"
