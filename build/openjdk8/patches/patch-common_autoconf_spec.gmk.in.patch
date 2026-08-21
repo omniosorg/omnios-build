@@ -1,9 +1,9 @@
 $NetBSD: patch-common_autoconf_spec.gmk.in,v 1.4 2015/06/10 13:29:57 tnn Exp $
 
-diff -wpruN --no-dereference '--exclude=*.orig' a~/common/autoconf/spec.gmk.in a/common/autoconf/spec.gmk.in
+diff -wpruN '--exclude=*.orig' a~/common/autoconf/spec.gmk.in a/common/autoconf/spec.gmk.in
 --- a~/common/autoconf/spec.gmk.in	1970-01-01 00:00:00
 +++ a/common/autoconf/spec.gmk.in	1970-01-01 00:00:00
-@@ -392,7 +392,8 @@ endif
+@@ -388,7 +388,8 @@ endif
  USING_BROKEN_SUSE_LD:=@USING_BROKEN_SUSE_LD@
  
  # LDFLAGS used to link the jdk native libraries (C-code)
@@ -13,7 +13,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/common/autoconf/spec.gmk.in a
  LDFLAGS_JDKLIB_SUFFIX:=@LDFLAGS_JDKLIB_SUFFIX@
  
  # On some platforms the linker cannot be used to create executables, thus
-@@ -400,7 +401,7 @@ LDFLAGS_JDKLIB_SUFFIX:=@LDFLAGS_JDKLIB_S
+@@ -396,7 +397,7 @@ LDFLAGS_JDKLIB_SUFFIX:=@LDFLAGS_JDKLIB_S
  LDEXE:=@FIXPATH@ @LDEXE@
  
  # LDFLAGS used to link the jdk native launchers (C-code)
@@ -22,7 +22,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/common/autoconf/spec.gmk.in a
  LDFLAGS_JDKEXE_SUFFIX:=@LDFLAGS_JDKEXE_SUFFIX@
  
  # LDFLAGS specific to C++ linking.
-@@ -490,7 +491,7 @@ JAVA_SMALL=@FIXPATH@ $(BOOT_JDK)/bin/jav
+@@ -486,7 +487,7 @@ JAVA_SMALL=@FIXPATH@ $(BOOT_JDK)/bin/jav
  JAVAC=@FIXPATH@ $(BOOT_JDK)/bin/javac
  # Hotspot sets this variable before reading the SPEC when compiling sa-jdi.jar. Avoid
  # overriding that value by using ?=.
