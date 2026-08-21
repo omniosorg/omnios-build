@@ -143,7 +143,6 @@ system/library/pcap
 ###############################################################################
 .SYSROOT
 library/python-3/cryptography-313
-library/python-3/jsonschema-313
 library/python-3/referencing-313
 system/management/snmp/net-snmp
 ###############################################################################
@@ -152,6 +151,7 @@ library/python-3/jsonschema-specifications-313
 library/python-3/pyopenssl-313
 ###############################################################################
 .SYSROOT
+library/python-3/jsonschema-313
 illumos-gate
 package/pkg
 entire

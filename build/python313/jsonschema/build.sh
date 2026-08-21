@@ -26,8 +26,9 @@ DESC="$SUMMARY"
 
 RUN_DEPENDS_IPS+="
     library/python-$PYMVER/attrs-$SPYVER
-    library/python-$PYMVER/pyrsistent-$SPYVER
-    library/python-$PYMVER/js-regex-$SPYVER
+    library/python-$PYMVER/jsonschema-specifications-$SPYVER
+    library/python-$PYMVER/referencing-$SPYVER
+    library/python-$PYMVER/rpds-py-$SPYVER
 "
 
 init
