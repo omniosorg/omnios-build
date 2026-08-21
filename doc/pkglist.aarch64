@@ -130,6 +130,7 @@ library/python-3/pycurl-313
 library/python-3/pyrsistent-313
 library/python-3/pyyaml-313
 library/python-3/rapidjson-313
+library/python-3/rpds-py-313
 library/python-3/semantic-version-313
 library/python-3/setuptools-313
 library/python-3/six-313
