@@ -580,6 +580,7 @@ omnios system/storage/luxadm
 omnios system/storage/sasinfo
 omnios system/test/cryptotest
 omnios system/test/elftest
+omnios system/test/headertest
 omnios system/test/i2ctest
 omnios system/test/ksh93
 omnios system/test/libctest
