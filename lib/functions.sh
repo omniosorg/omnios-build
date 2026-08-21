@@ -483,6 +483,39 @@ set_crossgcc() {
     "
 }
 
+set_crossrust() {
+    typeset arch=${1:?arch}
+
+    logmsg "-- Setting rust for cross compilation to $arch"
+
+    typeset triplet=${RUSTTRIPLETS[$arch]}
+    [ -n "$triplet" ] || logerr "No rust target triplet for $arch"
+
+    typeset tag=${triplet//-/_}
+
+    # Build for the target architecture, and link with the cross gcc
+    # against the target sysroot.
+    export CARGO_BUILD_TARGET=$triplet
+    export "CARGO_TARGET_${tag^^}_LINKER=$CROSSTOOLS/$arch/bin/gcc"
+    export "CARGO_TARGET_${tag^^}_RUSTFLAGS=-C link-arg=--sysroot=${SYSROOT[$arch]}"
+
+    # Host artefacts such as build scripts and procedural macros must still
+    # be linked with the native compiler, which is not necessarily first in
+    # the PATH once a cross compiler has been configured.
+    typeset hosttag=${RUSTTRIPLETS[$BUILD_ARCH]//-/_}
+    export "CARGO_TARGET_${hosttag^^}_LINKER=/opt/gcc-$GCCVER/bin/gcc"
+
+    # For crates which build C code via the `cc` crate.
+    export "CC_$tag=$CROSSTOOLS/$arch/bin/gcc"
+    export "CFLAGS_$tag=--sysroot=${SYSROOT[$arch]}"
+    export "AR_$tag=$CROSSTOOLS/$arch/bin/${TRIPLETS[$arch]}-ar"
+
+    # The rust `pkg-config` crate refuses to operate in cross-compilation
+    # mode unless explicitly told that it's ok. set_crossgcc() has already
+    # pointed pkg-config at the target sysroot.
+    export PKG_CONFIG_ALLOW_CROSS=1
+}
+
 set_clangver() {
     CLANGVER="${1:-$DEFAULT_CLANG_VER}"
     [ -z "$2" ] && logmsg "-- Setting clang version to $CLANGVER"
@@ -3111,6 +3144,27 @@ python_cross_setup() {
 python_cross_end() {
     deactivate
     logcmd $RM -rf $TMPDIR/venv
+}
+
+# Modules which include rust code built with pyo3 (for example via the
+# maturin build backend) cannot be cross-compiled inside a crossenv
+# environment. Instead, the native python drives the build and pyo3 is
+# pointed at the target python installation within the sysroot.
+python_pyo3_cross_setup() {
+    typeset arch=${1:?arch}
+
+    set_crossgcc $arch
+    set_crossrust $arch
+
+    # set_crossgcc resets PATH; ensure that cargo and the maturin build
+    # tool can still be found.
+    PATH+=:$OOCEBIN:$PREFIX/lib/python$PYTHONVER/bin
+
+    # The versioned library directory is expected here; build scripts such
+    # as cryptography's derive the matching include directory from it.
+    export PYO3_CROSS_LIB_DIR=${SYSROOT[$arch]}/usr/lib/python$PYTHONVER
+    export PYO3_CROSS_PYTHON_VERSION=$PYTHONVER
+    export PKG_CROSS_DEPEND=${TRIPLETS[$arch]%.*}
 }
 
 python_build_aarch64() {
