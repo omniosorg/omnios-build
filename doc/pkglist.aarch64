@@ -144,6 +144,7 @@ system/library/pcap
 .SYSROOT
 library/python-3/cryptography-313
 library/python-3/jsonschema-313
+library/python-3/referencing-313
 system/management/snmp/net-snmp
 ###############################################################################
 .SYSROOT
