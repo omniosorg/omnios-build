@@ -426,6 +426,8 @@ PASS: xgettext-lua-stackovfl-3
 PASS: xgettext-lua-stackovfl-4
 PASS: xgettext-modula2-1
 PASS: xgettext-modula2-2
+PASS: xgettext-ocaml-1
+PASS: xgettext-ocaml-2
 PASS: xgettext-objc-1
 PASS: xgettext-objc-2
 PASS: xgettext-perl-1
@@ -600,6 +602,8 @@ PASS: format-lua-1
 PASS: format-lua-2
 PASS: format-modula2-1
 PASS: format-modula2-2
+PASS: format-ocaml-1
+PASS: format-ocaml-2
 PASS: format-php-1
 PASS: format-php-2
 PASS: format-php-3
@@ -671,6 +675,7 @@ SKIP: lang-lua
 SKIP: lang-pascal
 SKIP: lang-modula2
 SKIP: lang-d
+SKIP: lang-ocaml
 SKIP: lang-smalltalk
 SKIP: lang-vala
 SKIP: lang-tcl
@@ -683,9 +688,9 @@ PASS: autopoint-1
 PASS: autopoint-2
 PASS: autopoint-3
 PASS: cldr-plurals-1
-# TOTAL: 667
-# PASS:  631
-# SKIP:  36
+# TOTAL: 672
+# PASS:  635
+# SKIP:  37
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
@@ -823,6 +828,7 @@ PASS: test-fseeko.sh
 PASS: test-fseeko2.sh
 PASS: test-fseeko3.sh
 PASS: test-fseeko4.sh
+PASS: test-fseterr
 PASS: test-fstat
 PASS: test-fstatat
 PASS: test-fstrcmp
@@ -972,6 +978,7 @@ PASS: test-posix_spawn_file_actions_addopen
 PASS: test-posix_spawn-dup2-stdout
 PASS: test-posix_spawn-dup2-stdin
 PASS: test-posix_spawnp-script
+PASS: test-posix_spawnp-vfork
 PASS: test-pow
 PASS: test-printf-frexp
 PASS: test-printf-frexpl
@@ -1049,6 +1056,7 @@ PASS: test-string-buffer-reversed
 PASS: test-string-buffer
 PASS: test-string-desc.sh
 PASS: test-string-h
+PASS: test-strncpy
 PASS: test-strnlen
 PASS: test-strstr
 PASS: test-strtol
@@ -1076,11 +1084,14 @@ PASS: test-trim1.sh
 PASS: test-trim2.sh
 PASS: test-trim3.sh
 PASS: test-uchar-h
+PASS: test-unicase-h
 PASS: test-cased
 PASS: test-ignorable
 PASS: test-uc_tolower
 PASS: test-u8-casefold
+PASS: test-uniconv-h
 PASS: test-u8-conv-from-enc
+PASS: test-unictype-h
 PASS: test-combiningclass
 PASS: test-ctype_alnum
 PASS: test-ctype_alpha
@@ -1099,8 +1110,11 @@ PASS: test-pr_white_space
 PASS: test-pr_xid_continue
 PASS: test-pr_xid_start
 PASS: test-sy_java_whitespace
+PASS: test-unilbrk-h
 PASS: test-u8-width-linebreaks
+PASS: test-uniname-h
 PASS: uniname/test-uninames.sh
+PASS: test-uninorm-h
 PASS: test-canonical-decomposition
 PASS: test-composition
 PASS: test-nfc
@@ -1109,6 +1123,7 @@ PASS: test-nfd
 SKIP: uninorm/test-u32-nfd-big.sh
 PASS: test-unistd-h
 PASS: test-dup-safer
+PASS: test-unistr-h
 PASS: test-u16-check
 PASS: test-u16-cmp
 PASS: test-u16-mbtouc
@@ -1131,6 +1146,7 @@ PASS: test-u8-mbtoucr
 PASS: test-u8-prev
 PASS: test-u8-strlen
 PASS: test-u8-uctomb
+PASS: test-uniwidth-h
 PASS: test-unlink
 PASS: test-unsetenv
 PASS: test-usleep
@@ -1165,8 +1181,8 @@ PASS: test-xstrerror
 PASS: test-xstring-desc
 PASS: test-xstrtol.sh
 PASS: test-xvasprintf
-# TOTAL: 468
-# PASS:  421
+# TOTAL: 479
+# PASS:  432
 # SKIP:  47
 # XFAIL: 0
 # FAIL:  0

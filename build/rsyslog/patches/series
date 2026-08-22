@@ -4,3 +4,5 @@ logonly.patch
 man.patch
 test.patch
 debug-O_APPEND.patch
+core-pattern-override.patch
+spill-test-flowcontrol.patch

@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2016 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=gettext
-VER=0.26
+VER=1.0
 PKG=text/gnu-gettext
 SUMMARY="gettext - GNU gettext utility"
 DESC="GNU gettext - GNU gettext utility"

@@ -16,6 +16,7 @@ license COPYING.LESSER license=LGPLv3
 
 license ../libfastjson-$(FJSON)/COPYING license=MIT
 license ../libestr-$(ESTR)/COPYING license=LGPLv2.1
+license ../libyaml-$(YAML)/License license=MIT/libyaml
 
 file files/rsyslog.conf path=etc/rsyslog.conf owner=root group=sys mode=0644 \
     overlay=allow preserve=true

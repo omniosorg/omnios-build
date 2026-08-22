@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/segmented-da-tcp-spill-exact.sh a/tests/segmented-da-tcp-spill-exact.sh
+--- a~/tests/segmented-da-tcp-spill-exact.sh	1970-01-01 00:00:00
++++ a/tests/segmented-da-tcp-spill-exact.sh	1970-01-01 00:00:00
+@@ -39,7 +39,7 @@ generate_conf
+ add_conf '
+ module(load="../plugins/imtcp/.libs/imtcp")
+ global(workDirectory="'"$SPOOL_DIR"'")
+-input(type="imtcp" address="127.0.0.1" port="0" listenPortFileName="'"$INPUT_PORT_FILE"'" workerthreads="4")
++input(type="imtcp" address="127.0.0.1" port="0" listenPortFileName="'"$INPUT_PORT_FILE"'" workerthreads="4" flowControl="off")
+ main_queue(queue.type="LinkedList" queue.filename="mainq"
+ 	queue.size="400" queue.highWatermark="320" queue.lowWatermark="80" queue.fullDelayMark="400"
+ 	queue.maxFileSize="64m" queue.maxDiskSpace="2g" queue.workerThreads="4"
