@@ -3,6 +3,29 @@ https://github.com/TritonDataCenter/pkgsrc-joyent/tree/master/openjdk11
 
 This set of patches for jdk11u
 
+11.0.31, 11.0.32
+
+No changes.
+
+11.0.30
+
+Minor patch noise.
+
+Needed to change LANGSTD_CFLAGS="-std=c99" to gnu99 for us.
+
+11.0.29
+
+Trivial patch noise.
+
+11.0.26
+
+Trivial patch noise.
+
+11.0.25
+
+Remove the png patch, it doesn't apply and appears to be unnecessary
+now png has been updated.
+
 Cleanup - pick the right assembler for gcc builds so they'll work
 without accidentally picking up or needing the sun as, see the new
 toolchain-assembler.patch
