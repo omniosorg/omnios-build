@@ -22,7 +22,7 @@
 #
 # Copyright 2011-2013 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Copyright (c) 2013 by Delphix. All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -34,7 +34,9 @@ SUMMARY="GNU Bash"
 DESC="GNU Bourne-Again shell (bash)"
 
 # bash-completion version
-BCVER=2.14.0
+BCVER=2.18.0
+# illumos-completion tag
+ICTAG=v2-20260823
 
 BUILD_DEPENDS_IPS="library/readline"
 RUN_DEPENDS_IPS="system/prerequisite/gnu system/library"
@@ -44,6 +46,7 @@ set_standard XPG6
 
 XFORM_ARGS+="
     -DBCVER=$BCVER
+    -DCOMPDIR=usr/share/bash-completion
 "
 
 # As of version 5.1.8, documentation (including the man page) installation
@@ -60,8 +63,10 @@ prep_build
 
 pre_clean() {
     # Patch the bash completions to use GNU grep and GNU sed since that is
-    # what they expect. Now that awk -> nawk, that does not need patching.
-    logcmd find completions bash_completion -type f -exec sed -i '
+    # what they expect. awk and tail do not need patching; upstream selects
+    # the XPG versions itself on Solarish systems.
+    logcmd $FIND completions-core completions-fallback bash_completion \
+        -type f -exec $SED -i '
         s/\<grep\>/g&/g
         s/\<sed\>/g&/g
         # The GNU tar completion parses the output of --help and --warnings
@@ -75,13 +80,19 @@ pre_configure() {
 
 post_install() {
     clone_github_source -dependency illumos-completion \
-        $OOCEGITHUB/completions master $BASH_COMPLETION_CLONE
+        $OOCEGITHUB/completions $ICTAG $BASH_COMPLETION_CLONE
 
     if ((EXTRACT_MODE == 0)); then
-        logcmd rm -f $TMPDIR/$BUILDDIR/illumos-completion/*.md
-        logcmd rsync -av --exclude=.git \
-            $TMPDIR/$BUILDDIR/illumos-completion/ \
-            $DESTDIR/$PREFIX/share/bash-completion/completions/ || logerr rsync
+        typeset src=$TMPDIR/$BUILDDIR/illumos-completion
+        typeset dst=$DESTDIR/$PREFIX/share/bash-completion
+        typeset dir
+
+        # The illumos-completion repository mirrors the installed layout;
+        # completions/ files are loaded on-demand and startup/ files are
+        # sourced eagerly at shell initialisation.
+        for dir in completions startup; do
+            logcmd $RSYNC -a $src/$dir/ $dst/$dir/ || logerr "rsync $dir"
+        done
     fi
 }
 
