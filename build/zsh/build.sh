@@ -23,6 +23,9 @@ PKG=shell/zsh
 SUMMARY="Z shell"
 DESC="The Z shell"
 
+# illumos-completion tag
+ICTAG=v2-20260823
+
 set_arch 64
 # Needed for X/Open curses/termcap
 set_standard XPG6
@@ -70,6 +73,16 @@ post_install() {
     $MKDIR -p $DESTDIR/etc
     $CP $SRCDIR/files/system-zshrc $DESTDIR/etc/zshrc
     $CHMOD 644 $DESTDIR/etc/zshrc
+
+    # zsh completions for illumos-specific commands.
+    clone_github_source -dependency illumos-completion \
+        $OOCEGITHUB/completions $ICTAG $BASH_COMPLETION_CLONE
+
+    if ((EXTRACT_MODE == 0)); then
+        logcmd $RSYNC -a $TMPDIR/$BUILDDIR/illumos-completion/zsh/ \
+            $DESTDIR/$PREFIX/share/zsh/site-functions/ \
+            || logerr "rsync completions"
+    fi
 
     iconv -f 8859-1 -t utf-8 \
         $TMPDIR/$BUILDDIR/LICENCE > $TMPDIR/$BUILDDIR/LICENSE

@@ -1,4 +1,4 @@
 testsuite.patch
-completion.patch
 fix_shebang.patch
 mkmakemod.patch
+no-usr-local-fpath.patch
