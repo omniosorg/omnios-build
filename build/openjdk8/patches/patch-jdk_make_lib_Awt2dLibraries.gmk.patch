@@ -1,4 +1,4 @@
-diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/make/lib/Awt2dLibraries.gmk a/jdk/make/lib/Awt2dLibraries.gmk
+diff -wpruN '--exclude=*.orig' a~/jdk/make/lib/Awt2dLibraries.gmk a/jdk/make/lib/Awt2dLibraries.gmk
 --- a~/jdk/make/lib/Awt2dLibraries.gmk	1970-01-01 00:00:00
 +++ a/jdk/make/lib/Awt2dLibraries.gmk	1970-01-01 00:00:00
 @@ -677,7 +677,6 @@ $(eval $(call SetupNativeCompilation,BUI
@@ -9,7 +9,18 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/make/lib/Awt2dLibraries.g
      CFLAGS_windows := -DCMS_IS_WINDOWS_, \
      MAPFILE := $(JDK_TOPDIR)/make/mapfiles/liblcms/mapfile-vers, \
      LDFLAGS := $(LDFLAGS_JDKLIB) \
-@@ -1053,7 +1052,7 @@ else # OPENJDK_TARGET_OS not windows
+@@ -999,6 +998,10 @@ ifneq (, $(findstring $(OPENJDK_TARGET_O
+ ifneq (, $(findstring $(OPENJDK_TARGET_OS), solaris aix))
+   $(BUILD_LIBFONTMANAGER): $(BUILD_LIBAWT_HEADLESS)
+ endif
++
++ifeq ($(FREETYPE_TO_USE), bundled)
++  $(BUILD_LIBFONTMANAGER): $(BUILD_LIBFREETYPE)
++endif
+ 
+ BUILD_LIBRARIES += $(BUILD_LIBFONTMANAGER)
+ 
+@@ -1108,7 +1111,7 @@ else # OPENJDK_TARGET_OS not windows
        JAWT_LIBS += -lawt
      endif
      ifndef BUILD_HEADLESS_ONLY
@@ -18,7 +29,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/jdk/make/lib/Awt2dLibraries.g
      else
        JAWT_LIBS += -lawt_headless
        HEADLESS_CFLAG += -DHEADLESS
-@@ -1077,7 +1076,7 @@ else # OPENJDK_TARGET_OS not windows
+@@ -1132,7 +1135,7 @@ else # OPENJDK_TARGET_OS not windows
        LDFLAGS_solaris := $(X_LIBS), \
        LDFLAGS_SUFFIX_linux := $(JAWT_LIBS) $(LDFLAGS_JDKLIB_SUFFIX), \
        LDFLAGS_SUFFIX_aix := $(JAWT_LIBS) $(LDFLAGS_JDKLIB_SUFFIX),\
