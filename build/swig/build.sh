@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=swig
-VER=4.4.1
+VER=4.5.0
 PKG=developer/swig
 SUMMARY="The Simplified Wrapper and Interface Generator (swig)"
 DESC="A compiler that integrates C and C++ with languages including Perl, "
@@ -27,6 +27,9 @@ DESC+="Scheme (Guile, MzScheme/Racket), Scilab, Ocaml."
 set_arch 64
 
 CONFIGURE_OPTS="--disable-ccache"
+# The dependency-tracking bootstrap in config.status invokes $MAKE
+# directly and requires GNU make.
+CONFIGURE_OPTS+=" MAKE=$MAKE"
 
 # SWIG supports a number of languages. Only test the ones shipped with core.
 TEST_TARGETS="

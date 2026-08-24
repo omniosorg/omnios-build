@@ -25,20 +25,21 @@
 | developer/gcc15			| 15.2			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.21		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
-| developer/nasm			| 2.16.03		| http://www.nasm.us/pub/nasm/releasebuilds
+| developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
 | developer/versioning/git		| 2.55.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
-| developer/versioning/mercurial	| 7.2			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
+| developer/versioning/mercurial	| 7.2.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.2			| https://www.vim.org/download.php https://github.com/vim/vim
 | file/gnu-coreutils			| 9.11			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.11.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.6.0			| https://download.gnome.org/sources/libsigc++/cache.json https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.8.2			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.8.3			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
+| library/yaml				| 0.2.5			| https://github.com/yaml/libyaml/tags | Currently used solely by rsyslog
 | library/gmp				| 6.3.0			| https://gmplib.org/download/gmp/ https://gmplib.org/
 | library/mpc				| 1.4.1			| http://www.multiprecision.org/mpc/download.html
 | library/mpfr				| 4.2.2			| http://www.mpfr.org/mpfr-current/
@@ -48,7 +49,7 @@
 | library/libidn			| 1.43			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
 | library/libmagic			| 5.47			| https://github.com/file/file/tags
-| library/libpsl			| 0.23.1		| https://github.com/rockdaboot/libpsl/releases
+| library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
@@ -58,18 +59,18 @@
 | library/nghttp2			| 1.70.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.40			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.47			| https://github.com/PhilipHazel/pcre2/releases
-| library/perl-5/xml-parser		| 2.47			| https://metacpan.org/pod/XML::Parser
+| library/perl-5/xml-parser		| 2.59			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 013			| https://ftp.gnu.org/gnu/readline/readline-8.2-patches/
 | library/security/openssl-3		| 3.6.3			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.2			| https://www.zlib.net/
-| meta/data/microcode/amd		| 20260416		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
+| meta/data/microcode/amd		| 20260724		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20260512		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.18.50		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.5p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
-| network/rsync				| 3.4.4			| https://rsync.samba.org/
+| network/rsync				| 3.5.0			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.1.3		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.21			| https://github.com/esnet/iperf/releases
@@ -94,7 +95,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.126			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.127			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.6		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 24.4.1		| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -102,7 +103,7 @@
 | system/network/lldp			| 0.4alpha		| https://sourceforge.net/projects/openlldp/files/
 | system/pciutils			| 3.15.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
-| system/rsyslog			| 8.2606.0		| https://www.rsyslog.com/downloads/download-v8-stable/
+| system/rsyslog			| 8.2608.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
@@ -110,7 +111,7 @@
 | terminal/tmux				| 3.7			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.4.1			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
-| text/gnu-gettext			| 0.26			| https://ftp.gnu.org/pub/gnu/gettext/
+| text/gnu-gettext			| 1.0			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
@@ -123,7 +124,7 @@
 | developer/gnu-binutils		| 2.47		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.8.pl02		| https://www.gnu.org/software/xorriso/
 | system/virtualization/open-vm-tools	| 13.1.0		| https://github.com/vmware/open-vm-tools/releases https://docs.vmware.com/en/VMware-Tools/
-| developer/swig			| 4.4.1			| http://www.swig.org/download.html
+| developer/swig			| 4.5.0			| http://www.swig.org/download.html
 | library/security/trousers		| 0.3.15		| https://sourceforge.net/projects/trousers/files/trousers
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
@@ -146,13 +147,13 @@
 | library/python-3/pyopenssl-313	| 26.4.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
 | library/python-3/pyrsistent-313	| 0.20.0		| https://pypi.org/rss/project/pyrsistent/releases.xml
 | library/python-3/pyyaml-313		| 6.0.3			| https://pypi.org/rss/project/PyYAML/releases.xml
-| library/python-3/rapidjson-313	| 1.20			| https://pypi.org/rss/project/python-rapidjson/releases.xml
+| library/python-3/rapidjson-313	| 1.23			| https://pypi.org/rss/project/python-rapidjson/releases.xml
 | library/python-3/referencing-313	| 0.37.0		| https://pypi.org/rss/project/referencing/releases.xml
 | library/python-3/rpds-py-313		| 2026.6.3		| https://pypi.org/rss/project/rpds-py/releases.xml
 | library/python-3/semantic-version-313	| 2.10.0		| https://pypi.org/rss/project/semantic-version/releases.xml
 | library/python-3/setuptools-313	| 84.0.0		| https://pypi.org/rss/project/setuptools/releases.xml
 | library/python-3/setuptools-rust-313	| 1.13.0		| https://pypi.org/rss/project/setuptools-rust/releases.xml
 | library/python-3/six-313		| 1.17.0		| https://pypi.org/rss/project/six/releases.xml
-| library/python-3/tomli-313		| 2.3.1			| https://pypi.org/rss/project/tomli/releases.xml
+| library/python-3/tomli-313		| 2.4.1			| https://pypi.org/rss/project/tomli/releases.xml
 | library/python-3/typing-extensions-313| 4.16.0		| https://pypi.org/rss/project/typing-extensions/releases.xml
 

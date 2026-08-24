@@ -1,0 +1,14 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/diag.sh a/tests/diag.sh
+--- a~/tests/diag.sh	1970-01-01 00:00:00
++++ a/tests/diag.sh	1970-01-01 00:00:00
+@@ -597,7 +597,10 @@ get_core_pattern() {
+ 
+ core_policy_uses_external_collector() {
+ 	local core_pattern
++	# The override models an external-collector policy on any platform.
++	if [ -z "${RSTB_CORE_PATTERN_OVERRIDE:-}" ]; then
+ 	[ "$(uname)" = "Linux" ] || return 1
++	fi
+ 	core_pattern="$(get_core_pattern)"
+ 	case "$core_pattern" in
+ 	\|*) return 0 ;;

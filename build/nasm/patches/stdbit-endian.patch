@@ -1,0 +1,22 @@
+diff -ur a/include/compiler.h b/include/compiler.h
+--- a/include/compiler.h	2026-08-22 01:08:42
++++ b/include/compiler.h	2026-08-22 01:08:54
+@@ -97,6 +97,18 @@
+ 
+ # include <stdbit.h>
+ 
++/*
++ * The htole/letoh functions detected by configure are declared in one
++ * of these headers; <stdbit.h> only provides the endianness macros.
++ */
++# ifdef HAVE_ENDIAN_H
++#  include <endian.h>
++# elif defined(HAVE_SYS_ENDIAN_H)
++#  include <sys/endian.h>
++# elif defined(HAVE_MACHINE_ENDIAN_H)
++#  include <machine/endian.h>
++# endif
++
+ # undef WORDS_LITTLEENDIAN
+ # undef WORDS_BIGENDIAN
+ # if __STDC_ENDIAN_NATIVE__ == __STDC_ENDIAN_LITTLE__

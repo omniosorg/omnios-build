@@ -93,6 +93,7 @@ add_target()
 			system/rsyslog:*)
 				targets["library/fastjson"]=`pver FJSONVER`
 				targets["library/estr"]=`pver ESTRVER`
+				targets["library/yaml"]=`pver YAMLVER`
 				;;
 
 			network/rsync:*)

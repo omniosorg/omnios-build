@@ -15,7 +15,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/debug.c a/runtime/deb
      }
  }
 @@ -434,7 +435,7 @@ rsRetVal dbgClassInit(void) {
-
+ 
      if (pszAltDbgFileName != NULL) {
          /* we have a secondary file, so let's open it) */
 -        if ((altdbg = open(pszAltDbgFileName, O_WRONLY | O_CREAT | O_TRUNC | O_NOCTTY | O_CLOEXEC,
