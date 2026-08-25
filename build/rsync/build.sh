@@ -59,10 +59,6 @@ CONFIGURE_OPTS="
 # Needed so that man pages are correctly installed every time
 REMOVE_PREVIOUS=1
 
-post_configure() {
-    $MAKE reconfigure
-}
-
 TESTSUITE_FILTER='^[A-Z#][A-Z ]|^-|[0-9] (passed|failed|skipped|missing)'
 
 download_source $PROG $PROG $VER
