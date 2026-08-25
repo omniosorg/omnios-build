@@ -122,6 +122,10 @@ CONFIGURE_OPTS[WS]="
 "
 LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
+MAKE_ARGS_WS="
+    CFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+    CXXFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+"
 
 # gcc uses posix_fallocate() to extend temporary files on disk.
 # Although OmniOS has the posix_fallocate() function, ZFS does not support it.

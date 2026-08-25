@@ -60,6 +60,9 @@ post_install() {
     done
 }
 
+CPPFLAGS+=" -DH_ERRNO_IS_FUNCTION"
+LDFLAGS+=" -lresolv"
+
 init
 download_source $PROG $PROG $VER
 append_builddir $PROG

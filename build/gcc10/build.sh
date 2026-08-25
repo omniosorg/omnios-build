@@ -125,6 +125,10 @@ CONFIGURE_OPTS[WS]="
 "
 LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
+MAKE_ARGS_WS="
+    CFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+    CXXFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+"
 
 # If the selected compiler is the same version as the one we're building
 # then the three-stage bootstrap is unecessary and some build time can be

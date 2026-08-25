@@ -1,0 +1,16 @@
+Build the socket module with per-thread h_errno. netdb.h only maps
+h_errno to __h_errno() in libresolv when H_ERRNO_IS_FUNCTION is defined
+in addition to _REENTRANT.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/Setup.stdlib.in a/Modules/Setup.stdlib.in
+--- a~/Modules/Setup.stdlib.in	1970-01-01 00:00:00
++++ a/Modules/Setup.stdlib.in	1970-01-01 00:00:00
+@@ -116,7 +116,7 @@
+ @MODULE__POSIXSUBPROCESS_TRUE@_posixsubprocess _posixsubprocess.c
+ @MODULE_RESOURCE_TRUE@resource resource.c
+ @MODULE_SELECT_TRUE@select selectmodule.c
+-@MODULE__SOCKET_TRUE@_socket socketmodule.c
++@MODULE__SOCKET_TRUE@_socket socketmodule.c -DH_ERRNO_IS_FUNCTION -lresolv
+ @MODULE_SYSLOG_TRUE@syslog syslogmodule.c
+ @MODULE_TERMIOS_TRUE@termios termios.c
+ 

@@ -78,7 +78,7 @@ configure_amd64() {
         -Dcf_email=$PUBLISHER_EMAIL \
         -Dcc=gcc \
         -Dld=gcc \
-        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS" \
+        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS -DH_ERRNO_IS_FUNCTION" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
         -Dbin=${PREFIX}/bin \
@@ -93,7 +93,7 @@ configure_amd64() {
         -Ulocincpth= \
         -Uloclibpth= \
         -Dlibpth="/lib/amd64 /usr/lib/amd64" \
-        -Dlibs="-lsocket -lnsl -lm -lc" \
+        -Dlibs="-lsocket -lnsl -lresolv -lm -lc" \
         || logerr "--- Configure failed"
 
     logcmd sed -i "
@@ -137,7 +137,7 @@ configure_aarch64() {
         -Dosname=solaris \
         -Dcf_by=$DISTRO_LC-builder \
         -Dcf_email=$PUBLISHER_EMAIL \
-        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS" \
+        -Doptimize="-O3 $CTF_CFLAGS $XPG6CFLAGS -DH_ERRNO_IS_FUNCTION" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
         -Dbin=${PREFIX}/bin \
@@ -153,7 +153,7 @@ configure_aarch64() {
         -Ulocincpth= \
         -Uloclibpth= \
         -Dlibpth="/lib /usr/lib" \
-        -Dlibs="-lsocket -lnsl -lm -lc" \
+        -Dlibs="-lsocket -lnsl -lresolv -lm -lc" \
         || logerr "--- Configure failed"
 
     logcmd sed -i "
