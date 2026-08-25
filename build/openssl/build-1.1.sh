@@ -20,7 +20,7 @@
 
 PROG=openssl
 VER=1.1.1w
-DASHREV=2
+DASHREV=3
 PKG=library/security/openssl-11
 SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "

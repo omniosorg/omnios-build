@@ -117,7 +117,9 @@ Result: NOTESTS
 15-test_rsax931.t ....................... ok
 15-test_sha.t ........................... ok
 20-test_app.t ........................... ok
+20-test_app_s_client.t .................. ok
 20-test_cli_fips.t ...................... skipped: Test only supported in a fips build with security checks
+20-test_cli_list.t ...................... ok
 20-test_dgst.t .......................... ok
 20-test_dhparam.t ....................... ok
 20-test_dhparam_check.t ................. ok
@@ -216,6 +218,7 @@ Result: NOTESTS
 70-test_quic_wire.t ..................... ok
 70-test_recordlen.t ..................... ok
 70-test_renegotiation.t ................. ok
+70-test_rio_poll_builder.t .............. ok
 70-test_servername.t .................... ok
 70-test_sslcbcpadding.t ................. ok
 70-test_sslcertstatus.t ................. ok
@@ -238,6 +241,7 @@ Result: NOTESTS
 70-test_tls13kexmodes.t ................. ok
 70-test_tls13messages.t ................. ok
 70-test_tls13psk.t ...................... ok
+70-test_tls13ticket.t ................... ok
 70-test_tlsextms.t ...................... ok
 70-test_verify_extra.t .................. ok
 70-test_wpacket.t ....................... ok
@@ -344,5 +348,5 @@ Result: NOTESTS
 99-test_fuzz_v3name.t ................... ok
 99-test_fuzz_x509.t ..................... ok
 All tests successful.
-Files=342, Tests=4456, 
+Files=346, Tests=4499, 
 Result: PASS
