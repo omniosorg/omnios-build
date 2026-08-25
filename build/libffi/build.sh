@@ -58,7 +58,7 @@ post_make() {
 post_build() {
     typeset arch="$1"
     typeset tripl
-    typeset nm=nm
+    typeset nm=$NM
     cross_arch $arch && nm=${TRIPLETS[$arch]}-nm
     [ "$arch" = 'i386' ] && tripl='amd64' || tripl=$arch
     $nm $TMPDIR/$BUILDDIR/${TRIPLETS[$tripl]}/.libs/libffi.so \
