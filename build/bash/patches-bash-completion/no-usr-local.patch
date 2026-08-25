@@ -1,0 +1,47 @@
+/usr/local is not a directory that exists on OmniOS, so remove it from
+the default completion search paths and from the PATH used for locating
+system administrator commands.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/bash_completion a/bash_completion
+--- a~/bash_completion	1970-01-01 00:00:00
++++ a/bash_completion	1970-01-01 00:00:00
+@@ -159,7 +159,7 @@
+ {
+     # Completions for system administrator commands are installed as well in
+     # case completion is attempted via `sudo command ...'.
+-    PATH=$PATH:/usr/sbin:/sbin:/usr/local/sbin type "$1" &>/dev/null
++    PATH=$PATH:/usr/sbin:/sbin type "$1" &>/dev/null
+ }
+ 
+ # This function checks whether a given readline variable
+@@ -3176,7 +3176,7 @@
+ # @since 2.12
+ _comp_root_command()
+ {
+-    local PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
++    local PATH=$PATH:/sbin:/usr/sbin
+     local _comp_root_command=$1
+     _comp_command
+ }
+@@ -3573,10 +3573,10 @@
+     done
+ 
+     # 4) From bash-completion subdir in XDG_DATA_DIRS or system dirs
+-    # (e.g. /usr/share, /usr/local/share) -- typically meaning a system
++    # (e.g. /usr/share) -- typically meaning a system
+     # installed one if the one in use is not that, see 2) above
+ 
+-    _comp_split -F : dirs "${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
++    _comp_split -F : dirs "${XDG_DATA_DIRS:-/usr/share}"
+     for dir in "${dirs[@]}"; do
+         _comp_load__visit_file \
+             "$dir/bash-completion/completions/$cmdname.bash" && return 0
+@@ -3675,7 +3675,7 @@
+     local paths
+     _comp_split -F : paths "${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}" &&
+         startup_dirs+=("${paths[@]/%//startup}")
+-    _comp_split -F : paths "${XDG_DATA_DIRS:-/usr/local/share:/usr/share}" &&
++    _comp_split -F : paths "${XDG_DATA_DIRS:-/usr/share}" &&
+         startup_dirs+=("${paths[@]/%//bash-completion/startup}")
+     startup_dirs+=("$_comp__base_directory/startup")
+     startup_dirs+=("$_comp__base_directory/startup-core")

@@ -87,7 +87,7 @@
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 037			| https://ftp.gnu.org/gnu/bash/bash-5.2-patches
-| shell/bash5-completions		| 2.14.0		| https://github.com/scop/bash-completion/releases
+| shell/bash5-completions		| 2.18.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.11.0		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh

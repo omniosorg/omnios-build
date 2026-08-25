@@ -9,13 +9,17 @@
 # http://www.illumos.org/license/CDDL.
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 
 license COPYING license=GPLv3
 license ../bash-completion-$(BCVER)/COPYING license=GPLv2
 
 <transform dir path=etc/bash -> set group sys>
+
+# This directory is empty but is still consulted at shell startup for
+# system-local eagerly-loaded completion files.
+dir path=etc/bash_completion.d owner=root group=sys mode=0755
 
 link path=usr/gnu/bin/sh target=../../bin/bash
 
@@ -34,13 +38,182 @@ file files/skel.bashrc path=etc/skel/.bashrc owner=root group=bin mode=0644 \
 
 <transform path=usr/share/doc/bash -> drop>
 
-# Drop some completions that do not make sense on OmniOS. This is not an
-# exhaustive list.
+# Placeholder files that just document the purpose of the directories
+# reserved for third-party packages.
+<transform path=$(COMPDIR)/(completions|helpers|startup)/README.md -> drop>
 
-<transform path=usr/share/bash-completion/completions/freeciv -> drop>
-<transform path=usr/share/bash-completion/completions/[lp]v -> drop>
-<transform path=usr/share/bash-completion/completions/gnome -> drop>
-<transform path=usr/share/bash-completion/completions/.*chrome -> drop>
-<transform path=usr/share/bash-completion/completions/.*rpm -> drop>
-<transform path=usr/share/bash-completion/completions/.*wine -> drop>
+# The illumos-completion set includes a more complete svcadm completion
+# which also covers svcs.
+<transform path=$(COMPDIR)/completions-core/svcadm\.bash -> drop>
 
+# Drop completions for utilities which either cannot exist on OmniOS, or
+# for which the completion targets a foreign (usually Linux) variant that
+# differs significantly from the illumos one. This is not an exhaustive
+# list.
+
+# Foreign packaging and distribution tools
+<transform path=$(COMPDIR)/completions-(core|fallback)/.*koji -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/.*rpm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/(update-)?alternatives -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/apt- -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/aptitude -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/bts -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/chkconfig -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dpkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dselect -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/explodepkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/gendiff -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/installpkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/(invoke|update)-rc\.d -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lintian -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/locale-gen -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/makepkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/mock\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pkgtool -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/plague-client -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/prelink -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/querybts -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/removepkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/repomanage -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/reportbug -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/sbopkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/slackpkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/slapt- -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/upgradepkg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/yum -> drop>
+
+# Linux kernel, boot, module and hardware management
+<transform path=$(COMPDIR)/completions-(core|fallback)/acpi -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/(pc)?cardctl -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dmesg -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/fprintd- -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/fsnotify -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/hddtemp -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/hwclock -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/inotify -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/insmod -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ionice -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lilo -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lsscsi -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lsusb -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/mkinitrd -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/modinfo -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/modprobe -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pm- -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/rmmod -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/rpcdebug -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/rtcwake -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/synclient -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/sysctl -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/udevadm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/valgrind -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/xm\.bash -> drop>
+
+# Linux process utilities; the illumos versions differ significantly
+# (illumos killall in particular does something quite different)
+<transform path=$(COMPDIR)/completions-(core|fallback)/free\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/killall -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pgrep -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pidof -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pkill -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ps\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/slabtop -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/strace -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/vmstat -> drop>
+
+# Linux storage, volume management and filesystem tools
+<transform path=$(COMPDIR)/completions-(core|fallback)/badblocks -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/cryptsetup -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dumpe2fs -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/e2 -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ecryptfs -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/edquota -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/filefrag -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/fusermount -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/iscsiadm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lv -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/mdadm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pv[a-z] -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/quota -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/repquota -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/setquota -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/tune2fs -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/u?mount\.linux -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/vg -> drop>
+
+# Linux networking tools
+<transform path=$(COMPDIR)/completions-(core|fallback)/brctl -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ebtables -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ether-?wake -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/if(down|query|status|up) -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ip\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ipsec -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/iptables -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/iw -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/mii- -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/nmcli -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/radvdump -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/resolvconf -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/rfkill -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/route\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ss\.bash -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/tipc -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/tracepath -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/wvdial -> drop>
+
+# Bluetooth (bluez)
+<transform path=$(COMPDIR)/completions-(core|fallback)/avctrl -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/ciptool -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dfutool -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/hci -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/hid2hci -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/l2ping -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/rfcomm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/sdptool -> drop>
+
+# Linux (shadow-utils/util-linux) account management; the illumos
+# equivalents take different options
+<transform path=$(COMPDIR)/completions-(core|fallback)/chage -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/chfn -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/chpasswd -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/chsh -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/faillog -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/gpasswd -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/group(add|del|mems|mod) -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/grpck -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/lastlog -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/luser -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/newusers -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/pwck -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/runuser -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/user(add|del|mod) -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/vigr -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/vipw -> drop>
+
+# Desktop applications, web browsers and games
+<transform path=$(COMPDIR)/completions-(core|fallback)/.*chrome -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/.*firefox -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/.*wine -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/appdata-validate -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/brave -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/chromium -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/civ -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/dcop -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/deja-dup -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/desktop-file-validate -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/eog -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/evince -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/file-roller -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/freeciv -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/gkrellm -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/gnome -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/helium -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/iceweasel -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/k3b -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/opera -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/qdbus -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/secret-tool -> drop>
+<transform path=$(COMPDIR)/completions-(core|fallback)/xdg- -> drop>
+
+# BSD-specific
+<transform path=$(COMPDIR)/completions-(core|fallback)/chflags -> drop>

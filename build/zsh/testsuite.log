@@ -9,7 +9,9 @@ This test hangs the shell when it fails...
 ./A04redirect.ztst: starting.
 ./A04redirect.ztst: all tests successful.
 ./A05execution.ztst: starting.
+Unable to change MONITOR option
 This test takes 5 seconds to fail...
+Skipping pipe leak test, requires MONITOR option
 This test takes 3 seconds and hangs the shell when it fails...
 ./A05execution.ztst: all tests successful.
 ./A06assign.ztst: starting.
@@ -61,6 +63,8 @@ Another test that takes three seconds
 ./C05debug.ztst: starting.
 ./C05debug.ztst: all tests successful.
 ./D01prompt.ztst: starting.
+Test case skipped: Missing terminfo module or non-colour terminal
+Test case skipped: Missing terminfo module or non-colour terminal
 ./D01prompt.ztst: all tests successful.
 ./D02glob.ztst: starting.
 ./D02glob.ztst: all tests successful.
@@ -128,7 +132,6 @@ Test case skipped: strftime extensions not supported
 ./V14system.ztst: starting.
 ./V14system.ztst: all tests successful.
 ./W01history.ztst: starting.
-History tests write to /dev/tty
 ./W01history.ztst: all tests successful.
 ./W02jobs.ztst: starting.
 ./W02jobs.ztst: all tests successful.

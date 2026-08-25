@@ -1,0 +1,30 @@
+/usr/local is not a directory that exists on OmniOS, so do not add
+/usr/local/share/zsh/site-functions to the default fpath.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
+--- a~/configure.ac	1970-01-01 00:00:00
++++ a/configure.ac	1970-01-01 00:00:00
+@@ -312,21 +312,8 @@
+ dnl Add /usr/local/share/zsh/site-functions if not yet present
+ dnl owing to $sitefndir, whether or not explicitly given.
+ dnl If not explicitly given, it hasn't been expanded yet.
+-if test X$sitefndir = X/usr/local/share/zsh/site-functions || \
+-   test X$sitefndir = Xno
+-then fixed_sitefndir=''
+-elif test X$prefix != X/usr/local; then
+-  if test X$prefix = XNONE && test X$ac_default_prefix = X/usr/local; then
+-    if test X$tzsh_name != Xzsh
+-    then fixed_sitefndir=/usr/local/share/zsh/site-functions
+-    else fixed_sitefndir=''
+-    fi
+-  else fixed_sitefndir=/usr/local/share/zsh/site-functions
+-  fi
+-elif test X$tzsh_name != Xzsh
+-then fixed_sitefndir=/usr/local/share/zsh/site-functions
+-else fixed_sitefndir=''
+-fi
++dnl /usr/local is not used on OmniOS.
++fixed_sitefndir=''
+ 
+ ifdef([function_subdirs],[undefine([function_subdirs])])
+ AC_ARG_ENABLE(function-subdirs,
