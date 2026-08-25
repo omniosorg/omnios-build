@@ -4,6 +4,52 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054bq (2026-08-25)
+Weekly release for w/c 24th of August 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- `OpenSSL` has been updated to version 3.5.8, fixing
+  [multiple vulnerabilities](https://openssl-library.org/news/vulnerabilities/).
+
+- [rsync(1)](https://man.omnios.org/rsync) has been updated to version 3.5.0,
+  resolving
+  [multiple security issues](https://download.samba.org/pub/rsync/NEWS#3.5.0).
+
+- `expat` has been updated to version 2.8.3, fixing an out-of-bounds read in
+  the XML parser
+  ([CVE-2026-72522](https://www.cve.org/CVERecord?id=CVE-2026-72522)).
+
+- `OpenJDK` packages have been updated to versions 1.8.504-01, 11.0.32.1+1,
+  17.0.20.1+1 and 21.0.12.1+1, incorporating the fixes from the
+  [2026/07/21](https://openjdk.org/groups/vulnerability/advisories/2026-07-21)
+  and
+  [2026/08/18](https://openjdk.org/groups/vulnerability/advisories/2026-08-18)
+  OpenJDK vulnerability advisories.
+
+- Updated AMD CPU microcode to 20260724.
+
+### Other Changes
+
+- The [ccid(4D)](https://man.omnios.org/ccid) driver mistakenly treated smart
+  card readers which perform automatic parameter selection from the ATR as
+  requiring parameters to be set before a card could be powered on, preventing
+  some readers from working -
+  see [illumos 15086](https://www.illumos.org/issues/15086).
+
+- `OpenJDK` 21 incorrectly determined that the system did not support IPv6,
+  causing Java applications to run in IPv4-only mode.
+
+- The loadable builtin modules for [bash(1)](https://man.omnios.org/bash)
+  were missing from the package due to a silent build failure, and the
+  default search path for loadable builtins did not include the directory
+  to which they are delivered. The modules are now shipped once again.
+
+<br>
+
+---
+
 ## r151054bj (2026-07-08)
 Weekly release for w/c 06th of July 2026.
 > This update requires a reboot
