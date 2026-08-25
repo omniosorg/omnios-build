@@ -61,6 +61,11 @@ typeset -A jobs
         download_source bhyve-fw uefi-edk2 $tag
         ((EXTRACT_MODE)) && exit
         pushd $TMPDIR/$BUILDDIR >/dev/null
+        # gld 2.47+ rejects compiler-style -O options, and the LTO flags
+        # are no-ops on a direct ld invocation.
+        logcmd sed -i "/^\*_ILLGCC_X64_DLINK_FLAGS/s/ -flto -Os//" \
+            BaseTools/Conf/tools_def.template
+        logcmd rm -f patches/01-openssl.patch
         logcmd cp OvmfPkg/License.txt $fwdir/LICENCE.$tag.OvmfPkg
         logcmd cp OvmfPkg/Bhyve/License.txt $fwdir/LICENCE.$tag.BhyvePkg
         for v in RELEASE DEBUG; do
@@ -94,6 +99,11 @@ jobs[UEFI]=$!
         download_source bhyve-fw uefi-edk2 $tag $TMPDIR/ovmf
         ((EXTRACT_MODE)) && exit
         pushd $TMPDIR/ovmf/$BUILDDIR >/dev/null
+        # gld 2.47+ rejects compiler-style -O options, and the LTO flags
+        # are no-ops on a direct ld invocation.
+        logcmd sed -i "/^\*_ILLGCC_X64_DLINK_FLAGS/s/ -flto -Os//" \
+            BaseTools/Conf/tools_def.template
+        logcmd rm -f patches/01-openssl.patch
         for v in RELEASE DEBUG; do
             [ -n "$DEPVER" -a "$DEPVER" != $v ] && continue
             note "Building OVMF $v firmware"
