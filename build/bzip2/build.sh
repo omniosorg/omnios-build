@@ -38,6 +38,7 @@ HARDLINK_TARGETS="
 "
 
 base_CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Wall -Winline"
+CFLAGS+=" -D_REENTRANT"
 
 post_clean() {
     logcmd $MAKE -f Makefile-libbz2_so clean

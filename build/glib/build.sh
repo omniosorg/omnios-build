@@ -38,6 +38,7 @@ PATH="$GNUBIN:$PATH:$OOCEBIN"
 #   error: format not a string literal, arguments not checked
 # Tell configure that this flag doesn't exist for the compiler.
 CFLAGS+=" -Wno-error=format-nonliteral -Wno-error=format=2"
+CFLAGS+=" -D_REENTRANT -DH_ERRNO_IS_FUNCTION"
 
 # Required to enable the POSIX variants of getpwuid_r and getpwnam_r
 # See comment in /usr/include/pwd.h

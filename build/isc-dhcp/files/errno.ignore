@@ -1,0 +1,4 @@
+usr/bin/omshell
+usr/sbin/dhclient
+usr/sbin/dhcpd
+usr/sbin/dhcrelay

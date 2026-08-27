@@ -1,0 +1,16 @@
+Link sudo_intercept.so with the network libraries. libtool 2.6 no longer
+propagates a dependency's libraries onto module link lines and illumos ld
+requires an explicit -lsocket when --no-undefined is in effect.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/Makefile.in a/src/Makefile.in
+--- a~/src/Makefile.in	1970-01-01 00:00:00
++++ a/src/Makefile.in	1970-01-01 00:00:00
+@@ -225,7 +225,7 @@ $(shlib_opt): $(shlib_exp)
+ 	@$(SED) 's/^/+e /' $(shlib_exp) > $@
+ 
+ sudo_intercept.la: $(INTERCEPT_OBJS) @LT_LDDEP@
+-	$(LIBTOOL) $(LTFLAGS) --mode=link $(CC) $(LDFLAGS) $(INTERCEPT_LDFLAGS) $(ASAN_LDFLAGS) $(HARDENING_LDFLAGS) $(LT_LIBS) @LIBDL@ -o $@ $(INTERCEPT_OBJS) $(PRELOAD_MODULE) -avoid-version -rpath $(interceptdir) -shrext .so
++	$(LIBTOOL) $(LTFLAGS) --mode=link $(CC) $(LDFLAGS) $(INTERCEPT_LDFLAGS) $(ASAN_LDFLAGS) $(HARDENING_LDFLAGS) $(LT_LIBS) @LIBDL@ @NET_LIBS@ -o $@ $(INTERCEPT_OBJS) $(PRELOAD_MODULE) -avoid-version -rpath $(interceptdir) -shrext .so
+ 
+ sudo_noexec.la: sudo_noexec.lo
+ 	$(LIBTOOL) $(LTFLAGS) --mode=link $(CC) $(LDFLAGS) $(NOEXEC_LDFLAGS) $(HARDENING_LDFLAGS) @LIBDL@ -o $@ sudo_noexec.lo $(PRELOAD_MODULE) -avoid-version -rpath $(noexecdir) -shrext .so

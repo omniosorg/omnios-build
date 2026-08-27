@@ -1817,6 +1817,7 @@ generate_manifest() {
     fi
     check_soname
     check_bmi
+    check_errno
     logmsg "--- Generating package manifest from $DESTDIR"
     typeset GENERATE_ARGS=
     if [ -n "$HARDLINK_TARGETS" ]; then
@@ -3751,6 +3752,40 @@ check_bmi() {
     if [ -s "$TMPDIR/rtime.bmi" ]; then
         $CAT $TMPDIR/rtime.bmi | pipelog
         logerr "BMI instruction set found"
+    fi
+}
+
+check_errno() {
+    [ -n "$GLOBAL_ERRNO_EXPECTED" ] && return
+
+    # The illumos errno macro only expands to the per-thread ___errno()
+    # when compiled with -D_REENTRANT or -D_TS_ERRNO, and h_errno only
+    # expands to __h_errno() (libresolv) when H_ERRNO_IS_FUNCTION is
+    # additionally defined. An object which imports the global symbols
+    # instead reads stale values on any thread other than the primordial
+    # one.
+
+    logmsg "-- Checking errno binding"
+
+    typeset if=$SRCDIR/files/errno.ignore
+    [ -f "$if" ] || if=
+
+    : > $TMPDIR/rtime.errno
+    while read obj; do
+        [ -f "$DESTDIR/$obj" ] || continue
+        if $NM -D "$DESTDIR/$obj" 2>/dev/null | $EGREP '\|UNDEF' \
+            | $EGREP -s '\|(h_)?errno$' >/dev/null; then
+            if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
+                echo "$obj imports a global errno symbol" \
+                    >> $TMPDIR/rtime.errno
+            fi
+        fi &
+        parallelise $LCPUS
+    done < <(rtime_objects)
+    wait
+    if [ -s "$TMPDIR/rtime.errno" ]; then
+        $CAT $TMPDIR/rtime.errno | pipelog
+        logerr "Found objects importing the global errno symbol"
     fi
 }
 

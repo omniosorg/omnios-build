@@ -126,7 +126,8 @@ LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
 MAKE_ARGS_WS="
     BOOT_CFLAGS=\"$CTF_CFLAGS\"
-    CFLAGS_FOR_TARGET=\"$CTF_CFLAGS\"
+    CFLAGS_FOR_TARGET=\"$CTF_CFLAGS -D_TS_ERRNO\"
+    CXXFLAGS_FOR_TARGET=\"$CTF_CFLAGS -D_TS_ERRNO\"
 "
 
 # gcc uses posix_fallocate() to extend temporary files on disk.
