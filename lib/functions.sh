@@ -3707,7 +3707,8 @@ check_soname() {
             EXEC)
                 if $ELFEDIT -re 'dyn:tag needed' "$DESTDIR/$obj" \
                     | $EGREP 'NEEDED.*\.so$'; then
-                    if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
+                    if [ -z "$if" ] || ! $FGREP -sx "${obj#/}" $if >/dev/null
+                    then
                         echo "$obj has an unqualified dependency" \
                             >> $TMPDIR/rtime.soname
                     fi
@@ -3715,7 +3716,8 @@ check_soname() {
             DYN)
                 if ! $ELFEDIT -re 'dyn:tag soname' "$DESTDIR/$obj" \
                     >/dev/null 2>&1; then
-                    if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
+                    if [ -z "$if" ] || ! $FGREP -sx "${obj#/}" $if >/dev/null
+                    then
                         echo "$obj is missing an SONAME" \
                             >> $TMPDIR/rtime.soname
                     fi
@@ -3775,7 +3777,7 @@ check_errno() {
         [ -f "$DESTDIR/$obj" ] || continue
         if $NM -D "$DESTDIR/$obj" 2>/dev/null | $EGREP '\|UNDEF' \
             | $EGREP -s '\|(h_)?errno$' >/dev/null; then
-            if [ -z "$if" ] || ! $EGREP -s "^${obj#/}\$" $if; then
+            if [ -z "$if" ] || ! $FGREP -sx "${obj#/}" $if >/dev/null; then
                 echo "$obj imports a global errno symbol" \
                     >> $TMPDIR/rtime.errno
             fi
