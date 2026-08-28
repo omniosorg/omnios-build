@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=libffi
-VER=3.4.5
+VER=3.8.0
 PKG=library/libffi
 SUMMARY="A Portable Foreign Function Interface Library"
 DESC="$PROG - $SUMMARY"
@@ -33,12 +33,26 @@ LDFLAGS+=" $SSPFLAGS"
 
 export MAKE
 
+# Assembly objects built with debug flags get a DWARF compilation unit with
+# no type information, which breaks CTF conversion. Assemble without debug
+# information instead. This is called from pre_build for every version that is
+# built.
+ccasflags() {
+    typeset arch=${1:?arch}
+
+    unset CCASFLAGS
+    typeset -gA CCASFLAGS=(
+        [0]="${CFLAGS[0]} -g0"
+        [$arch]="${CFLAGS[$arch]}"
+    )
+    subsume_arch $arch CCASFLAGS
+}
+
 # libffi has historically been linked with libtool's -nostdlib.
 # The exact reason for this unclear but historic commit messages indicate that
 # it may be related to C++ throw/catch across the library interface.
 # We should try and clarify the exact reason but we retain the same link
 # behaviour.
-
 post_make() {
     typeset arch="$1"
     typeset tripl
@@ -70,7 +84,7 @@ init
 prep_build
 
 # Skip previous versions for cross compilation
-pre_build() { ! cross_arch $1; }
+pre_build() { ccasflags $1; ! cross_arch $1; }
 
 # Build previous versions
 save_variables BUILDDIR EXTRACTED_SRC
@@ -84,7 +98,7 @@ for pver in $PVERS; do
     fi
 done
 restore_variables BUILDDIR EXTRACTED_SRC
-unset -f pre_build
+pre_build() { ccasflags $1; }
 
 note -n "Building current version: $VER"
 download_source $PROG $PROG $VER
