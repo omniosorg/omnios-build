@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=libidn
-VER=1.43
+VER=1.44
 PKG=library/libidn
 SUMMARY="The Internationalized Domains Library"
 DESC="IDN - The Internationalized Domains Library"
