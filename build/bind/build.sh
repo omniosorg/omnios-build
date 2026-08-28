@@ -18,13 +18,14 @@
 . ../../lib/build.sh
 
 PROG=bind
-VER=9.18.50
+VER=9.20.27
 PKG=network/dns/bind
 SUMMARY="BIND DNS tools"
 DESC="Client utilities for DNS lookups"
 
 LIBUVVER=1.52.1
-XFORM_ARGS+=" -DLIBUV=$LIBUVVER"
+URCUVER=0.15.6
+XFORM_ARGS+=" -DLIBUV=$LIBUVVER -DURCUVER=$URCUVER"
 
 # This package ships private shared libraries in $PREFIX/lib/dns that are only
 # provided for use by the client utilities. We can therefore build everything
@@ -44,15 +45,9 @@ CONFIGURE_OPTS="
     --libdir=$PREFIX/lib/dns
     --bindir=$PREFIX/sbin
     --localstatedir=/var
-    --with-libtool
-    --with-openssl
-    --enable-threads=yes
-    --enable-devpoll=yes
     --enable-fixed-rrset
-    --disable-getifaddrs
     --enable-shared
     --disable-static
-    --without-python
 "
 
 PKGDIFF_HELPER="
@@ -82,6 +77,19 @@ unset -f pre_configure
 restore_buildenv
 
 #########################################################################
+# Download and build a static version of liburcu
+
+save_buildenv
+
+CFLAGS+=" -fPIC"
+CONFIGURE_OPTS="--disable-shared --enable-static"
+
+build_dependency urcu userspace-rcu-$URCUVER liburcu userspace-rcu $URCUVER
+logcmd $RM -f $DEPROOT$PREFIX/lib{,/amd64}/liburcu*.la
+
+restore_buildenv
+
+#########################################################################
 
 note -n "-- Building $PROG"
 
@@ -90,6 +98,10 @@ pre_configure() {
 
     export LIBUV_CFLAGS="-I$DEPROOT$PREFIX/include"
     export LIBUV_LIBS="-L$DEPROOT$PREFIX/${LIBDIRS[$arch]} -luv"
+    export LIBURCU_CFLAGS="-I$DEPROOT$PREFIX/include"
+    LIBURCU_LIBS="-L$DEPROOT$PREFIX/${LIBDIRS[$arch]}"
+    LIBURCU_LIBS+=" -lurcu -lurcu-cds -lurcu-common"
+    export LIBURCU_LIBS
 
     ! cross_arch $arch && return
 
