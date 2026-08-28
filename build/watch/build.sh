@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=watch
-VER=4.0.6
+VER=4.0.7
 PKG=system/watch
 SUMMARY="execute a program repeatedly, displaying output fullscreen"
 DESC="GNU watch - $SUMMARY"

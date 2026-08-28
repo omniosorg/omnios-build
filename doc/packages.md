@@ -106,7 +106,7 @@
 | system/rsyslog			| 8.2608.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
 | system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
-| system/watch				| 4.0.6			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
+| system/watch				| 4.0.7			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 5.0.2			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.7c			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.4.1			| https://ftp.gnu.org/gnu/gawk/
