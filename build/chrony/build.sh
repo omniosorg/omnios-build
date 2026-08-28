@@ -12,16 +12,16 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=chrony
-VER=4.8
+VER=4.9
 PKG=service/network/chrony
 SUMMARY="Network time services"
 DESC="A versatile implementation of the Network Time Protocol (NTP)"
-NETTLEVER=3.10.2
+NETTLEVER=4.0
 
 BUILD_DEPENDS_IPS="ooce/text/asciidoctor"
 
@@ -41,8 +41,13 @@ prep_build autoconf -autoreconf
 save_buildenv
 
 CONFIGURE_OPTS="--disable-shared"
+# Assembly objects built with debug flags get a DWARF compilation unit with no
+# type information, which breaks CTF conversion.
+CONFIGURE_OPTS+=" ASM_FLAGS=-g0"
 CONFIGURE_OPTS[aarch64]+=" HOST_CC=/opt/gcc-$DEFAULT_GCC_VER/bin/gcc"
-CPPFLAGS="-I/usr/include/gmp"
+# Nettle's bundled gnulib getopt needs the extended stdio functions.
+set_standard XPG6
+CPPFLAGS+=" -I/usr/include/gmp"
 
 build_dependency nettle nettle-$NETTLEVER \
     nettle nettle $NETTLEVER
