@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=tmux
-VER=3.7
+VER=3.7c
 PKG=terminal/tmux
 SUMMARY="Terminal multiplexer"
 DESC="$SUMMARY"
@@ -29,12 +29,11 @@ SKIP_LICENCES=tmux
 set_arch 64
 
 CONFIGURE_OPTS+=" --enable-utempter"
+CPPFLAGS+=" -I $PREFIX/include/ncurses"
+LDFLAGS+=" -lsocket -lnsl -lsendfile"
 
 pre_build() {
     typeset arch=$1
-
-    CPPFLAGS="-I $PREFIX/include/ncurses"
-    LDFLAGS="-lsocket -lnsl -lsendfile"
 
     cross_arch $arch && addpath PKG_CONFIG_PATH \
         ${SYSROOT[$arch]}/$PREFIX/${LIBDIRS[$arch]}/pkgconfig
