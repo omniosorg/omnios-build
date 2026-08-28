@@ -48,7 +48,7 @@
 | library/libevent			| 2.1.13		| https://github.com/libevent/libevent/tags
 | library/libidn			| 1.44			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.4.5			| https://sourceware.org/libffi/
-| library/libmagic			| 5.47			| https://github.com/file/file/tags
+| library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
