@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/config/rules.mk a/config/rules.mk
+--- a~/config/rules.mk	1970-01-01 00:00:00
++++ a/config/rules.mk	1970-01-01 00:00:00
+@@ -447,7 +447,7 @@ endif
+ 
+ $(OBJDIR)/%.$(OBJ_SUFFIX): %.s
+ 	@$(MAKE_OBJDIR)
+-	$(AS) -o $@ $(ASFLAGS) -c $<
++	$(AS) -o $@ $(ASFLAGS) -g0 -c $<
+ 
+ %.i: %.c
+ 	$(CC) -C -E $(CFLAGS) $< > $*.i

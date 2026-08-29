@@ -1,3 +1,4 @@
 libs.patch
 aarch64.patch
 modernise.patch
+asm-no-debug.patch
