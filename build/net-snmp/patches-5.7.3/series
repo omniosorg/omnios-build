@@ -9,3 +9,4 @@
 020.7018550.kernel_sunos5.patch
 021.7027183.kernel_sunos5.patch
 openssl.patch
+069.agent-parallel-make.patch
