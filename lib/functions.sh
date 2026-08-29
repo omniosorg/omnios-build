@@ -2663,7 +2663,15 @@ make_isaexec_stub_arch() {
         logcmd $CC ${CFLAGS[0]} ${CFLAGS[i386]} -o $file \
             -DFALLBACK_PATH="$dir/$file" $BLIBDIR/isastub.c \
             || logerr "--- Failed to make isaexec stub for $dir/$file"
-        strip_files "$file"
+        # When CTF conversion is enabled, the stub contains DWARF via the
+        # debug flags in CFLAGS. Convert it here since the main conversion
+        # pass may already have run; conversion strips the file afterwards.
+        if [ "${CTF_ENABLED:-0}" -eq 1 ]; then
+            typeset ctftag='---- CTF:'
+            do_convert_ctf "$file"
+        else
+            strip_files "$file"
+        fi
     done
 }
 
@@ -2824,6 +2832,10 @@ build() {
     done
 
     [ $ctf -eq 1 ] && CFLAGS[0]+=" $CTF_CFLAGS"
+    # Record whether this build is being converted to CTF so that objects
+    # created outside of the main build, such as isaexec stubs, can be
+    # handled properly.
+    CTF_ENABLED=$ctf
 
     hook build_init
 
