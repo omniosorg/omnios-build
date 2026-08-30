@@ -1,0 +1,88 @@
+From 83f268396a8042f18d2524ae2e7bef8437061cc2 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Thu, 27 Feb 2025 21:05:26 +0000
+Subject: [PATCH] Add failfast source option for faster fallback to local
+ source.
+
+This adds a new "failfast" option to the source definition commands
+(peer/server) that causes them to be marked as unselectable as soon
+as they are deemed unreachable (the last X attempts to communicate
+have all failed). This causes a rapid fallback to any configured
+local source.
+diff -wpruN --no-dereference '--exclude=*.orig' a~/cmdparse.c a/cmdparse.c
+--- a~/cmdparse.c	1970-01-01 00:00:00
++++ a/cmdparse.c	1970-01-01 00:00:00
+@@ -224,6 +224,8 @@ CPS_GetSelectOption(char *option)
+     return SRC_SELECT_REQUIRE;
+   } else if (!strcasecmp(option, "trust")) {
+     return SRC_SELECT_TRUST;
++  } else if (!strcasecmp(option, "failfast")) {
++    return SRC_SELECT_FAILFAST;
+   }
+   return 0;
+ }
+diff -wpruN --no-dereference '--exclude=*.orig' a~/reference.c a/reference.c
+--- a~/reference.c	1970-01-01 00:00:00
++++ a/reference.c	1970-01-01 00:00:00
+@@ -1303,6 +1303,12 @@ REF_DisableLocal(void)
+   LOG(LOGS_INFO, "%s local reference mode", "Disabled");
+ }
+ 
++int
++REF_LocalEnabled(void)
++{
++  return (enable_local_stratum);
++}
++
+ /* ================================================== */
+ 
+ #define LEAP_SECOND_CLOSE 5
+diff -wpruN --no-dereference '--exclude=*.orig' a~/reference.h a/reference.h
+--- a~/reference.h	1970-01-01 00:00:00
++++ a/reference.h	1970-01-01 00:00:00
+@@ -188,6 +188,7 @@ extern void REF_ModifyMakestep(int limit
+ extern void REF_EnableLocal(int stratum, double distance, int orphan, double activate,
+                             double wait_synced, double wait_unsynced);
+ extern void REF_DisableLocal(void);
++extern int REF_LocalEnabled(void);
+ 
+ /* Check if either of the current raw and cooked time, and optionally a
+    provided timestamp with an offset, is close to a leap second */
+diff -wpruN --no-dereference '--exclude=*.orig' a~/sources.c a/sources.c
+--- a~/sources.c	1970-01-01 00:00:00
++++ a/sources.c	1970-01-01 00:00:00
+@@ -1071,6 +1071,15 @@ SRC_SelectSource(SRC_Instance updated_in
+       continue;
+     }
+ 
++    /* If the source is configured to fail fast and is currently unreachable,
++     * mark it as unselectable. */
++    if ((sources[i]->sel_options & SRC_SELECT_FAILFAST) &&
++	sources[i]->reachability == 0 &&
++	sources[i]->reachability_size == SOURCE_REACH_BITS) {
++          mark_source(sources[i], SRC_UNSELECTABLE);
++          continue;
++    }
++
+     sources[i]->status = SRC_OK; /* For now */
+ 
+     if (sources[i]->reachability && max_reach_sample_ago < first_sample_ago)
+@@ -1198,6 +1207,8 @@ SRC_SelectSource(SRC_Instance updated_in
+     /* No sources provided valid endpoints */
+     unselect_selected_source(LOGS_WARN, "Can't synchronise: no selectable sources"
+                                         " (%d unreachable sources)", n_unreach_sources);
++    if (REF_LocalEnabled())
++      REF_SetUnsynchronised();
+     return;
+   }
+ 
+diff -wpruN --no-dereference '--exclude=*.orig' a~/srcparams.h a/srcparams.h
+--- a~/srcparams.h	1970-01-01 00:00:00
++++ a/srcparams.h	1970-01-01 00:00:00
+@@ -93,5 +93,6 @@ typedef struct {
+ #define SRC_SELECT_PREFER 0x2
+ #define SRC_SELECT_TRUST 0x4
+ #define SRC_SELECT_REQUIRE 0x8
++#define SRC_SELECT_FAILFAST 0x10
+ 
+ #endif /* GOT_SRCPARAMS_H */

@@ -54,7 +54,7 @@
 | library/libxml2			| 2.15.3		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.16			| https://download.savannah.gnu.org/releases/lzip/lzlib/
-| library/nettle			| 3.10.2		| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
+| library/nettle			| 4.0			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.70.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.40			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
@@ -82,7 +82,7 @@
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
 | runtime/python-313			| 3.13.15		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.17p2		| https://www.sudo.ws/
-| service/network/chrony		| 4.8			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
+| service/network/chrony		| 4.9			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.5			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
