@@ -39,7 +39,7 @@ Originally implemented in:
  create mode 100644 gcc/testsuite/gcc.target/i386/msave-args-push.c
 
 diff --git a/gcc/config/i386/i386-options.cc b/gcc/config/i386/i386-options.cc
-index 964449fa8cd7..2f9b229142d7 100644
+index 964449fa8cd..2f9b229142d 100644
 --- a/gcc/config/i386/i386-options.cc
 +++ b/gcc/config/i386/i386-options.cc
 @@ -2775,6 +2775,9 @@ ix86_option_override_internal (bool main_args_p,
@@ -53,7 +53,7 @@ index 964449fa8cd7..2f9b229142d7 100644
       PREFERRED_STACK_BOUNDARY_DEFAULT.  */
    ix86_preferred_stack_boundary = PREFERRED_STACK_BOUNDARY_DEFAULT;
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index da29f0c986ef..c2b50cbf02ed 100644
+index da29f0c986e..c2b50cbf02e 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -447,6 +447,9 @@ static const char *ix86_ccmp_dfv_mapping[] =
@@ -303,7 +303,7 @@ index da29f0c986ef..c2b50cbf02ed 100644
 -/* Return a unique alias set for the GOT.  */
 +/* Return number of arguments to be saved on the stack with
 +   -msave-args.  */
-+
+ 
 +static int
 +ix86_nsaved_args (void)
 +{
@@ -312,13 +312,13 @@ index da29f0c986ef..c2b50cbf02ed 100644
 +  else
 +    return 0;
 +}
- 
++
 +/* Return a unique alias set for the GOT.  */
  alias_set_type
  ix86_GOT_alias_set (void)
  {
 diff --git a/gcc/config/i386/i386.h b/gcc/config/i386/i386.h
-index e850b618b8fa..04543016498b 100644
+index e850b618b8f..04543016498 100644
 --- a/gcc/config/i386/i386.h
 +++ b/gcc/config/i386/i386.h
 @@ -2643,6 +2643,11 @@ enum avx_u128_state
@@ -350,7 +350,7 @@ index e850b618b8fa..04543016498b 100644
    HOST_WIDE_INT stack_realign_allocate;
    HOST_WIDE_INT stack_realign_offset;
 diff --git a/gcc/config/i386/i386.opt b/gcc/config/i386/i386.opt
-index 27d34bd64eaa..90e88373908d 100644
+index 27d34bd64ea..90e88373908 100644
 --- a/gcc/config/i386/i386.opt
 +++ b/gcc/config/i386/i386.opt
 @@ -537,6 +537,16 @@ mtls-direct-seg-refs
@@ -371,7 +371,7 @@ index 27d34bd64eaa..90e88373908d 100644
  Target RejectNegative Negative(mtune=) Joined Var(ix86_tune_string)
  Schedule code for given CPU.
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 7d75466d2907..a072627f9b49 100644
+index 7d75466d290..a072627f9b4 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -21836,6 +21836,10 @@ The default setting is @samp{tpidr_el0}.  It is recommended to compile all
@@ -386,7 +386,7 @@ index 7d75466d2907..a072627f9b49 100644
  @opindex mno-strict-align
  @item -mstrict-align
 diff --git a/gcc/dwarf2out.cc b/gcc/dwarf2out.cc
-index 2437610d48da..4c58d3781851 100644
+index 2437610d48d..4c58d378185 100644
 --- a/gcc/dwarf2out.cc
 +++ b/gcc/dwarf2out.cc
 @@ -24214,6 +24214,11 @@ gen_subprogram_die (tree decl, dw_die_ref context_die)
@@ -403,7 +403,7 @@ index 2437610d48da..4c58d3781851 100644
  
 diff --git a/gcc/testsuite/gcc.target/i386/msave-args-mov.c b/gcc/testsuite/gcc.target/i386/msave-args-mov.c
 new file mode 100644
-index 000000000000..a2ca76752a96
+index 00000000000..a2ca76752a9
 --- /dev/null
 +++ b/gcc/testsuite/gcc.target/i386/msave-args-mov.c
 @@ -0,0 +1,26 @@
@@ -435,7 +435,7 @@ index 000000000000..a2ca76752a96
 +/* { dg-final { cleanup-saved-temps } } */
 diff --git a/gcc/testsuite/gcc.target/i386/msave-args-push.c b/gcc/testsuite/gcc.target/i386/msave-args-push.c
 new file mode 100644
-index 000000000000..fbe053dadc8b
+index 00000000000..fbe053dadc8
 --- /dev/null
 +++ b/gcc/testsuite/gcc.target/i386/msave-args-push.c
 @@ -0,0 +1,26 @@
@@ -466,7 +466,7 @@ index 000000000000..fbe053dadc8b
 +/* { dg-final { scan-assembler "pushq\t%r8" } } */
 +/* { dg-final { cleanup-saved-temps } } */
 diff --git a/include/dwarf2.def b/include/dwarf2.def
-index 989f078041d4..37f2477b400c 100644
+index 989f078041d..37f2477b400 100644
 --- a/include/dwarf2.def
 +++ b/include/dwarf2.def
 @@ -470,6 +470,8 @@ DW_TAG (DW_AT_GNU_denominator, 0x2304)

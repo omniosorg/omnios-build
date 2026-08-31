@@ -9,7 +9,7 @@ Subject: gcc.target/i386: skip 16bit tests when -msave-args
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/testsuite/gcc.target/i386/pr78691-i386.c b/gcc/testsuite/gcc.target/i386/pr78691-i386.c
-index f4b88559bc3e..5f8c91bc370b 100644
+index f4b88559bc3..5f8c91bc370 100644
 --- a/gcc/testsuite/gcc.target/i386/pr78691-i386.c
 +++ b/gcc/testsuite/gcc.target/i386/pr78691-i386.c
 @@ -1,5 +1,6 @@
@@ -20,7 +20,7 @@ index f4b88559bc3e..5f8c91bc370b 100644
  int fn1(char *p1, char *p2) {
    int a;
 diff --git a/gcc/testsuite/gcc.target/i386/pr80569.c b/gcc/testsuite/gcc.target/i386/pr80569.c
-index 8314bc128ec5..92a86380f781 100644
+index 8314bc128ec..92a86380f78 100644
 --- a/gcc/testsuite/gcc.target/i386/pr80569.c
 +++ b/gcc/testsuite/gcc.target/i386/pr80569.c
 @@ -1,8 +1,7 @@

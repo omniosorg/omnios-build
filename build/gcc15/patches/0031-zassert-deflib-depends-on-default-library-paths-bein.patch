@@ -9,7 +9,7 @@ Subject: -zassert-deflib depends on default library paths being
  1 file changed, 37 insertions(+), 6 deletions(-)
 
 diff --git a/gcc/gcc.cc b/gcc/gcc.cc
-index 4fd87f2c4a13..4da60ea2b4e9 100644
+index 4fd87f2c4a1..4da60ea2b4e 100644
 --- a/gcc/gcc.cc
 +++ b/gcc/gcc.cc
 @@ -415,7 +415,7 @@ static int do_spec_2 (const char *, const char *);
