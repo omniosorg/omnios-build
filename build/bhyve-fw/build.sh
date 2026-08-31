@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -23,12 +23,10 @@ BUILD_DEPENDS_IPS="
 
 PROG=uefi-edk2
 PKG=system/bhyve/firmware
-VER=20241101
+VER=20260825
+DASHREV=0
 SUMMARY="UEFI-EDK2(+CSM) firmware for bhyve"
 DESC="$SUMMARY"
-
-# This does not yet build with gcc 15
-set_gccver 14
 
 init
 prep_build
@@ -50,7 +48,11 @@ trap "pkill -T0; exit" SIGINT
 
 # Build the UEFI firmware
 
-tag=il-edk2-stable202411-1
+tag=il-edk2-stable202608-$DASHREV
+export FIRMWARE_VER=$tag
+# Unfortunately the SMBIOS spec requires us to use mm/dd/yy[yy]
+export FIRMWARE_DATE=${VER:4:2}/${VER:6:2}/${VER:0:4}
+
 XFORM_ARGS+=" -D UEFITAG=$tag"
 
 typeset -A jobs
@@ -61,10 +63,6 @@ typeset -A jobs
         download_source bhyve-fw uefi-edk2 $tag
         ((EXTRACT_MODE)) && exit
         pushd $TMPDIR/$BUILDDIR >/dev/null
-        # gld 2.47+ rejects compiler-style -O options, and the LTO flags
-        # are no-ops on a direct ld invocation.
-        logcmd sed -i "/^\*_ILLGCC_X64_DLINK_FLAGS/s/ -flto -Os//" \
-            BaseTools/Conf/tools_def.template
         logcmd rm -f patches/01-openssl.patch
         logcmd cp OvmfPkg/License.txt $fwdir/LICENCE.$tag.OvmfPkg
         logcmd cp OvmfPkg/Bhyve/License.txt $fwdir/LICENCE.$tag.BhyvePkg
@@ -99,10 +97,6 @@ jobs[UEFI]=$!
         download_source bhyve-fw uefi-edk2 $tag $TMPDIR/ovmf
         ((EXTRACT_MODE)) && exit
         pushd $TMPDIR/ovmf/$BUILDDIR >/dev/null
-        # gld 2.47+ rejects compiler-style -O options, and the LTO flags
-        # are no-ops on a direct ld invocation.
-        logcmd sed -i "/^\*_ILLGCC_X64_DLINK_FLAGS/s/ -flto -Os//" \
-            BaseTools/Conf/tools_def.template
         logcmd rm -f patches/01-openssl.patch
         for v in RELEASE DEBUG; do
             [ -n "$DEPVER" -a "$DEPVER" != $v ] && continue
