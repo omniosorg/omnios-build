@@ -9,7 +9,7 @@ Subject: Use compare-debug to pass stage2/stage3 comparison as
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index b1ed67d3d4f1..888cff66d5a7 100644
+index b1ed67d3d4f..888cff66d5a 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -656,7 +656,7 @@ STAGEautofeedback_TFLAGS = $(STAGE3_TFLAGS)

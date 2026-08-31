@@ -11,7 +11,7 @@ Subject: Handle a few cases where fields in struct lconv may
  2 files changed, 35 insertions(+), 8 deletions(-)
 
 diff --git a/libstdc++-v3/config/locale/dragonfly/monetary_members.cc b/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
-index 16e995a57dce..ebce539e2d88 100644
+index 16e995a57dc..ebce539e2d8 100644
 --- a/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
 +++ b/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
 @@ -37,10 +37,36 @@ namespace std _GLIBCXX_VISIBILITY(default)
@@ -90,7 +90,7 @@ index 16e995a57dce..ebce539e2d88 100644
  		  if (__len)
  		    {
 diff --git a/libstdc++-v3/config/locale/dragonfly/numeric_members.cc b/libstdc++-v3/config/locale/dragonfly/numeric_members.cc
-index c5df5b8c11b1..731a349a6375 100644
+index c5df5b8c11b..731a349a637 100644
 --- a/libstdc++-v3/config/locale/dragonfly/numeric_members.cc
 +++ b/libstdc++-v3/config/locale/dragonfly/numeric_members.cc
 @@ -37,6 +37,9 @@ namespace std _GLIBCXX_VISIBILITY(default)

@@ -10,7 +10,7 @@ Subject: Let --enable-clocale=dragonfly work as a configure
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/libstdc++-v3/acinclude.m4 b/libstdc++-v3/acinclude.m4
-index a0094c2dd95b..5b9173610c0f 100644
+index a0094c2dd95..5b9173610c0 100644
 --- a/libstdc++-v3/acinclude.m4
 +++ b/libstdc++-v3/acinclude.m4
 @@ -2774,7 +2774,7 @@ dnl
@@ -23,7 +23,7 @@ index a0094c2dd95b..5b9173610c0f 100644
    # Deal with gettext issues.  Default to not using it (=no) until we detect
    # support for it later.  Let the user turn it off via --e/d, but let that
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index c198e332d796..9887fcd17156 100755
+index c198e332d79..9887fcd1715 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -16636,7 +16636,7 @@ $as_echo "stdio (with POSIX read/write)" >&6; }

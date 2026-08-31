@@ -9,7 +9,7 @@ Subject: libstdc++ must use thread-local errno
  2 files changed, 11 insertions(+)
 
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index 819a1d82876a..c198e332d796 100755
+index 819a1d82876..c198e332d79 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -55214,6 +55214,12 @@ done
@@ -26,7 +26,7 @@ index 819a1d82876a..c198e332d796 100755
   # Check whether --enable-cet was given.
  if test "${enable_cet+set}" = set; then :
 diff --git a/libstdc++-v3/configure.ac b/libstdc++-v3/configure.ac
-index a6c01b29e94b..abf17951212c 100644
+index a6c01b29e94..abf17951212 100644
 --- a/libstdc++-v3/configure.ac
 +++ b/libstdc++-v3/configure.ac
 @@ -676,6 +676,11 @@ done

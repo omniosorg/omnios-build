@@ -8,7 +8,7 @@ Subject: Use appropriate values objects
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index c70f3c8c3e21..49893b24e05c 100644
+index c70f3c8c3e2..49893b24e05 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -196,8 +196,14 @@ along with GCC; see the file COPYING3.  If not see

@@ -18,7 +18,7 @@ This partially reverts commit f68e90a0fe88c50ad6f4b15ba9e9503c710d3444.
  10 files changed, 406 insertions(+), 4 deletions(-)
 
 diff --git a/c++tools/Makefile.in b/c++tools/Makefile.in
-index 5acc6d68195a..ed0d3271062e 100644
+index 5acc6d68195..ed0d3271062 100644
 --- a/c++tools/Makefile.in
 +++ b/c++tools/Makefile.in
 @@ -35,6 +35,7 @@ CXXOPTS := $(CXXFLAGS) $(PICFLAG) -fno-exceptions -fno-rtti
@@ -39,7 +39,7 @@ index 5acc6d68195a..ed0d3271062e 100644
  # copy to gcc dir so tests there can run
  all::../gcc/g++-mapper-server$(exeext)
 diff --git a/c++tools/configure b/c++tools/configure
-index 1353479becaf..006efe07b354 100755
+index 1353479beca..006efe07b35 100755
 --- a/c++tools/configure
 +++ b/c++tools/configure
 @@ -622,6 +622,7 @@ ac_includes_default="\
@@ -275,7 +275,7 @@ index 1353479becaf..006efe07b354 100755
  
  ac_config_files="$ac_config_files Makefile"
 diff --git a/c++tools/configure.ac b/c++tools/configure.ac
-index db34ee678e03..31694bba48e8 100644
+index db34ee678e0..31694bba48e 100644
 --- a/c++tools/configure.ac
 +++ b/c++tools/configure.ac
 @@ -22,6 +22,7 @@
@@ -303,7 +303,7 @@ index db34ee678e03..31694bba48e8 100644
  AC_CONFIG_FILES([Makefile])
  
 diff --git a/gcc/Makefile.in b/gcc/Makefile.in
-index 55b4cd7dbed3..c62ee1bb1a77 100644
+index 55b4cd7dbed..c62ee1bb1a7 100644
 --- a/gcc/Makefile.in
 +++ b/gcc/Makefile.in
 @@ -451,6 +451,7 @@ CPPINC = -I$(srcdir)/../libcpp/include
@@ -315,7 +315,7 @@ index 55b4cd7dbed3..c62ee1bb1a77 100644
  # Where to find decNumber
  enable_decimal_float = @enable_decimal_float@
 diff --git a/gcc/aclocal.m4 b/gcc/aclocal.m4
-index 762e9490b6a8..c0fcbeb5f990 100644
+index 762e9490b6a..c0fcbeb5f99 100644
 --- a/gcc/aclocal.m4
 +++ b/gcc/aclocal.m4
 @@ -68,6 +68,7 @@ m4_include([../ltsugar.m4])
@@ -327,7 +327,7 @@ index 762e9490b6a8..c0fcbeb5f990 100644
  m4_include([../config/codeset.m4])
  m4_include([../config/depstand.m4])
 diff --git a/gcc/configure b/gcc/configure
-index 16965953f051..df566823f439 100755
+index 16965953f05..df566823f43 100755
 --- a/gcc/configure
 +++ b/gcc/configure
 @@ -812,6 +812,7 @@ ZSTD_LIB
@@ -510,7 +510,7 @@ index 16965953f051..df566823f439 100755
  # they're both in the same place.  jcf-dump needs them.
  save_LIBS="$LIBS"
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 9f67e62950a4..6d2f37086fbf 100644
+index 9f67e62950a..6d2f37086fb 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
 @@ -1446,6 +1446,15 @@ EXTRA_GCC_LIBS="$LIBS"
@@ -530,7 +530,7 @@ index 9f67e62950a4..6d2f37086fbf 100644
  # they're both in the same place.  jcf-dump needs them.
  save_LIBS="$LIBS"
 diff --git a/gcc/cp/Make-lang.in b/gcc/cp/Make-lang.in
-index 25143c820b07..ab1b1c7bad84 100644
+index 25143c820b0..ab1b1c7bad8 100644
 --- a/gcc/cp/Make-lang.in
 +++ b/gcc/cp/Make-lang.in
 @@ -143,7 +143,7 @@ cc1plus-checksum.cc : build/genchecksum$(build_exeext) checksum-options \
@@ -543,7 +543,7 @@ index 25143c820b07..ab1b1c7bad84 100644
  	@$(call LINK_PROGRESS,$(INDEX.c++),end)
  
 diff --git a/gcc/objcp/Make-lang.in b/gcc/objcp/Make-lang.in
-index 94bb512074e7..02f48c2da7d4 100644
+index 94bb512074e..02f48c2da7d 100644
 --- a/gcc/objcp/Make-lang.in
 +++ b/gcc/objcp/Make-lang.in
 @@ -80,7 +80,7 @@ cc1objplus$(exeext): $(OBJCXX_OBJS) cc1objplus-checksum.o $(BACKEND) \
@@ -556,7 +556,7 @@ index 94bb512074e7..02f48c2da7d4 100644
  
  # Objective C++ language specific files.
 diff --git a/libstdc++-v3/testsuite/lib/dg-options.exp b/libstdc++-v3/testsuite/lib/dg-options.exp
-index 937a8224756e..0b6c26b89a67 100644
+index 937a8224756..0b6c26b89a6 100644
 --- a/libstdc++-v3/testsuite/lib/dg-options.exp
 +++ b/libstdc++-v3/testsuite/lib/dg-options.exp
 @@ -296,7 +296,11 @@ proc add_options_for_no_pch { flags } {
