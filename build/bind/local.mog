@@ -39,5 +39,7 @@
 <transform path=usr/share/man/man[358] -> drop>
 
 license LICENSE license=MPLv2
-license ../libuv-$(LIBUV)/LICENSE license=MIT
+license ../libuv-$(LIBUV)/LICENSE license=MIT/libuv
+license ../userspace-rcu-$(URCUVER)/LICENSES/LGPL-2.1-or-later.txt \
+    license=LGPLv2.1/liburcu
 
