@@ -25,10 +25,6 @@ DESC="$SUMMARY"
 
 SKIP_LICENCES="CMU/UCD"
 
-# net-snmp builds fail randomly with parallel make. There are patches upstream
-# but none of them resolve it successfully.
-NO_PARALLEL_MAKE=1
-
 # Previous versions that also need to be built and the libraries packaged
 # since compiled software may depend on them.
 PVERS="5.7.3 5.8 5.9.4"
@@ -92,22 +88,52 @@ build_init() {
 # Skip previous versions for cross compilation
 pre_build() { ! cross_arch $1; }
 
-# For legacy versions, we only want the libraries.
-save_buildenv
-CONFIGURE_OPTS[amd64]+=" $LIBRARIES_ONLY"
-# Be permissive when building the old versions
-CFLAGS+=" -fpermissive"
-CPPFLAGS+=" -D__fd_mask=long"
+# The previous versions are independent of each other and of the current
+# version, so they are built in parallel. Put them in a new task which will be
+# killed on interrupt.
+newtask -c $$
+trap "pkill -T0; exit" SIGINT
+typeset -A jobs
 for pver in $PVERS; do
     [ -n "$FLAVOR" -a "$FLAVOR" != "$pver" ] && continue
     note -n "Building previous version: $pver"
-    build_dependency -merge -ctf -oot -multi \
-        $PROG-$pver $PROG-$pver $PROG $PROG $pver
+    (
+        # For legacy versions, we only want the libraries.
+        CONFIGURE_OPTS[amd64]+=" $LIBRARIES_ONLY"
+        # Be permissive when building the old versions
+        CFLAGS+=" -fpermissive"
+        CPPFLAGS+=" -D__fd_mask=long"
+        # These jobs merge into a shared DESTDIR, so CTF conversion is left
+        # to the main build's conversion pass which runs after they have all
+        # finished. The objects must still be built with the debug flags.
+        CFLAGS+=" $CTF_CFLAGS"
+        logprefix+="[$pver] "
+        build_dependency -merge -noctf -oot -multi \
+            $PROG-$pver $PROG-$pver $PROG $PROG $pver
+    ) &
+    jobs[$pver]=$!
 done
+
+# Wait for the parallel version builds to finish
+while (( ${#jobs[*]} > 0 )); do
+    wait -fn -p pid ${jobs[*]}
+    stat=$?
+    for job in ${!jobs[*]}; do
+        (( ${jobs[$job]} == pid )) || continue
+        unset jobs[$job]
+        if (( stat == 0 )); then
+            logmsg -n "net-snmp $job build completed successfully"
+        else
+            logerr "net-snmp $job build failed ($stat)"
+        fi
+    done
+done
+
+trap - SIGINT
+
 # Remove unnecessary files from the legacy versions
-logcmd rm -rf $DESTDIR/usr/{include,bin}
-logcmd $FD lib $DESTDIR/usr/lib -e la -e so -X rm {}
-restore_buildenv
+logcmd $RM -rf $DESTDIR/usr/{include,bin}
+logcmd $FD lib $DESTDIR/usr/lib -e la -e so -X $RM {}
 unset -f pre_build
 
 post_install() {

@@ -1,0 +1,21 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Configurations/unix-Makefile.tmpl a/Configurations/unix-Makefile.tmpl
+--- a~/Configurations/unix-Makefile.tmpl	1970-01-01 00:00:00
++++ a/Configurations/unix-Makefile.tmpl	1970-01-01 00:00:00
+@@ -1762,7 +1762,7 @@ EOF
+       if (grep /\.s$/, @srcs) {
+           $recipe .= <<"EOF";
+ $obj: $deps
+-	$cmd $cmdflags -c -o \$\@ $srcs
++	$cmd $cmdflags -g0 -c -o \$\@ $srcs
+ EOF
+       } elsif (grep /\.S$/, @srcs) {
+           # Originally there was multi-step rule with $(CC) -E file.S
+@@ -1772,7 +1772,7 @@ EOF
+           # hardly a point to drag it along...
+           $recipe .= <<"EOF";
+ $obj: $deps
+-	$cmd $incs $defs $cmdflags -c -o \$\@ $srcs
++	$cmd $incs $defs $cmdflags -g0 -c -o \$\@ $srcs
+ EOF
+       } elsif ($makedep_scheme eq 'gcc' && !grep /\.rc$/, @srcs) {
+           $recipe .= <<"EOF";

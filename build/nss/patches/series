@@ -7,3 +7,4 @@ aarch64.patch
 werror.patch
 headers.patch
 tstclnt.patch
+asm-no-debug.patch

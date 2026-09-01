@@ -3,3 +3,4 @@ empty.c
 fipsfreebl.c
 lgfips.c
 sha256-x86.c
+intel-gcm-wrap.c

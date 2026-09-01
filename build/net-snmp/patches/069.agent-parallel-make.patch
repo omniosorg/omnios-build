@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/agent/Makefile.in a/agent/Makefile.in
+--- a~/agent/Makefile.in	1970-01-01 00:00:00
++++ a/agent/Makefile.in	1970-01-01 00:00:00
+@@ -306,7 +306,7 @@ getmibstat.o: mibgroup/kernel_sunos5.c
+ snmpd$(EXEEXT):	${LAGENTOBJS} $(USELIBS) $(AGENTLIB) $(HELPERLIB) $(MIBLIB) $(LIBTARG) 
+ 	$(LINK) $(CFLAGS) -o $@ ${LAGENTOBJS} ${LDFLAGS} ${OUR_AGENT_LIBS}
+ 
+-libnetsnmpagent.$(LIB_EXTENSION)$(LIB_VERSION):    ${LLIBAGENTOBJS} $(USELIBS)
++libnetsnmpagent.$(LIB_EXTENSION)$(LIB_VERSION):    ${LLIBAGENTOBJS} $(USELIBS) subdirs
+ 	$(LIB_LD_CMD) $(AGENTLIB) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} $(LDFLAGS) $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
+ 	$(RANLIB) $(AGENTLIB)
+ 

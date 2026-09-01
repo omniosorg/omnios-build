@@ -24,3 +24,4 @@
 060.20461627.17502158.kernel_sunos5.patch
 067.1.kernel_sunos5.patch
 068.configure.patch
+069.agent-parallel-make.patch

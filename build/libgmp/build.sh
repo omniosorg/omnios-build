@@ -52,6 +52,9 @@ CONFIGURE_OPTS="
     --disable-fat
     --with-pic
 "
+# Assemble the mpn assembly without debug flags. gas otherwise emits
+# line-only DWARF for these objects, which ctfconvert cannot process.
+CONFIGURE_OPTS+=" ASMFLAGS=-g0"
 
 CONFIGURE_OPTS[i386_WS]="
     ABI=32
