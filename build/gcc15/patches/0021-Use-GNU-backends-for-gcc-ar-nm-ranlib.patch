@@ -8,7 +8,7 @@ Subject: Use GNU backends for gcc-{ar,nm,ranlib}
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/gcc-ar.cc b/gcc/gcc-ar.cc
-index 2bf727a268dd..2f533d6839ea 100644
+index 2bf727a268d..2f533d6839e 100644
 --- a/gcc/gcc-ar.cc
 +++ b/gcc/gcc-ar.cc
 @@ -197,10 +197,10 @@ main (int ac, char **av)

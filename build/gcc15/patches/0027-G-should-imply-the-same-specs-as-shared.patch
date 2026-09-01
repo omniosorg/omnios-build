@@ -8,7 +8,7 @@ Subject: -G should imply the same specs as -shared
  1 file changed, 16 insertions(+), 18 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index 49893b24e05c..3e6e8144bc63 100644
+index 49893b24e05..3e6e8144bc6 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -195,7 +195,7 @@ along with GCC; see the file COPYING3.  If not see

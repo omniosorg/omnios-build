@@ -36,4 +36,5 @@
 0037-Avoid-undefined-symbols-when-using-the-dragonfly-loc.patch
 0038-Handle-a-few-cases-where-fields-in-struct-lconv-may-.patch
 0039-Let-enable-clocale-dragonfly-work-as-a-configure-opt.patch
-0040-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0040-gthr-give-__gthread_trigger-hidden-visibility.patch
+0041-OOCE-Adjust-default-library-paths-for-OmniOS.patch

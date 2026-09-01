@@ -10,7 +10,7 @@ See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=54720
  1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/libobjc/Makefile.in b/libobjc/Makefile.in
-index 3f4186deeaab..e516072ef018 100644
+index 3f4186deeaa..e516072ef01 100644
 --- a/libobjc/Makefile.in
 +++ b/libobjc/Makefile.in
 @@ -308,14 +308,16 @@ $(srcdir)/configure: @MAINT@ configure.ac $(srcdir)/aclocal.m4
