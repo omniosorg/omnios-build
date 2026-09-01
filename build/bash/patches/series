@@ -1,3 +1,18 @@
-memalloc.patch
 cross.patch
 major-in-mkdev.patch
+memalloc.patch
+bash-5.3-patches/bash53-001 -p0
+bash-5.3-patches/bash53-002 -p0
+bash-5.3-patches/bash53-003 -p0
+bash-5.3-patches/bash53-004 -p0
+bash-5.3-patches/bash53-005 -p0
+bash-5.3-patches/bash53-006 -p0
+bash-5.3-patches/bash53-007 -p0
+bash-5.3-patches/bash53-008 -p0
+bash-5.3-patches/bash53-009 -p0
+bash-5.3-patches/bash53-010 -p0
+bash-5.3-patches/bash53-011 -p0
+bash-5.3-patches/bash53-012 -p0
+bash-5.3-patches/bash53-013 -p0
+bash-5.3-patches/bash53-014 -p0
+bash-5.3-patches/bash53-015 -p0

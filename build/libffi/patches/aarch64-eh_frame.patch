@@ -1,12 +1,12 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/aarch64/sysv.S a/src/aarch64/sysv.S
 --- a~/src/aarch64/sysv.S	1970-01-01 00:00:00
 +++ a/src/aarch64/sysv.S	1970-01-01 00:00:00
-@@ -675,6 +675,8 @@ CNAME(ffi_go_closure_SYSV):
- #endif /* FFI_CLOSURES */
- #endif /* __arm64__ */
+@@ -724,6 +724,8 @@ CNAME(ffi_go_closure_SYSV):
+ # define FEATURE_1_AND_MARK(value) GNU_PROPERTY (value)
+ #endif /* __ARM_BUILDATTR64_FV */
  
 +.section .eh_frame,EH_FRAME_FLAGS,%progbits
 +
  #if defined __ELF__ && defined __linux__
  	.section .note.GNU-stack,"",%progbits
- 
+ FEATURE_1_AND_MARK(AARCH64_BTI | AARCH64_POINTER_AUTH | AARCH64_GCS)

@@ -19,7 +19,7 @@
 
 PROG=vim
 VER=9.2
-PATCHLEVEL=0068
+PATCHLEVEL=0513
 PKG=editor/vim
 SUMMARY="Vi IMproved"
 DESC="Advanced text editor that provides the power of the UNIX vi editor "

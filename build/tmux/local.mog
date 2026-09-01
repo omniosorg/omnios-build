@@ -9,5 +9,5 @@
 
 # Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
-license files/LICENSE license=tmux
+license COPYING license=tmux
 

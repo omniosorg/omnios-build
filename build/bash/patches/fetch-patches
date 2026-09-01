@@ -13,12 +13,12 @@ rsync -avr --exclude=*.sig rsync://ftp.gnu.org/ftp/bash/bash-$VER-patches/ \
 ls -1 *.patch > series
 ls -1 bash-$VER-patches/bash* | sed 's/$/ -p0/' >> series
 
-# Update PATCHLEVEL statement in build.sh
+# Update PATCHLVL statement in build.sh
 newver=`tail -1 series | cut -d- -f4 | sed '
 	s/^0*//
 	s/ *$//
 '`
-sed -i "/^PATCHLEVEL=/c\\
-PATCHLEVEL=$newver
+sed -i "/^PATCHLVL=/c\\
+PATCHLVL=$newver
 " ../build.sh
 

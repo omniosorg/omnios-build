@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=file
-VER=5.47
+VER=5.48
 PKG=library/libmagic
 SUMMARY="File type guessing library"
 DESC="Library for determining the type of data contained in a file"

@@ -19,6 +19,7 @@
 
 PROG=readline
 VER=8.3
+PATCHLVL=3
 PKG=library/readline
 SUMMARY="GNU readline"
 DESC="GNU readline library"
@@ -60,7 +61,7 @@ note -n "Building current version: $VER"
 download_source $PROG $PROG $VER
 patch_source
 build
-make_package
+VER+=".$PATCHLVL" make_package
 clean_up
 
 # Vim hints
