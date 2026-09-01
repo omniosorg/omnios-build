@@ -8,7 +8,7 @@ Subject: intl: Don't use UTF-8 quotes.  Ever.
  1 file changed, 4 insertions(+), 13 deletions(-)
 
 diff --git a/gcc/intl.cc b/gcc/intl.cc
-index 629614e31b74..3fb49a8568e6 100644
+index 629614e31b7..3fb49a8568e 100644
 --- a/gcc/intl.cc
 +++ b/gcc/intl.cc
 @@ -74,17 +74,11 @@ gcc_init_libintl (void)

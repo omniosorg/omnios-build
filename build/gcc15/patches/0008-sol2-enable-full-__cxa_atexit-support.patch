@@ -9,7 +9,7 @@ Subject: sol2: enable full __cxa_atexit support
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
-index 2405c101aee3..c70f3c8c3e21 100644
+index 2405c101aee..c70f3c8c3e2 100644
 --- a/gcc/config/sol2.h
 +++ b/gcc/config/sol2.h
 @@ -204,7 +204,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -31,7 +31,7 @@ index 2405c101aee3..c70f3c8c3e21 100644
  
  #undef  ENDFILE_SPEC
 diff --git a/libgcc/config.host b/libgcc/config.host
-index 6a88ee5a2dd0..618cd9f53a7e 100644
+index 6a88ee5a2dd..618cd9f53a7 100644
 --- a/libgcc/config.host
 +++ b/libgcc/config.host
 @@ -342,7 +342,7 @@ case ${host} in

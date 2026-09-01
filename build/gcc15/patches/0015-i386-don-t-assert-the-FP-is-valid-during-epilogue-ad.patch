@@ -11,11 +11,11 @@ via __builtin_eh_return().
 
 While here, make the code more readable and conventional.
 ---
- gcc/config/i386/i386.cc | 68 +++++++++++++++++++----------------------
- 1 file changed, 32 insertions(+), 36 deletions(-)
+ gcc/config/i386/i386.cc | 66 +++++++++++++++++++----------------------
+ 1 file changed, 31 insertions(+), 35 deletions(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index c2b50cbf02ed..5fa205a01411 100644
+index c2b50cbf02e..5fa205a0141 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -7504,22 +7504,22 @@ static void
@@ -120,10 +120,6 @@ index c2b50cbf02ed..5fa205a01411 100644
 -    int start = cfun->returns_struct;
 -    int nsaved = ix86_nsaved_args();
 -    int i;
--
--    for (i = start + nsaved - 1; i >= start; i--)
--      queued_cfa_restores
--	= alloc_reg_note (REG_CFA_RESTORE,
 +  /*
 +   * For each saved argument, emit a restore note, to make sure it happens
 +   * correctly within the shrink wrapping (I think).
@@ -141,7 +137,10 @@ index c2b50cbf02ed..5fa205a01411 100644
 +  if (TARGET_SAVE_ARGS && frame.nmsave_args > 0) {
 +	  int start = cfun->returns_struct;
 +	  int i;
-+
+ 
+-    for (i = start + nsaved - 1; i >= start; i--)
+-      queued_cfa_restores
+-	= alloc_reg_note (REG_CFA_RESTORE,
 +	  for (i = start + frame.nmsave_args - 1; i >= start; i--)
 +		  queued_cfa_restores
 +		      = alloc_reg_note (REG_CFA_RESTORE,
