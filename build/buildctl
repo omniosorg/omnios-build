@@ -329,7 +329,16 @@ build() {
             LOGFILE="$_LOGFILE"
             built_packages_p5m $SCRIPT
         else
-            PATH=$PATH:. $SCRIPT -r $PKGSRVR $build_flags $extra_flags
+            if [ -n "$BUILDCTL_PARALLEL" ]; then
+                # Each parallel build runs in its own session, detached from
+                # the terminal, so that a build which signals its own process
+                # group (cpanm does this when a step times out) cannot take
+                # down buildctl and the other jobs.
+                PATH=$PATH:. setpgrp $SCRIPT -r $PKGSRVR $build_flags \
+                    $extra_flags < /dev/null
+            else
+                PATH=$PATH:. $SCRIPT -r $PKGSRVR $build_flags $extra_flags
+            fi
             if (($? != 0)); then
                 typeset log="`ls -1tr *.log | tail -1`"
                 [ -n "$log" ] && cp "$log" ../last-failure.log
