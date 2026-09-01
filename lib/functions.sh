@@ -32,6 +32,15 @@ ROOTDIR=${BLIBDIR%/*}
 
 . $BLIBDIR/config.sh
 [ -f $BLIBDIR/site.sh ] && . $BLIBDIR/site.sh
+
+# Values derived from MJOBS are set here, after site.sh, so that overriding
+# MJOBS there is sufficient. Each can also be set individually in site.sh.
+MAKE_JOBS=${MAKE_JOBS:--j $MJOBS}
+# Toolchains that size their own parallelism from the CPU count and do not
+# honour MAKE_JOBS.
+export CARGO_BUILD_JOBS=${CARGO_BUILD_JOBS:-$MJOBS}
+export GOMAXPROCS=${GOMAXPROCS:-$MJOBS}
+
 $MKDIR -p $TMPDIR
 BASE_TMPDIR=$TMPDIR
 
