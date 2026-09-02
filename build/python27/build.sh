@@ -79,12 +79,12 @@ configure_amd64() {
 
 make_prog_i386() {
     logmsg "--- make"
-    logcmd $MAKE $MAKE_JOBS DFLAGS=-32 || logerr "--- Make failed"
+    logcmd $MAKE -j$MJOBS DFLAGS=-32 || logerr "--- Make failed"
 }
 
 make_prog_amd64() {
     logmsg "--- make"
-    logcmd $MAKE $MAKE_JOBS DFLAGS=-64 \
+    logcmd $MAKE -j$MJOBS DFLAGS=-64 \
         DESTSHARED=/usr/lib/python2.7/lib-dynload || logerr "--- Make failed"
 }
 

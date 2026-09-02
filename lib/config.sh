@@ -269,13 +269,18 @@ GENOFFSETS_CFLAGS="
 # Enable CTF by default
 CTF_DEFAULT=1
 
-# Figure out number of logical CPUs for use with parallel gmake jobs (-j)
+# Determine the number of parallel make jobs (-j).
 # Default to 1.5*nCPUs as we assume the build machine is 100% devoted to
-# compiling.
-# A build script may serialize make by setting NO_PARALLEL_MAKE
+# compiling but, if that comes to more than 16, allow no more than one job per
+# 2GiB of memory so that machines with many cores and comparatively little
+# memory do not thrash. In a non-global zone with a physical memory cap,
+# prtconf reports the cap.
 LCPUS=`psrinfo | wc -l`
-MJOBS="$[ $LCPUS + ($LCPUS / 2) ]"
-[ "$MJOBS" = "0" ] && MJOBS=2
+PMEM=`prtconf -m`
+MJOBS=$((LCPUS + LCPUS / 2))
+((MJOBS > 16 && PMEM / 2048 > 0 && PMEM / 2048 < MJOBS)) &&
+    MJOBS=$((PMEM / 2048))
+((MJOBS < 2)) && MJOBS=2
 MAKE_TARGET=
 
 # Remove install or packaging files by default. You can set this in a build
@@ -295,7 +300,7 @@ BUILDENV_OPTS="
     CONFIGURE_CMD CONFIGURE_OPTS
     CFLAGS CXXFLAGS CPPFLAGS
     LDFLAGS
-    MAKE_JOBS
+    MJOBS
 "
 
 CCACHE_PATH=/opt/ooce/ccache/bin
