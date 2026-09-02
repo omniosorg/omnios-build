@@ -35,9 +35,6 @@ ROOTDIR=${BLIBDIR%/*}
 
 # Values derived from MJOBS are set here, after site.sh, so that overriding
 # MJOBS there is sufficient. Each can also be set individually in site.sh.
-MAKE_JOBS=${MAKE_JOBS:--j $MJOBS}
-# Toolchains that size their own parallelism from the CPU count and do not
-# honour MAKE_JOBS.
 export CARGO_BUILD_JOBS=${CARGO_BUILD_JOBS:-$MJOBS}
 export GOMAXPROCS=${GOMAXPROCS:-$MJOBS}
 
@@ -2742,7 +2739,8 @@ make_arch() {
     typeset arch=${1:?arch}
     hook pre_make $arch
     eval set -- $MAKE_ARGS_WS
-    [ -n "$NO_PARALLEL_MAKE" ] && MAKE_JOBS=""
+    typeset MAKE_JOBS="-j$MJOBS"
+    [ -n "$NO_PARALLEL_MAKE" ] && MAKE_JOBS=
     if [ -n "$LIBTOOL_NOSTDLIB" ]; then
         libtool_nostdlib "$LIBTOOL_NOSTDLIB" "$LIBTOOL_NOSTDLIB_EXTRAS"
     fi
@@ -2802,7 +2800,8 @@ make_param() {
 # Helper function that can be called by build scripts to make in a specific dir
 make_in() {
     [ -z "$1" ] && logerr "------ Make in dir failed - no dir specified"
-    [ -n "$NO_PARALLEL_MAKE" ] && MAKE_JOBS=""
+    typeset MAKE_JOBS="-j$MJOBS"
+    [ -n "$NO_PARALLEL_MAKE" ] && MAKE_JOBS=
     logmsg "------ make in $1"
     logcmd $MAKE $MAKE_JOBS -C $1 $MAKE_TARGET || \
         logerr "------ Make in $1 failed"

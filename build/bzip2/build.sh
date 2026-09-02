@@ -54,7 +54,7 @@ pre_make() {
     logmsg "--- make (shared lib)"
     CFLAGS="-fPIC $CFLAGS ${CFLAGS[$arch]}" \
         LDFLAGS="$LDFLAGS ${LDFLAGS[$arch]}" \
-        logcmd $MAKE $MAKE_JOBS -f Makefile-libbz2_so || \
+        logcmd $MAKE -j$MJOBS -f Makefile-libbz2_so || \
         logerr "--- Make failed (shared lib)"
 
     save_variables CFLAGS LDFLAGS

@@ -70,8 +70,8 @@
 #ETHROTTLE=3
 
 # Per-build parallelism. This defaults to 1.5 x the number of CPUs, which can
-# exceed the available memory on machines with many cores. MAKE_JOBS,
-# CARGO_BUILD_JOBS and GOMAXPROCS are derived from this unless set here.
+# exceed the available memory on machines with many cores. CARGO_BUILD_JOBS and
+# GOMAXPROCS are derived from this unless also set here.
 #MJOBS=16
 
 # To always use the ccache engine to speed up re-compilation
