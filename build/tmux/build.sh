@@ -29,11 +29,12 @@ SKIP_LICENCES=tmux
 set_arch 64
 
 CONFIGURE_OPTS+=" --enable-utempter"
-CPPFLAGS+=" -I $PREFIX/include/ncurses"
 LDFLAGS+=" -lsocket -lnsl -lsendfile"
 
 pre_build() {
     typeset arch=$1
+
+    CPPFLAGS[$arch]+=" -I ${SYSROOT[$arch]}$PREFIX/include/ncurses"
 
     cross_arch $arch && addpath PKG_CONFIG_PATH \
         ${SYSROOT[$arch]}/$PREFIX/${LIBDIRS[$arch]}/pkgconfig
