@@ -8,3 +8,4 @@ werror.patch
 headers.patch
 tstclnt.patch
 asm-no-debug.patch
+c89-inline.patch
