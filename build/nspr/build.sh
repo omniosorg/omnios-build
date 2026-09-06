@@ -48,6 +48,7 @@ pre_configure() {
     CONFIGURE_OPTS[amd64]+=" --enable-64bit"
 
     if cross_arch $arch; then
+        LDFLAGS[$arch]+=" -L${SYSROOT[$arch]}/${LIBDIRS[$arch]}"
         CONFIGURE_OPTS+=" HOST_CC=/opt/gcc-$DEFAULT_GCC_VER/bin/gcc"
     fi
 }
