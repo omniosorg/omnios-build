@@ -484,6 +484,7 @@ partialchecking perl5 testcase typemap_template_parms
 partialchecking perl5 testcase typemap_template_typedef
 partialchecking perl5 testcase typemap_out_optimal
 partialchecking perl5 testcase typemap_qualifier_strip
+partialchecking perl5 testcase typemap_string_alloc (with run test)
 partialchecking perl5 testcase typemap_variables
 partialchecking perl5 testcase typemap_various
 partialchecking perl5 testcase typename (with run test)
@@ -736,7 +737,7 @@ partialchecking perl5 testcase mod
 partialchecking perl5 testcase multi_import
 partialchecking perl5 testcase packageoption (with run test)
 partialchecking perl5 testcase template_typedef_import
-737 perl5 tests passed
+738 perl5 tests passed
 partialchecking python test-suite
 partialchecking python testcase callback (with run test)
 partialchecking python testcase complextest (with run test)
@@ -1276,6 +1277,7 @@ partialchecking python testcase typemap_template_parms
 partialchecking python testcase typemap_template_typedef (with run test)
 partialchecking python testcase typemap_out_optimal (with run test)
 partialchecking python testcase typemap_qualifier_strip (with run test)
+partialchecking python testcase typemap_string_alloc (with run test)
 partialchecking python testcase typemap_variables
 partialchecking python testcase typemap_various
 partialchecking python testcase typename (with run test)
@@ -1559,4 +1561,4 @@ partialchecking python testcase mod (with run test)
 partialchecking python testcase multi_import (with run test)
 partialchecking python testcase packageoption
 partialchecking python testcase template_typedef_import (with run test)
-821 python tests passed
+822 python tests passed
