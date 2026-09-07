@@ -96,7 +96,7 @@ configure_amd64() {
         -Dlibs="-lsocket -lnsl -lresolv -lm -lc" \
         || logerr "--- Configure failed"
 
-    logcmd sed -i "
+    logcmd $SED -i "
         s/mydomain=\"\.undef\"/mydomain=\"undef\"/g
         s!^libpth=.*!libpth=\"/lib/amd64 /usr/lib/amd64\"!g
     " config.sh
@@ -115,8 +115,9 @@ configure_aarch64() {
     # like compiler flags (Crypt::OpenSSL:X509 is one), but there is a risk
     # that some modules might assume that myuname=='sunos' => Sun studio
     # rather than checking 'ccname'.
-    logcmd $CONFIGURE_CMD \
+    CFLAGS="$CPPFLAGS" logcmd $CONFIGURE_CMD \
         --target=${TRIPLETS[aarch64]} \
+        --sysroot=${SYSROOT[aarch64]} \
         --man1dir="$PREFIX/man/man1" \
         --man3dir="$PREFIX/man/man3" \
         --with-cc=gcc \
@@ -154,9 +155,10 @@ configure_aarch64() {
         -Uloclibpth= \
         -Dlibpth="/lib /usr/lib" \
         -Dlibs="-lsocket -lnsl -lresolv -lm -lc" \
+        -Dperllibs="-lsocket -lnsl -lresolv -lm -lc" \
         || logerr "--- Configure failed"
 
-    logcmd sed -i "
+    logcmd $SED -i "
         s/mydomain=\"\.undef\"/mydomain=\"undef\"/g
         s!^libpth=.*!libpth=\"/lib /usr/lib\"!g
         s/^d_setenv=.*/d_setenv='undef'/g
@@ -164,15 +166,16 @@ configure_aarch64() {
         s/^ccdlflags=.*/ccdlflags=''/g
     " config.sh
 
-    logcmd sed -i "
+    logcmd $SED -i "
         s/^d_setenv=.*/d_setenv='undef'/g
         s/^d_unsetenv=.*/d_unsetenv='undef'/g
         s/^ccdlflags=.*/ccdlflags=''/g
     " xconfig.sh
 
-    logcmd sed -i "
-        s/^perl\$x: LDFLAGS += -Wl,-E/perl\$x: LDFLAGS += -lsocket/g
-    " Makefile
+    # The illumos linker does not accept -E
+    logcmd $SED -i "/^perl\$x: LDFLAGS += -Wl,-E/d" Makefile
+
+    logcmd $MAKE config.h xconfig.h || logerr "--- regenerating headers failed"
 }
 
 pre_build() {
@@ -195,6 +198,13 @@ post_install() {
     logmsg "creating hardlink"
     logcmd $LN $DESTDIR/$PREFIX/bin/$PROG $DESTDIR/$PREFIX/bin/$PROG$VER \
         || logerr "creating hardlink failed"
+
+    logmsg "removing sysroot from perl configuration"
+    logcmd $SED -i "
+        s! *--sysroot=${SYSROOT[$1]}!!g
+        s!^sysroot=.*!sysroot=''!
+    " $DESTDIR/$PREFIX/lib/$1-solaris-64/Config_heavy.pl \
+        || logerr "removing sysroot failed"
 }
 
 
