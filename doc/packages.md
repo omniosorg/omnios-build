@@ -36,7 +36,7 @@
 | file/gnu-coreutils			| 9.11			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.11.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.8.1			| https://github.com/libsigcplusplus/libsigcplusplus/releases https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.8.3			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.8.4			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2304.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/yaml				| 0.2.5			| https://github.com/yaml/libyaml/tags | Currently used solely by rsyslog
