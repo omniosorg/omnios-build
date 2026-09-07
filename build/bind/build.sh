@@ -107,6 +107,7 @@ pre_configure() {
 
     CONFIGURE_OPTS[$arch]+="
         --build=${TRIPLETS[$BUILD_ARCH]}
+        --disable-tracing
     "
 
     # configure tries to find the build triplet prefixed gcc
