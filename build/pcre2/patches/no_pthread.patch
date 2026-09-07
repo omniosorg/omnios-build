@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -16404,7 +16404,7 @@ rm -rf conftest*
+@@ -17577,7 +17577,7 @@ rm -rf conftest*
          # that too in a future libc.)  So we'll check first for the
          # standard Solaris way of linking pthreads (-mt -lpthread).
  
@@ -10,7 +10,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
          ;;
  esac
  
-@@ -16454,7 +16454,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
+@@ -17627,7 +17627,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
  
  if test "x$GCC" = "xyes"
  then :
