@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=pcre2
-VER=10.47
+VER=10.48
 DASHREV=1
 PKG=library/pcre2
 SUMMARY="Perl-Compatible Regular Expressions, version 2"

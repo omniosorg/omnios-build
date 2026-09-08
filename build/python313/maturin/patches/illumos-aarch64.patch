@@ -1,8 +1,9 @@
 aarch64 is a supported architecture on illumos
 
---- a/src/target/mod.rs
-+++ b/src/target/mod.rs
-@@ -225,7 +225,7 @@ pub fn get_supported_architectures(os: &Os) -> &'static [Arch] {
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/target/mod.rs a/src/target/mod.rs
+--- a~/src/target/mod.rs	1970-01-01 00:00:00
++++ a/src/target/mod.rs	1970-01-01 00:00:00
+@@ -227,7 +227,7 @@ fn get_supported_architectures(os: &Os)
              Arch::Sparc64,
          ],
          Os::Dragonfly => &[Arch::X86_64],
