@@ -4,7 +4,7 @@
 | compress/7zip				| 26.03			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.2.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
-| compress/gzip				| 1.14			| http://git.savannah.gnu.org/cgit/gzip.git/refs/tags
+| compress/gzip				| 1.14			| https://ftp.gnu.org/gnu/gzip/
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.26			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
@@ -24,7 +24,7 @@
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc15			| 15.2			| https://ftp.gnu.org/gnu/gcc/
 | developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
-| developer/macro/gnu-m4		| 1.4.21		| http://git.savannah.gnu.org/cgit/m4.git/refs/tags
+| developer/macro/gnu-m4		| 1.4.21		| https://ftp.gnu.org/gnu/m4/
 | developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
@@ -46,7 +46,7 @@
 | library/idnkit			| 2.3			| https://jprs.co.jp/idn/index-e.html
 | library/libedit			| 20260512-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.13		| https://github.com/libevent/libevent/tags
-| library/libidn			| 1.44			| http://git.savannah.gnu.org/cgit/libidn.git/refs/tags https://ftp.gnu.org/gnu/libidn/
+| library/libidn			| 1.44			| https://ftp.gnu.org/gnu/libidn/
 | library/libffi			| 3.8.0			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
 | library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
@@ -104,16 +104,16 @@
 | system/pciutils			| 3.15.0		| https://www.kernel.org/pub/software/utils/pciutils/
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2608.0		| https://www.rsyslog.com/downloads/download-v8-stable/
-| system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite
+| system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite/releases
 | system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.7			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 5.0.2			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.7c			| https://github.com/tmux/tmux/releases http://tmux.github.io/
 | text/gawk				| 5.4.1			| https://ftp.gnu.org/gnu/gawk/
-| text/gnu-diffutils			| 3.12			| http://git.savannah.gnu.org/cgit/diffutils.git/refs/tags
+| text/gnu-diffutils			| 3.12			| https://ftp.gnu.org/gnu/diffutils/
 | text/gnu-gettext			| 1.0			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
-| text/gnu-patch			| 2.8			| http://git.savannah.gnu.org/cgit/patch.git/refs/tags
+| text/gnu-patch			| 2.8			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.24.1		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 704			| http://www.greenwoodsoftware.com/less/download.html
