@@ -29,10 +29,7 @@ set_builddir $PROG-illumos-$VER-$DASHREV
 set_arch 64
 
 RUN_DEPENDS_IPS+="
-    library/python-$PYTHONMAJVER/idna-$PYTHONPKGVER
     library/python-$PYTHONMAJVER/jsonschema-$PYTHONPKGVER
-    library/python-$PYTHONMAJVER/pyrsistent-$PYTHONPKGVER
-    library/python-$PYTHONMAJVER/six-$PYTHONPKGVER
     library/python-$PYTHONMAJVER/pyyaml-$PYTHONPKGVER
 "
 
