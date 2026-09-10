@@ -4,6 +4,36 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056as (2026-09-10)
+Weekly release for w/c 7th of September 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- [curl(1)](https://man.omnios.org/curl) has been updated to version 8.22.0,
+  fixing [multiple security issues](https://curl.se/docs/vuln-8.21.0.html).
+
+- `expat` has been updated to version 2.8.4, fixing multiple vulnerabilities
+  in the XML parser, including denial of service through crafted input
+  ([CVE-2026-66046](https://www.cve.org/CVERecord?id=CVE-2026-66046),
+  [CVE-2026-76641](https://www.cve.org/CVERecord?id=CVE-2026-76641),
+  [CVE-2026-76956](https://www.cve.org/CVERecord?id=CVE-2026-76956) and
+  [CVE-2026-76957](https://www.cve.org/CVERecord?id=CVE-2026-76957)).
+
+- `libpcap` has been updated to version 1.10.7, fixing
+  [multiple vulnerabilities](https://github.com/the-tcpdump-group/libpcap/blob/libpcap-1.10.7/CHANGES)
+  in the BPF packet filter interpreter.
+
+- `7zip` has been updated to version 26.03, which includes a fix for a
+  heap-based buffer overflow in the XZ decompressor
+  ([CVE-2026-14266](https://www.cve.org/CVERecord?id=CVE-2026-14266)).
+
+- Updated Intel CPU microcode to 20260812.
+
+<br>
+
+---
+
 ## r151056aq (2026-08-25)
 Weekly release for w/c 24th of August 2026.
 > This update requires a reboot
