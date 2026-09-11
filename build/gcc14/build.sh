@@ -128,6 +128,7 @@ CPPFLAGS+=" -D_TS_ERRNO"
 MAKE_ARGS_WS="
     CFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
     CXXFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+    LDFLAGS_FOR_TARGET=\"-Wl,-M,$MAP_NOEXDATA\"
 "
 
 # gcc uses posix_fallocate() to extend temporary files on disk.

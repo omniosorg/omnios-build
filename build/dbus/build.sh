@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -35,8 +35,13 @@ CONFIGURE_OPTS="
     -Ddbus_user=root
     -Depoll=disabled
     -Dinotify=disabled
-    -Dc_link_args=-lsocket
 "
+
+# meson ignores LDFLAGS from the environment once c_link_args is set, so
+# the architecture-specific LDFLAGS are passed along with it.
+CONFIGURE_OPTS[i386_WS]="-Dc_link_args=\"-lsocket ${LDFLAGS[i386]}\""
+CONFIGURE_OPTS[amd64_WS]="-Dc_link_args=\"-lsocket ${LDFLAGS[amd64]}\""
+CONFIGURE_OPTS[aarch64_WS]="-Dc_link_args=\"-lsocket ${LDFLAGS[aarch64]}\""
 
 CONFIGURE_OPTS[i386]="
     --bindir=$PREFIX/bin

@@ -23,6 +23,8 @@ SUMMARY="Source Code Control System (SCCS)"
 DESC="The POSIX standard Source Code Control System (SCCS)"
 
 set_arch 32
+# Fold the 32-bit flags into LDFLAGS for use in LDOPTX below
+subsume_arch i386 LDFLAGS
 MAKE=dmake
 NO_PARALLEL_MAKE=1
 
@@ -40,7 +42,7 @@ MAKE="dmake"
 MAKE_ARGS="CCOM=gcc32"
 MAKE_ARGS_WS="
     COPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive -Wno-old-style-definition\"
-    LDOPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive\"
+    LDOPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive $LDFLAGS\"
 "
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 

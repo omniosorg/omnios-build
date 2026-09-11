@@ -11,3 +11,12 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Makefile a/Makefile
  CFLAGS +=		-O2 $(CERRWARN) -I$(TOP)/src
  
  CC =			gcc
+@@ -46,7 +47,7 @@ clean:
+ 	/usr/bin/rm -rf $(PROG) $(OBJDIR)
+ 
+ $(PROG): $(OBJS:%=$(OBJDIR)/%)
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ $(OBJDIR)/%.o: src/%.c | $(OBJDIR)
+ 	$(CC) -c $(CFLAGS) -o $@ $^

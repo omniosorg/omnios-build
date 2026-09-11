@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -125,6 +125,7 @@ CPPFLAGS+=" -D_TS_ERRNO"
 MAKE_ARGS_WS="
     CFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
     CXXFLAGS_FOR_TARGET=\"-g -O2 -D_TS_ERRNO\"
+    LDFLAGS_FOR_TARGET=\"-Wl,-M,$MAP_NOEXDATA\"
 "
 
 # gcc uses posix_fallocate() to extend temporary files on disk.

@@ -1,0 +1,47 @@
+From 02e5ffd5db0e27f4113d25ab28afa27e4e32c79e Mon Sep 17 00:00:00 2001
+From: Jakub Jelinek <jakub@redhat.com>
+Date: Thu, 5 Aug 2021 17:32:06 +0200
+Subject: libgcc: Honor LDFLAGS_FOR_TARGET when linking libgcc_s
+
+When building gcc with some specific LDFLAGS_FOR_TARGET, e.g.
+LDFLAGS_FOR_TARGET=-Wl,-z,relro,-z,now
+those flags propagate info linking of target shared libraries,
+e.g. lib{ubsan,tsan,stdc++,quadmath,objc,lsan,itm,gphobos,gdruntime,gomp,go,gfortran,atomic,asan}.so.*
+but there is one important exception, libgcc_s.so.* linking ignores it.
+
+The following patch fixes that.
+
+Bootstrapped/regtested on x86_64-linux with LDFLAGS_FOR_TARGET=-Wl,-z,relro,-z,now
+and verified that libgcc_s.so.* is BIND_NOW when it previously wasn't, and
+without any LDFLAGS_FOR_TARGET on x86_64-linux and i686-linux.
+There on x86_64-linux I've verified that the libgcc_s.so.1 linking command
+line for -m64 is identical except for whitespace to one without the patch,
+and for -m32 multilib $(LDFLAGS) actually do supply there an extra -m32
+that also repeats later in the @multilib_flags@, which should be harmless.
+
+2021-08-04  Jakub Jelinek  <jakub@redhat.com>
+
+	* config/t-slibgcc (SHLIB_LINK): Add $(LDFLAGS).
+	* config/t-slibgcc-darwin (SHLIB_LINK): Likewise.
+	* config/t-slibgcc-vms (SHLIB_LINK): Likewise.
+	* config/t-slibgcc-fuchsia (SHLIB_LDFLAGS): Remove $(LDFLAGS).
+
+[OmniOS: only the libgcc/config/t-slibgcc hunk is needed, the darwin,
+fuchsia and vms hunks do not apply to gcc 10]
+---
+ libgcc/config/t-slibgcc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgcc/config/t-slibgcc b/libgcc/config/t-slibgcc
+index c59b43b7b690e..50f13c2f1fae8 100644
+--- a/libgcc/config/t-slibgcc
++++ b/libgcc/config/t-slibgcc
+@@ -32,7 +32,7 @@ SHLIB_INSTALL_SOLINK = $(LN_S) $(SHLIB_SONAME) \
+ 	$(DESTDIR)$(slibdir)$(SHLIB_SLIBDIR_QUAL)/$(SHLIB_SOLINK)
+ 
+ SHLIB_LINK = $(CC) $(LIBGCC2_CFLAGS) -shared -nodefaultlibs \
+-	$(SHLIB_LDFLAGS) \
++	$(SHLIB_LDFLAGS) $(LDFLAGS) \
+ 	-o $(SHLIB_DIR)/$(SHLIB_SONAME).tmp @multilib_flags@ \
+ 	$(SHLIB_OBJS) $(SHLIB_LC) && \
+ 	rm -f $(SHLIB_DIR)/$(SHLIB_SOLINK) && \

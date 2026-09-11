@@ -27,6 +27,10 @@ set_builddir sunpro-runtime
 # This package contains closed binaries that have some old dependencies
 SKIP_RTIME_CHECK=1
 
+# These are pre-built binaries which cannot be re-linked with a
+# non-executable data segment.
+EXECDATA_EXPECTED=1
+
 install() {
     pushd $TMPDIR/$BUILDDIR >/dev/null
     logcmd rsync -avr ${PREFIX#/}/ $DESTDIR/${PREFIX#/}/

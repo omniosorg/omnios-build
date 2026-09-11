@@ -18,6 +18,11 @@ CROSSLIB=$CROSSTOOLS/$BUILDARCH/${TRIPLETS[$BUILDARCH]}/lib
 CROSS_GCC_VER=14
 
 # Find the library file in the specified gcc version
+# These packages repackage the runtime libraries of every installed compiler.
+# The 32-bit libraries from older compilers cannot be relinked with a
+# non-executable data segment.
+EXECDATA_EXPECTED=1
+
 function find_lib {
     local v=$1
     local lib=$2

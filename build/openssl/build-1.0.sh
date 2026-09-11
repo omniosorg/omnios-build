@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 . common.sh
@@ -91,17 +91,20 @@ install_pkcs11()
 {
     logmsg "--- installing pkcs11 engine"
     pushd $SRCDIR/engine_pkcs11 > /dev/null
-    find . | cpio -pmud $TMPDIR/$BUILDDIR/engines/
+    $FIND . | cpio -pmud $TMPDIR/$BUILDDIR/engines/
     popd > /dev/null
 }
 
 # OpenSSL 1.0 uses INSTALL_PREFIX= instead of DESTDIR=
+# The install target depends on all, which relinks the shared libraries,
+# so the link flags from configure_arch have to be passed here as well.
 make_install() {
     typeset arch=${1:?arch}
+    eval set -- $MAKE_ARGS_WS
     logmsg "--- make install"
-    logcmd make INSTALL_PREFIX=$DESTDIR install \
+    logcmd $MAKE INSTALL_PREFIX=$DESTDIR "$@" install \
         || logerr "Failed to make install"
-    logcmd cp ${DUH}{,.$1}
+    logcmd $CP ${DUH}{,.$arch}
 }
 
 pre_publish() {

@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -32,7 +32,7 @@ is_cross || set_arch 32
 pre_configure() {
     typeset arch=$1
 
-    subsume_arch $arch CFLAGS
+    subsume_arch $arch CFLAGS LDFLAGS
 
     # No configure
     false

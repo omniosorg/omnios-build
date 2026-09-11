@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 . common.sh
@@ -73,6 +73,7 @@ configure_arch() {
     MAKE_ARGS_WS="
         SHARED_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
         LIB_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
+        DSO_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
     "
 }
 
