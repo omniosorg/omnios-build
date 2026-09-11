@@ -1823,6 +1823,7 @@ generate_manifest() {
     fi
     check_soname
     check_bmi
+    check_execdata
     check_errno
     logmsg "--- Generating package manifest from $DESTDIR"
     typeset GENERATE_ARGS=
@@ -2667,6 +2668,7 @@ make_isaexec_stub_arch() {
         [ -f "$file" ] && continue
         logmsg "---- Creating ISA stub for $file"
         logcmd $CC ${CFLAGS[0]} ${CFLAGS[i386]} -o $file \
+            -Wl,-M,$MAP_NOEXDATA \
             -DFALLBACK_PATH="$dir/$file" $BLIBDIR/isastub.c \
             || logerr "--- Failed to make isaexec stub for $dir/$file"
         # When CTF conversion is enabled, the stub contains DWARF via the
@@ -3774,6 +3776,43 @@ check_bmi() {
     if [ -s "$TMPDIR/rtime.bmi" ]; then
         $CAT $TMPDIR/rtime.bmi | pipelog
         logerr "BMI instruction set found"
+    fi
+}
+
+check_execdata() {
+    [ -n "$EXECDATA_EXPECTED" ] && return
+
+    # The linker gives 32-bit objects a read/write/execute data segment by
+    # default, and the kernel applies the flags of an executable's data
+    # segment to its heap. 32-bit objects are therefore linked with the
+    # map.noexdata mapfile via LDFLAGS, which is what illumos-omnios does
+    # for its 32-bit objects. This check catches objects which were linked
+    # without it.
+
+    logmsg "-- Checking for executable data segments"
+
+    typeset if=$SRCDIR/files/execdata.ignore
+    [ -f "$if" ] || if=
+
+    : > $TMPDIR/rtime.execdata
+    while read obj type bits; do
+        [ "$bits" = 32 ] || continue
+        [ -f "$DESTDIR/$obj" ] || continue
+        if $ELFDUMP -p "$DESTDIR/$obj" 2>/dev/null | $NAWK '
+            /p_flags/ { flags = $0 }
+            /PT_LOAD/ { last = flags }
+            END { exit !(last ~ /PF_X/) }'; then
+            if [ -z "$if" ] || ! $FGREP -sx "${obj#/}" $if >/dev/null; then
+                echo "$obj has an executable data segment" \
+                    >> $TMPDIR/rtime.execdata
+            fi
+        fi &
+        parallelise $LCPUS
+    done < <(rtime_objects -f)
+    wait
+    if [ -s "$TMPDIR/rtime.execdata" ]; then
+        $CAT $TMPDIR/rtime.execdata | pipelog
+        logerr "Found object(s) with an executable data segment"
     fi
 }
 
