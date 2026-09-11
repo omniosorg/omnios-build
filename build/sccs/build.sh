@@ -22,9 +22,9 @@ PKG=developer/versioning/sccs
 SUMMARY="Source Code Control System (SCCS)"
 DESC="The POSIX standard Source Code Control System (SCCS)"
 
-set_arch 32
-# Fold the 32-bit flags into LDFLAGS for use in LDOPTX below
-subsume_arch i386 LDFLAGS
+set_arch 64
+# Fold the 64-bit flags into LDFLAGS for use in LDOPTX below
+subsume_arch amd64 LDFLAGS
 MAKE=dmake
 NO_PARALLEL_MAKE=1
 
@@ -39,7 +39,7 @@ make_clean() { :; }
 configure_arch() { :; }
 
 MAKE="dmake"
-MAKE_ARGS="CCOM=gcc32"
+MAKE_ARGS="CCOM=gcc64"
 MAKE_ARGS_WS="
     COPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive -Wno-old-style-definition\"
     LDOPTX=\"$CTF_CFLAGS $SSPFLAGS -fpermissive $LDFLAGS\"
@@ -47,8 +47,9 @@ MAKE_ARGS_WS="
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 
 run_test() {
-    $EGREP -s '#[[:space:]]*define[[:space:]]*SIZEOF_INT[[:space:]]*4$' \
-        $TMPDIR/$BUILDDIR/include/schily/xmconfig.h \
+    # The configure results are written to incs/<arch>/xconfig.h
+    $EGREP -s '#[[:space:]]*define[[:space:]]*SIZEOF_CHAR_P[[:space:]]*8$' \
+        $TMPDIR/$BUILDDIR/incs/*/xconfig.h \
         || logerr "Configure failed to detect type sizes"
 }
 
