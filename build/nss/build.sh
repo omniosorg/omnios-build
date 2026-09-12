@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=nss
-VER=3.128
+VER=3.129
 PKG=system/library/mozilla-nss
 SUMMARY="Network Security Services"
 DESC="Network Security Services (NSS) is a set of libraries designed to "
@@ -114,6 +114,7 @@ make_install() {
     logcmd $CP $dist/Release/bin/* bin/
 
     for b in bin/*; do
+        [ "$b" = "bin/nss-config" ] && continue
         typeset p=`$ELFEDIT -e 'dyn:runpath -o simple' $b`
         logcmd $ELFEDIT -e "dyn:runpath $PREFIX/$libdir:$p" $b
     done

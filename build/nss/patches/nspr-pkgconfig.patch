@@ -1,0 +1,19 @@
+The generate_pkg_config step added in NSS 3.129 (upstream bug 2065423) reads
+the NSPR version from nspr.pc in the dist directory. That file only exists
+when NSPR is built in-tree. With --with-nspr the sed fails on the missing
+file and, as build.sh runs under set -e, the build aborts after ninja has
+already finished. The fallback version on the following line is never
+reached.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/build.sh a/build.sh
+--- a~/build.sh	1970-01-01 00:00:00
++++ a/build.sh	1970-01-01 00:00:00
+@@ -332,7 +332,7 @@ generate_pkg_config()
+     [ -n "$vmajor" ] || return 0
+ 
+     nspr_version=$(sed -n 's/^Version: *//p' \
+-        "$obj_dir/lib/pkgconfig/nspr.pc" 2>/dev/null)
++        "$obj_dir/lib/pkgconfig/nspr.pc" 2>/dev/null || true)
+     : "${nspr_version:=4.32}"
+ 
+     mkdir -p "$obj_dir/lib/pkgconfig"
