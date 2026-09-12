@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -31,6 +31,8 @@ post_install() {
     typeset arch=$1
 
     # Include libraries from idnkit1
+    # These are copied from the build host as-is, so they keep their
+    # executable data segment (see files/execdata.ignore).
     ver=1.0.2
     case $arch in
         i386)

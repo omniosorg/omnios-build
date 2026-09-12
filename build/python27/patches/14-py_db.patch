@@ -20,7 +20,7 @@ diff -pruN '--exclude=*.orig' Python-2.7.15~/Makefile.pre.in Python-2.7.15/Makef
 +SHLIB_FLAGS = -shared -fpic
 +
 +libpython2.7_db.so.1.0:        $(srcdir)/py_db/libpython27_db.c
-+	$(CC) -o $@ $(CFLAGS) $(CPPFLAGS) $(SHLIB_FLAGS) $<
++	$(CC) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SHLIB_FLAGS) $<
 +
 +build-py_db:   libpython2.7_db.so.1.0
 +

@@ -205,6 +205,7 @@ do
 done
 
 CURL=$USRBIN/curl
+ELFDUMP=$USRBIN/elfdump
 ELFEDIT=$USRBIN/elfedit
 FILE=$USRHASBIN/file
 GIT=$USRBIN/git
@@ -360,8 +361,13 @@ typeset -A CFLAGS=(
     [amd64]=-m64
 )
 
+# 32-bit objects are linked with a read/write data segment. The linker
+# default for i386 is read/write/execute, which gives 32-bit processes
+# an executable heap, so we explicitly override that as illumos-omnios
+# builds do.
+MAP_NOEXDATA=/usr/lib/ld/map.noexdata
 typeset -A LDFLAGS=(
-    [i386]=-m32
+    [i386]="-m32 -Wl,-M,$MAP_NOEXDATA"
     [amd64]=-m64
 )
 

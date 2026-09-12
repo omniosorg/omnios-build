@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -31,6 +31,8 @@ base_MAKE_ARGS="
     MANDIR=$PREFIX/share/man
     INSTALL=$GNUBIN/install
 "
+# The zstd makefiles append MOREFLAGS to both CFLAGS and LDFLAGS, so the
+# architecture-specific LDFLAGS are passed through it as well.
 pre_configure() {
     typeset arch=$1
 
@@ -38,13 +40,13 @@ pre_configure() {
     case $arch in
         aarch64) tgt+=" zstd-release" ;&
         i386)
-            MOREFLAGS="$CFLAGS ${CFLAGS[$arch]}"
+            MOREFLAGS="$CFLAGS ${CFLAGS[$arch]} ${LDFLAGS[$arch]}"
             MAKE_INSTALL_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\""
             MAKE_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\" $tgt"
             ;;
         amd64)
             tgt+=" zstd-release"
-            MOREFLAGS="$CFLAGS ${CFLAGS[$arch]}"
+            MOREFLAGS="$CFLAGS ${CFLAGS[$arch]} ${LDFLAGS[$arch]}"
             MAKE_INSTALL_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"
                 LIBDIR=$PREFIX/lib/$arch"
             MAKE_ARGS_WS="$base_MAKE_ARGS MOREFLAGS=\"$MOREFLAGS\"

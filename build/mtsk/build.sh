@@ -30,6 +30,10 @@ set_builddir $PROG
 set_ssp none
 SKIP_RTIME_CHECK=1
 
+# These are pre-built binaries which cannot be re-linked with a
+# non-executable data segment.
+EXECDATA_EXPECTED=1
+
 build() {
     rsync -a $TMPDIR/$BUILDDIR/lib/ $DESTDIR/lib/ || logerr "rsync failed"
 }

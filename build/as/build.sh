@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
@@ -28,6 +28,10 @@ set_builddir as
 # This package contains closed binaries that have some old dependencies
 SKIP_RTIME_CHECK=1
 set_ssp none
+
+# These are pre-built binaries which cannot be re-linked with a
+# non-executable data segment.
+EXECDATA_EXPECTED=1
 
 install() {
     pushd $TMPDIR/$BUILDDIR >/dev/null

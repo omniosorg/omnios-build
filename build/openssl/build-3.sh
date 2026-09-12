@@ -91,6 +91,7 @@ configure_arch() {
     MAKE_ARGS_WS="
         SHARED_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
         LIB_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
+        DSO_LDFLAGS=\"${LDFLAGS[$arch]} ${LDFLAGS[base]}\"
     "
 
     $PERL configdata.pm --dump > $SRCDIR/config-$arch.log
