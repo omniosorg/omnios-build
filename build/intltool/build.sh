@@ -12,7 +12,7 @@
 # }}}
 #
 # Copyright 2014 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/build.sh
@@ -25,7 +25,7 @@ DESC="$SUMMARY"
 
 RUN_DEPENDS_IPS="system/library"
 
-set_arch 32
+set_arch 64
 
 init
 download_source $PROG $PROG $VER

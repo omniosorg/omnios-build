@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=cpp
-VER=20240422
+VER=20260911
 PKG=developer/macro/cpp
 SUMMARY="The C Pre-Processor (cpp)"
 DESC="$SUMMARY"
@@ -26,8 +26,7 @@ DESC="$SUMMARY"
 BUILD_DEPENDS_IPS="developer/parser/bison"
 SKIP_LICENCES="*.licence"
 
-# cpp does not work properly when built 64-bit
-is_cross || set_arch 32
+set_arch 64
 
 pre_configure() {
     typeset arch=$1
