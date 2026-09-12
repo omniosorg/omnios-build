@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=automake
-VER=1.18.1
+VER=1.19
 PKG=developer/build/automake
 SUMMARY="GNU Automake"
 DESC="GNU Automake - A Makefile generator"
@@ -29,6 +29,7 @@ HARDLINK_TARGETS="usr/bin/aclocal usr/bin/automake"
 MAKE_TESTSUITE_ARGS_WS="
     LEX=flex
     YACC=\"bison -y\"
+    SHELL=$SHELL
 "
 
 set_arch 64

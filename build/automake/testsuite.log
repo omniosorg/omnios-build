@@ -106,11 +106,34 @@ PASS: t/instspc.tap 91 - miscglob1 in builddir
 PASS: t/instspc.tap 92 - miscglob1 in destdir
 PASS: t/instspc.tap 93 - miscglob2 in builddir
 PASS: t/instspc.tap 94 - miscglob2 in destdir
-PASS: t/aclocal.sh
+a68-demo: skipped test: required program 'ga68' not available
+SKIP: t/a68-demo.sh
+PASS: t/ac-output-old.tap 1 - aclocal groks '\' in AC_OUTPUT (acoutbs1)
+PASS: t/ac-output-old.tap 2 - automake groks '\' in AC_OUTPUT (acoutbs1)
+PASS: t/ac-output-old.tap 3 - autoconf groks '\' in AC_OUTPUT (acoutbs1)
+PASS: t/ac-output-old.tap 4 - can ./configure in acoutbs1
+PASS: t/ac-output-old.tap 5 - zot created in acoutbs1
+PASS: t/ac-output-old.tap 6 - '\' not leaked in filenames in acoutbs1
+PASS: t/ac-output-old.tap 7 - aclocal groks '\' in AC_OUTPUT (acoutbs2)
+PASS: t/ac-output-old.tap 8 - automake groks '\' in AC_OUTPUT (acoutbs2)
+PASS: t/ac-output-old.tap 9 - autoconf groks '\' in AC_OUTPUT (acoutbs2)
+PASS: t/ac-output-old.tap 10 - can ./configure in acoutbs2
+PASS: t/ac-output-old.tap 11 - zot created in acoutbs2
+PASS: t/ac-output-old.tap 12 - '\' not leaked in filenames in acoutbs2
+PASS: t/ac-output-old.tap 13 - aclocal and quoted AC_OUTPUT second argument
+PASS: t/ac-output-old.tap 14 - automake and quoted AC_OUTPUT second argument
+PASS: t/ac-output-old.tap 15 - aclocal and two AC_OUTPUT arguments on same line
+PASS: t/ac-output-old.tap 16 - automake and two AC_OUTPUT arguments on same line
+PASS: t/ac-output-old.tap 17 - aclocal and AC_OUTPUT (acoutput2)
+PASS: t/ac-output-old.tap 18 - automake and AC_OUTPUT (acoutput2)
+PASS: t/ac-output-old.tap 19 - foo.in mentioned two times in Makefile.in (acoutput2)
+PASS: t/ac-output-old.tap 20 - 'automake -a -f' and AC_OUTPUT (acoutput2)
+PASS: t/ac-output-old.tap 21 - aclocal and two AC_OUTPUT arguments on two lines
+PASS: t/ac-output-old.tap 22 - automake and two AC_OUTPUT arguments on two lines
+PASS: t/aclocal-I-and-install.sh
 PASS: t/aclocal-I-order-1.sh
 PASS: t/aclocal-I-order-2.sh
 PASS: t/aclocal-I-order-3.sh
-PASS: t/aclocal-I-and-install.sh
 PASS: t/aclocal-acdir.sh
 PASS: t/aclocal-amflags.sh
 PASS: t/aclocal-autoconf-version-check.sh
@@ -119,9 +142,9 @@ PASS: t/aclocal-deleted-header-aclocal-amflags.sh
 PASS: t/aclocal-deleted-header.sh
 PASS: t/aclocal-deps-subdir.sh
 PASS: t/aclocal-deps.sh
-PASS: t/aclocal-dirlist.sh
-PASS: t/aclocal-dirlist-globbing.sh
 PASS: t/aclocal-dirlist-abspath.sh
+PASS: t/aclocal-dirlist-globbing.sh
+PASS: t/aclocal-dirlist.sh
 PASS: t/aclocal-install-absdir.sh
 PASS: t/aclocal-install-fail.sh
 PASS: t/aclocal-install-mkdir.sh
@@ -156,46 +179,25 @@ PASS: t/aclocal-no-force.sh
 PASS: t/aclocal-no-install-no-mkdir.sh
 PASS: t/aclocal-no-symlinked-overwrite.sh
 PASS: t/aclocal-no-unused-required.sh
-PASS: t/aclocal-path.sh
-PASS: t/aclocal-path-install.sh
 PASS: t/aclocal-path-install-serial.sh
+PASS: t/aclocal-path-install.sh
 PASS: t/aclocal-path-nonexistent.sh
 PASS: t/aclocal-path-precedence.sh
+PASS: t/aclocal-path.sh
 PASS: t/aclocal-pr450.sh
 PASS: t/aclocal-print-acdir.sh
-PASS: t/aclocal-req.sh
 PASS: t/aclocal-remake-misc.sh
+PASS: t/aclocal-req.sh
 PASS: t/aclocal-scan-configure-ac-pr319.sh
 PASS: t/aclocal-serial.sh
 PASS: t/aclocal-underquoted-defun.sh
 PASS: t/aclocal-verbose-install.sh
-PASS: t/auxdir-pr15981.sh
-PASS: t/auxdir-cc-pr15981.sh
-PASS: t/ac-output-old.tap 1 - aclocal groks '\' in AC_OUTPUT (acoutbs1)
-PASS: t/ac-output-old.tap 2 - automake groks '\' in AC_OUTPUT (acoutbs1)
-PASS: t/ac-output-old.tap 3 - autoconf groks '\' in AC_OUTPUT (acoutbs1)
-PASS: t/ac-output-old.tap 4 - can ./configure in acoutbs1
-PASS: t/ac-output-old.tap 5 - zot created in acoutbs1
-PASS: t/ac-output-old.tap 6 - '\' not leaked in filenames in acoutbs1
-PASS: t/ac-output-old.tap 7 - aclocal groks '\' in AC_OUTPUT (acoutbs2)
-PASS: t/ac-output-old.tap 8 - automake groks '\' in AC_OUTPUT (acoutbs2)
-PASS: t/ac-output-old.tap 9 - autoconf groks '\' in AC_OUTPUT (acoutbs2)
-PASS: t/ac-output-old.tap 10 - can ./configure in acoutbs2
-PASS: t/ac-output-old.tap 11 - zot created in acoutbs2
-PASS: t/ac-output-old.tap 12 - '\' not leaked in filenames in acoutbs2
-PASS: t/ac-output-old.tap 13 - aclocal and quoted AC_OUTPUT second argument
-PASS: t/ac-output-old.tap 14 - automake and quoted AC_OUTPUT second argument
-PASS: t/ac-output-old.tap 15 - aclocal and two AC_OUTPUT arguments on same line
-PASS: t/ac-output-old.tap 16 - automake and two AC_OUTPUT arguments on same line
-PASS: t/ac-output-old.tap 17 - aclocal and AC_OUTPUT (acoutput2)
-PASS: t/ac-output-old.tap 18 - automake and AC_OUTPUT (acoutput2)
-PASS: t/ac-output-old.tap 19 - foo.in mentioned two times in Makefile.in (acoutput2)
-PASS: t/ac-output-old.tap 20 - 'automake -a -f' and AC_OUTPUT (acoutput2)
-PASS: t/ac-output-old.tap 21 - aclocal and two AC_OUTPUT arguments on two lines
-PASS: t/ac-output-old.tap 22 - automake and two AC_OUTPUT arguments on two lines
+PASS: t/aclocal.sh
 PASS: t/acsilent.sh
 PASS: t/acsubst.sh
 PASS: t/acsubst2.sh
+PASS: t/add-missing-install-sh.sh
+PASS: t/add-missing-multiple.sh
 PASS: t/add-missing.tap 1 - [link minimal] missing files, automake fails
 PASS: t/add-missing.tap 2 - [link minimal] warn about missing file install-sh
 PASS: t/add-missing.tap 3 - [link minimal] suggest --add-missing for install-sh
@@ -607,30 +609,33 @@ PASS: t/add-missing.tap 408 - [copy misc] ylwrap has not been symlinked
 PASS: t/add-missing.tap 409 - [copy misc] config.sub has not been symlinked
 PASS: t/add-missing.tap 410 - [copy misc] config.guess has not been symlinked
 PASS: t/add-missing.tap 411 - [copy misc] automake finds all added files
-PASS: t/add-missing-multiple.sh
 XFAIL: t/all.sh
 PASS: t/all2.sh
 PASS: t/alloca.sh
 PASS: t/alloca2.sh
 PASS: t/alpha.sh
 PASS: t/alpha2.sh
+PASS: t/am-config-header.sh
+PASS: t/am-default-source-ext.sh
+PASS: t/am-include-only-one-generated-fragment.sh
+PASS: t/am-macro-not-found.sh
+PASS: t/am-missing-prog.sh
+am-optional-automake: skipped test: required program 'bzip3' not available
+SKIP: t/am-optional-automake.sh
+PASS: t/am-prog-cc-c-o.sh
+PASS: t/am-prog-cc-stdc.sh
+PASS: t/am-tests-environment.sh
+PASS: t/amassign.sh
+PASS: t/amhello-binpkg.sh
 PASS: t/amhello-cflags.sh
 amhello-cross-compile: skipped test: required program 'i586-mingw32msvc-gcc' not available
 SKIP: t/amhello-cross-compile.sh
-PASS: t/amhello-binpkg.sh
 PASS: t/aminit-moreargs-deprecation.sh
 PASS: t/aminit-trailing-dnl-comment-pr16841.sh
-PASS: t/amassign.sh
-PASS: t/am-config-header.sh
-PASS: t/am-prog-cc-stdc.sh
-PASS: t/am-prog-cc-c-o.sh
-PASS: t/am-macro-not-found.sh
 PASS: t/amopt.sh
 PASS: t/amopts-location.sh
 PASS: t/amopts-variable-expansion.sh
 PASS: t/amsubst.sh
-PASS: t/am-default-source-ext.sh
-PASS: t/am-include-only-one-generated-fragment.sh
 PASS: t/ansi2knr-no-more.sh
 PASS: t/ar-lib.sh
 PASS: t/ar-lib2.sh
@@ -652,20 +657,21 @@ PASS: t/ar_override.sh
 PASS: t/asm.sh
 PASS: t/asm2.sh
 PASS: t/asm3.sh
-PASS: t/autodist.sh
-PASS: t/autodist-subdir.sh
-PASS: t/autodist-acconfig.sh
 PASS: t/autodist-acconfig-no-subdir.sh
+PASS: t/autodist-acconfig.sh
 PASS: t/autodist-aclocal-m4.sh
+PASS: t/autodist-conditional-rule.sh
 PASS: t/autodist-config-headers.sh
 PASS: t/autodist-configure-no-subdir.sh
 PASS: t/autodist-no-duplicate.sh
 autodist-stamp-vti: skipped test: required program 'makeinfo' not available
 SKIP: t/autodist-stamp-vti.sh
+PASS: t/autodist-subdir.sh
+PASS: t/autodist.sh
+PASS: t/autohdr-subdir-pr12495.sh
 PASS: t/autohdr.sh
 PASS: t/autohdr3.sh
 PASS: t/autohdr4.sh
-PASS: t/autohdr-subdir-pr12495.sh
 PASS: t/autohdrdry.sh
 PASS: t/automake-cmdline.tap 1 - invalid long option (run)
 PASS: t/automake-cmdline.tap 2 - invalid long option (stderr)
@@ -681,40 +687,44 @@ PASS: t/automake-cmdline.tap 11 - '--help' as option argument (run)
 PASS: t/automake-cmdline.tap 12 - '--help' as option argument (stderr)
 PASS: t/automake-cmdline.tap 13 - ambiguous incomplete option (run)
 PASS: t/automake-cmdline.tap 14 - ambiguous incomplete option (stderr)
-PASS: t/auxdir.sh
-PASS: t/auxdir6.sh
-PASS: t/auxdir7.sh
-PASS: t/auxdir8.sh
 PASS: t/auxdir-autodetect.sh
+PASS: t/auxdir-cc-pr15981.sh
 PASS: t/auxdir-computed.tap 1 - aclocal
 XFAIL: t/auxdir-computed.tap 2 - automake -a # TODO long-standing limitation
 XFAIL: t/auxdir-computed.tap 3 - automake # TODO long-standing limitation
 PASS: t/auxdir-misplaced.sh
 PASS: t/auxdir-nonexistent.sh
+PASS: t/auxdir-pr15981.sh
 PASS: t/auxdir-pr19311.sh
 PASS: t/auxdir-subsubdir.sh
 PASS: t/auxdir-unportable.tap 1 - automake exited 1
 PASS: t/auxdir-unportable.tap 2 - warn about non-existent unportable auxdir name
 PASS: t/auxdir-unportable.tap 3 - automake exited 1
 PASS: t/auxdir-unportable.tap 4 - warn about existent unportable auxdir name
+PASS: t/auxdir.sh
+PASS: t/auxdir6.sh
+PASS: t/auxdir7.sh
+PASS: t/auxdir8.sh
+PASS: t/backcompat-acout.sh
 PASS: t/backcompat.sh
 PASS: t/backcompat2.sh
 PASS: t/backcompat3.sh
 PASS: t/backcompat6.sh
-PASS: t/backcompat-acout.sh
-PASS: t/backslash-issues.sh
 PASS: t/backslash-before-trailing-whitespace.sh
+PASS: t/backslash-issues.sh
 PASS: t/badline.sh
 PASS: t/badopt.sh
 PASS: t/badprog.sh
 PASS: t/built-sources-check.sh
 PASS: t/built-sources-cond.sh
 PASS: t/built-sources-fork-bomb.sh
-PASS: t/built-sources-install.sh
 PASS: t/built-sources-install-exec.sh
+PASS: t/built-sources-install.sh
 PASS: t/built-sources-subdir.sh
 PASS: t/built-sources.sh
+PASS: t/c-demo.sh
 PASS: t/candist.sh
+PASS: t/canon-name.sh
 PASS: t/canon.sh
 PASS: t/canon2.sh
 PASS: t/canon3.sh
@@ -723,31 +733,30 @@ PASS: t/canon5.sh
 PASS: t/canon6.sh
 PASS: t/canon7.sh
 PASS: t/canon8.sh
-PASS: t/canon-name.sh
-PASS: t/ccnoco.sh
+PASS: t/ccnoco-deps.sh
 PASS: t/ccnoco-lib.sh
 PASS: t/ccnoco-lt.sh
+PASS: t/ccnoco.sh
 PASS: t/ccnoco3.sh
 PASS: t/ccnoco4.sh
-PASS: t/ccnoco-deps.sh
+PASS: t/check-concurrency-bug9245.sh
+PASS: t/check-exported-srcdir.sh
+PASS: t/check-fd-redirect.sh
+PASS: t/check-no-test-driver.sh
+PASS: t/check-subst-prog.sh
+PASS: t/check-subst.sh
+PASS: t/check-tests-in-builddir.sh
 PASS: t/check.sh
+PASS: t/check10.sh
+PASS: t/check11.sh
+check12: skipped test: DejaGnu is not available
+SKIP: t/check12.sh
 PASS: t/check2.sh
 PASS: t/check4.sh
 PASS: t/check5.sh
 PASS: t/check6.sh
 PASS: t/check7.sh
 PASS: t/check8.sh
-PASS: t/check10.sh
-PASS: t/check11.sh
-check12: skipped test: DejaGnu is not available
-SKIP: t/check12.sh
-PASS: t/check-subst.sh
-PASS: t/check-subst-prog.sh
-PASS: t/check-exported-srcdir.sh
-PASS: t/check-fd-redirect.sh
-PASS: t/check-tests-in-builddir.sh
-PASS: t/check-no-test-driver.sh
-PASS: t/check-concurrency-bug9245.sh
 PASS: t/checkall.sh
 PASS: t/clean.sh
 PASS: t/colneq.sh
@@ -760,11 +769,15 @@ PASS: t/colon4.sh
 PASS: t/colon5.sh
 PASS: t/colon6.sh
 PASS: t/colon7.sh
+PASS: t/color-tests-opt.sh
 PASS: t/color-tests.sh
 color-tests2: skipped test: requires a working expect program
 SKIP: t/color-tests2.sh
-PASS: t/color-tests-opt.sh
+PASS: t/commen10.sh
+PASS: t/commen11.sh
+PASS: t/comment-block.sh
 PASS: t/comment.sh
+PASS: t/comment12.sh
 PASS: t/comment2.sh
 PASS: t/comment3.sh
 PASS: t/comment4.sh
@@ -773,10 +786,6 @@ PASS: t/comment6.sh
 PASS: t/comment7.sh
 PASS: t/comment8.sh
 PASS: t/comment9.sh
-PASS: t/commen10.sh
-PASS: t/commen11.sh
-PASS: t/comment12.sh
-PASS: t/comment-block.sh
 PASS: t/comments-escaped-in-var.sh
 PASS: t/comments-in-var-def.sh
 PASS: t/compile.sh
@@ -793,13 +802,6 @@ PASS: t/compile_f90_c_cxx.sh
 PASS: t/compile_f_c_cxx.sh
 PASS: t/cond-basic.sh
 PASS: t/cond.sh
-PASS: t/cond3.sh
-PASS: t/cond4.sh
-PASS: t/cond5.sh
-PASS: t/cond6.sh
-PASS: t/cond7.sh
-PASS: t/cond8.sh
-PASS: t/cond9.sh
 PASS: t/cond10.sh
 PASS: t/cond11.sh
 PASS: t/cond13.sh
@@ -818,6 +820,7 @@ PASS: t/cond25.sh
 PASS: t/cond26.sh
 PASS: t/cond27.sh
 PASS: t/cond28.sh
+PASS: t/cond3.sh
 PASS: t/cond30.sh
 PASS: t/cond31.sh
 PASS: t/cond32.sh
@@ -828,6 +831,7 @@ PASS: t/cond36.sh
 PASS: t/cond37.sh
 PASS: t/cond38.sh
 PASS: t/cond39.sh
+PASS: t/cond4.sh
 PASS: t/cond40.sh
 PASS: t/cond41.sh
 PASS: t/cond42.sh
@@ -835,6 +839,11 @@ PASS: t/cond43.sh
 PASS: t/cond44.sh
 PASS: t/cond45.sh
 PASS: t/cond46.sh
+PASS: t/cond5.sh
+PASS: t/cond6.sh
+PASS: t/cond7.sh
+PASS: t/cond8.sh
+PASS: t/cond9.sh
 PASS: t/condd.sh
 PASS: t/condhook.sh
 PASS: t/condhook2.sh
@@ -843,18 +852,18 @@ PASS: t/condinc2.sh
 PASS: t/condlib.sh
 PASS: t/condman2.sh
 PASS: t/condman3.sh
-PASS: t/configure.sh
 PASS: t/confdeps.sh
 PASS: t/conff.sh
 PASS: t/conff2.sh
 PASS: t/conffile-leading-dot.sh
+PASS: t/confh-subdir-clean.sh
 PASS: t/confh.sh
 PASS: t/confh4.sh
 PASS: t/confh5.sh
 PASS: t/confh6.sh
 PASS: t/confh7.sh
 PASS: t/confh8.sh
-PASS: t/confh-subdir-clean.sh
+PASS: t/configure.sh
 PASS: t/confincl.sh
 PASS: t/conflnk.sh
 PASS: t/conflnk2.sh
@@ -885,12 +894,11 @@ PASS: t/cscope.tap 18 - [in-tree build] make distcheck
 PASS: t/cscope2.sh
 cscope3: skipped test: required program 'cscope' not available
 SKIP: t/cscope3.sh
-PASS: t/c-demo.sh
+PASS: t/cxx-demo.sh
+PASS: t/cxx-lt-demo.sh
 PASS: t/cxx.sh
 PASS: t/cxx2.sh
 PASS: t/cxxcpp.sh
-PASS: t/cxx-demo.sh
-PASS: t/cxx-lt-demo.sh
 PASS: t/cxxlibobj.sh
 PASS: t/cxxlink.sh
 PASS: t/cxxnoc.sh
@@ -899,6 +907,15 @@ PASS: t/cygwin32.sh
 PASS: t/dash.sh
 PASS: t/defun.sh
 PASS: t/defun2.sh
+dejagnu-absolute-builddir: skipped test: DejaGnu is not available
+SKIP: t/dejagnu-absolute-builddir.sh
+dejagnu-relative-srcdir: skipped test: DejaGnu is not available
+SKIP: t/dejagnu-relative-srcdir.sh
+PASS: t/dejagnu-silent.sh
+PASS: t/dejagnu-siteexp-append.sh
+dejagnu-siteexp-extend: skipped test: DejaGnu is not available
+SKIP: t/dejagnu-siteexp-extend.sh
+PASS: t/dejagnu-siteexp-useredit.sh
 PASS: t/dejagnu.sh
 PASS: t/dejagnu2.sh
 dejagnu3: skipped test: DejaGnu is not available
@@ -911,33 +928,31 @@ dejagnu6: skipped test: DejaGnu is not available
 SKIP: t/dejagnu6.sh
 dejagnu7: skipped test: DejaGnu is not available
 SKIP: t/dejagnu7.sh
-dejagnu-absolute-builddir: skipped test: DejaGnu is not available
-SKIP: t/dejagnu-absolute-builddir.sh
-dejagnu-relative-srcdir: skipped test: DejaGnu is not available
-SKIP: t/dejagnu-relative-srcdir.sh
-dejagnu-siteexp-extend: skipped test: DejaGnu is not available
-SKIP: t/dejagnu-siteexp-extend.sh
-PASS: t/dejagnu-siteexp-append.sh
-PASS: t/dejagnu-siteexp-useredit.sh
 PASS: t/deleted-am.sh
 PASS: t/deleted-m4.sh
 PASS: t/depacl2.sh
+PASS: t/depcomp-implicit-auxdir.sh
 PASS: t/depcomp.sh
 PASS: t/depcomp2.sh
 PASS: t/depcomp8a.sh
 PASS: t/depcomp8b.sh
-PASS: t/depcomp-implicit-auxdir.sh
 PASS: t/depdist.sh
+PASS: t/depend-postproc.sh
 PASS: t/depend.sh
 PASS: t/depend3.sh
 PASS: t/depend4.sh
 PASS: t/depend5.sh
 PASS: t/depend6.sh
-PASS: t/depend-postproc.sh
 PASS: t/deprecated-acinit.sh
 PASS: t/destdir.sh
 PASS: t/dir-named-obj-is-bad.sh
 PASS: t/discover.sh
+PASS: t/dist-auxdir-many-subdirs.sh
+PASS: t/dist-auxfile-2.sh
+PASS: t/dist-auxfile.sh
+dist-bzip3: skipped test: required program 'bzip3' not available
+SKIP: t/dist-bzip3.sh
+PASS: t/dist-compressor-fails.sh
 PASS: t/dist-formats.tap 1 - default [automake]
 PASS: t/dist-formats.tap 2 - default [autoconf]
 PASS: t/dist-formats.tap 3 - default [configure]
@@ -1013,50 +1028,52 @@ PASS: t/dist-formats.tap 72 - all compressors together [configure]
 PASS: t/dist-formats.tap 73 - all compressors together [make distcheck, real]
 PASS: t/dist-formats.tap 74 - all compressors together ['make dist-all', stubbed]
 PASS: t/dist-formats.tap 75 - all compressors together ['make dist -j4', stubbed]
-PASS: t/dist-lzma.sh
-PASS: t/dist-tarZ.sh
-dist-shar: skipped test: required program 'shar' not available
-SKIP: t/dist-shar.sh
-PASS: t/dist-auxdir-many-subdirs.sh
-PASS: t/dist-auxfile-2.sh
-PASS: t/dist-auxfile.sh
 PASS: t/dist-included-parent-dir.sh
+PASS: t/dist-install-sh.sh
+PASS: t/dist-lzma.sh
 PASS: t/dist-missing-am.sh
 PASS: t/dist-missing-included-m4.sh
 PASS: t/dist-missing-m4.sh
+PASS: t/dist-multiple-formats.sh
+PASS: t/dist-no-built-sources.sh
+XFAIL: t/dist-pr109765.sh
 PASS: t/dist-readonly.sh
 PASS: t/dist-repeated.sh
-XFAIL: t/dist-pr109765.sh
-PASS: t/dist-no-built-sources.sh
+dist-shar: skipped test: required program 'shar' not available
+SKIP: t/dist-shar.sh
+PASS: t/dist-tar-fails.sh
+PASS: t/dist-tarZ.sh
+PASS: t/dist-version-exec.sh
 PASS: t/dist-vs-built-sources.sh
+PASS: t/dist-with-unreadable-makefile-fails.sh
+PASS: t/distcheck-configure-flags-am.sh
+PASS: t/distcheck-configure-flags-subpkg.sh
+PASS: t/distcheck-configure-flags.sh
+PASS: t/distcheck-hook.sh
+PASS: t/distcheck-hook2.sh
+PASS: t/distcheck-missing-m4.sh
+PASS: t/distcheck-no-prefix-or-srcdir-override.sh
+PASS: t/distcheck-outdated-m4.sh
+distcheck-override-dvi: skipped test: required program 'makeinfo' not available
+SKIP: t/distcheck-override-dvi.sh
+distcheck-override-infodir: skipped test: required program 'makeinfo' not available
+SKIP: t/distcheck-override-infodir.sh
+distcheck-pr10470: skipped test: system is able to remove "in use" directories
+SKIP: t/distcheck-pr10470.sh
+PASS: t/distcheck-pr18286.sh
+PASS: t/distcheck-pr9579.sh
+PASS: t/distcheck-writable-srcdir.sh
 PASS: t/distcleancheck.sh
+PASS: t/distcom-subdir.sh
 PASS: t/distcom2.sh
 PASS: t/distcom3.sh
 PASS: t/distcom4.sh
 PASS: t/distcom5.sh
-PASS: t/distcom-subdir.sh
 PASS: t/distdir.sh
 PASS: t/disthook.sh
 PASS: t/distlinks.sh
 PASS: t/distlinksbrk.sh
 PASS: t/distname.sh
-PASS: t/distcheck-configure-flags.sh
-PASS: t/distcheck-configure-flags-am.sh
-PASS: t/distcheck-configure-flags-subpkg.sh
-PASS: t/distcheck-hook.sh
-PASS: t/distcheck-hook2.sh
-PASS: t/distcheck-writable-srcdir.sh
-PASS: t/distcheck-missing-m4.sh
-PASS: t/distcheck-outdated-m4.sh
-PASS: t/distcheck-no-prefix-or-srcdir-override.sh
-distcheck-override-dvi: skipped test: required program 'makeinfo' not available
-SKIP: t/distcheck-override-dvi.sh
-distcheck-override-infodir: skipped test: required program 'makeinfo' not available
-SKIP: t/distcheck-override-infodir.sh
-PASS: t/distcheck-pr9579.sh
-distcheck-pr10470: skipped test: system is able to remove "in use" directories
-SKIP: t/distcheck-pr10470.sh
-PASS: t/distcheck-pr18286.sh
 PASS: t/dmalloc.sh
 PASS: t/doc-parsing-buglets-colneq-subst.sh
 PASS: t/doc-parsing-buglets-tabs.sh
@@ -1079,40 +1096,41 @@ PASS: t/exeext.sh
 PASS: t/exeext2.sh
 PASS: t/exeext3.sh
 PASS: t/exeext4.sh
-PASS: t/extra-sources.sh
 PASS: t/ext.sh
 PASS: t/ext2.sh
 PASS: t/ext3.sh
-PASS: t/extra.sh
-PASS: t/extra-sources-no-spurious.sh
 PASS: t/extra-data.sh
-PASS: t/extra-dist-vpath-dir.sh
+PASS: t/extra-deps-lt.sh
+PASS: t/extra-deps.sh
 PASS: t/extra-dist-dirs-and-subdirs.sh
 PASS: t/extra-dist-vpath-dir-merge.sh
-PASS: t/extra-dist-wildcards.sh
+PASS: t/extra-dist-vpath-dir.sh
 PASS: t/extra-dist-wildcards-gnu.sh
 PASS: t/extra-dist-wildcards-vpath.sh
-PASS: t/extra-programs-misc.sh
-PASS: t/extra-programs-and-libs.sh
-PASS: t/extra-programs-empty.sh
+PASS: t/extra-dist-wildcards.sh
 PASS: t/extra-portability.sh
 PASS: t/extra-portability2.sh
 PASS: t/extra-portability3.sh
-PASS: t/extra-deps.sh
-PASS: t/extra-deps-lt.sh
+PASS: t/extra-programs-and-libs.sh
+PASS: t/extra-programs-empty.sh
+PASS: t/extra-programs-misc.sh
+PASS: t/extra-sources-no-spurious.sh
+PASS: t/extra-sources.sh
+PASS: t/extra.sh
 PASS: t/f90only.sh
+PASS: t/filename-length-max.sh
 PASS: t/flavor.sh
 PASS: t/flibs.sh
 PASS: t/fn99.sh
 PASS: t/fn99subdir.sh
 PASS: t/fnoc.sh
+PASS: t/fonly.sh
 PASS: t/forcemiss.sh
 PASS: t/forcemiss2.sh
 PASS: t/fort1.sh
 PASS: t/fort2.sh
 PASS: t/fort4.sh
 PASS: t/fort5.sh
-PASS: t/fonly.sh
 PASS: t/fortdep.sh
 PASS: t/gcj.sh
 PASS: t/gcj2.sh
@@ -1129,18 +1147,14 @@ PASS: t/gettext-external-pr338.sh
 gettext-intl-subdir: skipped test: your gettext macros are probably too old
 SKIP: t/gettext-intl-subdir.sh
 PASS: t/gettext-pr381.sh
-PASS: t/gnumake.sh
-PASS: t/gnuwarn.sh
-PASS: t/gnuwarn2.sh
 PASS: t/gnits.sh
 PASS: t/gnits2.sh
 PASS: t/gnits3.sh
+PASS: t/gnumake.sh
+PASS: t/gnuwarn.sh
+PASS: t/gnuwarn2.sh
 PASS: t/hdr-vars-defined-once.sh
 PASS: t/header.sh
-PASS: t/help.sh
-PASS: t/help2.sh
-PASS: t/help3.sh
-PASS: t/help4.sh
 PASS: t/help-depend.sh
 PASS: t/help-depend2.sh
 PASS: t/help-dmalloc.sh
@@ -1149,62 +1163,56 @@ PASS: t/help-lispdir.sh
 PASS: t/help-python.sh
 PASS: t/help-silent.sh
 PASS: t/help-upc.sh
+PASS: t/help.sh
+PASS: t/help2.sh
+PASS: t/help3.sh
+PASS: t/help4.sh
 PASS: t/hfs.sh
 PASS: t/implicit.sh
 PASS: t/init.sh
 PASS: t/init2.sh
-PASS: t/dist-install-sh.sh
-PASS: t/dist-with-unreadable-makefile-fails.sh
-PASS: t/installdir.sh
-PASS: t/add-missing-install-sh.sh
-PASS: t/install-sh-unittests.sh
+install-info-dir: skipped test: required program 'makeinfo' not available
+SKIP: t/install-info-dir.sh
 PASS: t/install-sh-option-C.sh
 PASS: t/install-sh-option-S.sh
+PASS: t/install-sh-unittests.sh
+PASS: t/installdir.sh
 PASS: t/instdat.sh
 PASS: t/instdat2.sh
-PASS: t/instdir.sh
-PASS: t/instdir2.sh
 PASS: t/instdir-cond.sh
 XFAIL: t/instdir-cond2.sh
-instdir-no-empty: skipped test: required program 'makeinfo' not available
-SKIP: t/instdir-no-empty.sh
 PASS: t/instdir-java.sh
 instdir-lisp: skipped test: required program 'emacs' not available
 SKIP: t/instdir-lisp.sh
 XFAIL: t/instdir-ltlib.sh
+instdir-no-empty: skipped test: required program 'makeinfo' not available
+SKIP: t/instdir-no-empty.sh
 PASS: t/instdir-prog.sh
 PASS: t/instdir-python.sh
 instdir-texi: skipped test: required program 'makeinfo' not available
 SKIP: t/instdir-texi.sh
+PASS: t/instdir.sh
+PASS: t/instdir2.sh
 PASS: t/instexec.sh
-PASS: t/instfail.sh
 instfail-info: skipped test: required program 'makeinfo' not available
 SKIP: t/instfail-info.sh
 PASS: t/instfail-java.sh
 PASS: t/instfail-libtool.sh
+PASS: t/instfail.sh
 PASS: t/insthook.sh
 PASS: t/instman.sh
 PASS: t/instman2.sh
-PASS: t/instmany.sh
 PASS: t/instmany-mans.sh
 PASS: t/instmany-python.sh
-install-info-dir: skipped test: required program 'makeinfo' not available
-SKIP: t/install-info-dir.sh
+PASS: t/instmany.sh
 PASS: t/interp.sh
 PASS: t/interp2.sh
-PASS: t/java.sh
-PASS: t/java2.sh
-PASS: t/java3.sh
-PASS: t/javadir-undefined.sh
-PASS: t/javaflags.sh
 PASS: t/java-check.sh
 PASS: t/java-clean.sh
 PASS: t/java-compile-install.sh
 PASS: t/java-compile-run-flat.sh
 PASS: t/java-compile-run-nested.sh
 PASS: t/java-empty-classpath.sh
-PASS: t/javaprim.sh
-PASS: t/javasubst.sh
 PASS: t/java-extra.sh
 PASS: t/java-mix.sh
 PASS: t/java-no-duplicate.sh
@@ -1213,41 +1221,43 @@ PASS: t/java-noinst.sh
 PASS: t/java-rebuild.sh
 PASS: t/java-sources.sh
 PASS: t/java-uninstall.sh
+PASS: t/java.sh
+PASS: t/java2.sh
+PASS: t/java3.sh
+PASS: t/javadir-undefined.sh
+PASS: t/javaflags.sh
+PASS: t/javaprim.sh
+PASS: t/javasubst.sh
 PASS: t/ldadd.sh
 PASS: t/ldflags.sh
+PASS: t/lex-args.sh
+PASS: t/lex-clean-cxx.sh
+PASS: t/lex-clean.sh
+PASS: t/lex-depend-cxx.sh
+PASS: t/lex-depend-grep.sh
+PASS: t/lex-depend.sh
+PASS: t/lex-header.sh
+lex-lib-external: skipped test: no system-wide lex library found
+SKIP: t/lex-lib-external.sh
+PASS: t/lex-lib.sh
+PASS: t/lex-libobj.sh
+PASS: t/lex-line.sh
+PASS: t/lex-multiple.sh
+PASS: t/lex-nodist.sh
+PASS: t/lex-noyywrap.sh
+PASS: t/lex-pr204.sh
+XFAIL: t/lex-subobj-nodep.sh
 PASS: t/lex.sh
 PASS: t/lex2.sh
 PASS: t/lex3.sh
 PASS: t/lex5.sh
 PASS: t/lexcpp.sh
 PASS: t/lexvpath.sh
-PASS: t/lex-args.sh
-XFAIL: t/lex-subobj-nodep.sh
-PASS: t/lex-header.sh
-PASS: t/lex-lib.sh
-lex-lib-external: skipped test: no system-wide lex library found
-SKIP: t/lex-lib-external.sh
-PASS: t/lex-libobj.sh
-PASS: t/lex-multiple.sh
-PASS: t/lex-noyywrap.sh
-PASS: t/lex-clean-cxx.sh
-PASS: t/lex-clean.sh
-PASS: t/lex-depend-cxx.sh
-PASS: t/lex-depend-grep.sh
-PASS: t/lex-depend.sh
-PASS: t/lex-line.sh
-PASS: t/lex-nodist.sh
-PASS: t/lex-pr204.sh
-PASS: t/lflags.sh
 PASS: t/lflags-cxx.sh
+PASS: t/lflags.sh
 PASS: t/libexec.sh
 PASS: t/libobj-basic.sh
 PASS: t/libobj-no-dependency-tracking.sh
-PASS: t/libobj2.sh
-PASS: t/libobj3.sh
-PASS: t/libobj4.sh
-PASS: t/libobj5.sh
-PASS: t/libobj7.sh
 PASS: t/libobj10.sh
 PASS: t/libobj12.sh
 PASS: t/libobj13.sh
@@ -1260,12 +1270,19 @@ PASS: t/libobj16b.sh
 PASS: t/libobj17.sh
 PASS: t/libobj18.sh
 PASS: t/libobj19.sh
+PASS: t/libobj2.sh
 PASS: t/libobj20a.sh
 PASS: t/libobj20b.sh
 PASS: t/libobj20c.sh
+PASS: t/libobj3.sh
+PASS: t/libobj4.sh
+PASS: t/libobj5.sh
+PASS: t/libobj7.sh
 PASS: t/library.sh
 PASS: t/library2.sh
 PASS: t/library3.sh
+PASS: t/libtoo10.sh
+PASS: t/libtoo11.sh
 PASS: t/libtool.sh
 PASS: t/libtool2.sh
 PASS: t/libtool3.sh
@@ -1275,19 +1292,31 @@ PASS: t/libtool6.sh
 PASS: t/libtool7.sh
 PASS: t/libtool8.sh
 PASS: t/libtool9.sh
-PASS: t/libtoo10.sh
-PASS: t/libtoo11.sh
 PASS: t/license.sh
 PASS: t/license2.sh
+PASS: t/license-gnulib-names.sh
 PASS: t/link_c_cxx.sh
 PASS: t/link_cond.sh
 PASS: t/link_dist.sh
 PASS: t/link_f90_only.sh
+PASS: t/link_f_only.sh
 PASS: t/link_fc.sh
 PASS: t/link_fccxx.sh
 PASS: t/link_fcxx.sh
-PASS: t/link_f_only.sh
 PASS: t/link_override.sh
+PASS: t/lisp-flags.sh
+lisp-loadpath: skipped test: required program 'emacs' not available
+SKIP: t/lisp-loadpath.sh
+lisp-pr11806: skipped test: required program 'emacs' not available
+SKIP: t/lisp-pr11806.sh
+lisp-readonly-srcdir: skipped test: required program 'emacs' not available
+SKIP: t/lisp-readonly-srcdir.sh
+lisp-subdir-mix: skipped test: required program 'emacs' not available
+SKIP: t/lisp-subdir-mix.sh
+lisp-subdir: skipped test: required program 'emacs' not available
+SKIP: t/lisp-subdir.sh
+lisp-subdir2: skipped test: required program 'emacs' not available
+SKIP: t/lisp-subdir2.sh
 PASS: t/lisp2.sh
 lisp3: skipped test: required program 'emacs' not available
 SKIP: t/lisp3.sh
@@ -1300,25 +1329,12 @@ SKIP: t/lisp6.sh
 PASS: t/lisp7.sh
 lisp8: skipped test: required program 'emacs' not available
 SKIP: t/lisp8.sh
-lisp-readonly-srcdir: skipped test: required program 'emacs' not available
-SKIP: t/lisp-readonly-srcdir.sh
-lisp-loadpath: skipped test: required program 'emacs' not available
-SKIP: t/lisp-loadpath.sh
-lisp-subdir: skipped test: required program 'emacs' not available
-SKIP: t/lisp-subdir.sh
-lisp-subdir2: skipped test: required program 'emacs' not available
-SKIP: t/lisp-subdir2.sh
-lisp-subdir-mix: skipped test: required program 'emacs' not available
-SKIP: t/lisp-subdir-mix.sh
 lispdry: skipped test: required program 'emacs' not available
 SKIP: t/lispdry.sh
-lisp-pr11806: skipped test: required program 'emacs' not available
-SKIP: t/lisp-pr11806.sh
-PASS: t/lisp-flags.sh
 PASS: t/listval.sh
 PASS: t/location.sh
-PASS: t/longline.sh
 PASS: t/longlin2.sh
+PASS: t/longline.sh
 PASS: t/ltcond.sh
 PASS: t/ltcond2.sh
 PASS: t/ltconv.sh
@@ -1329,16 +1345,9 @@ PASS: t/ltlibobjs.sh
 PASS: t/ltlibsrc.sh
 PASS: t/ltorder.sh
 PASS: t/m4-inclusion.sh
-PASS: t/maintclean.sh
 PASS: t/maintclean-vpath.sh
+PASS: t/maintclean.sh
 PASS: t/maintmode-configure-msg.sh
-PASS: t/make.sh
-PASS: t/makefile-deps.sh
-PASS: t/makej.sh
-PASS: t/makej2.sh
-PASS: t/maken.sh
-PASS: t/maken3.sh
-PASS: t/makevars.sh
 PASS: t/make-dryrun.tap 1 - run
 PASS: t/make-dryrun.tap 2 - run (-s)
 PASS: t/make-dryrun.tap 3 - run (-s -r)
@@ -1399,6 +1408,7 @@ PASS: t/make-dryrun.tap 57 - run [metachars] (-s -r)
 PASS: t/make-dryrun.tap 58 - run [metachars]
 PASS: t/make-dryrun.tap 59 - run [metachars] (-s)
 PASS: t/make-dryrun.tap 60 - run [metachars] (-s -r)
+PASS: t/make-is-gnu.sh
 PASS: t/make-keepgoing.tap 1 - k-n
 PASS: t/make-keepgoing.tap 2 - k-n (-s)
 PASS: t/make-keepgoing.tap 3 - k-n (-s -r)
@@ -1459,7 +1469,13 @@ PASS: t/make-keepgoing.tap 57 - k-n [metachars] (-s -r)
 PASS: t/make-keepgoing.tap 58 - k-n [metachars]
 PASS: t/make-keepgoing.tap 59 - k-n [metachars] (-s)
 PASS: t/make-keepgoing.tap 60 - k-n [metachars] (-s -r)
-PASS: t/make-is-gnu.sh
+PASS: t/make.sh
+PASS: t/makefile-deps.sh
+PASS: t/makej.sh
+PASS: t/makej2.sh
+PASS: t/maken.sh
+PASS: t/maken3.sh
+PASS: t/makevars.sh
 PASS: t/man.sh
 PASS: t/man2.sh
 PASS: t/man3.sh
@@ -1474,25 +1490,24 @@ PASS: t/mdate3.sh
 PASS: t/mdate4.sh
 PASS: t/mdate5.sh
 PASS: t/mdate6.sh
+PASS: t/missing-auxfile-stops-makefiles-creation.sh
 PASS: t/missing-version-mismatch.sh
 PASS: t/missing3.sh
-PASS: t/am-missing-prog.sh
-PASS: t/missing-auxfile-stops-makefiles-creation.sh
 PASS: t/mkdir_p.sh
 PASS: t/mkdirp-deprecation.sh
-PASS: t/mkinstall.sh
 PASS: t/mkinst2.sh
 PASS: t/mkinst3.sh
+PASS: t/mkinstall.sh
 PASS: t/mmode.sh
 PASS: t/mmodely.sh
 PASS: t/no-extra-c-stuff.sh
 PASS: t/no-extra-makefile-code.sh
 PASS: t/no-spurious-install-recursive.sh
-PASS: t/nobase.sh
 PASS: t/nobase-dist.sh
 PASS: t/nobase-libtool.sh
-PASS: t/nobase-python.sh
 PASS: t/nobase-nodist.sh
+PASS: t/nobase-python.sh
+PASS: t/nobase.sh
 PASS: t/nodef.sh
 PASS: t/nodef2.sh
 PASS: t/nodep.sh
@@ -1508,18 +1523,24 @@ PASS: t/nostdinc.sh
 PASS: t/notrans.sh
 PASS: t/number.sh
 PASS: t/objc-basic.sh
-PASS: t/objc-minidemo.sh
-PASS: t/objc-flags.sh
 PASS: t/objc-deps.sh
-PASS: t/objcxx-basic.sh
-SKIP: t/objcxx-minidemo.sh
-SKIP: t/objcxx-flags.sh
-SKIP: t/objcxx-deps.sh
+PASS: t/objc-flags.sh
+PASS: t/objc-libtool-tag.sh
 SKIP: t/objc-megademo.sh
+PASS: t/objc-minidemo.sh
+PASS: t/objcxx-basic.sh
+SKIP: t/objcxx-deps.sh
+SKIP: t/objcxx-flags.sh
+SKIP: t/objcxx-minidemo.sh
 XFAIL: t/objext-pr10128.sh
 PASS: t/oldvars.sh
 PASS: t/order.sh
+PASS: t/output-order.sh
 PASS: t/output.sh
+PASS: t/output10.sh
+PASS: t/output11.sh
+PASS: t/output12.sh
+PASS: t/output13.sh
 PASS: t/output2.sh
 PASS: t/output3.sh
 PASS: t/output4.sh
@@ -1528,11 +1549,6 @@ PASS: t/output6.sh
 PASS: t/output7.sh
 PASS: t/output8.sh
 PASS: t/output9.sh
-PASS: t/output10.sh
-PASS: t/output11.sh
-PASS: t/output12.sh
-PASS: t/output13.sh
-PASS: t/output-order.sh
 PASS: t/override-conditional-1.sh
 XFAIL: t/override-conditional-2.sh
 XFAIL: t/override-conditional-pr13940.sh
@@ -1541,29 +1557,25 @@ PASS: t/override-suggest-local.sh
 PASS: t/parallel-am.sh
 PASS: t/parallel-am2.sh
 PASS: t/parallel-am3.sh
-PASS: t/serial-tests.sh
 PASS: t/parallel-tests-basics.sh
-PASS: t/parallel-tests-concurrency.sh
+PASS: t/parallel-tests-cmdline-override.sh
 PASS: t/parallel-tests-concurrency-2.sh
-PASS: t/parallel-tests-empty.sh
-PASS: t/parallel-tests-exit-status-reported.sh
-PASS: t/parallel-tests-generated-and-distributed.sh
-PASS: t/parallel-tests-recheck.sh
-PASS: t/parallel-tests-trailing-whitespace.sh
-PASS: t/parallel-tests-recheck-depends-on-all.sh
-PASS: t/parallel-tests-recheck-pr11791.sh
-PASS: t/parallel-tests-exeext.sh
-PASS: t/parallel-tests-suffix.sh
-PASS: t/parallel-tests-suffix-prog.sh
-PASS: t/parallel-tests-log-compiler-1.sh
-PASS: t/parallel-tests-log-compiler-2.sh
+PASS: t/parallel-tests-concurrency.sh
+PASS: t/parallel-tests-console-output.sh
+PASS: t/parallel-tests-driver-install.sh
 PASS: t/parallel-tests-dry-run-1.sh
 PASS: t/parallel-tests-dry-run-2.sh
-PASS: t/parallel-tests-fd-redirect.sh
-PASS: t/parallel-tests-fd-redirect-exeext.sh
+PASS: t/parallel-tests-empty-testlogs.sh
+PASS: t/parallel-tests-empty.sh
+PASS: t/parallel-tests-exeext.sh
+PASS: t/parallel-tests-exit-status-reported.sh
+PASS: t/parallel-tests-exit-statuses.sh
 PASS: t/parallel-tests-extra-programs.sh
-PASS: t/parallel-tests-unreadable.sh
-PASS: t/parallel-tests-subdir.sh
+PASS: t/parallel-tests-fd-redirect-exeext.sh
+PASS: t/parallel-tests-fd-redirect.sh
+PASS: t/parallel-tests-fork-bomb.sh
+PASS: t/parallel-tests-generated-and-distributed.sh
+PASS: t/parallel-tests-harderror.sh
 PASS: t/parallel-tests-interrupt.tap 1 - logfile created and readable [SIG 1]
 PASS: t/parallel-tests-interrupt.tap 2 - logfile contains output from test script [SIG 1]
 PASS: t/parallel-tests-interrupt.tap 3 - signal 1 to test driver causes "make check" to fail
@@ -1580,66 +1592,33 @@ PASS: t/parallel-tests-interrupt.tap 13 - logfile created and readable [SIG 15]
 PASS: t/parallel-tests-interrupt.tap 14 - logfile contains output from test script [SIG 15]
 PASS: t/parallel-tests-interrupt.tap 15 - signal 15 to test driver causes "make check" to fail
 PASS: t/parallel-tests-interrupt.tap 16 - test driver clean up log and tmp files after signal 15
-PASS: t/parallel-tests-reset-term.sh
-PASS: t/parallel-tests-harderror.sh
+PASS: t/parallel-tests-log-compiler-1.sh
+PASS: t/parallel-tests-log-compiler-2.sh
+PASS: t/parallel-tests-log-compiler-example.sh
 PASS: t/parallel-tests-log-override-1.sh
 PASS: t/parallel-tests-log-override-2.sh
 PASS: t/parallel-tests-log-override-recheck.sh
-PASS: t/parallel-tests-log-compiler-example.sh
-PASS: t/parallel-tests-cmdline-override.sh
-PASS: t/parallel-tests-fork-bomb.sh
-PASS: t/parallel-tests-empty-testlogs.sh
-PASS: t/parallel-tests-driver-install.sh
 PASS: t/parallel-tests-no-color-in-log.sh
-PASS: t/parallel-tests-without-skipped-logs.sh
 PASS: t/parallel-tests-no-spurious-summary.sh
-PASS: t/parallel-tests-exit-statuses.sh
-PASS: t/parallel-tests-console-output.sh
 PASS: t/parallel-tests-once.sh
-PASS: t/tests-environment.sh
-PASS: t/am-tests-environment.sh
-PASS: t/tests-environment-backcompat.sh
-PASS: t/testsuite-summary-color.sh
-PASS: t/testsuite-summary-count.sh
-PASS: t/testsuite-summary-count-many.sh
-PASS: t/testsuite-summary-header.sh
-PASS: t/testsuite-summary-reference-log.sh
-PASS: t/test-driver-acsubst.sh
-PASS: t/test-driver-cond.sh
-PASS: t/test-driver-custom-no-extra-driver.sh
-PASS: t/test-driver-custom.sh
-PASS: t/test-driver-custom-xfail-tests.sh
-PASS: t/test-driver-custom-multitest.sh
-PASS: t/test-driver-custom-multitest-recheck.sh
-PASS: t/test-driver-custom-multitest-recheck2.sh
-PASS: t/test-driver-create-log-dir.sh
-PASS: t/test-driver-strip-vpath.sh
-PASS: t/test-driver-trs-suffix-registered.sh
-PASS: t/test-driver-fail.sh
-PASS: t/test-driver-is-distributed.sh
-PASS: t/test-extensions-empty.sh
-PASS: t/test-harness-vpath-rewrite.sh
-PASS: t/test-log.sh
-PASS: t/test-logs-repeated.sh
-PASS: t/test-metadata-global-log.sh
-PASS: t/test-metadata-global-result.sh
-PASS: t/test-metadata-recheck.sh
-PASS: t/test-metadata-results.sh
-PASS: t/test-missing.sh
-PASS: t/test-missing2.sh
-PASS: t/test-trs-basic.sh
-PASS: t/test-trs-recover.sh
-PASS: t/test-trs-recover2.sh
-PASS: t/test-extensions.sh
-PASS: t/test-extensions-cond.sh
-PASS: t/toplevelmd.sh
+PASS: t/parallel-tests-recheck-depends-on-all.sh
+PASS: t/parallel-tests-recheck-pr11791.sh
+PASS: t/parallel-tests-recheck.sh
+PASS: t/parallel-tests-reset-term.sh
+PASS: t/parallel-tests-subdir.sh
+PASS: t/parallel-tests-suffix-prog.sh
+PASS: t/parallel-tests-suffix.sh
+PASS: t/parallel-tests-trailing-whitespace.sh
+PASS: t/parallel-tests-unreadable.sh
+PASS: t/parallel-tests-without-skipped-logs.sh
 PASS: t/parse.sh
+PASS: t/per-target-flags.sh
 PASS: t/percent.sh
 PASS: t/percent2.sh
-PASS: t/per-target-flags.sh
 PASS: t/phony.sh
-PASS: t/precious.sh
 PASS: t/pluseq.sh
+PASS: t/pluseq10.sh
+PASS: t/pluseq11.sh
 PASS: t/pluseq2.sh
 PASS: t/pluseq3.sh
 PASS: t/pluseq4.sh
@@ -1648,9 +1627,6 @@ PASS: t/pluseq6.sh
 PASS: t/pluseq7.sh
 PASS: t/pluseq8.sh
 PASS: t/pluseq9.sh
-PASS: t/pluseq10.sh
-PASS: t/pluseq11.sh
-PASS: t/posixtarget.sh
 PASS: t/posixsubst-data.sh
 PASS: t/posixsubst-extradist.sh
 PASS: t/posixsubst-ldadd.sh
@@ -1660,19 +1636,17 @@ PASS: t/posixsubst-programs.sh
 PASS: t/posixsubst-scripts.sh
 PASS: t/posixsubst-sources.sh
 PASS: t/posixsubst-tests.sh
+PASS: t/posixtarget.sh
 PASS: t/ppf77.sh
 PASS: t/pr2.sh
-PASS: t/pr9.sh
-PASS: t/pr72.sh
-PASS: t/pr87.sh
 PASS: t/pr211.sh
 PASS: t/pr220.sh
 PASS: t/pr224.sh
 PASS: t/pr229.sh
 PASS: t/pr243.sh
 PASS: t/pr266.sh
-PASS: t/pr279.sh
 PASS: t/pr279-2.sh
+PASS: t/pr279.sh
 PASS: t/pr287.sh
 PASS: t/pr300-lib.sh
 PASS: t/pr300-ltlib.sh
@@ -1681,14 +1655,17 @@ PASS: t/pr307.sh
 PASS: t/pr401.sh
 PASS: t/pr401b.sh
 PASS: t/pr401c.sh
+PASS: t/pr72.sh
+PASS: t/pr87.sh
+PASS: t/pr9.sh
+PASS: t/precious.sh
 PASS: t/prefix.sh
 PASS: t/preproc-basics.sh
 PASS: t/preproc-c-compile.sh
 PASS: t/preproc-demo.sh
 PASS: t/preproc-errmsg.sh
-PASS: t/primary.sh
-PASS: t/primary2.sh
-PASS: t/primary3.sh
+PASS: t/primary-prefix-couples-documented-valid.sh
+PASS: t/primary-prefix-couples-force-valid.sh
 PASS: t/primary-prefix-invalid-couples.tap 1 - 'automake -a' error out on mismatched prefix/primary couples
 PASS: t/primary-prefix-invalid-couples.tap 2 - mismatched prefix/primary in bin_LIBRARIES
 PASS: t/primary-prefix-invalid-couples.tap 3 - mismatched prefix/primary in bin_LTLIBRARIES
@@ -1970,36 +1947,35 @@ PASS: t/primary-prefix-invalid-couples.tap 278 - mismatched prefix/primary in sy
 PASS: t/primary-prefix-invalid-couples.tap 279 - automake error out on mismatched prefix/primary couples
 PASS: t/primary-prefix-invalid-couples.tap 280 - ... and with the same diagnostic of 'automake -a'
 PASS: t/primary-prefix-valid-couples.sh
-PASS: t/primary-prefix-couples-force-valid.sh
-PASS: t/primary-prefix-couples-documented-valid.sh
+PASS: t/primary.sh
+PASS: t/primary2.sh
+PASS: t/primary3.sh
 PASS: t/print-libdir.sh
 PASS: t/proginst.sh
 PASS: t/programs-primary-rewritten.sh
-PASS: t/py-compile-basic.sh
 PASS: t/py-compile-basedir.sh
+PASS: t/py-compile-basic.sh
 PASS: t/py-compile-destdir.sh
 PASS: t/py-compile-env.sh
 PASS: t/py-compile-files.sh
 PASS: t/py-compile-option-terminate.sh
 PASS: t/py-compile-usage.sh
-PASS: t/python.sh
-PASS: t/python2.sh
-PASS: t/python3.sh
-PASS: t/python10.sh
-PASS: t/python11.sh
-PASS: t/python12.sh
 PASS: t/python-am-path-iftrue.sh
-PASS: t/python-missing.sh
-PASS: t/python-too-old.sh
 PASS: t/python-dist.sh
+PASS: t/python-missing.sh
+PASS: t/python-pr10995.sh
 PASS: t/python-prefix.sh
+PASS: t/python-too-old.sh
 PASS: t/python-vars.sh
 python-virtualenv: skipped test: required program 'virtualenv' not available
 SKIP: t/python-virtualenv.sh
-PASS: t/python-pr10995.sh
+PASS: t/python.sh
+PASS: t/python10.sh
+PASS: t/python11.sh
+PASS: t/python12.sh
+PASS: t/python2.sh
+PASS: t/python3.sh
 PASS: t/ranlib_override.sh
-PASS: t/recurs-user.sh
-PASS: t/recurs-user2.sh
 PASS: t/recurs-user-deeply-nested.sh
 PASS: t/recurs-user-indir.sh
 PASS: t/recurs-user-keep-going.sh
@@ -2009,6 +1985,8 @@ PASS: t/recurs-user-no-top-level.sh
 PASS: t/recurs-user-override.sh
 PASS: t/recurs-user-phony.sh
 PASS: t/recurs-user-wrap.sh
+PASS: t/recurs-user.sh
+PASS: t/recurs-user2.sh
 PASS: t/relativize.tap 1 - ./{.} = .
 PASS: t/relativize.tap 2 - ./{..} = ..
 PASS: t/relativize.tap 3 - ../{top} = .
@@ -2047,55 +2025,57 @@ PASS: t/relativize.tap 35 - ../../x/{../uber/top/ok} = ok
 PASS: t/relativize.tap 36 - ../../x/{../uber/top/bo/ba} = bo/ba
 PASS: t/relativize.tap 37 - ../../x/{../uber/top/../ok2} = ../ok2
 PASS: t/relativize.tap 38 - ../a/b/c/d/e/{../../../../../top} = .
-PASS: t/remake-fail.sh
-PASS: t/remake-not-after-make-dist.sh
-PASS: t/remake-maintainer-mode.sh
-PASS: t/remake-makefile-intree.sh
-PASS: t/remake-makefile-vpath.sh
-PASS: t/remake-after-configure-ac.sh
-PASS: t/remake-after-makefile-am.sh
+PASS: t/remake-aclocal-version-mismatch.sh
 PASS: t/remake-after-acinclude-m4.sh
 PASS: t/remake-after-aclocal-m4.sh
-PASS: t/remake-include-configure.sh
-PASS: t/remake-include-makefile.sh
-PASS: t/remake-include-aclocal.sh
+PASS: t/remake-after-configure-ac.sh
+PASS: t/remake-after-makefile-am.sh
+PASS: t/remake-all-1.sh
+PASS: t/remake-all-2.sh
+XFAIL: t/remake-am-pr10111.sh
 PASS: t/remake-config-status-dependencies.sh
 PASS: t/remake-configure-dependencies.sh
 PASS: t/remake-deeply-nested.sh
-PASS: t/remake-mild-stress.sh
-PASS: t/remake-all-1.sh
-PASS: t/remake-all-2.sh
-PASS: t/remake-recurs-user.sh
-PASS: t/remake-subdir.sh
-PASS: t/remake-subdir2.sh
-PASS: t/remake-subdir3.sh
-PASS: t/remake-subdir-only.sh
-PASS: t/remake-subdir-grepping.sh
-PASS: t/remake-subdir-from-subdir.sh
-PASS: t/remake-subdir-gnu.sh
-PASS: t/remake-subdir-no-makefile.sh
-PASS: t/remake-subdir-long-time.sh
-PASS: t/remake-gnulib-add-acsubst.sh
-PASS: t/remake-gnulib-add-header.sh
-PASS: t/remake-gnulib-remove-header.sh
-PASS: t/remake-moved-m4-file.sh
-PASS: t/remake-deleted-m4-file.sh
-PASS: t/remake-renamed-m4-file.sh
-PASS: t/remake-renamed-m4-macro-and-file.sh
-PASS: t/remake-renamed-m4-macro.sh
-XFAIL: t/remake-am-pr10111.sh
-XFAIL: t/remake-m4-pr10111.sh
 PASS: t/remake-deleted-am-2.sh
 PASS: t/remake-deleted-am-subdir.sh
 PASS: t/remake-deleted-am.sh
-PASS: t/remake-renamed-am.sh
-PASS: t/remake-aclocal-version-mismatch.sh
+PASS: t/remake-deleted-m4-file.sh
+PASS: t/remake-fail.sh
+PASS: t/remake-gnulib-add-acsubst.sh
+PASS: t/remake-gnulib-add-header.sh
+PASS: t/remake-gnulib-remove-header.sh
+PASS: t/remake-include-aclocal.sh
+PASS: t/remake-include-configure.sh
+PASS: t/remake-include-makefile.sh
+XFAIL: t/remake-m4-pr10111.sh
 PASS: t/remake-macrodir.sh
+PASS: t/remake-maintainer-mode.sh
+PASS: t/remake-makefile-intree.sh
+PASS: t/remake-makefile-vpath.sh
+PASS: t/remake-mild-stress.sh
+PASS: t/remake-moved-m4-file.sh
+PASS: t/remake-not-after-make-dist.sh
+PASS: t/remake-recurs-user.sh
+PASS: t/remake-renamed-am.sh
+PASS: t/remake-renamed-m4-file.sh
+PASS: t/remake-renamed-m4-macro-and-file.sh
+PASS: t/remake-renamed-m4-macro.sh
+PASS: t/remake-subdir-from-subdir.sh
+PASS: t/remake-subdir-gnu.sh
+PASS: t/remake-subdir-grepping.sh
+PASS: t/remake-subdir-long-time.sh
+PASS: t/remake-subdir-no-makefile.sh
+PASS: t/remake-subdir-only.sh
+PASS: t/remake-subdir.sh
+PASS: t/remake-subdir2.sh
+PASS: t/remake-subdir3.sh
 XFAIL: t/remake-timing-bug-pr8365.sh
-PASS: t/reqd2.sh
 PASS: t/repeated-options.sh
+PASS: t/reqd2.sh
 PASS: t/rm-f-probe.sh
 PASS: t/rulepat.sh
+PASS: t/sanity.sh
+PASS: t/seenc.sh
 PASS: t/self-check-cc-no-c-o.sh
 PASS: t/self-check-configure-help.sh
 PASS: t/self-check-dir.tap 1 - testdir has the expected path [unset am_create_testdir]
@@ -2136,6 +2116,8 @@ PASS: t/self-check-exit.tap 30 - kill -15
 PASS: t/self-check-exit.tap 31 - command not found
 PASS: t/self-check-exit.tap 32 - permission denied
 PASS: t/self-check-explicit-skips.sh
+PASS: t/self-check-is-blocked-signal.tap 1 - unblockable signal 9
+PASS: t/self-check-is-blocked-signal.tap 2 - blocked signal 13
 PASS: t/self-check-is_newest.tap 1 - is_newest c a
 PASS: t/self-check-is_newest.tap 2 - is_newest b a
 PASS: t/self-check-is_newest.tap 3 - not is_newest a b
@@ -2185,8 +2167,6 @@ PASS: t/self-check-seq.tap 12 - four arguments is an error [error message]
 PASS: t/self-check-seq.tap 13 - six arguments is an error [exit status = 99]
 PASS: t/self-check-seq.tap 14 - six arguments is an error [error message]
 PASS: t/self-check-shell-no-trail-bslash.sh
-PASS: t/self-check-is-blocked-signal.tap 1 - unblockable signal 9
-PASS: t/self-check-is-blocked-signal.tap 2 - blocked signal 13
 PASS: t/self-check-unindent.tap 1 - leading spaces [simple, exit status]
 PASS: t/self-check-unindent.tap 2 - leading spaces [simple, output]
 PASS: t/self-check-unindent.tap 3 - leading spaces [parallel, exit status]
@@ -2209,32 +2189,30 @@ PASS: t/self-check-unindent.tap 19 - leading empty lines ignored (2) [parallel, 
 PASS: t/self-check-unindent.tap 20 - leading empty lines ignored (2) [parallel, output]
 PASS: t/self-check-unindent.tap 21 - more elaborated parallel use [exit status]
 PASS: t/self-check-unindent.tap 22 - more elaborated parallel use [output]
-PASS: t/sanity.sh
-PASS: t/seenc.sh
+PASS: t/serial-tests.sh
 PASS: t/silent-c.sh
+PASS: t/silent-configsite.sh
+PASS: t/silent-custom.sh
 PASS: t/silent-cxx.sh
 PASS: t/silent-defaults.sh
-PASS: t/silent-lt.sh
 PASS: t/silent-f77.sh
 PASS: t/silent-f90.sh
-PASS: t/silent-many-languages.sh
 PASS: t/silent-gen.sh
+PASS: t/silent-lex.sh
+PASS: t/silent-lt.sh
+PASS: t/silent-many-languages.sh
+PASS: t/silent-nested-vars.sh
 silent-texi: skipped test: required program 'makeinfo' not available
 SKIP: t/silent-texi.sh
-PASS: t/silent-lex.sh
-PASS: t/silent-yacc.sh
 PASS: t/silent-yacc-headers.sh
-PASS: t/silent-configsite.sh
-PASS: t/silent-nested-vars.sh
-PASS: t/silent-custom.sh
-PASS: t/src-acsubst.sh
+PASS: t/silent-yacc.sh
 PASS: t/sourcefile-in-subdir.sh
 PASS: t/space.sh
+PASS: t/specflg-dummy.sh
 PASS: t/specflg6.sh
 PASS: t/specflg7.sh
 PASS: t/specflg8.sh
 PASS: t/specflg9.sh
-PASS: t/specflg-dummy.sh
 PASS: t/spell.sh
 PASS: t/spell2.sh
 PASS: t/spell3.sh
@@ -2250,8 +2228,9 @@ PASS: t/spy-rm.tap 7 - /bin/rm -f -r
 PASS: t/spy-rm.tap 8 - rm -f -r
 PASS: t/spy-rm.tap 9 - /bin/rm -r -f
 PASS: t/spy-rm.tap 10 - rm -r -f
-PASS: t/stdinc.sh
+PASS: t/src-acsubst.sh
 PASS: t/stamph2.sh
+PASS: t/stdinc.sh
 PASS: t/stdlib.sh
 PASS: t/stdlib2.sh
 PASS: t/strictness-override.sh
@@ -2259,20 +2238,30 @@ PASS: t/strictness-precedence.sh
 PASS: t/strip.sh
 PASS: t/strip2.sh
 PASS: t/strip3.sh
-PASS: t/subdir.sh
 PASS: t/subdir-ac-subst.sh
 PASS: t/subdir-add-pr46.sh
 PASS: t/subdir-add2-pr46.sh
 PASS: t/subdir-am-cond.sh
 PASS: t/subdir-cond-err.sh
 PASS: t/subdir-cond-gettext.sh
-PASS: t/subdir-env-interference.sh
-PASS: t/subdir-order.sh
-PASS: t/subdir-with-slash.sh
-PASS: t/subdir-subsub.sh
 PASS: t/subdir-distclean.sh
+PASS: t/subdir-env-interference.sh
 PASS: t/subdir-keep-going-pr12554.sh
+PASS: t/subdir-order.sh
+PASS: t/subdir-subsub.sh
+PASS: t/subdir-with-slash.sh
+PASS: t/subdir.sh
+PASS: t/subobj-clean-lt-pr10697.sh
+PASS: t/subobj-clean-pr10697.sh
+PASS: t/subobj-indir-pr13928.sh
+PASS: t/subobj-objname-clash.sh
+PASS: t/subobj-pr13928-more-langs.sh
+PASS: t/subobj-vpath-pr13928.sh
 PASS: t/subobj.sh
+PASS: t/subobj10.sh
+PASS: t/subobj11a.sh
+PASS: t/subobj11b.sh
+PASS: t/subobj11c.sh
 PASS: t/subobj2.sh
 PASS: t/subobj4.sh
 PASS: t/subobj5.sh
@@ -2280,32 +2269,51 @@ PASS: t/subobj6.sh
 PASS: t/subobj7.sh
 PASS: t/subobj8.sh
 PASS: t/subobj9.sh
-PASS: t/subobj10.sh
-PASS: t/subobj11a.sh
-PASS: t/subobj11b.sh
-PASS: t/subobj11c.sh
 PASS: t/subobjname.sh
-PASS: t/subobj-clean-pr10697.sh
-PASS: t/subobj-clean-lt-pr10697.sh
-PASS: t/subobj-indir-pr13928.sh
-PASS: t/subobj-objname-clash.sh
-PASS: t/subobj-vpath-pr13928.sh
-PASS: t/subobj-pr13928-more-langs.sh
+PASS: t/subpkg-macrodir.sh
+PASS: t/subpkg-yacc.sh
 PASS: t/subpkg.sh
 PASS: t/subpkg2.sh
 PASS: t/subpkg3.sh
 PASS: t/subpkg4.sh
-PASS: t/subpkg-yacc.sh
-PASS: t/subpkg-macrodir.sh
+PASS: t/subst-no-trailing-empty-line.sh
 PASS: t/subst.sh
 PASS: t/subst3.sh
 PASS: t/subst4.sh
 PASS: t/subst5.sh
-PASS: t/subst-no-trailing-empty-line.sh
-PASS: t/substref.sh
 PASS: t/substre2.sh
+PASS: t/substref.sh
 PASS: t/substtarg.sh
+PASS: t/suffix-chain.tap 1 - aclocal
+PASS: t/suffix-chain.tap 2 - automake
+PASS: t/suffix-chain.tap 3 - autoconf
+PASS: t/suffix-chain.tap 4 - configure
+PASS: t/suffix-chain.tap 5 - make all
+PASS: t/suffix-chain.tap 6 - make distcheck
+PASS: t/suffix-chain.tap 7 - clean
+PASS: t/suffix-chain.tap 8 - make with explicit dependencies
+PASS: t/suffix-custom-pr14441.sh
+PASS: t/suffix-custom-subobj-and-specflg.sh
+PASS: t/suffix-custom-subobj.sh
+PASS: t/suffix-extra-c-stuff-pr14560.sh
 PASS: t/suffix.sh
+PASS: t/suffix10.tap 1 - libtoolize
+PASS: t/suffix10.tap 2 - aclocal
+PASS: t/suffix10.tap 3 - autoconf
+PASS: t/suffix10.tap 4 - automake
+PASS: t/suffix10.tap 5 - configure
+PASS: t/suffix10.tap 6 - make test
+PASS: t/suffix10.tap 7 - make all
+PASS: t/suffix11.tap 1 - aclocal
+PASS: t/suffix11.tap 2 - autoconf
+PASS: t/suffix11.tap 3 - automake exited 1
+PASS: t/suffix11.tap 4 - warn about unportable make usage
+PASS: t/suffix11.tap 5 - automake
+PASS: t/suffix11.tap 6 - configure
+PASS: t/suffix11.tap 7 - make test-fake
+PASS: t/suffix11.tap 8 - make test-real
+PASS: t/suffix11.tap 9 - make
+PASS: t/suffix11.tap 10 - make distcheck
 PASS: t/suffix2.sh
 PASS: t/suffix3.tap 1 - aclocal
 PASS: t/suffix3.tap 2 - automake
@@ -2334,55 +2342,92 @@ PASS: t/suffix8.tap 8 - make test2
 PASS: t/suffix8.tap 9 - make all
 PASS: t/suffix8.tap 10 - make distcheck
 PASS: t/suffix9.sh
-PASS: t/suffix10.tap 1 - libtoolize
-PASS: t/suffix10.tap 2 - aclocal
-PASS: t/suffix10.tap 3 - autoconf
-PASS: t/suffix10.tap 4 - automake
-PASS: t/suffix10.tap 5 - configure
-PASS: t/suffix10.tap 6 - make test
-PASS: t/suffix10.tap 7 - make all
-PASS: t/suffix11.tap 1 - aclocal
-PASS: t/suffix11.tap 2 - autoconf
-PASS: t/suffix11.tap 3 - automake exited 1
-PASS: t/suffix11.tap 4 - warn about unportable make usage
-PASS: t/suffix11.tap 5 - automake
-PASS: t/suffix11.tap 6 - configure
-PASS: t/suffix11.tap 7 - make test-fake
-PASS: t/suffix11.tap 8 - make test-real
-PASS: t/suffix11.tap 9 - make
-PASS: t/suffix11.tap 10 - make distcheck
-PASS: t/suffix-chain.tap 1 - aclocal
-PASS: t/suffix-chain.tap 2 - automake
-PASS: t/suffix-chain.tap 3 - autoconf
-PASS: t/suffix-chain.tap 4 - configure
-PASS: t/suffix-chain.tap 5 - make all
-PASS: t/suffix-chain.tap 6 - make distcheck
-PASS: t/suffix-chain.tap 7 - clean
-PASS: t/suffix-chain.tap 8 - make with explicit dependencies
-PASS: t/suffix-custom-pr14441.sh
-PASS: t/suffix-custom-subobj.sh
-PASS: t/suffix-custom-subobj-and-specflg.sh
-PASS: t/suffix-extra-c-stuff-pr14560.sh
 PASS: t/symlink.sh
 PASS: t/symlink2.sh
 PASS: t/syntax.sh
+tags-lisp-space: skipped test: required program 'etags' not available
+SKIP: t/tags-lisp-space.sh
+tags-pr12372: skipped test: required program 'etags' not available
+SKIP: t/tags-pr12372.sh
+PASS: t/tags.sh
+PASS: t/tags2.sh
+tagsub: skipped test: required program 'etags' not available
+SKIP: t/tagsub.sh
 PASS: t/tap-common-setup.sh
 PASS: t/tap-ambiguous-directive.sh
 PASS: t/tap-autonumber.sh
-PASS: t/tap-bailout.sh
-PASS: t/tap-bailout-leading-space.sh
+PASS: t/tap-bad-prog.tap 1 - "make check" returns non-zero exit status
+PASS: t/tap-bad-prog.tap 2 - non-existent test is reported
+PASS: t/tap-bad-prog.tap 3 - non-executable test is reported
+PASS: t/tap-bad-prog.tap 4 - non-readable test is reported
+XFAIL: t/tap-bad-prog.tap 5 - no spurious "missing plan" message # TODO
+XFAIL: t/tap-bad-prog.tap 6 - no spurious results # TODO still get "missing plan"
 PASS: t/tap-bailout-and-logging.sh
+PASS: t/tap-bailout-leading-space.sh
 PASS: t/tap-bailout-suppress-badexit.sh
 PASS: t/tap-bailout-suppress-later-diagnostic.sh
 PASS: t/tap-bailout-suppress-later-errors.sh
+PASS: t/tap-bailout.sh
+PASS: t/tap-basic.sh
 PASS: t/tap-color.sh
 PASS: t/tap-deps.sh
+PASS: t/tap-diagnostic-custom.sh
 PASS: t/tap-diagnostic.sh
+PASS: t/tap-doc.sh
+PASS: t/tap-doc2.sh
+PASS: t/tap-driver-stderr.sh
 PASS: t/tap-empty-diagnostic.sh
 PASS: t/tap-empty.sh
-PASS: t/tap-escape-directive.sh
 PASS: t/tap-escape-directive-2.sh
+PASS: t/tap-escape-directive.sh
 PASS: t/tap-exit.sh
+PASS: t/tap-fancy.sh
+PASS: t/tap-fancy2.sh
+PASS: t/tap-global-log.sh
+PASS: t/tap-global-result.sh
+PASS: t/tap-log.sh
+PASS: t/tap-merge-stdout-stderr.sh
+PASS: t/tap-missing-plan-and-bad-exit.sh
+PASS: t/tap-more.sh
+PASS: t/tap-more2.sh
+PASS: t/tap-msg0-bailout.sh
+PASS: t/tap-msg0-directive.sh
+PASS: t/tap-msg0-misc.sh
+PASS: t/tap-msg0-planskip.sh
+PASS: t/tap-msg0-result.sh
+PASS: t/tap-negative-numbers.sh
+PASS: t/tap-no-disable-hard-error.sh
+PASS: t/tap-no-merge-stdout-stderr.sh
+PASS: t/tap-no-spurious-numbers.sh
+PASS: t/tap-no-spurious-summary.sh
+PASS: t/tap-no-spurious.sh
+PASS: t/tap-not-ok-skip.sh
+PASS: t/tap-number-wordboundary.sh
+PASS: t/tap-numbers-leading-zero.sh
+PASS: t/tap-numeric-description.sh
+PASS: t/tap-out-of-order.sh
+PASS: t/tap-passthrough-exit.sh
+PASS: t/tap-passthrough.sh
+PASS: t/tap-plan-corner.sh
+PASS: t/tap-plan-errors.sh
+PASS: t/tap-plan-leading-zero.sh
+PASS: t/tap-plan-malformed.sh
+PASS: t/tap-plan-middle.sh
+PASS: t/tap-plan-whitespace.sh
+PASS: t/tap-plan.sh
+PASS: t/tap-planskip-and-logging.sh
+PASS: t/tap-planskip-badexit.sh
+PASS: t/tap-planskip-bailout.sh
+PASS: t/tap-planskip-case-insensitive.sh
+PASS: t/tap-planskip-late.sh
+PASS: t/tap-planskip-later-errors.sh
+PASS: t/tap-planskip-unplanned-corner.sh
+PASS: t/tap-planskip-unplanned.sh
+PASS: t/tap-planskip-whitespace.sh
+PASS: t/tap-planskip.sh
+PASS: t/tap-recheck-logs.sh
+PASS: t/tap-recheck.sh
+PASS: t/tap-result-comment.sh
 PASS: t/tap-signal.tap 1 - "make check" fails
 PASS: t/tap-signal.tap 2 - count of test results
 PASS: t/tap-signal.tap 3 - TAP driver catch test termination by signal SIGHUP
@@ -2393,51 +2438,27 @@ PASS: t/tap-signal.tap 7 - TAP driver catch test termination by signal SIGPIPE
 PASS: t/tap-signal.tap 8 - TAP driver catch test termination by signal SIGTERM
 PASS: t/tap-signal.tap 9 - "make check" passes [--ignore-exit]
 PASS: t/tap-signal.tap 10 - count of test results [--ignore-exit]
-PASS: t/tap-fancy.sh
-PASS: t/tap-fancy2.sh
-PASS: t/tap-global-log.sh
-PASS: t/tap-global-result.sh
-PASS: t/tap-log.sh
-PASS: t/tap-msg0-result.sh
-PASS: t/tap-msg0-directive.sh
-PASS: t/tap-msg0-planskip.sh
-PASS: t/tap-msg0-bailout.sh
-PASS: t/tap-msg0-misc.sh
-PASS: t/tap-merge-stdout-stderr.sh
-PASS: t/tap-no-merge-stdout-stderr.sh
-PASS: t/tap-no-disable-hard-error.sh
-PASS: t/tap-no-spurious-summary.sh
-PASS: t/tap-no-spurious-numbers.sh
-PASS: t/tap-no-spurious.sh
-PASS: t/tap-not-ok-skip.sh
-PASS: t/tap-number-wordboundary.sh
-PASS: t/tap-numeric-description.sh
-PASS: t/tap-negative-numbers.sh
-PASS: t/tap-numbers-leading-zero.sh
-PASS: t/tap-out-of-order.sh
-PASS: t/tap-passthrough.sh
-PASS: t/tap-passthrough-exit.sh
-PASS: t/tap-plan.sh
-PASS: t/tap-plan-corner.sh
-PASS: t/tap-plan-errors.sh
-PASS: t/tap-plan-middle.sh
-PASS: t/tap-plan-whitespace.sh
-PASS: t/tap-plan-leading-zero.sh
-PASS: t/tap-plan-malformed.sh
-PASS: t/tap-missing-plan-and-bad-exit.sh
-PASS: t/tap-planskip.sh
-PASS: t/tap-planskip-late.sh
-PASS: t/tap-planskip-and-logging.sh
-PASS: t/tap-planskip-unplanned.sh
-PASS: t/tap-planskip-unplanned-corner.sh
-PASS: t/tap-planskip-case-insensitive.sh
-PASS: t/tap-planskip-whitespace.sh
-PASS: t/tap-planskip-badexit.sh
-PASS: t/tap-planskip-bailout.sh
-PASS: t/tap-planskip-later-errors.sh
+PASS: t/tap-stderr-prefix.tap 1 - no merge, no prefix: make check passes
+PASS: t/tap-stderr-prefix.tap 2 - no merge, no prefix: result counts are correct
+PASS: t/tap-stderr-prefix.tap 3 - no merge, no prefix: stderr in log
+PASS: t/tap-stderr-prefix.tap 4 - --merge: make check fails
+PASS: t/tap-stderr-prefix.tap 5 - --merge: stderr in log
+PASS: t/tap-stderr-prefix.tap 6 - --stderr-prefix "@%:@#@%@&t@:@ ": make check passes
+PASS: t/tap-stderr-prefix.tap 7 - --stderr-prefix "@%:@#@%@&t@:@ ": result counts are correct
+PASS: t/tap-stderr-prefix.tap 8 - --stderr-prefix "@%:@#@%@&t@:@ ": prefixed stderr in log
+PASS: t/tap-stderr-prefix.tap 9 - --stderr-prefix "@%:@#@%@&t@:@ ": missing final newline is added
+PASS: t/tap-stderr-prefix.tap 10 - --stderr-prefix "@%:@#@%@&t@:@ " --merge: make check passes
+PASS: t/tap-stderr-prefix.tap 11 - --stderr-prefix "@%:@#@%@&t@:@ " --merge: result counts are correct
+PASS: t/tap-stderr-prefix.tap 12 - --stderr-prefix "@%:@#@%@&t@:@ " --merge: prefixed stderr in log
+PASS: t/tap-stderr-prefix.tap 13 - --stderr-prefix "@%:@#@%@&t@:@ " --merge: missing final newline is added
+PASS: t/tap-stderr-prefix.tap 14 - --stderr-prefix "# " --merge stdout/stderr ordering: make check passes
+PASS: t/tap-stderr-prefix.tap 15 - --stderr-prefix "# " --merge stdout/stderr ordering: result counts are correct
+PASS: t/tap-stderr-prefix.tap 16 - --stderr-prefix "# " --merge stdout/stderr ordering: '1..1' before 'stderr 1'
+FAIL: t/tap-stderr-prefix.tap 17 - --stderr-prefix "# " --merge stdout/stderr ordering: 'stderr 1' before 'ok 1'
+PASS: t/tap-stderr-prefix.tap 18 - --stderr-prefix "# " --merge stdout/stderr ordering: 'ok 1' before 'stderr 2'
+PASS: t/tap-summary-color.sh
+PASS: t/tap-summary.sh
 PASS: t/tap-test-number-0.sh
-PASS: t/tap-recheck-logs.sh
-PASS: t/tap-result-comment.sh
 PASS: t/tap-todo-skip-together.sh
 PASS: t/tap-todo-skip-whitespace.sh
 PASS: t/tap-todo-skip.sh
@@ -2445,40 +2466,55 @@ PASS: t/tap-unplanned.sh
 PASS: t/tap-whitespace-normalization.sh
 PASS: t/tap-with-and-without-number.sh
 PASS: t/tap-xfail-tests.sh
-PASS: t/tap-bad-prog.tap 1 - "make check" returns non-zero exit status
-PASS: t/tap-bad-prog.tap 2 - non-existent test is reported
-PASS: t/tap-bad-prog.tap 3 - non-executable test is reported
-PASS: t/tap-bad-prog.tap 4 - non-readable test is reported
-XFAIL: t/tap-bad-prog.tap 5 - no spurious "missing plan" message # TODO
-XFAIL: t/tap-bad-prog.tap 6 - no spurious results # TODO still get "missing plan"
-PASS: t/tap-basic.sh
-PASS: t/tap-diagnostic-custom.sh
-PASS: t/tap-driver-stderr.sh
-PASS: t/tap-doc.sh
-PASS: t/tap-doc2.sh
-PASS: t/tap-more.sh
-PASS: t/tap-more2.sh
-PASS: t/tap-recheck.sh
-PASS: t/tap-summary.sh
-PASS: t/tap-summary-color.sh
-PASS: t/tags.sh
-PASS: t/tags2.sh
-tagsub: skipped test: required program 'etags' not available
-SKIP: t/tagsub.sh
-tags-lisp-space: skipped test: required program 'etags' not available
-SKIP: t/tags-lisp-space.sh
-tags-pr12372: skipped test: required program 'etags' not available
-SKIP: t/tags-pr12372.sh
-PASS: t/tar-ustar.sh
-PASS: t/tar-pax.sh
 PASS: t/tar-opts-errors.sh
-PASS: t/tar-ustar-id-too-high.sh
 PASS: t/tar-override.sh
+PASS: t/tar-pax.sh
+PASS: t/tar-ustar-id-too-high.sh
+PASS: t/tar-ustar.sh
 PASS: t/target-cflags.sh
 PASS: t/targetclash.sh
+PASS: t/test-driver-acsubst.sh
+PASS: t/test-driver-cond.sh
+PASS: t/test-driver-create-log-dir.sh
+PASS: t/test-driver-custom-multitest-recheck.sh
+PASS: t/test-driver-custom-multitest-recheck2.sh
+PASS: t/test-driver-custom-multitest.sh
+PASS: t/test-driver-custom-no-extra-driver.sh
+PASS: t/test-driver-custom-xfail-tests.sh
+PASS: t/test-driver-custom.sh
+PASS: t/test-driver-fail.sh
+PASS: t/test-driver-is-distributed.sh
+PASS: t/test-driver-strip-vpath.sh
+PASS: t/test-driver-trs-suffix-registered.sh
+PASS: t/test-extensions-cond.sh
+PASS: t/test-extensions-empty.sh
+PASS: t/test-extensions.sh
+PASS: t/test-harness-vpath-rewrite.sh
+PASS: t/test-log.sh
+PASS: t/test-logs-repeated.sh
+PASS: t/test-metadata-global-log.sh
+PASS: t/test-metadata-global-result.sh
+PASS: t/test-metadata-recheck.sh
+PASS: t/test-metadata-results.sh
+PASS: t/test-missing.sh
+PASS: t/test-missing2.sh
+PASS: t/test-trs-basic.sh
+PASS: t/test-trs-recover.sh
+PASS: t/test-trs-recover2.sh
+PASS: t/tests-environment-and-log-compiler.sh
+PASS: t/tests-environment-backcompat.sh
 tests-environment-fd-redirect: skipped test: skipping /bin/ksh to avoid hang
 SKIP: t/tests-environment-fd-redirect.sh
-PASS: t/tests-environment-and-log-compiler.sh
+PASS: t/tests-environment.sh
+PASS: t/testsuite-summary-color.sh
+PASS: t/testsuite-summary-count-many.sh
+PASS: t/testsuite-summary-count.sh
+PASS: t/testsuite-summary-header.sh
+PASS: t/testsuite-summary-reference-log.sh
+PASS: t/toplevelmd.sh
+PASS: t/transform.sh
+PASS: t/transform2.sh
+PASS: t/transform3.sh
 txinfo-absolute-srcdir-pr408: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-absolute-srcdir-pr408.sh
 PASS: t/txinfo-add-missing-and-dist.sh
@@ -2489,27 +2525,27 @@ SKIP: t/txinfo-builddir.sh
 txinfo-clean: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-clean.sh
 PASS: t/txinfo-dvi-recurs.sh
-txinfo-info-in-srcdir: skipped test: required program 'makeinfo' not available
-SKIP: t/txinfo-info-in-srcdir.sh
 txinfo-include: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-include.sh
+txinfo-info-in-srcdir: skipped test: required program 'makeinfo' not available
+SKIP: t/txinfo-info-in-srcdir.sh
 txinfo-makeinfo-error-no-clobber: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-makeinfo-error-no-clobber.sh
-txinfo-many-output-formats: skipped test: required program 'makeinfo' not available
-SKIP: t/txinfo-many-output-formats.sh
 txinfo-many-output-formats-vpath: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-many-output-formats-vpath.sh
-txinfo-nodist-info: skipped test: required program 'makeinfo' not available
-SKIP: t/txinfo-nodist-info.sh
+txinfo-many-output-formats: skipped test: required program 'makeinfo' not available
+SKIP: t/txinfo-many-output-formats.sh
 txinfo-no-clutter: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-no-clutter.sh
 PASS: t/txinfo-no-extra-dist.sh
 txinfo-no-installinfo: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo-no-installinfo.sh
 PASS: t/txinfo-no-repeated-targets.sh
-PASS: t/txinfo-no-setfilename.sh
 PASS: t/txinfo-no-setfilename-no-inputs.sh
+PASS: t/txinfo-no-setfilename.sh
 PASS: t/txinfo-no-texi-but-texi-in.sh
+txinfo-nodist-info: skipped test: required program 'makeinfo' not available
+SKIP: t/txinfo-nodist-info.sh
 PASS: t/txinfo-other-suffixes.sh
 PASS: t/txinfo-override-infodeps.sh
 txinfo-override-texinfo-tex: skipped test: required program 'makeinfo' not available
@@ -2539,9 +2575,6 @@ txinfo25: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo25.sh
 txinfo28: skipped test: required program 'makeinfo' not available
 SKIP: t/txinfo28.sh
-PASS: t/transform.sh
-PASS: t/transform2.sh
-PASS: t/transform3.sh
 PASS: t/uninstall-fail.sh
 PASS: t/uninstall-pr9578.sh
 PASS: t/unused.sh
@@ -2553,12 +2586,12 @@ PASS: t/vala-grepping.sh
 PASS: t/pkg-config-macros.sh
 vala-headers: skipped test: required program 'valac' not available
 SKIP: t/vala-headers.sh
-vala-libs: skipped test: required program 'valac' not available
-SKIP: t/vala-libs.sh
 vala-libs-distcheck: skipped test: required program 'valac' not available
 SKIP: t/vala-libs-distcheck.sh
 vala-libs-vpath: skipped test: required program 'valac' not available
 SKIP: t/vala-libs-vpath.sh
+vala-libs: skipped test: required program 'valac' not available
+SKIP: t/vala-libs.sh
 vala-mix: skipped test: required program 'valac' not available
 SKIP: t/vala-mix.sh
 vala-mix2: skipped test: required program 'valac' not available
@@ -2575,14 +2608,14 @@ vala-vapi: skipped test: required program 'valac' not available
 SKIP: t/vala-vapi.sh
 vala-vpath: skipped test: required program 'valac' not available
 SKIP: t/vala-vpath.sh
+PASS: t/var-recurs.sh
+PASS: t/var-recurs2.sh
 PASS: t/varempty.sh
 PASS: t/vars.sh
 PASS: t/vars3.sh
-PASS: t/var-recurs.sh
-PASS: t/var-recurs2.sh
 PASS: t/vartar.sh
-PASS: t/vartypos.sh
 PASS: t/vartypo2.sh
+PASS: t/vartypos.sh
 PASS: t/version3.sh
 PASS: t/version4.sh
 PASS: t/version6.sh
@@ -2590,31 +2623,28 @@ version7: skipped test: required program 'makeinfo' not available
 SKIP: t/version7.sh
 PASS: t/version8.sh
 PASS: t/vpath.sh
+PASS: t/warning-groups-win-over-strictness.sh
 PASS: t/warnings-obsolete-default.sh
 PASS: t/warnings-override.sh
 PASS: t/warnings-precedence.sh
 PASS: t/warnings-strictness-interactions.sh
 PASS: t/warnings-unknown.sh
-PASS: t/warnopts.sh
 PASS: t/warnings-win-over-strictness.sh
-PASS: t/warning-groups-win-over-strictness.sh
+PASS: t/warnopts.sh
 PASS: t/werror.sh
 PASS: t/werror2.sh
 PASS: t/werror3.sh
 PASS: t/werror4.sh
 PASS: t/whoami.sh
 PASS: t/xsource.sh
-PASS: t/yacc-misc.sh
-PASS: t/yacc-dry.sh
-PASS: t/yacc-cxx-grepping.sh
-PASS: t/yacc-vpath.sh
 PASS: t/yacc-auxdir.sh
 PASS: t/yacc-basic.sh
-PASS: t/yacc-cxx.sh
 PASS: t/yacc-bison-skeleton-cxx.sh
 PASS: t/yacc-bison-skeleton.sh
-PASS: t/yacc-clean.sh
 PASS: t/yacc-clean-cxx.sh
+PASS: t/yacc-clean.sh
+PASS: t/yacc-cxx-grepping.sh
+PASS: t/yacc-cxx.sh
 PASS: t/yacc-d-basic.sh
 PASS: t/yacc-d-cxx.sh
 PASS: t/yacc-d-vpath.sh
@@ -2623,23 +2653,26 @@ PASS: t/yacc-depend.sh
 PASS: t/yacc-depend2.sh
 PASS: t/yacc-dist-nobuild-subdir.sh
 PASS: t/yacc-dist-nobuild.sh
+PASS: t/yacc-dry.sh
 PASS: t/yacc-grepping.sh
 PASS: t/yacc-grepping2.sh
 PASS: t/yacc-headers-and-dist-pr47.sh
 PASS: t/yacc-line.sh
+PASS: t/yacc-misc.sh
 PASS: t/yacc-mix-c-cxx.sh
 PASS: t/yacc-nodist.sh
 PASS: t/yacc-pr204.sh
 PASS: t/yacc-subdir.sh
+PASS: t/yacc-vpath.sh
 PASS: t/yacc-weirdnames.sh
-PASS: t/yflags.sh
-PASS: t/yflags-cxx.sh
 PASS: t/yflags-cmdline-override.sh
 PASS: t/yflags-conditional.sh
+PASS: t/yflags-cxx.sh
 PASS: t/yflags-d-false-positives.sh
 PASS: t/yflags-force-conditional.sh
 PASS: t/yflags-force-override.sh
 PASS: t/yflags-var-expand.sh
+PASS: t/yflags.sh
 PASS: t/ar-lib-w.sh
 PASS: t/built-sources-check-w.sh
 PASS: t/check-exported-srcdir-w.sh
@@ -3030,13 +3063,21 @@ SKIP: contrib/t/parallel-tests-html-recursive.sh
 PASS: contrib/t/help-multilib.sh
 PASS: contrib/t/multilib.sh
 ============================================================================
-Testsuite summary for GNU Automake 1.17
+Testsuite summary for GNU Automake 1.19
 ============================================================================
-# TOTAL: 2940
-# PASS:  2787
-# SKIP:  113
+# TOTAL: 2970
+# PASS:  2813
+# SKIP:  116
 # XFAIL: 40
-# FAIL:  0
+# FAIL:  1
 # XPASS: 0
 # ERROR: 0
 ============================================================================
+See ./test-suite.log for debugging.
+Some test(s) failed.  Please report this to bug-automake@gnu.org,
+together with the test-suite.log file (gzipped) and your system
+information.  Thanks.
+============================================================================
+make[2]: *** [Makefile:3148: test-suite.log] Error 1
+make[1]: *** [Makefile:3283: check-TESTS] Error 2
+make: *** [Makefile:3574: check-am] Error 2
