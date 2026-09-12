@@ -14,7 +14,7 @@
 | data/iso-codes			| 4.20.1		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
 | database/sqlite-3			| 3530400		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.73			| https://ftp.gnu.org/gnu/autoconf/
-| developer/build/automake		| 1.18.1		| https://ftp.gnu.org/gnu/automake/
+| developer/build/automake		| 1.19			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.6.2			| https://www.gnu.org/software/libtool/
 | developer/dtc				| 1.8.1			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
