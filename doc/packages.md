@@ -8,13 +8,13 @@
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.26			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
-| compress/xz				| 5.8.3			| https://tukaani.org/xz/
+| compress/xz				| 5.8.4			| https://tukaani.org/xz/
 | compress/zip				| 3.0			| https://sourceforge.net/projects/infozip/files/Zip%203.x%20%28latest%29/ http://www.info-zip.org/Zip.html
 | compress/zstd				| 1.5.7			| https://github.com/facebook/zstd/releases
 | data/iso-codes			| 4.20.1		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
 | database/sqlite-3			| 3530400		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.73			| https://ftp.gnu.org/gnu/autoconf/
-| developer/build/automake		| 1.18.1		| https://ftp.gnu.org/gnu/automake/
+| developer/build/automake		| 1.19			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.6.2			| https://www.gnu.org/software/libtool/
 | developer/dtc				| 1.8.1			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
@@ -95,7 +95,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.128			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.129			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.10.7		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 26.2			| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
