@@ -12,6 +12,10 @@ SKIP: tests/misc/tty-eof.pl
 PASS: tests/misc/io-errors.sh
 PASS: tests/misc/read-errors.sh
 PASS: tests/misc/responsive.sh
+PASS: tests/misc/no-fork.sh
+SKIP: tests/misc/traversal-missing.sh
+SKIP: tests/misc/tty-quoting.sh
+PASS: tests/misc/uname-labeled.sh
 PASS: tests/misc/warning-errors.sh
 PASS: tests/misc/write-errors.sh
 PASS: tests/tail/basic-seek.sh
@@ -21,10 +25,12 @@ PASS: tests/tail/F-vs-missing.sh
 PASS: tests/tail/F-vs-rename.sh
 PASS: tests/tail/F-headers.sh
 PASS: tests/tail/descriptor-vs-rename.sh
+PASS: tests/tail/follow-symlink.sh
 SKIP: tests/tail/inotify-rotate.sh
 SKIP: tests/tail/inotify-rotate-resources.sh
 SKIP: tests/tail/inotify-dir-recreate.sh
 SKIP: tests/tail/inotify-only-regular.sh
+PASS: tests/tail/quote-headers.sh
 PASS: tests/chmod/no-x.sh
 SKIP: tests/chgrp/basic.sh
 PASS: tests/rm/dangling-symlink.sh
@@ -84,6 +90,7 @@ PASS: tests/fmt/long-line.sh
 PASS: tests/fmt/non-space.sh
 PASS: tests/fmt/width.sh
 PASS: tests/misc/echo.sh
+PASS: tests/misc/empty-backup-suffix.sh
 PASS: tests/env/env.sh
 PASS: tests/env/env-signal-handler.sh
 PASS: tests/ptx/ptx.pl
@@ -103,6 +110,7 @@ PASS: tests/ls/ls-misc.pl
 PASS: tests/date/date.pl
 PASS: tests/date/date-next-dow.pl
 PASS: tests/ptx/ptx-overrun.sh
+PASS: tests/ptx/word-regex-loop.sh
 PASS: tests/misc/xstrtol.pl
 SKIP: tests/tail/overlay-headers.sh
 PASS: tests/tail/pid.sh
@@ -117,10 +125,12 @@ PASS: tests/mktemp/mktemp.pl
 PASS: tests/mktemp/write-error.sh
 SKIP: tests/misc/arch.sh
 PASS: tests/pr/bounded-memory.sh
+PASS: tests/pr/options.sh
 PASS: tests/pr/pr-tests.pl
 PASS: tests/pwd/argument.sh
 PASS: tests/pwd/pwd-option.sh
 SKIP: tests/chcon/chcon-fail.sh
+SKIP: tests/chcon/traversal-missing.sh
 SKIP: tests/misc/coreutils.sh
 PASS: tests/cut/cut.pl
 PASS: tests/cut/mb-non-utf8.sh
@@ -133,7 +143,9 @@ PASS: tests/wc/wc-files0.sh
 PASS: tests/wc/wc-nbsp.sh
 PASS: tests/wc/wc-parallel.sh
 PASS: tests/wc/wc-proc.sh
+SKIP: tests/wc/wc-sjis.sh
 PASS: tests/wc/wc-total.sh
+PASS: tests/cat/cat-distinct-err.sh
 PASS: tests/cat/cat-E.sh
 SKIP: tests/cat/cat-proc.sh
 PASS: tests/cat/cat-buf.sh
@@ -144,6 +156,7 @@ PASS: tests/basenc/base64.pl
 PASS: tests/basenc/basenc.pl
 PASS: tests/basenc/bounded-memory.sh
 PASS: tests/basenc/large-input.sh
+PASS: tests/misc/close-stdin.sh
 PASS: tests/misc/close-stdout.sh
 PASS: tests/chroot/chroot-fail.sh
 PASS: tests/cksum/cksum.sh
@@ -152,7 +165,8 @@ PASS: tests/cksum/cksum-c.sh
 PASS: tests/cksum/cksum-base64.pl
 PASS: tests/cksum/cksum-base64-untagged.sh
 PASS: tests/cksum/cksum-raw.sh
-PASS: tests/misc/comm.pl
+PASS: tests/comm/comm.pl
+PASS: tests/comm/dash-dash.sh
 PASS: tests/csplit/csplit.sh
 PASS: tests/csplit/csplit-1000.sh
 PASS: tests/csplit/csplit-heap.sh
@@ -170,6 +184,7 @@ PASS: tests/date/date-thailand.sh
 PASS: tests/date/date-tz.sh
 PASS: tests/misc/dircolors.pl
 PASS: tests/misc/dirname.pl
+PASS: tests/env/env0-from.sh
 PASS: tests/env/env-null.sh
 PASS: tests/env/env-S.pl
 PASS: tests/env/env-S-script.sh
@@ -191,8 +206,10 @@ PASS: tests/groups/groups-dash.sh
 PASS: tests/groups/groups-process-all.sh
 PASS: tests/groups/groups-version.sh
 PASS: tests/head/head-c.sh
+PASS: tests/head/head-n0.sh
 PASS: tests/head/head-pos.sh
 PASS: tests/head/head-write-error.sh
+PASS: tests/head/quote-headers.sh
 SKIP: tests/misc/kill.sh
 PASS: tests/cksum/b2sum.sh
 PASS: tests/cksum/md5sum.pl
@@ -201,6 +218,7 @@ PASS: tests/cksum/md5sum-newline.pl
 PASS: tests/cksum/md5sum-parallel.sh
 PASS: tests/join/join.pl
 PASS: tests/join/join-utf8.sh
+PASS: tests/misc/just-created.sh
 PASS: tests/misc/mknod.sh
 PASS: tests/nice/nice.sh
 PASS: tests/nice/nice-fail.sh
@@ -243,6 +261,7 @@ PASS: tests/cksum/sha256sum.pl
 PASS: tests/cksum/sha384sum.pl
 PASS: tests/cksum/sha512sum.pl
 PASS: tests/cksum/cksum-sha3.sh
+PASS: tests/shred/fifo.sh
 PASS: tests/shred/shred-exact.sh
 PASS: tests/shred/shred-passes.sh
 PASS: tests/shred/shred-remove.sh
@@ -253,6 +272,7 @@ PASS: tests/misc/sleep.sh
 PASS: tests/cksum/sm3sum.pl
 PASS: tests/sort/sort.pl
 SKIP: tests/sort/sort-benchmark-random.sh
+SKIP: tests/sort/sort-buffer-size.sh
 PASS: tests/sort/sort-compress.sh
 SKIP: tests/sort/sort-compress-hang.sh
 SKIP: tests/sort/sort-compress-proc.sh
@@ -264,7 +284,7 @@ PASS: tests/sort/sort-field-limit.sh
 PASS: tests/sort/sort-files0-from.pl
 PASS: tests/sort/sort-float.sh
 SKIP: tests/sort/sort-h-thousands-sep.sh
-PASS: tests/sort/sort-locale.sh
+SKIP: tests/sort/sort-locale.sh
 PASS: tests/sort/sort-merge.pl
 PASS: tests/sort/sort-merge-fdlimit.sh
 SKIP: tests/sort/sort-month.sh
@@ -313,7 +333,9 @@ PASS: tests/tac/tac-locale.sh
 PASS: tests/tac/tac-2-nonseekable.sh
 PASS: tests/tail/tail.pl
 PASS: tests/tee/append.sh
+SKIP: tests/tee/short-write.sh
 PASS: tests/tee/tee.sh
+SKIP: tests/tee/write-eagain.sh
 PASS: tests/test/test-N.sh
 PASS: tests/test/test-diag.pl
 PASS: tests/test/test-file.sh
@@ -346,6 +368,7 @@ PASS: tests/unexpand/mb.sh
 PASS: tests/uniq/uniq.pl
 PASS: tests/uniq/uniq-perf.sh
 PASS: tests/uniq/uniq-collate.sh
+SKIP: tests/uniq/uniq-c-width.sh
 SKIP: tests/misc/xattr.sh
 PASS: tests/misc/yes.sh
 PASS: tests/tail/wait.sh
@@ -441,7 +464,7 @@ SKIP: tests/df/skip-rootfs.sh
 PASS: tests/dd/ascii.sh
 PASS: tests/dd/conv-case.sh
 PASS: tests/dd/direct.sh
-PASS: tests/dd/fail-ftruncate-fstat.sh
+SKIP: tests/dd/fail-ftruncate-fstat.sh
 PASS: tests/dd/misc.sh
 PASS: tests/dd/no-allocate.sh
 PASS: tests/dd/nocache.sh
@@ -465,6 +488,7 @@ PASS: tests/du/8gb.sh
 PASS: tests/du/apparent.sh
 PASS: tests/du/basic.sh
 PASS: tests/du/bigtime.sh
+PASS: tests/du/block-size.sh
 PASS: tests/du/deref.sh
 PASS: tests/du/deref-args.sh
 PASS: tests/du/exclude.sh
@@ -500,6 +524,7 @@ PASS: tests/install/d-slashdot.sh
 PASS: tests/install/install-C.sh
 SKIP: tests/install/install-C-selinux.sh
 SKIP: tests/install/install-Z-selinux.sh
+SKIP: tests/install/stdin.sh
 PASS: tests/install/strip-program.sh
 PASS: tests/install/trap.sh
 PASS: tests/ln/backup-1.sh
@@ -523,6 +548,7 @@ PASS: tests/ls/color-dtype-dir.sh
 PASS: tests/ls/color-norm.sh
 PASS: tests/ls/color-term.sh
 PASS: tests/ls/color-ext.sh
+PASS: tests/ls/color-symlink-target.sh
 PASS: tests/ls/dangle.sh
 PASS: tests/ls/dired.sh
 PASS: tests/ls/file-type.sh
@@ -608,6 +634,7 @@ PASS: tests/mv/no-copy.sh
 PASS: tests/mv/no-target-dir.sh
 PASS: tests/mv/part-fail.sh
 PASS: tests/mv/part-hardlink.sh
+PASS: tests/mv/part-hardlink-symlink.sh
 PASS: tests/mv/part-rename.sh
 PASS: tests/mv/part-symlink.sh
 PASS: tests/mv/partition-perm.sh
@@ -664,6 +691,7 @@ SKIP: tests/df/over-mount-device.sh
 SKIP: tests/du/bind-mount-dir-cycle.sh
 SKIP: tests/du/bind-mount-dir-cycle-v2.sh
 SKIP: tests/id/setgid.sh
+SKIP: tests/install/install-C-immutable.sh
 SKIP: tests/install/install-C-root.sh
 SKIP: tests/ls/capability.sh
 SKIP: tests/ls/no-cap.sh
@@ -731,9 +759,9 @@ SKIP: tests/factor/t37.sh
 SKIP: tests/factor/t38.sh
 SKIP: tests/factor/t39.sh
 SKIP: tests/factor/t40.sh
-# TOTAL: 733
-# PASS:  560
-# SKIP:  173
+# TOTAL: 761
+# PASS:  576
+# SKIP:  185
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
@@ -762,7 +790,6 @@ PASS: test-base32
 PASS: test-base64
 PASS: test-binary-io.sh
 PASS: test-bind
-PASS: test-bitrotate
 PASS: test-bool
 PASS: test-btoc32-1.sh
 PASS: test-btoc32-2.sh
@@ -804,6 +831,7 @@ SKIP: test-c32rtomb-w32-6.sh
 SKIP: test-c32rtomb-w32-7.sh
 SKIP: test-c32rtomb-w32-8.sh
 PASS: test-c32tolower.sh
+PASS: test-c32toupper.sh
 PASS: test-c32width
 PASS: test-calloc-gnu
 PASS: test-calloc-posix
@@ -853,6 +881,9 @@ PASS: test-exclude5.sh
 PASS: test-exclude6.sh
 PASS: test-exclude7.sh
 PASS: test-exclude8.sh
+PASS: test-execve.sh
+PASS: test-execvp.sh
+PASS: test-execvpe.sh
 PASS: test-faccessat
 PASS: test-fadvise
 PASS: test-fchdir
@@ -941,7 +972,7 @@ PASS: test-getprogname
 PASS: test-getrandom
 PASS: test-getrusage
 PASS: test-gettext-h
-FAIL: test-gettime-res
+PASS: test-gettime-res
 PASS: test-gettimeofday
 PASS: test-dynarray
 PASS: test-scratch-buffer
@@ -1004,6 +1035,7 @@ SKIP: test-mbrlen-w32-5.sh
 SKIP: test-mbrlen-w32-6.sh
 SKIP: test-mbrlen-w32-7.sh
 SKIP: test-mbrlen-w32-8.sh
+SKIP: test-mbrtoc32-regular
 PASS: test-mbrtoc32-1.sh
 PASS: test-mbrtoc32-2.sh
 PASS: test-mbrtoc32-3.sh
@@ -1031,8 +1063,10 @@ SKIP: test-mbrtowc-w32-8.sh
 PASS: test-mbs_endswith1
 PASS: test-mbs_endswith2.sh
 SKIP: test-mbs_endswith3.sh
-SKIP: test-mbscasecmp.sh
-SKIP: test-mbschr.sh
+PASS: test-mbscasecmp-3.sh
+SKIP: test-mbscasecmp-4.sh
+PASS: test-mbschr1.sh
+SKIP: test-mbschr2.sh
 PASS: test-mbsinit.sh
 PASS: test-mbslen.sh
 PASS: test-mbsnlen.sh
@@ -1058,6 +1092,7 @@ PASS: test-memcasecmp
 PASS: test-memchr
 PASS: test-memchr2
 PASS: test-memcoll
+PASS: test-memmem
 PASS: test-memrchr
 PASS: test-memset_explicit
 PASS: test-mkdir
@@ -1108,6 +1143,8 @@ PASS: test-posix_spawnp-vfork
 PASS: test-posixtm
 PASS: test-printf-frexp
 PASS: test-printf-frexpl
+PASS: test-printf-posix.sh
+PASS: test-printf-posix2.sh
 PASS: test-priv-set
 PASS: test-pselect
 PASS: test-pthread-cond
@@ -1138,12 +1175,18 @@ PASS: test-readutmp
 PASS: test-realloc-posix
 PASS: test-reallocarray
 PASS: test-regex
+SKIP: test-regex-el
+PASS: test-regex-en
+SKIP: test-regex-tr
 PASS: test-rename
 PASS: test-renameat
 PASS: test-renameatu
 PASS: test-rmdir
 PASS: test-savedir
 PASS: test-sched-h
+PASS: test-sd-dlopen
+PASS: test-sd-dlopen-disabled
+PASS: test-sd-dlopen.sh
 PASS: test-select
 PASS: test-select-in.sh
 PASS: test-select-out.sh
@@ -1166,15 +1209,19 @@ PASS: test-signal-h
 PASS: test-signbit
 PASS: test-sigprocmask
 PASS: test-sleep
+PASS: test-snprintf-posix
 PASS: test-snprintf
 PASS: test-sockets
 PASS: test-spawn-h
+PASS: test-sprintf-posix
 PASS: test-stat
 PASS: test-stat-time
 PASS: test-stdbit-h
 PASS: test-stdc_bit_width
 PASS: test-stdc_leading_zeros
 PASS: test-stdc_memreverse8u
+PASS: test-stdc_rotate_left
+PASS: test-stdc_rotate_right
 PASS: test-stdc_trailing_zeros
 PASS: test-stdckdint-h
 PASS: test-stdcountof-h
@@ -1190,9 +1237,11 @@ PASS: test-strerror_r
 PASS: test-strerrorname_np
 PASS: test-string-h
 PASS: test-strncpy
+PASS: test-strndup
 PASS: test-strnlen
 PASS: test-strnul
 PASS: test-strsignal
+PASS: test-strstr
 PASS: test-strtod
 PASS: test-strtod1.sh
 PASS: test-strtoimax
@@ -1216,6 +1265,8 @@ PASS: test-sys_utsname-h
 PASS: test-sys_wait-h
 PASS: test-termios-h
 PASS: test-init.sh
+PASS: test-thread-optim1
+PASS: test-thread-optim2
 PASS: test-thread_self
 PASS: test-thread_create
 PASS: test-time-h
@@ -1234,6 +1285,7 @@ PASS: test-uchar-h
 PASS: test-uname
 PASS: test-unicase-h
 PASS: test-uc_tolower
+PASS: test-uc_toupper
 PASS: test-unicodeio1.sh
 PASS: test-unicodeio2.sh
 SKIP: test-unicodeio3.sh
@@ -1284,6 +1336,7 @@ PASS: test-verify
 PASS: test-verify.sh
 PASS: test-verror.sh
 PASS: test-version-etc.sh
+PASS: test-vfprintf-posix.sh
 PASS: test-vfzprintf-posix.sh
 PASS: test-vzprintf-posix.sh
 PASS: test-wchar-h
@@ -1315,27 +1368,10 @@ PASS: test-xstrtoumax.sh
 PASS: test-xvasprintf
 PASS: test-year2038
 PASS: test-yesno.sh
-# TOTAL: 577
-# PASS:  507
-# SKIP:  69
+# TOTAL: 603
+# PASS:  531
+# SKIP:  72
 # XFAIL: 0
-# FAIL:  1
-# XPASS: 0
-# ERROR: 0
-NAME="OmniOS"
-PRETTY_NAME="OmniOS Community Edition v11 r151059"
-CPE_NAME="cpe:/o:omniosce:omnios:11:151059:0"
-ID=omnios
-VERSION=r151059
-VERSION_ID=r151059
-BUILD_ID=151059.0.2026.06.27
-HOME_URL="https://omnios.org/"
-FAIL: test-gettime-res
-FAIL test-gettime-res (exit status: 1)
-# TOTAL: 577
-# PASS:  507
-# SKIP:  69
-# XFAIL: 0
-# FAIL:  1
+# FAIL:  0
 # XPASS: 0
 # ERROR: 0
