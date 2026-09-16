@@ -1,0 +1,36 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/libxslt/libxslt.syms a/libxslt/libxslt.syms
+--- a~/libxslt/libxslt.syms	1970-01-01 00:00:00
++++ a/libxslt/libxslt.syms	1970-01-01 00:00:00
+@@ -117,7 +117,6 @@ LIBXML2_1.0.11 {
+   xsltTemplateProcess;
+ 
+ # transform
+-  xslHandleDebugger;
+   xsltApplyImports;
+   xsltApplyOneTemplate;
+   xsltApplyStripSpaces;
+@@ -179,8 +178,6 @@ LIBXML2_1.0.11 {
+   xsltParseTemplateContent;
+ 
+ # xsltutils
+-  xslAddCall;
+-  xslDropCall;
+   xsltCalibrateAdjust;
+   xsltDocumentSortFunction;
+   xsltDoSortFunction;
+@@ -193,7 +190,6 @@ LIBXML2_1.0.11 {
+   xsltSaveResultToFilename;
+   xsltSaveResultToFile;
+   xsltSaveResultTo;
+-  xsltSetDebuggerCallbacks;
+   xsltSetGenericDebugFunc;
+   xsltSetGenericErrorFunc;
+   xsltTimestamp;
+@@ -342,7 +338,6 @@ LIBXML2_1.1.0 {
+ 
+ # xsltutils
+   xsltGetDebuggerStatus;
+-  xsltSetDebuggerStatus;
+ } LIBXML2_1.0.33;
+ 
+ LIBXML2_1.1.1 {
