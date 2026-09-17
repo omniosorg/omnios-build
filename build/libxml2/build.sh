@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=libxml2
-VER=2.14.6
+VER=2.15.4
 PKG=library/libxml2
 SUMMARY="XML C parser and toolkit"
 DESC="Portable XML parser and toolkit library"
@@ -26,7 +26,7 @@ DESC="Portable XML parser and toolkit library"
 # 2.14 - Binary compatibility is restricted to versions 2.14 or newer. On ELF
 #        systems, the soname was bumped from libxml2.so.2 to libxml2.so.16.
 #        We continue to ship the last version from before this switch.
-PVERS="2.13.8"
+PVERS="2.13.9"
 
 RUN_DEPENDS_IPS="compress/xz library/zlib"
 
@@ -37,6 +37,7 @@ CONFIGURE_OPTS+="
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
 
+CPPFLAGS+=" -D_REENTRANT"
 CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
 init
