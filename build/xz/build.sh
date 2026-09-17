@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=xz
-VER=5.8.3
+VER=5.8.4
 PKG=compress/xz
 SUMMARY="XZ Utils - general-purpose data compression software"
 DESC="Free general-purpose data compression software with a "
@@ -27,6 +27,9 @@ SKIP_LICENCES=xz
 
 forgo_isaexec
 set_standard XPG6
+
+# No need to link the old libintl as it is these days just a filter to libc
+CONFIGURE_OPTS+=" gt_cv_func_gnugettext1_libc=yes"
 
 post_configure() {
     logcmd gmake -C $TMPDIR/$BUILDDIR/src/liblzma foo
