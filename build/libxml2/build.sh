@@ -19,6 +19,7 @@
 
 PROG=libxml2
 VER=2.15.4
+DASHREV=1
 PKG=library/libxml2
 SUMMARY="XML C parser and toolkit"
 DESC="Portable XML parser and toolkit library"
@@ -37,6 +38,7 @@ CONFIGURE_OPTS+="
 
 TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
 
+CPPFLAGS+=" -D_REENTRANT"
 CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
 init
