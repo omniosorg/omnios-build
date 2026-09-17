@@ -19,7 +19,7 @@
 
 PROG=readline
 VER=8.3
-PATCHLVL=3
+PATCHLVL=6
 PKG=library/readline
 SUMMARY="GNU readline"
 DESC="GNU readline library"

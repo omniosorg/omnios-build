@@ -33,7 +33,7 @@
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
 | editor/vim				| 9.2			| https://www.vim.org/download.php https://github.com/vim/vim
-| file/gnu-coreutils			| 9.11			| https://ftp.gnu.org/gnu/coreutils/
+| file/gnu-coreutils			| 9.12			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.11.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.8.1			| https://github.com/libsigcplusplus/libsigcplusplus/releases https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
 | library/expat				| 2.8.4			| https://github.com/libexpat/libexpat/releases
@@ -61,7 +61,7 @@
 | library/pcre2				| 10.48			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.59			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
-| library/readline8-patchlvl		| 003			| https://ftp.gnu.org/gnu/readline/readline-8.3-patches/
+| library/readline8-patchlvl		| 006			| https://ftp.gnu.org/gnu/readline/readline-8.3-patches/
 | library/security/openssl-3		| 3.6.4			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
 | library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
@@ -86,7 +86,7 @@
 | service/network/ntpsec		| 1.2.5			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
 | service/network/smtp/dma		| 0.14			| https://github.com/corecode/dma/tags
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
-| shell/bash5-patchlvl			| 015			| https://ftp.gnu.org/gnu/bash/bash-5.3-patches
+| shell/bash5-patchlvl			| 020			| https://ftp.gnu.org/gnu/bash/bash-5.3-patches
 | shell/bash5-completions		| 2.18.0		| https://github.com/scop/bash-completion/releases
 | shell/pipe-viewer			| 1.11.0		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
@@ -96,7 +96,7 @@
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/mozilla-nss		| 3.129			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
-| system/library/pcap			| 1.10.7		| http://www.tcpdump.org/#latest-releases
+| system/library/pcap			| 1.11.0		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 26.2			| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
 | system/management/snmp/net-snmp	| 5.9.5.2		| https://github.com/net-snmp/net-snmp/tags
@@ -129,7 +129,7 @@
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 2.1.1			| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.16.0		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-313		| 7.16.1		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 50.0.1		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.19			| https://pypi.org/rss/project/idna/releases.xml
