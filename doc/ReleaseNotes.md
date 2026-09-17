@@ -4,6 +4,45 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056at (2026-09-18)
+Weekly release for w/c 14th of September 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- [vim(1)](https://man.omnios.org/vim) has been updated to version 9.2.1014,
+  fixing
+  [multiple security issues](https://github.com/vim/vim/security/advisories).
+
+- `libxml2` has been updated to version 2.15.4, fixing
+  [multiple security issues](https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.15.4)
+  including out-of-bounds memory accesses and integer overflows in the XML
+  parser.
+
+- `libxslt` has been updated to version 1.1.45, fixing type confusion issues
+  in the XSLT engine which could cause a crash or memory corruption when
+  processing a crafted stylesheet
+  ([CVE-2025-7424](https://www.cve.org/CVERecord?id=CVE-2025-7424) and
+  [CVE-2025-11731](https://www.cve.org/CVERecord?id=CVE-2025-11731)).
+
+- `xz` has been updated to version 5.8.4, fixing a buffer overflow when
+  decoding an index that contains no records
+  ([CVE-2026-34743](https://www.cve.org/CVERecord?id=CVE-2026-34743)) and an
+  invalid memory access in the decoder following a failed memory allocation
+  ([GHSA-5qpq-xqfv-j9pg](https://github.com/tukaani-project/xz/security/advisories/GHSA-5qpq-xqfv-j9pg)).
+
+### Other Changes
+
+- The time zone database has been updated to version 2026d.
+
+- `libxml2` is now built with `-D_REENTRANT` so that it uses the per-thread
+  `errno`. Without this, error codes could be mixed up between threads in a
+  multi-threaded program.
+
+<br>
+
+---
+
 ## r151056as (2026-09-10)
 Weekly release for w/c 7th of September 2026.
 > This update requires a reboot
