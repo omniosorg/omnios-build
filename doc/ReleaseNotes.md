@@ -4,6 +4,60 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054bt (2026-09-18)
+Weekly release for w/c 14th of September 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- [vim(1)](https://man.omnios.org/vim) has been updated to version 9.2.1014,
+  fixing
+  [multiple security issues](https://github.com/vim/vim/security/advisories).
+
+- `libxml2` has been updated to version 2.15.4, fixing
+  [multiple security issues](https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.15.4)
+  including out-of-bounds memory accesses and integer overflows in the XML
+  parser.
+
+- `libxslt` has been updated to version 1.1.45, fixing multiple
+  vulnerabilities in the XSLT engine. These comprise use-after-free issues
+  in the XPath and namespace handling code
+  ([CVE-2024-55549](https://www.cve.org/CVERecord?id=CVE-2024-55549) and
+  [CVE-2025-24855](https://www.cve.org/CVERecord?id=CVE-2025-24855)), and
+  type confusion issues which could cause a crash or memory corruption when
+  processing a crafted stylesheet
+  ([CVE-2025-7424](https://www.cve.org/CVERecord?id=CVE-2025-7424) and
+  [CVE-2025-11731](https://www.cve.org/CVERecord?id=CVE-2025-11731)).
+
+- `xz` has been updated to version 5.8.4, fixing a buffer overflow when
+  decoding an index that contains no records
+  ([CVE-2026-34743](https://www.cve.org/CVERecord?id=CVE-2026-34743)) and an
+  invalid memory access in the decoder following a failed memory allocation
+  ([GHSA-5qpq-xqfv-j9pg](https://github.com/tukaani-project/xz/security/advisories/GHSA-5qpq-xqfv-j9pg)).
+
+### Other Changes
+
+- The time zone database has been updated to version 2026d.
+
+- The default `libxml2` is now from the 2.15 series, which uses the soname
+  `libxml2.so.16` in place of the `libxml2.so.2` used by the 2.13 series.
+  Version 2.13.9 is still delivered in the `library/libxml2` package, so
+  binaries linked with `libxml2.so.2` keep working.
+
+- `libxml2` is now built with `-D_REENTRANT` so that it uses the per-thread
+  `errno`. Without this, error codes could be mixed up between threads in a
+  multi-threaded program.
+
+- `libxslt` no longer provides the XSLT debugger interface or support for
+  loading extension modules as dynamic plugins, matching the upstream
+  defaults since version 1.1.43. The `xslHandleDebugger`, `xslAddCall`,
+  `xslDropCall`, `xsltSetDebuggerCallbacks` and `xsltSetDebuggerStatus`
+  symbols are no longer exported by `libxslt.so.1`.
+
+<br>
+
+---
+
 ## r151054bs (2026-09-10)
 Weekly release for w/c 7th of September 2026.
 > This update requires a reboot
