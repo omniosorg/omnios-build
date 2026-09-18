@@ -14,4 +14,5 @@ license LICENSE.md license=modified-BSD
 
 # From version 2.7, the package sets the permissions of some files to 0700
 <transform file -> set mode 0644>
+<transform file path=usr/bin -> set mode 0755>
 
