@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOSce v11 r151058
 
+## r151058t (2026-09-18)
+Weekly release for w/c 14th of September 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- [vim(1)](https://man.omnios.org/vim) has been updated to version 9.2.1014,
+  fixing
+  [multiple security issues](https://github.com/vim/vim/security/advisories).
+
+- `xz` has been updated to version 5.8.4, fixing an invalid memory access in
+  the decoder following a failed memory allocation
+  ([GHSA-5qpq-xqfv-j9pg](https://github.com/tukaani-project/xz/security/advisories/GHSA-5qpq-xqfv-j9pg)).
+
+### Other Changes
+
+- The time zone database has been updated to version 2026d.
+
+- `libxml2` is now built with `-D_REENTRANT` so that it uses the per-thread
+  `errno`. Without this, error codes could be mixed up between threads in a
+  multi-threaded program.
+
+<br>
+
+---
+
 ## r151058s (2026-09-10)
 Weekly release for w/c 7th of September 2026.
 > This update requires a reboot
