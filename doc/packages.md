@@ -64,7 +64,7 @@
 | library/readline8-patchlvl		| 006			| https://ftp.gnu.org/gnu/readline/readline-8.3-patches/
 | library/security/openssl-3		| 3.6.4			| https://www.openssl.org/source/
 | library/unixodbc			| 2.3.14		| http://www.unixodbc.org/download.html
-| library/xxhash			| 0.8.3			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
+| library/xxhash			| 0.8.4			| https://github.com/Cyan4973/xxHash/releases | Currently used solely by rsync
 | library/zlib				| 1.3.2			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20260724		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20260812		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
