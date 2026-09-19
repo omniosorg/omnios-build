@@ -68,7 +68,7 @@
 | library/zlib				| 1.3.2			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20260724		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20260812		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.20.27		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.20.29		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.5p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.5.0			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
@@ -88,7 +88,7 @@
 | shell/bash				| 5.3			| https://ftp.gnu.org/gnu/bash/
 | shell/bash5-patchlvl			| 020			| https://ftp.gnu.org/gnu/bash/bash-5.3-patches
 | shell/bash5-completions		| 2.18.0		| https://github.com/scop/bash-completion/releases
-| shell/pipe-viewer			| 1.11.0		| http://www.ivarch.com/programs/pv.shtml
+| shell/pipe-viewer			| 1.12.0		| http://www.ivarch.com/programs/pv.shtml
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
@@ -116,7 +116,7 @@
 | text/gnu-patch			| 2.8			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.24.1		| https://ftp.gnu.org/gnu/groff/
-| text/less				| 704			| http://www.greenwoodsoftware.com/less/download.html
+| text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.22.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
 | web/wget2				| 2.2.1			| https://ftp.gnu.org/gnu/wget/
@@ -132,7 +132,7 @@
 | library/python-3/coverage-313		| 7.16.1		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-313	| 50.0.1		| https://pypi.org/rss/project/cryptography/releases.xml
-| library/python-3/idna-313		| 3.19			| https://pypi.org/rss/project/idna/releases.xml
+| library/python-3/idna-313		| 3.20			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
 | library/python-3/jsonrpclib-313	| 1.2.0			| https://github.com/tcalmant/jsonrpclib/releases
 | library/python-3/jsonschema-313	| 4.26.0		| https://pypi.org/rss/project/jsonschema/releases.xml
@@ -143,7 +143,7 @@
 | library/python-3/pip-313		| 26.2.1		| https://pypi.org/rss/project/pip/releases.xml
 | library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
-| library/python-3/pycurl-313		| 7.47.0		| https://pypi.org/rss/project/pycurl/releases.xml
+| library/python-3/pycurl-313		| 7.48.0		| https://pypi.org/rss/project/pycurl/releases.xml
 | library/python-3/pyopenssl-313	| 26.4.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
 | library/python-3/pyrsistent-313	| 0.20.0		| https://pypi.org/rss/project/pyrsistent/releases.xml
 | library/python-3/pyyaml-313		| 6.0.3			| https://pypi.org/rss/project/PyYAML/releases.xml
