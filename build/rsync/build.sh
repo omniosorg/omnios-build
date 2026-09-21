@@ -23,7 +23,7 @@ PKG=network/rsync
 SUMMARY="rsync - faster, flexible replacement for rcp"
 DESC="An open source utility that provides fast incremental file transfer"
 
-XXHASHVER=0.8.3
+XXHASHVER=0.8.4
 XFORM_ARGS+=" -DXXHASH=$XXHASHVER"
 
 set_arch 64
@@ -39,6 +39,7 @@ CONFIGURE_CMD=/bin/true \
     MAKE_INSTALL_ARGS="prefix=$PREFIX" \
     INSTALL=$GNUBIN/install \
     MAKE_ARGS_WS="MOREFLAGS=\"$CTF_CFLAGS\"" \
+    MAKE_INSTALL_ARGS_WS="MOREFLAGS=\"$CTF_CFLAGS\"" \
     build_dependency xxhash xxHash-$XXHASHVER xxhash v$XXHASHVER
 restore_buildenv
 
