@@ -8,9 +8,19 @@
 # source. A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 license COPYING license=GPLv3
 
 <transform path=.*_noinstall -> drop>
+
+# wget2 changes its library ABI on every release, even on minor bumps such as
+# 2.2.0 -> 2.2.1, so we don't currently ship the headers or the .so symlink so
+# that nothing can link against them. That allows us to ship new versions
+# without having to preserve the previous library each time. There are
+# currently no consumers in omnios-build or omnios-extra.
+<transform path=usr/include -> drop>
+<transform link path=usr/lib/.*\.so$ -> drop>
+<transform path=usr/lib/(amd64/)?pkgconfig -> drop>
+<transform path=usr/share/man/man3 -> drop>
 
