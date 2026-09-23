@@ -4,7 +4,7 @@
 | compress/7zip				| 26.03			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.2.0			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
-| compress/gzip				| 1.14			| https://ftp.gnu.org/gnu/gzip/
+| compress/gzip				| 1.15			| https://ftp.gnu.org/gnu/gzip/
 | compress/lz4				| 1.10.0		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.26			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
@@ -70,7 +70,7 @@
 | meta/data/microcode/intel		| 20260812		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
 | network/dns/bind			| 9.20.29		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.5p1		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
-| network/rsync				| 3.5.0			| https://rsync.samba.org/
+| network/rsync				| 3.5.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.1.3		| http://www.dest-unreach.org/socat/download/
 | network/test/iperf			| 3.21			| https://github.com/esnet/iperf/releases
@@ -119,7 +119,7 @@
 | text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.22.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
-| web/wget2				| 2.2.1			| https://ftp.gnu.org/gnu/wget/
+| web/wget2				| 2.3.0			| https://ftp.gnu.org/gnu/wget/
 | library/glib2				| 2.88.3		| https://download.gnome.org/sources/glib/cache.json https://download.gnome.org/sources/glib/ | Odd minor versions are dev/unstable
 | developer/gnu-binutils		| 2.47		| https://ftp.gnu.org/gnu/binutils
 | media/xorriso				| 1.5.8.pl02		| https://www.gnu.org/software/xorriso/

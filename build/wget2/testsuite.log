@@ -27,14 +27,16 @@ SKIP: wget_options_fuzzer
 # ERROR: 0
 FAIL: test
 PASS: test-parse-html
+PASS: test-html-get-urls
 PASS: test-cond
 PASS: test-decompress
+PASS: test-http-parse
 PASS: test-dl
-# TOTAL: 5
-# PASS:  4
+# TOTAL: 7
+# PASS:  6
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  1
 # XPASS: 0
 # ERROR: 0
-ERROR: 1 out of 172184 basic tests failed
+ERROR: 1 out of 172214 basic tests failed
