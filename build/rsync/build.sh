@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=rsync
-VER=3.5.0
+VER=3.5.1
 PKG=network/rsync
 SUMMARY="rsync - faster, flexible replacement for rcp"
 DESC="An open source utility that provides fast incremental file transfer"
@@ -55,6 +55,7 @@ note -n "-- Building $PROG"
 CONFIGURE_OPTS="
     --with-included-popt
     --enable-ipv6
+    --disable-idn
 "
 # Needed so that man pages are correctly installed every time
 REMOVE_PREVIOUS=1
