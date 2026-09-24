@@ -50,7 +50,7 @@
 | library/libffi			| 3.8.0			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
 | library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.53.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.16			| https://download.savannah.gnu.org/releases/lzip/lzlib/
