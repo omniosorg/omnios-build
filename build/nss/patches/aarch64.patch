@@ -6,7 +6,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/fre
  
  /* clang-format off */
 -#if (defined(__aarch64__) || defined(__arm__)) && !defined(TARGET_OS_IPHONE)
-+#if (defined(__aarch64__) || defined(__arm__)) && (!defined(TARGET_OS_IPHONE) && !defined(__sun))
++#if (defined(__aarch64__) || defined(__arm__)) && (!defined(TARGET_OS_IPHONE) && !defined(__illumos__))
  #ifndef __has_include
  #define __has_include(x) 0
  #endif
@@ -15,16 +15,16 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/freebl/blinit.c a/lib/fre
  #endif
  
 -#endif /* defined(__aarch64__) || defined(__arm__) */
-+#endif /* (defined(__aarch64__) || defined(__arm__)) && !defined(__sun) */
++#endif /* (defined(__aarch64__) || defined(__arm__)) && !defined(__illumos__) */
  /* clang-format on */
  
- #if defined(__aarch64__)
+ #if defined(__aarch64__) || defined(_M_ARM64)
 @@ -557,7 +557,7 @@ FreeblInit(void)
  {
  #ifdef NSS_X86_OR_X64
      CheckX86CPUSupport();
--#elif (defined(__aarch64__) || defined(__arm__))
-+#elif (defined(__aarch64__) || defined(__arm__)) && !defined(__sun)
+-#elif (defined(__aarch64__) || defined(__arm__) || defined(_M_ARM64))
++#elif (defined(__aarch64__) || defined(__arm__) || defined(_M_ARM64)) && !defined(__illumos__)
      CheckARMSupport();
  #elif (defined(__powerpc__))
      CheckPPCSupport();
@@ -42,7 +42,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/pk11wrap/pk11hpke.c a/lib
 diff -wpruN --no-dereference '--exclude=*.orig' a~/lib/pk11wrap/pk11pub.h a/lib/pk11wrap/pk11pub.h
 --- a~/lib/pk11wrap/pk11pub.h	1970-01-01 00:00:00
 +++ a/lib/pk11wrap/pk11pub.h	1970-01-01 00:00:00
-@@ -931,12 +931,14 @@ SECStatus PK11_AEADRawOp(PK11Context *co
+@@ -932,12 +932,14 @@ SECStatus PK11_AEADRawOp(PK11Context *co
                           unsigned char *out, int *outlen,
                           int maxout, const unsigned char *in, int inlen);
  /* NSS builds the mechanism specific params */

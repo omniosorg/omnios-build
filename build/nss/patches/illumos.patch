@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
          'libraries': [
            '-lpthread',
          ],
-@@ -293,6 +293,9 @@
+@@ -299,6 +299,9 @@
              'sources': [
                '<(INTERMEDIATE_DIR)/out.>(mapfile)',
              ],
@@ -22,7 +22,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/coreconf/config.gypi a/coreco
              'actions': [{
                'action_name': 'generate_mapfile',
                'inputs': [
-@@ -427,6 +430,11 @@
+@@ -433,6 +436,11 @@
                '-z', 'noexecstack',
              ],
            }],
