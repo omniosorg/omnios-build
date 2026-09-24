@@ -23,7 +23,7 @@ PKG=network/dns/bind
 SUMMARY="BIND DNS tools"
 DESC="Client utilities for DNS lookups"
 
-LIBUVVER=1.52.1
+LIBUVVER=1.53.0
 URCUVER=0.15.6
 XFORM_ARGS+=" -DLIBUV=$LIBUVVER -DURCUVER=$URCUVER"
 
