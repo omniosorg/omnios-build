@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056au (2026-09-24)
+Weekly release for w/c 21st of September 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- [gzip(1)](https://man.omnios.org/gzip) has been updated to version 1.15,
+  fixing an out-of-bounds read -
+  ([CVE-2026-41992](https://www.cve.org/CVERecord?id=CVE-2026-41992)).
+
+### Other Changes
+
+- [rsync(1)](https://man.omnios.org/rsync) has been updated to version 3.5.1,
+  fixing several path handling regressions from 3.5.0. See the
+  [upstream release notes](https://download.samba.org/pub/rsync/NEWS#3.5.1)
+  for the full list of changes.
+
+<br>
+
+---
+
 ## r151056at (2026-09-18)
 Weekly release for w/c 14th of September 2026.
 > This is a non-reboot update
