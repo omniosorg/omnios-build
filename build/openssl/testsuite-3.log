@@ -20,6 +20,7 @@ Result: NOTESTS
 02-test_mem_alloc_custom_fns.t ........... ok
 02-test_ordinals.t ....................... ok
 02-test_priority_queue.t ................. ok
+02-test_rbtree.t ......................... ok
 02-test_sparse_array.t ................... ok
 02-test_stack.t .......................... ok
 02-test_strtoul.t ........................ ok
@@ -357,5 +358,5 @@ Result: NOTESTS
 99-test_fuzz_v3name.t .................... ok
 99-test_fuzz_x509.t ...................... ok
 All tests successful.
-Files=355, Tests=4543, 
+Files=356, Tests=4551, 
 Result: PASS
