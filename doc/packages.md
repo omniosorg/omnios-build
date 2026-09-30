@@ -36,7 +36,7 @@
 | file/gnu-coreutils			| 9.12			| https://ftp.gnu.org/gnu/coreutils/
 | file/gnu-findutils			| 4.11.0		| https://ftp.gnu.org/pub/gnu/findutils/
 | library/c++/sigcpp			| 3.8.1			| https://github.com/libsigcplusplus/libsigcplusplus/releases https://github.com/libsigcplusplus/libsigcplusplus/blob/master/NEWS
-| library/expat				| 2.8.4			| https://github.com/libexpat/libexpat/releases
+| library/expat				| 2.8.5			| https://github.com/libexpat/libexpat/releases
 | library/estr				| 0.1.11		| https://github.com/rsyslog/libestr/tags | Currently used solely by rsyslog
 | library/fastjson			| 1.2609.0		| https://github.com/rsyslog/libfastjson/tags | Currently used solely by rsyslog
 | library/yaml				| 0.2.5			| https://github.com/yaml/libyaml/tags | Currently used solely by rsyslog
@@ -50,7 +50,7 @@
 | library/libffi			| 3.8.0			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
 | library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
-| library/libuv				| 1.52.1		| https://github.com/libuv/libuv/releases | Currently used solely by bind
+| library/libuv				| 1.53.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
 | library/libxml2			| 2.15.4		| https://github.com/GNOME/libxml2/tags http://xmlsoft.org/news.html
 | library/libxslt			| 1.1.45		| https://gitlab.gnome.org/api/v4/projects/GNOME%2Flibxslt/releases https://gitlab.gnome.org/GNOME/libxslt/-/releases
 | library/lzlib				| 1.16			| https://download.savannah.gnu.org/releases/lzip/lzlib/
@@ -95,7 +95,7 @@
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.129			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.130			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.11.0		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 26.2			| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -105,7 +105,7 @@
 | system/pkgtree			| 1.1			| https://github.com/quattor/pkgtree/tags
 | system/rsyslog			| 8.2608.0		| https://www.rsyslog.com/downloads/download-v8-stable/
 | system/test/epolltest			| 20240808		| https://github.com/omniosorg/epoll-test-suite/releases
-| system/test/fio			| 3.42			| https://github.com/axboe/fio/tags
+| system/test/fio			| 3.43			| https://github.com/axboe/fio/tags
 | system/watch				| 4.0.7			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 5.0.2			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.7c			| https://github.com/tmux/tmux/releases http://tmux.github.io/
@@ -138,10 +138,10 @@
 | library/python-3/jsonschema-313	| 4.26.0		| https://pypi.org/rss/project/jsonschema/releases.xml
 | library/python-3/jsonschema-specifications-313| 2025.9.1	| https://pypi.org/rss/project/jsonschema-specifications/releases.xml
 | library/python-3/maturin-313		| 1.15.0		| https://pypi.org/rss/project/maturin/releases.xml
-| library/python-3/meson-313		| 1.12.0		| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
+| library/python-3/meson-313		| 1.12.1		| https://github.com/mesonbuild/meson/releases https://mesonbuild.com/
 | library/python-3/packaging-313	| 26.3			| https://pypi.org/rss/project/packaging/releases.xml
 | library/python-3/pip-313		| 26.2.1		| https://pypi.org/rss/project/pip/releases.xml
-| library/python-3/pycodestyle-313	| 2.14.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
+| library/python-3/pycodestyle-313	| 2.15.0		| https://pypi.org/rss/project/pycodestyle/releases.xml
 | library/python-3/pycparser-313	| 3.0			| https://pypi.org/rss/project/pycparser/releases.xml
 | library/python-3/pycurl-313		| 7.48.0		| https://pypi.org/rss/project/pycurl/releases.xml
 | library/python-3/pyopenssl-313	| 26.4.0		| https://pypi.org/rss/project/pyOpenSSL/releases.xml
