@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054bv (2026-10-02)
+Weekly release for w/c 28th of September 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- `expat` has been updated to version 2.8.5, fixing a UTF-16 decoding flaw in
+  the XML parser which could allow malformed input to reach the application
+  ([CVE-2026-93990](https://www.cve.org/CVERecord?id=CVE-2026-93990)).
+
+- `OpenSSL` has been updated to version 3.5.9, fixing
+  [multiple vulnerabilities](https://openssl-library.org/news/vulnerabilities/)
+  including a heap memory disclosure in DTLS handshake retransmission
+  ([CVE-2026-84782](https://www.cve.org/CVERecord?id=CVE-2026-84782)).
+
+<br>
+
+---
+
 ## r151054bu (2026-09-24)
 Weekly release for w/c 21st of September 2026.
 > This is a non-reboot update
