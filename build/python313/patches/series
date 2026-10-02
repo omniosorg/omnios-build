@@ -29,6 +29,7 @@ test-metadata.patch
 test-opts.patch
 test-pkgutil.patch
 test-processgroup.patch
+test-socket-locale.patch
 test-tarfile.patch
 revert-makedirs.patch
 #
