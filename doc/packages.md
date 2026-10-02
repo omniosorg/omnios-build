@@ -115,7 +115,7 @@
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.8			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
-| text/groff				| 1.24.1		| https://ftp.gnu.org/gnu/groff/
+| text/groff				| 1.24.2		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.22.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
