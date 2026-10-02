@@ -4,6 +4,49 @@
 
 # Release Notes for OmniOSce v11 r151058
 
+## r151058w (2026-10-07)
+Weekly release for w/c 05th of October 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- Fixed two issues in the [inotify(7)](https://man.omnios.org/inotify)
+  facility which could reveal the timing of another user's file activity.
+  Adding a watch now requires a descriptor that is open for reading, and
+  reads and writes on a FIFO no longer generate events.
+
+- `pcre2` has been updated to version 10.49, fixing
+  [multiple security issues](https://github.com/PCRE2Project/pcre2/blob/pcre2-10.49/ChangeLog)
+  including an out-of-bounds write when using a growable JIT stack
+  ([CVE-2026-103111](https://www.cve.org/CVERecord?id=CVE-2026-103111)).
+
+- [iperf3(1)](https://man.omnios.org/iperf3) has been updated to version
+  3.22, fixing
+  [multiple vulnerabilities](https://github.com/esnet/iperf/blob/3.22/RELNOTES.md)
+  including a remote use-after-free in the server and a heap buffer
+  overflow in authentication
+  ([CVE-2026-101283](https://www.cve.org/CVERecord?id=CVE-2026-101283) and
+  [CVE-2026-101276](https://www.cve.org/CVERecord?id=CVE-2026-101276)).
+
+- `Python` has been updated to version 3.13.16, fixing
+  [multiple security issues](https://docs.python.org/release/3.13.16/whatsnew/changelog.html)
+  including a flaw in the `tarfile` extraction filters which could allow a
+  crafted archive to modify files outside the destination directory
+  ([CVE-2026-82049](https://www.cve.org/CVERecord?id=CVE-2026-82049)).
+
+- [groff(1)](https://man.omnios.org/man1/groff) has been updated to version
+  1.24.2, fixing command injection vulnerabilities in `mmroff`, `pdfmom`
+  and `pre-grohtml` which could allow malicious input to escape the
+  formatter's safer mode.
+
+### Other Changes
+
+- The time zone database has been updated to version 2026e.
+
+<br>
+
+---
+
 ## r151058v (2026-10-02)
 Weekly release for w/c 28th of September 2026.
 > This is a non-reboot update
