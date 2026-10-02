@@ -4,6 +4,66 @@
 
 # Release Notes for OmniOSce v11 r151054
 
+## r151054bw (2026-10-07)
+Weekly release for w/c 05th of October 2026.
+> This update requires a reboot
+
+### Security Fixes
+
+- Fixed a flaw in the bhyve instruction emulator which allowed a privileged
+  user in a guest to panic the host by issuing a `REP MOVS` or `REP STOS`
+  instruction against the local APIC
+  ([CVE-2026-102916](https://www.cve.org/CVERecord?id=CVE-2026-102916)).
+
+- Fixed several vulnerabilities in system daemons whose doors are accessible
+  to unprivileged local users. A local user could exhaust kernel memory by
+  repeatedly passing file descriptors to `nscd`
+  ([CVE-2026-104112](https://www.cve.org/CVERecord?id=CVE-2026-104112)),
+  crash `ipmgmtd`, `nwamd` or `reparsed`
+  ([CVE-2026-104113](https://www.cve.org/CVERecord?id=CVE-2026-104113),
+  [CVE-2026-104114](https://www.cve.org/CVERecord?id=CVE-2026-104114) and
+  [CVE-2026-104115](https://www.cve.org/CVERecord?id=CVE-2026-104115)),
+  change the persistent IPMP configuration through `ipmgmtd`
+  ([CVE-2026-104117](https://www.cve.org/CVERecord?id=CVE-2026-104117)),
+  or disrupt `zonestat` in other zones and discover which zones are running
+  ([CVE-2026-104116](https://www.cve.org/CVERecord?id=CVE-2026-104116)).
+
+- Fixed two issues in the [inotify(7)](https://man.omnios.org/inotify)
+  facility which could reveal the timing of another user's file activity.
+  Adding a watch now requires a descriptor that is open for reading, and
+  reads and writes on a FIFO no longer generate events.
+
+- Fixed a kernel panic due to a stack overflow in the event that too many
+  inotify watches were placed on the same vnode.
+
+- `pcre2` has been updated to version 10.49, fixing
+  [multiple security issues](https://github.com/PCRE2Project/pcre2/blob/pcre2-10.49/ChangeLog)
+  including a read past the end of a buffer during matching
+  ([CVE-2025-58050](https://www.cve.org/CVERecord?id=CVE-2025-58050)).
+
+- [iperf3(1)](https://man.omnios.org/iperf3) has been updated to version
+  3.22, fixing
+  [multiple vulnerabilities](https://github.com/esnet/iperf/blob/3.22/RELNOTES.md)
+  including a remote use-after-free in the server and heap buffer overflows
+  in authentication
+  ([CVE-2026-101283](https://www.cve.org/CVERecord?id=CVE-2026-101283),
+  [CVE-2026-101276](https://www.cve.org/CVERecord?id=CVE-2026-101276) and
+  [CVE-2025-54349](https://www.cve.org/CVERecord?id=CVE-2025-54349)).
+
+- `Python` has been updated to version 3.13.16, fixing
+  [multiple security issues](https://docs.python.org/release/3.13.16/whatsnew/changelog.html)
+  including a flaw in the `tarfile` extraction filters which could allow a
+  crafted archive to modify files outside the destination directory
+  ([CVE-2026-82049](https://www.cve.org/CVERecord?id=CVE-2026-82049)).
+
+### Other Changes
+
+- The time zone database has been updated to version 2026e.
+
+<br>
+
+---
+
 ## r151054bv (2026-10-02)
 Weekly release for w/c 28th of September 2026.
 > This is a non-reboot update
