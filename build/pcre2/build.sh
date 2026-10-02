@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=pcre2
-VER=10.45
+VER=10.49
 PKG=library/pcre2
 SUMMARY="Perl-Compatible Regular Expressions, version 2"
 DESC="The PCRE library is a set of functions that implement regular expression"
