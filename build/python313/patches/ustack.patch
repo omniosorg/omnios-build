@@ -1,4 +1,4 @@
-From 91e13cc2104fc0dae396d59341ee8f23de2c3db5 Mon Sep 17 00:00:00 2001
+From 40685b6058b1994998a24b0b1e3b797417d13ac4 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Sat, 2 Mar 2024 17:38:00 +0000
 Subject: [PATCH] Python: Add dtrace ustack helper
@@ -42,7 +42,7 @@ https://movementarian.org/blog/posts/2007-05-24-python-and-dtrace-in-build-65
 
 diff --git a/Include/dtrace.cpp.sh b/Include/dtrace.cpp.sh
 new file mode 100755
-index 0000000000..9a3fc3eed2
+index 0000000..9a3fc3e
 --- /dev/null
 +++ b/Include/dtrace.cpp.sh
 @@ -0,0 +1,33 @@
@@ -80,7 +80,7 @@ index 0000000000..9a3fc3eed2
 +' | tee dtrace.out >> $op
 +
 diff --git a/Include/pydtrace.d b/Include/pydtrace.d
-index 5e6a626b01..b45f5bb8c0 100644
+index 5e6a626..b45f5bb 100644
 --- a/Include/pydtrace.d
 +++ b/Include/pydtrace.d
 @@ -20,3 +20,152 @@ provider python {
@@ -237,7 +237,7 @@ index 5e6a626b01..b45f5bb8c0 100644
 +#endif  /* PYDTRACE_STACK_HELPER */
 +
 diff --git a/Include/pydtrace.h b/Include/pydtrace.h
-index e197d36694..35f01f7ddc 100644
+index e197d36..35f01f7 100644
 --- a/Include/pydtrace.h
 +++ b/Include/pydtrace.h
 @@ -25,18 +25,18 @@ extern "C" {
@@ -267,7 +267,7 @@ index e197d36694..35f01f7ddc 100644
  static inline int PyDTrace_FUNCTION_ENTRY_ENABLED(void) { return 0; }
 diff --git a/Include/pydtrace_offsets.c b/Include/pydtrace_offsets.c
 new file mode 100644
-index 0000000000..8cad556c84
+index 0000000..8cad556
 --- /dev/null
 +++ b/Include/pydtrace_offsets.c
 @@ -0,0 +1,34 @@
@@ -307,7 +307,7 @@ index 0000000000..8cad556c84
 +
 diff --git a/Include/pydtrace_symbols.sh b/Include/pydtrace_symbols.sh
 new file mode 100755
-index 0000000000..5672c2bb18
+index 0000000..5672c2b
 --- /dev/null
 +++ b/Include/pydtrace_symbols.sh
 @@ -0,0 +1,15 @@
@@ -328,7 +328,7 @@ index 0000000000..5672c2bb18
 +
 diff --git a/Lib/test/dtracedata/jstack.d b/Lib/test/dtracedata/jstack.d
 new file mode 100644
-index 0000000000..46855b407c
+index 0000000..46855b4
 --- /dev/null
 +++ b/Lib/test/dtracedata/jstack.d
 @@ -0,0 +1,18 @@
@@ -352,7 +352,7 @@ index 0000000000..46855b407c
 +
 diff --git a/Lib/test/dtracedata/jstack.d.expected b/Lib/test/dtracedata/jstack.d.expected
 new file mode 100644
-index 0000000000..9f1f389df7
+index 0000000..9f1f389
 --- /dev/null
 +++ b/Lib/test/dtracedata/jstack.d.expected
 @@ -0,0 +1,21 @@
@@ -380,7 +380,7 @@ index 0000000000..9f1f389df7
 \ No newline at end of file
 diff --git a/Lib/test/dtracedata/jstack.py b/Lib/test/dtracedata/jstack.py
 new file mode 100644
-index 0000000000..a1584ddf6f
+index 0000000..a1584dd
 --- /dev/null
 +++ b/Lib/test/dtracedata/jstack.py
 @@ -0,0 +1,25 @@
@@ -411,7 +411,7 @@ index 0000000000..a1584ddf6f
 +
 diff --git a/Lib/test/dtracedata/unicode-jstack.d b/Lib/test/dtracedata/unicode-jstack.d
 new file mode 100644
-index 0000000000..c50a8d6785
+index 0000000..c50a8d6
 --- /dev/null
 +++ b/Lib/test/dtracedata/unicode-jstack.d
 @@ -0,0 +1,18 @@
@@ -435,7 +435,7 @@ index 0000000000..c50a8d6785
 +
 diff --git a/Lib/test/dtracedata/unicode-jstack.d.expected b/Lib/test/dtracedata/unicode-jstack.d.expected
 new file mode 100644
-index 0000000000..9e71506738
+index 0000000..9e71506
 --- /dev/null
 +++ b/Lib/test/dtracedata/unicode-jstack.d.expected
 @@ -0,0 +1,18 @@
@@ -459,7 +459,7 @@ index 0000000000..9e71506738
 +
 diff --git a/Lib/test/dtracedata/unicode-jstack.py b/Lib/test/dtracedata/unicode-jstack.py
 new file mode 100644
-index 0000000000..d93e3d76b9
+index 0000000..d93e3d7
 --- /dev/null
 +++ b/Lib/test/dtracedata/unicode-jstack.py
 @@ -0,0 +1,15 @@
@@ -479,10 +479,10 @@ index 0000000000..d93e3d76b9
 +test_unicode_stack()
 +
 diff --git a/Lib/test/test_dtrace.py b/Lib/test/test_dtrace.py
-index 6f4c2313dd..fb8ba69209 100644
+index d8628c8..caa95a0 100644
 --- a/Lib/test/test_dtrace.py
 +++ b/Lib/test/test_dtrace.py
-@@ -154,6 +154,37 @@ def test_gc(self):
+@@ -160,6 +160,37 @@ class TraceTests:
      def test_line(self):
          self.run_case("line")
  
@@ -521,15 +521,15 @@ index 6f4c2313dd..fb8ba69209 100644
  class DTraceNormalTests(TraceTests, unittest.TestCase):
      backend = DTraceBackend()
 diff --git a/Makefile.pre.in b/Makefile.pre.in
-index dd5e69f7ab..81e738cf9d 100644
+index 2363b99..5df5f3f 100644
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1572,17 +1572,46 @@ Python/frozen.o: $(FROZEN_FILES_OUT)
+@@ -2010,17 +2010,46 @@ Python/frozen.o: $(FROZEN_FILES_OUT)
  # an include guard, so we can't use a pipeline to transform its output.
  Include/pydtrace_probes.h: $(srcdir)/Include/pydtrace.d
  	$(MKDIR_P) Include
--	$(DTRACE) $(DFLAGS) -o $@ -h -s $<
-+	$(DTRACE) $(DFLAGS) -C -o $@ -h -s $<
+-	CC="$(CC)" CFLAGS="$(CFLAGS)" $(DTRACE) $(DFLAGS) -o $@ -h -s $(srcdir)/Include/pydtrace.d
++	CC="$(CC)" CFLAGS="$(CFLAGS)" $(DTRACE) $(DFLAGS) -C -o $@ -h -s $(srcdir)/Include/pydtrace.d
  	: sed in-place edit with POSIX-only tools
  	sed 's/PYTHON_/PyDTrace_/' $@ > $@.tmp
  	mv $@.tmp $@
@@ -560,33 +560,33 @@ index dd5e69f7ab..81e738cf9d 100644
 +	rm -f Include/pydtrace_symbols.h
 +
  Python/ceval.o: $(srcdir)/Include/pydtrace.h
+ Python/gc.o: $(srcdir)/Include/pydtrace.h
  Python/import.o: $(srcdir)/Include/pydtrace.h
- Modules/gcmodule.o: $(srcdir)/Include/pydtrace.h
  
 +Python/pydtrace.o: Include/dtrace.cpp
 +Python/pydtrace.o: Include/pydtrace_offsets.h Include/pydtrace_symbols.h
  Python/pydtrace.o: $(srcdir)/Include/pydtrace.d $(DTRACE_DEPS)
--	$(DTRACE) $(DFLAGS) -o $@ -G -s $< $(DTRACE_DEPS)
-+	$(DTRACE) $(DFLAGS) -DPYDTRACE_STACK_HELPER $(PY_CPPFLAGS) \
+-	CC="$(CC)" CFLAGS="$(CFLAGS)" $(DTRACE) $(DFLAGS) -o $@ -G -s $(srcdir)/Include/pydtrace.d $(DTRACE_DEPS)
++	CC="$(CC)" CFLAGS="$(CFLAGS)" $(DTRACE) $(DFLAGS) -DPYDTRACE_STACK_HELPER $(PY_CPPFLAGS) \
 +	    -C -xcpppath=./Include/dtrace.cpp \
-+	    -o $@ -G -s $< $(DTRACE_DEPS)
++	    -o $@ -G -s $(srcdir)/Include/pydtrace.d $(DTRACE_DEPS)
  
  Objects/typeobject.o: Objects/typeslots.inc
  
-@@ -2681,7 +2710,7 @@ profile-removal:
- 	rm -f profile-bolt-stamp
+@@ -3009,7 +3038,7 @@ clean-jit-stencils:
+ 	-rm -f jit_stencils*.h
  
  .PHONY: clean
--clean: clean-retain-profile clean-bolt
-+clean: clean-retain-profile clean-bolt clean-dtrace
- 	@if test @DEF_MAKE_ALL_RULE@ = profile-opt -o @DEF_MAKE_ALL_RULE@ = bolt-opt; then \
- 		rm -f profile-gen-stamp profile-clean-stamp; \
- 		$(MAKE) profile-removal; \
+-clean: clean-profile clean-jit-stencils
++clean: clean-profile clean-jit-stencils clean-dtrace
+ 
+ .PHONY: clobber
+ clobber: clean
 diff --git a/Python/ceval.c b/Python/ceval.c
-index b44ad31929..5fe0193f62 100644
+index aadfb8a..cfd55f5 100644
 --- a/Python/ceval.c
 +++ b/Python/ceval.c
-@@ -657,7 +657,13 @@ static inline void _Py_LeaveRecursiveCallPy(PyThreadState *tstate)  {
+@@ -746,7 +746,13 @@ extern void _PyUOpPrint(const _PyUOpInstruction *uop);
  #define PY_EVAL_C_STACK_UNITS 2
  
  PyObject* _Py_HOT_FUNCTION
@@ -600,7 +600,7 @@ index b44ad31929..5fe0193f62 100644
  {
      _Py_EnsureTstateNotNULL(tstate);
      CALL_STAT_INC(pyeval_calls);
-@@ -1028,6 +1034,29 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, _PyInterpreterFrame *frame, int
+@@ -1196,6 +1202,29 @@ exit_to_trace:
  #  pragma warning(pop)
  #endif
  
@@ -631,10 +631,10 @@ index b44ad31929..5fe0193f62 100644
  format_missing(PyThreadState *tstate, const char *kind,
                 PyCodeObject *co, PyObject *names, PyObject *qualname)
 diff --git a/Python/import.c b/Python/import.c
-index db70909982..c3faef09f5 100644
+index 44d0e54..fac8caf 100644
 --- a/Python/import.c
 +++ b/Python/import.c
-@@ -2774,13 +2774,13 @@ import_find_and_load(PyThreadState *tstate, PyObject *abs_name)
+@@ -3734,13 +3734,13 @@ import_find_and_load(PyThreadState *tstate, PyObject *abs_name)
      }
  
      if (PyDTrace_IMPORT_FIND_LOAD_START_ENABLED())
@@ -651,10 +651,10 @@ index db70909982..c3faef09f5 100644
  
      if (import_time) {
 diff --git a/Python/sysmodule.c b/Python/sysmodule.c
-index 7874920a16..d0ff239743 100644
+index f3132f3..b82b675 100644
 --- a/Python/sysmodule.c
 +++ b/Python/sysmodule.c
-@@ -237,7 +237,7 @@ sys_audit_tstate(PyThreadState *ts, const char *event,
+@@ -313,7 +313,7 @@ sys_audit_tstate(PyThreadState *ts, const char *event,
  
      /* Dtrace USDT point */
      if (dtrace) {
@@ -664,5 +664,5 @@ index 7874920a16..d0ff239743 100644
  
      /* Call interpreter hooks */
 -- 
-2.42.0
+2.50.1 (Apple Git-155)
 
