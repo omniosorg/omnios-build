@@ -17,8 +17,7 @@
 . ../../lib/build.sh
 
 PROG=pcre2
-VER=10.47
-DASHREV=1
+VER=10.49
 PKG=library/pcre2
 SUMMARY="Perl-Compatible Regular Expressions, version 2"
 DESC="The PCRE library is a set of functions that implement regular expression"

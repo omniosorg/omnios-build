@@ -17,6 +17,6 @@
 
 446 tests OK.
 
-Total tests: run=45,070 (filtered) skipped=2,063
-Total test files: run=476/481 (filtered) skipped=28 resource_denied=7
+Total tests: run=46,146 (filtered) skipped=2,147
+Total test files: run=474/481 (filtered) skipped=28 resource_denied=7
 Result: SUCCESS

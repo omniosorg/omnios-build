@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=groff
-VER=1.24.1
+VER=1.24.2
 PKG=text/groff
 SUMMARY="GNU troff"
 DESC="GNU Troff typesetting package"
@@ -38,7 +38,7 @@ export MAKE
 
 function post_install {
     # groff installs a dangling symlink that we must remove before packaging
-    logcmd $RM -f $DESTDIR/usr/share/doc/groff-1.24.1/pdf/mom-pdf.pdf
+    logcmd $RM -f $DESTDIR/usr/share/doc/groff-$VER/pdf/mom-pdf.pdf
 
 }
 
