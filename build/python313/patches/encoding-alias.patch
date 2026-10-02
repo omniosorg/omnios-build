@@ -4,7 +4,7 @@ but the suitability (or lack thereof) has not yet been determined.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Lib/encodings/aliases.py
 --- a~/Lib/encodings/aliases.py	1970-01-01 00:00:00
 +++ a/Lib/encodings/aliases.py	1970-01-01 00:00:00
-@@ -79,6 +79,7 @@ aliases = {
+@@ -83,6 +83,7 @@ aliases = {
  
      # cp1251 codec
      '1251'               : 'cp1251',
@@ -12,7 +12,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Li
      'windows_1251'       : 'cp1251',
  
      # cp1252 codec
-@@ -234,6 +235,7 @@ aliases = {
+@@ -242,6 +243,7 @@ aliases = {
      'u_jis'              : 'euc_jp',
  
      # euc_kr codec
@@ -20,7 +20,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Li
      'euckr'              : 'euc_kr',
      'korean'             : 'euc_kr',
      'ksc5601'            : 'euc_kr',
-@@ -484,6 +486,7 @@ aliases = {
+@@ -492,6 +494,7 @@ aliases = {
      'shiftjis'           : 'shift_jis',
      'sjis'               : 'shift_jis',
      's_jis'              : 'shift_jis',
@@ -28,7 +28,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/encodings/aliases.py a/Li
  
      # shift_jis_2004 codec
      'shiftjis2004'       : 'shift_jis_2004',
-@@ -500,6 +503,7 @@ aliases = {
+@@ -508,6 +511,7 @@ aliases = {
      'tis_620_0'          : 'tis_620',
      'tis_620_2529_0'     : 'tis_620',
      'tis_620_2529_1'     : 'tis_620',
