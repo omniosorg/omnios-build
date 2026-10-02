@@ -27,7 +27,7 @@
 *** t0013-sha1dc.sh ***
 # passed all 1 test(s)
 *** t0014-alias.sh ***
-# passed all 23 test(s)
+# passed all 24 test(s)
 *** t0017-env-helper.sh ***
 # passed all 5 test(s)
 *** t0018-advice.sh ***
@@ -63,9 +63,9 @@
 *** t0035-safe-bare-repository.sh ***
 # passed all 13 test(s)
 *** t0040-parse-options.sh ***
-# passed all 94 test(s)
+# passed all 95 test(s)
 *** t0041-usage.sh ***
-# passed all 16 test(s)
+# passed all 17 test(s)
 *** t0050-filesystem.sh ***
 # passed all 13 test(s)
 *** t0051-windows-named-pipe.sh ***
@@ -76,7 +76,7 @@
 *** t0056-git-C.sh ***
 # passed all 11 test(s)
 *** t0060-path-utils.sh ***
-# passed all 219 test(s)
+# passed all 220 test(s)
 *** t0061-run-command.sh ***
 # passed all 24 test(s)
 *** t0062-revision-walking.sh ***
@@ -101,6 +101,8 @@
 # passed all 13 test(s)
 *** t0092-diagnose.sh ***
 # passed all 4 test(s)
+*** t0093-verify-cache-df-gap.sh ***
+# passed all 3 test(s)
 *** t0095-bloom.sh ***
 # passed all 11 test(s)
 *** t0100-previous.sh ***
@@ -135,10 +137,10 @@ not ok 5 - gettext: Fetching a UTF-8 msgid -> UTF-8
 not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 #	
 #	    LANGUAGE=is LC_ALL="$is_IS_iso_locale" gettext "TEST: ‘single’ and “double” quotes" >actual &&
-#	    grep "einfaldar" actual &&
-#	    grep "$(echo tvöfaldar | iconv -f UTF-8 -t ISO8859-1)" actual
+#	    test_grep "einfaldar" actual &&
+#	    test_grep "$(echo tvöfaldar | iconv -f UTF-8 -t ISO8859-1)" actual
 #	
 # failed 2 among 8 test(s)
-make[2]: *** [Makefile:82: t0204-gettext-reencode-sanity.sh] Error 1
-make[1]: *** [Makefile:63: test] Error 2
-make: *** [Makefile:3381: test] Error 2
+make[2]: *** [Makefile:86: t0204-gettext-reencode-sanity.sh] Error 1
+make[1]: *** [Makefile:67: test] Error 2
+make: *** [Makefile:3424: test] Error 2

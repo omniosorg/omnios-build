@@ -26,7 +26,7 @@
 . ../../lib/build.sh
 
 PROG=iperf
-VER=3.21
+VER=3.22
 PKG=network/test/iperf
 SUMMARY="iperf network testing tool"
 DESC="A tool for active measurements of the maximum achievable bandwidth on "

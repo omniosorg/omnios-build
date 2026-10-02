@@ -28,7 +28,7 @@
 | developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.55.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.56.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 7.2.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -58,7 +58,7 @@
 | library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.70.0		| https://github.com/nghttp2/nghttp2/releases
 | library/nspr				| 4.40			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
-| library/pcre2				| 10.48			| https://github.com/PhilipHazel/pcre2/releases
+| library/pcre2				| 10.49			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.59			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
 | library/readline8-patchlvl		| 006			| https://ftp.gnu.org/gnu/readline/readline-8.3-patches/
@@ -73,14 +73,14 @@
 | network/rsync				| 3.5.1			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.1.3		| http://www.dest-unreach.org/socat/download/
-| network/test/iperf			| 3.21			| https://github.com/esnet/iperf/releases
+| network/test/iperf			| 3.22			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.32.1+1		| https://github.com/openjdk/jdk11u/tags
 | runtime/java/openjdk17		| 17.0.20.1+1		| https://github.com/openjdk/jdk17u/tags
 | runtime/java/openjdk21		| 21.0.12.1+1		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.504-01		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
-| runtime/python-313			| 3.13.15		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.16		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.17p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.9			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.5			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
@@ -94,7 +94,7 @@
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
-| system/library/libdbus-glib		| 0.114			| https://dbus.freedesktop.org/releases/dbus-glib/
+| system/library/libdbus-glib		| 0.116			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/mozilla-nss		| 3.130			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.11.0		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 26.2			| https://github.com/canonical/cloud-init/releases
@@ -115,7 +115,7 @@
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.8			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
-| text/groff				| 1.24.1		| https://ftp.gnu.org/gnu/groff/
+| text/groff				| 1.24.2		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.22.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/
@@ -129,9 +129,9 @@
 | library/python-3/asn1crypto-313	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-313		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-313		| 2.1.1			| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-313		| 7.16.1		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-313		| 7.16.2		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-313		| 1.6.1			| https://pypi.org/rss/project/crossenv/releases.xml
-| library/python-3/cryptography-313	| 50.0.1		| https://pypi.org/rss/project/cryptography/releases.xml
+| library/python-3/cryptography-313	| 50.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-313		| 3.20			| https://pypi.org/rss/project/idna/releases.xml
 | library/python-3/js-regex-313		| 1.0.1			| https://pypi.org/rss/project/js-regex/releases.xml
 | library/python-3/jsonrpclib-313	| 1.2.0			| https://github.com/tcalmant/jsonrpclib/releases
