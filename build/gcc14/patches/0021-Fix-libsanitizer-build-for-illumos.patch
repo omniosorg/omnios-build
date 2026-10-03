@@ -8,7 +8,7 @@ Subject: Fix libsanitizer build for illumos
  1 file changed, 11 insertions(+)
 
 diff --git a/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h b/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
-index 84a81265162c..f9c9b84dcadd 100644
+index 84a81265162..f9c9b84dcad 100644
 --- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
 +++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_solaris.h
 @@ -19,6 +19,9 @@

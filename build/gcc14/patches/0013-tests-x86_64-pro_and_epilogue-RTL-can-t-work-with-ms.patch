@@ -14,7 +14,7 @@ adjustments think there are saved parameters where there are not.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c b/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
-index b6f723a6e602..ed5db9cace3b 100644
+index b6f723a6e60..ed5db9cace3 100644
 --- a/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
 +++ b/gcc/testsuite/gcc.dg/rtl/x86_64/pro_and_epilogue.c
 @@ -1,5 +1,6 @@
