@@ -10,7 +10,7 @@ argument registers are untouched, so saving them will ruin that.
  1 file changed, 1 insertion(+)
 
 diff --git a/gcc/testsuite/gcc.target/i386/retarg.c b/gcc/testsuite/gcc.target/i386/retarg.c
-index a69b60feaf4e..3967ef76b1f2 100644
+index a69b60feaf4..3967ef76b1f 100644
 --- a/gcc/testsuite/gcc.target/i386/retarg.c
 +++ b/gcc/testsuite/gcc.target/i386/retarg.c
 @@ -1,5 +1,6 @@

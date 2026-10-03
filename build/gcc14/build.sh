@@ -21,6 +21,7 @@
 PKG=developer/gcc14
 PROG=gcc
 VER=14.3.0
+DASHREV=1
 ILVER=il-1
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"

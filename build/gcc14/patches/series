@@ -35,4 +35,5 @@
 0036-Avoid-undefined-symbols-when-using-the-dragonfly-loc.patch
 0037-Handle-a-few-cases-where-fields-in-struct-lconv-may-.patch
 0038-Let-enable-clocale-dragonfly-work-as-a-configure-opt.patch
-0039-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0039-fix-ctype-char-ctype-to-initialize-locale-pointer.patch
+0040-OOCE-Adjust-default-library-paths-for-OmniOS.patch

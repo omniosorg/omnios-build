@@ -10,7 +10,7 @@ From Jonathan Perkin's patch in pkgsrc-extra
  1 file changed, 60 insertions(+)
 
 diff --git a/libstdc++-v3/config/locale/dragonfly/ctype_members.cc b/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
-index 92b0e437ad33..8e20f74e6355 100644
+index 92b0e437ad3..8e20f74e635 100644
 --- a/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
 +++ b/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
 @@ -135,6 +135,66 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION

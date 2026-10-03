@@ -37,4 +37,5 @@
 0038-Handle-a-few-cases-where-fields-in-struct-lconv-may-.patch
 0039-Let-enable-clocale-dragonfly-work-as-a-configure-opt.patch
 0040-gthr-give-__gthread_trigger-hidden-visibility.patch
-0041-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0041-fix-ctype-char-ctype-to-initialize-locale-pointer.patch
+0042-OOCE-Adjust-default-library-paths-for-OmniOS.patch
