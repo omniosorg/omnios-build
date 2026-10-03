@@ -11,7 +11,7 @@ Subject: Use the illumos libc SSP implementation for
  3 files changed, 19 insertions(+), 2 deletions(-)
 
 diff --git a/gcc/config/i386/sol2.h b/gcc/config/i386/sol2.h
-index b93bc4c9d303..6bbcd5d7afe5 100644
+index b93bc4c9d30..6bbcd5d7afe 100644
 --- a/gcc/config/i386/sol2.h
 +++ b/gcc/config/i386/sol2.h
 @@ -252,3 +252,20 @@ along with GCC; see the file COPYING3.  If not see
@@ -36,7 +36,7 @@ index b93bc4c9d303..6bbcd5d7afe5 100644
 +		       "}"
 +#endif
 diff --git a/gcc/configure b/gcc/configure
-index 2e7f3101f164..6e91335379e2 100755
+index 2e7f3101f16..6e91335379e 100755
 --- a/gcc/configure
 +++ b/gcc/configure
 @@ -33491,7 +33491,7 @@ fi
@@ -49,7 +49,7 @@ index 2e7f3101f164..6e91335379e2 100755
  if test "x$ac_cv_func___stack_chk_fail" = xyes; then :
    gcc_cv_libc_provides_ssp=yes
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 1a629adb929a..cf034d43cc77 100644
+index 1a629adb929..cf034d43cc7 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
 @@ -7035,7 +7035,7 @@ AC_CACHE_CHECK(__stack_chk_fail in target C library,
