@@ -1,0 +1,51 @@
+From 2bb240e5d4e15eba1486e5e4fc56ba7463a08fd7 Mon Sep 17 00:00:00 2001
+From: Bill Sommerfeld <sommerfeld@hamachi.org>
+Date: Sat, 3 Oct 2026 20:54:27 +0000
+Subject: fix ctype<char>::ctype() to initialize locale pointer
+
+---
+ libstdc++-v3/config/locale/dragonfly/monetary_members.cc | 4 ++--
+ libstdc++-v3/config/os/solaris/ctype_configure_char.cc   | 6 ++++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/libstdc++-v3/config/locale/dragonfly/monetary_members.cc b/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
+index 0aeb395c3a8..599ea4a282a 100644
+--- a/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
++++ b/libstdc++-v3/config/locale/dragonfly/monetary_members.cc
+@@ -60,10 +60,10 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 
+   char lconv2char(char *conv, char def)
+   {
+-    wchar_t w = def;
++    char w = def;
+     const size_t tlen = strlen(conv);
+     if (tlen == 1)
+-      w = (wchar_t) conv[0];
++      w = conv[0];
+     return w;
+   }
+ 
+diff --git a/libstdc++-v3/config/os/solaris/ctype_configure_char.cc b/libstdc++-v3/config/os/solaris/ctype_configure_char.cc
+index 60d22ea6657..8bbf72a79f1 100644
+--- a/libstdc++-v3/config/os/solaris/ctype_configure_char.cc
++++ b/libstdc++-v3/config/os/solaris/ctype_configure_char.cc
+@@ -44,7 +44,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 
+   ctype<char>::ctype(__c_locale, const mask* __table, bool __del,
+ 		     size_t __refs)
+-  : facet(__refs), _M_del(__table != 0 && __del),
++  : facet(__refs), _M_c_locale_ctype(_S_get_c_locale()),
++  _M_del(__table != 0 && __del),
+   _M_toupper(__trans_upper), _M_tolower(__trans_lower),
+   _M_table(__table ? __table : classic_table())
+   {
+@@ -55,7 +56,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+   }
+ 
+   ctype<char>::ctype(const mask* __table, bool __del, size_t __refs)
+-  : facet(__refs), _M_del(__table != 0 && __del),
++  : facet(__refs), _M_c_locale_ctype(_S_get_c_locale()),
++  _M_del(__table != 0 && __del),
+   _M_toupper(__trans_upper), _M_tolower(__trans_lower),
+   _M_table(__table ? __table : classic_table())
+   {

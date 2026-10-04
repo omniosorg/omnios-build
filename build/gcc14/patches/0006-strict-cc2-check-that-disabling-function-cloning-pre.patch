@@ -11,7 +11,7 @@ Subject: strict-cc2: check that disabling function cloning
 
 diff --git a/gcc/testsuite/gcc.dg/fno-clone-preserves-unused-args.c b/gcc/testsuite/gcc.dg/fno-clone-preserves-unused-args.c
 new file mode 100644
-index 000000000000..0955381c8480
+index 00000000000..0955381c848
 --- /dev/null
 +++ b/gcc/testsuite/gcc.dg/fno-clone-preserves-unused-args.c
 @@ -0,0 +1,28 @@

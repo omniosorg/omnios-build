@@ -1,7 +1,9 @@
-From 1eb251009819049d6af0a39bd774e15d3b2f5f08 Mon Sep 17 00:00:00 2001
+From 6a61430d24e2b381d623b452cebdd0298f867be1 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Mon, 31 Aug 2026 12:00:00 +0000
 Subject: gthr: give __gthread_trigger hidden visibility
+
+This is https://gcc.gnu.org/bugzilla/show_bug.cgi?id=126399
 
 In 6a4d1c37a2, GCC 15 converted the gthr helper functions from 'static inline'
 to 'inline' so that they are no longer TU-local.  __gthread_active and

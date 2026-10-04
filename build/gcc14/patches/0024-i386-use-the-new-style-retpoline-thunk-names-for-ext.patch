@@ -9,7 +9,7 @@ Subject: i386: use the new-style retpoline thunk names for
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 8d9509e10aec..becf8da05146 100644
+index 8d9509e10ae..becf8da0514 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -6073,7 +6073,9 @@ indirect_thunk_name (char name[32], unsigned int regno,
