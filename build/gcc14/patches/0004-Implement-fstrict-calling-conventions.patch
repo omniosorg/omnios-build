@@ -21,7 +21,7 @@ later which, given the odds, is likely to be necessary.
  create mode 100644 gcc/testsuite/gcc.target/i386/strict-cc.c
 
 diff --git a/gcc/common.opt b/gcc/common.opt
-index ad3488447752..a4a04b0aa81d 100644
+index ad348844775..a4a04b0aa81 100644
 --- a/gcc/common.opt
 +++ b/gcc/common.opt
 @@ -2931,6 +2931,10 @@ fstrict-aliasing
@@ -36,7 +36,7 @@ index ad3488447752..a4a04b0aa81d 100644
  Common
  Treat signed overflow as undefined.  Negated as -fwrapv -fwrapv-pointer.
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 2e1a31d05403..41c936c6c724 100644
+index 2e1a31d0540..41c936c6c72 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -1213,6 +1213,7 @@ ix86_function_regparm (const_tree type, const_tree decl)
@@ -56,7 +56,7 @@ index 2e1a31d05403..41c936c6c724 100644
      {
        if (target->local && target->can_change_signature)
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 64728fead512..6c9b28eda1f8 100644
+index 64728fead51..6c9b28eda1f 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
 @@ -8036,6 +8036,12 @@ with multiple statement cases using flow-sensitive points-to information.
@@ -73,7 +73,7 @@ index 64728fead512..6c9b28eda1f8 100644
  @opindex Wno-strict-overflow
  @item -Wstrict-overflow
 diff --git a/gcc/testsuite/gcc.target/i386/local.c b/gcc/testsuite/gcc.target/i386/local.c
-index f4444951e123..3a487583d81f 100644
+index f4444951e12..3a487583d81 100644
 --- a/gcc/testsuite/gcc.target/i386/local.c
 +++ b/gcc/testsuite/gcc.target/i386/local.c
 @@ -1,5 +1,6 @@
@@ -86,7 +86,7 @@ index f4444951e123..3a487583d81f 100644
  
 diff --git a/gcc/testsuite/gcc.target/i386/strict-cc.c b/gcc/testsuite/gcc.target/i386/strict-cc.c
 new file mode 100644
-index 000000000000..fa0543e52ff6
+index 00000000000..fa0543e52ff
 --- /dev/null
 +++ b/gcc/testsuite/gcc.target/i386/strict-cc.c
 @@ -0,0 +1,24 @@
