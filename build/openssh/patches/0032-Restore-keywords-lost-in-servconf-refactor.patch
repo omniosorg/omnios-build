@@ -7,7 +7,7 @@ deprecated portable-only PAMAuthenticationViaKbdInt keyword was lost.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/servconf.h a/servconf.h
 --- a~/servconf.h	1970-01-01 00:00:00
 +++ a/servconf.h	1970-01-01 00:00:00
-@@ -251,7 +251,8 @@ SSHCONF_DEPRECATE(AuthorizedKeysFile2, S
+@@ -258,7 +258,8 @@ SSHCONF_DEPRECATE(AuthorizedKeysFile2, S
  SSHCONF_DEPRECATE(UsePrivilegeSeparation, SSHCFG_GLOBAL, SSHCONF_DEPRECATED) \
  SSHCONF_DEPRECATE(KerberosTgtPassing, SSHCFG_GLOBAL, SSHCONF_DEPRECATED) \
  SSHCONF_DEPRECATE(AFSTokenPassing, SSHCFG_GLOBAL, SSHCONF_DEPRECATED) \
