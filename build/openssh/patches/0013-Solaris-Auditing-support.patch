@@ -55,7 +55,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/README.platform a/README.plat
 --- a~/README.platform	1970-01-01 00:00:00
 +++ a/README.platform	1970-01-01 00:00:00
 @@ -72,10 +72,10 @@ zlib-devel and pam-devel, on Debian base
- libssl-dev, libz-dev and libpam-dev.
+ libcrypt-dev, libssl-dev, libz-dev and libpam-dev.
  
  
 -Solaris
@@ -708,7 +708,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/audit.h a/audit.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
 --- a~/configure.ac	1970-01-01 00:00:00
 +++ a/configure.ac	1970-01-01 00:00:00
-@@ -1983,7 +1983,7 @@ AC_ARG_WITH([wtmpdb],
+@@ -1988,7 +1988,7 @@ AC_ARG_WITH([wtmpdb],
  
  AUDIT_MODULE=none
  AC_ARG_WITH([audit],
@@ -717,7 +717,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	[
  	  AC_MSG_CHECKING([for supported audit module])
  	  case "$withval" in
-@@ -2020,6 +2020,13 @@ AC_ARG_WITH([audit],
+@@ -2025,6 +2025,13 @@ AC_ARG_WITH([audit],
  		SSHDLIBS="$SSHDLIBS -laudit"
  		AC_DEFINE([USE_LINUX_AUDIT], [1], [Use Linux audit module])
  		;;
@@ -749,7 +749,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/defines.h a/defines.h
 diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session.c
 --- a~/sshd-session.c	1970-01-01 00:00:00
 +++ a/sshd-session.c	1970-01-01 00:00:00
-@@ -1186,7 +1186,7 @@ main(int ac, char **av)
+@@ -1173,7 +1173,7 @@ main(int ac, char **av)
  	remote_ip = ssh_remote_ipaddr(ssh);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -758,7 +758,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  #endif
  
  	rdomain = ssh_packet_rdomain_in(ssh);
-@@ -1267,8 +1267,10 @@ main(int ac, char **av)
+@@ -1254,8 +1254,10 @@ main(int ac, char **av)
  		set_process_rdomain(ssh, options.routing_domain);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -769,7 +769,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/sshd-session.c a/sshd-session
  
  #ifdef GSSAPI
  	if (options.gss_authentication) {
-@@ -1298,6 +1300,11 @@ main(int ac, char **av)
+@@ -1285,6 +1287,11 @@ main(int ac, char **av)
  	}
  #endif
  

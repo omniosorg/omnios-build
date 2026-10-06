@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=openssh
-VER=10.5p1
+VER=10.6p1
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
@@ -79,10 +79,10 @@ pre_make() {
 
 post_install() {
     logmsg "--- installing ssh-copy-id from contrib"
-    logcmd cp $TMPDIR/$BUILDDIR/contrib/ssh-copy-id $DESTDIR/usr/bin/ \
+    logcmd $CP $TMPDIR/$BUILDDIR/contrib/ssh-copy-id $DESTDIR/usr/bin/ \
         || logerr "Could not install ssh-copy-id"
-    logcmd chmod 755 $DESTDIR/usr/bin/ssh-copy-id || logerr "chmod failed"
-    logcmd cp $TMPDIR/$BUILDDIR/contrib/ssh-copy-id.1 \
+    logcmd $CHMOD 755 $DESTDIR/usr/bin/ssh-copy-id || logerr "chmod failed"
+    logcmd $CP $TMPDIR/$BUILDDIR/contrib/ssh-copy-id.1 \
         $DESTDIR/usr/share/man/man1/ \
         || logerr "Could not install ssh-copy-id.1"
 
