@@ -1,0 +1,18 @@
+# Input modules that set NO_PRI_IN_RAW (imsolaris here) assign the message
+# priority from the source before the message is parsed. Upstream commit
+# 10fe8ba5 ("parser: verify and fix offAfterPRI calculation", May 2026)
+# changed parserParsePRI() to overwrite that priority with DEFUPRI, so every
+# message read from the local log device bomes user.notice.
+# Leave the priority set by the input module alone in this case.
+#
+diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/parser.c a/runtime/parser.c
+--- a~/runtime/parser.c	1970-01-01 00:00:00
++++ a/runtime/parser.c	1970-01-01 00:00:00
+@@ -589,7 +589,6 @@ rsRetVal parserParsePRI(smsg_t *pMsg) {
+     pri = DEFUPRI;
+     if (pMsg->msgFlags & NO_PRI_IN_RAW) {
+         /* In this case, simply do so as if the pri would be right at top */
+-        msgSetPRI(pMsg, pri);
+         MsgSetAfterPRIOffs(pMsg, 0);
+     } else {
+         if (pMsg->iLenRawMsg > 0 && pMsg->pszRawMsg[0] == '<') {
