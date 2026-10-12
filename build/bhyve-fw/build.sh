@@ -24,7 +24,7 @@ BUILD_DEPENDS_IPS="
 PROG=uefi-edk2
 PKG=system/bhyve/firmware
 VER=20260825
-DASHREV=0
+DASHREV=1
 SUMMARY="UEFI-EDK2(+CSM) firmware for bhyve"
 DESC="$SUMMARY"
 
