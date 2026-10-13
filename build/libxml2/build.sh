@@ -41,6 +41,11 @@ TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
 CPPFLAGS+=" -D_REENTRANT"
 CFLAGS[aarch64]+=" -mtls-dialect=trad"
 
+# Both libxml2.so.2 and libxml2.so.16 can end up loaded in the same process.
+# Bind each library directly to its own symbols so that neither can resolve
+# internal calls to the other, incompatible, version.
+LDFLAGS+=" -Wl,-Bdirect"
+
 init
 prep_build
 
