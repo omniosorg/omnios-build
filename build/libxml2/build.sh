@@ -19,6 +19,7 @@
 
 PROG=libxml2
 VER=2.15.4
+DASHREV=1
 PKG=library/libxml2
 SUMMARY="XML C parser and toolkit"
 DESC="Portable XML parser and toolkit library"
@@ -39,6 +40,11 @@ TESTSUITE_FILTER="^(Total|[Tt]esting|Ran)"
 
 CPPFLAGS+=" -D_REENTRANT"
 CFLAGS[aarch64]+=" -mtls-dialect=trad"
+
+# Both libxml2.so.2 and libxml2.so.16 can end up loaded in the same process.
+# Bind each library directly to its own symbols so that neither can resolve
+# internal calls to the other, incompatible, version.
+LDFLAGS+=" -Wl,-Bdirect"
 
 init
 prep_build
