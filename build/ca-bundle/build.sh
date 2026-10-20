@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -22,8 +22,8 @@ VER=5.11
 PKG=web/ca-bundle
 SUMMARY="Bundle of Root CA certificates"
 
-nsbuild=$SRCDIR/../nss/build.sh
-NSSVER="`grep '^VER=' $nsbuild | sed 's/.*=//;q'`"
+# certdata.txt is taken from a newer NSS than the one shipped on this branch
+NSSVER=3.131.1
 # Make-ca from https://github.com/djlucas/make-ca
 MAKECAVER=0.6
 
