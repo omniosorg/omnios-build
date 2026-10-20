@@ -4,6 +4,17 @@
 
 # Release Notes for OmniOSce v11 r151056
 
+## r151056ay (2026-10-21)
+Weekly release for w/c 19th of October 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- The CA certificate bundle has been updated to the one from Mozilla NSS
+  3.131.1. This removes the `emSign ECC Root CA - G3`, `emSign Root CA - C1`
+  and `emSign ECC Root CA - C3` root certificates following the compromise
+  of intermediate certificates issued under them.
+
 ## r151056aw (2026-10-07)
 Weekly release for w/c 05th of October 2026.
 > This update requires a reboot
