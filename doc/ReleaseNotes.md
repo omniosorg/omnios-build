@@ -15,6 +15,9 @@ Weekly release for w/c 19th of October 2026.
   and `emSign ECC Root CA - C3` root certificates following the compromise
   of intermediate certificates issued under them.
 
+- `brotli` has been updated to version 1.2.1, addressing
+  [CVE-2026-111497](https://www.cve.org/CVERecord?id=CVE-2026-111497).
+
 ## r151056aw (2026-10-07)
 Weekly release for w/c 05th of October 2026.
 > This update requires a reboot
