@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=brotli
-VER=1.1.0
+VER=1.2.1
 PKG=compress/brotli
 SUMMARY="Brotli compress"
 DESC="Brotli is a generic-purpose lossless compression algorithm"
