@@ -106,6 +106,7 @@ omnios driver/graphics/dcam1394/devfsadm-dcam1394
 omnios driver/graphics/drm
 omnios driver/graphics/usbvc
 omnios driver/hyperv/pv
+omnios driver/i86pc/efi
 omnios driver/i86pc/fipe
 omnios driver/i86pc/ioat
 omnios driver/i86pc/platform
