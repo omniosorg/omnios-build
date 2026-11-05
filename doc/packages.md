@@ -80,7 +80,7 @@
 | runtime/java/openjdk21		| 21.0.13.0.3+1		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.512-09		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
-| runtime/python-313			| 3.13.16		| https://www.python.org/downloads/source/
+| runtime/python-313			| 3.13.18		| https://www.python.org/downloads/source/
 | security/sudo				| 1.9.17p2		| https://www.sudo.ws/
 | service/network/chrony		| 4.9			| https://github.com/mlichvar/chrony/tags https://chrony-project.org/
 | service/network/ntpsec		| 1.2.6			| https://github.com/ntpsec/ntpsec/tags https://blog.ntpsec.org/
