@@ -111,7 +111,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/Setup.local a/Modules
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Modules/dlpimodule.c
 --- a~/Modules/dlpimodule.c	1970-01-01 00:00:00
 +++ a/Modules/dlpimodule.c	1970-01-01 00:00:00
-@@ -0,0 +1,1232 @@
+@@ -0,0 +1,1365 @@
 +/*
 + * Permission is hereby granted, free of charge, to any person obtaining a copy
 + * of this software and associated documentation files (the "Software"), to
@@ -133,6 +133,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 + *
 + * Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
 + * Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
++ * Copyright 2026 RackTop Systems Inc.
 + */
 +
 +#define PY_SSIZE_T_CLEAN
@@ -141,15 +142,19 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +#include <stdio.h>
 +#include <libdlpi.h>
 +
++typedef struct callback_data {
++	PyObject *pyfunc;
++	PyObject *pyarg;
++	struct callback_data *next;
++	int removed;
++} callback_data_t;
++
 +typedef struct {
 +	PyObject_HEAD
 +	dlpi_handle_t dlpihdl;
++	callback_data_t *callbacks;
++	unsigned int call_depth;
 +} pylink_t;
-+
-+typedef struct {
-+	PyObject *pyfunc;
-+	PyObject *pyarg;
-+} callback_data_t;
 +
 +/*
 + * dlpi_err: the only exception raised for libdlpi related error.
@@ -209,10 +214,62 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +}
 +
 +static void
++callback_data_free(callback_data_t *cd)
++{
++	Py_DECREF(cd->pyfunc);
++	Py_XDECREF(cd->pyarg);
++	free(cd);
++}
++
++/*
++ * libdlpi may still visit disabled registrations until its dispatch loop
++ * finishes. Defer context destruction until the outermost call returns.
++ */
++static void
++callback_data_collect(pylink_t *link)
++{
++	callback_data_t **entry, *cd, *removed = NULL;
++	int saved_errno = errno;
++
++	if (link->call_depth != 0)
++		return;
++
++	/* Detach all removed contexts before Python destructors can reenter. */
++	for (entry = &link->callbacks; *entry != NULL; ) {
++		cd = *entry;
++		if (!cd->removed) {
++			entry = &cd->next;
++			continue;
++		}
++		*entry = cd->next;
++		cd->next = removed;
++		removed = cd;
++	}
++	while (removed != NULL) {
++		cd = removed;
++		removed = cd->next;
++		callback_data_free(cd);
++	}
++	errno = saved_errno;
++}
++
++static void
 +link_dealloc(pylink_t *link)
 +{
-+	if (link->dlpihdl != NULL)
++	callback_data_t *cd, *next;
++
++	if (link->dlpihdl != NULL) {
 +		dlpi_close(link->dlpihdl);
++		link->dlpihdl = NULL;
++	}
++
++	/* libdlpi closes its registrations but does not free our contexts. */
++	cd = link->callbacks;
++	link->callbacks = NULL;
++	for (; cd != NULL; cd = next) {
++		next = cd->next;
++		callback_data_free(cd);
++	}
 +	Py_TYPE(link)->tp_free((PyObject *)link);
 +}
 +
@@ -240,8 +297,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", keywords, &sap))
 +		return (NULL);
 +
-+	if ((rval = dlpi_bind(link->dlpihdl, sap, &boundsap)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_bind(link->dlpihdl, sap, &boundsap);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -266,7 +326,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_unbind(link->dlpihdl)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_unbind(link->dlpihdl);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -313,8 +377,12 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		dsp = &ds;
 +	}
 +
-+	if ((rval = dlpi_send(link->dlpihdl, daddr, daddrlen,
-+	    msgbuf, msglen, dsp)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_send(link->dlpihdl, daddr, daddrlen,
++	    msgbuf, msglen, dsp);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -370,8 +438,12 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		saddrlenp = &saddrlen;
 +	}
 +
-+	if ((rval = dlpi_recv(link->dlpihdl, saddr, saddrlenp, msgbuf,
-+	    msglenp, msec, NULL)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_recv(link->dlpihdl, saddr, saddrlenp, msgbuf,
++	    msglenp, msec, NULL);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		if (msgbuf != NULL)
 +			free(msgbuf);
 +		if (saddr != NULL)
@@ -418,8 +490,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_disabmulti(link->dlpihdl, addr, addrlen)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_disabmulti(link->dlpihdl, addr, addrlen);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -458,8 +533,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_enabmulti(link->dlpihdl, addr, addrlen)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_enabmulti(link->dlpihdl, addr, addrlen);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -472,7 +550,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +dlpi_callback(dlpi_handle_t hdl, dlpi_notifyinfo_t *ni, void *arg)
 +{
 +	callback_data_t *cd = (callback_data_t *)arg;
-+	PyObject *arglist, *result;
++	PyObject *arglist, *result = NULL;
++	PyObject *func;
++
++	/* libdlpi can still dispatch a registration marked for removal. */
++	if (cd->removed)
++		return;
++	/* The callable may unregister its own notification while it runs. */
++	func = Py_NewRef(cd->pyfunc);
 +
 +	switch (ni->dni_note) {
 +	case DL_NOTE_SPEED:
@@ -493,15 +578,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		    Py_None);
 +	}
 +
-+	result = PyObject_CallObject(cd->pyfunc, arglist);
-+	Py_DECREF(arglist);
-+	if (result == NULL) {
-+		PyErr_Clear(); /* cannot raise error */
-+	}
-+	Py_DECREF(result);
-+	Py_DECREF(cd->pyfunc);
-+	Py_XDECREF(cd->pyarg);
-+	free(cd);
++	if (arglist != NULL)
++		result = PyObject_CallObject(func, arglist);
++	if (result == NULL)
++		PyErr_WriteUnraisable(func); /* cannot propagate through libdlpi */
++	Py_XDECREF(result);
++	Py_XDECREF(arglist);
++	Py_DECREF(func);
++	/* The outer libdlpi call retains cd until dispatch has finished. */
 +}
 +
 +PyDoc_STRVAR(enabnotify_doc,
@@ -516,13 +600,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +    "NOTE_SPEED             Notify when speed changes\n"
 +    "NOTE_PROMISC_ON_PHYS   Notify when PROMISC_PHYS is set\n"
 +    "NOTE_PROMISC_OFF_PHYS  Notify when PROMISC_PHYS is cleared\n"
++    "The optional callback argument defaults to None.\n"
 +    "Returns a handle for this registration.\n"
 +    "See dlpi_enabnotify(3DLPI).\n"
 +);
 +static PyObject *
 +link_enabnotify(pylink_t *link, PyObject *args, PyObject *kwds)
 +{
-+	PyObject *func = NULL, *arg = NULL;
++	PyObject *func = NULL, *arg = Py_None;
 +	callback_data_t *cd;
 +	uint_t notes = 0;
 +	static char *keywords[] = {"events", "function", "arg", NULL};
@@ -554,9 +639,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	Py_XINCREF(arg);
 +	cd->pyfunc = func;
 +	cd->pyarg = arg;
++	cd->removed = 0;
 +
-+	if ((rval = dlpi_enabnotify(link->dlpihdl, notes, dlpi_callback,
-+	    cd, &id)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_enabnotify(link->dlpihdl, notes, dlpi_callback,
++	    cd, &id);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		free(cd);
 +		Py_DECREF(func);
 +		Py_XDECREF(arg);
@@ -564,6 +654,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
++	cd->next = link->callbacks;
++	link->callbacks = cd;
 +	return (Py_BuildValue("k", id));
 +}
 +
@@ -599,12 +691,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	/* clean up */
++	if (arg->removed) {
++		dlpi_raise_exception(DLPI_ENOTEIDINVAL);
++		return (NULL);
++	}
 +	pyargsaved = arg->pyarg;
 +	Py_XINCREF(pyargsaved);
-+	Py_XDECREF(arg->pyarg);
-+	Py_DECREF(arg->pyfunc);
-+	free(arg);
++	arg->removed = 1;
++	callback_data_collect(link);
 +
 +	if (pyargsaved != NULL)
 +		return (pyargsaved);
@@ -631,8 +725,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -710,8 +807,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -751,8 +851,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", keywords, &type))
 +		return (NULL);
 +
-+	if ((rval = dlpi_get_physaddr(link->dlpihdl, type, addr, &addrlen)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_get_physaddr(link->dlpihdl, type, addr, &addrlen);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -784,8 +887,12 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	    &addr, &addrlen))
 +		return (NULL);
 +
-+	if ((rval = dlpi_set_physaddr(link->dlpihdl, DL_CURR_PHYS_ADDR,
-+	    addr, addrlen)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_set_physaddr(link->dlpihdl, DL_CURR_PHYS_ADDR,
++	    addr, addrlen);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -822,7 +929,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	if (!PyArg_ParseTupleAndKeywords(args, kwds, "|I", keywords, &level))
 +		return (NULL);
 +
-+	if ((rval = dlpi_promiscon(link->dlpihdl, level)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_promiscon(link->dlpihdl, level);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -859,7 +970,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +	if (!PyArg_ParseTupleAndKeywords(args, kwds, "|I", keywords, &level))
 +		return (NULL);
 +
-+	if ((rval = dlpi_promiscoff(link->dlpihdl, level)) != DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_promiscoff(link->dlpihdl, level);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -886,8 +1001,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -914,8 +1032,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -972,8 +1093,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -999,8 +1123,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -1027,8 +1154,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -1062,8 +1192,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +		return (NULL);
 +	}
 +
-+	if ((rval = dlpi_info(link->dlpihdl, &info, 0)) !=
-+	    DLPI_SUCCESS) {
++	link->call_depth++;
++	rval = dlpi_info(link->dlpihdl, &info, 0);
++	link->call_depth--;
++	callback_data_collect(link);
++	if (rval != DLPI_SUCCESS) {
 +		dlpi_raise_exception(rval);
 +		return (NULL);
 +	}
@@ -1344,3 +1477,245 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/dlpimodule.c a/Module
 +
 +	return mod;
 +}
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_dlpi_notify.py a/Lib/test/test_dlpi_notify.py
+--- a~/Lib/test/test_dlpi_notify.py	1970-01-01 00:00:00
++++ a/Lib/test/test_dlpi_notify.py	1970-01-01 00:00:00
+@@ -0,0 +1,238 @@
++"""DLPI notification callback tests for an illumos host.
++
++Run with sys_net_rawaccess and sys_net_config privileges and DLPI_TEST_LINK
++set to a disposable test VNIC with an MTU greater than 576. These tests
++temporarily decrease its MTU by one and restore the original value.
++For example, use a temporary VNIC over a temporary etherstub; do not use
++a link carrying other traffic.
++"""
++
++import gc
++import os
++import subprocess
++import unittest
++from unittest import mock
++import weakref
++
++try:
++    import dlpi
++except ImportError:
++    dlpi = None
++
++LINK = os.environ.get("DLPI_TEST_LINK")
++DLPI_ETIMEDOUT = 10006
++DLADM = "/usr/sbin/dladm"
++
++
++class Argument:
++    pass
++
++
++class Callback:
++    def __init__(self, events):
++        self.events = events
++
++    def __call__(self, argument, note, value):
++        self.events.append((note, value))
++
++
++@unittest.skipUnless(dlpi is not None and LINK,
++                     "requires illumos and DLPI_TEST_LINK on a test VNIC")
++class NotificationLifetimeTests(unittest.TestCase):
++    def setUp(self):
++        result = subprocess.run(
++            [DLADM, "show-linkprop", "-c", "-o", "value", "-p", "mtu", LINK],
++            check=True, capture_output=True, text=True)
++        self.original_mtu = int(result.stdout.strip())
++        if self.original_mtu <= 576:
++            self.skipTest("requires a test VNIC with an MTU greater than 576")
++        self.changed_mtu = self.original_mtu - 1
++        self.current_mtu = self.original_mtu
++        self.link = dlpi.link(LINK)
++        self.addCleanup(self.restore_mtu)
++        self.addCleanup(self.close_link)
++        self.link.bind(dlpi.ANY_SAP)
++
++    def close_link(self):
++        self.link = None
++        gc.collect()
++
++    def restore_mtu(self):
++        if self.current_mtu != self.original_mtu:
++            subprocess.run(
++                [DLADM, "set-linkprop", "-t", "-p",
++                 f"mtu={self.original_mtu}", LINK], check=True)
++
++    def change_mtu(self, mtu):
++        subprocess.run(
++            [DLADM, "set-linkprop", "-t", "-p", f"mtu={mtu}", LINK],
++            check=True)
++        self.current_mtu = mtu
++        self.drain_notifications()
++
++    def drain_notifications(self):
++        try:
++            self.link.recv(0, 1000)
++        except dlpi.error as error:
++            if error.args[0] != DLPI_ETIMEDOUT:
++                raise
++
++    def test_repeated_notifications_then_unregister(self):
++        events = []
++        callback, argument = Callback(events), Argument()
++        callback_ref, argument_ref = weakref.ref(callback), weakref.ref(argument)
++        ident = self.link.enabnotify(
++            dlpi.NOTE_SDU_SIZE,
++            callback, argument)
++        del callback, argument
++
++        for _ in range(2):
++            self.change_mtu(self.changed_mtu)
++            self.assertIsNotNone(callback_ref())
++            self.assertIsNotNone(argument_ref())
++            self.change_mtu(self.original_mtu)
++
++        self.assertGreaterEqual(
++            events.count((dlpi.NOTE_SDU_SIZE, self.changed_mtu)), 2)
++        self.assertGreaterEqual(
++            events.count((dlpi.NOTE_SDU_SIZE, self.original_mtu)), 2)
++        saved = self.link.disabnotify(ident)
++        self.assertIs(saved, argument_ref())
++        del saved
++        self.assertIsNone(callback_ref())
++        self.assertIsNone(argument_ref())
++
++    def test_multiple_registrations_can_be_removed_in_any_order(self):
++        registrations = []
++        for _ in range(3):
++            callback, argument = Callback([]), Argument()
++            ident = self.link.enabnotify(
++                dlpi.NOTE_SDU_SIZE, callback, argument)
++            registrations.append((ident, weakref.ref(callback), weakref.ref(argument)))
++            del callback, argument
++
++        for index in (0, 2, 1):
++            ident, callback_ref, argument_ref = registrations[index]
++            saved = self.link.disabnotify(ident)
++            self.assertIs(saved, argument_ref())
++            del saved
++            self.assertIsNone(callback_ref())
++            self.assertIsNone(argument_ref())
++
++    def test_link_destruction_releases_registrations(self):
++        callback, argument = Callback([]), Argument()
++        callback_ref, argument_ref = weakref.ref(callback), weakref.ref(argument)
++        self.link.enabnotify(dlpi.NOTE_SDU_SIZE, callback, argument)
++        del callback, argument
++        self.assertIsNotNone(callback_ref())
++        self.assertIsNotNone(argument_ref())
++        self.link = None
++        gc.collect()
++        self.assertIsNone(callback_ref())
++        self.assertIsNone(argument_ref())
++
++    def test_callback_can_unregister_itself(self):
++        events = []
++
++        class SelfRemovingCallback:
++            def __init__(self, link, mtu):
++                self.link = link
++                self.mtu = mtu
++
++            def __call__(self, argument, note, value):
++                if value != self.mtu:
++                    return
++                self.link.disabnotify(self.ident)
++                events.append((note, value))
++
++        callback = SelfRemovingCallback(self.link, self.changed_mtu)
++        callback.ident = self.link.enabnotify(
++            dlpi.NOTE_SDU_SIZE, callback, Argument())
++        callback_ref = weakref.ref(callback)
++        del callback
++        self.change_mtu(self.changed_mtu)
++        self.assertEqual(events, [(dlpi.NOTE_SDU_SIZE, self.changed_mtu)])
++        self.assertIsNone(callback_ref())
++
++
++    def test_callback_can_unregister_another_registration(self):
++        events = []
++        victim, argument = Callback(events), Argument()
++        victim_ref, argument_ref = weakref.ref(victim), weakref.ref(argument)
++        victim_id = self.link.enabnotify(
++            dlpi.NOTE_SDU_SIZE, victim, argument)
++        del victim, argument
++        self.drain_notifications()
++        events.clear()
++        removed, returned_correctly, duplicate_rejected = [], [], []
++
++        def remover(arg, note, value):
++            if value != self.changed_mtu or removed:
++                return
++            removed.append((note, value))
++            saved = self.link.disabnotify(victim_id)
++            returned_correctly.append(saved is argument_ref())
++            # A second removal must not free the deferred context twice.
++            try:
++                self.link.disabnotify(victim_id)
++            except dlpi.error:
++                duplicate_rejected.append(True)
++            else:
++                duplicate_rejected.append(False)
++
++        # libdlpi inserts registrations at the head, so remover runs first.
++        remover_id = self.link.enabnotify(
++            dlpi.NOTE_SDU_SIZE, remover)
++        self.drain_notifications()
++        events.clear()
++        self.change_mtu(self.changed_mtu)
++        self.assertEqual(removed, [(dlpi.NOTE_SDU_SIZE, self.changed_mtu)])
++        self.assertEqual(events, [])
++        self.assertEqual(returned_correctly, [True])
++        self.assertEqual(duplicate_rejected, [True])
++        self.assertIsNone(victim_ref())
++        self.assertIsNone(argument_ref())
++        self.link.disabnotify(remover_id)
++
++    def test_callback_exception_is_reported_and_registration_survives(self):
++        calls, errors = [], []
++        argument = Argument()
++
++        def callback(arg, note, value):
++            calls.append((arg, note, value))
++            raise ValueError("notification callback failed")
++
++        with mock.patch("sys.unraisablehook", errors.append):
++            ident = self.link.enabnotify(
++                dlpi.NOTE_SDU_SIZE,
++                callback, argument)
++            self.change_mtu(self.changed_mtu)
++            self.change_mtu(self.original_mtu)
++            self.assertIs(self.link.disabnotify(ident), argument)
++
++        self.assertGreaterEqual(len(calls), 2)
++        self.assertEqual(len(errors), len(calls))
++        self.assertIn((argument, dlpi.NOTE_SDU_SIZE, self.changed_mtu), calls)
++        for arg, note, value in calls:
++            self.assertIs(arg, argument)
++        for error in errors:
++            self.assertIs(error.exc_type, ValueError)
++            self.assertEqual(str(error.exc_value), "notification callback failed")
++            self.assertIs(error.object, callback)
++
++    def test_omitted_callback_argument_is_none(self):
++        arguments = []
++
++        def callback(arg, note, value):
++            arguments.append((arg, note, value))
++
++        ident = self.link.enabnotify(dlpi.NOTE_SDU_SIZE, callback)
++        self.change_mtu(self.changed_mtu)
++        self.assertIsNone(self.link.disabnotify(ident))
++        self.assertTrue(arguments)
++        self.assertIn((None, dlpi.NOTE_SDU_SIZE, self.changed_mtu), arguments)
++        self.assertTrue(all(arg is None for arg, note, value in arguments))
++
++
++if __name__ == "__main__":
++    unittest.main()
