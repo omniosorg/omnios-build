@@ -21,12 +21,13 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2015 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=patch
 VER=2.7.6
+DASHREV=1
 PKG=text/gnu-patch
 SUMMARY="The GNU Patch utility"
 DESC="Patch takes a patch file containing a difference listing produced by the "
