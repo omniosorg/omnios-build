@@ -31,7 +31,7 @@ python_vendor_relocate() in lib/functions.sh for more details.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdoptions.py a/src/pip/_internal/cli/cmdoptions.py
 --- a~/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/cli/cmdoptions.py	1970-01-01 00:00:00
-@@ -1197,7 +1197,7 @@ disable_pip_version_check: Callable[...,
+@@ -1187,7 +1187,7 @@ disable_pip_version_check: Callable[...,
      "--disable-pip-version-check",
      dest="disable_pip_version_check",
      action="store_true",
@@ -40,10 +40,10 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/cli/cmdopti
      help="Don't periodically check PyPI to determine whether a new version "
      "of pip is available for download. Implied with --no-index.",
  )
-diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.py a/src/pip/_internal/exceptions.py
---- a~/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
-+++ a/src/pip/_internal/exceptions.py	1970-01-01 00:00:00
-@@ -926,9 +926,8 @@ class LegacyDistutilsInstall(DiagnosticP
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions/uninstall.py a/src/pip/_internal/exceptions/uninstall.py
+--- a~/src/pip/_internal/exceptions/uninstall.py	1970-01-01 00:00:00
++++ a/src/pip/_internal/exceptions/uninstall.py	1970-01-01 00:00:00
+@@ -46,9 +46,8 @@ class LegacyDistutilsInstall(DiagnosticP
          super().__init__(
              message=Text(f"Cannot uninstall {distribution}"),
              context=(
@@ -58,7 +58,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/exceptions.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uninstall.py a/src/pip/_internal/req/req_uninstall.py
 --- a~/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/req/req_uninstall.py	1970-01-01 00:00:00
-@@ -321,6 +321,15 @@ class UninstallPathSet:
+@@ -379,6 +379,15 @@ class UninstallPathSet:
          remove/modify, False otherwise.
  
          """
@@ -77,11 +77,11 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/req/req_uni
 diff -wpruN --no-dereference '--exclude=*.orig' a~/src/pip/_internal/self_outdated_check.py a/src/pip/_internal/self_outdated_check.py
 --- a~/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
 +++ a/src/pip/_internal/self_outdated_check.py	1970-01-01 00:00:00
-@@ -215,6 +215,7 @@ def pip_self_version_check_fetch(
+@@ -229,6 +229,7 @@ def pip_self_version_check_fetch(
      Pair with :func:`pip_self_version_check_emit`, which displays the prompt
      after the command body runs.
      """
 +    return
-     installed_dist = get_default_environment().get_distribution("pip")
-     if not installed_dist:
-         return None
+     if running_under_zipapp():
+         # Use the running pip's version; environment scans target the installed
+         # pip, not the zipapp. Skip checks that don't apply to zipapps.

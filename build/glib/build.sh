@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=glib
-VER=2.88.3
+VER=2.90.1
 PKG=library/glib2
 SUMMARY="GNOME utility library"
 DESC="The GNOME general-purpose utility library"

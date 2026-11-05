@@ -1,0 +1,29 @@
+The queue disposal override finds the real fjson_object_put() with
+dlsym(RTLD_NEXT), so it does not need libfastjson on its link line. The
+bundled libfastjson is static here and the illumos link-editor rejects the
+override's definition of the same symbol from the archive.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/Makefile.am a/tests/Makefile.am
+--- a~/tests/Makefile.am	1970-01-01 00:00:00
++++ a/tests/Makefile.am	1970-01-01 00:00:00
+@@ -3073,7 +3073,7 @@ liboverride_queue_disposal_la_SOURCES =
+ liboverride_queue_disposal_la_CPPFLAGS = $(runtime_unit_linkedlist_CPPFLAGS)
+ liboverride_queue_disposal_la_CFLAGS =
+ liboverride_queue_disposal_la_LDFLAGS = $(TEST_LIBOVERRIDE_LDFLAGS)
+-liboverride_queue_disposal_la_LIBADD = $(LIBFASTJSON_LIBS) $(DL_LIBS) $(PTHREADS_LIBS)
++liboverride_queue_disposal_la_LIBADD = $(DL_LIBS) $(PTHREADS_LIBS)
+ 
+ if ENABLE_IMPTCP
+ check_LTLIBRARIES += liboverride_epoll_ctl.la
+diff -wpruN --no-dereference '--exclude=*.orig' a~/tests/Makefile.in a/tests/Makefile.in
+--- a~/tests/Makefile.in	1970-01-01 00:00:00
++++ a/tests/Makefile.in	1970-01-01 00:00:00
+@@ -4459,7 +4459,7 @@ TEST_LIBOVERRIDE_LDFLAGS = -module -shar
+ @ENABLE_TESTBENCH_TRUE@liboverride_queue_disposal_la_CPPFLAGS = $(runtime_unit_linkedlist_CPPFLAGS)
+ @ENABLE_TESTBENCH_TRUE@liboverride_queue_disposal_la_CFLAGS = 
+ @ENABLE_TESTBENCH_TRUE@liboverride_queue_disposal_la_LDFLAGS = $(TEST_LIBOVERRIDE_LDFLAGS)
+-@ENABLE_TESTBENCH_TRUE@liboverride_queue_disposal_la_LIBADD = $(LIBFASTJSON_LIBS) $(DL_LIBS) $(PTHREADS_LIBS)
++@ENABLE_TESTBENCH_TRUE@liboverride_queue_disposal_la_LIBADD = $(DL_LIBS) $(PTHREADS_LIBS)
+ @ENABLE_IMPTCP_TRUE@@ENABLE_TESTBENCH_TRUE@liboverride_epoll_ctl_la_SOURCES = override_epoll_ctl.c
+ @ENABLE_IMPTCP_TRUE@@ENABLE_TESTBENCH_TRUE@liboverride_epoll_ctl_la_CFLAGS = 
+ @ENABLE_IMPTCP_TRUE@@ENABLE_TESTBENCH_TRUE@liboverride_epoll_ctl_la_LDFLAGS = $(TEST_LIBOVERRIDE_LDFLAGS)

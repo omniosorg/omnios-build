@@ -4,7 +4,7 @@ from multiple worker threads does not overwrite each other.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/debug.c a/runtime/debug.c
 --- a~/runtime/debug.c	1970-01-01 00:00:00
 +++ a/runtime/debug.c	1970-01-01 00:00:00
-@@ -404,7 +404,8 @@ void dbgSetDebugFile(uchar *fn) {
+@@ -406,7 +406,8 @@ void dbgSetDebugFile(uchar *fn) {
          dbgprintf("switching to debug file %s\n", fn);
          close(altdbg);
      }
@@ -14,7 +14,7 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/runtime/debug.c a/runtime/deb
          fprintf(stderr, "alternate debug file could not be opened, ignoring. Error: %s\n", strerror(errno));
      }
  }
-@@ -434,7 +435,7 @@ rsRetVal dbgClassInit(void) {
+@@ -436,7 +437,7 @@ rsRetVal dbgClassInit(void) {
  
      if (pszAltDbgFileName != NULL) {
          /* we have a secondary file, so let's open it) */

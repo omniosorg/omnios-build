@@ -6,10 +6,90 @@ PASS: runtime_unit_ommongodb_date
 PASS: runtime_unit_segdisk_state
 PASS: runtime_unit_queue_da
 PASS: runtime_unit_omazuredce_utils
+PASS: runtime_unit_wtp_wakeup
+PASS: runtime_unit_queue_lease
+PASS: runtime_unit_queue_spsc
+PASS: runtime_unit_perctile_ringbuf
+PASS: runtime_unit_imudp_buffer
 PASS: runtime_unit_gss_token_util
+PASS: diskqueue-serializer-abi.sh
+PASS: local-queue-omfile-cancel.sh
+PASS: local-queue-omfile-hup.sh
+SKIP: imudp-batchsize-range.sh
+SKIP: imudp-batchsize-runtime.sh
+PASS: local-queue-config.sh
+PASS: local-queue-s4-config.sh
+PASS: local-queue-omfile-activation.sh
+PASS: local-queue-config-yaml.sh
+PASS: local-queue-s4-config-yaml.sh
+PASS: yaml-local-queue-omfile-activation.sh
+PASS: local-queue-redirect-publication.sh
+PASS: local-queue-stats-lifetime.sh
+PASS: local-queue-be-force-term-actions.sh
+PASS: local-queue-input-force-term.sh
+PASS: local-queue-global-input-force-term.sh
+PASS: local-queue-shutdown-loss-report.sh
+PASS: local-queue-stats-reconciliation.sh
+PASS: local-queue-submit-batches.sh
+PASS: local-queue-global-shutdown-loss-report.sh
+PASS: local-queue-global-shutdown-loss-report-linkedlist.sh
+PASS: local-queue-startup-failure.sh
+PASS: queue-discardseverity-name.sh
+PASS: local-queue-known-success.sh
+PASS: local-queue-s6-linkedlist-oom.sh
+PASS: local-queue-s6-linkedlist-retry-oom.sh
+PASS: local-queue-s6-schedule.sh
+PASS: local-queue-s6-slowdown.sh
+PASS: local-queue-s6-sampling-retry.sh
+PASS: local-queue-s6-discard.sh
+PASS: local-queue-s6-linkedlist-discard.sh
+PASS: local-queue-s6-sampling.sh
+PASS: local-queue-s6-segmented-sampling.sh
+PASS: local-queue-s6-min-batch.sh
+PASS: local-queue-s6-linkedlist-tiered.sh
+PASS: local-queue-s6-linkedlist-help-capacity.sh
+PASS: local-queue-s6-linkedlist-stats.sh
+PASS: local-queue-s6-linkedlist-persistence.sh
+PASS: local-queue-s6-linkedlist-segmented-persistence.sh
+PASS: local-queue-s5-store-failure.sh
+PASS: local-queue-s5-da-emergency-lease.sh
+PASS: local-queue-s5-segmented-store-failure.sh
+PASS: local-queue-s5-save-disabled.sh
+PASS: local-queue-s5-segmented-save-disabled.sh
+PASS: local-queue-s5-graph-shutdown.sh
+PASS: local-queue-s5-segmented-graph-shutdown.sh
+PASS: local-queue-s5-spill.sh
+PASS: local-queue-s5-segmented-spill.sh
+PASS: local-queue-s5-persistence.sh
+PASS: local-queue-s5-segmented-persistence.sh
+PASS: local-queue-s4-graph.sh
+PASS: local-queue-s4-global-boundary.sh
+PASS: local-queue-s4-direct-main.sh
+PASS: local-queue-s4-shutdown.sh
+PASS: local-queue-helper-force-term-actions.sh
+PASS: local-queue-helper-replay-actions.sh
+PASS: local-queue-helper-cancel-actions.sh
+PASS: local-queue-helping.sh
+PASS: local-queue-help-capacity.sh
+PASS: local-queue-helping-default.sh
+PASS: local-queue-help-wake-before.sh
+PASS: local-queue-help-wake-after.sh
+PASS: local-queue-help-wake-handoff.sh
+PASS: local-queue-imtcp-tiered.sh
+PASS: local-queue-imtcp-internal.sh
+PASS: local-queue-imtcp-partial-batch.sh
+PASS: local-queue-imtcp-shutdown.sh
+PASS: local-queue-force-term-actions.sh
+PASS: local-queue-imtcp-tls-failure.sh
+PASS: local-queue-imtcp-cache-failure.sh
+PASS: local-queue-imtcp-worker-failure.sh
+PASS: local-queue-s4-output-tcp.sh
+PASS: local-queue-s4-output-tcp-recovery.sh
+PASS: local-queue-s4-output-tcp-fallback.sh
 PASS: imgssapi-listen-port-file.sh
 PASS: imgssapi-maxsessions.sh
 PASS: imgssapi-yaml-include-listen-port-file.sh
+PASS: record-container-validation.sh
 SKIP: codex-pre-push-container-gate.sh
 SKIP: backtick-cat-procfs.sh
 PASS: preservefqdn-localhostname-internal.sh
@@ -34,6 +114,7 @@ PASS: msleep_usage_output.sh
 PASS: mangle_qi_usage_output.sh
 PASS: chkseq_usage_output.sh
 PASS: minitcpsrv_usage_output.sh
+PASS: minitcpsrv-reconnect.sh
 PASS: diagtalker-retry.sh
 PASS: test_id_usage_output.sh
 PASS: uxsockrcvr_usage_output.sh
@@ -107,6 +188,7 @@ PASS: omfile-null-filename.sh
 PASS: omfile-whitespace-filename.sh
 PASS: omfile-read-only.sh
 PASS: omfile-outchannel.sh
+PASS: omfile-sizelimitcmd-async.sh
 PASS: omfile_both_files_set.sh
 PASS: omfile_hup.sh
 SKIP: msgvar-concurrency.sh
@@ -142,6 +224,8 @@ PASS: template-pos-from-to-missing-jsonvar.sh
 PASS: template-const-jsonf.sh
 PASS: template-regex-index-bounds.sh
 PASS: template-topos-neg.sh
+PASS: template-topos-neg-underflow.sh
+PASS: template-regex-match-large-offset.sh
 PASS: fac_authpriv.sh
 PASS: fac_local0.sh
 PASS: fac_local7.sh
@@ -158,9 +242,11 @@ PASS: rfc5424parser-sp_at_msg_start.sh
 PASS: compresssp.sh
 PASS: compresssp-stringtpl.sh
 PASS: rawmsg-after-pri.sh
+PASS: rawmsg-after-pri-short.sh
 PASS: rfc5424parser.sh
 PASS: pmrfc3164-msgFirstSpace.sh
 PASS: pmrfc3164-AtSignsInHostname.sh
+PASS: pmrfc3164-SquareBracketsInHostname-oversize.sh
 PASS: pmrfc3164-AtSignsInHostname_off.sh
 PASS: pmrfc3164-tagEndingByColon.sh
 PASS: pmrfc3164-parsehostnameandtag-off.sh
@@ -252,12 +338,14 @@ PASS: sndrcv_udp_nonstdpt.sh
 PASS: sndrcv_udp_nonstdpt_v6.sh
 PASS: imudp_thread_hang.sh
 PASS: imudp-listenportfilename-secure.sh
+FAIL: imudp-bind-failure.sh
 PASS: imudp-ratelimit-programname.sh
 PASS: imudp_ratelimit_name.sh
 PASS: omfwd_ratelimit_name.sh
 PASS: omelasticsearch_ratelimit_name.sh
 SKIP: omelasticsearch-bulk-readonly-retry.sh
 SKIP: omelasticsearch-dynsearch-template.sh
+SKIP: omelasticsearch-maxbytes-boundary.sh
 SKIP: omelasticsearch-bulk-metadata-escape.sh
 SKIP: omelasticsearch-searchtype-deprecated.sh
 PASS: omhttp_ratelimit_name.sh
@@ -313,6 +401,7 @@ PASS: execonlywhenprevsuspended2.sh
 PASS: execonlywhenprevsuspended3.sh
 PASS: execonlywhenprevsuspended4.sh
 PASS: execonlywhenprevsuspended_multiwrkr.sh
+PASS: action-reporting-concurrency-tsan.sh
 SKIP: execonlywhenprevsuspended-queue.sh
 PASS: execonlywhenprevsuspended-nonsusp.sh
 PASS: execonlywhenprevsuspended-nonsusp-queue.sh
@@ -351,6 +440,8 @@ PASS: externalstate-failed-rcvr.sh
 PASS: rcvr_fail_restore.sh
 PASS: snd-array-cmp-json.sh
 PASS: rscript_b64_decode.sh
+PASS: rscript-json-var-eval-semantics.sh
+PASS: rscript-if-chain-snapshot.sh
 PASS: rscript_tocef.sh
 PASS: rscript_contains.sh
 PASS: rscript_bare_var_root.sh
@@ -361,6 +452,8 @@ PASS: rscript_stop.sh
 PASS: rscript_stop2.sh
 PASS: rscript_prifilt.sh
 PASS: rscript_prifilt_negated_exact.sh
+PASS: prifilt-trailing-separator.sh
+SKIP: prifilt-trailing-separator-vg.sh
 PASS: rscript_optimizer1.sh
 PASS: rscript_optimizer_const_cmp.sh
 PASS: rscript_ruleset_call.sh
@@ -372,6 +465,7 @@ PASS: rscript_set_unset_invalid_var.sh
 PASS: rscript_set_modify.sh
 PASS: rscript_unaffected_reset.sh
 PASS: rscript_replace_complex.sh
+PASS: rscript_replace-overlap.sh
 PASS: rscript_wrap2.sh
 PASS: rscript_wrap3.sh
 PASS: rscript_re_extract_i.sh
@@ -481,6 +575,18 @@ PASS: parsertest-parse-nodate.sh
 PASS: parsertest-parse-nodate-udp.sh
 PASS: parsertest-snare_ccoff_udp.sh
 PASS: parsertest-snare_ccoff_udp2.sh
+PASS: mermaid-offline.sh
+PASS: queue-benchmark-oracle.sh
+FAIL: queue-deferred-idle-wakeup.sh
+FAIL: queue-deferred-idle-shutdown.sh
+PASS: queue-discard-only-lease.sh
+PASS: queue-lease-attribution.sh
+PASS: queue-benchmark-throughput-config.sh
+PASS: queue-benchmark-latency-oracle.sh
+PASS: queue-benchmark-throughput-local.sh
+PASS: wtp-targeted-wakeup.sh
+PASS: wtp-exiting-worker-restart.sh
+PASS: ompipe-legacy-path-length.sh
 PASS: json-omitifzero.sh
 PASS: json-omitifzero-subtree.sh
 PASS: json-whitespace.sh
@@ -575,6 +681,7 @@ PASS: ratelimit_hup.sh
 PASS: yaml-basic.sh
 PASS: yaml-basic-yamlonly.sh
 PASS: yaml-omfile-dynafilecachesize-invalid.sh
+PASS: yaml-omfile-dynafile-template-type-invalid.sh
 PASS: yaml-include.sh
 PASS: yaml-ruleset-script.sh
 PASS: yaml-error.sh
@@ -598,8 +705,10 @@ PASS: yaml-allowed-sender-modern.sh
 PASS: yaml-statements-reload-lookup.sh
 PASS: yaml-lookup-table-duplicate.sh
 PASS: yaml-action-duplicate-name.sh
+SKIP: yaml-imudp-batchsize-range.sh
 PASS: config-translate-rs-roundtrip.sh
 PASS: config-translate-yaml-roundtrip.sh
+PASS: yaml-queue-mutex-contention-stats.sh
 PASS: yaml-include-recursion.sh
 PASS: yaml-imtcp-tls-ossl-prioritize-san-reject-cn.sh
 PASS: yaml-omfwd-tls-ossl-pkcs11-module-defaults.sh
@@ -629,9 +738,10 @@ PASS: omhttp-multiplehttpheaders.sh
 PASS: omhttp-dynrestpath.sh
 PASS: omhttp-batch-dynrestpath.sh
 PASS: imtcp-ruleset-no-queue-warning.sh
+PASS: imtcp-bind-failure.sh
 PASS: rscript_parsehostnameandtag_off.sh
 PASS: imtcp-spacelf-escape.sh
-SKIP: imtcp-shutdown-pending-accepts.sh
+PASS: legacy-zlib-empty-output.sh
 PASS: parser-drop-trailing-cr.sh
 PASS: omfwd-rebind-tcp.sh
 PASS: omfile-dynafile-traversal-default-template.sh
@@ -639,6 +749,8 @@ PASS: omfile-dynafile-traversal-list-template.sh
 PASS: omfile-dynafile-traversal-permit-escape.sh
 PASS: omfile-dynafile-traversal-repro.sh
 PASS: omfile-dynafile-traversal-root-base.sh
+PASS: rscript-replace-result-limit.sh
+PASS: imtcp-poll-shutdown-workset.sh
 PASS: imtcp-stream-always-zlib-basic.sh
 PASS: imtcp-stream-always-zlib-completion-release.sh
 PASS: imtcp-stream-always-zlib-flushoff.sh
@@ -670,6 +782,9 @@ PASS: ommail-sendmail-bad-binary.sh
 PASS: ommail-sendmail-exec-fail.sh
 PASS: ommail-sendmail-default-binary.sh
 PASS: rscript_http_request.sh
+PASS: omkinesis-mock.sh
+PASS: omkinesis-endpoint-validation.sh
+PASS: yaml-omkinesis-mock.sh
 PASS: impstats-hup.sh
 PASS: impstats-overwrite.sh
 PASS: impstats-no-overwrite.sh
@@ -765,14 +880,17 @@ SKIP: uxsock_action_isolation.sh
 SKIP: uxsock_multiple.sh
 SKIP: uxsock_multiple_netns.sh
 PASS: rpm-baseline-patch-policy.sh
+PASS: daily-stable-package-drift.sh
+SKIP: daily-stable-failure-report.sh
 ============================================================================
-Testsuite summary for rsyslog 8.2608.0
+Testsuite summary for rsyslog 8.2610.0
 ============================================================================
-# TOTAL: 784
-# PASS:  701
-# SKIP:  83
+# TOTAL: 901
+# PASS:  810
+# SKIP:  88
 # XFAIL: 0
-# FAIL:  0
+# FAIL:  3
 # XPASS: 0
 # ERROR: 0
+============================================================================
 ============================================================================

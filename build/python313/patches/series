@@ -37,3 +37,5 @@ revert-makedirs.patch
 # variant of python, see build.sh
 gethostbyname.patch
 socket-h_errno.patch
+test-socket-injected.patch
+test-multiprocessing-pool.patch

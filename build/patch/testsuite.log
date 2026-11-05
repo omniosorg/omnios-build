@@ -51,7 +51,7 @@ PASS: symlinks
 PASS: unmodified-files
 PASS: unusual-blanks
 ============================================================================
-Testsuite summary for GNU patch 2.8
+Testsuite summary for GNU patch 2.8.1
 ============================================================================
 # TOTAL: 49
 # PASS:  45
