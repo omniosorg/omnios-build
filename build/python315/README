@@ -40,21 +40,17 @@ Bootstrap
 ---------
 
 To bootstrap modules for a new python version, build 'setuptools' and 'pip'
-with the '-f bootstrap' flag, and install these bootstrap packages:
+with the '-f bootstrap' flag, and install them:
 
     for m in setuptools pip; do
-	{ cd $m; ./build.sh -f bootstrap -blt; }
+	{ cd $m; ./build.sh -f bootstrap -blt; cd ..; }
     done
-    pfexec pkg install {pip,setuptools}-3XX-bootstrap
+    pfexec pkg install pip-3XX setuptools-3XX
 
-then build again, without the bootstrap flag:
+then build again, without the bootstrap flag, and update the installed
+packages:
 
     for m in setuptools pip; do
-	{ cd $m; ./build.sh -blt; }
+	{ cd $m; ./build.sh -blt; cd ..; }
     done
-
-and finally switch out the bootstrap packages for the real ones:
-
-    pfexec pkg install --reject pip-3XX-bootstrap pip-3XX
-    pfexec pkg install --reject setuptools-3XX-bootstrap setuptools-3XX
-
+    pfexec pkg update pip-3XX setuptools-3XX

@@ -18,7 +18,7 @@
 
 PKG=library/python-3/pip-313
 PROG=pip
-VER=26.3
+inherit_ver python315/pip
 SUMMARY="Tool for installing Python packages"
 DESC="$PROG is the standard package installer for Python"
 

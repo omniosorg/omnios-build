@@ -48,7 +48,8 @@ BASE_TMPDIR=$TMPDIR
 PEP518OPTS+=" --ignore-installed"
 
 # Use the same python version for dependency resolution
-# pkgdepend can only run under a python version that pkg ships modules for.
+# Enable once pkg ships modules for this python version, since pkgdepend needs
+# them. Until then, dependencies between python modules are not detected.
 #PKGDEPEND="/usr/bin/python$PYTHONVER -Es $PKGDEPEND"
 
 # Vim hints

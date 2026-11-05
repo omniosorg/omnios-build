@@ -18,7 +18,7 @@
 
 PKG=library/python-3/asn1crypto-313
 PROG=asn1crypto
-VER=1.5.1
+inherit_ver python315/asn1crypto
 SUMMARY="asn1crypto - Fast ASN.1 parser..."
 DESC="$SUMMARY"
 

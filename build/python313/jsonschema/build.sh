@@ -18,7 +18,7 @@
 
 PKG=library/python-3/jsonschema-313
 PROG=jsonschema
-VER=4.26.0
+inherit_ver python315/jsonschema
 SUMMARY="An implementation of JSON Schema validation for Python"
 DESC="$SUMMARY"
 
