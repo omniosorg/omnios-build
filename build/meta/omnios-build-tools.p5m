@@ -41,6 +41,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/libffi type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libidn type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/libpsl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/lzlib type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/mpdecimal type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/nspr type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/pcre2 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-313 type=require
