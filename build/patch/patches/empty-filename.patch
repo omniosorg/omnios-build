@@ -1,0 +1,20 @@
+safe_xstat() returns EINVAL for an empty name, rather than setting errno and
+returning -1. Report an empty name as having no file type instead, so that it
+is refused.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/safe.c a/src/safe.c
+--- a~/src/safe.c	1970-01-01 00:00:00
++++ a/src/safe.c	1970-01-01 00:00:00
+@@ -552,7 +552,11 @@ safe_xstat (char *pathname, struct stat
+   if (dirfd == DIRFD_INVALID)
+     return -1;
+   if (! strcmp (pathname, ""))
+-    return EINVAL;
++    {
++      /* An empty name is not any type of file, so callers refuse it.  */
++      memset (buf, 0, sizeof *buf);
++      return 0;
++    }
+   return fstatat (dirfd, pathname, buf, flags);
+ }
+ 
