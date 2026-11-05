@@ -12,17 +12,18 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=ntpsec
-VER=1.2.4
+VER=1.2.6
 PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
 
 set_arch 64
+set_standard XPG7 CFLAGS
 
 # Required to generate man pages
 BUILD_DEPENDS_IPS="ooce/text/asciidoc"
@@ -31,9 +32,6 @@ export PATH=$PATH:$OOCEBIN
 SKIP_LICENCES="skip*"
 
 export XML_CATALOG_FILES=$OOCEOPT/docbook-xsl/catalog.xml
-
-# Required to include struct timespec definition and constants.
-export CFLAGS+=" -D__EXTENSIONS__"
 
 # TODO: The code needs some updates to build without this option
 CFLAGS+=" -fpermissive"
@@ -56,19 +54,6 @@ CONFIGURE_OPTS[WS]="
 "
 
 # NTPsec uses the 'waf' build system
-
-build_init() {
-    # ntpsec 1.2.4 includes a broken version of "waf" which does not honour
-    # --libdir. Replace it.
-    typeset newver=2.1.6
-    typeset oldver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
-    [ "$oldver" = "2.1.4" ] || logerr "Unexpected waf version $oldver"
-    logmsg "-- updating 'waf' from $oldver to $newver"
-    logcmd $CURL -Lo $TMPDIR/$BUILDDIR/waf https://waf.io/waf-$newver \
-        || logerr "Could not download updated waf binary"
-    typeset nowver=`$TMPDIR/$BUILDDIR/waf --version | $AWK '{print $2}'`
-    [ "$nowver" = "$newver" ] || logerr "Unexpected new waf version $nowver"
-}
 
 make_clean() {
     logcmd ./waf distclean
