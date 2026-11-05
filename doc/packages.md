@@ -76,7 +76,7 @@
 | network/test/iperf			| 3.22			| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
 | runtime/java/openjdk11		| 11.0.33+10		| https://github.com/openjdk/jdk11u/tags
-| runtime/java/openjdk17		| 17.0.20.1+1		| https://github.com/openjdk/jdk17u/tags
+| runtime/java/openjdk17		| 17.0.21.0.3+1		| https://github.com/openjdk/jdk17u/tags
 | runtime/java/openjdk21		| 21.0.12.1+1		| https://github.com/openjdk/jdk21u/tags
 | runtime/java/openjdk8			| 1.8.512-09		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
