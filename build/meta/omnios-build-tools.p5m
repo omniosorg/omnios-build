@@ -45,18 +45,32 @@ depend fmri=pkg://$(PKGPUBLISHER)/library/mpdecimal type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/nspr type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/pcre2 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/coverage-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/crossenv-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonrpclib-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/jsonschema-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/maturin-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/maturin-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/meson-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/packaging-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/packaging-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pip-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pycurl-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pycurl-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyopenssl-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyopenssl-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/pyyaml-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/rapidjson-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-313 \
+    type=require
+depend fmri=pkg://$(PKGPUBLISHER)/library/python-3/setuptools-rust-315 \
     type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-11 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/library/security/openssl-3 type=require
@@ -67,6 +81,7 @@ depend fmri=pkg://$(PKGPUBLISHER)/runtime/java/openjdk21 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/perl type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-27 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-313 type=require
+depend fmri=pkg://$(PKGPUBLISHER)/runtime/python-315 type=require
 depend fmri=pkg://$(PKGPUBLISHER)/service/network/tftp type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/file type=require
 depend fmri=pkg://$(PKGPUBLISHER)/system/header/header-audio type=require
