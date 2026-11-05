@@ -12,13 +12,13 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=lz4
 PKG=compress/lz4
-VER=1.10.0
+VER=1.11.0
 SUMMARY="LZ4"
 DESC="Extremely fast compression"
 
@@ -30,6 +30,9 @@ pre_configure() {
         CFLAGS=\"$CFLAGS ${CFLAGS[$arch]}\"
         LDFLAGS=\"$LDFLAGS ${LDFLAGS[$arch]}\"
     "
+    # Objects are cached per flag set, so install needs the same flags or it
+    # relinks the binary with upstream's defaults.
+    MAKE_INSTALL_ARGS_WS="$MAKE_ARGS_WS"
 
     # No configure
     false
@@ -69,6 +72,9 @@ TESTSUITE_SED="
     s/  *$//
     /^make.* directory /d
     /^gcc/d
+    /^CC \.cache/d
+    /^LD \.cache/d
+    s/([0-9][0-9]* ms)/(X ms)/
     /gnu\/bin\/make/d
     /ln -sf/d
     /^\+/d
