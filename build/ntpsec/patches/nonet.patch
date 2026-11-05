@@ -4,7 +4,7 @@ stylesheets.
 diff -wpruN --no-dereference '--exclude=*.orig' a~/wafhelpers/asciidoc.py a/wafhelpers/asciidoc.py
 --- a~/wafhelpers/asciidoc.py	1970-01-01 00:00:00
 +++ a/wafhelpers/asciidoc.py	1970-01-01 00:00:00
-@@ -120,6 +120,7 @@ def configure(ctx):
+@@ -124,6 +124,7 @@ def configure(ctx):
                  ctx.env.BIN_A2X[0],
                  '-a', 'attribute-missing=warn',
                  '-f', 'manpage', '--no-xmllint',
