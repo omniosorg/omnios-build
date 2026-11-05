@@ -1,0 +1,33 @@
+On leaving the "with Pool()" block, terminate() sends SIGTERM to the workers.
+With the spawn and forkserver start methods some of them may still be starting
+up and be in sem_open(). illumos uses a lock file for the duration of that call
+and it is left behind if the process is killed. sem_unlink() then gives up with
+EEXIST after 64 seconds, so the test fails. Wait for the workers to finish.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_multiprocessing_main_handling.py a/Lib/test/test_multiprocessing_main_handling.py
+--- a~/Lib/test/test_multiprocessing_main_handling.py	1970-01-01 00:00:00
++++ a/Lib/test/test_multiprocessing_main_handling.py	1970-01-01 00:00:00
+@@ -67,6 +67,11 @@ if __name__ == '__main__':
+             if results:
+                 break
+ 
++        # Let the workers finish starting up, rather than having terminate()
++        # kill one which may be holding a semaphore lock.
++        pool.close()
++        pool.join()
++
+     results.sort()
+     print(start_method, "->", results)
+ 
+@@ -99,6 +104,11 @@ with Pool(5) as pool:
+         if results:
+             break
+ 
++    # Let the workers finish starting up, rather than having terminate()
++    # kill one which may be holding a semaphore lock.
++    pool.close()
++    pool.join()
++
+ results.sort()
+ print(start_method, "->", results)
+ 
