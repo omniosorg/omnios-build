@@ -92,13 +92,13 @@ gio - glib:power-profile-monitor                                       OK   1 su
 gio - glib:proxy-test                                                  OK   11 subtests passed
 gio - glib:readwrite                                                   OK   3 subtests passed
 gio - glib:resolver-parsing                                            OK   21 subtests passed
-gio - glib:resources                                                   OK   18 subtests passed
+gio - glib:resources                                                   OK   19 subtests passed
 gio - glib:sandbox                                                     OK   4 subtests passed
 gio - glib:simple-async-result                                         OK   2 subtests passed
 gio - glib:simple-proxy                                                OK   3 subtests passed
 gio - glib:sleepy-stream                                               OK   2 subtests passed
 gio - glib:socket                                                      OK   30 subtests passed
-gio - glib:socket-address                                              OK   2 subtests passed
+gio - glib:socket-address                                              OK   4 subtests passed
 gio - glib:socket-listener                                             OK   4 subtests passed
 gio - glib:socket-service                                              OK   4 subtests passed
 gio - glib:srvtarget                                                   OK   1 subtests passed
@@ -175,17 +175,17 @@ glib+core - glib:hmac                                                  OK   37 s
 glib+core - glib:hook                                                  OK   2 subtests passed
 glib+core - glib:hostutils                                             OK   4 subtests passed
 glib+core - glib:include                                               OK   1 subtests passed
-glib+core - glib:io-channel                                            OK   3 subtests passed
+glib+core - glib:io-channel                                            OK   4 subtests passed
 glib+core - glib:io-channel-basic                                      OK   1 subtests passed
 glib+core - glib:keyfile                                               OK   37 subtests passed
 glib+core - glib:list                                                  OK   20 subtests passed
-glib+core - glib:logging                                               OK   20 subtests passed
+glib+core - glib:logging                                               OK   21 subtests passed
 glib+core - glib:macros                                                OK   3 subtests passed
 glib+core - glib:mainloop                                              OK   47 subtests passed
 glib+core - glib:mappedfile                                            OK   7 subtests passed
 glib+core - glib:mapping                                               ERROR   killed by signal 16 SIGUSR1
 glib+core - glib:markup                                                OK   1 subtests passed
-glib+core - glib:markup-collect                                        OK   21 subtests passed
+glib+core - glib:markup-collect                                        OK   22 subtests passed
 glib+core - glib:markup-escape                                         OK   42 subtests passed
 glib+core - glib:markup-parse                                          OK   71 subtests passed
 glib+core - glib:markup-subparser                                      OK   14 subtests passed
@@ -209,7 +209,7 @@ glib+core - glib:private                                               OK   8 su
 glib+core - glib:protocol                                              OK   9 subtests passed
 glib+core - glib:queue                                                 OK   12 subtests passed
 glib+core - glib:rand                                                  OK   2 subtests passed
-glib+core - glib:rcbox                                                 OK   8 subtests passed
+glib+core - glib:rcbox                                                 OK   9 subtests passed
 glib+core - glib:rec-mutex                                             OK   29 subtests passed
 glib+core - glib:refcount                                              OK   4 subtests passed
 glib+core - glib:refcount-macro                                        OK   4 subtests passed
@@ -240,7 +240,7 @@ glib+core - glib:timeout                                               OK   5 su
 glib+core - glib:timer                                                 OK   10 subtests passed
 glib+core - glib:tree                                                  OK   7 subtests passed
 glib+core - glib:types                                                 OK   1 subtests passed
-glib+core - glib:unicode                                               OK   40 subtests passed
+glib+core - glib:unicode                                               OK   41 subtests passed
 glib+core - glib:unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib+core - glib:unicode-normalize                                     OK   3 subtests passed
 glib+core - glib:unix                                                  OK   22 subtests passed
@@ -284,7 +284,7 @@ glib+core+slow - glib:1bit-emufutex                                    OK   2 su
 glib+core+slow - glib:642026                                           OK   1 subtests passed
 glib+core+slow - glib:642026-ec                                        OK   1 subtests passed
 glib+core+slow - glib:gdatetime                                        OK   58 subtests passed
-glib+core+slow - glib:gvariant                                         OK   71 subtests passed
+glib+core+slow - glib:gvariant                                         OK   72 subtests passed
 glib+core+slow - glib:sequence                                         OK   16 subtests passed
 glib+core+slow - glib:thread-pool-slow                                 OK   7 subtests passed
 gmodule - glib:max-version                                             OK   1 subtests passed
@@ -375,18 +375,18 @@ lint+no-valgrind - glib:shellcheck.sh                                  SKIP
 
 Summary of Failures:
 
-glib+core - glib:mapping                                               ERROR   killed by signal 16 SIGUSR1
 glib+core - glib:convert                                               ERROR   killed by signal 6 SIGABRT
+glib+core - glib:mapping                                               ERROR   killed by signal 16 SIGUSR1
 glib+core - glib:string                                                ERROR   killed by signal 6 SIGABRT
 glib+core - glib:unicode-encoding                                      ERROR   killed by signal 6 SIGABRT
 glib+core - glib:gutils-user-database                                  ERROR   killed by signal 6 SIGABRT
 gio - glib:converter-stream                                            ERROR   killed by signal 6 SIGABRT
 gio - glib:inet-address                                                ERROR   killed by signal 6 SIGABRT
 gio - glib:iptosmessage                                                ERROR   killed by signal 6 SIGABRT
-gio - glib:unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
 gio - glib:appmonitor                                                  ERROR   killed by signal 6 SIGABRT
-gio - glib:gsettings                                                   ERROR   killed by signal 6 SIGABRT
 gio+slow - glib:testfilemonitor                                        ERROR   killed by signal 6 SIGABRT
+gio - glib:unix-mounts                                                 ERROR   killed by signal 6 SIGABRT
+gio - glib:gsettings                                                   ERROR   killed by signal 6 SIGABRT
 
 Ok:                353 
 Fail:              12  
