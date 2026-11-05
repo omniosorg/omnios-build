@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2025 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=openjdk
-VER=17.0.20.1+1
+VER=17.0.21.0.3+1
 PKG=runtime/java/openjdk17
 SUMMARY="openjdk ${VER%%.*}"
 DESC="Open-source implementation of the seventeenth edition of the "
@@ -27,13 +27,14 @@ DESC+="Java SE Platform"
 #   feature.interim.update.patch.extra1.extra2.extra3-pre+build-opt
 # We pass 'opt' explicitly to configure (see below) and currently don't parse
 # the 'extra' values out of the version string.
-if [[ $VER =~ ^([0-9]+)(\.([0-9]+))?(\.([0-9]+))?(\.([0-9]+))?\+([0-9]+)$ ]]
+if [[ $VER =~ ^([0-9]+)(\.([0-9]+))?(\.([0-9]+))?(\.([0-9]+))?(\.([0-9]+))?\+([0-9]+)$ ]]
 then
     V_FEATURE=${BASH_REMATCH[1]}
     V_INTERIM=${BASH_REMATCH[3]}
     V_UPDATE=${BASH_REMATCH[5]}
     V_PATCH=${BASH_REMATCH[7]}
-    V_BUILD=${BASH_REMATCH[8]}
+    V_EXTRA=${BASH_REMATCH[9]}
+    V_BUILD=${BASH_REMATCH[10]}
 else
     logerr "Could not parse openjdk version $VER"
 fi
@@ -60,7 +61,8 @@ BUILD_DEPENDS_IPS="
 
 RUN_DEPENDS_IPS="runtime/java/jexec"
 
-VERHUMAN="jdk${V_FEATURE}u${V_UPDATE}${V_PATCH:+.}$V_PATCH-b$V_BUILD"
+VERHUMAN="jdk${V_FEATURE}u${V_UPDATE}${V_PATCH:+.}$V_PATCH${V_EXTRA:+.}$V_EXTRA"
+VERHUMAN+="-b$V_BUILD"
 IVER="$V_FEATURE.$V_INTERIM"
 
 IROOT=usr/jdk/instances

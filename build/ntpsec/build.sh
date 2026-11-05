@@ -12,17 +12,18 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2024 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/build.sh
 
 PROG=ntpsec
-VER=1.2.3
+VER=1.2.6
 PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
 
 set_arch 64
+set_standard XPG7 CFLAGS
 
 # Required to generate man pages
 BUILD_DEPENDS_IPS="ooce/text/asciidoc"
@@ -31,9 +32,6 @@ export PATH=$PATH:$OOCEBIN
 SKIP_LICENCES="skip*"
 
 export XML_CATALOG_FILES=$OOCEOPT/docbook-xsl/catalog.xml
-
-# Required to include struct timespec definition and constants.
-export CFLAGS+=" -D__EXTENSIONS__"
 
 # TODO: The code needs some updates to build without this option
 CFLAGS+=" -fpermissive"
