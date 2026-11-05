@@ -1,0 +1,15 @@
+This test has a local variable called `sun`, which is a predefined macro on
+illumos when building in the gnu dialects.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/gio/tests/socket-address.c a/gio/tests/socket-address.c
+--- a~/gio/tests/socket-address.c	1970-01-01 00:00:00
++++ a/gio/tests/socket-address.c	1970-01-01 00:00:00
+@@ -1,5 +1,8 @@
+ #include <gio/gunixsocketaddress.h>
+ 
++/* gcc predefines "sun" as a macro on illumos */
++#undef sun
++
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
