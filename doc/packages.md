@@ -113,7 +113,7 @@
 | text/gnu-diffutils			| 3.12			| https://ftp.gnu.org/gnu/diffutils/
 | text/gnu-gettext			| 1.0			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
-| text/gnu-patch			| 2.8			| https://ftp.gnu.org/gnu/patch/
+| text/gnu-patch			| 2.8.1			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
 | text/groff				| 1.24.2		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
