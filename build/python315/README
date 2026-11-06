@@ -1,0 +1,56 @@
+
+Python module dependencies
+--------------------------
+
+setuptools
+	pip	 (and pip depends on setuptools! See "Bootstrap" below)
+
+pkg
+	cryptography
+		maturin (build)
+			setuptools-rust
+				semantic-version
+				typing-extensions
+				tomli
+		cffi
+			pycparser
+	jsonrpclib
+	jsonschema
+		attrs
+		jsonschema-specifications
+		referencing
+		rpds-py
+			maturin (build)
+	orjson
+	pycurl
+	rapidjson
+	coverage
+	pyopenssl
+		cryptography
+
+bhyve (brand)
+	pyyaml
+
+glib2
+	meson
+	packaging
+
+
+Bootstrap
+---------
+
+To bootstrap modules for a new python version, build 'setuptools' and 'pip'
+with the '-f bootstrap' flag, and install them:
+
+    for m in setuptools pip; do
+	{ cd $m; ./build.sh -f bootstrap -blt; cd ..; }
+    done
+    pfexec pkg install pip-3XX setuptools-3XX
+
+then build again, without the bootstrap flag, and update the installed
+packages:
+
+    for m in setuptools pip; do
+	{ cd $m; ./build.sh -blt; cd ..; }
+    done
+    pfexec pkg update pip-3XX setuptools-3XX

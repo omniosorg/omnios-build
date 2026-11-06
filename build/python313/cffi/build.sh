@@ -21,7 +21,7 @@ PROG=cffi
 # TODO: remove adding a .1 version suffix for packaging
 # this was required since the former version had a b1 suffix
 # which was translated to .1
-VER=2.1.1
+inherit_ver python315/cffi
 SUMMARY="cffi"
 DESC="Foreign Function Interface for Python calling C code"
 

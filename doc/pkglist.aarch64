@@ -66,6 +66,7 @@ file/gnu-coreutils
 library/idnkit
 library/libedit
 library/libevent
+library/mpdecimal
 library/libxml2
 library/mpfr
 library/nghttp2

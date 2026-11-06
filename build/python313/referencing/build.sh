@@ -18,7 +18,7 @@
 
 PKG=library/python-3/referencing-313
 PROG=referencing
-VER=0.37.0
+inherit_ver python315/referencing
 SUMMARY="JSON referencing and dereferencing for Python"
 DESC="An implementation-agnostic implementation of JSON reference resolution"
 

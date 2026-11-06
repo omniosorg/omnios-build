@@ -1,0 +1,19 @@
+_mi_ptr_segment() treats a pointer as NULL if it is not positive when viewed as
+an intptr_t. This is not true of user addresses on 64-bit illumos, which are
+at the top of the address space, so every segment appears to be NULL and python
+crashes at startup with PYTHONMALLOC=mimalloc. Use the explicit NULL check that
+mimalloc already has for 32-bit.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Include/internal/mimalloc/mimalloc/internal.h a/Include/internal/mimalloc/mimalloc/internal.h
+--- a~/Include/internal/mimalloc/mimalloc/internal.h	1970-01-01 00:00:00
++++ a/Include/internal/mimalloc/mimalloc/internal.h	1970-01-01 00:00:00
+@@ -543,7 +543,8 @@ static inline mi_page_t* _mi_heap_get_fr
+ // We check for NULL afterwards on 64-bit systems to improve codegen for `mi_free`.
+ static inline mi_segment_t* _mi_ptr_segment(const void* p) {
+   mi_segment_t* const segment = (mi_segment_t*)(((uintptr_t)p - 1) & ~MI_SEGMENT_MASK);
+-  #if MI_INTPTR_SIZE <= 4
++  #if MI_INTPTR_SIZE <= 4 || defined(__sun)
++  // User addresses on illumos are negative when viewed as an intptr_t
+   return (p==NULL ? NULL : segment);
+   #else
+   return ((intptr_t)segment <= 0 ? NULL : segment);

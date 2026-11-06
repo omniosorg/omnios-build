@@ -1,0 +1,18 @@
+These tests use "pri", which is a prefix of the "print" builtin, expecting that
+it does not match a module. On illumos it matches the "privileges" module. Use
+a prefix of a different builtin which does not match anything.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_pyrepl/test_pyrepl.py a/Lib/test/test_pyrepl/test_pyrepl.py
+--- a~/Lib/test/test_pyrepl/test_pyrepl.py	1970-01-01 00:00:00
++++ a/Lib/test/test_pyrepl/test_pyrepl.py	1970-01-01 00:00:00
+@@ -1340,8 +1340,8 @@ class TestPyReplModuleCompleter(TestCase
+ 
+     def test_no_fallback_on_regular_completion(self):
+         cases = (
+-            ("import pri\t\n", "import pri"),
+-            ("from pri\t\n", "from pri"),
++            ("import isi\t\n", "import isi"),
++            ("from isi\t\n", "from isi"),
+             ("from typong import Na\t\n", "from typong import Na"),
+         )
+         for code, expected in cases:

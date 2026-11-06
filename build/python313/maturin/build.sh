@@ -18,7 +18,7 @@
 
 PKG=library/python-3/maturin-313
 PROG=maturin
-VER=1.16.0
+inherit_ver python315/maturin
 SUMMARY="Build backend for rust-based python packages"
 DESC="Build and publish crates with pyo3, cffi and uniffi bindings as well "
 DESC+="as rust binaries as python packages"

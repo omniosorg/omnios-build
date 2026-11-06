@@ -214,6 +214,7 @@ omnios library/libxml2
 omnios library/libxslt
 omnios library/lzlib
 omnios library/mpc
+omnios library/mpdecimal
 omnios library/mpfr
 omnios library/ncurses
 omnios library/nghttp2

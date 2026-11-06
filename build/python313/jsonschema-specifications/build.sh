@@ -18,7 +18,7 @@
 
 PKG=library/python-3/jsonschema-specifications-313
 PROG=jsonschema-specifications
-VER=2025.9.1
+inherit_ver python315/jsonschema-specifications
 SUMMARY="The JSON Schema meta-schemas and vocabularies"
 DESC="The JSON Schema meta-schemas and vocabularies, exposed as a registry"
 

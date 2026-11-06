@@ -18,7 +18,7 @@
 
 PKG=library/python-3/pycodestyle-313
 PROG=pycodestyle
-VER=2.15.0
+inherit_ver python315/pycodestyle
 SUMMARY="$PROG - Python style guide checker"
 DESC="$SUMMARY"
 

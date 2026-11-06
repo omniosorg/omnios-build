@@ -18,7 +18,7 @@
 
 PKG=library/python-3/idna-313
 PROG=idna
-VER=3.20
+inherit_ver python315/idna
 SUMMARY="Internationalized Domain Names in Applications (IDNA)"
 DESC="Support for the Internationalised Domain Names in Applications (IDNA) "
 DESC+="protocol as specified in RFC 5891"

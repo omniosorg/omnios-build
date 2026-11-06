@@ -1,0 +1,18 @@
+This test connects a socket ahead of the client socket and expects accept() to
+return that connection first. Both connects are non-blocking and on illumos the
+later one can be established first, in which case socketpair() returns a
+pair but the test fails. Wait for the first connection to complete.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_socket.py a/Lib/test/test_socket.py
+--- a~/Lib/test/test_socket.py	1970-01-01 00:00:00
++++ a/Lib/test/test_socket.py	1970-01-01 00:00:00
+@@ -5429,6 +5429,9 @@ class PurePythonSocketPairTest(SocketPai
+                     inject_sock.connect(sockname[:2])
+                 except (BlockingIOError, InterruptedError):
+                     pass
++                # Wait for this connection to be established, so that it is
++                # ahead of the client socket in the accept queue.
++                select.select([], [inject_sock], [], support.SHORT_TIMEOUT)
+                 inject_sock.setblocking(True)
+             return sockname
+ 

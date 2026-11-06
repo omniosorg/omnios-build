@@ -18,7 +18,7 @@
 
 PKG=library/python-3/rpds-py-313
 PROG=rpds-py
-VER=2026.9.1
+inherit_ver python315/rpds-py
 SUMMARY="Python bindings to the rust rpds crate"
 DESC="Python bindings to the rust rpds crate for persistent data structures"
 

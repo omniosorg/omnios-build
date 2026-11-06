@@ -1,0 +1,38 @@
+illumos.patch
+mimalloc-illumos-addresses.patch
+autoconf-macros.patch
+vendor-packages.patch
+dont-use-ccs.patch
+default-lib-path.patch
+encoding-alias.patch
+locale-encoding.patch
+pyc-timestamp.patch
+#
+# Additional modules
+module-ucred.patch
+module-dlpi.patch
+module-priv-rbac.patch
+#
+# Module fixes
+termios-set-before-get.patch
+gethostbyaddr-ipv6-fix.patch
+selectmodule.patch
+setsockopt.patch
+#
+# Test related
+test-email.patch
+test-filecomments.patch
+test-freeze.patch
+test-generators.patch
+test-metadata.patch
+test-opts.patch
+test-pkgutil.patch
+test-processgroup.patch
+test-pyrepl.patch
+test-socket-locale.patch
+test-tarfile.patch
+revert-makedirs.patch
+gethostbyname.patch
+socket-h_errno.patch
+test-socket-injected.patch
+test-multiprocessing-pool.patch
