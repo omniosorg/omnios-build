@@ -4,6 +4,103 @@
 
 # Release Notes for OmniOSce v11 r151058
 
+## r151058ab (2026-11-09)
+Weekly release for w/c 09th of November 2026.
+> This update requires a reboot if the `system/bhyve` package is installed
+
+### Security Fixes
+
+- Fixed two flaws in the bhyve device emulation which could allow a privileged
+  user in a guest to crash the bhyve process, or potentially to execute code
+  in that process on the host. The xHCI device re-read the size of its event
+  ring from guest memory
+  ([CVE-2026-101309](https://www.cve.org/CVERecord?id=CVE-2026-101309)),
+  and the framebuffer device did not validate the display resolution set by
+  the guest
+  ([CVE-2026-101311](https://www.cve.org/CVERecord?id=CVE-2026-101311)).
+
+- Fixed a flaw in the bhyve instruction emulator, left by the earlier fix for
+  [CVE-2026-102916](https://www.cve.org/CVERecord?id=CVE-2026-102916),
+  which allowed a privileged user in a guest to panic the host by issuing a
+  `REP` string instruction with an invalid address.
+
+- `expat` has been updated to version 2.10.0, fixing
+  [multiple vulnerabilities](https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/Changes)
+  in the XML parser, including denial of service and memory corruption
+  through crafted input
+  ([CVE-2026-113351](https://www.cve.org/CVERecord?id=CVE-2026-113351),
+  [CVE-2026-115506](https://www.cve.org/CVERecord?id=CVE-2026-115506),
+  [CVE-2026-117610](https://www.cve.org/CVERecord?id=CVE-2026-117610),
+  [CVE-2026-118370](https://www.cve.org/CVERecord?id=CVE-2026-118370),
+  [CVE-2026-102633](https://www.cve.org/CVERecord?id=CVE-2026-102633) and
+  [CVE-2026-77214](https://www.cve.org/CVERecord?id=CVE-2026-77214)).
+
+- `zlib` has been updated to version 1.4, fixing
+  [multiple vulnerabilities](https://zlib.net/ChangeLog.txt)
+  including a heap buffer overflow in `gzwrite()`
+  ([CVE-2026-85091](https://www.cve.org/CVERecord?id=CVE-2026-85091)).
+
+- [rsync(1)](https://man.omnios.org/rsync) has been updated to version 3.5.2,
+  fixing
+  [multiple security issues](https://download.samba.org/pub/rsync/NEWS#3.5.2)
+  including a denial of service of the sender by a malicious receiver
+  ([CVE-2026-119741](https://www.cve.org/CVERecord?id=CVE-2026-119741))
+  and a stack overflow in the daemon.
+
+- `ntpsec` has been updated to version 1.2.6, fixing
+  [multiple vulnerabilities](https://gitlab.com/NTPsec/ntpsec/-/blob/NTPsec_1_2_6/NEWS.adoc)
+  including flaws which allowed a remote attacker to crash `ntpd` when
+  it is acting as an NTS server
+  ([CVE-2026-102486](https://www.cve.org/CVERecord?id=CVE-2026-102486) and
+  [CVE-2026-102483](https://www.cve.org/CVERecord?id=CVE-2026-102483)),
+  and out-of-bounds accesses in reference clock drivers
+  ([CVE-2026-102484](https://www.cve.org/CVERecord?id=CVE-2026-102484),
+  [CVE-2026-102485](https://www.cve.org/CVERecord?id=CVE-2026-102485) and
+  [CVE-2026-18321](https://www.cve.org/CVERecord?id=CVE-2026-18321)).
+
+- `Python` has been updated to version 3.13.18, fixing
+  [multiple security issues](https://docs.python.org/release/3.13.18/whatsnew/changelog.html)
+  including a race in the cleanup of `tempfile.TemporaryDirectory` which could
+  delete files outside the temporary directory
+  ([CVE-2026-12345](https://www.cve.org/CVERecord?id=CVE-2026-12345)).
+  The `ssl` module also now rejects certificate chains containing the
+  compromised eMudhra intermediate CA keys.
+
+- `OpenJDK` packages have been updated to versions 1.8.512-09, 11.0.33+10,
+  17.0.21.0.3+1 and 21.0.13.0.3+1, incorporating the fixes from the
+  [2026/10/20](https://openjdk.org/groups/vulnerability/advisories/2026-10-20),
+  [2026/10/21](https://openjdk.org/groups/vulnerability/advisories/2026-10-21)
+  and
+  [2026/10/24](https://openjdk.org/groups/vulnerability/advisories/2026-10-24)
+  OpenJDK vulnerability advisories.
+
+- [gpatch(1)](https://man.omnios.org/gpatch) has been updated to version
+  2.8.1, fixing a flaw which could create a file outside the working directory
+  when reverse-applying a patch which deletes that file
+  ([CVE-2026-115207](https://www.cve.org/CVERecord?id=CVE-2026-115207)).
+
+- `7zip` has been updated to version 26.05, which fixes
+  [several bugs and vulnerabilities](https://www.7-zip.org/history.txt).
+
+- `glib` has been updated to version 2.86.5, fixing
+  [various minor security vulnerabilities](https://gitlab.gnome.org/GNOME/glib/-/blob/2.86.5/NEWS).
+
+### Other Changes
+
+- Fixed two bugs in the 9P file sharing support in bhyve. Guests using the
+  9P2000 or 9P2000.u protocols were told that symbolic links were plain files,
+  and non-root users in a guest were denied access to any file with a
+  non-trivial ACL.
+
+- `lz4` has been updated to version 1.11.0, fixing data corruption in ring
+  buffer decoding and in rare cases of streaming compression. See the
+  [upstream release notes](https://github.com/lz4/lz4/releases/tag/v1.11.0)
+  for the full list of changes.
+
+<br>
+
+---
+
 ## r151058y (2026-10-21)
 Weekly release for w/c 19th of October 2026.
 > This is a non-reboot update
