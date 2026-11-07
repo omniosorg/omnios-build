@@ -120,6 +120,8 @@ CONFIGURE_OPTS[aarch64]+="
     ac_cv_func_lstat_dereferences_slashed_symlink=yes
 "
 
+CFLAGS[aarch64]+=" -mtls-dialect=trad"
+
 # The testsuite output is quite noisy - clean it up
 TESTSUITE_FILTER="(PASS|SKIP|FAIL|ERROR|TOTAL|summary|====)"
 
