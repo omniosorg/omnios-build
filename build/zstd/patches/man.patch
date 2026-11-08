@@ -4,18 +4,10 @@ Date: Wed, 19 Feb 2025 16:25:00 -0800
 Subject: [PATCH] updated man pages and manual
 
 fixes #4301
----
- doc/zstd_manual.html |  55 +++++----
- programs/zstd.1      | 260 +++++++++++++++++++++++++++++++++++++------
- programs/zstdgrep.1  |   2 +-
- programs/zstdless.1  |   2 +-
- 4 files changed, 257 insertions(+), 62 deletions(-)
-
-diff --git a/doc/zstd_manual.html b/doc/zstd_manual.html
-index 485d5eafbe9..89f0761f492 100644
---- a/doc/zstd_manual.html
-+++ b/doc/zstd_manual.html
-@@ -110,6 +110,7 @@ <h3>Decompression helper functions</h3><pre></pre><b><pre></pre></b><BR>
+diff -wpruN --no-dereference '--exclude=*.orig' a~/doc/zstd_manual.html a/doc/zstd_manual.html
+--- a~/doc/zstd_manual.html	1970-01-01 00:00:00
++++ a/doc/zstd_manual.html	1970-01-01 00:00:00
+@@ -110,6 +110,7 @@ unsigned long long ZSTD_getFrameContentS
             - ZSTD_CONTENTSIZE_UNKNOWN if the size cannot be determined
             - ZSTD_CONTENTSIZE_ERROR if an error occurred (e.g. invalid magic number, srcSize too small)
    note 1 : a 0 return value means the frame is valid but "empty".
@@ -23,7 +15,7 @@ index 485d5eafbe9..89f0761f492 100644
    note 2 : decompressed size is an optional field, it may not be present (typically in streaming mode).
             When `return==ZSTD_CONTENTSIZE_UNKNOWN`, data to decompress could be any size.
             In which case, it's necessary to use streaming mode to decompress data.
-@@ -128,9 +129,8 @@ <h3>Decompression helper functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -128,9 +129,8 @@ unsigned long long ZSTD_getFrameContentS
  </p></pre><BR>
  
  <pre><b>ZSTD_DEPRECATED("Replaced by ZSTD_getFrameContentSize")
@@ -34,12 +26,10 @@ index 485d5eafbe9..89f0761f492 100644
    Both functions work the same way, but ZSTD_getDecompressedSize() blends
    "empty", "unknown" and "error" results to the same return value (0),
    while ZSTD_getFrameContentSize() gives them separate return values.
-@@ -142,7 +142,12 @@ <h3>Decompression helper functions</h3><pre></pre><b><pre></pre></b><BR>
-  `srcSize` must be >= first frame size
+@@ -143,6 +143,11 @@ unsigned long long ZSTD_getDecompressedS
   @return : the compressed size of the first frame starting at `src`,
             suitable to pass as `srcSize` to `ZSTD_decompress` or similar,
--        or an error code if input is invalid 
-+           or an error code if input is invalid
+         or an error code if input is invalid 
 +  Note 1: this method is called _find*() because it's not enough to read the header,
 +          it may have to scan through the frame's content, to reach its end.
 +  Note 2: this method also works with Skippable Frames. In which case,
@@ -48,7 +38,7 @@ index 485d5eafbe9..89f0761f492 100644
  </p></pre><BR>
  
  <h3>Compression helper functions</h3><pre></pre><b><pre></pre></b><BR>
-@@ -166,8 +171,7 @@ <h3>Compression helper functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -166,8 +171,7 @@ size_t ZSTD_compressBound(size_t srcSize
   
  </p></pre><BR>
  
@@ -58,7 +48,7 @@ index 485d5eafbe9..89f0761f492 100644
   * Most ZSTD_* functions returning a size_t value can be tested for error,
   * using ZSTD_isError().
   * @return 1 if error, 0 otherwise
-@@ -1239,7 +1243,7 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1239,7 +1243,7 @@ size_t ZSTD_sizeof_DDict(const ZSTD_DDic
  </p></pre><BR>
  
  <pre><b>ZSTDLIB_STATIC_API size_t ZSTD_frameHeaderSize(const void* src, size_t srcSize);
@@ -67,7 +57,7 @@ index 485d5eafbe9..89f0761f492 100644
   @return : size of the Frame Header,
             or an error code (if srcSize is too small) 
  </p></pre><BR>
-@@ -1252,20 +1256,20 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1252,20 +1256,20 @@ size_t ZSTD_sizeof_DDict(const ZSTD_DDic
      unsigned blockSizeMax;
      ZSTD_FrameType_e frameType;          </b>/* if == ZSTD_skippableFrame, frameContentSize is the size of skippable content */<b>
      unsigned headerSize;
@@ -94,7 +84,7 @@ index 485d5eafbe9..89f0761f492 100644
             or an error code, which can be tested using ZSTD_isError() 
  </p></pre><BR>
  
-@@ -1421,7 +1425,7 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1421,7 +1425,7 @@ ZSTD_compressSequences(ZSTD_CCtx* cctx,
  ZSTD_compressSequencesAndLiterals(ZSTD_CCtx* cctx,
                        void* dst, size_t dstCapacity,
                  const ZSTD_Sequence* inSeqs, size_t nbSequences,
@@ -103,7 +93,7 @@ index 485d5eafbe9..89f0761f492 100644
                  size_t decompressedSize);
  </b><p> This is a variant of ZSTD_compressSequences() which,
   instead of receiving (src,srcSize) as input parameter, receives (literals,litSize),
-@@ -1435,20 +1439,22 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1435,20 +1439,22 @@ ZSTD_compressSequencesAndLiterals(ZSTD_C
   - Not compatible with frame checksum, which must be disabled
   - If any block is incompressible, will fail and return an error
   - @litSize must be == sum of all @.litLength fields in @inSeqs. Any discrepancy will generate an error.
@@ -130,16 +120,15 @@ index 485d5eafbe9..89f0761f492 100644
  
   Returns an error if destination buffer is not large enough, if the source size is not representable
   with a 4-byte unsigned int, or if the parameter magicVariant is greater than 15 (and therefore invalid).
-@@ -1457,13 +1463,14 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1457,13 +1463,14 @@ ZSTD_compressSequencesAndLiterals(ZSTD_C
   
  </p></pre><BR>
  
 -<pre><b>size_t ZSTD_readSkippableFrame(void* dst, size_t dstCapacity, unsigned* magicVariant,
--                                const void* src, size_t srcSize);
--</b><p> Retrieves a zstd skippable frame containing data given by src, and writes it to dst buffer.
 +<pre><b>ZSTDLIB_STATIC_API size_t ZSTD_readSkippableFrame(void* dst, size_t dstCapacity,
 +                                      unsigned* magicVariant,
-+                                      const void* src, size_t srcSize);
+                                 const void* src, size_t srcSize);
+-</b><p> Retrieves a zstd skippable frame containing data given by src, and writes it to dst buffer.
 +</b><p> Retrieves the content of a zstd skippable frame starting at @src, and writes it to @dst buffer.
  
 - The parameter magicVariant will receive the magicVariant that was supplied when the frame was written,
@@ -151,7 +140,7 @@ index 485d5eafbe9..89f0761f492 100644
  
   Returns an error if destination buffer is not large enough, or if the frame is not skippable.
  
-@@ -1471,7 +1478,7 @@ <h3>Streaming decompression functions</h3><pre></pre><b><pre></pre></b><BR>
+@@ -1471,7 +1478,7 @@ ZSTD_compressSequencesAndLiterals(ZSTD_C
   
  </p></pre><BR>
  
@@ -160,10 +149,9 @@ index 485d5eafbe9..89f0761f492 100644
  </b><p>  Tells if the content of `buffer` starts with a valid Frame Identifier for a skippable frame.
   
  </p></pre><BR>
-diff --git a/programs/zstd.1 b/programs/zstd.1
-index 5f1519f3323..5503a5b86f4 100644
---- a/programs/zstd.1
-+++ b/programs/zstd.1
+diff -wpruN --no-dereference '--exclude=*.orig' a~/programs/zstd.1 a/programs/zstd.1
+--- a~/programs/zstd.1	1970-01-01 00:00:00
++++ a/programs/zstd.1	1970-01-01 00:00:00
 @@ -1,392 +1,580 @@
 -.TH "ZSTD" "1" "October 2024" "zstd 1.5.6" "User Commands"
 +.
@@ -781,10 +769,9 @@ index 5f1519f3323..5503a5b86f4 100644
 +.
  .SH "AUTHOR"
  Yann Collet
-diff --git a/programs/zstdgrep.1 b/programs/zstdgrep.1
-index d7fda583398..fc79e82e326 100644
---- a/programs/zstdgrep.1
-+++ b/programs/zstdgrep.1
+diff -wpruN --no-dereference '--exclude=*.orig' a~/programs/zstdgrep.1 a/programs/zstdgrep.1
+--- a~/programs/zstdgrep.1	1970-01-01 00:00:00
++++ a/programs/zstdgrep.1	1970-01-01 00:00:00
 @@ -1,5 +1,5 @@
  .
 -.TH "ZSTDGREP" "1" "March 2024" "zstd 1.5.6" "User Commands"
@@ -792,10 +779,9 @@ index d7fda583398..fc79e82e326 100644
  .
  .SH "NAME"
  \fBzstdgrep\fR \- print lines matching a pattern in zstandard\-compressed files
-diff --git a/programs/zstdless.1 b/programs/zstdless.1
-index 7dd65f8fc44..ad5048a02c7 100644
---- a/programs/zstdless.1
-+++ b/programs/zstdless.1
+diff -wpruN --no-dereference '--exclude=*.orig' a~/programs/zstdless.1 a/programs/zstdless.1
+--- a~/programs/zstdless.1	1970-01-01 00:00:00
++++ a/programs/zstdless.1	1970-01-01 00:00:00
 @@ -1,5 +1,5 @@
  .
 -.TH "ZSTDLESS" "1" "March 2024" "zstd 1.5.6" "User Commands"
