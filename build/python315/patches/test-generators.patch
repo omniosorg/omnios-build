@@ -1,0 +1,19 @@
+
+When the PGO tests are run under `buildctl`, SIGINT is ignored and that causes
+a test failure. Make the test a bit cleverer and have it check if SIGINT
+is going to be seen.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/test/test_generators.py a/Lib/test/test_generators.py
+--- a~/Lib/test/test_generators.py	1970-01-01 00:00:00
++++ a/Lib/test/test_generators.py	1970-01-01 00:00:00
+@@ -44,7 +44,9 @@ class SignalAndYieldFromTest(unittest.Te
+         except BaseException as _exc:
+             exc = _exc
+         self.assertIs(type(exc), StopIteration)
+-        self.assertEqual(exc.value, "PASSED")
++        import signal
++        if signal.getsignal(signal.SIGINT) != signal.SIG_IGN:
++            self.assertEqual(exc.value, "PASSED") #WS
+ 
+ 
+ class FinalizationTest(unittest.TestCase):

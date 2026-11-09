@@ -1,0 +1,14 @@
+aarch64 is a supported architecture on illumos
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/target/mod.rs a/src/target/mod.rs
+--- a~/src/target/mod.rs	1970-01-01 00:00:00
++++ a/src/target/mod.rs	1970-01-01 00:00:00
+@@ -228,7 +228,7 @@ fn get_supported_architectures(os: &Os)
+             Arch::Sparc64,
+         ],
+         Os::Dragonfly => &[Arch::X86_64],
+-        Os::Illumos => &[Arch::X86_64],
++        Os::Illumos => &[Arch::X86_64, Arch::Aarch64],
+         Os::Haiku => &[Arch::X86_64],
+         Os::Solaris => &[Arch::X86_64, Arch::Sparc64, Arch::Sparcv9],
+         Os::Emscripten | Os::Wasi => &[Arch::Wasm32],

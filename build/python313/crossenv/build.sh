@@ -18,7 +18,7 @@
 
 PKG=library/python-3/crossenv-313
 PROG=crossenv
-VER=1.6.2
+inherit_ver python315/crossenv
 SUMMARY="A cross-compiling tool for Python extension modules"
 DESC="$SUMMARY"
 

@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+
+from OpenSSL import crypto
+
+TYPE_RSA = crypto.TYPE_RSA
+
+pkey = crypto.PKey()
+pkey.generate_key(TYPE_RSA, 2048)
+

@@ -18,7 +18,7 @@
 
 PKG=library/python-3/pyyaml-313
 PROG=pyyaml
-VER=6.0.3
+inherit_ver python315/pyyaml
 SUMMARY="YAML parser and emitter for Python"
 DESC="YAML is a data serialization format designed for human readability "
 DESC+="and interaction with scripting languages. "

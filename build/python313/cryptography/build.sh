@@ -18,7 +18,7 @@
 
 PKG=library/python-3/cryptography-313
 PROG=cryptography
-VER=50.0.2
+inherit_ver python315/cryptography
 SUMMARY="Cryptographic recipes and primitives"
 DESC="$SUMMARY"
 
