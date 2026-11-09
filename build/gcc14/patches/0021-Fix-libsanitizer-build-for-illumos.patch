@@ -1,4 +1,4 @@
-From 84f8db6f02ff4f0efa37d9ab99db70e0d4f4f053 Mon Sep 17 00:00:00 2001
+From 7fbbaa3f5553b959589b74afcdd4b64aa774b247 Mon Sep 17 00:00:00 2001
 From: Aurelien Larcher <aurelien.larcher@gmail.com>
 Date: Tue, 12 Nov 2019 15:01:57 +0000
 Subject: Fix libsanitizer build for illumos

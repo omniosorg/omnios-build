@@ -1,4 +1,4 @@
-From 9bf540a9b5cee1406b8d24fce1af4cae9cd9bedf Mon Sep 17 00:00:00 2001
+From 0424a41e5c902976a5f4956290d0dd9918f6f23e Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Wed, 26 Oct 2022 12:53:51 +0000
 Subject: Add -fforce-omit-frame-pointer

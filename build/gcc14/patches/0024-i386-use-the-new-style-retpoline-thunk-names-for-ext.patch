@@ -1,15 +1,15 @@
-From 486201b2800bb37c8c78890f4fd9ff7df60ab796 Mon Sep 17 00:00:00 2001
+From 06d6c2b8eaf85b2c8344b1b99c9ac96f6394e73a Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Wed, 7 Feb 2018 02:13:42 +0000
-Subject: i386: use the new-style retpoline thunk names for
- external thunks, because nothing else will work
+Subject: i386: use the new-style retpoline thunk names for external thunks,
+ because nothing else will work
 
 ---
  gcc/config/i386/i386.cc | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index 8d9509e10ae..becf8da0514 100644
+index c7c248f1545..9dfab77e276 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -6073,7 +6073,9 @@ indirect_thunk_name (char name[32], unsigned int regno,

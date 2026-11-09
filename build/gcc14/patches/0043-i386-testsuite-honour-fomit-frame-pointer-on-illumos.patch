@@ -1,0 +1,52 @@
+From 36445234b7775e0ae1a4bedd15269b9b34994346 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sun, 8 Nov 2026 17:36:44 +0000
+Subject: i386 testsuite: honour -fomit-frame-pointer on illumos
+
+illumos keeps the frame pointer even when -fomit-frame-pointer is given,
+and only omits it when -fforce-omit-frame-pointer is also present. Many
+gcc.target/i386 tests ask for -fomit-frame-pointer and then scan the
+assembly for code that only appears without a frame pointer.
+---
+ gcc/testsuite/gcc.target/i386/i386.exp | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/gcc/testsuite/gcc.target/i386/i386.exp b/gcc/testsuite/gcc.target/i386/i386.exp
+index 657f6982e56..a62db27c082 100644
+--- a/gcc/testsuite/gcc.target/i386/i386.exp
++++ b/gcc/testsuite/gcc.target/i386/i386.exp
+@@ -35,6 +35,22 @@ if ![info exists DEFAULT_CFLAGS] then {
+ dg-init
+ clearcap-init
+ 
++# illumos deliberately ignores -fomit-frame-pointer unless
++# -fforce-omit-frame-pointer is also given.  Honour what a test asks for.
++# This file is sourced once per target board, so this is undone below.
++if { [istarget *-*-solaris2*] } {
++    rename gcc-dg-test saved-gcc-dg-test
++    proc gcc-dg-test { prog do_what extra_tool_flags } {
++	if { [string match "*-fomit-frame-pointer*" $extra_tool_flags] } {
++	    append extra_tool_flags " -fforce-omit-frame-pointer"
++	}
++	# gcc-dg-test-1 uses upvar 2 to reach dg-test's variables, so run
++	# the original in our caller's frame to keep the frame depth.
++	return [uplevel 1 [list saved-gcc-dg-test $prog $do_what \
++			       $extra_tool_flags]]
++    }
++}
++
+ global runtests
+ # Special case compilation of vect-args.c so we don't have to
+ # replicate it 16 times.
+@@ -55,6 +71,11 @@ set tests [prune $tests $srcdir/$subdir/vect-args.c]
+ # Main loop.
+ dg-runtest $tests "" $DEFAULT_CFLAGS
+ 
++if { [istarget *-*-solaris2*] } {
++    rename gcc-dg-test ""
++    rename saved-gcc-dg-test gcc-dg-test
++}
++
+ # All done.
+ clearcap-finish
+ dg-finish

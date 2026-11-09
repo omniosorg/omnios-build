@@ -1,0 +1,313 @@
+From 486413ec1e5b7bc3432944a41f0b96c3e6d6900d Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sat, 7 Nov 2026 21:15:48 +0000
+Subject: libstdc++: fix wchar_t classification and codecvt in the dragonfly
+ locale model
+
+Three problems in config/locale/dragonfly make std::ctype<wchar_t>
+(and therefore <regex> on wide strings and std::isblank/ispunct/...
+for wchar_t) and std::codecvt<wchar_t, char, mbstate_t> misbehave on
+illumos.
+
+1. ctype<wchar_t>::_M_initialize_ctype() builds the mask -> wctype_t
+   table with glibc's _ISbit() bit layout (bits 8..15, then 0..3) and
+   only fills 12 of its 16 entries. On illumos ctype_base::mask values
+   are the _IS* bits from <iso/ctype_iso.h>: plain single bits 1<<0
+   (_ISUPPER) .. 1<<15 (_ISPRINT).  So _ISPUNCT (0x10), _ISCNTRL (0x20),
+   _ISBLANK (0x40) and _ISXDIGIT (0x80) never appear in the table and
+   is(punct, L'!'), isblank(L' '), is(xdigit, L'f') are always false,
+   while entries 12..15 are left uninitialised and do_is() reads whatever
+   was on the stack (scan_is(digit, L"aaaaa") found a "digit"). On
+   DragonFly this table is unused because ctype_inline.h supplies
+   do_is().
+2. That do_is() classifies with iswctype() in the thread's current C
+   locale rather than iswctype_l() in the facet's own locale, so a
+   ctype<wchar_t> for "de_DE.UTF-8" only recognises ASCII unless the
+   process-global locale happens to match.
+3. codecvt<wchar_t, char, mbstate_t>::do_in()/do_out() return ok
+   instead of partial when the destination range is empty (PR
+   libstdc++/37475). Upstream fixed this for the GNU model in 73ad57c244c
+   (June 2024) but the dragonfly copy of that code was not updated.
+---
+ .../locale/dragonfly/codecvt_members.cc       | 99 ++++++++++++-------
+ .../config/locale/dragonfly/ctype_members.cc  | 28 +++++-
+ .../testsuite/22_locale/ctype/is/wchar_t/2.cc |  2 +-
+ 3 files changed, 88 insertions(+), 41 deletions(-)
+
+diff --git a/libstdc++-v3/config/locale/dragonfly/codecvt_members.cc b/libstdc++-v3/config/locale/dragonfly/codecvt_members.cc
+index 188d8db14a8..11f0f355d51 100644
+--- a/libstdc++-v3/config/locale/dragonfly/codecvt_members.cc
++++ b/libstdc++-v3/config/locale/dragonfly/codecvt_members.cc
+@@ -38,8 +38,20 @@ namespace std _GLIBCXX_VISIBILITY(default)
+ {
+ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 
+-  // Specializations.
+ #ifdef _GLIBCXX_USE_WCHAR_T
++namespace
++{
++  // RAII type for changing and restoring the current thread's locale.
++  struct Guard
++  {
++    explicit Guard(__c_locale loc)
++    : old((__c_locale)uselocale((locale_t)loc)) { }
++    ~Guard() { uselocale((locale_t)old); }
++    __c_locale old;
++  };
++}
++
++  // Specializations.
+   codecvt_base::result
+   codecvt<wchar_t, char, mbstate_t>::
+   do_out(state_type& __state, const intern_type* __from,
+@@ -47,20 +59,23 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	 extern_type* __to, extern_type* __to_end,
+ 	 extern_type*& __to_next) const
+   {
+-    result __ret = ok;
+     state_type __tmp_state(__state);
+-
+-    __c_locale __old = (__c_locale)uselocale((locale_t)_M_c_locale_codecvt);
++    Guard g(_M_c_locale_codecvt);
+ 
+     // wcsnrtombs is *very* fast but stops if encounters NUL characters:
+     // in case we fall back to wcrtomb and then continue, in a loop.
+     // NB: wcsnrtombs is a GNU extension
+-    for (__from_next = __from, __to_next = __to;
+-	 __from_next < __from_end && __to_next < __to_end
+-	 && __ret == ok;)
++    __from_next = __from;
++    __to_next = __to;
++    while (__from_next < __from_end)
+       {
+-	const intern_type* __from_chunk_end = wmemchr(__from_next, L'\0',
+-						      __from_end - __from_next);
++	// Checked here rather than in the loop condition so that an empty
++	// destination range yields partial, not ok (PR libstdc++/37475).
++	if (__to_next >= __to_end)
++	  return partial;
++
++	const intern_type* __from_chunk_end
++	  = wmemchr(__from_next, L'\0', __from_end - __from_next);
+ 	if (!__from_chunk_end)
+ 	  __from_chunk_end = __from_end;
+ 
+@@ -72,16 +87,30 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	  {
+ 	    // In case of error, in order to stop at the exact place we
+ 	    // have to start again from the beginning with a series of
+-	    // wcrtomb.
+-	    for (; __from < __from_next; ++__from)
+-	      __to_next += wcrtomb(__to_next, *__from, &__tmp_state);
++	    // wcrtomb.  Don't rely on __from_next having been advanced to
++	    // the offending character: C11 7.29.6.4.2 requires that, and
++	    // the illumos UTF-8 converter does it, but its single-byte
++	    // converter (__wcsnrtombs_ascii in libc/port/locale/none.c)
++	    // leaves *src untouched on EILSEQ.  Everything before the bad
++	    // character fitted into [__to_next, __to_end) already.
++	    for (__from_next = __from; __from_next < __from_chunk_end;
++		 ++__from_next)
++	      {
++		extern_type __buf[MB_LEN_MAX];
++		const size_t __n = wcrtomb(__buf, *__from_next, &__tmp_state);
++		if (__n == static_cast<size_t>(-1)
++		    || __n > static_cast<size_t>(__to_end - __to_next))
++		  break;
++		memcpy(__to_next, __buf, __n);
++		__to_next += __n;
++	      }
+ 	    __state = __tmp_state;
+-	    __ret = error;
++	    return error;
+ 	  }
+ 	else if (__from_next && __from_next < __from_chunk_end)
+ 	  {
+ 	    __to_next += __conv;
+-	    __ret = partial;
++	    return partial;
+ 	  }
+ 	else
+ 	  {
+@@ -89,13 +118,13 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	    __to_next += __conv;
+ 	  }
+ 
+-	if (__from_next < __from_end && __ret == ok)
++	if (__from_next < __from_end)
+ 	  {
+ 	    extern_type __buf[MB_LEN_MAX];
+ 	    __tmp_state = __state;
+ 	    const size_t __conv2 = wcrtomb(__buf, *__from_next, &__tmp_state);
+ 	    if (__conv2 > static_cast<size_t>(__to_end - __to_next))
+-	      __ret = partial;
++	      return partial;
+ 	    else
+ 	      {
+ 		memcpy(__to_next, __buf, __conv2);
+@@ -106,9 +135,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	  }
+       }
+ 
+-    uselocale((locale_t)__old);
+-
+-    return __ret;
++    return ok;
+   }
+ 
+   codecvt_base::result
+@@ -118,22 +145,24 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	intern_type* __to, intern_type* __to_end,
+ 	intern_type*& __to_next) const
+   {
+-    result __ret = ok;
+     state_type __tmp_state(__state);
+-
+-    __c_locale __old = (__c_locale)uselocale((locale_t)_M_c_locale_codecvt);
++    Guard g(_M_c_locale_codecvt);
+ 
+     // mbsnrtowcs is *very* fast but stops if encounters NUL characters:
+     // in case we store a L'\0' and then continue, in a loop.
+     // NB: mbsnrtowcs is a GNU extension
+-    for (__from_next = __from, __to_next = __to;
+-	 __from_next < __from_end && __to_next < __to_end
+-	 && __ret == ok;)
++    __from_next = __from;
++    __to_next = __to;
++    while (__from_next < __from_end)
+       {
+-	const extern_type* __from_chunk_end;
+-	__from_chunk_end = static_cast<const extern_type*>(memchr(__from_next, '\0',
+-								  __from_end
+-								  - __from_next));
++	// Checked here rather than in the loop condition so that an empty
++	// destination range yields partial, not ok (PR libstdc++/37475).
++	if (__to_next >= __to_end)
++	  return partial;
++
++	const extern_type* __from_chunk_end
++	  = static_cast<const extern_type*>(memchr(__from_next, '\0',
++						   __from_end - __from_next));
+ 	if (!__from_chunk_end)
+ 	  __from_chunk_end = __from_end;
+ 
+@@ -156,13 +185,13 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	      }
+ 	    __from_next = __from;
+ 	    __state = __tmp_state;
+-	    __ret = error;
++	    return error;
+ 	  }
+ 	else if (__from_next && __from_next < __from_chunk_end)
+ 	  {
+ 	    // It is unclear what to return in this case (see DR 382).
+ 	    __to_next += __conv;
+-	    __ret = partial;
++	    return partial;
+ 	  }
+ 	else
+ 	  {
+@@ -170,7 +199,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	    __to_next += __conv;
+ 	  }
+ 
+-	if (__from_next < __from_end && __ret == ok)
++	if (__from_next < __from_end)
+ 	  {
+ 	    if (__to_next < __to_end)
+ 	      {
+@@ -180,13 +209,11 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 		*__to_next++ = L'\0';
+ 	      }
+ 	    else
+-	      __ret = partial;
++	      return partial;
+ 	  }
+       }
+ 
+-    uselocale((locale_t)__old);
+-
+-    return __ret;
++    return ok;
+   }
+ 
+   int
+diff --git a/libstdc++-v3/config/locale/dragonfly/ctype_members.cc b/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
+index 8e20f74e635..2e12563b4c4 100644
+--- a/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
++++ b/libstdc++-v3/config/locale/dragonfly/ctype_members.cc
+@@ -34,8 +34,17 @@
+ #include <cstdio>
+ 
+ #ifndef _ISbit
++#if defined(__illumos__)
++// On illumos the ctype_base::mask values (config/os/solaris/ctype_base.h)
++// are the _IS* bits from <iso/ctype_iso.h>, which are single bits in the
++// range 1 << 0 .. 1 << 15 (_ISUPPER = 1 .. _ISPRINT = 0x8000).  The glibc
++// bit layout below does not cover _ISPUNCT, _ISCNTRL, _ISBLANK and
++// _ISXDIGIT at all, so is(punct), is(blank) etc. always returned false.
++#define _ISbit(bit) (1 << (bit))
++#else
+ #define _ISbit(bit) ((bit) < 8 ? ((1 << (bit)) << 8) : ((1 << (bit)) >> 8))
+ #endif
++#endif
+ 
+ namespace std _GLIBCXX_VISIBILITY(default)
+ {
+@@ -136,8 +145,14 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+   }
+ 
+ /*
+- * Taken verbatim from config/locale/generic/ctype_members.cc.  DragonFly
++ * Adapted from config/locale/generic/ctype_members.cc.  DragonFly
+  * implements these in config/os/bsd/dragonfly/ctype_inline.h.
++ *
++ * Unlike the generic model, this facet carries its own locale_t in
++ * _M_c_locale_ctype, so classify with iswctype_l() in that locale rather
++ * than with iswctype() in whatever the global C locale happens to be;
++ * otherwise ctype<wchar_t> for a named locale (e.g. "de_DE.UTF-8") only
++ * recognises ASCII.
+  */
+ #if defined(__illumos__)
+   bool
+@@ -150,7 +165,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+     const size_t __bitmasksize = 15;
+     for (size_t __bitcur = 0; __bitcur <= __bitmasksize; ++__bitcur)
+       if (__m & _M_bit[__bitcur]
+-          && iswctype(__c, _M_wmask[__bitcur]))
++          && iswctype_l(__c, _M_wmask[__bitcur],
++			(locale_t)_M_c_locale_ctype))
+         {
+           __ret = true;
+           break;
+@@ -169,7 +185,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+         const size_t __bitmasksize = 15;
+         mask __m = 0;
+         for (size_t __bitcur = 0; __bitcur <= __bitmasksize; ++__bitcur)
+-          if (iswctype(*__lo, _M_wmask[__bitcur]))
++          if (iswctype_l(*__lo, _M_wmask[__bitcur],
++			 (locale_t)_M_c_locale_ctype))
+             __m |= _M_bit[__bitcur];
+         *__vec = __m;
+       }
+@@ -277,7 +294,10 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ 	 __j < sizeof(_M_widen) / sizeof(wint_t); ++__j)
+       _M_widen[__j] = btowc(__j);
+ 
+-    for (size_t __k = 0; __k <= 11; ++__k)
++    // Fill the whole table: do_is() above scans all 16 entries, and
++    // _ISPRINT is 1 << 15 on illumos.  Leaving entries uninitialised made
++    // do_is() consult stack garbage.
++    for (size_t __k = 0; __k <= 15; ++__k)
+       {
+ 	_M_bit[__k] = static_cast<mask>(_ISbit(__k));
+ 	_M_wmask[__k] = _M_convert_to_wmask(_M_bit[__k]);
+diff --git a/libstdc++-v3/testsuite/22_locale/ctype/is/wchar_t/2.cc b/libstdc++-v3/testsuite/22_locale/ctype/is/wchar_t/2.cc
+index 2d1479df8e5..7904e53ed45 100644
+--- a/libstdc++-v3/testsuite/22_locale/ctype/is/wchar_t/2.cc
++++ b/libstdc++-v3/testsuite/22_locale/ctype/is/wchar_t/2.cc
+@@ -1,4 +1,4 @@
+-// { dg-do run { xfail { ! { *-*-linux* *-*-gnu* } } } }
++// { dg-do run { xfail { ! { *-*-linux* *-*-gnu* *-*-solaris2* } } } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // Copyright (C) 2000-2024 Free Software Foundation, Inc.

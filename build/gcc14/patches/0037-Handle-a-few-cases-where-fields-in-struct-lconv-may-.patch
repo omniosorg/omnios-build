@@ -1,9 +1,9 @@
-From 1e86ad431b8d8b6b7e65665620b94a85750e5325 Mon Sep 17 00:00:00 2001
+From 72bfd5d32b7324c5487ab6999c35c29511103c77 Mon Sep 17 00:00:00 2001
 From: Bill Sommerfeld <sommerfeld@hamachi.org>
 Date: Sat, 17 May 2025 17:38:44 -0700
-Subject: Handle a few cases where fields in struct lconv may
- contain multi-byte encoded characters. C++'s locale interface can only cope
- with a single char or a single wchar_t.
+Subject: Handle a few cases where fields in struct lconv may contain
+ multi-byte encoded characters. C++'s locale interface can only cope with a
+ single char or a single wchar_t.
 
 ---
  .../locale/dragonfly/monetary_members.cc      | 36 +++++++++++++++----
