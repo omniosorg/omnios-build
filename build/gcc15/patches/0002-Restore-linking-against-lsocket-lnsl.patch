@@ -1,4 +1,4 @@
-From c154bfb88d2690067db80adbaaa64bde4c44f7b0 Mon Sep 17 00:00:00 2001
+From cafbf531e52b462f917e81ccd73900ca4cbc7fba Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Mon, 2 Mar 2026 20:08:52 +0000
 Subject: Restore linking against -lsocket -lnsl

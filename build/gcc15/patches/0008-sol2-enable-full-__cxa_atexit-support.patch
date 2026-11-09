@@ -1,4 +1,4 @@
-From 68a298c46101b7c823ee77ec5ac4443ad2915b31 Mon Sep 17 00:00:00 2001
+From 582333f0ee37e875418e090cffa0aa847b23e08e Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 4 Mar 2014 22:11:03 +0000
 Subject: sol2: enable full __cxa_atexit support

@@ -1,8 +1,8 @@
-From f703999f17c24bd557e026d969bc6b84a96adb0e Mon Sep 17 00:00:00 2001
+From 30facd30ced7392210107b892d03b8c8c0e5cfdc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Aur=C3=A9lien=20Larcher?= <aurelien.larcher@gmail.com>
 Date: Thu, 25 Oct 2018 20:59:37 +0200
-Subject: Use compare-debug to pass stage2/stage3 comparison as
- avx_*.o and sse-*.o contain debug info that should be stripped
+Subject: Use compare-debug to pass stage2/stage3 comparison as avx_*.o and
+ sse-*.o contain debug info that should be stripped
 
 ---
  Makefile.in | 2 +-

@@ -1,4 +1,4 @@
-From 22a2a3883da47d4dead772b47240b4b917c35946 Mon Sep 17 00:00:00 2001
+From 679bb6863dd71441f04b0ec67abc9da0579d0f49 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 9 May 2019 13:43:30 +0000
 Subject: OOCE: Adjust default library paths for OmniOS
