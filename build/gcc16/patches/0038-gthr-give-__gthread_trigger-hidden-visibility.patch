@@ -1,0 +1,35 @@
+From 7b87c77dbf9072cd229e18003bdb97db992ab719 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Mon, 31 Aug 2026 12:00:00 +0000
+Subject: gthr: give __gthread_trigger hidden visibility
+
+This is https://gcc.gnu.org/bugzilla/show_bug.cgi?id=126399
+
+In 6a4d1c37a2, GCC 15 converted the gthr helper functions from 'static inline'
+to 'inline' so that they are no longer TU-local.  __gthread_active and
+__gthread_active_p got wrapped in '#pragma GCC visibility push(hidden)' so that
+each shared object keeps its own copy of the thread-detection state.
+Unfortunately __gthread_trigger was left outside the pragma.
+---
+ libgcc/gthr-posix.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgcc/gthr-posix.h b/libgcc/gthr-posix.h
+index 3984d066602..27da6c67b70 100644
+--- a/libgcc/gthr-posix.h
++++ b/libgcc/gthr-posix.h
+@@ -204,13 +204,13 @@ __gthread_active (void)
+   static volatile int __gthread_active_var = -1;
+   return &__gthread_active_var;
+ }
+-#pragma GCC visibility pop
+ 
+ __GTHREAD_INLINE void
+ __gthread_trigger (void)
+ {
+   *__gthread_active () = 1;
+ }
++#pragma GCC visibility pop
+ 
+ #pragma GCC visibility push(hidden)
+ __GTHREAD_INLINE int

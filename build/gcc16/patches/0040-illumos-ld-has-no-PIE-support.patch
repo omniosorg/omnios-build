@@ -1,0 +1,105 @@
+From ca65b83a1fb25cfae245c2bc57e9fc7c4bf99e10 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sat, 7 Nov 2026 09:47:12 +0000
+Subject: illumos ld has no PIE support
+
+Upstream dropped the configure test for PIE support and now assumes that
+every Solaris linker understands -z type=pie, along with the LINK_PIE_SPEC
+fallback in sol2.h. That is not true of the illumos link-editor, so -pie
+fails at link time with
+
+  ld: fatal: option -z has illegal argument 'type=pie'
+
+Restore the check of ld -z help and the driver's clean error, which also
+means that this picks up PIE support if the linker ever gains it.
+
+The testsuite also now assumes that Solaris targets support -pie, and so
+the gcc.dg/torture/tls -pie variants fail. Check by linking instead.
+---
+ gcc/config/sol2.h                     | 6 ++++++
+ gcc/configure                         | 6 ++++--
+ gcc/configure.ac                      | 6 ++++--
+ gcc/testsuite/lib/target-supports.exp | 7 ++++++-
+ 4 files changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
+index c7506d8abdc..de3a4ff900c 100644
+--- a/gcc/config/sol2.h
++++ b/gcc/config/sol2.h
+@@ -398,6 +398,7 @@ along with GCC; see the file COPYING3.  If not see
+ #define LINK_EH_SPEC "%{!static|static-pie:--eh-frame-hdr} "
+ #endif
+ 
++#if defined(HAVE_LD_PIE)
+ #if !HAVE_SOLARIS_LD
+ /* Assert -z text by default to match Solaris ld.  */
+ #define LD_PIE_SPEC "-pie %{!mimpure-text:-z text}"
+@@ -405,6 +406,11 @@ along with GCC; see the file COPYING3.  If not see
+ /* Solaris ld needs -z type=pie instead of -pie.  */
+ #define LD_PIE_SPEC "-z type=pie %{mimpure-text:-z textoff}"
+ #endif
++#else
++/* Error out if some part of PIE support is missing.  */
++#define LINK_PIE_SPEC \
++  "%{no-pie:} %{pie:%e-pie is not supported in this configuration} "
++#endif
+ 
+ /* collect2.cc can only parse GNU nm -n output.  Solaris nm needs -png to
+    produce the same format.  */
+diff --git a/gcc/configure b/gcc/configure
+index 5c580ecf792..2ddc68a43aa 100755
+--- a/gcc/configure
++++ b/gcc/configure
+@@ -32910,8 +32910,10 @@ elif test x$gcc_cv_ld != x; then
+   else
+     case "$target" in
+       *-*-solaris2*)
+-	# Solaris 11.3 added PIE support.
+-	gcc_cv_ld_pie=yes
++	# Solaris 11.3 added PIE support, the illumos linker lacks it.
++	if $gcc_cv_ld -z help 2>&1 | grep -- type.*pie > /dev/null; then
++	  gcc_cv_ld_pie=yes
++	fi
+ 	;;
+     esac
+   fi
+diff --git a/gcc/configure.ac b/gcc/configure.ac
+index 30b777012a8..61bc6781141 100644
+--- a/gcc/configure.ac
++++ b/gcc/configure.ac
+@@ -6129,8 +6129,10 @@ elif test x$gcc_cv_ld != x; then
+   else
+     case "$target" in
+       *-*-solaris2*)
+-	# Solaris 11.3 added PIE support.
+-	gcc_cv_ld_pie=yes
++	# Solaris 11.3 added PIE support, the illumos linker lacks it.
++	if $gcc_cv_ld -z help 2>&1 | grep -- type.*pie > /dev/null; then
++	  gcc_cv_ld_pie=yes
++	fi
+ 	;;
+     esac
+   fi
+diff --git a/gcc/testsuite/lib/target-supports.exp b/gcc/testsuite/lib/target-supports.exp
+index 72ad67bc996..703eeaf35ee 100644
+--- a/gcc/testsuite/lib/target-supports.exp
++++ b/gcc/testsuite/lib/target-supports.exp
+@@ -1558,12 +1558,17 @@ proc check_effective_target_shared { } {
+ # Return 1 if -pie, -fpie and -fPIE are supported, 0 otherwise.
+ 
+ proc check_effective_target_pie { } {
++    # The illumos linker has no PIE support, and the driver rejects -pie.
++    if { [istarget *-*-solaris2*] } {
++	return [check_no_compiler_messages pie_link executable {
++	    int main (void) { return 0; }
++	} "-pie -fpie"]
++    }
+     if { [istarget *-*-darwin\[912\]*]
+ 	 || [istarget *-*-dragonfly*]
+ 	 || [istarget *-*-freebsd*]
+ 	 || [istarget *-*-linux*]
+ 	 || [istarget arm*-*-uclinuxfdpiceabi]
+-	 || [istarget *-*-solaris2*]
+ 	 || [istarget *-*-gnu*]
+ 	 || [istarget *-*-amdhsa]} {
+ 	return 1;

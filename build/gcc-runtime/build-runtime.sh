@@ -19,7 +19,7 @@
 
 PKG=system/library/gcc-runtime
 PROG=libgcc_s
-VER=15
+VER=16
 SUMMARY="GNU compiler runtime dependencies"
 DESC="$SUMMARY"
 
