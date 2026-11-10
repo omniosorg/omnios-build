@@ -12,11 +12,11 @@ Arguments :
 Special values :
  -P0    : generate incompressible noise
  -P100  : generate sparse files
-*** LZ4 speed analyzer v1.11.0 64-bits, by Yann Collet ***
+*** LZ4 speed analyzer v1.11.1 64-bits, by Yann Collet ***
 - 1 iterations -
 Loading data/COPYING...                                                                                       data/COPYING :
 Compression functions :
-Starting lz4frame tester (64-bits, 1.11.0)
+Starting lz4frame tester (64-bits, 1.11.1)
 [ RUN      ] lz4.decompress_safe_emptyInput
 [       OK ] lz4.decompress_safe_emptyInput (X ms)
 [ RUN      ] lz4.decompress_safe_oneByteInput
@@ -94,9 +94,10 @@ Starting lz4frame tester (64-bits, 1.11.0)
 [ RUN      ] lz4.decompress_safe_partial_usingDict
 [       OK ] lz4.decompress_safe_partial_usingDict (X ms)
 [ RUN      ] lz4.compress_fast_continue_beyond2GB
-   26   Starting LZ4 fuzzer (64-bits, v1.11.0)
+Starting LZ4 fuzzer (64-bits, v1.11.1)
 generating low buffer at address 1000
-   15   [       OK ] lz4.compress_fast_continue_beyond2GB (X ms)
+   15     119   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/__/lib/lz4frame.o
+[       OK ] lz4.compress_fast_continue_beyond2GB (X ms)
 [ RUN      ] lz4.decompress_safe_addressSpaceOverflow
 [       OK ] lz4.decompress_safe_addressSpaceOverflow (X ms)
 [ RUN      ] lz4.decompress_safe_inPlace_limitCase
@@ -170,11 +171,11 @@ generating low buffer at address 1000
 [ RUN      ] lz4frame.compressBegin_usingDict_allocationFailure
 [       OK ] lz4frame.compressBegin_usingDict_allocationFailure (X ms)
 [ RUN      ] lz4frame.compressFrame_defaultPreferences
-  154   [       OK ] lz4frame.compressFrame_defaultPreferences (X ms)
+  267   [       OK ] lz4frame.compressFrame_defaultPreferences (X ms)
 [ RUN      ] lz4frame.compressFrame_negativeLevel
-[       OK ] lz4frame.compressFrame_negativeLevel (X ms)
+   29   [       OK ] lz4frame.compressFrame_negativeLevel (X ms)
 [ RUN      ] lz4frame.compressFrame_blockSizes
-   33   [       OK ] lz4frame.compressFrame_blockSizes (X ms)
+[       OK ] lz4frame.compressFrame_blockSizes (X ms)
 [ RUN      ] lz4frame.compressFrame_blockChecksum
 [       OK ] lz4frame.compressFrame_blockChecksum (X ms)
 [ RUN      ] lz4frame.decompress_randomSegments
@@ -200,15 +201,17 @@ generating low buffer at address 1000
 [ RUN      ] lz4frame.decompress_headerByteAfterByte
 [       OK ] lz4frame.decompress_headerByteAfterByte (X ms)
 [ RUN      ] lz4frame.decompress_historyIntoSmallOutputs
-  296   [       OK ] lz4frame.decompress_historyIntoSmallOutputs (X ms)
+  372   [       OK ] lz4frame.decompress_historyIntoSmallOutputs (X ms)
 [ RUN      ] lz4frame.decompress_endMarkAfterLastBlock
-[       OK ] lz4frame.decompress_endMarkAfterLastBlock (X ms)
+   44   [       OK ] lz4frame.decompress_endMarkAfterLastBlock (X ms)
 [ RUN      ] lz4frame.decompress_followingHints
 [       OK ] lz4frame.decompress_followingHints (X ms)
 [ RUN      ] lz4frame.decompress_skippableSizeHints
 [       OK ] lz4frame.decompress_skippableSizeHints (X ms)
 [ RUN      ] lz4frame.decompress_invalidAndEmptyBlocks
 [       OK ] lz4frame.decompress_invalidAndEmptyBlocks (X ms)
+[ RUN      ] lz4frame.decompress_blockSizeLimit
+[       OK ] lz4frame.decompress_blockSizeLimit (X ms)
 [ RUN      ] lz4frame.decompress_resetPendingOutput
 [       OK ] lz4frame.decompress_resetPendingOutput (X ms)
 [ RUN      ] lz4frame.decompress_allocFailures
@@ -235,8 +238,10 @@ generating low buffer at address 1000
 [       OK ] lz4frame.lz4file_nullArguments (X ms)
 [ RUN      ] lz4frame.lz4file_readOpen_shortFiles
 [       OK ] lz4frame.lz4file_readOpen_shortFiles (X ms)
+[ RUN      ] lz4frame.lz4file_readOpen_shortSkippable
+[       OK ] lz4frame.lz4file_readOpen_shortSkippable (X ms)
 [ RUN      ] lz4frame.cctx_dctx_sizes
-   48   [       OK ] lz4frame.cctx_dctx_sizes (X ms)
+[       OK ] lz4frame.cctx_dctx_sizes (X ms)
 [ RUN      ] lz4frame.flush_outsideFrame
 [       OK ] lz4frame.flush_outsideFrame (X ms)
 [ RUN      ] lz4frame.flush_zeroCapacity
@@ -246,7 +251,7 @@ generating low buffer at address 1000
 [ RUN      ] lz4frame.compressUpdate_mixedWithUncompressed
 [       OK ] lz4frame.compressUpdate_mixedWithUncompressed (X ms)
 [ RUN      ] lz4frame.compressUpdate_uncompressedLinkedBlocks
-  370      62     455      74     484   [       OK ] lz4frame.compressUpdate_uncompressedLinkedBlocks (X ms)
+  488      59     500      69     575   [       OK ] lz4frame.compressUpdate_uncompressedLinkedBlocks (X ms)
 [ RUN      ] lz4frame.uncompressedUpdate_deprecated
 [       OK ] lz4frame.uncompressedUpdate_deprecated (X ms)
 [ RUN      ] lz4frame.compressUpdate_uncompressedValues
@@ -264,21 +269,20 @@ generating low buffer at address 1000
 [ RUN      ] lz4frame.compressBegin_smallDst
 [       OK ] lz4frame.compressBegin_smallDst (X ms)
 [ RUN      ] lz4frame.compressFrame_smallDst
-  601      92     727     109   [       OK ] lz4frame.compressFrame_smallDst (X ms)
+   83     616      99     745   [       OK ] lz4frame.compressFrame_smallDst (X ms)
 [ RUN      ] lz4frame.streaming_smallDst
-  849   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/__/lib/lz4hc.o
  1-LZ4_compress_default               :     14901 ->     8592 (57.66%),  X MB/s
-  124   [       OK ] lz4frame.streaming_smallDst (X ms)
+  115     808   [       OK ] lz4frame.streaming_smallDst (X ms)
 [ RUN      ] lz4frame.compressFrame_reproducible
-  934     140    1000     155    1074    1138     170   [       OK ] lz4frame.compressFrame_reproducible (X ms)
+  868     130     902     148     971     165    1028     180   [       OK ] lz4frame.compressFrame_reproducible (X ms)
 [ RUN      ] lz4frame.decompress_randomAccess
 [       OK ] lz4frame.decompress_randomAccess (X ms)
 [ RUN      ] lz4frame.resumeFrame
-[       OK ] lz4frame.resumeFrame (X ms)
+ 1098   [       OK ] lz4frame.resumeFrame (X ms)
 [ RUN      ] lz4frame.resumeFrame_arguments
 [       OK ] lz4frame.resumeFrame_arguments (X ms)
 [ RUN      ] lz4frame.lz4file_seek
- 1234     185   [       OK ] lz4frame.lz4file_seek (X ms)
+[       OK ] lz4frame.lz4file_seek (X ms)
 [ RUN      ] lz4frame.lz4file_truncated
 [       OK ] lz4frame.lz4file_truncated (X ms)
 [ RUN      ] lz4frame.lz4file_readAfterError
@@ -286,7 +290,7 @@ generating low buffer at address 1000
 [ RUN      ] lz4frame.lz4file_seek_closestResumePoint
 [       OK ] lz4frame.lz4file_seek_closestResumePoint (X ms)
 [ RUN      ] lz4frame.lz4file_seek_restartInAnotherFrame
-[       OK ] lz4frame.lz4file_seek_restartInAnotherFrame (X ms)
+  196   [       OK ] lz4frame.lz4file_seek_restartInAnotherFrame (X ms)
 [ RUN      ] lz4frame.lz4file_seek_manyResumePoints
 [       OK ] lz4frame.lz4file_seek_manyResumePoints (X ms)
 [ RUN      ] lz4frameMT.getMaxNbWorkers
@@ -294,45 +298,43 @@ generating low buffer at address 1000
 [ RUN      ] lz4frameMT.compressBound_jobs
 [       OK ] lz4frameMT.compressBound_jobs (X ms)
 [ RUN      ] lz4frameMT.autoFlush_emitsAllInput
-[       OK ] lz4frameMT.autoFlush_emitsAllInput (X ms)
+ 1180   [       OK ] lz4frameMT.autoFlush_emitsAllInput (X ms)
 [ RUN      ] lz4frameMT.linkedJobs_history
- 1321   [       OK ] lz4frameMT.linkedJobs_history (X ms)
+[       OK ] lz4frameMT.linkedJobs_history (X ms)
 [ RUN      ] lz4frameMT.write_independentBlocks
-  198   [       OK ] lz4frameMT.write_independentBlocks (X ms)
+[       OK ] lz4frameMT.write_independentBlocks (X ms)
 [ RUN      ] lz4frameMT.write_linkedBlocks
-[       OK ] lz4frameMT.write_linkedBlocks (X ms)
+ 1259   [       OK ] lz4frameMT.write_linkedBlocks (X ms)
 [ RUN      ] lz4frameMT.flush_srcStableUntilFlush
- 1429     216    1484   [       OK ] lz4frameMT.flush_srcStableUntilFlush (X ms)
+  218    1308     232   [       OK ] lz4frameMT.flush_srcStableUntilFlush (X ms)
 [ RUN      ] lz4frameMT.flush_srcStableUntilFlush_nonContiguous
 [       OK ] lz4frameMT.flush_srcStableUntilFlush_nonContiguous (X ms)
 [ RUN      ] lz4frameMT.abandonedFrames
-  235    1586    1697     250    1722    2-LZ4_compress_default(small dst)    :     14901 ->     8592 (57.66%),  X MB/s
-[       OK ] lz4frameMT.abandonedFrames (X ms)
+ 1414     249    1539    2-LZ4_compress_default(small dst)    :     14901 ->     8592 (57.66%),  X MB/s
+  261    1681   [       OK ] lz4frameMT.abandonedFrames (X ms)
 [ RUN      ] lz4frameMT.allocFailures_oneShot
-  269    1792   [       OK ] lz4frameMT.allocFailures_oneShot (X ms)
+  274    1772   [       OK ] lz4frameMT.allocFailures_oneShot (X ms)
 [ RUN      ] lz4frameMT.allocFailures_streamCopy
-  285    1842   [       OK ] lz4frameMT.allocFailures_streamCopy (X ms)
+  290    1867   [       OK ] lz4frameMT.allocFailures_streamCopy (X ms)
 [ RUN      ] lz4frameMT.allocFailures_streamInPlace
-  304    1919   [       OK ] lz4frameMT.allocFailures_streamInPlace (X ms)
+  305    1900   [       OK ] lz4frameMT.allocFailures_streamInPlace (X ms)
 [ RUN      ] lz4frameMT.dstTooSmall_fromUpdate
-  322    1946     335    1959     350    2031     364    2085   [       OK ] lz4frameMT.dstTooSmall_fromUpdate (X ms)
+ 1954     323    2118     339    2195     350    2285   [       OK ] lz4frameMT.dstTooSmall_fromUpdate (X ms)
 [ RUN      ] lz4frameMT.dstTooSmall_fromEnd
- 2174     380     394    2330    3-LZ4_compress_destSize              :     14901 ->     8592 (57.66%),  X MB/s
-  412    2440     426    2531   [       OK ] lz4frameMT.dstTooSmall_fromEnd (X ms)
+  365    2317     384    2398    3-LZ4_compress_destSize              :     14901 ->     8592 (57.66%),  X MB/s
+  397    2538    2643     411    2689     423   [       OK ] lz4frameMT.dstTooSmall_fromEnd (X ms)
 [ RUN      ] lz4frameMT.flush_partial
-  448    2568     464    2691     480    2745     494    2846    2907     508    2944     525    3002     543   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/__/lib/xxhash.o
- 3108   [       OK ] lz4frameMT.flush_partial (X ms)
+ 2720     439    2800     457    2824     478    2923     493    3001     510   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/__/lib/xxhash.o
+ 3022     519    3062    4-LZ4_compress_fast(0)               :     14901 ->     8592 (57.66%),  X MB/s
+  536    3224   [       OK ] lz4frameMT.flush_partial (X ms)
 [ RUN      ] lz4frameMT.compressUpdate_deferredEmission
-  557    4-LZ4_compress_fast(0)               :     14901 ->     8592 (57.66%),  X MB/s
- 3227   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/bench.o
-[       OK ] lz4frameMT.compressUpdate_deferredEmission (X ms)
+ 3321     545   [       OK ] lz4frameMT.compressUpdate_deferredEmission (X ms)
 [ RUN      ] lz4frameMT.compressBegin_rejectedArguments
-  573    3370   [       OK ] lz4frameMT.compressBegin_rejectedArguments (X ms)
+ 3439   [       OK ] lz4frameMT.compressBegin_rejectedArguments (X ms)
 [ RUN      ] lz4frameMT.compressBegin_allocFailures
-  589    3521    3552     603   [       OK ] lz4frameMT.compressBegin_allocFailures (X ms)
+  564    3477     576   [       OK ] lz4frameMT.compressBegin_allocFailures (X ms)
 [ RUN      ] lz4frameMT.workers_allocFailures
-one-shot : 24 configurations validated (2053 allocations)
-[       OK ] lz4frameMT.workers_allocFailures (X ms)
+ 3592   [       OK ] lz4frameMT.workers_allocFailures (X ms)
 [ RUN      ] lz4frameMT.workers_allocFailures_free
 [       OK ] lz4frameMT.workers_allocFailures_free (X ms)
 [ RUN      ] lz4hc.compress_HC_nullInput
@@ -350,7 +352,8 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4hc.compress_HC_outOfRangeLevels
 [       OK ] lz4hc.compress_HC_outOfRangeLevels (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_levels
- 3597   [       OK ] lz4hc.compress_HC_continue_levels (X ms)
+one-shot : 24 configurations validated (2054 allocations)
+[       OK ] lz4hc.compress_HC_continue_levels (X ms)
 [ RUN      ] lz4hc.compress_HC_extStateHC_fastReset_newStream
 [       OK ] lz4hc.compress_HC_extStateHC_fastReset_newStream (X ms)
 [ RUN      ] lz4hc.resetStreamStateHC_compressHC2_continue
@@ -364,49 +367,48 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4hc.compress_HC_level2_runs
 [       OK ] lz4hc.compress_HC_level2_runs (X ms)
 [ RUN      ] lz4hc.saveDictHC_beforeCompression
-[       OK ] lz4hc.saveDictHC_beforeCompression (X ms)
+  592   [       OK ] lz4hc.saveDictHC_beforeCompression (X ms)
 [ RUN      ] lz4hc.compress_HC_destSize_longSequence
 [       OK ] lz4hc.compress_HC_destSize_longSequence (X ms)
 [ RUN      ] lz4hc.favorDecompressionSpeed_afterFailedCompression
 [       OK ] lz4hc.favorDecompressionSpeed_afterFailedCompression (X ms)
 [ RUN      ] lz4hc.resetStreamHC_fast_afterFailedCompression
-  616   [       OK ] lz4hc.resetStreamHC_fast_afterFailedCompression (X ms)
+[       OK ] lz4hc.resetStreamHC_fast_afterFailedCompression (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_dictionary
 [       OK ] lz4hc.compress_HC_continue_dictionary (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_dictionary_twoBlocks
 [       OK ] lz4hc.compress_HC_continue_dictionary_twoBlocks (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_remoteDictionary
-[       OK ] lz4hc.compress_HC_continue_remoteDictionary (X ms)
+ 3651   [       OK ] lz4hc.compress_HC_continue_remoteDictionary (X ms)
 [ RUN      ] lz4hc.loadDictHC_returnedSize
 [       OK ] lz4hc.loadDictHC_returnedSize (X ms)
 [ RUN      ] lz4hc.saveDictHC_sizes
 [       OK ] lz4hc.saveDictHC_sizes (X ms)
 [ RUN      ] lz4hc.compress_HC_destSize_sameAsFast
- 3646   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/lorem.o
-  638   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/lz4cli.o
- 3707   [       OK ] lz4hc.compress_HC_destSize_sameAsFast (X ms)
+  606    3657     620    3731   [       OK ] lz4hc.compress_HC_destSize_sameAsFast (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_destSize_resume
-  656   [       OK ] lz4hc.compress_HC_continue_destSize_resume (X ms)
+[       OK ] lz4hc.compress_HC_continue_destSize_resume (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_destSize_resumeInLongMatch
 [       OK ] lz4hc.compress_HC_continue_destSize_resumeInLongMatch (X ms)
 [ RUN      ] lz4hc.resetStreamHC_fast_beyond1GB
- 3756   [       OK ] lz4hc.resetStreamHC_fast_beyond1GB (X ms)
+ 3757   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/lz4io.o
+[       OK ] lz4hc.resetStreamHC_fast_beyond1GB (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_beyond2GB
-  673   [       OK ] lz4hc.compress_HC_continue_beyond2GB (X ms)
+  635    3798   [       OK ] lz4hc.compress_HC_continue_beyond2GB (X ms)
 [ RUN      ] lz4hc.attach_HC_dictionary_smallBlocks
- 3828   [       OK ] lz4hc.attach_HC_dictionary_smallBlocks (X ms)
+[       OK ] lz4hc.attach_HC_dictionary_smallBlocks (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_runsAcrossDictionary
-[       OK ] lz4hc.compress_HC_continue_runsAcrossDictionary (X ms)
+  652   [       OK ] lz4hc.compress_HC_continue_runsAcrossDictionary (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_successiveDictionaries
 [       OK ] lz4hc.compress_HC_continue_successiveDictionaries (X ms)
 [ RUN      ] lz4hc.compress_HC_continue_ringBuffer
 [       OK ] lz4hc.compress_HC_continue_ringBuffer (X ms)
 [ RUN      ] lz4hc.decompress_continue_unsynchronizedRing
-  688    3940   [       OK ] lz4hc.decompress_continue_unsynchronizedRing (X ms)
+ 3926    5-LZ4_compress_fast(1)               :     14901 ->     8592 (57.66%),  X MB/s
+  672   [       OK ] lz4hc.decompress_continue_unsynchronizedRing (X ms)
 [ RUN      ] lz4hc.compress_HC_extendedState
-  704   [       OK ] lz4hc.compress_HC_extendedState (X ms)
-[==========] 188 tests, 0 failed (X ms), seed 66139
- 5-LZ4_compress_fast(1)               :     14901 ->     8592 (57.66%),  X MB/s
+ 3985   [       OK ] lz4hc.compress_HC_extendedState (X ms)
+[==========] 190 tests, 0 failed (X ms), seed 37516
 [ RUN      ] lz4.decompress_safe_emptyInput
 [       OK ] lz4.decompress_safe_emptyInput (X ms)
 [ RUN      ] lz4.decompress_safe_oneByteInput
@@ -484,7 +486,7 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4.decompress_safe_partial_usingDict
 [       OK ] lz4.decompress_safe_partial_usingDict (X ms)
 [ RUN      ] lz4.compress_fast_continue_beyond2GB
- 3972     719   [       OK ] lz4.compress_fast_continue_beyond2GB (X ms)
+  689    4110   [       OK ] lz4.compress_fast_continue_beyond2GB (X ms)
 [ RUN      ] lz4.decompress_safe_addressSpaceOverflow
 [       OK ] lz4.decompress_safe_addressSpaceOverflow (X ms)
 [ RUN      ] lz4.decompress_safe_inPlace_limitCase
@@ -524,7 +526,7 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.compressFrame_levelsAsAcceleration
 [       OK ] lz4frame.compressFrame_levelsAsAcceleration (X ms)
 [ RUN      ] lz4frame.compressFrame_blockSize
- 4077   [       OK ] lz4frame.compressFrame_blockSize (X ms)
+[       OK ] lz4frame.compressFrame_blockSize (X ms)
 [ RUN      ] lz4frame.compressFrame_exactCapacity
 [       OK ] lz4frame.compressFrame_exactCapacity (X ms)
 [ RUN      ] lz4frame.compressFrame_validBlockSizeIDs
@@ -554,7 +556,7 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.compressBegin_usingDict_linkedBlocks
 [       OK ] lz4frame.compressBegin_usingDict_linkedBlocks (X ms)
 [ RUN      ] lz4frame.compressBegin_usingDict_sameAsCDict_HC
-[       OK ] lz4frame.compressBegin_usingDict_sameAsCDict_HC (X ms)
+ 4175     700   [       OK ] lz4frame.compressBegin_usingDict_sameAsCDict_HC (X ms)
 [ RUN      ] lz4frame.compressBegin_usingDict_allocationFailure
 [       OK ] lz4frame.compressBegin_usingDict_allocationFailure (X ms)
 [ RUN      ] lz4frame.compressFrame_defaultPreferences
@@ -562,11 +564,11 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.compressFrame_negativeLevel
 [       OK ] lz4frame.compressFrame_negativeLevel (X ms)
 [ RUN      ] lz4frame.compressFrame_blockSizes
-  739   [       OK ] lz4frame.compressFrame_blockSizes (X ms)
+[       OK ] lz4frame.compressFrame_blockSizes (X ms)
 [ RUN      ] lz4frame.compressFrame_blockChecksum
 [       OK ] lz4frame.compressFrame_blockChecksum (X ms)
 [ RUN      ] lz4frame.decompress_randomSegments
- 4097   [       OK ] lz4frame.decompress_randomSegments (X ms)
+[       OK ] lz4frame.decompress_randomSegments (X ms)
 [ RUN      ] lz4frame.decompress_missingBytes
 [       OK ] lz4frame.decompress_missingBytes (X ms)
 [ RUN      ] lz4frame.decompress_emptyInput
@@ -576,7 +578,7 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.getFrameInfo_states
 [       OK ] lz4frame.getFrameInfo_states (X ms)
 [ RUN      ] lz4frame.decompress_resetAfterError
-[       OK ] lz4frame.decompress_resetAfterError (X ms)
+ 4239   [       OK ] lz4frame.decompress_resetAfterError (X ms)
 [ RUN      ] lz4frame.decompress_resetUnfinishedFrame
 [       OK ] lz4frame.decompress_resetUnfinishedFrame (X ms)
 [ RUN      ] lz4frame.decompress_skippableFrames
@@ -588,7 +590,7 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.decompress_headerByteAfterByte
 [       OK ] lz4frame.decompress_headerByteAfterByte (X ms)
 [ RUN      ] lz4frame.decompress_historyIntoSmallOutputs
-[       OK ] lz4frame.decompress_historyIntoSmallOutputs (X ms)
+  712   [       OK ] lz4frame.decompress_historyIntoSmallOutputs (X ms)
 [ RUN      ] lz4frame.decompress_endMarkAfterLastBlock
 [       OK ] lz4frame.decompress_endMarkAfterLastBlock (X ms)
 [ RUN      ] lz4frame.decompress_followingHints
@@ -597,6 +599,8 @@ one-shot : 24 configurations validated (2053 allocations)
 [       OK ] lz4frame.decompress_skippableSizeHints (X ms)
 [ RUN      ] lz4frame.decompress_invalidAndEmptyBlocks
 [       OK ] lz4frame.decompress_invalidAndEmptyBlocks (X ms)
+[ RUN      ] lz4frame.decompress_blockSizeLimit
+[       OK ] lz4frame.decompress_blockSizeLimit (X ms)
 [ RUN      ] lz4frame.decompress_resetPendingOutput
 [       OK ] lz4frame.decompress_resetPendingOutput (X ms)
 [ RUN      ] lz4frame.decompress_allocFailures
@@ -616,13 +620,15 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.lz4file_errors
 [       OK ] lz4frame.lz4file_errors (X ms)
 [ RUN      ] lz4frame.lz4file_customMem
- 4191     755   [       OK ] lz4frame.lz4file_customMem (X ms)
+[       OK ] lz4frame.lz4file_customMem (X ms)
 [ RUN      ] lz4frame.lz4file_allocFailures
 [       OK ] lz4frame.lz4file_allocFailures (X ms)
 [ RUN      ] lz4frame.lz4file_nullArguments
 [       OK ] lz4frame.lz4file_nullArguments (X ms)
 [ RUN      ] lz4frame.lz4file_readOpen_shortFiles
 [       OK ] lz4frame.lz4file_readOpen_shortFiles (X ms)
+[ RUN      ] lz4frame.lz4file_readOpen_shortSkippable
+[       OK ] lz4frame.lz4file_readOpen_shortSkippable (X ms)
 [ RUN      ] lz4frame.cctx_dctx_sizes
 [       OK ] lz4frame.cctx_dctx_sizes (X ms)
 [ RUN      ] lz4frame.flush_outsideFrame
@@ -632,9 +638,12 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.compressUpdate_afterIncompleteFlush
 [       OK ] lz4frame.compressUpdate_afterIncompleteFlush (X ms)
 [ RUN      ] lz4frame.compressUpdate_mixedWithUncompressed
-[       OK ] lz4frame.compressUpdate_mixedWithUncompressed (X ms)
+ 4399   [       OK ] lz4frame.compressUpdate_mixedWithUncompressed (X ms)
 [ RUN      ] lz4frame.compressUpdate_uncompressedLinkedBlocks
-  777    4261     791    4350   [       OK ] lz4frame.compressUpdate_uncompressedLinkedBlocks (X ms)
+  723    4456     736   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/threadpool.o
+ 4509   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/timefn.o
+  745   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/util.o
+[       OK ] lz4frame.compressUpdate_uncompressedLinkedBlocks (X ms)
 [ RUN      ] lz4frame.uncompressedUpdate_deprecated
 [       OK ] lz4frame.uncompressedUpdate_deprecated (X ms)
 [ RUN      ] lz4frame.compressUpdate_uncompressedValues
@@ -646,86 +655,83 @@ one-shot : 24 configurations validated (2053 allocations)
 [ RUN      ] lz4frame.favorDecSpeed_afterRawBlock
 [       OK ] lz4frame.favorDecSpeed_afterRawBlock (X ms)
 [ RUN      ] lz4frame.favorDecSpeed_withDict
- 4473   [       OK ] lz4frame.favorDecSpeed_withDict (X ms)
+ 4571   [       OK ] lz4frame.favorDecSpeed_withDict (X ms)
 [ RUN      ] lz4frame.decompress_skipChecksums
 [       OK ] lz4frame.decompress_skipChecksums (X ms)
 [ RUN      ] lz4frame.compressBegin_smallDst
 [       OK ] lz4frame.compressBegin_smallDst (X ms)
 [ RUN      ] lz4frame.compressFrame_smallDst
-  813   CC .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/threadpool.o
- 4554     827   LD .cache/multiconf/7ebb302cf21f83af95eb2de533d2e313/3abc83decf08107be9649683a6b80f89/a71001ee4d9740007365cb1a6531f347/lz4
 ==> built with multithreading support
 
  ---- test multiple files ----
-[       OK ] lz4frame.compressFrame_smallDst (X ms)
-[ RUN      ] lz4frame.streaming_smallDst
-
- ---- test frame concatenation ----
-
- ---- test multiple files (Legacy format) ----
 
  ---- test original size support ----
 
- ---- test lz4 multithreaded compression, memory budget, sources modified meanwhile ----
-
  ---- bench mode ----
 
- ---- test lz4 with custom block sizes ----
+ ---- test frame concatenation ----
 
- ---- test opt-parser ----
-
- ---- test --rm : source removed only once its output is complete ----
-
- ---- test lz4 compression/decompression with dictionary ----
-
- ---- test sparse file support ----
+ ---- test command line options ----
 
  ---- test lz4 decoding Firefox mozlz4 files ----
 
- ---- test huge files compression/decompression ----
+ ---- test --rm : source removed only once its output is complete ----
 
- ---- test HC compression/decompression of huge files ----
+ ---- test multiple files (Legacy format) ----
+
+ ---- test lz4 multithreaded compression, memory budget, sources modified meanwhile ----
+
+ ---- test lz4 with custom block sizes ----
+
+ ---- test lz4 compression/decompression with dictionary ----
 
  ---- test lz4 with skippable frames ----
 
+ ---- test --list ----
+
+ ---- test decompression ----
+
  ---- test lz4 basic compression/decompression ----
 
- ---- test lz4c variant ----
-2> tmp-tml-trash
+ ---- test opt-parser ----
 
+ ---- test HC compression/decompression of huge files ----
+
+ ---- test huge files compression/decompression ----
+
+ ---- test sparse file support ----
+
+ ---- test lz4c variant ----
+
+2> tmp-tml-trash
 
 
 2> tmp-lml-trash
 
 
-*** lz4 v1.11.0 64-bit multithread, by Yann Collet ***
+
+
+
+
 
 using blocks of size 256 KB
-*** lz4 v1.11.0 64-bit multithread, by Yann Collet+ cmp tmp-lfc-src tmp-lfc-result
- ***
+*** lz4 v1.11.1 64-bit multithread, by Yann Collet ***
 Using up to 1 threads for compression
-*** lz4 v1.11.0 64-bit multithread, by Yann Collet ***
+*** lz4 v1.11.1 64-bit multithread, by Yann Collet ***
 Using up to 1 threads for compression
-tail: cannot open '+9' for reading: No such file or directory
-using blocks of size 64 KB
- MiB  *** lz4 v1.11.0 64-bit multithread, by Yann Collet ***
+*** lz4 v1.11.1 64-bit multithread, by Yann Collet ***
 Using up to 1 threads for compression
-Done in 0.00 s ==> 0.00 MiB/s  (cpu load : 343%)
-*** lz4 v1.11.0 64-bit multithread, by Yann Collet ***
-! Generating LZ4 Legacy format (deprecated) !
+Done in 0.00 s ==> 0.00 MiB/s  (cpu load : 0%)
+
                                                                                stdin                          : decoded X bytes
-make[1]: *** [Makefile:282: test-lz4-mozlz4] Error 1
+*** lz4 v1.11.1 64-bit multithread, by Yann Collet ***
+! Generating LZ4 Legacy format (deprecated) !
+tail: cannot open '+9' for reading: No such file or directory
+
+make[1]: *** [Makefile:283: test-lz4-mozlz4] Error 1
+
+make[1]: *** [Makefile:279: test-lz4-skippable] Error 1
 
 
-
-
-
-
-
+                                                                               stdin                          : decoded X bytes
 using blocks of size 64 KB
-
-make[1]: *** [Makefile:278: test-lz4-skippable] Error 1
-multithread, by Yann Collet ***
- MiB   ==> Using up to 1 threads for compression
-0.00%   + lz4 -l -d -f -m tmp-lml-trash.lz4 tmp-lml1.lz4 tmp-lml2.lz4 tmp-lml3.lz4
-

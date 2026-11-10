@@ -18,7 +18,7 @@
 
 PROG=lz4
 PKG=compress/lz4
-VER=1.11.0
+VER=1.11.1
 SUMMARY="LZ4"
 DESC="Extremely fast compression"
 
