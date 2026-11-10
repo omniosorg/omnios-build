@@ -94,7 +94,7 @@
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
-| system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
+| system/data/urxvt-terminfo		| 9.32			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.116			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/mozilla-nss		| 3.133			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
