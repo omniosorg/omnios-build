@@ -26,7 +26,7 @@
 . ../../lib/build.sh
 
 PROG=flex
-VER=2.6.4
+VER=2.6.5
 PKG=developer/lexer/flex
 SUMMARY="$PROG - A fast lexical analyser generator"
 DESC="$SUMMARY"
@@ -48,16 +48,19 @@ CONFIGURE_OPTS[aarch64]+=" CFLAGS_FOR_BUILD=-std=gnu17"
 CONFIGURE_OPTS[aarch64]+=" ac_cv_func_malloc_0_nonnull=yes"
 CONFIGURE_OPTS[aarch64]+=" ac_cv_func_realloc_0_nonnull=yes"
 
+# No need to link the old libintl as it is these days just a filter to libc
+CONFIGURE_OPTS+=" gt_cv_func_gnugettext1_libc=yes"
+
 MAKE_ARGS+=' dist_doc_DATA= '
 MAKE_INSTALL_ARGS+=' dist_doc_DATA= '
-SKIP_LICENCES=BSD-LLNL
+TESTSUITE_FILTER='^(PASS|FAIL|XFAIL|XPASS|SKIP|ERROR|# |Testsuite)'
 
 init
 download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-run_testsuite check tests
+PATH=$GNUBIN:$PATH run_testsuite check tests
 make_isa_stub
 make_package
 clean_up
