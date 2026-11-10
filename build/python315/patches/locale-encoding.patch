@@ -27,13 +27,14 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Include/unicodeobject.h a/Inc
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Objects/unicodeobject.c
 --- a~/Objects/unicodeobject.c	1970-01-01 00:00:00
 +++ a/Objects/unicodeobject.c	1970-01-01 00:00:00
-@@ -2020,6 +2020,15 @@ PyUnicodeWriter_WriteWideChar(PyUnicodeW
+@@ -1910,6 +1910,16 @@ unicode_write_widechar(int kind, void *d
  }
  
  
 +#if defined(__sun) && defined(__SVR4)
 +/* Detect whether currently used locale uses UTF compatible encoding. */
-+int codeset_is_utf8_compatible()
++static int
++codeset_is_utf8_compatible(void)
 +{
 +    char* res = nl_langinfo(CODESET);
 +    return !(strcmp(res, "UTF-8") && strcmp(res, "646"));
@@ -41,12 +42,13 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Obj
 +#endif
 +
  PyObject *
- PyUnicode_FromStringAndSize(const char *u, Py_ssize_t size)
+ PyUnicode_FromWideChar(const wchar_t *u, Py_ssize_t size)
  {
-@@ -2251,6 +2260,58 @@ _PyUnicode_FromUCS4(const Py_UCS4 *u, Py
-     Py_UCS4 max_char = ucs4lib_find_max_char(u, u + size);
+@@ -1946,6 +1956,58 @@ PyUnicode_FromWideChar(const wchar_t *u,
+         return unicode;
+     }
  #endif
- 
++
 +#if defined(__sun) && defined(__SVR4)
 +    /* Check whether current locale uses UTF to encode symbols */
 +    if (!codeset_is_utf8_compatible()) {
@@ -98,7 +100,6 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/Objects/unicodeobject.c a/Obj
 +        return unicode;
 +    }
 +#endif
-+
-     res = PyUnicode_New(size, max_char);
-     if (!res)
-         return NULL;
+ 
+     /* Single character Unicode objects in the Latin-1 range are
+        shared when using this constructor */
