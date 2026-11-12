@@ -58,6 +58,9 @@ TESTSUITE_FILTER='^(PASS|FAIL|XFAIL|XPASS|SKIP|ERROR|# |Testsuite)'
 init
 download_source $PROG $PROG $VER
 patch_source
+# The man page depends on the scanner skeleton, which is patched, and
+# rebuilding it would need help2man.
+run_inbuild $TOUCH doc/flex.1
 prep_build
 build
 PATH=$GNUBIN:$PATH run_testsuite check tests
