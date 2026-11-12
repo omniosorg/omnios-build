@@ -670,8 +670,11 @@ omnios system/library/platform
 omnios system/library/policykit
 omnios system/library/processor o
 omnios system/library/python/libbe-313
+omnios system/library/python/libbe-315
 omnios system/library/python/solaris-313
+omnios system/library/python/solaris-315
 omnios system/library/python/zfs-313
+omnios system/library/python/zfs-315
 omnios system/library/security/crypto/pkcs11_kms o
 omnios system/library/security/gss
 omnios system/library/security/gss/diffie-hellman
