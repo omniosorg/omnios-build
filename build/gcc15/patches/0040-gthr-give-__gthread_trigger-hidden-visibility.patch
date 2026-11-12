@@ -1,4 +1,4 @@
-From 6a61430d24e2b381d623b452cebdd0298f867be1 Mon Sep 17 00:00:00 2001
+From 309abd88d66290a1ed6065700884613d10f971a7 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Mon, 31 Aug 2026 12:00:00 +0000
 Subject: gthr: give __gthread_trigger hidden visibility

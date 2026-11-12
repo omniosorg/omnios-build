@@ -1,15 +1,14 @@
-From c8f22d59371d3bda0da68289903d1a454dc2feb8 Mon Sep 17 00:00:00 2001
+From a587f4b970b72eb5f4c8c381c901d608200e45f9 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Mon, 11 Jan 2021 14:09:40 +0000
-Subject: -zassert-deflib depends on default library paths being
- elided
+Subject: -zassert-deflib depends on default library paths being elided
 
 ---
  gcc/gcc.cc | 43 +++++++++++++++++++++++++++++++++++++------
  1 file changed, 37 insertions(+), 6 deletions(-)
 
 diff --git a/gcc/gcc.cc b/gcc/gcc.cc
-index 4fd87f2c4a1..4da60ea2b4e 100644
+index 3b0f946f04f..6c67cc2257a 100644
 --- a/gcc/gcc.cc
 +++ b/gcc/gcc.cc
 @@ -415,7 +415,7 @@ static int do_spec_2 (const char *, const char *);

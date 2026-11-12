@@ -19,7 +19,7 @@
 
 PKG=system/library/gfortran-runtime
 PROG=gfortran
-VER=15
+VER=16
 SUMMARY="GNU fortran runtime dependencies"
 DESC="$SUMMARY"
 

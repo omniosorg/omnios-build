@@ -20,8 +20,8 @@
 
 PKG=developer/gcc14
 PROG=gcc
-VER=14.3.0
-ILVER=il-1
+VER=14.4.0
+ILVER=il-0
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"
 
@@ -114,6 +114,7 @@ CONFIGURE_OPTS="
     --enable-__cxa_atexit
     --enable-initfini-array
     --disable-libitm
+    --disable-libstdcxx-pch
     --with-diagnostics-urls=auto-if-env
     enable_frame_pointer=yes
 "

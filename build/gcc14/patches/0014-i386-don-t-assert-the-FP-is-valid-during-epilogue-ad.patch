@@ -1,8 +1,7 @@
-From cee911920a0f19a59ac2286af8fb72c2030078c3 Mon Sep 17 00:00:00 2001
+From be365d5a62266dd98827e7fa1c1e3350465a1587 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 00:56:45 +0000
-Subject: i386: don't assert the FP is valid during epilogue
- adjustment
+Subject: i386: don't assert the FP is valid during epilogue adjustment
 
 I did this, I think, to double check some assumptions.  Unfortunately,
 there is a case where the fp won't be valid here, despite us having
@@ -15,7 +14,7 @@ While here, make the code more readable and conventional.
  1 file changed, 31 insertions(+), 35 deletions(-)
 
 diff --git a/gcc/config/i386/i386.cc b/gcc/config/i386/i386.cc
-index c614ff4ebfc..8d9509e10ae 100644
+index 783f2fc6794..c7c248f1545 100644
 --- a/gcc/config/i386/i386.cc
 +++ b/gcc/config/i386/i386.cc
 @@ -7477,22 +7477,22 @@ static void

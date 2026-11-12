@@ -1,4 +1,4 @@
-From d649abb9b33a358f9e731025c2e8e5621be45a9c Mon Sep 17 00:00:00 2001
+From c36749b1cc7e015657b393247fec8f593c61e5dc Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Mon, 28 Nov 2022 11:52:58 +0000
 Subject: cmn_err() supports 'h' and 'hh' (6333936)

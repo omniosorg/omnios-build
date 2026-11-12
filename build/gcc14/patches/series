@@ -36,4 +36,10 @@
 0037-Handle-a-few-cases-where-fields-in-struct-lconv-may-.patch
 0038-Let-enable-clocale-dragonfly-work-as-a-configure-opt.patch
 0039-fix-ctype-char-ctype-to-initialize-locale-pointer.patch
-0040-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0040-libstdc-testsuite-illumos-has-no-euro-locale-variant.patch
+0041-libstdc-fix-wchar_t-classification-and-codecvt-in-th.patch
+0042-testsuite-skip-tests-that-conflict-with-msave-args.patch
+0043-i386-testsuite-honour-fomit-frame-pointer-on-illumos.patch
+0044-testsuite-illumos-has-no-PIE-support.patch
+0045-libstdc-testsuite-skip-tests-that-cannot-pass-on-ill.patch
+0046-OOCE-Adjust-default-library-paths-for-OmniOS.patch

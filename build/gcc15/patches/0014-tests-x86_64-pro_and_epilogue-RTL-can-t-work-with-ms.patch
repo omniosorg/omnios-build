@@ -1,8 +1,7 @@
-From 6c2ad5759d12ef2f2b728bb95a74b91fbcfdd95d Mon Sep 17 00:00:00 2001
+From 7f406c46ba0d3a5ece9a1e305d281286b02134d8 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Thu, 2 May 2019 17:54:20 +0000
-Subject: tests: x86_64 pro_and_epilogue RTL can't work with
- -msave-args
+Subject: tests: x86_64 pro_and_epilogue RTL can't work with -msave-args
 
 The RTL is included directly in the test, and was generated without
 saved parameters.

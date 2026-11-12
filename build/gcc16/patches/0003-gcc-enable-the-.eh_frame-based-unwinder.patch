@@ -1,0 +1,62 @@
+From 145bdaa2aaac7b83a2130b84afaa20ffa38a23c7 Mon Sep 17 00:00:00 2001
+From: Richard Lowe <richlowe@richlowe.net>
+Date: Wed, 5 Mar 2014 04:12:52 +0000
+Subject: gcc: enable the .eh_frame based unwinder
+
+---
+ gcc/configure    | 8 ++++----
+ gcc/configure.ac | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/gcc/configure b/gcc/configure
+index 47418f1f842..c1efeb33486 100755
+--- a/gcc/configure
++++ b/gcc/configure
+@@ -25821,7 +25821,7 @@ fi
+ $as_echo_n "checking Solaris linker... " >&6; }
+ case $target in
+   *-*-solaris2*)
+-    if $gcc_cv_ld -V 2>/dev/null | grep 'Solaris Link Editors' > /dev/null; then
++    if $gcc_cv_ld -V 2>&1 | grep 'Solaris Link Editors' > /dev/null; then
+       gnu_ld=no
+       solaris_ld=yes
+     elif $gcc_cv_ld --version 2>/dev/null | grep GNU > /dev/null; then
+@@ -26903,9 +26903,9 @@ if test $in_tree_ld != yes ; then
+ 	# numbers can be used in ld.so.1 feature checks even if a different
+ 	# linker is configured.
+ 	ld_ver=`$gcc_cv_ld -V 2>&1`
+-	if echo "$ld_ver" | grep 'Solaris Link Editors' > /dev/null; then
+-	  ld_vers=`echo $ld_ver | sed -n \
+-	    -e 's,^.*: 5\.[0-9][0-9]*-\([0-9]\.[0-9][0-9]*\).*$,\1,p'`
++	if echo "$ld_ver" | $EGREP 'Solaris Link Editors|Solaris ELF Utilities' > /dev/null; then
++	  ld_vers=`echo $ld_ver | /bin/sed -n \
++	    -E 's,^.*: (5|1[0-9])\.[0-9][0-9]*-([0-9]\.[0-9][0-9]*).*$,\2,p'`
+ 	  ld_vers_major=`expr "$ld_vers" : '\([0-9]*\)'`
+ 	  ld_vers_minor=`expr "$ld_vers" : '[0-9]*\.\([0-9]*\)'`
+ 	fi
+diff --git a/gcc/configure.ac b/gcc/configure.ac
+index 1c1ffc6a352..e7e4834467a 100644
+--- a/gcc/configure.ac
++++ b/gcc/configure.ac
+@@ -2851,7 +2851,7 @@ fi])
+ AC_MSG_CHECKING(Solaris linker)
+ case $target in
+   *-*-solaris2*)
+-    if $gcc_cv_ld -V 2>/dev/null | grep 'Solaris Link Editors' > /dev/null; then
++    if $gcc_cv_ld -V 2>&1 | grep 'Solaris Link Editors' > /dev/null; then
+       gnu_ld=no
+       solaris_ld=yes
+     elif $gcc_cv_ld --version 2>/dev/null | grep GNU > /dev/null; then
+@@ -3337,9 +3337,9 @@ changequote(,)dnl
+ 	# numbers can be used in ld.so.1 feature checks even if a different
+ 	# linker is configured.
+ 	ld_ver=`$gcc_cv_ld -V 2>&1`
+-	if echo "$ld_ver" | grep 'Solaris Link Editors' > /dev/null; then
+-	  ld_vers=`echo $ld_ver | sed -n \
+-	    -e 's,^.*: 5\.[0-9][0-9]*-\([0-9]\.[0-9][0-9]*\).*$,\1,p'`
++	if echo "$ld_ver" | $EGREP 'Solaris Link Editors|Solaris ELF Utilities' > /dev/null; then
++	  ld_vers=`echo $ld_ver | /bin/sed -n \
++	    -E 's,^.*: (5|1[0-9])\.[0-9][0-9]*-([0-9]\.[0-9][0-9]*).*$,\2,p'`
+ 	  ld_vers_major=`expr "$ld_vers" : '\([0-9]*\)'`
+ 	  ld_vers_minor=`expr "$ld_vers" : '[0-9]*\.\([0-9]*\)'`
+ 	fi

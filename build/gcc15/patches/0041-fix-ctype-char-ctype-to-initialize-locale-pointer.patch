@@ -1,4 +1,4 @@
-From 8209d45b04ae0ea8c2e802cc5ad2cfdc14104445 Mon Sep 17 00:00:00 2001
+From afe8afe075ee0664ceb521b49ee6a4fe9f873f30 Mon Sep 17 00:00:00 2001
 From: Bill Sommerfeld <sommerfeld@hamachi.org>
 Date: Sat, 3 Oct 2026 20:54:27 +0000
 Subject: fix ctype<char>::ctype() to initialize locale pointer

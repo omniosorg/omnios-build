@@ -1,64 +1,68 @@
 		=== g++ Summary for unix//-m32 ===
-# of expected passes		242742
-# of unexpected failures	174
-# of expected failures		2278
+# of expected passes		244072
+# of unexpected failures	163
+# of expected failures		2282
 # of unresolved testcases	9
-# of unsupported tests		2174
+# of unsupported tests		2249
 		=== g++ Summary for unix//-m64 ===
-# of expected passes		247131
-# of unexpected failures	115
-# of expected failures		2235
+# of expected passes		243853
+# of unexpected failures	105
+# of expected failures		2286
 # of unresolved testcases	3
-# of unsupported tests		2100
+# of unsupported tests		2078
 		=== g++ Summary for unix//-m64/-msave-args ===
-# of expected passes		245298
-# of unexpected failures	125
-# of expected failures		1941
-# of unsupported tests		2088
+# of expected passes		243842
+# of unexpected failures	112
+# of expected failures		2286
+# of unresolved testcases	3
+# of unsupported tests		2094
 		=== g++ Summary ===
-# of expected passes		735171
-# of unexpected failures	414
-# of expected failures		6454
-# of unresolved testcases	12
-# of unsupported tests		6362
+# of expected passes		731767
+# of unexpected failures	380
+# of expected failures		6854
+# of unresolved testcases	15
+# of unsupported tests		6421
 		=== gcc Summary for unix//-m32 ===
-# of expected passes		204331
-# of unexpected failures	188
-# of unexpected successes	1
-# of expected failures		1474
-# of unresolved testcases	71
-# of unsupported tests		5076
+# of expected passes		205926
+# of unexpected failures	287
+# of unexpected successes	28
+# of expected failures		1553
+# of unresolved testcases	76
+# of unsupported tests		5619
 		=== gcc Summary for unix//-m64 ===
-# of expected passes		200762
-# of unexpected failures	216
-# of expected failures		1452
-# of unsupported tests		4183
+# of expected passes		210223
+# of unexpected failures	130
+# of unexpected successes	26
+# of expected failures		1546
+# of unsupported tests		4142
 		=== gcc Summary for unix//-m64/-msave-args ===
-# of expected passes		204008
-# of unexpected failures	309
-# of expected failures		1568
-# of unsupported tests		3738
+# of expected passes		209466
+# of unexpected failures	268
+# of unexpected successes	26
+# of expected failures		1543
+# of unresolved testcases	1
+# of unsupported tests		4340
 		=== gcc Summary ===
-# of expected passes		609101
-# of unexpected failures	713
-# of unexpected successes	1
-# of expected failures		4494
-# of unresolved testcases	71
-# of unsupported tests		12997
+# of expected passes		625615
+# of unexpected failures	685
+# of unexpected successes	80
+# of expected failures		4642
+# of unresolved testcases	77
+# of unsupported tests		14101
 		=== gfortran Summary for unix//-m32 ===
-# of expected passes		72586
+# of expected passes		72862
 # of expected failures		335
 # of unsupported tests		288
 		=== gfortran Summary for unix//-m64 ===
-# of expected passes		72922
+# of expected passes		73198
 # of expected failures		333
 # of unsupported tests		91
 		=== gfortran Summary for unix//-m64/-msave-args ===
-# of expected passes		72922
+# of expected passes		73198
 # of expected failures		333
 # of unsupported tests		91
 		=== gfortran Summary ===
-# of expected passes		218430
+# of expected passes		219258
 # of expected failures		1001
 # of unsupported tests		470
 		=== objc Summary for unix//-m32 ===
@@ -88,46 +92,46 @@
 # of expected passes		152
 # of unsupported tests		5
 		=== libgomp Summary for unix//-m32 ===
-# of expected passes		17132
+# of expected passes		17150
 # of unexpected failures	1
 # of expected failures		285
 # of unsupported tests		704
 		=== libgomp Summary for unix//-m64 ===
-# of expected passes		17133
+# of expected passes		17151
 # of unexpected failures	1
 # of expected failures		285
 # of unsupported tests		703
 		=== libgomp Summary for unix//-m64/-msave-args ===
-# of expected passes		17133
+# of expected passes		17151
 # of unexpected failures	1
 # of expected failures		285
 # of unsupported tests		703
 		=== libgomp Summary ===
-# of expected passes		51398
+# of expected passes		51452
 # of unexpected failures	3
 # of expected failures		855
 # of unsupported tests		2110
 		=== libstdc++ Summary for unix//-m32 ===
-# of expected passes		19024
-# of unexpected failures	7
-# of expected failures		132
-# of unresolved testcases	1
-# of unsupported tests		801
+# of expected passes		19624
+# of unexpected failures	3
+# of unexpected successes	2
+# of expected failures		160
+# of unsupported tests		538
 		=== libstdc++ Summary for unix//-m64 ===
-# of expected passes		19010
-# of unexpected failures	9
-# of expected failures		132
-# of unresolved testcases	1
-# of unsupported tests		807
+# of expected passes		19612
+# of unexpected failures	3
+# of unexpected successes	2
+# of expected failures		160
+# of unsupported tests		544
 		=== libstdc++ Summary for unix//-m64/-msave-args ===
-# of expected passes		19010
-# of unexpected failures	9
-# of expected failures		132
-# of unresolved testcases	1
-# of unsupported tests		807
+# of expected passes		19612
+# of unexpected failures	3
+# of unexpected successes	2
+# of expected failures		160
+# of unsupported tests		544
 		=== libstdc++ Summary ===
-# of expected passes		57044
-# of unexpected failures	25
-# of expected failures		396
-# of unresolved testcases	3
-# of unsupported tests		2415
+# of expected passes		58848
+# of unexpected failures	9
+# of unexpected successes	6
+# of expected failures		480
+# of unsupported tests		1626

@@ -1,8 +1,8 @@
-From 5545ec8aec7e5fed336e3a61b05789e34ea2c5ca Mon Sep 17 00:00:00 2001
+From d84d8ff4328c5fd4ab0a87e84c0c8b585d7878ac Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Tue, 4 Mar 2014 02:58:33 +0000
-Subject: strict-cc2: check that disabling function cloning
- prevents constant propagation eliding or changing arguments
+Subject: strict-cc2: check that disabling function cloning prevents constant
+ propagation eliding or changing arguments
 
 ---
  .../gcc.dg/fno-clone-preserves-unused-args.c  | 28 +++++++++++++++++++

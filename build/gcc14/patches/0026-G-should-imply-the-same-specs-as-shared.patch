@@ -1,4 +1,4 @@
-From 001b0936e8f209762c9e451a8fa8874e11100b2a Mon Sep 17 00:00:00 2001
+From 913564e77ed0356ee5a7f64668833bd1730f72e3 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 19 Feb 2020 21:30:23 +0000
 Subject: -G should imply the same specs as -shared

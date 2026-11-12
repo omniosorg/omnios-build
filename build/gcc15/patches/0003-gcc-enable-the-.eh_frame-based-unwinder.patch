@@ -1,4 +1,4 @@
-From 444c8255722ff9a2fd8e0a13597a772899840c5e Mon Sep 17 00:00:00 2001
+From 82d9698a69be9cd93bf6204117ec992df07ed230 Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Wed, 5 Mar 2014 04:12:52 +0000
 Subject: gcc: enable the .eh_frame based unwinder

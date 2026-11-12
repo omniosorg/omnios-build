@@ -1,8 +1,7 @@
-From b4331e91b1e922af9befa9abfaacf621ad25a11a Mon Sep 17 00:00:00 2001
+From 1ac8ca278f4a144aaf6839e2887973a7e557fdc6 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Wed, 4 Nov 2020 16:16:25 +0000
-Subject: Use the illumos libc SSP implementation for
- -fstack-protector
+Subject: Use the illumos libc SSP implementation for -fstack-protector
 
 ---
  gcc/config/i386/sol2.h | 17 +++++++++++++++++

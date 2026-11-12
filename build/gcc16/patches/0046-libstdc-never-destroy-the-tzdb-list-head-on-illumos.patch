@@ -1,0 +1,56 @@
+From a830becd7cd84011b2509a033fec172793e8bd95 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sun, 8 Nov 2026 12:44:57 +0000
+Subject: libstdc++: never destroy the tzdb list head on illumos
+
+std::chrono::current_zone() from a static destructor in an executable
+crashes. Upstream's fix for PR118811 relies on init_priority, which
+has no effect here because ld does not sort .init_array.NNNNN
+sections, and static destructors in shared objects run before those in
+the executable. The list head has therefore been destroyed by the
+time the destructor runs, leaving _S_head_cache dangling.
+---
+ libstdc++-v3/src/c++20/tzdb.cc | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/libstdc++-v3/src/c++20/tzdb.cc b/libstdc++-v3/src/c++20/tzdb.cc
+index 42b39a47ea9..a2de16e240b 100644
+--- a/libstdc++-v3/src/c++20/tzdb.cc
++++ b/libstdc++-v3/src/c++20/tzdb.cc
+@@ -168,7 +168,21 @@ namespace std::chrono
+     using head_ptr = shared_ptr<_Node>;
+ #endif
+     // This is the owning reference to the first tzdb in the list.
++#ifdef __illumos__
++    // Never destroy this.  init_priority has no effect here, and static
++    // destructors in shared objects run before those in the executable,
++    // so a static destructor could otherwise use the freed list.
++    union head_storage
++    {
++      head_ptr ptr;
++      constexpr head_storage() : ptr{nullptr} { }
++      ~head_storage() { }
++    };
++    static head_storage _S_head_storage;
++    static head_ptr& _S_head_owner;
++#else
+     static head_ptr _S_head_owner;
++#endif
+ 
+ #if USE_ATOMIC_LIST_HEAD
+     // Lock-free access to the head of the list.
+@@ -215,8 +229,14 @@ namespace std::chrono
+   [[gnu::init_priority(98)]]
+   constinit tzdb_list tzdb_list::_Node::_S_the_list(nullptr);
+ 
++#ifdef __illumos__
++  constinit tzdb_list::_Node::head_storage tzdb_list::_Node::_S_head_storage;
++  constinit tzdb_list::_Node::head_ptr& tzdb_list::_Node::_S_head_owner
++    = tzdb_list::_Node::_S_head_storage.ptr;
++#else
+   [[gnu::init_priority(98)]]
+   constinit tzdb_list::_Node::head_ptr tzdb_list::_Node::_S_head_owner{nullptr};
++#endif
+ 
+ #if USE_ATOMIC_LIST_HEAD
+   [[gnu::init_priority(98)]]

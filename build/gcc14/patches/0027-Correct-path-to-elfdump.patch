@@ -1,4 +1,4 @@
-From 5c92eeed0c8733da3583223b397ee96bc2c14338 Mon Sep 17 00:00:00 2001
+From ae76fa9ff3e949865f22a4694f1d6f3e130d4f6d Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Fri, 10 Apr 2020 16:00:43 +0000
 Subject: Correct path to elfdump
@@ -12,7 +12,7 @@ diff --git a/contrib/make_sunver.pl b/contrib/make_sunver.pl
 index 32e639ed873..8c9ff74a8f0 100644
 --- a/contrib/make_sunver.pl
 +++ b/contrib/make_sunver.pl
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ foreach $file (@ARGV) {
  # columns.
  
  # The path to elfdump.

@@ -1,8 +1,7 @@
-From f05fa0bccaeba1ed45edb9bd4b931351f918a762 Mon Sep 17 00:00:00 2001
+From fdbeccc95432ef4c67fece755fc222aa65931e69 Mon Sep 17 00:00:00 2001
 From: Bill Sommerfeld <sommerfeld@hamachi.org>
 Date: Fri, 9 May 2025 15:17:08 -0700
-Subject: Avoid undefined symbols when using the dragonfly locale
- backend
+Subject: Avoid undefined symbols when using the dragonfly locale backend
 
 From Jonathan Perkin's patch in pkgsrc-extra
 ---

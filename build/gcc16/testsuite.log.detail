@@ -1,0 +1,2426 @@
+cat <<'EOF' |
+LAST_UPDATED: Obtained from git: releases/gcc-16.2.0 revision 78d4ac73dd391005b895a6148cd9831e28e1208b
+
+Native configuration is x86_64-pc-solaris2.11
+
+		=== g++ tests ===
+
+
+Running target unix//-m32
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/asan/null-deref-1.c   -O0  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O1  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto -flto-partition=none  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O3 -g  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -Os  output pattern test
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 16)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 17)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 18)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 19)
+FAIL: c-c++-common/pointer-to-fn1.c   (test for excess errors)
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++98 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++98 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++98 execution test
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++20  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++26  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++26 (test for excess errors)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++98  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++20  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++26  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++26 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++98  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++20  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++26  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++98  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++20  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++20  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++26  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++26  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++98  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++98  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.target/i386/pr103973-17.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-18.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-19.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-20.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++20  scan-assembler-times \\tjp\\t 1
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++23  scan-assembler-times \\tjp\\t 1
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++26  scan-assembler-times \\tjp\\t 1
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/getchar-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/asan/null-deref-1.c   -O0  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O1  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto -flto-partition=none  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O3 -g  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -Os  output pattern test
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-1.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++20 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++26 (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -std=gnu++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 16)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 17)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 18)
+FAIL: c-c++-common/pointer-to-fn1.c    (test for warnings, line 19)
+FAIL: c-c++-common/pointer-to-fn1.c   (test for excess errors)
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-17.c  -std=gnu++98 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-18.c  -std=gnu++98 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++20 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++26 execution test
+FAIL: c-c++-common/ubsan/bounds-19.c  -std=gnu++98 execution test
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++20  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++26  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler endbr32|endbr64
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler-times \\tcall[ \\t]+_?puts 2
+UNRESOLVED: g++.dg/cet-notrack-1.C  -std=gnu++98  scan-assembler-times notrack call[ \\t]+ 1
+FAIL: g++.dg/cet-notrack-1.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++20  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++26  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++26 (test for excess errors)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++98  (test for errors, line 13)
+FAIL: g++.target/i386/cf_check-1.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++20  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++20 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++26  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++26 (test for excess errors)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++98  (test for errors, line 5)
+FAIL: g++.target/i386/cf_check-2.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++20  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++26  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-3.C  -std=gnu++98  check-function-bodies _Z3foov
+FAIL: g++.target/i386/cf_check-3.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++20  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++20  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++26  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++26  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++98  check-function-bodies _Z3foov
+UNRESOLVED: g++.target/i386/cf_check-4.C  -std=gnu++98  scan-assembler .weak(|_definition)[ \\t]_?_Z3foov
+FAIL: g++.target/i386/cf_check-4.C  -std=gnu++98 (test for excess errors)
+FAIL: g++.target/i386/pr103973-17.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-18.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-19.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr103973-20.C   scan-assembler-times \\tfcom 2
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++20  scan-assembler-times \\tjp\\t 1
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++23  scan-assembler-times \\tjp\\t 1
+FAIL: g++.target/i386/pr116896-1.C  -std=gnu++26  scan-assembler-times \\tjp\\t 1
+
+		=== g++ Summary for unix//-m32 ===
+
+# of expected passes		261520
+# of unexpected failures	125
+# of expected failures		2394
+# of unresolved testcases	18
+# of unsupported tests		2269
+
+Running target unix//-m64
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: g++.target/i386/memset-pr108585-1a.C   check-function-bodies _Z6squarei
+FAIL: g++.target/i386/memset-pr108585-1b.C   check-function-bodies _Z6squarei
+FAIL: g++.target/i386/pr85334-1.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr97054.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++20 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++26 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++98 compilation failed to produce executable
+FAIL: g++.target/i386/memset-pr108585-1a.C   check-function-bodies _Z6squarei
+FAIL: g++.target/i386/memset-pr108585-1b.C   check-function-bodies _Z6squarei
+FAIL: g++.target/i386/pr85334-1.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr97054.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++20 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++26 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++98 compilation failed to produce executable
+
+		=== g++ Summary for unix//-m64 ===
+
+# of expected passes		261308
+# of unexpected failures	58
+# of expected failures		2399
+# of unresolved testcases	3
+# of unsupported tests		2112
+
+Running target unix//-m64/-msave-args
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++20 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++26 (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c  -std=c++98 (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c   execution test
+FAIL: c-c++-common/initpri1-lto.c   execution test
+FAIL: c-c++-common/initpri1-split-static.c   execution test
+FAIL: c-c++-common/initpri1-split.c   execution test
+FAIL: c-c++-common/initpri1-static.c   execution test
+FAIL: c-c++-common/initpri1.c   execution test
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++20  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++26  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z6comdatv 1
+FAIL: g++.dg/eh/pr119507.C  -std=gnu++98  scan-assembler-times .section[\\t ][^\\n]*.gcc_except_table._Z7comdat1v 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++20  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++26  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 63: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 68: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 73: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855-priority.C  -std=gnu++98  line 78: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++20  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++26  line 50: is #####:should be 1
+FAIL: g++.dg/gcov/pr16855.C  -std=gnu++98  line 50: is #####:should be 1
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto  line 23 p == 40
+FAIL: g++.dg/guality/pr55665.C   -O2 -flto -flto-partition=none  line 23 p == 40
+FAIL: g++.dg/plugin/std-module-exports-c++20.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++23.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/plugin/std-module-exports-c++26.C -fplugin=./std_module_exports_plugin.so (test for excess errors)
+FAIL: g++.dg/special/conpr-2.C execution test
+FAIL: g++.dg/special/conpr-3.C execution test
+FAIL: g++.dg/special/initp1.C execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr97054.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++20 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++26 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++98 compilation failed to produce executable
+FAIL: g++.target/i386/pr85334-1.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-1.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++20 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++26 execution test
+FAIL: g++.target/i386/pr85334-2.C  -std=c++98 execution test
+FAIL: g++.target/i386/pr97054.C  -std=gnu++20 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++20 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++26 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++26 compilation failed to produce executable
+FAIL: g++.target/i386/pr97054.C  -std=gnu++98 (test for excess errors)
+UNRESOLVED: g++.target/i386/pr97054.C  -std=gnu++98 compilation failed to produce executable
+
+		=== g++ Summary for unix//-m64/-msave-args ===
+
+# of expected passes		261243
+# of unexpected failures	56
+# of expected failures		2399
+# of unresolved testcases	3
+# of unsupported tests		2146
+
+		=== g++ Summary ===
+
+# of expected passes		784071
+# of unexpected failures	239
+# of expected failures		7192
+# of unresolved testcases	24
+# of unsupported tests		6527
+		=== gcc tests ===
+
+
+Running target unix//-m32
+FAIL: c-c++-common/analyzer/getchar-1.c (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/asan/null-deref-1.c   -O0  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O1  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O3 -g  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -Os  output pattern test
+FAIL: c-c++-common/fcf-protection-1.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 16)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 17)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 18)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 19)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat  (test for excess errors)
+FAIL: gcc.dg/asm-hard-reg-6.c scan-assembler-times foo\\t4\\\\(%esp\\\\),%ecx 1
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+FAIL: gcc.dg/hierarchical-discriminator-vect-version.c scan-assembler \\\\.loc 1 13 [0-9]+ is_stmt 0 discriminator ([1-9][0-9]*|0x[1-9a-fA-F][0-9a-fA-F]*)
+FAIL: gcc.dg/ifcvt-4.c scan-rtl-dump ce1 "2 true changes made"
+FAIL: gcc.dg/loop-invariant.c scan-rtl-dump loop2_invariant "Decided to move invariant"
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no residual allocation in prologue" 1
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash residual allocation in prologue" 3
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr78726.c   -O1  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O1  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -Os  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -Os  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c  -Og -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+XPASS: gcc.dg/plugin/infoleak-vfio_iommu_type1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 42)
+FAIL: gcc.dg/simulate-thread/atomic-load-longlong.c   -O2 -g  thread simulation test
+FAIL: gcc.dg/simulate-thread/atomic-other-longlong.c   -O3 -g  thread simulation test
+FAIL: gcc.dg/tree-ssa/pr122629-1.c scan-tree-dump-times ifcvt "changed to factor operation out from" 2
+FAIL: c-c++-common/ubsan/bounds-17.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -Os  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -Os  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -Os  execution test
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.target/i386/attr-nocf-check-1a.c  (test for warnings, line 17)
+FAIL: gcc.target/i386/attr-nocf-check-1a.c (test for excess errors)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c  (test for warnings, line 15)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c  (test for warnings, line 25)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c (test for excess errors)
+FAIL: gcc.target/i386/cet-intrin-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-intrin-3.c scan-assembler rdsspd|incsspd[ \\t]+(%|)eax
+UNRESOLVED: gcc.target/i386/cet-intrin-3.c scan-assembler-times endbr32 2
+FAIL: gcc.target/i386/cet-label-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-2.c scan-assembler-times endbr32 3
+FAIL: gcc.target/i386/cet-label-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-3.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-label-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-5.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-label.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label.c scan-assembler-times endbr32 3
+FAIL: gcc.target/i386/cet-notrack-1b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-1b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-1b.c scan-assembler-times notrack call[ \\t]+ 2
+FAIL: gcc.target/i386/cet-notrack-2a.c  (test for warnings, line 10)
+FAIL: gcc.target/i386/cet-notrack-2a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-2a.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-2a.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-2b.c  (test for warnings, line 10)
+FAIL: gcc.target/i386/cet-notrack-2b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-2b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-2b.c scan-assembler-times notrack jmp[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-3.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-3.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 4)
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 5)
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 6)
+FAIL: gcc.target/i386/cet-notrack-4b.c (test for excess errors)
+FAIL: gcc.target/i386/cet-notrack-5a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-5a.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-5a.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-5b.c  (test for warnings, line 19)
+FAIL: gcc.target/i386/cet-notrack-5b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-5b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-5b.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-6a.c  (test for warnings, line 12)
+FAIL: gcc.target/i386/cet-notrack-6a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-not notrack call[ \\t]+
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-times \\t(?:call|jmp)[ \\t]+.*foo 1
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-notrack-6b.c  (test for warnings, line 13)
+FAIL: gcc.target/i386/cet-notrack-6b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-6b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-6b.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times \\tcall[ \\t]+.*foo 1
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times notrack call[ \\t]+.*foo 0
+FAIL: gcc.target/i386/cet-notrack-icf-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler endbr
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler fn3:
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler set[ \\t]+fn2,fn1
+FAIL: gcc.target/i386/cet-notrack-icf-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler endbr
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler fn2:
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler set[ \\t]+fn3,fn1
+FAIL: gcc.target/i386/cet-sjlj-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times endbr32 4
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times incssp[dq] 2
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times rdssp[dq] 2
+FAIL: gcc.target/i386/cet-sjlj-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times call\\t_?longjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times call\\t_?setjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times endbr32 4
+FAIL: gcc.target/i386/cet-sjlj-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times endbr32 3
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times incssp[dq] 2
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times rdssp[dq] 2
+FAIL: gcc.target/i386/cet-sjlj-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times call\\t_?longjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times call\\t_?setjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times endbr32 2
+FAIL: gcc.target/i386/cet-switch-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-1.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-switch-1.c scan-assembler-times notrack jmp[ \\t]+[*] 1
+FAIL: gcc.target/i386/cet-switch-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-2.c scan-assembler-times [ \\t]+jmp[ \\t]+[*] 1
+UNRESOLVED: gcc.target/i386/cet-switch-2.c scan-assembler-times endbr32 12
+FAIL: gcc.target/i386/cet-switch-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-3.c scan-assembler-times [ \\t]+jmp[ \\t]+[*] 1
+UNRESOLVED: gcc.target/i386/cet-switch-3.c scan-assembler-times endbr32 12
+FAIL: gcc.target/i386/cf_check-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-1.c scan-assembler-not \\\\mendbr
+FAIL: gcc.target/i386/cf_check-10.c  (test for errors, line 14)
+FAIL: gcc.target/i386/cf_check-10.c (test for excess errors)
+FAIL: gcc.target/i386/cf_check-11.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-11.c check-function-bodies foo
+UNRESOLVED: gcc.target/i386/cf_check-11.c scan-assembler .weak(|_definition)[ \\t]_?foo
+FAIL: gcc.target/i386/cf_check-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-2.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-4.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-5.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-7.c check-function-bodies foo
+FAIL: gcc.target/i386/cf_check-8.c  (test for errors, line 9)
+FAIL: gcc.target/i386/cf_check-8.c (test for excess errors)
+FAIL: gcc.target/i386/cf_check-9.c  (test for errors, line 6)
+FAIL: gcc.target/i386/cf_check-9.c (test for excess errors)
+FAIL: gcc.target/i386/endbr_immediate.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/endbr_immediate.c scan-assembler [ \\t]*-81915917
+UNRESOLVED: gcc.target/i386/endbr_immediate.c scan-assembler-not \$-81915917
+FAIL: gcc.target/i386/minmax-10.c scan-assembler-times test 6
+FAIL: gcc.target/i386/minmax-11.c scan-assembler-not 12345
+FAIL: gcc.target/i386/minmax-8.c scan-assembler-times 12345 1
+FAIL: gcc.target/i386/minmax-8.c scan-assembler-times 87654 1
+FAIL: gcc.target/i386/pr103973-17.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-18.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-19.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-20.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr108044-4.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr116896.c scan-assembler-times \\tjp\\t 2
+FAIL: gcc.target/i386/pr121062-2.c scan-assembler-times movl[ \\\\t]+\\\\\$-1, \\\\(%esp\\\\) 1
+FAIL: gcc.target/i386/pr121062-6.c scan-assembler-times movq[ \\\\t]+%xmm[0-9]+,  1
+FAIL: gcc.target/i386/pr121934-2b.c scan-assembler-not rep stos
+XPASS: gcc.target/i386/pr70465-2.c scan-assembler-not fxch\\t%st.1
+FAIL: gcc.target/i386/pr78035.c scan-assembler-times cmp 2
+FAIL: gcc.target/i386/pr82659-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-1.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/pr82659-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-4.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-5.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/pr82659-6.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-6.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr84146.c (test for excess errors)
+FAIL: gcc.target/i386/pr85620-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-1.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr85620-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-2.c scan-assembler-not jmp
+UNRESOLVED: gcc.target/i386/pr85620-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr85620-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-5.c scan-assembler-not jmp
+FAIL: gcc.target/i386/pr85620-6.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-6.c scan-assembler jmp
+FAIL: gcc.target/i386/pr85620-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-7.c scan-assembler jmp
+FAIL: gcc.target/i386/pr86560-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-1.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-4.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-5.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr87412-1.c  at line 7 (test for errors, line 6)
+FAIL: gcc.target/i386/pr87412-1.c  at line 8 (test for errors, line 6)
+FAIL: gcc.target/i386/pr87412-1.c (test for excess errors)
+FAIL: gcc.target/i386/pr87412-2.c  at line 8 (test for errors, line 7)
+FAIL: gcc.target/i386/pr87412-2.c  at line 9 (test for errors, line 7)
+FAIL: gcc.target/i386/pr87412-2.c (test for excess errors)
+FAIL: gcc.target/i386/pr87412-4.c (test for excess errors)
+FAIL: gcc.target/i386/pr93654.c (test for excess errors)
+FAIL: gcc.target/i386/pr94417-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr94417-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/preserve-none-21.c scan-assembler-not pop
+FAIL: gcc.target/i386/preserve-none-21.c scan-assembler-not push
+FAIL: gcc.target/i386/sibcall-4.c scan-assembler-not jmp[ \\t]*.%eax
+FAIL: c-c++-common/analyzer/getchar-1.c (test for excess errors)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/asan/null-deref-1.c   -O0  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O1  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O2 -flto  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -O3 -g  output pattern test
+FAIL: c-c++-common/asan/null-deref-1.c   -Os  output pattern test
+FAIL: c-c++-common/fcf-protection-1.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-10.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-11.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-12.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-2.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-5.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-6.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-8.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/fcf-protection-9.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 16)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 17)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 18)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat   (test for warnings, line 19)
+FAIL: c-c++-common/pointer-to-fn1.c  -Wc++-compat  (test for excess errors)
+FAIL: c-c++-common/ubsan/bounds-17.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-17.c   -Os  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-18.c   -Os  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O0  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O1  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O2  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -O3 -g  execution test
+FAIL: c-c++-common/ubsan/bounds-19.c   -Os  execution test
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.dg/asm-hard-reg-6.c scan-assembler-times foo\\t4\\\\(%esp\\\\),%ecx 1
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O1  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c   -Os  -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 a == 5
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 b == 6
+FAIL: gcc.dg/guality/pr54796.c  -Og -DPREVENT_OPTIMIZATION  line 17 c == 5
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr78726.c   -O1  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O1  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c   -Os  -DPREVENT_OPTIMIZATION  line 21 d3 == ~36U * 1023094746
+FAIL: gcc.dg/guality/pr78726.c   -Os  -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/pr78726.c  -Og -DPREVENT_OPTIMIZATION  line 21 d6 == ~36U * 1023094746 * 2
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/hierarchical-discriminator-vect-version.c scan-assembler \\\\.loc 1 13 [0-9]+ is_stmt 0 discriminator ([1-9][0-9]*|0x[1-9a-fA-F][0-9a-fA-F]*)
+FAIL: gcc.dg/ifcvt-4.c scan-rtl-dump ce1 "2 true changes made"
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/loop-invariant.c scan-rtl-dump loop2_invariant "Decided to move invariant"
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+XPASS: gcc.dg/plugin/infoleak-vfio_iommu_type1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 42)
+FAIL: gcc.dg/simulate-thread/atomic-load-longlong.c   -O2 -g  thread simulation test
+FAIL: gcc.dg/simulate-thread/atomic-other-longlong.c   -O3 -g  thread simulation test
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no residual allocation in prologue" 1
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash residual allocation in prologue" 3
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/tree-ssa/pr122629-1.c scan-tree-dump-times ifcvt "changed to factor operation out from" 2
+FAIL: gcc.target/i386/attr-nocf-check-1a.c  (test for warnings, line 17)
+FAIL: gcc.target/i386/attr-nocf-check-1a.c (test for excess errors)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c  (test for warnings, line 15)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c  (test for warnings, line 25)
+FAIL: gcc.target/i386/attr-nocf-check-3a.c (test for excess errors)
+FAIL: gcc.target/i386/cet-intrin-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-intrin-3.c scan-assembler rdsspd|incsspd[ \\t]+(%|)eax
+UNRESOLVED: gcc.target/i386/cet-intrin-3.c scan-assembler-times endbr32 2
+FAIL: gcc.target/i386/cet-label-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-2.c scan-assembler-times endbr32 3
+FAIL: gcc.target/i386/cet-label-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-3.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-label-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label-5.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-label.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-label.c scan-assembler-times endbr32 3
+FAIL: gcc.target/i386/cet-notrack-1b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-1b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-1b.c scan-assembler-times notrack call[ \\t]+ 2
+FAIL: gcc.target/i386/cet-notrack-2a.c  (test for warnings, line 10)
+FAIL: gcc.target/i386/cet-notrack-2a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-2a.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-2a.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-2b.c  (test for warnings, line 10)
+FAIL: gcc.target/i386/cet-notrack-2b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-2b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-2b.c scan-assembler-times notrack jmp[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-3.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-3.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 4)
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 5)
+FAIL: gcc.target/i386/cet-notrack-4b.c  (test for warnings, line 6)
+FAIL: gcc.target/i386/cet-notrack-4b.c (test for excess errors)
+FAIL: gcc.target/i386/cet-notrack-5a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-5a.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-5a.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-5b.c  (test for warnings, line 19)
+FAIL: gcc.target/i386/cet-notrack-5b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-5b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-5b.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-6a.c  (test for warnings, line 12)
+FAIL: gcc.target/i386/cet-notrack-6a.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-not notrack call[ \\t]+
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-times \\t(?:call|jmp)[ \\t]+.*foo 1
+UNRESOLVED: gcc.target/i386/cet-notrack-6a.c scan-assembler-times endbr32 1
+FAIL: gcc.target/i386/cet-notrack-6b.c  (test for warnings, line 13)
+FAIL: gcc.target/i386/cet-notrack-6b.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-6b.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-6b.c scan-assembler-times notrack call[ \\t]+ 1
+FAIL: gcc.target/i386/cet-notrack-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times \\tcall[ \\t]+.*foo 1
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-notrack-7.c scan-assembler-times notrack call[ \\t]+.*foo 0
+FAIL: gcc.target/i386/cet-notrack-icf-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler endbr
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler fn3:
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-2.c scan-assembler set[ \\t]+fn2,fn1
+FAIL: gcc.target/i386/cet-notrack-icf-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler endbr
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler fn2:
+UNRESOLVED: gcc.target/i386/cet-notrack-icf-4.c scan-assembler set[ \\t]+fn3,fn1
+FAIL: gcc.target/i386/cet-sjlj-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times endbr32 4
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times incssp[dq] 2
+UNRESOLVED: gcc.target/i386/cet-sjlj-1.c scan-assembler-times rdssp[dq] 2
+FAIL: gcc.target/i386/cet-sjlj-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times call\\t_?longjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times call\\t_?setjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-3.c scan-assembler-times endbr32 4
+FAIL: gcc.target/i386/cet-sjlj-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times endbr32 3
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times incssp[dq] 2
+UNRESOLVED: gcc.target/i386/cet-sjlj-4.c scan-assembler-times rdssp[dq] 2
+FAIL: gcc.target/i386/cet-sjlj-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times call\\t_?longjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times call\\t_?setjmp 1
+UNRESOLVED: gcc.target/i386/cet-sjlj-5.c scan-assembler-times endbr32 2
+FAIL: gcc.target/i386/cet-switch-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-1.c scan-assembler-times endbr32 1
+UNRESOLVED: gcc.target/i386/cet-switch-1.c scan-assembler-times notrack jmp[ \\t]+[*] 1
+FAIL: gcc.target/i386/cet-switch-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-2.c scan-assembler-times [ \\t]+jmp[ \\t]+[*] 1
+UNRESOLVED: gcc.target/i386/cet-switch-2.c scan-assembler-times endbr32 12
+FAIL: gcc.target/i386/cet-switch-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cet-switch-3.c scan-assembler-times [ \\t]+jmp[ \\t]+[*] 1
+UNRESOLVED: gcc.target/i386/cet-switch-3.c scan-assembler-times endbr32 12
+FAIL: gcc.target/i386/cf_check-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-1.c scan-assembler-not \\\\mendbr
+FAIL: gcc.target/i386/cf_check-10.c  (test for errors, line 14)
+FAIL: gcc.target/i386/cf_check-10.c (test for excess errors)
+FAIL: gcc.target/i386/cf_check-11.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-11.c check-function-bodies foo
+UNRESOLVED: gcc.target/i386/cf_check-11.c scan-assembler .weak(|_definition)[ \\t]_?foo
+FAIL: gcc.target/i386/cf_check-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-2.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-4.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-5.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/cf_check-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/cf_check-7.c check-function-bodies foo
+FAIL: gcc.target/i386/cf_check-8.c  (test for errors, line 9)
+FAIL: gcc.target/i386/cf_check-8.c (test for excess errors)
+FAIL: gcc.target/i386/cf_check-9.c  (test for errors, line 6)
+FAIL: gcc.target/i386/cf_check-9.c (test for excess errors)
+FAIL: gcc.target/i386/endbr_immediate.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/endbr_immediate.c scan-assembler [ \\t]*-81915917
+UNRESOLVED: gcc.target/i386/endbr_immediate.c scan-assembler-not \$-81915917
+FAIL: gcc.target/i386/minmax-10.c scan-assembler-times test 6
+FAIL: gcc.target/i386/minmax-11.c scan-assembler-not 12345
+FAIL: gcc.target/i386/minmax-8.c scan-assembler-times 12345 1
+FAIL: gcc.target/i386/minmax-8.c scan-assembler-times 87654 1
+FAIL: gcc.target/i386/pr103973-17.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-18.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-19.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr103973-20.c scan-assembler-times \\tfcom 4
+FAIL: gcc.target/i386/pr108044-4.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr116896.c scan-assembler-times \\tjp\\t 2
+FAIL: gcc.target/i386/pr121062-2.c scan-assembler-times movl[ \\\\t]+\\\\\$-1, \\\\(%esp\\\\) 1
+FAIL: gcc.target/i386/pr121062-6.c scan-assembler-times movq[ \\\\t]+%xmm[0-9]+,  1
+FAIL: gcc.target/i386/pr121934-2b.c scan-assembler-not rep stos
+XPASS: gcc.target/i386/pr70465-2.c scan-assembler-not fxch\\t%st.1
+FAIL: gcc.target/i386/pr78035.c scan-assembler-times cmp 2
+FAIL: gcc.target/i386/pr82659-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-1.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/pr82659-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-4.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr82659-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-5.c scan-assembler-times \\\\mendbr 1
+FAIL: gcc.target/i386/pr82659-6.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr82659-6.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr84146.c (test for excess errors)
+FAIL: gcc.target/i386/pr85620-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-1.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr85620-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-2.c scan-assembler-not jmp
+UNRESOLVED: gcc.target/i386/pr85620-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr85620-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-5.c scan-assembler-not jmp
+FAIL: gcc.target/i386/pr85620-6.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-6.c scan-assembler jmp
+FAIL: gcc.target/i386/pr85620-7.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr85620-7.c scan-assembler jmp
+FAIL: gcc.target/i386/pr86560-1.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-1.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-2.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-2.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-4.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-4.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr86560-5.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr86560-5.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/pr87412-1.c  at line 7 (test for errors, line 6)
+FAIL: gcc.target/i386/pr87412-1.c  at line 8 (test for errors, line 6)
+FAIL: gcc.target/i386/pr87412-1.c (test for excess errors)
+FAIL: gcc.target/i386/pr87412-2.c  at line 8 (test for errors, line 7)
+FAIL: gcc.target/i386/pr87412-2.c  at line 9 (test for errors, line 7)
+FAIL: gcc.target/i386/pr87412-2.c (test for excess errors)
+FAIL: gcc.target/i386/pr87412-4.c (test for excess errors)
+FAIL: gcc.target/i386/pr93654.c (test for excess errors)
+FAIL: gcc.target/i386/pr94417-3.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr94417-3.c scan-assembler-times \\\\mendbr 2
+FAIL: gcc.target/i386/preserve-none-21.c scan-assembler-not pop
+FAIL: gcc.target/i386/preserve-none-21.c scan-assembler-not push
+FAIL: gcc.target/i386/sibcall-4.c scan-assembler-not jmp[ \\t]*.%eax
+
+		=== gcc Summary for unix//-m32 ===
+
+# of expected passes		211862
+# of unexpected failures	286
+# of unexpected successes	30
+# of expected failures		1645
+# of unresolved testcases	77
+# of unsupported tests		5942
+
+Running target unix//-m64
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyList_New.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyLong_FromLong.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/tree-ssa/pr43491.c (test for excess errors)
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove61
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove69
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove93
+FAIL: gcc.target/i386/builtin-memmove-2d.c check-function-bodies gcc_memmove_gpr
+FAIL: gcc.target/i386/memset-pr70308-1a.c check-function-bodies foo
+FAIL: gcc.target/i386/pr110792.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr85667-10.c scan-assembler-times addsd[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr85667-8.c scan-assembler-times addss[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/xchg-4.c scan-assembler rolw
+FAIL: gcc.target/i386/xchg-4.c scan-assembler-not mov
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyList_New.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyLong_FromLong.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-5.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/tree-ssa/pr43491.c (test for excess errors)
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove61
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove69
+FAIL: gcc.target/i386/builtin-memmove-1d.c check-function-bodies memmove93
+FAIL: gcc.target/i386/builtin-memmove-2d.c check-function-bodies gcc_memmove_gpr
+FAIL: gcc.target/i386/memset-pr70308-1a.c check-function-bodies foo
+FAIL: gcc.target/i386/pr110792.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr85667-10.c scan-assembler-times addsd[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr85667-8.c scan-assembler-times addss[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/xchg-4.c scan-assembler rolw
+FAIL: gcc.target/i386/xchg-4.c scan-assembler-not mov
+FAIL: gcc.target/x86_64/abi/callabi/leaf-2.c scan-assembler-not %rsp
+FAIL: gcc.target/x86_64/abi/callabi/leaf-2.c scan-assembler-not %rsp
+
+		=== gcc Summary for unix//-m64 ===
+
+# of expected passes		216316
+# of unexpected failures	128
+# of unexpected successes	28
+# of expected failures		1637
+# of unsupported tests		4399
+
+Running target unix//-m64/-msave-args
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 34 c == &a[0]
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 39 c == &a[0]
+FAIL: gcc.dg/guality/pr45003-2.c   -Os  -DPREVENT_OPTIMIZATION  line 10 a == 0x8078
+FAIL: gcc.dg/guality/pr45003-2.c   -Os  -DPREVENT_OPTIMIZATION  line 19 a == 0xffff8078
+FAIL: gcc.dg/guality/pr45003-3.c   -Os  -DPREVENT_OPTIMIZATION  line 10 a == -32648
+FAIL: gcc.dg/guality/pr45003-3.c   -Os  -DPREVENT_OPTIMIZATION  line 19 a == 0x8078
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyList_New.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyLong_FromLong.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/tree-ssa/pr43491.c (test for excess errors)
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.target/i386/amd64-abi-3.c scan-assembler subq[\\\\t ]*\\\\\$88,[\\\\t ]*%rsp
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 130, -136 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 131, -128 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 132, -120 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 133, -112 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 134, -104 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 135, -96 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 136, -88 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 137, -80 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 138, -72 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 139, -64 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 140, -56 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 141, -48 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 142, -40 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 143, -32 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 144, -24 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 145, -16 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 16 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 32 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 48 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 56 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 8(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 12, -40(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 13, -32(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 14, -24(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 15, -16(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 6, -48(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_restore 6(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r12[^\\n\\r]*%rbp[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r14[^\\n\\r]*%r13[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times popq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%r13[^\\n\\r]*%r14[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%rbp[^\\n\\r]*%r12[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pushq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 16 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 32 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 48 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 56 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 8(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 12, -40(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 13, -32(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 14, -24(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 15, -16(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 6, -48(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_restore 6(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r12[^\\n\\r]*%rbp[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r14[^\\n\\r]*%r13[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times popq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%r13[^\\n\\r]*%r14[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%rbp[^\\n\\r]*%r12[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pushq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/fuse-caller-save-rec.c scan-assembler-not push
+FAIL: gcc.target/i386/fuse-caller-save.c scan-assembler-not push
+FAIL: gcc.target/i386/ipa-stack-alignment-2.c scan-assembler sub.*%.sp
+FAIL: gcc.target/i386/ipa-stack-alignment.c scan-assembler sub.*%.sp
+FAIL: gcc.target/i386/max-stack-align.c (test for excess errors)
+FAIL: gcc.target/i386/pieces-memcpy-7.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pieces-memcpy-8.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pieces-memcpy-9.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pr100704-1.c scan-assembler-not pushq
+FAIL: gcc.target/i386/pr100704-2.c scan-assembler-not pushq
+FAIL: gcc.target/i386/pr110792.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr46470.c scan-assembler-not sp
+FAIL: gcc.target/i386/pr58066.c scan-rtl-dump final "Function foo.*set[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*plus[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*const_int -8.*UNSPEC_TLS.*Function goo"
+FAIL: gcc.target/i386/pr58066.c scan-rtl-dump final "Function goo.*set[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*plus[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*const_int -8.*UNSPEC_TLS"
+FAIL: gcc.target/i386/pr64905.c (internal compiler error: in process_address, at lra-constraints.cc:4228)
+FAIL: gcc.target/i386/pr64905.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr64905.c scan-assembler-not movl[ \\t]0\\\\(%.*\\\\), %.*
+FAIL: gcc.target/i386/pr69482-1.c scan-assembler-times mov 4
+FAIL: gcc.target/i386/pr69482-2.c scan-assembler-times mov 1
+FAIL: gcc.target/i386/pr85667-10.c scan-assembler-times addsd[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr85667-8.c scan-assembler-times addss[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 1, 8\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 2, 16\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 3, 24\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 4, 32\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 5, 40\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 6, 48\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 7, 56\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 1, 8\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 2, 16\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 3, 24\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 4, 32\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 5, 40\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 6, 48\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 7, 56\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/preserve-none-1.c scan-assembler-not movq
+FAIL: gcc.target/i386/stack-check-12.c scan-assembler popq\\t%rax
+FAIL: gcc.target/i386/stack-check-12.c scan-assembler pushq\\t%rax
+FAIL: gcc.target/i386/vartrack-1.c scan-rtl-dump-times vartrack "[0-9][0-9]*: {\\\\[argp:DI-0x10\\\\]=b[px]:DI;sp:DI=argp:DI-0x10;}" 1
+FAIL: gcc.target/i386/vartrack-1.c scan-rtl-dump-times vartrack "[0-9][0-9]*: {b[px]:DI=\\\\[argp:DI-0x10\\\\];sp:DI=argp:DI-0x8;}" 1
+FAIL: gcc.target/i386/xchg-4.c scan-assembler rolw
+FAIL: gcc.target/i386/xchg-4.c scan-assembler-not mov
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 32)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 47)
+FAIL: c-c++-common/analyzer/isatty-1.c  (test for warnings, line 57)
+FAIL: c-c++-common/analyzer/isatty-1.c (test for excess errors)
+FAIL: c-c++-common/initpri1-lto-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-lto.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-split.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1-static.c  -Wc++-compat  execution test
+FAIL: c-c++-common/initpri1.c  -Wc++-compat  execution test
+FAIL: compiler driver --help=common option(s): "^ +-.*[^:.]\$" absent from output: "  -fstrict-calling-conventions Use strict ABI calling conventions even for static functions"
+FAIL: gcc.dg/c99-stdint-1.c (test for excess errors)
+FAIL: gcc.dg/c99-stdint-7.c (test for excess errors)
+XPASS: gcc.dg/guality/example.c   -O0  execution test
+XPASS: gcc.dg/guality/example.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/example.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O0  execution test
+XPASS: gcc.dg/guality/guality.c   -O1  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/guality.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/guality.c  -Og -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+XPASS: gcc.dg/guality/inline-params.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/inline-params.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O0  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c   -O1  -DPREVENT_OPTIMIZATION  line 19 k == 3
+XPASS: gcc.dg/guality/ipa-sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 19 k == 3
+FAIL: gcc.dg/guality/loop-1.c   -O2  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 20 i == 1
+FAIL: gcc.dg/guality/loop-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 20 i == 1
+XPASS: gcc.dg/guality/pr41353-1.c   -O1  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c   -Os  -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+XPASS: gcc.dg/guality/pr41353-1.c  -Og -DPREVENT_OPTIMIZATION  line 28 j == 28 + 37
+FAIL: gcc.dg/guality/pr41447-1.c   -O2  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -O3 -g  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr41447-1.c   -Os  -DPREVENT_OPTIMIZATION  execution test
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 34 c == &a[0]
+FAIL: gcc.dg/guality/pr43051-1.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 39 c == &a[0]
+FAIL: gcc.dg/guality/pr45003-2.c   -Os  -DPREVENT_OPTIMIZATION  line 10 a == 0x8078
+FAIL: gcc.dg/guality/pr45003-2.c   -Os  -DPREVENT_OPTIMIZATION  line 19 a == 0xffff8078
+FAIL: gcc.dg/guality/pr45003-3.c   -Os  -DPREVENT_OPTIMIZATION  line 10 a == -32648
+FAIL: gcc.dg/guality/pr45003-3.c   -Os  -DPREVENT_OPTIMIZATION  line 19 a == 0x8078
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-1.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 y == 25
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 20 z == 6
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 y == 117
+FAIL: gcc.dg/guality/pr54519-3.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 23 z == 8
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-4.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-5.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 17 y == 25
+FAIL: gcc.dg/guality/pr54519-6.c   -Os  -DPREVENT_OPTIMIZATION  line 11 x == 2
+FAIL: gcc.dg/guality/pr54693-2.c   -O2  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr54693-2.c   -O3 -g  -DPREVENT_OPTIMIZATION  line 21 x == 10 - i
+FAIL: gcc.dg/guality/pr56154-1.c  -Og -DPREVENT_OPTIMIZATION  line pr56154-1.c:20 x.a == 6
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto  -DPREVENT_OPTIMIZATION line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O2 -flto -flto-partition=none  -DPREVENT_OPTIMIZATION line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -O3 -g  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c   -Os  -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:17 s2.f == 0.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.f == 5.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s1.g == 6.0
+FAIL: gcc.dg/guality/pr59776.c  -Og -DPREVENT_OPTIMIZATION  line pr59776.c:20 s2.f == 5.0
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 21 a.j == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[0] == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 32 a[1] == 14
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.i == 4
+FAIL: gcc.dg/guality/sra-1.c  -Og -DPREVENT_OPTIMIZATION  line 43 a.j == 14
+FAIL: gcc.dg/ipa/iinline-attr.c scan-ipa-dump inline "hooray[^\\\\n]*inline copy in test"
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyList_New.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/cpython-plugin-test-PyLong_FromLong.c -fplugin=./analyzer_cpython_plugin.so  at line 37 (test for warnings, line 36)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-ice.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so  dg-regexp 13 not found: "during GIMPLE pass: crash_test"
+XPASS: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (internal compiler error)
+FAIL: gcc.dg/plugin/crash-test-nested-write-through-null.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\\\[\\\\]
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 9
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation [Ff]ault
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\\\[
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+FAIL: gcc.dg/plugin/crash-test-write-through-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/plugin/crash-test-write-through-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash frame pointer needed" 2
+FAIL: gcc.dg/stack-check-6a.c scan-rtl-dump-times pro_and_epilogue "Stack clash no frame pointer needed" 2
+FAIL: gcc.dg/tree-ssa/pr43491.c (test for excess errors)
+FAIL: gcc.target/i386/amd64-abi-3.c scan-assembler subq[\\\\t ]*\\\\\$88,[\\\\t ]*%rsp
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 130, -136 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 131, -128 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 132, -120 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 133, -112 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 134, -104 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 135, -96 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 136, -88 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 137, -80 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 138, -72 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 139, -64 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 140, -56 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 141, -48 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 142, -40 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 143, -32 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 144, -24 1
+FAIL: gcc.target/i386/apx-interrupt-1.c scan-assembler-times \\\\t\\\\.cfi_offset 145, -16 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 16 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 32 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 48 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 56 2
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_def_cfa_offset 8(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 12, -40(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 13, -32(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 14, -24(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 15, -16(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_offset 6, -48(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times .cfi_restore 6(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r12[^\\n\\r]*%rbp[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r14[^\\n\\r]*%r13[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times popq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%r13[^\\n\\r]*%r14[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%rbp[^\\n\\r]*%r12[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2-1.c scan-assembler-times pushq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 16 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 32 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 48 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 56 2
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_def_cfa_offset 8(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 12, -40(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 13, -32(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 14, -24(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 15, -16(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_offset 6, -48(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times .cfi_restore 6(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r12[^\\n\\r]*%rbp[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pop2[\\\\t ]*[^\\n\\r]*%r14[^\\n\\r]*%r13[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times popq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%r13[^\\n\\r]*%r14[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times push2[\\\\t ]*[^\\n\\r]*%rbp[^\\n\\r]*%r12[^\\n\\r]*(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/apx-push2pop2_force_drap-1.c scan-assembler-times pushq[^\\n\\r]*%r15(?:\\n|[ \\\\t]+#) 1
+FAIL: gcc.target/i386/fuse-caller-save-rec.c scan-assembler-not push
+FAIL: gcc.target/i386/fuse-caller-save.c scan-assembler-not push
+FAIL: gcc.target/i386/ipa-stack-alignment-2.c scan-assembler sub.*%.sp
+FAIL: gcc.target/i386/ipa-stack-alignment.c scan-assembler sub.*%.sp
+FAIL: gcc.target/i386/max-stack-align.c (test for excess errors)
+FAIL: gcc.target/i386/pieces-memcpy-7.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pieces-memcpy-8.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pieces-memcpy-9.c scan-assembler-not %[re]bp
+FAIL: gcc.target/i386/pr100704-1.c scan-assembler-not pushq
+FAIL: gcc.target/i386/pr100704-2.c scan-assembler-not pushq
+FAIL: gcc.target/i386/pr110792.c (test for excess errors)
+FAIL: gcc.target/i386/pr115102.c scan-assembler bswaphisi2_lowpart
+FAIL: gcc.target/i386/pr46470.c scan-assembler-not sp
+FAIL: gcc.target/i386/pr58066.c scan-rtl-dump final "Function foo.*set[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*plus[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*const_int -8.*UNSPEC_TLS.*Function goo"
+FAIL: gcc.target/i386/pr58066.c scan-rtl-dump final "Function goo.*set[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*plus[^\\r\\n]*sp\\\\)[\\r\\n][^\\r\\n]*const_int -8.*UNSPEC_TLS"
+FAIL: gcc.target/i386/pr64905.c (internal compiler error: in process_address, at lra-constraints.cc:4228)
+FAIL: gcc.target/i386/pr64905.c (test for excess errors)
+UNRESOLVED: gcc.target/i386/pr64905.c scan-assembler-not movl[ \\t]0\\\\(%.*\\\\), %.*
+FAIL: gcc.target/i386/pr69482-1.c scan-assembler-times mov 4
+FAIL: gcc.target/i386/pr69482-2.c scan-assembler-times mov 1
+FAIL: gcc.target/i386/pr85667-10.c scan-assembler-times addsd[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr85667-8.c scan-assembler-times addss[ \\t]*40\\\\(%rsp\\\\), .* 1
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 1, 8\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 2, 16\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 3, 24\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 4, 32\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 5, 40\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 6, 48\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-1.c scan-assembler 7, 56\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 1, 8\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 2, 16\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 3, 24\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 4, 32\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 5, 40\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 6, 48\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/pr95798-2.c scan-assembler 7, 56\\\\(%rsp,%r[a-z0-9]*,8\\\\)
+FAIL: gcc.target/i386/preserve-none-1.c scan-assembler-not movq
+FAIL: gcc.target/i386/stack-check-12.c scan-assembler popq\\t%rax
+FAIL: gcc.target/i386/stack-check-12.c scan-assembler pushq\\t%rax
+FAIL: gcc.target/i386/vartrack-1.c scan-rtl-dump-times vartrack "[0-9][0-9]*: {\\\\[argp:DI-0x10\\\\]=b[px]:DI;sp:DI=argp:DI-0x10;}" 1
+FAIL: gcc.target/i386/vartrack-1.c scan-rtl-dump-times vartrack "[0-9][0-9]*: {b[px]:DI=\\\\[argp:DI-0x10\\\\];sp:DI=argp:DI-0x8;}" 1
+FAIL: gcc.target/i386/xchg-4.c scan-assembler rolw
+FAIL: gcc.target/i386/xchg-4.c scan-assembler-not mov
+FAIL: gcc.target/x86_64/abi/callabi/leaf-2.c scan-assembler-not %rsp
+FAIL: gcc.target/x86_64/abi/callabi/leaf-2.c scan-assembler-not %rsp
+
+		=== gcc Summary for unix//-m64/-msave-args ===
+
+# of expected passes		215400
+# of unexpected failures	239
+# of unexpected successes	28
+# of expected failures		1632
+# of unresolved testcases	1
+# of unsupported tests		4726
+
+		=== gcc Summary ===
+
+# of expected passes		643578
+# of unexpected failures	653
+# of unexpected successes	86
+# of expected failures		4914
+# of unresolved testcases	78
+# of unsupported tests		15067
+		=== gfortran tests ===
+
+
+Running target unix//-m32
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+
+		=== gfortran Summary for unix//-m32 ===
+
+# of expected passes		74919
+# of unexpected failures	2
+# of expected failures		341
+# of unsupported tests		293
+
+Running target unix//-m64
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+
+		=== gfortran Summary for unix//-m64 ===
+
+# of expected passes		75234
+# of unexpected failures	2
+# of expected failures		339
+# of unsupported tests		95
+
+Running target unix//-m64/-msave-args
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions  line 14 a(10) == 10
+FAIL: gfortran.dg/guality/arg1.f90   -O3 -g  line 14 a(10) == 10
+
+		=== gfortran Summary for unix//-m64/-msave-args ===
+
+# of expected passes		75234
+# of unexpected failures	2
+# of expected failures		339
+# of unsupported tests		95
+
+		=== gfortran Summary ===
+
+# of expected passes		225387
+# of unexpected failures	6
+# of expected failures		1019
+# of unsupported tests		483
+		=== objc tests ===
+
+
+Running target unix//-m32
+
+		=== objc Summary for unix//-m32 ===
+
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+
+Running target unix//-m64
+
+		=== objc Summary for unix//-m64 ===
+
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+
+Running target unix//-m64/-msave-args
+
+		=== objc Summary for unix//-m64/-msave-args ===
+
+# of expected passes		2843
+# of expected failures		6
+# of unsupported tests		70
+
+		=== objc Summary ===
+
+# of expected passes		8529
+# of expected failures		18
+# of unsupported tests		210
+		=== libatomic tests ===
+
+
+Running target unix//-m32
+
+		=== libatomic Summary for unix//-m32 ===
+
+# of expected passes		44
+# of unsupported tests		5
+
+Running target unix//-m64
+
+		=== libatomic Summary for unix//-m64 ===
+
+# of expected passes		54
+
+Running target unix//-m64/-msave-args
+
+		=== libatomic Summary for unix//-m64/-msave-args ===
+
+# of expected passes		54
+
+		=== libatomic Summary ===
+
+# of expected passes		152
+# of unsupported tests		5
+		=== libgomp tests ===
+
+
+Running target unix//-m32
+
+		=== libgomp Summary for unix//-m32 ===
+
+# of expected passes		17468
+# of expected failures		287
+# of unsupported tests		843
+
+Running target unix//-m64
+
+		=== libgomp Summary for unix//-m64 ===
+
+# of expected passes		17469
+# of expected failures		287
+# of unsupported tests		842
+
+Running target unix//-m64/-msave-args
+
+		=== libgomp Summary for unix//-m64/-msave-args ===
+
+# of expected passes		17469
+# of expected failures		287
+# of unsupported tests		842
+
+		=== libgomp Summary ===
+
+# of expected passes		52406
+# of expected failures		861
+# of unsupported tests		2527
+		=== libstdc++ tests ===
+
+
+Running target unix//-m32
+
+		=== libstdc++ Summary for unix//-m32 ===
+
+# of expected passes		18925
+# of expected failures		152
+# of unsupported tests		625
+
+Running target unix//-m64
+
+		=== libstdc++ Summary for unix//-m64 ===
+
+# of expected passes		18913
+# of expected failures		152
+# of unsupported tests		631
+
+Running target unix//-m64/-msave-args
+
+		=== libstdc++ Summary for unix//-m64/-msave-args ===
+
+# of expected passes		18913
+# of expected failures		152
+# of unsupported tests		631
+
+		=== libstdc++ Summary ===
+
+# of expected passes		56751
+# of expected failures		456
+# of unsupported tests		1887
+
+Compiler version: gcc 
+Platform: x86_64-pc-solaris2.11
+configure flags: --prefix=/opt/gcc-16 --sysconfdir=/opt/gcc-16/etc --includedir=/opt/gcc-16/include --bindir=/opt/gcc-16/bin --sbindir=/opt/gcc-16/sbin --libdir=/opt/gcc-16/lib --libexecdir=/opt/gcc-16/libexec --prefix=/opt/gcc-16 --host x86_64-pc-solaris2.11 --build x86_64-pc-solaris2.11 --target x86_64-pc-solaris2.11 --with-gmp-include=/usr/include/gmp --with-ld=/bin/ld --without-gnu-ld --with-as=/usr/bin/gas --with-gnu-as --with-build-time-tools=/usr/gnu/x86_64-pc-solaris2.11/bin --with-build-config=no --enable-languages=c,c++,fortran,lto,objc --enable-clocale=dragonfly --with-arch-32=i586 --enable-shared --with-system-zlib --enable-plugins --enable-__cxa_atexit --enable-initfini-array --disable-libitm --disable-libstdcxx-pch --with-diagnostics-urls=auto-if-env enable_frame_pointer=yes --disable-bootstrap --disable-silent-rules --disable-maintainer-mode --with-boot-ldflags='-R/opt/gcc-16/lib -static-libstdc++ -static-libgcc' --with-pkgversion='OmniOS 151061/16.2.0-il-0' --with-bugurl=https://omnios.org/about/contact
+BOOT_CFLAGS=-g -O2
+EOF
+Mail -s "Results for gcc testsuite on x86_64-pc-solaris2.11" gcc-testresults@gcc.gnu.org &&
+true

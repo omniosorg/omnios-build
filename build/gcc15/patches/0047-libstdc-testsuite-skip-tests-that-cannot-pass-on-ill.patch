@@ -1,0 +1,396 @@
+From 07fe793652add5af993884fad3ac2f952bd823fe Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sun, 8 Nov 2026 10:31:19 +0000
+Subject: libstdc++ testsuite: skip tests that cannot pass on illumos
+
+Skip, on illumos, several tests that expect glibc behaviour or glibc
+locale data.
+
+* illumos UTF-8 is RFC 3629-style, 4 bytes at most: MB_CUR_MAX is 4 and
+  wcrtomb() fails with EILSEQ for 0x20000000, so codecvt::max_length() is
+  4 not 6 and wfilebuf::sputc(0x20000000) throws a conversion error.
+* The dragonfly model uses the generic messages facet, which has no
+  catalog support, so messages<char>::get() returns the msgid.
+* In single-byte locales illumos' wchar_t is the byte value, so the euro
+  sign of de_DE.ISO8859-15 is L'\xa4', not L'\x20ac' as on glibc.
+* Locale data (CLDR-derived) differs from glibc's: de_DE %a is "So.",
+  es_ES %a is "dom.", fr_FR %b is "avr.", pt_PT has a U+00A0 thousands
+  separator, is_IS D_FMT is "%e.%m.%Y", zh_TW D_FMT is "%Y/%m/%e", ru_RU
+  abbreviated weekdays are lower case, es_ES puts the currency symbol last.
+* setlocale(LC_ALL, NULL) reports composite locales as "a/b/c/d/e/f" and
+  the dragonfly model has six categories, whereas the tests expect glibc's
+  "LC_CTYPE=...;" twelve-category form.
+* 22_locale/ctype/is/char/wrapped_env.cc #includes 2.cc, which upstream
+  already xfails everywhere but glibc because ctype<char> uses the
+  process-wide __ctype_mask table on Solaris; give the wrapper the same
+  xfail.
+* illumos ZFS rejects timestamps outside the 32-bit time_t range with
+  EOVERFLOW (tmpfs accepts them), so the far-future utimensat() in the
+  last_write_time tests fails on -m64 when the test directory is on ZFS.
+  Skip the overflow part in that case instead of asserting; this part is
+  not illumos-specific and could go upstream.
+---
+ .../22_locale/codecvt/max_length/wchar_t/4.cc  |  1 +
+ .../22_locale/ctype/is/char/wrapped_env.cc     |  1 +
+ .../testsuite/22_locale/locale/cons/29217.cc   |  1 +
+ .../locale/global_locale_objects/14071.cc      |  1 +
+ .../testsuite/22_locale/messages/13631.cc      |  1 +
+ .../22_locale/messages/members/char/1.cc       |  1 +
+ .../22_locale/messages/members/char/2.cc       |  1 +
+ .../messages/members/char/wrapped_env.cc       |  1 +
+ .../messages_byname/named_equivalence.cc       |  1 +
+ .../22_locale/money_get/get/wchar_t/1.cc       |  1 +
+ .../22_locale/money_put/put/char/9780-3.cc     |  1 +
+ .../22_locale/money_put/put/wchar_t/1.cc       |  1 +
+ .../22_locale/money_put/put/wchar_t/3.cc       |  1 +
+ .../22_locale/numpunct/members/char/3.cc       |  1 +
+ .../22_locale/time_get/get_date/char/12750.cc  |  1 +
+ .../time_get/get_date/wchar_t/12750.cc         |  1 +
+ .../22_locale/time_get/get_date/wchar_t/4.cc   |  1 +
+ .../time_get/get_weekday/char/38081-1.cc       |  1 +
+ .../time_get/get_weekday/char/38081-2.cc       |  1 +
+ .../testsuite/22_locale/time_put/put/char/2.cc |  1 +
+ .../testsuite/22_locale/time_put/put/char/4.cc |  1 +
+ .../22_locale/time_put/put/wchar_t/2.cc        |  1 +
+ .../22_locale/time_put/put/wchar_t/4.cc        |  1 +
+ .../basic_filebuf/overflow/wchar_t/11305-1.cc  |  1 +
+ .../basic_filebuf/overflow/wchar_t/11305-2.cc  |  1 +
+ .../basic_filebuf/overflow/wchar_t/11305-3.cc  |  1 +
+ .../basic_filebuf/overflow/wchar_t/11305-4.cc  |  1 +
+ .../filesystem/operations/last_write_time.cc   | 18 ++++++++++++++++--
+ .../filesystem/operations/last_write_time.cc   | 18 ++++++++++++++++--
+ .../testsuite/std/time/year_month/io.cc        |  1 +
+ 30 files changed, 60 insertions(+), 4 deletions(-)
+
+diff --git a/libstdc++-v3/testsuite/22_locale/codecvt/max_length/wchar_t/4.cc b/libstdc++-v3/testsuite/22_locale/codecvt/max_length/wchar_t/4.cc
+index 850382b16d4..9a966b48768 100644
+--- a/libstdc++-v3/testsuite/22_locale/codecvt/max_length/wchar_t/4.cc
++++ b/libstdc++-v3/testsuite/22_locale/codecvt/max_length/wchar_t/4.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos UTF-8 is limited to 4-byte sequences so MB_CUR_MAX is 4, not 6" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // 2003-02-06  Petur Runolfsson  <peturr02@ru.is>
+diff --git a/libstdc++-v3/testsuite/22_locale/ctype/is/char/wrapped_env.cc b/libstdc++-v3/testsuite/22_locale/ctype/is/char/wrapped_env.cc
+index 07853a8c1dd..173df81ce76 100644
+--- a/libstdc++-v3/testsuite/22_locale/ctype/is/char/wrapped_env.cc
++++ b/libstdc++-v3/testsuite/22_locale/ctype/is/char/wrapped_env.cc
+@@ -1,3 +1,4 @@
++// { dg-do run { xfail { ! { *-*-linux* *-*-gnu* } } } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-08-15 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/locale/cons/29217.cc b/libstdc++-v3/testsuite/22_locale/locale/cons/29217.cc
+index ce6376d88dc..80bcd28a9d3 100644
+--- a/libstdc++-v3/testsuite/22_locale/locale/cons/29217.cc
++++ b/libstdc++-v3/testsuite/22_locale/locale/cons/29217.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos composite locale names are a/b/c/d/e/f, not the glibc LC_*=...; form, and have 6 categories" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // Copyright (C) 2006-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/22_locale/locale/global_locale_objects/14071.cc b/libstdc++-v3/testsuite/22_locale/locale/global_locale_objects/14071.cc
+index e197daab56f..1ee31a231e9 100644
+--- a/libstdc++-v3/testsuite/22_locale/locale/global_locale_objects/14071.cc
++++ b/libstdc++-v3/testsuite/22_locale/locale/global_locale_objects/14071.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos composite locale names are a/b/c/d/e/f, not the glibc LC_*=...; form" { *-*-solaris2* } }
+ // { dg-require-namedlocale "is_IS.ISO8859-1" }
+ // { dg-require-namedlocale "en_US.ISO8859-1" }
+ 
+diff --git a/libstdc++-v3/testsuite/22_locale/messages/13631.cc b/libstdc++-v3/testsuite/22_locale/messages/13631.cc
+index c0c1155a7fc..1c1761c7b30 100644
+--- a/libstdc++-v3/testsuite/22_locale/messages/13631.cc
++++ b/libstdc++-v3/testsuite/22_locale/messages/13631.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "generic messages model has no catalog support" { *-*-solaris2* } }
+ // { dg-require-namedlocale "fr_FR.ISO8859-15" }
+ 
+ // Copyright (C) 2014-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/22_locale/messages/members/char/1.cc b/libstdc++-v3/testsuite/22_locale/messages/members/char/1.cc
+index 5d35dc2a33e..28c63908622 100644
+--- a/libstdc++-v3/testsuite/22_locale/messages/members/char/1.cc
++++ b/libstdc++-v3/testsuite/22_locale/messages/members/char/1.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "generic messages model has no catalog support" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-07-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/messages/members/char/2.cc b/libstdc++-v3/testsuite/22_locale/messages/members/char/2.cc
+index d7a6c66fd5c..f70965b3096 100644
+--- a/libstdc++-v3/testsuite/22_locale/messages/members/char/2.cc
++++ b/libstdc++-v3/testsuite/22_locale/messages/members/char/2.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "generic messages model has no catalog support" { *-*-solaris2* } }
+ // { dg-require-namedlocale "fr_FR.ISO8859-15" }
+ 
+ // 2001-07-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/messages/members/char/wrapped_env.cc b/libstdc++-v3/testsuite/22_locale/messages/members/char/wrapped_env.cc
+index 2eaef0a1683..3333a08f77b 100644
+--- a/libstdc++-v3/testsuite/22_locale/messages/members/char/wrapped_env.cc
++++ b/libstdc++-v3/testsuite/22_locale/messages/members/char/wrapped_env.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "generic messages model has no catalog support" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ // { dg-require-namedlocale "fr_FR.ISO8859-15" }
+ // { dg-require-namedlocale "en_US.ISO8859-1" }
+diff --git a/libstdc++-v3/testsuite/22_locale/messages_byname/named_equivalence.cc b/libstdc++-v3/testsuite/22_locale/messages_byname/named_equivalence.cc
+index 34cfb6148cf..367eda087c2 100644
+--- a/libstdc++-v3/testsuite/22_locale/messages_byname/named_equivalence.cc
++++ b/libstdc++-v3/testsuite/22_locale/messages_byname/named_equivalence.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "generic messages model has no catalog support" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-07-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/money_get/get/wchar_t/1.cc b/libstdc++-v3/testsuite/22_locale/money_get/get/wchar_t/1.cc
+index 5c6da9193ae..a90801bf18a 100644
+--- a/libstdc++-v3/testsuite/22_locale/money_get/get/wchar_t/1.cc
++++ b/libstdc++-v3/testsuite/22_locale/money_get/get/wchar_t/1.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos wchar_t is the byte value in single-byte locales, so the de_DE.ISO8859-15 euro sign is L'\xa4' not L'\x20ac'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-09-12 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/money_put/put/char/9780-3.cc b/libstdc++-v3/testsuite/22_locale/money_put/put/char/9780-3.cc
+index 8a7b39f3f3e..2f92ce68331 100644
+--- a/libstdc++-v3/testsuite/22_locale/money_put/put/char/9780-3.cc
++++ b/libstdc++-v3/testsuite/22_locale/money_put/put/char/9780-3.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "expected output is specific to glibc versions; illumos es_ES puts the currency symbol last" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ // { dg-require-namedlocale "es_ES.ISO8859-15" }
+ 
+diff --git a/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/1.cc b/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/1.cc
+index b78f7639625..4828467489a 100644
+--- a/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/1.cc
++++ b/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/1.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos wchar_t is the byte value in single-byte locales, so the de_DE.ISO8859-15 euro sign is L'\xa4' not L'\x20ac'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-08-27 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/3.cc b/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/3.cc
+index 55ec64bee8b..2e1702c0afe 100644
+--- a/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/3.cc
++++ b/libstdc++-v3/testsuite/22_locale/money_put/put/wchar_t/3.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos wchar_t is the byte value in single-byte locales, so the de_DE.ISO8859-15 euro sign is L'\xa4' not L'\x20ac'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-08-27 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/numpunct/members/char/3.cc b/libstdc++-v3/testsuite/22_locale/numpunct/members/char/3.cc
+index c736e3503f1..bc5a4b1d060 100644
+--- a/libstdc++-v3/testsuite/22_locale/numpunct/members/char/3.cc
++++ b/libstdc++-v3/testsuite/22_locale/numpunct/members/char/3.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos pt_PT has a thousands separator (U+00A0) and grouping" { *-*-solaris2* } }
+ // { dg-require-namedlocale "pt_PT.ISO8859-15" }
+ 
+ // 2001-01-24 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_get/get_date/char/12750.cc b/libstdc++-v3/testsuite/22_locale/time_get/get_date/char/12750.cc
+index 9b3b7f60f5d..83c51fed4e4 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_get/get_date/char/12750.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_get/get_date/char/12750.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos is_IS date format is %e.%m.%Y, not %a %e.%b %Y" { *-*-solaris2* } }
+ // { dg-require-namedlocale "is_IS.ISO8859-1" }
+ 
+ // 2003-10-27 Paolo Carlini  <pcarlini@suse.de>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/12750.cc b/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/12750.cc
+index 91b1b589080..1af21e955c1 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/12750.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/12750.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos is_IS date format is %e.%m.%Y, not %a %e.%b %Y" { *-*-solaris2* } }
+ // { dg-require-namedlocale "is_IS.ISO8859-1" }
+ 
+ // 2003-10-27 Paolo Carlini  <pcarlini@suse.de>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/4.cc b/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/4.cc
+index c548f877e4a..7eb873c1b1a 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/4.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_get/get_date/wchar_t/4.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos zh_TW date format is %Y/%m/%e, without CJK era/date characters" { *-*-solaris2* } }
+ // { dg-require-namedlocale "zh_TW.UTF-8" }
+ 
+ // 2003-12-17  Paolo Carlini  <pcarlini@suse.de>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-1.cc b/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-1.cc
+index 2a49efc55c5..d462436b8e0 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-1.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-1.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos ru_RU abbreviated weekday names differ from glibc" { *-*-solaris2* } }
+ // { dg-require-namedlocale "ru_RU.ISO8859-5" }
+ 
+ // Copyright (C) 2010-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-2.cc b/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-2.cc
+index bfef0699ab1..5dba4dc57b9 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-2.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_get/get_weekday/char/38081-2.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos ru_RU abbreviated weekday names differ from glibc" { *-*-solaris2* } }
+ // { dg-require-namedlocale "ru_RU.UTF-8" }
+ 
+ // 2010-01-05  Paolo Carlini  <paolo.carlini@oracle.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_put/put/char/2.cc b/libstdc++-v3/testsuite/22_locale/time_put/put/char/2.cc
+index 2fa5696ced7..ee7688edc08 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_put/put/char/2.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_put/put/char/2.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos de_DE abbreviated weekday is 'So.' not 'So'/'Son'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-09-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_put/put/char/4.cc b/libstdc++-v3/testsuite/22_locale/time_put/put/char/4.cc
+index f125d02b674..a76a05d58da 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_put/put/char/4.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_put/put/char/4.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos es_ES abbreviated weekday is 'dom.' not 'dom'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "es_ES.ISO8859-15" }
+ 
+ // 2001-09-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/2.cc b/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/2.cc
+index af57565c390..71ea357fd66 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/2.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/2.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos de_DE abbreviated weekday is 'So.' not 'So'/'Son'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "de_DE.ISO8859-15" }
+ 
+ // 2001-09-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/4.cc b/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/4.cc
+index cc2cca3ba49..f8337a95645 100644
+--- a/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/4.cc
++++ b/libstdc++-v3/testsuite/22_locale/time_put/put/wchar_t/4.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos es_ES abbreviated weekday is 'dom.' not 'dom'" { *-*-solaris2* } }
+ // { dg-require-namedlocale "es_ES.ISO8859-15" }
+ 
+ // 2001-09-17 Benjamin Kosnik  <bkoz@redhat.com>
+diff --git a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-1.cc b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-1.cc
+index b23c078e8aa..7214fedd744 100644
+--- a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-1.cc
++++ b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-1.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos UTF-8 cannot encode code points above 0x1FFFFF" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // Copyright (C) 2003-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-2.cc b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-2.cc
+index b3a6534747d..105fbad1316 100644
+--- a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-2.cc
++++ b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-2.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos UTF-8 cannot encode code points above 0x1FFFFF" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // Copyright (C) 2003-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-3.cc b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-3.cc
+index efcf75cf916..9fa36db30fa 100644
+--- a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-3.cc
++++ b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-3.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos UTF-8 cannot encode code points above 0x1FFFFF" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // Copyright (C) 2003-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-4.cc b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-4.cc
+index c6373570c59..94a17a222d9 100644
+--- a/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-4.cc
++++ b/libstdc++-v3/testsuite/27_io/basic_filebuf/overflow/wchar_t/11305-4.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos UTF-8 cannot encode code points above 0x1FFFFF" { *-*-solaris2* } }
+ // { dg-require-namedlocale "en_US.UTF-8" }
+ 
+ // Copyright (C) 2003-2025 Free Software Foundation, Inc.
+diff --git a/libstdc++-v3/testsuite/27_io/filesystem/operations/last_write_time.cc b/libstdc++-v3/testsuite/27_io/filesystem/operations/last_write_time.cc
+index 7fb860dd479..074d9b5b4a2 100644
+--- a/libstdc++-v3/testsuite/27_io/filesystem/operations/last_write_time.cc
++++ b/libstdc++-v3/testsuite/27_io/filesystem/operations/last_write_time.cc
+@@ -22,6 +22,7 @@
+ // 15.25 Permissions [fs.op.last_write_time]
+ 
+ #include <filesystem>
++#include <cerrno>
+ #include <limits>
+ #include <testsuite_fs.h>
+ #include <testsuite_hooks.h>
+@@ -85,12 +86,25 @@ test01()
+   ts[0].tv_nsec = UTIME_NOW;
+   ts[1].tv_sec = std::numeric_limits<std::time_t>::max() - 1;
+   ts[1].tv_nsec = 0;
+-  VERIFY( !::utimensat(AT_FDCWD, p.c_str(), ts, 0) );
++  if (::utimensat(AT_FDCWD, p.c_str(), ts, 0) != 0)
++    {
++      // illumos ZFS rejects timestamps outside the 32-bit time_t range.
++      VERIFY( errno == EOVERFLOW );
++      puts("Filesystem rejects far-future timestamps, "
++	   "can't test for overflow on this target.");
++      return;
++    }
+ #elif _GLIBCXX_HAVE_UTIME_H
+   ::utimbuf times;
+   times.modtime = std::numeric_limits<std::time_t>::max() - 1;
+   times.actime = std::numeric_limits<std::time_t>::max() - 1;
+-  VERIFY( !::utime(p.string().c_str(), &times) );
++  if (::utime(p.string().c_str(), &times) != 0)
++    {
++      VERIFY( errno == EOVERFLOW );
++      puts("Filesystem rejects far-future timestamps, "
++	   "can't test for overflow on this target.");
++      return;
++    }
+ #else
+   puts("No utimensat or utime, giving up.");
+   return;
+diff --git a/libstdc++-v3/testsuite/experimental/filesystem/operations/last_write_time.cc b/libstdc++-v3/testsuite/experimental/filesystem/operations/last_write_time.cc
+index 755a348b43a..ea9d522f8ad 100644
+--- a/libstdc++-v3/testsuite/experimental/filesystem/operations/last_write_time.cc
++++ b/libstdc++-v3/testsuite/experimental/filesystem/operations/last_write_time.cc
+@@ -23,6 +23,7 @@
+ // 15.25 Permissions [fs.op.last_write_time]
+ 
+ #include <experimental/filesystem>
++#include <cerrno>
+ #include <limits>
+ #include <testsuite_fs.h>
+ #include <testsuite_hooks.h>
+@@ -86,12 +87,25 @@ test01()
+   ts[0].tv_nsec = UTIME_NOW;
+   ts[1].tv_sec = std::numeric_limits<std::time_t>::max() - 1;
+   ts[1].tv_nsec = 0;
+-  VERIFY( !::utimensat(AT_FDCWD, p.c_str(), ts, 0) );
++  if (::utimensat(AT_FDCWD, p.c_str(), ts, 0) != 0)
++    {
++      // illumos ZFS rejects timestamps outside the 32-bit time_t range.
++      VERIFY( errno == EOVERFLOW );
++      puts("Filesystem rejects far-future timestamps, "
++	   "can't test for overflow on this target.");
++      return;
++    }
+ #elif _GLIBCXX_HAVE_UTIME_H
+   ::utimbuf times;
+   times.modtime = std::numeric_limits<std::time_t>::max() - 1;
+   times.actime = std::numeric_limits<std::time_t>::max() - 1;
+-  VERIFY( !::utime(p.string().c_str(), &times) );
++  if (::utime(p.string().c_str(), &times) != 0)
++    {
++      VERIFY( errno == EOVERFLOW );
++      puts("Filesystem rejects far-future timestamps, "
++	   "can't test for overflow on this target.");
++      return;
++    }
+ #else
+   puts("No utimensat or utime, giving up.");
+   return;
+diff --git a/libstdc++-v3/testsuite/std/time/year_month/io.cc b/libstdc++-v3/testsuite/std/time/year_month/io.cc
+index 7bb3442e299..7329e0379e7 100644
+--- a/libstdc++-v3/testsuite/std/time/year_month/io.cc
++++ b/libstdc++-v3/testsuite/std/time/year_month/io.cc
+@@ -1,3 +1,4 @@
++// { dg-xfail-run-if "illumos fr_FR abbreviated month is 'avr.' not 'avril'" { *-*-solaris2* } }
+ // { dg-do run { target c++20 } }
+ // { dg-require-namedlocale "fr_FR.ISO8859-15" }
+ // { dg-timeout-factor 2 }

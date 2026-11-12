@@ -1,0 +1,2113 @@
+From c0780c242a83e7153d8fed4b7635e9bcb7860318 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Sat, 7 Nov 2026 14:08:05 +0000
+Subject: testsuite: skip tests that conflict with -msave-args
+
+-msave-args forces a frame pointer in every function, stores the
+integer argument registers to the stack in the prologue, and disables
+simple_return and therefore shrink-wrapping. The multilib test board
+"-m64/-msave-args" therefore fails tests whose expectations are
+about the exact prologue/epilogue, and so on.
+---
+ gcc/testsuite/g++.dg/ext/pr106877.C                      | 1 +
+ gcc/testsuite/g++.dg/opt/shrink-wrapping-vector-1.C      | 1 +
+ gcc/testsuite/g++.dg/tree-ssa/pr70171.C                  | 1 +
+ gcc/testsuite/g++.dg/vect/pr92595.cc                     | 1 +
+ gcc/testsuite/g++.target/i386/pr114187.C                 | 1 +
+ gcc/testsuite/g++.target/i386/pr115351.C                 | 1 +
+ gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-1.c             | 1 +
+ gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-2.c             | 1 +
+ gcc/testsuite/gcc.dg/pr10474.c                           | 1 +
+ gcc/testsuite/gcc.dg/pr97396.c                           | 1 +
+ gcc/testsuite/gcc.dg/shrink-wrap-loop.c                  | 1 +
+ gcc/testsuite/gcc.dg/stack-check-5.c                     | 1 +
+ gcc/testsuite/gcc.target/i386/align-limit.c              | 1 +
+ gcc/testsuite/gcc.target/i386/apx-ndd-base-index-1.c     | 1 +
+ gcc/testsuite/gcc.target/i386/apx-ndd-no-seg-global-1.c  | 1 +
+ gcc/testsuite/gcc.target/i386/apx-ndd-seg-2.c            | 1 +
+ gcc/testsuite/gcc.target/i386/apx-nf-2.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/apx-ppx-2.c                | 1 +
+ gcc/testsuite/gcc.target/i386/extendditi2-2.c            | 1 +
+ gcc/testsuite/gcc.target/i386/extract-insert-combining.c | 1 +
+ gcc/testsuite/gcc.target/i386/minmax-6.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/minmax-7.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-1.c        | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-13.c       | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-14.c       | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-15.c       | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-16.c       | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-17.c       | 1 +
+ gcc/testsuite/gcc.target/i386/no-callee-saved-2.c        | 1 +
+ gcc/testsuite/gcc.target/i386/opt-comi-1.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pad-1.c                    | 1 +
+ gcc/testsuite/gcc.target/i386/pad-2.c                    | 1 +
+ gcc/testsuite/gcc.target/i386/pad-5b.c                   | 1 +
+ gcc/testsuite/gcc.target/i386/pad-6b.c                   | 1 +
+ gcc/testsuite/gcc.target/i386/pad-8.c                    | 1 +
+ gcc/testsuite/gcc.target/i386/pad-9.c                    | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-10.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-11.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-12.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-13.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-14.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-15.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-16.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-17.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-18.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-19.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-20.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memcpy-21.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-1.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-10.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-11.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-12.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-13.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-14.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-15.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-16.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-17.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-18.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-19.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-20.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-21.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-22.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-23.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-24.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-25.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-26.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-27.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-28.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-29.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-3.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-30.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-31.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-32.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-33.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-34.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-35.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-36.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-38.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-4.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-40.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-41.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-42.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-43.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-44.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-45.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-46.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-47.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-48.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-49.c         | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-6.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-7.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-8.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pieces-memset-9.c          | 1 +
+ gcc/testsuite/gcc.target/i386/pr104915-vmovd.c           | 1 +
+ gcc/testsuite/gcc.target/i386/pr104915-vmovw.c           | 1 +
+ gcc/testsuite/gcc.target/i386/pr110170-3.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr110551-2.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr110551.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr111267.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr111673.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr112992.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr113609-2.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr114277.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr116274.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr117930.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr22076.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr32661-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr34256.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr36246.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr38534-4.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr43618-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr43644-2.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr43644.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr47735.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr48037-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr59501-1a.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr59501-2a.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr59501-3a.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr59501-4a.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr60473.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr68961.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-15.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-17.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-2.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-22.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-3.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-4.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-5.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-6.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-7.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr70155-8.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr7061-1.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr7061-2.c                 | 1 +
+ gcc/testsuite/gcc.target/i386/pr78103-3.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81502.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr81736-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81736-2.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81736-5.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81736-6.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81736-7.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr81769-1a.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr81769-1b.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr88873.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr90765-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr90773-12.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr90773-13.c               | 1 +
+ gcc/testsuite/gcc.target/i386/pr90773-6.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr90773-7.c                | 1 +
+ gcc/testsuite/gcc.target/i386/pr92905.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr98060.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/pr98289.c                  | 1 +
+ gcc/testsuite/gcc.target/i386/shrink_wrap_1.c            | 1 +
+ gcc/testsuite/gcc.target/i386/sibcall-1.c                | 1 +
+ gcc/testsuite/gcc.target/i386/sibcall-7.c                | 1 +
+ gcc/testsuite/gcc.target/i386/smuldi3_highpart.c         | 1 +
+ gcc/testsuite/gcc.target/i386/sse2-movsd-3.c             | 1 +
+ gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-1.c          | 1 +
+ gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-2.c          | 1 +
+ gcc/testsuite/gcc.target/i386/sse2-v1ti-zext.c           | 1 +
+ gcc/testsuite/gcc.target/i386/stackalign/pr39146.c       | 1 +
+ gcc/testsuite/gcc.target/i386/stackalign/pr88483-1.c     | 1 +
+ gcc/testsuite/gcc.target/i386/stackalign/pr88483-2.c     | 1 +
+ gcc/testsuite/gcc.target/i386/stackalign/return-4.c      | 1 +
+ gcc/testsuite/gcc.target/i386/sw-1.c                     | 1 +
+ gcc/testsuite/gcc.target/i386/vect-strided-1.c           | 1 +
+ gcc/testsuite/gcc.target/i386/vect-strided-2.c           | 1 +
+ gcc/testsuite/gcc.target/i386/vect-strided-3.c           | 1 +
+ .../x86_64/abi/callabi/avoid-store-forwarding-1.c        | 1 +
+ gcc/testsuite/gcc.target/x86_64/abi/callabi/leaf-1.c     | 1 +
+ gcc/testsuite/lib/scanasm.exp                            | 9 +++++++++
+ 171 files changed, 179 insertions(+)
+
+diff --git a/gcc/testsuite/g++.dg/ext/pr106877.C b/gcc/testsuite/g++.dg/ext/pr106877.C
+index 6bffed9beae..4f5da6a012b 100644
+--- a/gcc/testsuite/g++.dg/ext/pr106877.C
++++ b/gcc/testsuite/g++.dg/ext/pr106877.C
+@@ -1,6 +1,7 @@
+ // PR target/106877
+ // { dg-do compile { target i?86-*-* x86_64-*-* } }
+ // { dg-options "-O1 -m16 -mtune=sandybridge -flive-range-shrinkage -fno-dce" }
++// { dg-skip-if "-msave-args warns in 32-bit mode" { *-*-* } "-msave-args" "" }
+ 
+ void
+ foo (float b, double c)
+diff --git a/gcc/testsuite/g++.dg/opt/shrink-wrapping-vector-1.C b/gcc/testsuite/g++.dg/opt/shrink-wrapping-vector-1.C
+index 8b1ad53fa80..405504257d4 100644
+--- a/gcc/testsuite/g++.dg/opt/shrink-wrapping-vector-1.C
++++ b/gcc/testsuite/g++.dg/opt/shrink-wrapping-vector-1.C
+@@ -1,6 +1,7 @@
+ // { dg-do compile { target { { { i?86-*-* x86_64-*-* } && { ! ia32 } } || { powerpc*-*-* aarch64*-*-* riscv*-*-* }  } } }
+ // { dg-options "-O2  -fdump-rtl-pro_and_epilogue"  }
+ // { dg-skip-if "requires hosted libstdc++ for vector" { ! hostedlib } }
++// { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" }
+ 
+ // PR rtl-optimization/118502
+ 
+diff --git a/gcc/testsuite/g++.dg/tree-ssa/pr70171.C b/gcc/testsuite/g++.dg/tree-ssa/pr70171.C
+index 9988e5f3286..417466c92e9 100644
+--- a/gcc/testsuite/g++.dg/tree-ssa/pr70171.C
++++ b/gcc/testsuite/g++.dg/tree-ssa/pr70171.C
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fdump-tree-optimized" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct S { int i; };
+ S struct_ternary (S a, S b, bool select) { return select ? a : b; }
+diff --git a/gcc/testsuite/g++.dg/vect/pr92595.cc b/gcc/testsuite/g++.dg/vect/pr92595.cc
+index 3d0b517036d..a5661772393 100644
+--- a/gcc/testsuite/g++.dg/vect/pr92595.cc
++++ b/gcc/testsuite/g++.dg/vect/pr92595.cc
+@@ -2,6 +2,7 @@
+ // { dg-require-effective-target c++11 }
+ // { dg-additional-options "-O3" }
+ // { dg-additional-options "-O3 -m32 -mno-sse" { target { i?86-*-* x86_64-*-* } } }
++// { dg-skip-if "-msave-args warns in 32-bit mode" { *-*-* } "-msave-args" "" }
+ 
+ void *operator new(__SIZE_TYPE__, void *a) { return a; }
+ class b {
+diff --git a/gcc/testsuite/g++.target/i386/pr114187.C b/gcc/testsuite/g++.target/i386/pr114187.C
+index 69912a94cef..5f35c03daaa 100644
+--- a/gcc/testsuite/g++.target/i386/pr114187.C
++++ b/gcc/testsuite/g++.target/i386/pr114187.C
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct P2d {
+     double x, y;
+diff --git a/gcc/testsuite/g++.target/i386/pr115351.C b/gcc/testsuite/g++.target/i386/pr115351.C
+index 24132f3b8c7..c76cfd81215 100644
+--- a/gcc/testsuite/g++.target/i386/pr115351.C
++++ b/gcc/testsuite/g++.target/i386/pr115351.C
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O3 -std=c++11" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct complex
+ {
+diff --git a/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-1.c b/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-1.c
+index 2be31fa296d..516e94179f7 100644
+--- a/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-1.c
++++ b/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { { { i?86-*-* x86_64-*-* } && lp64 } || { { powerpc*-*-* && lp64 } || { arm_nothumb || { aarch64*-*-* && lp64 } } } } } } */
+ /* { dg-options "-O3 -fdump-rtl-ira -fdump-rtl-pro_and_epilogue -fno-ipa-ra"  } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ long __attribute__((noinline, noclone))
+ foo (long a)
+diff --git a/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-2.c b/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-2.c
+index 61ee4c6dfb9..54141f83eb8 100644
+--- a/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-2.c
++++ b/gcc/testsuite/gcc.dg/ira-shrinkwrap-prep-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { { { i?86-*-* x86_64-*-* } && lp64 } || { { powerpc*-*-* && lp64 } || { arm_nothumb || { aarch64*-*-* && lp64 } } } } } } */
+ /* { dg-options "-O3 -fdump-rtl-ira -fdump-rtl-pro_and_epilogue -fno-ipa-ra"  } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ long __attribute__((noinline, noclone))
+ foo (long a)
+diff --git a/gcc/testsuite/gcc.dg/pr10474.c b/gcc/testsuite/gcc.dg/pr10474.c
+index 9da33bd8dce..ad4ced06849 100644
+--- a/gcc/testsuite/gcc.dg/pr10474.c
++++ b/gcc/testsuite/gcc.dg/pr10474.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { { { i?86-*-* x86_64-*-* } && lp64 } || { { powerpc*-*-* && lp64 } || { arm_nothumb || { aarch64*-*-* && lp64 } } } } } } */
+ /* { dg-options "-O3 -fdump-rtl-pro_and_epilogue"  } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ void f(int *i)
+ {
+diff --git a/gcc/testsuite/gcc.dg/pr97396.c b/gcc/testsuite/gcc.dg/pr97396.c
+index d992c11f238..0c387f071c3 100644
+--- a/gcc/testsuite/gcc.dg/pr97396.c
++++ b/gcc/testsuite/gcc.dg/pr97396.c
+@@ -1,6 +1,7 @@
+ // { dg-do compile }
+ // { dg-options "-O1 -ftree-vrp" }
+ // { dg-additional-options "-m32" { target { i?86-*-* x86_64-*-* } } }
++// { dg-skip-if "-msave-args warns in 32-bit mode" { *-*-* } "-msave-args" "" }
+ 
+ unsigned int
+ po (char *os, unsigned int al)
+diff --git a/gcc/testsuite/gcc.dg/shrink-wrap-loop.c b/gcc/testsuite/gcc.dg/shrink-wrap-loop.c
+index ddc99e6b75a..a512ab2f7a6 100644
+--- a/gcc/testsuite/gcc.dg/shrink-wrap-loop.c
++++ b/gcc/testsuite/gcc.dg/shrink-wrap-loop.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { { { i?86-*-* x86_64-*-* } && lp64 } || { arm_thumb2 } } } } */
+ /* { dg-options "-O2 -fdump-rtl-pro_and_epilogue"  } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ int foo (int *p1, int *p2);
+ 
+diff --git a/gcc/testsuite/gcc.dg/stack-check-5.c b/gcc/testsuite/gcc.dg/stack-check-5.c
+index 0243147939c..246b2d648f3 100644
+--- a/gcc/testsuite/gcc.dg/stack-check-5.c
++++ b/gcc/testsuite/gcc.dg/stack-check-5.c
+@@ -7,6 +7,7 @@
+ /* Otherwise the S/390 back-end might save the stack pointer in f2 ()
+    into an FPR.  */
+ /* { dg-additional-options "-msoft-float" { target { s390x-*-* } } } */
++/* { dg-skip-if "-msave-args changes the frame layout" { *-*-* } "-msave-args" "" } */
+ 
+ extern void foo (char *);
+ extern void bar (void);
+diff --git a/gcc/testsuite/gcc.target/i386/align-limit.c b/gcc/testsuite/gcc.target/i386/align-limit.c
+index 849d741189c..0580c210ee3 100644
+--- a/gcc/testsuite/gcc.target/i386/align-limit.c
++++ b/gcc/testsuite/gcc.target/i386/align-limit.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -falign-functions=64 -flimit-function-alignment -march=amdfam10 -fcf-protection=none" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler ".p2align 6,,1" } } */
+ /* { dg-final { scan-assembler-not ".p2align 6,,63" } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/apx-ndd-base-index-1.c b/gcc/testsuite/gcc.target/i386/apx-ndd-base-index-1.c
+index 208acd36958..48e126f7ce4 100644
+--- a/gcc/testsuite/gcc.target/i386/apx-ndd-base-index-1.c
++++ b/gcc/testsuite/gcc.target/i386/apx-ndd-base-index-1.c
+@@ -1,6 +1,7 @@
+ /* PR target/113711 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mapxf -O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <stdint.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/apx-ndd-no-seg-global-1.c b/gcc/testsuite/gcc.target/i386/apx-ndd-no-seg-global-1.c
+index d2a4040975a..02d2b8d53a5 100644
+--- a/gcc/testsuite/gcc.target/i386/apx-ndd-no-seg-global-1.c
++++ b/gcc/testsuite/gcc.target/i386/apx-ndd-no-seg-global-1.c
+@@ -1,6 +1,7 @@
+ /* PR target/113711 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mapxf -O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <stdint.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/apx-ndd-seg-2.c b/gcc/testsuite/gcc.target/i386/apx-ndd-seg-2.c
+index 5b164ef79a7..93c7f8532c8 100644
+--- a/gcc/testsuite/gcc.target/i386/apx-ndd-seg-2.c
++++ b/gcc/testsuite/gcc.target/i386/apx-ndd-seg-2.c
+@@ -1,6 +1,7 @@
+ /* PR target/113711 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mapxf -O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <stdint.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/apx-nf-2.c b/gcc/testsuite/gcc.target/i386/apx-nf-2.c
+index 8f5b8f6b2b7..0eaf439407d 100644
+--- a/gcc/testsuite/gcc.target/i386/apx-nf-2.c
++++ b/gcc/testsuite/gcc.target/i386/apx-nf-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O3 -mapxf" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ int foo(int a, int b, int c, int d)
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/apx-ppx-2.c b/gcc/testsuite/gcc.target/i386/apx-ppx-2.c
+index 42a95340b55..b56fd4ba0bd 100644
+--- a/gcc/testsuite/gcc.target/i386/apx-ppx-2.c
++++ b/gcc/testsuite/gcc.target/i386/apx-ppx-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O1 -mapx-features=ppx -fno-omit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ /* { dg-final { scan-assembler "pushp" } } */
+ /* { dg-final { scan-assembler "popp" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/extendditi2-2.c b/gcc/testsuite/gcc.target/i386/extendditi2-2.c
+index dbfa6fb90b6..c220533b5ca 100644
+--- a/gcc/testsuite/gcc.target/i386/extendditi2-2.c
++++ b/gcc/testsuite/gcc.target/i386/extendditi2-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ __int128 foo(__int128 a, long long b) {
+     a += ((__int128)b) << 70;
+diff --git a/gcc/testsuite/gcc.target/i386/extract-insert-combining.c b/gcc/testsuite/gcc.target/i386/extract-insert-combining.c
+index 5a53d4cbf06..74593c98de0 100644
+--- a/gcc/testsuite/gcc.target/i386/extract-insert-combining.c
++++ b/gcc/testsuite/gcc.target/i386/extract-insert-combining.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-msse4.2 -O3" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "(?:vmovd|movd)\[ \\t\]+\[^\{\n\]*%xmm\[0-9\]" 3 } } */
+ /* { dg-final { scan-assembler-times "(?:vpaddd|paddd)\[ \\t\]+\[^\{\n\]*%xmm\[0-9\]" 2 } } */
+ /* { dg-final { scan-assembler-times "(?:vpinsrd|pinsrd)\[ \\t\]+\[^\{\n\]*%xmm\[0-9\]" 1 } } */
+diff --git a/gcc/testsuite/gcc.target/i386/minmax-6.c b/gcc/testsuite/gcc.target/i386/minmax-6.c
+index 615f919ba0a..f5089fd0635 100644
+--- a/gcc/testsuite/gcc.target/i386/minmax-6.c
++++ b/gcc/testsuite/gcc.target/i386/minmax-6.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=haswell -mno-stackrealign" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ unsigned short
+ UMVLine16Y_11 (short unsigned int * Pic, int y, int width)
+diff --git a/gcc/testsuite/gcc.target/i386/minmax-7.c b/gcc/testsuite/gcc.target/i386/minmax-7.c
+index 619a93946c7..536e577bc47 100644
+--- a/gcc/testsuite/gcc.target/i386/minmax-7.c
++++ b/gcc/testsuite/gcc.target/i386/minmax-7.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=haswell -mno-stackrealign" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int numBins;
+ extern int binOffst;
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-1.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-1.c
+index 599c2a3fa19..07c1a99df10 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-1.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move -fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int bar (int)
+ #ifndef __x86_64__
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-13.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-13.c
+index 0b59da36786..3baecb90aa3 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-13.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-13.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern void foo (void);
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-14.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-14.c
+index 2127b12f120..ab10dafbcca 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-14.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-14.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern void bar (void) __attribute__ ((no_callee_saved_registers));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-15.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-15.c
+index 65f2a9532ff..870923e7fe2 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-15.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-15.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef void (*fn_t) (void) __attribute__ ((no_callee_saved_registers));
+ extern fn_t bar;
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-16.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-16.c
+index 112d1764f3e..2a45c53a9f4 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-16.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-16.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef void (*fn_t) (void) __attribute__ ((no_callee_saved_registers));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-17.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-17.c
+index 1ecf4552f3d..792395728a5 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-17.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-17.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern void foo (void) __attribute__ ((no_caller_saved_registers));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/no-callee-saved-2.c b/gcc/testsuite/gcc.target/i386/no-callee-saved-2.c
+index 98e2701d925..cde53189bc1 100644
+--- a/gcc/testsuite/gcc.target/i386/no-callee-saved-2.c
++++ b/gcc/testsuite/gcc.target/i386/no-callee-saved-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move -fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int bar (int) __attribute__ ((no_caller_saved_registers))
+ #ifndef __x86_64__
+diff --git a/gcc/testsuite/gcc.target/i386/opt-comi-1.c b/gcc/testsuite/gcc.target/i386/opt-comi-1.c
+index fc7b8632004..f70ad6998b9 100644
+--- a/gcc/testsuite/gcc.target/i386/opt-comi-1.c
++++ b/gcc/testsuite/gcc.target/i386/opt-comi-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mfpmath=sse -msse2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "comiss" 9 } } */
+ /* { dg-final { scan-assembler-times "set" 9 } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pad-1.c b/gcc/testsuite/gcc.target/i386/pad-1.c
+index a175cc6ee4e..5a41b24bb3d 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-1.c
++++ b/gcc/testsuite/gcc.target/i386/pad-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fomit-frame-pointer -mtune=amdfam10" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler "rep" { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-not "nop" } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pad-2.c b/gcc/testsuite/gcc.target/i386/pad-2.c
+index 3aa737837c7..d05ad2d193f 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-2.c
++++ b/gcc/testsuite/gcc.target/i386/pad-2.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-skip-if "" { *-*-* } { "-march=*" } { "-march=atom" } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=atom" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "nop" 8 { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-times "nop" 6 { target x86_64-*-mingw* } } } */
+ /* { dg-final { scan-assembler-not "rep" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pad-5b.c b/gcc/testsuite/gcc.target/i386/pad-5b.c
+index 25e2d8334f9..ac4bdeeaf8b 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-5b.c
++++ b/gcc/testsuite/gcc.target/i386/pad-5b.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-skip-if "" { *-*-* } { "-march=*" } { "-march=atom" } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=atom" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "nop" 4 { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-times "nop" 2 { target x86_64-*-mingw* } } } */
+ /* { dg-final { scan-assembler-not "rep" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pad-6b.c b/gcc/testsuite/gcc.target/i386/pad-6b.c
+index 5d74575ff9d..9d51790213d 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-6b.c
++++ b/gcc/testsuite/gcc.target/i386/pad-6b.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-skip-if "" { *-*-* } { "-march=*" } { "-march=atom" } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=atom" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "nop" 6 { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-times "nop" 4 { target x86_64-*-mingw* } } } */
+ /* { dg-final { scan-assembler-not "rep" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pad-8.c b/gcc/testsuite/gcc.target/i386/pad-8.c
+index 74bc5802703..29afa2959c8 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-8.c
++++ b/gcc/testsuite/gcc.target/i386/pad-8.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-skip-if "" { *-*-* } { "-march=*" } { "-march=atom" } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=atom" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "nop" 6 { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-times "nop" 4 { target x86_64-*-mingw* } } } */
+ /* { dg-final { scan-assembler-not "rep" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pad-9.c b/gcc/testsuite/gcc.target/i386/pad-9.c
+index 1faa64fe575..576d6acfb94 100644
+--- a/gcc/testsuite/gcc.target/i386/pad-9.c
++++ b/gcc/testsuite/gcc.target/i386/pad-9.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-skip-if "" { *-*-* } { "-march=*" } { "-march=atom" } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=atom" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "nop" 4 { target { ! x86_64-*-mingw* } } } } */
+ /* { dg-final { scan-assembler-times "nop" 2 { target x86_64-*-mingw* } } } */
+ /* { dg-final { scan-assembler-not "rep" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-10.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-10.c
+index 53ad0b3be44..7a89696d62c 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-10.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-10.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mprefer-vector-width=128 -mtune=sandybridge" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-11.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-11.c
+index b8917a7f917..e7f2795f7f2 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-11.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-11.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-12.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-12.c
+index 8a82baff5f1..c7a8c2adb73 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-12.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-12.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_move_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-13.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-13.c
+index 97e6067fec9..a27fcee0208 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-13.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-13.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-14.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-14.c
+index 7addc4c0a28..c2ccc62749c 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-14.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-14.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-15.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-15.c
+index 4fb94ce7bd5..ab6c448151b 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-15.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-15.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_move_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-16.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-16.c
+index 728eba5ea3d..4d7a4e01364 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-16.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-16.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-17.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-17.c
+index 28ab7a6d41c..c6ddc123cfe 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-17.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-17.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mprefer-vector-width=256 -mavx512f -mmove-max=512" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-18.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-18.c
+index b4995ac0598..3c1751a9d60 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-18.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-18.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=znver5" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-19.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-19.c
+index a5b5b617578..b03d1db681f 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-19.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-19.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=sapphirerapids -mmove-max=128 -mstore-max=128" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-20.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-20.c
+index 1feff48c5b2..6fd98a8ad03 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-20.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-20.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=sapphirerapids -mmove-max=256 -mstore-max=256" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memcpy-21.c b/gcc/testsuite/gcc.target/i386/pieces-memcpy-21.c
+index 804a2989d64..d1e282890b3 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memcpy-21.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memcpy-21.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune=znver5 -march=x86-64 -mavx2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst, *src;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-1.c b/gcc/testsuite/gcc.target/i386/pieces-memset-1.c
+index 0002c6838ab..12d66cb1d64 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-1.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-1.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic -mno-stackrealign" } */
+ /* Cope with --enable-frame-pointer.  */
+ /* { dg-additional-options "-fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-10.c b/gcc/testsuite/gcc.target/i386/pieces-memset-10.c
+index a6390d1bd8f..92855966098 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-10.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-10.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-11.c b/gcc/testsuite/gcc.target/i386/pieces-memset-11.c
+index 3802eb7c147..5ea1461f01a 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-11.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-11.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-12.c b/gcc/testsuite/gcc.target/i386/pieces-memset-12.c
+index d9a10bc038e..0c2bfc48503 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-12.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-12.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-13.c b/gcc/testsuite/gcc.target/i386/pieces-memset-13.c
+index 7f2cd3f58ec..afecebdbb94 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-13.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-13.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-14.c b/gcc/testsuite/gcc.target/i386/pieces-memset-14.c
+index 10bc085f83b..6c85e6d65b7 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-14.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-14.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-15.c b/gcc/testsuite/gcc.target/i386/pieces-memset-15.c
+index 2123958f836..33128be3885 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-15.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-15.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-16.c b/gcc/testsuite/gcc.target/i386/pieces-memset-16.c
+index 1c5d124cecc..ae337ffc128 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-16.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-16.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-17.c b/gcc/testsuite/gcc.target/i386/pieces-memset-17.c
+index 6cdb33557c0..70720e172bd 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-17.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-17.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-18.c b/gcc/testsuite/gcc.target/i386/pieces-memset-18.c
+index 02f889899d8..931d26ca0fc 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-18.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-18.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-19.c b/gcc/testsuite/gcc.target/i386/pieces-memset-19.c
+index 7e9cf2e26d8..f4f4db0de77 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-19.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-19.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-20.c b/gcc/testsuite/gcc.target/i386/pieces-memset-20.c
+index 1dc4db180d3..30076f3e65f 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-20.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-20.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-21.c b/gcc/testsuite/gcc.target/i386/pieces-memset-21.c
+index a04f7eb55c7..3eade28eac6 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-21.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-21.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx512vl -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-22.c b/gcc/testsuite/gcc.target/i386/pieces-memset-22.c
+index 5f3c454ef8f..9558b1362a3 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-22.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-22.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-23.c b/gcc/testsuite/gcc.target/i386/pieces-memset-23.c
+index 9232864024e..55554cb7f6b 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-23.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-23.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-24.c b/gcc/testsuite/gcc.target/i386/pieces-memset-24.c
+index 5243f270f16..e2dc177f9e2 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-24.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-24.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-25.c b/gcc/testsuite/gcc.target/i386/pieces-memset-25.c
+index 195ddb635eb..5c4a5f51f32 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-25.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-25.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-26.c b/gcc/testsuite/gcc.target/i386/pieces-memset-26.c
+index 13606b2da54..40481873299 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-26.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-26.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-27.c b/gcc/testsuite/gcc.target/i386/pieces-memset-27.c
+index c764f6ffbce..85d7061c597 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-27.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-27.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-28.c b/gcc/testsuite/gcc.target/i386/pieces-memset-28.c
+index 83c2d3f0fde..ab2a9db7b03 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-28.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-28.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-29.c b/gcc/testsuite/gcc.target/i386/pieces-memset-29.c
+index 3b07a64e3f6..f69f3383f3c 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-29.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-29.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-3.c b/gcc/testsuite/gcc.target/i386/pieces-memset-3.c
+index 431732afb8f..4e3f67e7ea0 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-3.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-3.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx512bw -mno-avx512vl -mavx512f -mtune=intel" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-30.c b/gcc/testsuite/gcc.target/i386/pieces-memset-30.c
+index 59595e6d3c4..8aed128e10c 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-30.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-30.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx512f -mavx2 -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-31.c b/gcc/testsuite/gcc.target/i386/pieces-memset-31.c
+index f7b5d5bfe1d..33eec4c5e2b 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-31.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-31.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-32.c b/gcc/testsuite/gcc.target/i386/pieces-memset-32.c
+index c5ca0bd17ba..5e1add0f644 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-32.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-32.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-33.c b/gcc/testsuite/gcc.target/i386/pieces-memset-33.c
+index 68646223b0e..215eb078b83 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-33.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-33.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-34.c b/gcc/testsuite/gcc.target/i386/pieces-memset-34.c
+index 52a16a0292d..2895292c216 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-34.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-34.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx512f -mavx2 -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-35.c b/gcc/testsuite/gcc.target/i386/pieces-memset-35.c
+index 2b9a4da8dac..3dc3567fb68 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-35.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-35.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-36.c b/gcc/testsuite/gcc.target/i386/pieces-memset-36.c
+index 18b2dcc3645..667ab2c694d 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-36.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-36.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx512f -mavx2 -mtune=generic" } */
+ /* Cope with --enable-frame-pointer, Solaris/x86 -mstackrealign default.  */
+ /* { dg-additional-options "-fomit-frame-pointer -mno-stackrealign" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-38.c b/gcc/testsuite/gcc.target/i386/pieces-memset-38.c
+index ddd194debd5..664b0509e5b 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-38.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-38.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx512f -mavx2 -mprefer-vector-width=128 -mtune=sandybridge" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-4.c b/gcc/testsuite/gcc.target/i386/pieces-memset-4.c
+index 8b3f3b00214..046d990c94a 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-4.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-4.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic -mno-stackrealign" } */
+ /* Cope with --enable-frame-pointer.  */
+ /* { dg-additional-options "-fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-40.c b/gcc/testsuite/gcc.target/i386/pieces-memset-40.c
+index 5878876550c..501dfce24f4 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-40.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-40.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx512f -mavx2 -mprefer-vector-width=128 -mtune=sandybridge" } */
+ /* Cope with --enable-frame-pointer, Solaris/x86 -mstackrealign default.  */
+ /* { dg-additional-options "-fomit-frame-pointer -mno-stackrealign" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-41.c b/gcc/testsuite/gcc.target/i386/pieces-memset-41.c
+index 27a6c8ad139..484c6ec6821 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-41.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-41.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx2 -mavx -mprefer-vector-width=128 -mtune=sandybridge -mno-stackrealign" } */
+ /* Cope with --enable-frame-pointer.  */
+ /* { dg-additional-options "-fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-42.c b/gcc/testsuite/gcc.target/i386/pieces-memset-42.c
+index 103da699ae5..c881dafbf0e 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-42.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-42.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mprefer-vector-width=128 -mtune=sandybridge" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-43.c b/gcc/testsuite/gcc.target/i386/pieces-memset-43.c
+index f1494e17610..9cd60f8bafb 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-43.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-43.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mprefer-vector-width=128 -mtune=sandybridge" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-44.c b/gcc/testsuite/gcc.target/i386/pieces-memset-44.c
+index 5986f8e8b23..08237610af8 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-44.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-44.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune-ctrl=avx256_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-45.c b/gcc/testsuite/gcc.target/i386/pieces-memset-45.c
+index e8ce7c23256..0e770aa60e2 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-45.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-45.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune-ctrl=avx512_store_by_pieces" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-46.c b/gcc/testsuite/gcc.target/i386/pieces-memset-46.c
+index 43d636ee3ff..24ebd3fb022 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-46.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-46.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=znver5" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-47.c b/gcc/testsuite/gcc.target/i386/pieces-memset-47.c
+index 78d3290c74f..f7c36005b87 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-47.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-47.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=sapphirerapids -mstore-max=128" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-48.c b/gcc/testsuite/gcc.target/i386/pieces-memset-48.c
+index 6342dbb91b0..8e3f4e8216a 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-48.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-48.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=sapphirerapids -mstore-max=256" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-49.c b/gcc/testsuite/gcc.target/i386/pieces-memset-49.c
+index ca4933ac1d8..d5aacce6b89 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-49.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-49.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune=znver5 -march=x86-64 -mavx2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-6.c b/gcc/testsuite/gcc.target/i386/pieces-memset-6.c
+index d795663e1e5..4d4958c9ac9 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-6.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-6.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=intel" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-7.c b/gcc/testsuite/gcc.target/i386/pieces-memset-7.c
+index 56be2991ba6..8490ee48d6f 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-7.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-7.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic -mno-stackrealign" } */
+ /* Cope with --enable-frame-pointer.  */
+ /* { dg-additional-options "-fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-8.c b/gcc/testsuite/gcc.target/i386/pieces-memset-8.c
+index e4e63b855bc..e181ef1b491 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-8.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-8.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mno-avx2 -mavx -mtune=generic -mno-stackrealign" } */
+ /* Cope with --enable-frame-pointer.  */
+ /* { dg-additional-options "-fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pieces-memset-9.c b/gcc/testsuite/gcc.target/i386/pieces-memset-9.c
+index 8a6f09592a3..c8a213d2d27 100644
+--- a/gcc/testsuite/gcc.target/i386/pieces-memset-9.c
++++ b/gcc/testsuite/gcc.target/i386/pieces-memset-9.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -march=x86-64 -mavx512f -mtune=generic" } */
+ /* Cope with --enable-frame-pointer, Solaris/x86 -mstackrealign default.  */
+ /* { dg-additional-options "-fomit-frame-pointer -mno-stackrealign" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern char *dst;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr104915-vmovd.c b/gcc/testsuite/gcc.target/i386/pr104915-vmovd.c
+index 913ff8806f1..9da120cc88a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr104915-vmovd.c
++++ b/gcc/testsuite/gcc.target/i386/pr104915-vmovd.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mavx512f -O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times {(?n)vmovd[ \t]+} 3 } } */
+ /* { dg-final { scan-assembler-not {(?n)movq[ \t]+} } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr104915-vmovw.c b/gcc/testsuite/gcc.target/i386/pr104915-vmovw.c
+index ac47865d17a..b5ff680d62f 100644
+--- a/gcc/testsuite/gcc.target/i386/pr104915-vmovw.c
++++ b/gcc/testsuite/gcc.target/i386/pr104915-vmovw.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mavx512fp16 -O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times {(?n)vmovw[ \t]+} 6 } } */
+ /* { dg-final { scan-assembler-not {(?n)mov[dq][ \t]+} } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr110170-3.c b/gcc/testsuite/gcc.target/i386/pr110170-3.c
+index 70daa89e9aa..87c30bd1a22 100644
+--- a/gcc/testsuite/gcc.target/i386/pr110170-3.c
++++ b/gcc/testsuite/gcc.target/i386/pr110170-3.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fno-if-conversion -fno-if-conversion2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not {(?n)movq.*r} } } */
+ 
+ void __cond_swap(double* __x, double* __y) {
+diff --git a/gcc/testsuite/gcc.target/i386/pr110551-2.c b/gcc/testsuite/gcc.target/i386/pr110551-2.c
+index 4936adf0b2d..0b86f706d9e 100644
+--- a/gcc/testsuite/gcc.target/i386/pr110551-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr110551-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -march=haswell" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned long long uint64_t;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr110551.c b/gcc/testsuite/gcc.target/i386/pr110551.c
+index 142b808c675..33ef6142f08 100644
+--- a/gcc/testsuite/gcc.target/i386/pr110551.c
++++ b/gcc/testsuite/gcc.target/i386/pr110551.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned long long uint64_t;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr111267.c b/gcc/testsuite/gcc.target/i386/pr111267.c
+index e3d549d8cba..b2761eeab26 100644
+--- a/gcc/testsuite/gcc.target/i386/pr111267.c
++++ b/gcc/testsuite/gcc.target/i386/pr111267.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ struct S { float a, b, c, d; };
+ 
+ int
+diff --git a/gcc/testsuite/gcc.target/i386/pr111673.c b/gcc/testsuite/gcc.target/i386/pr111673.c
+index 0f08ba89ebd..25395653cad 100644
+--- a/gcc/testsuite/gcc.target/i386/pr111673.c
++++ b/gcc/testsuite/gcc.target/i386/pr111673.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fdump-rtl-pro_and_epilogue -fasynchronous-unwind-tables -fdwarf2-cfi-asm" } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ /* Keep labels and directives ('.cfi_startproc', '.cfi_endproc').  */
+ /* { dg-final { check-function-bodies "**" "" "" { target "*-*-*" } {^\t?\.}  } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr112992.c b/gcc/testsuite/gcc.target/i386/pr112992.c
+index 743e64dccba..9add23aca64 100644
+--- a/gcc/testsuite/gcc.target/i386/pr112992.c
++++ b/gcc/testsuite/gcc.target/i386/pr112992.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-mavx -mno-avx2 -O2 " } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not {(?n)(%rsp)} } } */
+ 
+ typedef unsigned long long v4di __attribute((vector_size(32)));
+diff --git a/gcc/testsuite/gcc.target/i386/pr113609-2.c b/gcc/testsuite/gcc.target/i386/pr113609-2.c
+index e9503f51538..0dfb8a372cf 100644
+--- a/gcc/testsuite/gcc.target/i386/pr113609-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr113609-2.c
+@@ -1,6 +1,7 @@
+ /* PR target/113609 */
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -march=x86-64-v4" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-times "\[ \\t\]+sete" 4 } } */
+ /* { dg-final { scan-assembler-times "\[ \\t\]+setne" 4 } } */
+ /* { dg-final { scan-assembler-times "\[ \\t\]+je" 4 } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr114277.c b/gcc/testsuite/gcc.target/i386/pr114277.c
+index eb611d26d6a..05102fab7e3 100644
+--- a/gcc/testsuite/gcc.target/i386/pr114277.c
++++ b/gcc/testsuite/gcc.target/i386/pr114277.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ int a,b;
+ void func0(int x) { a=x * (x || b); }
+diff --git a/gcc/testsuite/gcc.target/i386/pr116274.c b/gcc/testsuite/gcc.target/i386/pr116274.c
+index 51ac3e1572d..e65c30e7bf1 100644
+--- a/gcc/testsuite/gcc.target/i386/pr116274.c
++++ b/gcc/testsuite/gcc.target/i386/pr116274.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O3 -fno-vect-cost-model -msse4.1" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct aq { long x,y; };
+ long testq(struct aq a) { return a.x+a.y; }
+diff --git a/gcc/testsuite/gcc.target/i386/pr117930.c b/gcc/testsuite/gcc.target/i386/pr117930.c
+index e8dec929e6c..548e60bfb79 100644
+--- a/gcc/testsuite/gcc.target/i386/pr117930.c
++++ b/gcc/testsuite/gcc.target/i386/pr117930.c
+@@ -1,6 +1,7 @@
+ /* PR target/117930 */
+ /* { dg-do compile } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not "sub\[bwlq\]\t" } } */
+ /* { dg-final { scan-assembler-not "add\[bwlq\]\t" } } */
+ /* { dg-final { scan-assembler-not "lea\[lq\]\t" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr22076.c b/gcc/testsuite/gcc.target/i386/pr22076.c
+index 766b732c681..0b8f90c2d09 100644
+--- a/gcc/testsuite/gcc.target/i386/pr22076.c
++++ b/gcc/testsuite/gcc.target/i386/pr22076.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -fomit-frame-pointer -mmmx -msse -mno-sse2" } */
+ /* { dg-additional-options "-fno-common" { target *-*-darwin* } } */
+ /* { dg-additional-options "-mdynamic-no-pic" { target { ia32 && *-*-darwin* } } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <xmmintrin.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr32661-1.c b/gcc/testsuite/gcc.target/i386/pr32661-1.c
+index 452bcf9766b..8cc343357fa 100644
+--- a/gcc/testsuite/gcc.target/i386/pr32661-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr32661-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef long long __m128i __attribute__ ((__vector_size__ (16)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr34256.c b/gcc/testsuite/gcc.target/i386/pr34256.c
+index 1d279c6a3a9..522789fe146 100644
+--- a/gcc/testsuite/gcc.target/i386/pr34256.c
++++ b/gcc/testsuite/gcc.target/i386/pr34256.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -march=core2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <mmintrin.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr36246.c b/gcc/testsuite/gcc.target/i386/pr36246.c
+index 107348c2514..bb8c057a612 100644
+--- a/gcc/testsuite/gcc.target/i386/pr36246.c
++++ b/gcc/testsuite/gcc.target/i386/pr36246.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fomit-frame-pointer -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef long long __m128i __attribute__ ((__vector_size__ (16), __may_alias__));
+ typedef int __v4si __attribute__ ((__vector_size__ (16)));
+diff --git a/gcc/testsuite/gcc.target/i386/pr38534-4.c b/gcc/testsuite/gcc.target/i386/pr38534-4.c
+index d4726c36137..3b16f70c8d4 100644
+--- a/gcc/testsuite/gcc.target/i386/pr38534-4.c
++++ b/gcc/testsuite/gcc.target/i386/pr38534-4.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mtune-ctrl=^prologue_using_move,^epilogue_using_move -fomit-frame-pointer -mnoreturn-no-callee-saved-registers" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef void (*fn_t) (void) __attribute__ ((no_callee_saved_registers));
+ extern void fn (void) __attribute__ ((noreturn));
+diff --git a/gcc/testsuite/gcc.target/i386/pr43618-1.c b/gcc/testsuite/gcc.target/i386/pr43618-1.c
+index 7d16f0e0cf9..2781b946205 100644
+--- a/gcc/testsuite/gcc.target/i386/pr43618-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr43618-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not "movq" } } */
+ /* { dg-final { scan-assembler "cvtps2pd" } } */
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr43644-2.c b/gcc/testsuite/gcc.target/i386/pr43644-2.c
+index 3316ac63ffb..be52b6a9f41 100644
+--- a/gcc/testsuite/gcc.target/i386/pr43644-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr43644-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ unsigned __int128 foo(unsigned __int128 x, unsigned long long y)
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr43644.c b/gcc/testsuite/gcc.target/i386/pr43644.c
+index ffdf31c9f82..c6dd98bbe2a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr43644.c
++++ b/gcc/testsuite/gcc.target/i386/pr43644.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ __int128 foo(__int128 x, __int128 y)
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr47735.c b/gcc/testsuite/gcc.target/i386/pr47735.c
+index 0d44df4d5c9..a2e3f45d740 100644
+--- a/gcc/testsuite/gcc.target/i386/pr47735.c
++++ b/gcc/testsuite/gcc.target/i386/pr47735.c
+@@ -1,6 +1,7 @@
+ /* PR middle-end/47735 */
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fomit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ unsigned
+ mulh (unsigned a, unsigned b)
+diff --git a/gcc/testsuite/gcc.target/i386/pr48037-1.c b/gcc/testsuite/gcc.target/i386/pr48037-1.c
+index d959bd2421b..c57f9c54454 100644
+--- a/gcc/testsuite/gcc.target/i386/pr48037-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr48037-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O -fno-math-errno" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef double __m128d __attribute__((vector_size(16)));
+ __m128d vsqrt1 (__m128d const x)
+diff --git a/gcc/testsuite/gcc.target/i386/pr59501-1a.c b/gcc/testsuite/gcc.target/i386/pr59501-1a.c
+index 5b468e55635..6190e41cea6 100644
+--- a/gcc/testsuite/gcc.target/i386/pr59501-1a.c
++++ b/gcc/testsuite/gcc.target/i386/pr59501-1a.c
+@@ -1,6 +1,7 @@
+ /* PR target/59501 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mavx -mno-accumulate-outgoing-args" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef double V __attribute__ ((vector_size (32)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr59501-2a.c b/gcc/testsuite/gcc.target/i386/pr59501-2a.c
+index c0fe3626961..b99f7563693 100644
+--- a/gcc/testsuite/gcc.target/i386/pr59501-2a.c
++++ b/gcc/testsuite/gcc.target/i386/pr59501-2a.c
+@@ -1,6 +1,7 @@
+ /* PR target/59501 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mavx -maccumulate-outgoing-args" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include "pr59501-1a.c"
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr59501-3a.c b/gcc/testsuite/gcc.target/i386/pr59501-3a.c
+index ded4336fc88..8bd77cd7781 100644
+--- a/gcc/testsuite/gcc.target/i386/pr59501-3a.c
++++ b/gcc/testsuite/gcc.target/i386/pr59501-3a.c
+@@ -1,6 +1,7 @@
+ /* PR target/59501 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mavx -mno-accumulate-outgoing-args" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef double V __attribute__ ((vector_size (32)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr59501-4a.c b/gcc/testsuite/gcc.target/i386/pr59501-4a.c
+index 908c7f457b6..a8de521ddcc 100644
+--- a/gcc/testsuite/gcc.target/i386/pr59501-4a.c
++++ b/gcc/testsuite/gcc.target/i386/pr59501-4a.c
+@@ -1,6 +1,7 @@
+ /* PR target/59501 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mavx -maccumulate-outgoing-args" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include "pr59501-3a.c"
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr60473.c b/gcc/testsuite/gcc.target/i386/pr60473.c
+index d81962e7b67..45fe9802973 100644
+--- a/gcc/testsuite/gcc.target/i386/pr60473.c
++++ b/gcc/testsuite/gcc.target/i386/pr60473.c
+@@ -1,6 +1,7 @@
+ /* PR rtl-optimization/60473  */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ unsigned long long foo()
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr68961.c b/gcc/testsuite/gcc.target/i386/pr68961.c
+index dfa8977580a..f3425604416 100644
+--- a/gcc/testsuite/gcc.target/i386/pr68961.c
++++ b/gcc/testsuite/gcc.target/i386/pr68961.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target lp64 } } */
+ /* { dg-options "-O3 -fno-vect-cost-model -fdump-tree-slp2-details" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct x { double d[2]; };
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-1.c b/gcc/testsuite/gcc.target/i386/pr70155-1.c
+index 05869028275..4dc505f1398 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a, b;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-15.c b/gcc/testsuite/gcc.target/i386/pr70155-15.c
+index 8f51cf6bccd..2712acbef5a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-15.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-15.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=core2 -mtune-ctrl=sse_unaligned_store_optimal -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct foo
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-17.c b/gcc/testsuite/gcc.target/i386/pr70155-17.c
+index 85d022db9dc..4a17ebd7ce1 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-17.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-17.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a, b, c, d, e, f;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-2.c b/gcc/testsuite/gcc.target/i386/pr70155-2.c
+index 567b31a5fe8..e5fadcd194a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct foo
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-22.c b/gcc/testsuite/gcc.target/i386/pr70155-22.c
+index f56dc700d30..153e461051a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-22.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-22.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a, b, c;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-3.c b/gcc/testsuite/gcc.target/i386/pr70155-3.c
+index b11520fcda5..c86a8c9f34c 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-3.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-3.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-4.c b/gcc/testsuite/gcc.target/i386/pr70155-4.c
+index db68ee39c1a..3464d112152 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-4.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-4.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-5.c b/gcc/testsuite/gcc.target/i386/pr70155-5.c
+index 1ee371097db..343724f0ad1 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-5.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-5.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-6.c b/gcc/testsuite/gcc.target/i386/pr70155-6.c
+index d040d27cc17..5bc5b32626b 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-6.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-6.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern __int128 a;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-7.c b/gcc/testsuite/gcc.target/i386/pr70155-7.c
+index 2f05ff081b4..3f8a3f3ca23 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-7.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-7.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct foo
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr70155-8.c b/gcc/testsuite/gcc.target/i386/pr70155-8.c
+index 95857a14302..6c913a3613a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr70155-8.c
++++ b/gcc/testsuite/gcc.target/i386/pr70155-8.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2 -mtune=generic -dp" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct foo
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr7061-1.c b/gcc/testsuite/gcc.target/i386/pr7061-1.c
+index ce5f6b2741c..a995d293122 100644
+--- a/gcc/testsuite/gcc.target/i386/pr7061-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr7061-1.c
+@@ -1,4 +1,5 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ float re(float _Complex a) { return __real__ a; }
+ /* { dg-final { scan-assembler-not "mov" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr7061-2.c b/gcc/testsuite/gcc.target/i386/pr7061-2.c
+index 837cd83e156..d6c3e2329ad 100644
+--- a/gcc/testsuite/gcc.target/i386/pr7061-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr7061-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ float im(float _Complex a) { return __imag__ a; }
+ /* { dg-final { scan-assembler "shufps" } } */
+ /* { dg-final { scan-assembler-not "movd" } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr78103-3.c b/gcc/testsuite/gcc.target/i386/pr78103-3.c
+index b8d82312a0e..df08d70ec37 100644
+--- a/gcc/testsuite/gcc.target/i386/pr78103-3.c
++++ b/gcc/testsuite/gcc.target/i386/pr78103-3.c
+@@ -1,6 +1,7 @@
+ /* PR target/78103 */
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mno-lzcnt" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not {\mmovl\M} } } */
+ /* { dg-final { scan-assembler-not {\mmovslq\M} } } */
+ /* { dg-final { scan-assembler-not {\mxor[lq]\M} } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr81502.c b/gcc/testsuite/gcc.target/i386/pr81502.c
+index d28791aacd7..bb1e464c6b7 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81502.c
++++ b/gcc/testsuite/gcc.target/i386/pr81502.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target lp64 } } */
+ /* { dg-options "-O2 -msse2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include <emmintrin.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr81736-1.c b/gcc/testsuite/gcc.target/i386/pr81736-1.c
+index 92c7bc97a0d..89dabbd1fda 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81736-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr81736-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fno-omit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int i;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr81736-2.c b/gcc/testsuite/gcc.target/i386/pr81736-2.c
+index a3720879937..f48c6e9666f 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81736-2.c
++++ b/gcc/testsuite/gcc.target/i386/pr81736-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fno-omit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ int
+ #ifndef __x86_64__
+diff --git a/gcc/testsuite/gcc.target/i386/pr81736-5.c b/gcc/testsuite/gcc.target/i386/pr81736-5.c
+index 0dcf17b98a2..0e8f70bde1f 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81736-5.c
++++ b/gcc/testsuite/gcc.target/i386/pr81736-5.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fno-omit-frame-pointer -mavx" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef int v8si __attribute__ ((vector_size (32)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr81736-6.c b/gcc/testsuite/gcc.target/i386/pr81736-6.c
+index 6198574c8cc..21dfe74cd33 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81736-6.c
++++ b/gcc/testsuite/gcc.target/i386/pr81736-6.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fno-omit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct foo
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/pr81736-7.c b/gcc/testsuite/gcc.target/i386/pr81736-7.c
+index 95b380d238b..66fdfdd69ec 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81736-7.c
++++ b/gcc/testsuite/gcc.target/i386/pr81736-7.c
+@@ -1,6 +1,7 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -fno-omit-frame-pointer" } */
+ /* { dg-additional-options "-fno-PIE" { target ia32 } } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int foo (void);
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr81769-1a.c b/gcc/testsuite/gcc.target/i386/pr81769-1a.c
+index 8ebe7292184..ae2ac26af38 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81769-1a.c
++++ b/gcc/testsuite/gcc.target/i386/pr81769-1a.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O -mavx" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef int v8si __attribute__ ((vector_size (32)));
+ typedef unsigned long long int u64 __attribute__ ((aligned(64)));
+diff --git a/gcc/testsuite/gcc.target/i386/pr81769-1b.c b/gcc/testsuite/gcc.target/i386/pr81769-1b.c
+index 6505a5f0074..8a4cac3634c 100644
+--- a/gcc/testsuite/gcc.target/i386/pr81769-1b.c
++++ b/gcc/testsuite/gcc.target/i386/pr81769-1b.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O -mavx -fno-omit-frame-pointer" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ #include "pr81769-1a.c"
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr88873.c b/gcc/testsuite/gcc.target/i386/pr88873.c
+index a3a7ef242e2..8a701ab2c2a 100644
+--- a/gcc/testsuite/gcc.target/i386/pr88873.c
++++ b/gcc/testsuite/gcc.target/i386/pr88873.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile  { target int128 } } */
+ /* { dg-options "-O2 -march=cascadelake" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef struct { double x, y; } s_t;
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/pr90765-1.c b/gcc/testsuite/gcc.target/i386/pr90765-1.c
+index 178c3ff8054..e97f5cfb0db 100644
+--- a/gcc/testsuite/gcc.target/i386/pr90765-1.c
++++ b/gcc/testsuite/gcc.target/i386/pr90765-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx512f" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not "and\[lq\]?\[\\t \]*\\$-64,\[\\t \]*%\[re\]?sp" } } */
+ 
+ typedef int __v16si __attribute__ ((__vector_size__ (64)));
+diff --git a/gcc/testsuite/gcc.target/i386/pr90773-12.c b/gcc/testsuite/gcc.target/i386/pr90773-12.c
+index e45840a5b8d..62c62023674 100644
+--- a/gcc/testsuite/gcc.target/i386/pr90773-12.c
++++ b/gcc/testsuite/gcc.target/i386/pr90773-12.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=skylake" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void
+ foo (char *dst, char *src)
+diff --git a/gcc/testsuite/gcc.target/i386/pr90773-13.c b/gcc/testsuite/gcc.target/i386/pr90773-13.c
+index 4d5ae8d1086..eb714a061a9 100644
+--- a/gcc/testsuite/gcc.target/i386/pr90773-13.c
++++ b/gcc/testsuite/gcc.target/i386/pr90773-13.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=skylake" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void
+ foo (char *dst)
+diff --git a/gcc/testsuite/gcc.target/i386/pr90773-6.c b/gcc/testsuite/gcc.target/i386/pr90773-6.c
+index 46498f6f50c..1801b810889 100644
+--- a/gcc/testsuite/gcc.target/i386/pr90773-6.c
++++ b/gcc/testsuite/gcc.target/i386/pr90773-6.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=generic" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void
+ foo (char *dst, char *src)
+diff --git a/gcc/testsuite/gcc.target/i386/pr90773-7.c b/gcc/testsuite/gcc.target/i386/pr90773-7.c
+index 4d5ae8d1086..eb714a061a9 100644
+--- a/gcc/testsuite/gcc.target/i386/pr90773-7.c
++++ b/gcc/testsuite/gcc.target/i386/pr90773-7.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -mno-avx -msse2 -mtune=skylake" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void
+ foo (char *dst)
+diff --git a/gcc/testsuite/gcc.target/i386/pr92905.c b/gcc/testsuite/gcc.target/i386/pr92905.c
+index 672ba8ee48a..d960174a6bc 100644
+--- a/gcc/testsuite/gcc.target/i386/pr92905.c
++++ b/gcc/testsuite/gcc.target/i386/pr92905.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { lp64 } } } */
+ /* { dg-options "-O2 -mtune=intel" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ float f(float x)
+ {
+     union {float f; unsigned i;} u = {x};
+diff --git a/gcc/testsuite/gcc.target/i386/pr98060.c b/gcc/testsuite/gcc.target/i386/pr98060.c
+index f82620ceb64..3ce12f0c44c 100644
+--- a/gcc/testsuite/gcc.target/i386/pr98060.c
++++ b/gcc/testsuite/gcc.target/i386/pr98060.c
+@@ -1,6 +1,7 @@
+ /* PR target/98060 */
+ /* { dg-do compile } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ /* { dg-final { scan-assembler-not "set" } } */
+ /* { dg-final { scan-assembler-times "adc"  4 } } */
+diff --git a/gcc/testsuite/gcc.target/i386/pr98289.c b/gcc/testsuite/gcc.target/i386/pr98289.c
+index 9c620d40164..0b628f396fb 100644
+--- a/gcc/testsuite/gcc.target/i386/pr98289.c
++++ b/gcc/testsuite/gcc.target/i386/pr98289.c
+@@ -2,6 +2,7 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-require-effective-target freorder } */
+ /* { dg-options "-O2 -freorder-blocks-and-partition -fdump-rtl-pro_and_epilogue-details" } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-rtl-dump-times "Performing shrink-wrapping" 4 "pro_and_epilogue" } } */
+ 
+ int bar (void) __attribute__((cold));
+diff --git a/gcc/testsuite/gcc.target/i386/shrink_wrap_1.c b/gcc/testsuite/gcc.target/i386/shrink_wrap_1.c
+index 4b286671e90..76532ec33e6 100644
+--- a/gcc/testsuite/gcc.target/i386/shrink_wrap_1.c
++++ b/gcc/testsuite/gcc.target/i386/shrink_wrap_1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! ia32 } } } */
+ /* { dg-options "-O2 -fdump-rtl-pro_and_epilogue -fno-stack-protector" } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ enum machine_mode
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/sibcall-1.c b/gcc/testsuite/gcc.target/i386/sibcall-1.c
+index 272228dd640..f5d3310f5ea 100644
+--- a/gcc/testsuite/gcc.target/i386/sibcall-1.c
++++ b/gcc/testsuite/gcc.target/i386/sibcall-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { { ! x32 }  && nonpic } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ extern int (*foo)(int);
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/sibcall-7.c b/gcc/testsuite/gcc.target/i386/sibcall-7.c
+index 6effb8f8256..bfda92bb1a2 100644
+--- a/gcc/testsuite/gcc.target/i386/sibcall-7.c
++++ b/gcc/testsuite/gcc.target/i386/sibcall-7.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target { ! x32 } } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not "mov" } } */
+ 
+ int foo()
+diff --git a/gcc/testsuite/gcc.target/i386/smuldi3_highpart.c b/gcc/testsuite/gcc.target/i386/smuldi3_highpart.c
+index cd8ea41e019..81541475ba2 100644
+--- a/gcc/testsuite/gcc.target/i386/smuldi3_highpart.c
++++ b/gcc/testsuite/gcc.target/i386/smuldi3_highpart.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ typedef int __attribute ((mode(TI))) ti_t;
+ 
+ long long foo(long long x)
+diff --git a/gcc/testsuite/gcc.target/i386/sse2-movsd-3.c b/gcc/testsuite/gcc.target/i386/sse2-movsd-3.c
+index edd4a445fc3..cf000f2ec27 100644
+--- a/gcc/testsuite/gcc.target/i386/sse2-movsd-3.c
++++ b/gcc/testsuite/gcc.target/i386/sse2-movsd-3.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -msse2 -mno-sse4" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned long long v2di __attribute__((vector_size(16)));
+ typedef double v2df __attribute__((vector_size(16)));
+diff --git a/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-1.c b/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-1.c
+index a1ef7b77132..91e838f2969 100644
+--- a/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-1.c
++++ b/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned __int128 uv1ti __attribute__ ((__vector_size__ (16)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-2.c b/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-2.c
+index 7e890857678..0a47f7dc4aa 100644
+--- a/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-2.c
++++ b/gcc/testsuite/gcc.target/i386/sse2-v1ti-mov-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned __int128 uv1ti __attribute__ ((__vector_size__ (16)));
+ typedef unsigned long uv2di __attribute__ ((__vector_size__ (16)));
+diff --git a/gcc/testsuite/gcc.target/i386/sse2-v1ti-zext.c b/gcc/testsuite/gcc.target/i386/sse2-v1ti-zext.c
+index 4dfc6553e01..cb79d3fba51 100644
+--- a/gcc/testsuite/gcc.target/i386/sse2-v1ti-zext.c
++++ b/gcc/testsuite/gcc.target/i386/sse2-v1ti-zext.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target int128 } } */
+ /* { dg-options "-O2 -msse2" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef unsigned __int128 uv1ti __attribute__ ((__vector_size__ (16)));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/stackalign/pr39146.c b/gcc/testsuite/gcc.target/i386/stackalign/pr39146.c
+index 9ae5f03453e..c878e018630 100644
+--- a/gcc/testsuite/gcc.target/i386/stackalign/pr39146.c
++++ b/gcc/testsuite/gcc.target/i386/stackalign/pr39146.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile { target i?86-*-* x86_64-*-* } } */
+ /* { dg-options "-O2 -mavx" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef long long __m256i __attribute__ ((__vector_size__ (32), __may_alias__));
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/stackalign/pr88483-1.c b/gcc/testsuite/gcc.target/i386/stackalign/pr88483-1.c
+index 11ecdd52aa1..a7fcfd2e350 100644
+--- a/gcc/testsuite/gcc.target/i386/stackalign/pr88483-1.c
++++ b/gcc/testsuite/gcc.target/i386/stackalign/pr88483-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx2 -fno-stack-protector" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct B
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/stackalign/pr88483-2.c b/gcc/testsuite/gcc.target/i386/stackalign/pr88483-2.c
+index 33174fa29de..02baa70f3d0 100644
+--- a/gcc/testsuite/gcc.target/i386/stackalign/pr88483-2.c
++++ b/gcc/testsuite/gcc.target/i386/stackalign/pr88483-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mavx512f -fno-stack-protector" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ struct B
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/stackalign/return-4.c b/gcc/testsuite/gcc.target/i386/stackalign/return-4.c
+index d14eb2fa9df..a192256db8d 100644
+--- a/gcc/testsuite/gcc.target/i386/stackalign/return-4.c
++++ b/gcc/testsuite/gcc.target/i386/stackalign/return-4.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-mpreferred-stack-boundary=4 -O" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ /* { dg-final { scan-assembler-not "and\[lq\]?\[^\\n\]*-64,\[^\\n\]*sp" } } */
+ /* We only guarantee we won't generate the stack alignment when
+    optimizing.  When not optimizing, the return value will be assigned
+diff --git a/gcc/testsuite/gcc.target/i386/sw-1.c b/gcc/testsuite/gcc.target/i386/sw-1.c
+index b0432279644..425c828d63b 100644
+--- a/gcc/testsuite/gcc.target/i386/sw-1.c
++++ b/gcc/testsuite/gcc.target/i386/sw-1.c
+@@ -2,6 +2,7 @@
+ /* { dg-options "-O2 -mtune=generic -fshrink-wrap -fdump-rtl-pro_and_epilogue -fno-stack-protector" } */
+ /* { dg-additional-options "-mno-avx" { target ia32 } } */
+ /* { dg-skip-if "No shrink-wrapping preformed" { x86_64-*-mingw* } } */
++/* { dg-skip-if "no shrink-wrapping with -msave-args" { *-*-* } "-msave-args" "" } */
+ 
+ #include <string.h>
+ 
+diff --git a/gcc/testsuite/gcc.target/i386/vect-strided-1.c b/gcc/testsuite/gcc.target/i386/vect-strided-1.c
+index db4a06711f1..011ef3b3643 100644
+--- a/gcc/testsuite/gcc.target/i386/vect-strided-1.c
++++ b/gcc/testsuite/gcc.target/i386/vect-strided-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -msse2 -mno-avx" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void foo (int * __restrict a, int *b, int s)
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/vect-strided-2.c b/gcc/testsuite/gcc.target/i386/vect-strided-2.c
+index 6fd64e28cf0..a39491a49c1 100644
+--- a/gcc/testsuite/gcc.target/i386/vect-strided-2.c
++++ b/gcc/testsuite/gcc.target/i386/vect-strided-2.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -msse2 -mno-avx" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void foo (int * __restrict a, int *b, int s)
+ {
+diff --git a/gcc/testsuite/gcc.target/i386/vect-strided-3.c b/gcc/testsuite/gcc.target/i386/vect-strided-3.c
+index f9c54a6f715..a3e65d09901 100644
+--- a/gcc/testsuite/gcc.target/i386/vect-strided-3.c
++++ b/gcc/testsuite/gcc.target/i386/vect-strided-3.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -msse2 -mno-sse4 -fno-tree-slp-vectorize" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ void foo (int * __restrict a, int *b, int s)
+ {
+diff --git a/gcc/testsuite/gcc.target/x86_64/abi/callabi/avoid-store-forwarding-1.c b/gcc/testsuite/gcc.target/x86_64/abi/callabi/avoid-store-forwarding-1.c
+index d94bcf136ac..689ff24818d 100644
+--- a/gcc/testsuite/gcc.target/x86_64/abi/callabi/avoid-store-forwarding-1.c
++++ b/gcc/testsuite/gcc.target/x86_64/abi/callabi/avoid-store-forwarding-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -favoid-store-forwarding" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ typedef union {
+     char arr_8[8];
+diff --git a/gcc/testsuite/gcc.target/x86_64/abi/callabi/leaf-1.c b/gcc/testsuite/gcc.target/x86_64/abi/callabi/leaf-1.c
+index 35f8b53cac1..d30435b1549 100644
+--- a/gcc/testsuite/gcc.target/x86_64/abi/callabi/leaf-1.c
++++ b/gcc/testsuite/gcc.target/x86_64/abi/callabi/leaf-1.c
+@@ -1,5 +1,6 @@
+ /* { dg-do compile } */
+ /* { dg-options "-O2 -mabi=sysv" } */
++/* { dg-skip-if "-msave-args prologue" { *-*-* } "-msave-args" "" } */
+ 
+ __attribute__ ((ms_abi))
+ int foo (void)
+diff --git a/gcc/testsuite/lib/scanasm.exp b/gcc/testsuite/lib/scanasm.exp
+index 97935cb23c3..d8cabf7207f 100644
+--- a/gcc/testsuite/lib/scanasm.exp
++++ b/gcc/testsuite/lib/scanasm.exp
+@@ -1023,6 +1023,15 @@ proc check-function-bodies { args } {
+ 	}
+     }
+ 
++    # On illumos, -msave-args forces a frame pointer and stores the integer
++    # argument registers to the stack in every prologue (and disables
++    # shrink-wrapping), so no upstream function body can match.  The same
++    # tests still run on the plain -m64 multilib.
++    if { [check-flags [list "" { *-*-* } { "-msave-args" } { "" }]] } {
++	unsupported "[testname-for-summary] check-function-bodies with -msave-args"
++	return
++    }
++
+     set xfail_all 0
+     if { [llength $args] >= 4 } {
+ 	switch [dg-process-target [lindex $args 3]] {

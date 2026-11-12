@@ -1,9 +1,9 @@
-From 37c775aabc51cf36ffeed7034116451f3f2c0d84 Mon Sep 17 00:00:00 2001
+From f98375a1473f07cea5886170a582a961ff43b7e3 Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Mon, 13 Feb 2017 18:14:45 +0300
-Subject: 19 cmn_err %b conversion should accept 0 flag Reviewed
- by: Robert Mustacchi <rm@joyent.com> Reviewed by: Richard Lowe
- <richlowe@richlowe.net>
+Subject: =?UTF-8?q?19=20cmn=5Ferr=20%b=20conversion=20should=20accept=200?=
+ =?UTF-8?q?=20flag=0AReviewed=20by:=20Robert=20Mustacchi=20<rm@joyent.com>?=
+ =?UTF-8?q?=0AReviewed=20by:=20Richard=20Lowe=20<richlowe@richlowe.net>?=
 
 ---
  gcc/config/sol2-c.cc | 2 +-

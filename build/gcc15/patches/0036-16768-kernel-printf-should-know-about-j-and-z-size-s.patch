@@ -1,8 +1,7 @@
-From 561128ede3185982f85b347ec596b2ce6bd06e66 Mon Sep 17 00:00:00 2001
+From 62d99f191501f5462785490cba98fe0808981111 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <illumos@fiddaman.net>
 Date: Tue, 15 Oct 2024 15:31:19 +0000
-Subject: 16768 kernel printf should know about %j and %z size
- specifiers
+Subject: 16768 kernel printf should know about %j and %z size specifiers
 
 ---
  gcc/config/sol2-c.cc                    | 9 +++++----

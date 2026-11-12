@@ -1,8 +1,7 @@
-From c700fd83edca4112ad3c93a730732aca5e92af40 Mon Sep 17 00:00:00 2001
+From 82837026fba06a59e74b1242f7a0ef8b109d32bb Mon Sep 17 00:00:00 2001
 From: Richard Lowe <richlowe@richlowe.net>
 Date: Fri, 3 May 2019 01:20:30 +0000
-Subject: i386: use correct error message about -msave-args and
- ABIs
+Subject: i386: use correct error message about -msave-args and ABIs
 
 We used to say it made no sense in 32bit mode, but it doesn't make sense
 in 16bit mode either

@@ -20,7 +20,7 @@
 
 PKG=developer/gcc15
 PROG=gcc
-VER=15.2.0
+VER=15.3.0
 ILVER=il-0
 SUMMARY="gcc $VER-$ILVER"
 DESC="The GNU Compiler Collection"
@@ -33,7 +33,7 @@ BMI_EXPECTED=1
 PREFIX=$OPT
 
 # Build gcc with itself
-#set_gccver $GCCMAJOR
+set_gccver $GCCMAJOR
 
 set_arch 64
 set_ssp none
@@ -114,6 +114,7 @@ CONFIGURE_OPTS="
     --enable-__cxa_atexit
     --enable-initfini-array
     --disable-libitm
+    --disable-libstdcxx-pch
     --with-diagnostics-urls=auto-if-env
     enable_frame_pointer=yes
 "
@@ -125,9 +126,9 @@ CONFIGURE_OPTS[WS]="
 LDFLAGS="-R$OPT/lib"
 CPPFLAGS+=" -D_TS_ERRNO"
 MAKE_ARGS_WS="
-    BOOT_CFLAGS=\"$CTF_CFLAGS\"
-    CFLAGS_FOR_TARGET=\"$CTF_CFLAGS -D_TS_ERRNO\"
-    CXXFLAGS_FOR_TARGET=\"$CTF_CFLAGS -D_TS_ERRNO\"
+    BOOT_CFLAGS=\"-O2 $CTF_CFLAGS\"
+    CFLAGS_FOR_TARGET=\"-O2 $CTF_CFLAGS -D_TS_ERRNO\"
+    CXXFLAGS_FOR_TARGET=\"-O2 $CTF_CFLAGS -D_TS_ERRNO\"
     LDFLAGS_FOR_TARGET=\"-Wl,-M,$MAP_NOEXDATA\"
 "
 

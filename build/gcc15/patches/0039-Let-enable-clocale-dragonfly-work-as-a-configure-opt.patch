@@ -1,8 +1,7 @@
-From ccf9c2f046b6750d25aab12c1ae6e93a3d1ec73f Mon Sep 17 00:00:00 2001
+From 12f64eb50d09c6c46510aaf133e20195216b8f92 Mon Sep 17 00:00:00 2001
 From: Bill Sommerfeld <sommerfeld@hamachi.org>
 Date: Fri, 9 May 2025 15:13:40 -0700
-Subject: Let --enable-clocale=dragonfly work as a configure
- option
+Subject: Let --enable-clocale=dragonfly work as a configure option
 
 ---
  libstdc++-v3/acinclude.m4 | 2 +-
@@ -23,7 +22,7 @@ index a0094c2dd95..5b9173610c0 100644
    # Deal with gettext issues.  Default to not using it (=no) until we detect
    # support for it later.  Let the user turn it off via --e/d, but let that
 diff --git a/libstdc++-v3/configure b/libstdc++-v3/configure
-index c198e332d79..9887fcd1715 100755
+index 34416f23178..90c530dad18 100755
 --- a/libstdc++-v3/configure
 +++ b/libstdc++-v3/configure
 @@ -16636,7 +16636,7 @@ $as_echo "stdio (with POSIX read/write)" >&6; }

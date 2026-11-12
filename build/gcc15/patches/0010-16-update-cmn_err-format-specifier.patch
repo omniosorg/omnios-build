@@ -1,8 +1,9 @@
-From f22d5e11c5d79a42b4fc1b7021007a0c0adceaf1 Mon Sep 17 00:00:00 2001
+From cd88c9e4d45746930cfe720b20ab88de25ee65e0 Mon Sep 17 00:00:00 2001
 From: Yuri Pankov <yuri.pankov@nexenta.com>
 Date: Sat, 5 Nov 2016 05:26:47 +0300
-Subject: 16 update cmn_err format specifier Reviewed by: Richard
- Lowe <richlowe@richlowe.net> Reviewed by: Robert Mustacchi <rm@joyent.com>
+Subject: =?UTF-8?q?16=20update=20cmn=5Ferr=20format=20specifier=0AReviewed?=
+ =?UTF-8?q?=20by:=20Richard=20Lowe=20<richlowe@richlowe.net>=0AReviewed=20?=
+ =?UTF-8?q?by:=20Robert=20Mustacchi=20<rm@joyent.com>?=
 
 ---
  gcc/config/sol2-c.cc | 22 +++++++++++++---------

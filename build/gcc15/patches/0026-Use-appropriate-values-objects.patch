@@ -1,7 +1,7 @@
-From 1ffa0b2ff3a2da2eb085f1bffe6c6bd6aaed82f4 Mon Sep 17 00:00:00 2001
+From 2fa9fd182fceaf62c7080b7b39aae97664aa1033 Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Tue, 7 Jan 2020 15:08:43 +0000
-Subject: Use appropriate values objects
+Subject:  Use appropriate values objects
 
 ---
  gcc/config/sol2.h | 10 ++++++++--

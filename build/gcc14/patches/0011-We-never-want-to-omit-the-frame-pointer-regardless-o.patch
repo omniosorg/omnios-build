@@ -1,9 +1,11 @@
-From abfc6078bf1b3bb07055cac4b44130c76d6e7018 Mon Sep 17 00:00:00 2001
+From 2ad1940391d0eb49a89f7799ed94b19102f7398a Mon Sep 17 00:00:00 2001
 From: Andy Fiddaman <omnios@citrus-it.co.uk>
 Date: Thu, 25 Oct 2018 18:19:36 +0000
-Subject: We never want to omit the frame pointer, regardless of
- the optimisation level or options to gcc - we like stack traces too much and
- it is of questionable benefit anyway, even on i386.
+Subject: =?UTF-8?q?We=20never=20want=20to=20omit=20the=20frame=20pointer,?=
+ =?UTF-8?q?=20regardless=20of=20the=20optimisation=0Alevel=20or=20options?=
+ =?UTF-8?q?=20to=20gcc=20-=20we=20like=20stack=20traces=20too=20much=20and?=
+ =?UTF-8?q?=20it=20is=20of=0Aquestionable=20benefit=20anyway,=20even=20on?=
+ =?UTF-8?q?=20i386.?=
 
 ---
  gcc/config/i386/i386-options.cc | 9 +++++++++

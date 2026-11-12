@@ -1,0 +1,29 @@
+From d2403fb5e747b0b253599aabd599d839378a3b07 Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Mon, 9 Nov 2026 12:59:29 +0000
+Subject: testsuite: illumos has no PIE support
+
+The testsuite assumes that Solaris targets support -pie, but the illumos
+link-editor does not and the driver rejects it, so the gcc.dg/torture/tls
+-pie variants fail. Check by linking instead.
+---
+ gcc/testsuite/lib/target-supports.exp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gcc/testsuite/lib/target-supports.exp b/gcc/testsuite/lib/target-supports.exp
+index 0e1c3c4f5fe..01e606da51a 100644
+--- a/gcc/testsuite/lib/target-supports.exp
++++ b/gcc/testsuite/lib/target-supports.exp
+@@ -1410,6 +1410,12 @@ proc check_effective_target_shared { } {
+ # Return 1 if -pie, -fpie and -fPIE are supported, 0 otherwise.
+ 
+ proc check_effective_target_pie { } {
++    # The illumos linker has no PIE support, and the driver rejects -pie.
++    if { [istarget *-*-solaris2*] } {
++	return [check_no_compiler_messages pie_link executable {
++	    int main (void) { return 0; }
++	} "-pie -fpie"]
++    }
+     if { [istarget *-*-darwin\[912\]*]
+ 	 || [istarget *-*-dragonfly*]
+ 	 || [istarget *-*-freebsd*]
