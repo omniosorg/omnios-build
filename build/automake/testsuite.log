@@ -80,8 +80,8 @@ PASS: t/instspc.tap 65 - backspace in builddir
 PASS: t/instspc.tap 66 - backspace in destdir
 PASS: t/instspc.tap 67 - formfeed in builddir
 PASS: t/instspc.tap 68 - formfeed in destdir
-PASS: t/instspc.tap 69 - carriageret in builddir
-PASS: t/instspc.tap 70 - carriageret in destdir
+SKIP: t/instspc.tap 69 - carriageret in builddir # SKIP mkdir failed
+SKIP: t/instspc.tap 70 - carriageret in destdir # SKIP mkdir failed
 XFAIL: t/instspc.tap 71 - quadrigraph0 in builddir # TODO long-standing limitation
 PASS: t/instspc.tap 72 - quadrigraph0 in destdir
 PASS: t/instspc.tap 73 - quadrigraph1 in builddir
@@ -620,6 +620,7 @@ PASS: t/am-default-source-ext.sh
 PASS: t/am-include-only-one-generated-fragment.sh
 PASS: t/am-macro-not-found.sh
 PASS: t/am-missing-prog.sh
+PASS: t/am-optional-automake-once.sh
 am-optional-automake: skipped test: required program 'bzip3' not available
 SKIP: t/am-optional-automake.sh
 PASS: t/am-prog-cc-c-o.sh
@@ -637,6 +638,7 @@ PASS: t/amopts-location.sh
 PASS: t/amopts-variable-expansion.sh
 PASS: t/amsubst.sh
 PASS: t/ansi2knr-no-more.sh
+PASS: t/ar-dependencies.sh
 PASS: t/ar-lib.sh
 PASS: t/ar-lib2.sh
 PASS: t/ar-lib3.sh
@@ -928,6 +930,7 @@ dejagnu6: skipped test: DejaGnu is not available
 SKIP: t/dejagnu6.sh
 dejagnu7: skipped test: DejaGnu is not available
 SKIP: t/dejagnu7.sh
+PASS: t/delete-on-error.sh
 PASS: t/deleted-am.sh
 PASS: t/deleted-m4.sh
 PASS: t/depacl2.sh
@@ -1030,6 +1033,7 @@ PASS: t/dist-formats.tap 74 - all compressors together ['make dist-all', stubbed
 PASS: t/dist-formats.tap 75 - all compressors together ['make dist -j4', stubbed]
 PASS: t/dist-included-parent-dir.sh
 PASS: t/dist-install-sh.sh
+PASS: t/dist-intermediate-kept.sh
 PASS: t/dist-lzma.sh
 PASS: t/dist-missing-am.sh
 PASS: t/dist-missing-included-m4.sh
@@ -1037,12 +1041,15 @@ PASS: t/dist-missing-m4.sh
 PASS: t/dist-multiple-formats.sh
 PASS: t/dist-no-built-sources.sh
 XFAIL: t/dist-pr109765.sh
+PASS: t/dist-public-target.sh
 PASS: t/dist-readonly.sh
 PASS: t/dist-repeated.sh
 dist-shar: skipped test: required program 'shar' not available
 SKIP: t/dist-shar.sh
+PASS: t/dist-tar-errexit.sh
 PASS: t/dist-tar-fails.sh
 PASS: t/dist-tarZ.sh
+PASS: t/dist-zstd.sh
 PASS: t/dist-version-exec.sh
 PASS: t/dist-vs-built-sources.sh
 PASS: t/dist-with-unreadable-makefile-fails.sh
@@ -1054,6 +1061,8 @@ PASS: t/distcheck-hook2.sh
 PASS: t/distcheck-missing-m4.sh
 PASS: t/distcheck-no-prefix-or-srcdir-override.sh
 PASS: t/distcheck-outdated-m4.sh
+distcheck-no-dvi: skipped test: required program 'makeinfo' not available
+SKIP: t/distcheck-no-dvi.sh
 distcheck-override-dvi: skipped test: required program 'makeinfo' not available
 SKIP: t/distcheck-override-dvi.sh
 distcheck-override-infodir: skipped test: required program 'makeinfo' not available
@@ -1074,6 +1083,7 @@ PASS: t/disthook.sh
 PASS: t/distlinks.sh
 PASS: t/distlinksbrk.sh
 PASS: t/distname.sh
+PASS: t/distuninstallcheck-symlink.sh
 PASS: t/dmalloc.sh
 PASS: t/doc-parsing-buglets-colneq-subst.sh
 PASS: t/doc-parsing-buglets-tabs.sh
@@ -1176,6 +1186,7 @@ SKIP: t/install-info-dir.sh
 PASS: t/install-sh-option-C.sh
 PASS: t/install-sh-option-S.sh
 PASS: t/install-sh-unittests.sh
+PASS: t/installcheck-errexit.sh
 PASS: t/installdir.sh
 PASS: t/instdat.sh
 PASS: t/instdat2.sh
@@ -1228,6 +1239,7 @@ PASS: t/javadir-undefined.sh
 PASS: t/javaflags.sh
 PASS: t/javaprim.sh
 PASS: t/javasubst.sh
+PASS: t/jobserver.sh
 PASS: t/ldadd.sh
 PASS: t/ldflags.sh
 PASS: t/lex-args.sh
@@ -1246,7 +1258,7 @@ PASS: t/lex-multiple.sh
 PASS: t/lex-nodist.sh
 PASS: t/lex-noyywrap.sh
 PASS: t/lex-pr204.sh
-XFAIL: t/lex-subobj-nodep.sh
+PASS: t/lex-subobj-nodep.sh
 PASS: t/lex.sh
 PASS: t/lex2.sh
 PASS: t/lex3.sh
@@ -1535,6 +1547,7 @@ SKIP: t/objcxx-minidemo.sh
 XFAIL: t/objext-pr10128.sh
 PASS: t/oldvars.sh
 PASS: t/order.sh
+PASS: t/optional-remake.sh
 PASS: t/output-order.sh
 PASS: t/output.sh
 PASS: t/output10.sh
@@ -1551,7 +1564,9 @@ PASS: t/output8.sh
 PASS: t/output9.sh
 PASS: t/override-conditional-1.sh
 XFAIL: t/override-conditional-2.sh
-XFAIL: t/override-conditional-pr13940.sh
+PASS: t/override-conditional-double-colon.sh
+PASS: t/override-conditional-pr13940.sh
+PASS: t/override-conditional-pr13940-link.sh
 PASS: t/override-html.sh
 PASS: t/override-suggest-local.sh
 PASS: t/parallel-am.sh
@@ -1595,6 +1610,7 @@ PASS: t/parallel-tests-interrupt.tap 16 - test driver clean up log and tmp files
 PASS: t/parallel-tests-log-compiler-1.sh
 PASS: t/parallel-tests-log-compiler-2.sh
 PASS: t/parallel-tests-log-compiler-example.sh
+PASS: t/parallel-tests-log-dos-names.sh
 PASS: t/parallel-tests-log-override-1.sh
 PASS: t/parallel-tests-log-override-2.sh
 PASS: t/parallel-tests-log-override-recheck.sh
@@ -1950,6 +1966,7 @@ PASS: t/primary-prefix-valid-couples.sh
 PASS: t/primary.sh
 PASS: t/primary2.sh
 PASS: t/primary3.sh
+PASS: t/print-distfiles.sh
 PASS: t/print-libdir.sh
 PASS: t/proginst.sh
 PASS: t/programs-primary-rewritten.sh
@@ -2466,6 +2483,7 @@ PASS: t/tap-unplanned.sh
 PASS: t/tap-whitespace-normalization.sh
 PASS: t/tap-with-and-without-number.sh
 PASS: t/tap-xfail-tests.sh
+PASS: t/tar-non-gnu.sh
 PASS: t/tar-opts-errors.sh
 PASS: t/tar-override.sh
 PASS: t/tar-pax.sh
@@ -2581,9 +2599,11 @@ PASS: t/unused.sh
 SKIP: t/upc.sh
 PASS: t/upc2.sh
 SKIP: t/upc3.sh
+PASS: t/pkg-config-macros.sh
+vala-basename: skipped test: required program 'valac' not available
+SKIP: t/vala-basename.sh
 PASS: t/vala-configure.sh
 PASS: t/vala-grepping.sh
-PASS: t/pkg-config-macros.sh
 vala-headers: skipped test: required program 'valac' not available
 SKIP: t/vala-headers.sh
 vala-libs-distcheck: skipped test: required program 'valac' not available
@@ -2596,6 +2616,8 @@ vala-mix: skipped test: required program 'valac' not available
 SKIP: t/vala-mix.sh
 vala-mix2: skipped test: required program 'valac' not available
 SKIP: t/vala-mix2.sh
+vala-non-recursive-multiple: skipped test: required program 'valac' not available
+SKIP: t/vala-non-recursive-multiple.sh
 vala-non-recursive-setup: skipped test: required program 'valac' not available
 SKIP: t/vala-non-recursive-setup.sh
 vala-parallel: skipped test: required program 'valac' not available
@@ -2657,12 +2679,14 @@ PASS: t/yacc-dry.sh
 PASS: t/yacc-grepping.sh
 PASS: t/yacc-grepping2.sh
 PASS: t/yacc-headers-and-dist-pr47.sh
+PASS: t/yacc-lex-vpath-dist-line.sh
 PASS: t/yacc-line.sh
 PASS: t/yacc-misc.sh
 PASS: t/yacc-mix-c-cxx.sh
 PASS: t/yacc-nodist.sh
 PASS: t/yacc-pr204.sh
 PASS: t/yacc-subdir.sh
+PASS: t/yacc-subobj-nodep.sh
 PASS: t/yacc-vpath.sh
 PASS: t/yacc-weirdnames.sh
 PASS: t/yflags-cmdline-override.sh
@@ -3063,12 +3087,12 @@ SKIP: contrib/t/parallel-tests-html-recursive.sh
 PASS: contrib/t/help-multilib.sh
 PASS: contrib/t/multilib.sh
 ============================================================================
-Testsuite summary for GNU Automake 1.19
+Testsuite summary for GNU Automake 1.20
 ============================================================================
-# TOTAL: 2970
-# PASS:  2813
-# SKIP:  116
-# XFAIL: 40
+# TOTAL: 2991
+# PASS:  2831
+# SKIP:  121
+# XFAIL: 38
 # FAIL:  1
 # XPASS: 0
 # ERROR: 0
@@ -3078,6 +3102,6 @@ Some test(s) failed.  Please report this to bug-automake@gnu.org,
 together with the test-suite.log file (gzipped) and your system
 information.  Thanks.
 ============================================================================
-make[2]: *** [Makefile:3148: test-suite.log] Error 1
-make[1]: *** [Makefile:3283: check-TESTS] Error 2
-make: *** [Makefile:3574: check-am] Error 2
+make[2]: *** [Makefile:3180: test-suite.log] Error 1
+make[1]: *** [Makefile:3315: check-TESTS] Error 2
+make: *** [Makefile:3650: check-am] Error 2

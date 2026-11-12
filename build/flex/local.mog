@@ -9,7 +9,7 @@
 
 # Copyright 2023 OmniOS Community Edition (OmniOSce) Association.
 
-license COPYING license=BSD-LLNL
+license COPYING license=modified-BSD
 
 dir group=bin mode=0755 owner=root path=usr/sfw/bin
 link path=usr/sfw/bin/flex target=../../bin/flex

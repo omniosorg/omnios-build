@@ -1,11 +1,11 @@
 | Package | Version | Link | Notes |
 | :------ | :------ | :--- | :---- |
 | archiver/gnu-tar			| 1.35			| https://ftp.gnu.org/gnu/tar/ https://www.gnu.org/software/tar/
-| compress/7zip				| 26.05			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
+| compress/7zip				| 26.06			| https://github.com/ip7z/7zip/releases https://www.7-zip.org/download.html
 | compress/brotli			| 1.2.1			| https://github.com/google/brotli/releases
 | compress/bzip2			| 1.0.8			| https://sourceware.org/pub/bzip2/
 | compress/gzip				| 1.15			| https://ftp.gnu.org/gnu/gzip/
-| compress/lz4				| 1.11.0		| https://github.com/lz4/lz4/releases
+| compress/lz4				| 1.11.1		| https://github.com/lz4/lz4/releases
 | compress/lzip				| 1.26			| https://download.savannah.gnu.org/releases/lzip/
 | compress/unzip			| 6.0			| https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/ https://www.cvedetails.com/vulnerability-list/vendor_id-816/product_id-1395/Info-zip-Unzip.html
 | compress/xz				| 5.8.4			| https://tukaani.org/xz/
@@ -14,7 +14,7 @@
 | data/iso-codes			| 4.20.1		| https://salsa.debian.org/api/v4/projects/iso-codes-team%2Fiso-codes/repository/tags https://salsa.debian.org/iso-codes-team/iso-codes/tags
 | database/sqlite-3			| 3540100		| https://www.sqlite.org/download.html
 | developer/build/autoconf		| 2.73			| https://ftp.gnu.org/gnu/autoconf/
-| developer/build/automake		| 1.19			| https://ftp.gnu.org/gnu/automake/
+| developer/build/automake		| 1.20			| https://ftp.gnu.org/gnu/automake/
 | developer/build/gnu-make		| 4.4.1			| https://ftp.gnu.org/gnu/make/
 | developer/build/libtool		| 2.6.2			| https://www.gnu.org/software/libtool/
 | developer/dtc				| 1.8.1			| https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
@@ -23,7 +23,7 @@
 | developer/gcc13			| 13.4			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc14			| 14.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc15			| 15.2			| https://ftp.gnu.org/gnu/gcc/
-| developer/lexer/flex			| 2.6.4			| https://github.com/westes/flex/releases
+| developer/lexer/flex			| 2.6.5			| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.21		| https://ftp.gnu.org/gnu/m4/
 | developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
@@ -94,7 +94,7 @@
 | shell/tcsh				| 6.24.16		| https://github.com/tcsh-org/tcsh/tags
 | shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
-| system/data/urxvt-terminfo		| 9.31			| http://dist.schmorp.de/rxvt-unicode/
+| system/data/urxvt-terminfo		| 9.32			| http://dist.schmorp.de/rxvt-unicode/
 | system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.116			| https://dbus.freedesktop.org/releases/dbus-glib/
 | system/library/mozilla-nss		| 3.133			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
@@ -117,7 +117,7 @@
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
 | text/gnu-patch			| 2.8.1			| https://ftp.gnu.org/gnu/patch/
 | text/gnu-sed				| 4.10			| https://ftp.gnu.org/gnu/sed/ https://savannah.gnu.org/news/?group=sed
-| text/groff				| 1.24.2		| https://ftp.gnu.org/gnu/groff/
+| text/groff				| 1.25.0		| https://ftp.gnu.org/gnu/groff/
 | text/less				| 710			| http://www.greenwoodsoftware.com/less/download.html
 | web/curl				| 8.23.0		| https://curl.haxx.se/download.html
 | web/wget				| 1.25.0		| https://ftp.gnu.org/gnu/wget/

@@ -1,309 +1,236 @@
-libtool: link: gcc -m64 -m64 -o alloc_extra alloc_extra.o  -lm
-libtool: link: gcc -m64 -m64 -o array_nr array_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o array_r array_r.o  -lm
-libtool: link: gcc -m64 -m64 -o basic_nr basic_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o basic_r basic_r.o  -lm
-updating bison_nr_parser.h
-libtool: link: gcc -m64 -m64 -o bison_nr bison_nr_scanner.o bison_nr_parser.o bison_nr_main.o  -lm
-updating bison_yylloc_parser.h
-libtool: link: gcc -m64 -m64 -o bison_yylloc bison_yylloc_scanner.o bison_yylloc_parser.o bison_yylloc_main.o  -lm
-updating bison_yylval_parser.h
-libtool: link: gcc -m64 -m64 -o bison_yylval bison_yylval_scanner.o bison_yylval_parser.o bison_yylval_main.o  -lm
-libtool: link: g++ -m64 -m64 -o c_cxx_nr c_cxx_nr.o  -lm
-libtool: link: g++ -m64 -m64 -o c_cxx_r c_cxx_r.o  -lm
-libtool: link: gcc -m64 -m64 -o ccl ccl.o  -lm
-libtool: link: g++ -m64 -m64 -o cxx_basic cxx_basic.o  -lm
-libtool: link: g++ -m64 -m64 -o cxx_multiple_scanners cxx_multiple_scanners_main.o cxx_multiple_scanners_1.o cxx_multiple_scanners_2.o  -lm
-libtool: link: g++ -m64 -m64 -o cxx_restart cxx_restart.o  -lm
-libtool: link: gcc -m64 -m64 -o debug_nr debug_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o debug_r debug_r.o  -lm
-libtool: link: gcc -m64 -m64 -o extended extended.o  -lm
-libtool: link: gcc -m64 -m64 -o header_nr header_nr_scanner.o header_nr_main.o  -lm
-libtool: link: gcc -m64 -m64 -o header_r header_r_scanner.o header_r_main.o  -lm
-libtool: link: gcc -m64 -m64 -o mem_nr mem_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o mem_r mem_r.o  -lm
-libtool: link: gcc -m64 -m64 -o multiple_scanners_nr multiple_scanners_nr_main.o multiple_scanners_nr_1.o multiple_scanners_nr_2.o  -lm
-libtool: link: gcc -m64 -m64 -o multiple_scanners_r multiple_scanners_r_main.o multiple_scanners_r_1.o multiple_scanners_r_2.o  -lm
-libtool: link: gcc -m64 -m64 -o posix posix.o  -lm
-libtool: link: gcc -m64 -m64 -o posixly_correct posixly_correct.o  -lm
-libtool: link: gcc -m64 -m64 -o prefix_nr prefix_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o prefix_r prefix_r.o  -lm
-libtool: link: gcc -m64 -m64 -o quote_in_comment quote_in_comment.o  -lm
-libtool: link: gcc -m64 -m64 -o quotes quotes.o  -lm
-libtool: link: gcc -m64 -m64 -o string_nr string_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o string_r string_r.o  -lm
-libtool: link: gcc -m64 -m64 -o top top.o top_main.o  -lm
-libtool: link: gcc -m64 -m64 -o yyextra yyextra.o  -lm
-libtool: link: gcc -m64 -m64 -o reject_nr.reject reject_nr.reject.o 
-libtool: link: gcc -m64 -m64 -o reject_r.reject reject_r.reject.o 
-libtool: link: gcc -m64 -m64 -o reject_ver.table reject_ver.table.o 
-libtool: link: gcc -m64 -m64 -o reject_ser.table reject_ser.table.o 
-libtool: link: gcc -m64 -m64 -o include_by_buffer.direct include_by_buffer.direct.o  -lm
-libtool: link: gcc -m64 -m64 -o include_by_push.direct include_by_push.direct.o  -lm
-libtool: link: gcc -m64 -m64 -o include_by_reentrant.direct include_by_reentrant.direct.o  -lm
-libtool: link: gcc -m64 -m64 -o rescan_nr.direct rescan_nr.direct.o  -lm
-libtool: link: gcc -m64 -m64 -o rescan_r.direct rescan_r.direct.o  -lm
-libtool: link: g++ -m64 -m64 -o cxx_yywrap.i3 cxx_yywrap.o  -lm
-libtool: link: gcc -m64 -m64 -o pthread.pthread pthread.o  -lpthread -lm
-libtool: link: gcc -m64 -m64 -o lineno_nr.one lineno_nr.o  -lm
-libtool: link: gcc -m64 -m64 -o lineno_r.one lineno_r.o  -lm
-libtool: link: gcc -m64 -m64 -o lineno_trailing.one lineno_trailing.o  -lm
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Ca.opt -o tableopts_opt_nr-Ca.opt tableopts_opt_nr-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Ce.opt -o tableopts_opt_nr-Ce.opt tableopts_opt_nr-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Cf.opt -o tableopts_opt_nr-Cf.opt tableopts_opt_nr-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-CF.opt -o tableopts_opt_nr-CF.opt tableopts_opt_nr-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Cm.opt -o tableopts_opt_nr-Cm.opt tableopts_opt_nr-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Cem.opt -o tableopts_opt_nr-Cem.opt tableopts_opt_nr-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Cae.opt -o tableopts_opt_nr-Cae.opt tableopts_opt_nr-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Caef.opt -o tableopts_opt_nr-Caef.opt tableopts_opt_nr-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-CaeF.opt -o tableopts_opt_nr-CaeF.opt tableopts_opt_nr-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Cam.opt -o tableopts_opt_nr-Cam.opt tableopts_opt_nr-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_nr-Caem.opt -o tableopts_opt_nr-Caem.opt tableopts_opt_nr-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Ca.opt -o tableopts_opt_r-Ca.opt tableopts_opt_r-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Ce.opt -o tableopts_opt_r-Ce.opt tableopts_opt_r-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Cf.opt -o tableopts_opt_r-Cf.opt tableopts_opt_r-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-CF.opt -o tableopts_opt_r-CF.opt tableopts_opt_r-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Cm.opt -o tableopts_opt_r-Cm.opt tableopts_opt_r-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Cem.opt -o tableopts_opt_r-Cem.opt tableopts_opt_r-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Cae.opt -o tableopts_opt_r-Cae.opt tableopts_opt_r-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Caef.opt -o tableopts_opt_r-Caef.opt tableopts_opt_r-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-CaeF.opt -o tableopts_opt_r-CaeF.opt tableopts_opt_r-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Cam.opt -o tableopts_opt_r-Cam.opt tableopts_opt_r-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_opt_r-Caem.opt -o tableopts_opt_r-Caem.opt tableopts_opt_r-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Ca.ser -o tableopts_ser_nr-Ca.ser tableopts_ser_nr-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Ce.ser -o tableopts_ser_nr-Ce.ser tableopts_ser_nr-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Cf.ser -o tableopts_ser_nr-Cf.ser tableopts_ser_nr-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-CF.ser -o tableopts_ser_nr-CF.ser tableopts_ser_nr-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Cm.ser -o tableopts_ser_nr-Cm.ser tableopts_ser_nr-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Cem.ser -o tableopts_ser_nr-Cem.ser tableopts_ser_nr-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Cae.ser -o tableopts_ser_nr-Cae.ser tableopts_ser_nr-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Caef.ser -o tableopts_ser_nr-Caef.ser tableopts_ser_nr-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-CaeF.ser -o tableopts_ser_nr-CaeF.ser tableopts_ser_nr-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Cam.ser -o tableopts_ser_nr-Cam.ser tableopts_ser_nr-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_nr-Caem.ser -o tableopts_ser_nr-Caem.ser tableopts_ser_nr-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Ca.ser -o tableopts_ser_r-Ca.ser tableopts_ser_r-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Ce.ser -o tableopts_ser_r-Ce.ser tableopts_ser_r-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Cf.ser -o tableopts_ser_r-Cf.ser tableopts_ser_r-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-CF.ser -o tableopts_ser_r-CF.ser tableopts_ser_r-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Cm.ser -o tableopts_ser_r-Cm.ser tableopts_ser_r-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Cem.ser -o tableopts_ser_r-Cem.ser tableopts_ser_r-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Cae.ser -o tableopts_ser_r-Cae.ser tableopts_ser_r-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Caef.ser -o tableopts_ser_r-Caef.ser tableopts_ser_r-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-CaeF.ser -o tableopts_ser_r-CaeF.ser tableopts_ser_r-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Cam.ser -o tableopts_ser_r-Cam.ser tableopts_ser_r-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ser_r-Caem.ser -o tableopts_ser_r-Caem.ser tableopts_ser_r-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Ca.ver -o tableopts_ver_nr-Ca.ver tableopts_ver_nr-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Ce.ver -o tableopts_ver_nr-Ce.ver tableopts_ver_nr-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Cf.ver -o tableopts_ver_nr-Cf.ver tableopts_ver_nr-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-CF.ver -o tableopts_ver_nr-CF.ver tableopts_ver_nr-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Cm.ver -o tableopts_ver_nr-Cm.ver tableopts_ver_nr-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Cem.ver -o tableopts_ver_nr-Cem.ver tableopts_ver_nr-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Cae.ver -o tableopts_ver_nr-Cae.ver tableopts_ver_nr-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Caef.ver -o tableopts_ver_nr-Caef.ver tableopts_ver_nr-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-CaeF.ver -o tableopts_ver_nr-CaeF.ver tableopts_ver_nr-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Cam.ver -o tableopts_ver_nr-Cam.ver tableopts_ver_nr-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_nr-Caem.ver -o tableopts_ver_nr-Caem.ver tableopts_ver_nr-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Ca.ver -o tableopts_ver_r-Ca.ver tableopts_ver_r-Ca.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Ce.ver -o tableopts_ver_r-Ce.ver tableopts_ver_r-Ce.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Cf.ver -o tableopts_ver_r-Cf.ver tableopts_ver_r-Cf.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-CF.ver -o tableopts_ver_r-CF.ver tableopts_ver_r-CF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Cm.ver -o tableopts_ver_r-Cm.ver tableopts_ver_r-Cm.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Cem.ver -o tableopts_ver_r-Cem.ver tableopts_ver_r-Cem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Cae.ver -o tableopts_ver_r-Cae.ver tableopts_ver_r-Cae.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Caef.ver -o tableopts_ver_r-Caef.ver tableopts_ver_r-Caef.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-CaeF.ver -o tableopts_ver_r-CaeF.ver tableopts_ver_r-CaeF.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Cam.ver -o tableopts_ver_r-Cam.ver tableopts_ver_r-Cam.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-libtool: link: gcc -m64 -m64 -o tableopts_ver_r-Caem.ver -o tableopts_ver_r-Caem.ver tableopts_ver_r-Caem.o 
-ld: warning: output object option (-o, --output) appears more than once, first setting taken
-PASS: alloc_extra
 PASS: array_nr
-PASS: array_r
 PASS: basic_nr
+PASS: bol_nr
+PASS: ccl_nr
+PASS: debug_nr
+PASS: defaultrule_nr
+PASS: extended_nr
+PASS: fixedtrailing_nr
+PASS: flexname_nr
+PASS: lexcompat_nr
+PASS: lineno_nr
+PASS: posix_nr
+PASS: posixlycorrect_nr
+PASS: preposix_nr
+PASS: quoteincomment_nr
+PASS: reject_nr
+PASS: tableopts_nr
+PASS: vartrailing_nr
+PASS: yyless_nr
+PASS: yymore_nr
+PASS: yymorearray_nr
+PASS: yymorearraybol_nr
+PASS: yymorearrayless_nr
+PASS: yymorearrayrefill_nr
+PASS: yymorearrayswitch_nr
+PASS: yyunput_nr
+PASS: tableopts_opt_nr-Ca.opt
+PASS: tableopts_opt_nr-Ce.opt
+PASS: tableopts_opt_nr-Cf.opt
+PASS: tableopts_opt_nr-CxF.opt
+PASS: tableopts_opt_nr-Cm.opt
+PASS: tableopts_opt_nr-Cem.opt
+PASS: tableopts_opt_nr-Cae.opt
+PASS: tableopts_opt_nr-Caef.opt
+PASS: tableopts_opt_nr-CaexF.opt
+PASS: tableopts_opt_nr-Cam.opt
+PASS: tableopts_opt_nr-Caem.opt
+PASS: tableopts_ser_nr-Ca.ser
+PASS: tableopts_ser_nr-Ce.ser
+PASS: tableopts_ser_nr-Cf.ser
+PASS: tableopts_ser_nr-CxF.ser
+PASS: tableopts_ser_nr-Cm.ser
+PASS: tableopts_ser_nr-Cem.ser
+PASS: tableopts_ser_nr-Cae.ser
+PASS: tableopts_ser_nr-Caef.ser
+PASS: tableopts_ser_nr-CaexF.ser
+PASS: tableopts_ser_nr-Cam.ser
+PASS: tableopts_ser_nr-Caem.ser
+PASS: tableopts_ver_nr-Ca.ver
+PASS: tableopts_ver_nr-Ce.ver
+PASS: tableopts_ver_nr-Cf.ver
+PASS: tableopts_ver_nr-CxF.ver
+PASS: tableopts_ver_nr-Cm.ver
+PASS: tableopts_ver_nr-Cem.ver
+PASS: tableopts_ver_nr-Cae.ver
+PASS: tableopts_ver_nr-Caef.ver
+PASS: tableopts_ver_nr-CaexF.ver
+PASS: tableopts_ver_nr-Cam.ver
+PASS: tableopts_ver_nr-Caem.ver
+PASS: array_r
 PASS: basic_r
+PASS: bol_r
+PASS: ccl_r
+PASS: debug_r
+PASS: defaultrule_r
+PASS: extended_r
+PASS: fixedtrailing_r
+PASS: flexname_r
+PASS: lineno_r
+PASS: posix_r
+PASS: preposix_r
+PASS: quoteincomment_r
+PASS: reject_r
+PASS: tableopts_r
+PASS: vartrailing_r
+PASS: yyless_r
+PASS: yymore_r
+PASS: yymorearray_r
+PASS: yymorearraybol_r
+PASS: yymorearrayless_r
+PASS: yymorearrayrefill_r
+PASS: yymorearrayswitch_r
+PASS: yyunput_r
+PASS: tableopts_opt_r-Ca.opt
+PASS: tableopts_opt_r-Ce.opt
+PASS: tableopts_opt_r-Cf.opt
+PASS: tableopts_opt_r-CxF.opt
+PASS: tableopts_opt_r-Cm.opt
+PASS: tableopts_opt_r-Cem.opt
+PASS: tableopts_opt_r-Cae.opt
+PASS: tableopts_opt_r-Caef.opt
+PASS: tableopts_opt_r-CaexF.opt
+PASS: tableopts_opt_r-Cam.opt
+PASS: tableopts_opt_r-Caem.opt
+PASS: tableopts_ser_r-Ca.ser
+PASS: tableopts_ser_r-Ce.ser
+PASS: tableopts_ser_r-Cf.ser
+PASS: tableopts_ser_r-CxF.ser
+PASS: tableopts_ser_r-Cm.ser
+PASS: tableopts_ser_r-Cem.ser
+PASS: tableopts_ser_r-Cae.ser
+PASS: tableopts_ser_r-Caef.ser
+PASS: tableopts_ser_r-CaexF.ser
+PASS: tableopts_ser_r-Cam.ser
+PASS: tableopts_ser_r-Caem.ser
+PASS: tableopts_ver_r-Ca.ver
+PASS: tableopts_ver_r-Ce.ver
+PASS: tableopts_ver_r-Cf.ver
+PASS: tableopts_ver_r-CxF.ver
+PASS: tableopts_ver_r-Cm.ver
+PASS: tableopts_ver_r-Cem.ver
+PASS: tableopts_ver_r-Cae.ver
+PASS: tableopts_ver_r-Caef.ver
+PASS: tableopts_ver_r-CaexF.ver
+PASS: tableopts_ver_r-Cam.ver
+PASS: tableopts_ver_r-Caem.ver
+PASS: array_c99
+PASS: basic_c99
+PASS: bol_c99
+PASS: ccl_c99
+PASS: debug_c99
+PASS: defaultrule_c99
+PASS: extended_c99
+PASS: fixedtrailing_c99
+PASS: flexname_c99
+PASS: lineno_c99
+PASS: posix_c99
+PASS: preposix_c99
+PASS: quoteincomment_c99
+PASS: reject_c99
+PASS: tableopts_c99
+PASS: vartrailing_c99
+PASS: yyless_c99
+PASS: yymore_c99
+PASS: yymorearray_c99
+PASS: yymorearraybol_c99
+PASS: yymorearrayless_c99
+PASS: yymorearrayrefill_c99
+PASS: yymorearrayswitch_c99
+PASS: yyunput_c99
+PASS: tableopts_opt_c99-Ca.opt
+PASS: tableopts_opt_c99-Ce.opt
+PASS: tableopts_opt_c99-Cf.opt
+PASS: tableopts_opt_c99-CxF.opt
+PASS: tableopts_opt_c99-Cm.opt
+PASS: tableopts_opt_c99-Cem.opt
+PASS: tableopts_opt_c99-Cae.opt
+PASS: tableopts_opt_c99-Caef.opt
+PASS: tableopts_opt_c99-CaexF.opt
+PASS: tableopts_opt_c99-Cam.opt
+PASS: tableopts_opt_c99-Caem.opt
+PASS: tableopts_ser_c99-Ca.ser
+PASS: tableopts_ser_c99-Ce.ser
+PASS: tableopts_ser_c99-Cf.ser
+PASS: tableopts_ser_c99-CxF.ser
+PASS: tableopts_ser_c99-Cm.ser
+PASS: tableopts_ser_c99-Cem.ser
+PASS: tableopts_ser_c99-Cae.ser
+PASS: tableopts_ser_c99-Caef.ser
+PASS: tableopts_ser_c99-CaexF.ser
+PASS: tableopts_ser_c99-Cam.ser
+PASS: tableopts_ser_c99-Caem.ser
+PASS: tableopts_ver_c99-Ca.ver
+PASS: tableopts_ver_c99-Ce.ver
+PASS: tableopts_ver_c99-Cf.ver
+PASS: tableopts_ver_c99-CxF.ver
+PASS: tableopts_ver_c99-Cm.ver
+PASS: tableopts_ver_c99-Cem.ver
+PASS: tableopts_ver_c99-Cae.ver
+PASS: tableopts_ver_c99-Caef.ver
+PASS: tableopts_ver_c99-CaexF.ver
+PASS: tableopts_ver_c99-Cam.ver
+PASS: tableopts_ver_c99-Caem.ver
+PASS: test-yydecl-nr.sh
+PASS: test-yydecl-r.sh
+PASS: test-yydecl-c99.sh
+PASS: alloc_extra_r
+PASS: alloc_extra_c99
 PASS: bison_nr
 PASS: bison_yylloc
 PASS: bison_yylval
-libtool: link: g++ -m64 -m64 -o c_cxx_nr c_cxx_nr.o  -lm
 PASS: c_cxx_nr
-libtool: link: g++ -m64 -m64 -o c_cxx_r c_cxx_r.o  -lm
 PASS: c_cxx_r
-PASS: ccl
 PASS: cxx_basic
 PASS: cxx_multiple_scanners
+PASS: cxx_reject
 PASS: cxx_restart
-PASS: debug_nr
-PASS: debug_r
-PASS: extended
+PASS: echo_override_r
 PASS: header_nr
 PASS: header_r
+PASS: lineno_generated
 PASS: mem_nr
 PASS: mem_r
+PASS: mem_c99
 PASS: multiple_scanners_nr
 PASS: multiple_scanners_r
-PASS: posix
-PASS: posixly_correct
+PASS: no_input_unput_r
 PASS: prefix_nr
 PASS: prefix_r
-PASS: quote_in_comment
+PASS: prefix_c99
 PASS: quotes
+PASS: scan_length_c99
 PASS: string_nr
 PASS: string_r
+PASS: string_c99
+PASS: tables_fload_bad
+PASS: tables_verify_bad
 PASS: top
-PASS: yyextra
-PASS: reject_nr.reject
-PASS: reject_r.reject
-PASS: reject_ver.table
-PASS: reject_ser.table
+PASS: user_input_r
+PASS: yyextra_nr
+PASS: yyextra_c99
 PASS: include_by_buffer.direct
 PASS: include_by_push.direct
 PASS: include_by_reentrant.direct
 PASS: rescan_nr.direct
 PASS: rescan_r.direct
+PASS: scan_length.direct
+PASS: state_buf.direct
+PASS: state_buf_multiple.direct
+PASS: state_buf_push.direct
 PASS: cxx_yywrap.i3
+PASS: yywrap_r.i3
 PASS: pthread.pthread
-PASS: lineno_nr.one
-PASS: lineno_r.one
-PASS: lineno_trailing.one
-PASS: tableopts_opt_nr-Ca.opt
-PASS: tableopts_opt_nr-Ce.opt
-PASS: tableopts_opt_nr-Cf.opt
-PASS: tableopts_opt_nr-CF.opt
-PASS: tableopts_opt_nr-Cm.opt
-PASS: tableopts_opt_nr-Cem.opt
-PASS: tableopts_opt_nr-Cae.opt
-PASS: tableopts_opt_nr-Caef.opt
-PASS: tableopts_opt_nr-CaeF.opt
-PASS: tableopts_opt_nr-Cam.opt
-PASS: tableopts_opt_nr-Caem.opt
-PASS: tableopts_opt_r-Ca.opt
-PASS: tableopts_opt_r-Ce.opt
-PASS: tableopts_opt_r-Cf.opt
-PASS: tableopts_opt_r-CF.opt
-PASS: tableopts_opt_r-Cm.opt
-PASS: tableopts_opt_r-Cem.opt
-PASS: tableopts_opt_r-Cae.opt
-PASS: tableopts_opt_r-Caef.opt
-PASS: tableopts_opt_r-CaeF.opt
-PASS: tableopts_opt_r-Cam.opt
-PASS: tableopts_opt_r-Caem.opt
-PASS: tableopts_ser_nr-Ca.ser
-PASS: tableopts_ser_nr-Ce.ser
-PASS: tableopts_ser_nr-Cf.ser
-PASS: tableopts_ser_nr-CF.ser
-PASS: tableopts_ser_nr-Cm.ser
-PASS: tableopts_ser_nr-Cem.ser
-PASS: tableopts_ser_nr-Cae.ser
-PASS: tableopts_ser_nr-Caef.ser
-PASS: tableopts_ser_nr-CaeF.ser
-PASS: tableopts_ser_nr-Cam.ser
-PASS: tableopts_ser_nr-Caem.ser
-PASS: tableopts_ser_r-Ca.ser
-PASS: tableopts_ser_r-Ce.ser
-PASS: tableopts_ser_r-Cf.ser
-PASS: tableopts_ser_r-CF.ser
-PASS: tableopts_ser_r-Cm.ser
-PASS: tableopts_ser_r-Cem.ser
-PASS: tableopts_ser_r-Cae.ser
-PASS: tableopts_ser_r-Caef.ser
-PASS: tableopts_ser_r-CaeF.ser
-PASS: tableopts_ser_r-Cam.ser
-PASS: tableopts_ser_r-Caem.ser
-PASS: tableopts_ver_nr-Ca.ver
-PASS: tableopts_ver_nr-Ce.ver
-PASS: tableopts_ver_nr-Cf.ver
-PASS: tableopts_ver_nr-CF.ver
-PASS: tableopts_ver_nr-Cm.ver
-PASS: tableopts_ver_nr-Cem.ver
-PASS: tableopts_ver_nr-Cae.ver
-PASS: tableopts_ver_nr-Caef.ver
-PASS: tableopts_ver_nr-CaeF.ver
-PASS: tableopts_ver_nr-Cam.ver
-PASS: tableopts_ver_nr-Caem.ver
-PASS: tableopts_ver_r-Ca.ver
-PASS: tableopts_ver_r-Ce.ver
-PASS: tableopts_ver_r-Cf.ver
-PASS: tableopts_ver_r-CF.ver
-PASS: tableopts_ver_r-Cm.ver
-PASS: tableopts_ver_r-Cem.ver
-PASS: tableopts_ver_r-Cae.ver
-PASS: tableopts_ver_r-Caef.ver
-PASS: tableopts_ver_r-CaeF.ver
-PASS: tableopts_ver_r-Cam.ver
-PASS: tableopts_ver_r-Caem.ver
 PASS: options.cn
-============================================================================
-Testsuite summary for the fast lexical analyser generator 2.6.4
-============================================================================
-# TOTAL: 114
-# PASS:  114
+PASS: skel_option.skel
+PASS: m4_injection.inj
+PASS: header_file_error.hfe
+PASS: fallthrough.ft
+Testsuite summary for the fast lexical analyser generator 2.6.5
+# TOTAL: 228
+# PASS:  228
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0
 # XPASS: 0
 # ERROR: 0
-============================================================================

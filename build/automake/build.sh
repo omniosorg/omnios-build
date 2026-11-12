@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=automake
-VER=1.19
+VER=1.20
 PKG=developer/build/automake
 SUMMARY="GNU Automake"
 DESC="GNU Automake - A Makefile generator"

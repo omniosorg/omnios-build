@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=groff
-VER=1.24.2
+VER=1.25.0
 PKG=text/groff
 SUMMARY="GNU troff"
 DESC="GNU Troff typesetting package"
