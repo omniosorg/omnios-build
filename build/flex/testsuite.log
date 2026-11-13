@@ -179,15 +179,23 @@ PASS: alloc_extra_c99
 PASS: bison_nr
 PASS: bison_yylloc
 PASS: bison_yylval
+PASS: at_bol_member
+PASS: buffer_typedef_legacy
 PASS: c_cxx_nr
 PASS: c_cxx_r
 PASS: cxx_basic
+PASS: cxx_buffer_stack
+PASS: cxx_buffer_typedef_legacy
+PASS: cxx_legacy_members
 PASS: cxx_multiple_scanners
 PASS: cxx_reject
 PASS: cxx_restart
 PASS: echo_override_r
+PASS: flex_debug_nr
+PASS: flex_debug_prefix_nr
 PASS: header_nr
 PASS: header_r
+PASS: legacy_defines_nr
 PASS: lineno_generated
 PASS: mem_nr
 PASS: mem_r
@@ -226,9 +234,10 @@ PASS: skel_option.skel
 PASS: m4_injection.inj
 PASS: header_file_error.hfe
 PASS: fallthrough.ft
-Testsuite summary for the fast lexical analyser generator 2.6.5
-# TOTAL: 228
-# PASS:  228
+PASS: bufsiz.bs
+Testsuite summary for the fast lexical analyser generator 2.6.11
+# TOTAL: 237
+# PASS:  237
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0
