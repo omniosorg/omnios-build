@@ -67,6 +67,7 @@ configure_arch() {
     [ $arch = amd64 ] && SSLPLAT=solaris64-x86_64-gcc || SSLPLAT=solaris-x86-gcc
     logmsg -n "--- Configure $arch ($SSLPLAT)"
     export __CNF_CFLAGS="${OPENSSL_CFLAGS[$arch]}"
+    export __CNF_CPPFLAGS="${CPPFLAGS[0]} ${CPPFLAGS[$arch]}"
     logcmd ./Configure $SSLPLAT \
         ${OPENSSL_CONFIG_OPTS} ${OPENSSL_CONFIG_OPTS[$arch]} \
         || logerr "Failed to run configure"

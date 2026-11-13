@@ -63,6 +63,10 @@ pre_configure() {
     MAKE_ARGS+=" CC=$CC"
     MAKE_ARGS+=" CXX=$CXX"
 
+    # gcc 16 emits false positive -Warray-bounds warnings for call paths that
+    # it has speculatively devirtualised and that are never taken.
+    MAKE_ARGS+=" CXX_WARN_FLAGS=-Wno-error=array-bounds"
+
     # There is no real configure program
     false
 }

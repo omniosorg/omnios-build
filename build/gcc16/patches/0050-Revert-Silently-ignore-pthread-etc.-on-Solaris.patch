@@ -1,0 +1,106 @@
+From 13eb71bd581291a76ca03950a96adcdaa47e1f9e Mon Sep 17 00:00:00 2001
+From: Andy Fiddaman <illumos@fiddaman.net>
+Date: Fri, 13 Nov 2026 15:00:25 +0000
+Subject: Revert "Silently ignore -pthread etc. on Solaris"
+
+This reverts commit 832de2f102f for illumos.
+
+The illumos <errno.h> only maps errno to the per-thread (*(___errno()))
+when _REENTRANT or _TS_ERRNO is defined, or when _POSIX_C_SOURCE selects
+POSIX.1c or later. Software that relies on -pthread for this would
+otherwise bind to the process-global errno with no diagnostic. Other
+headers such as <stdio.h> and <netdb.h> still test _REENTRANT too.
+Keep defining _REENTRANT and _PTHREADS for -pthread and -pthreads until
+illumos changes.
+---
+ gcc/config/i386/sol2.h |  4 ++++
+ gcc/config/sol2.h      |  4 ++++
+ gcc/config/sol2.opt    |  4 ++--
+ gcc/doc/invoke.texi    | 13 ++++++++++++-
+ 4 files changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/gcc/config/i386/sol2.h b/gcc/config/i386/sol2.h
+index 83074b2eff7..1cac05c50d9 100644
+--- a/gcc/config/i386/sol2.h
++++ b/gcc/config/i386/sol2.h
+@@ -51,6 +51,9 @@ along with GCC; see the file COPYING3.  If not see
+ #undef TARGET_SUN_TLS
+ #define TARGET_SUN_TLS 1
+ 
++#undef CPP_SPEC
++#define CPP_SPEC "%(cpp_subtarget)"
++
+ #undef CC1_SPEC
+ #define CC1_SPEC "%(cc1_cpu) " ASAN_CC1_SPEC SCTF_CC1_SPEC \
+   " %{mx32:%e-mx32 is not supported on Solaris}"
+@@ -96,6 +99,7 @@ along with GCC; see the file COPYING3.  If not see
+    %{mpc80:crtprec80.o%s}"
+ 
+ #define SUBTARGET_CPU_EXTRA_SPECS \
++  { "cpp_subtarget",	 CPP_SUBTARGET_SPEC },		\
+   { "asm_cpu",		 ASM_CPU_SPEC },		\
+   { "asm_cpu_default",	 ASM_CPU_DEFAULT_SPEC },	\
+ 
+diff --git a/gcc/config/sol2.h b/gcc/config/sol2.h
+index 1f2438e7e1b..f475a23c951 100644
+--- a/gcc/config/sol2.h
++++ b/gcc/config/sol2.h
+@@ -81,6 +81,10 @@ along with GCC; see the file COPYING3.  If not see
+ #define INTPTR_TYPE (LONG_TYPE_SIZE == 64 ? "long int" : "int")
+ #define UINTPTR_TYPE (LONG_TYPE_SIZE == 64 ? "long unsigned int" : "unsigned int")
+ 
++#undef CPP_SUBTARGET_SPEC
++#define CPP_SUBTARGET_SPEC "\
++%{pthreads|pthread:-D_REENTRANT -D_PTHREADS}"
++
+ /* Names to predefine in the preprocessor for this target machine.  */
+ #define TARGET_SUB_OS_CPP_BUILTINS()
+ #define TARGET_OS_CPP_BUILTINS()			\
+diff --git a/gcc/config/sol2.opt b/gcc/config/sol2.opt
+index e8b44d2917e..c0dbb524a00 100644
+--- a/gcc/config/sol2.opt
++++ b/gcc/config/sol2.opt
+@@ -40,10 +40,10 @@ Target
+ Pass -z text to linker.
+ 
+ pthread
+-Ignore
++Driver
+ 
+ pthreads
+-Ignore
++Driver
+ 
+ rdynamic
+ Driver
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 3bba2bab7e3..3e6f88eada8 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -1468,7 +1468,7 @@ See RS/6000 and PowerPC Options.
+ 
+ @emph{Solaris 2 Options} (@ref{Solaris 2 Options})
+ @gccoptlist{-mclear-hwcap  -mno-clear-hwcap  -mimpure-text  -mno-impure-text
+--gsctf}
++-gsctf  -pthread  -pthreads}
+ 
+ @emph{SPARC Options} (@ref{SPARC Options})
+ @gccoptlist{-mcpu=@var{cpu-type}
+@@ -33920,6 +33920,17 @@ Generate Solaris CTF.  Needs to be used both for compilation and
+ linking.  See @command{ctf(7)} for more information.  This is only
+ supported since Solaris 11.4 SRU 84 where the necessary toolchain
+ support was added.
++
++@opindex pthread
++@opindex pthreads
++@item -pthread
++@itemx -pthreads
++On Solaris targets, these both options define the preprocessor symbols
++@code{_REENTRANT} and @code{_PTHREADS}.  In modern versions of Solaris
++these symbols are no longer used in system headers and these options are
++unnecessary unless user code references them.  Additionally, since
++POSIX thread support is provided directly by the Solaris C library, it is
++not necessary to use @option{-pthread} for linking.
+ @end table
+ 
+ @node SPARC Options
