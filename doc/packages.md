@@ -23,7 +23,7 @@
 | developer/gcc14			| 14.4			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc15			| 15.3			| https://ftp.gnu.org/gnu/gcc/
 | developer/gcc16			| 16.2			| https://ftp.gnu.org/gnu/gcc/
-| developer/lexer/flex			| 2.6.5			| https://github.com/westes/flex/releases
+| developer/lexer/flex			| 2.6.11		| https://github.com/westes/flex/releases
 | developer/macro/gnu-m4		| 1.4.21		| https://ftp.gnu.org/gnu/m4/
 | developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
