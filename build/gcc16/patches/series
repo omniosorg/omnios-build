@@ -46,3 +46,5 @@
 0047-Revert-Change-int8_t-to-signed-char-on-Solaris-PR113.patch
 0048-i386-testsuite-honour-fomit-frame-pointer-on-illumos.patch
 0049-OOCE-Adjust-default-library-paths-for-OmniOS.patch
+0050-Revert-Silently-ignore-pthread-etc.-on-Solaris.patch
+0051-libgfortran-Fix-libcaf_shmem-build-on-Solaris.patch

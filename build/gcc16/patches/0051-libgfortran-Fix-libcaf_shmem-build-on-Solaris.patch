@@ -1,0 +1,105 @@
+From 5b1110e7645a031e5f6a4670716e6664b441a0c8 Mon Sep 17 00:00:00 2001
+From: Rainer Orth <ro@CeBiTec.Uni-Bielefeld.DE>
+Date: Sat, 16 May 2026 09:07:00 +0200
+Subject: libgfortran: Fix libcaf_shmem build on Solaris
+
+libcaf_shmem doesn't currently build on Solaris.  Previously this went
+unnoticed because the AX_PTHREADS autoconf macro erroneously didn't
+detect pthreads support.  Once this is fixed, compilation fails:
+
+In file included from caf/shmem/supervisor.h:35,
+                 from caf/shmem/alloc.c:31:
+caf/shmem/sync.h:46:25: error: conflicting types for 'lock_t'; have 'caf_shmem_mutex' {aka 'struct _pthread_mutex'}
+   46 | typedef caf_shmem_mutex lock_t;
+      |                         ^~~~~~
+In file included from /usr/include/sys/machtypes.h:12,
+                 from /usr/include/sys/types.h:17,
+                 from caf/shmem/thread_support.h:33,
+                 from caf/shmem/shared_memory.h:28,
+                 from caf/shmem/allocator.h:31,
+                 from caf/shmem/alloc.h:28,
+                 from caf/shmem/alloc.c:29:
+/usr/include/ia32/sys/machtypes.h:50:25: note: previous declaration of 'lock_t' with type 'lock_t' {aka 'unsigned int'}
+
+The lock_t definition in <ia32/sys/machtypes.h> is benign: POSIX.1
+reserves the _t suffix for the implementation.  At the very least the
+code should use a properly prefixed type instead, which this patch does
+by changing the code to use caf_shmem_lock_t instead.
+
+Bootstrapped without regressions on i386-pc-solaris2.11,
+sparc-sun-solaris2.11, and x86_64-pc-linux-gnu.
+
+2026-05-14  Rainer Orth  <ro@CeBiTec.Uni-Bielefeld.DE>
+
+	libgfortran:
+	* caf/shmem/sync.h (lock_t): Rename to caf_shmem_lock_t.
+	* caf/shmem.c: Adapt uses.
+
+(cherry picked from commit d523622c3eca42087daf4a991481d1b6573f9388)
+---
+ libgfortran/caf/shmem.c      | 10 +++++-----
+ libgfortran/caf/shmem/sync.h |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/libgfortran/caf/shmem.c b/libgfortran/caf/shmem.c
+index db19ee38f9b..a83e800d983 100644
+--- a/libgfortran/caf/shmem.c
++++ b/libgfortran/caf/shmem.c
+@@ -273,7 +273,7 @@ _gfortran_caf_register (size_t size, caf_register_t type, caf_token_t *token,
+     case CAF_REGTYPE_LOCK_ALLOC:
+     case CAF_REGTYPE_CRITICAL:
+       {
+-	lock_t *addr;
++	caf_shmem_lock_t *addr;
+ 	bool created;
+ 	size_t alloc_size;
+ 
+@@ -286,7 +286,7 @@ _gfortran_caf_register (size_t size, caf_register_t type, caf_token_t *token,
+ 	alloc_size = size;
+ #endif
+ 	addr = alloc_get_memory_by_id_created (&local->ai,
+-					       alloc_size * sizeof (lock_t),
++					       alloc_size * sizeof (caf_shmem_lock_t),
+ 					       next_memid, &created);
+ 
+ 	if (created)
+@@ -296,7 +296,7 @@ _gfortran_caf_register (size_t size, caf_register_t type, caf_token_t *token,
+ 	    for (size_t c = 0; c < alloc_size; ++c)
+ 	      initialize_shared_errorcheck_mutex (&addr[c]);
+ 	  }
+-	size *= sizeof (lock_t);
++	size *= sizeof (caf_shmem_lock_t);
+ 
+ 	allocator_unlock (&local->ai.alloc);
+ 	mem = addr;
+@@ -1503,7 +1503,7 @@ _gfortran_caf_lock (caf_token_t token, size_t index, int image_index,
+   const size_t lock_index = index;
+   (void) image_index; // Prevent unused warnings.
+ #endif
+-  lock_t *lock = &((lock_t *) MEMTOK (token))[lock_index];
++  caf_shmem_lock_t *lock = &((caf_shmem_lock_t *) MEMTOK (token))[lock_index];
+   int res;
+ 
+   res = acquired_lock ? caf_shmem_mutex_trylock (lock)
+@@ -1547,7 +1547,7 @@ _gfortran_caf_unlock (caf_token_t token, size_t index, int image_index,
+   const size_t lock_index = index;
+   (void) image_index; // Prevent unused warnings.
+ #endif
+-  lock_t *lock = &((lock_t *) MEMTOK (token))[lock_index];
++  caf_shmem_lock_t *lock = &((caf_shmem_lock_t *) MEMTOK (token))[lock_index];
+   int res;
+ 
+   res = caf_shmem_mutex_unlock (lock);
+diff --git a/libgfortran/caf/shmem/sync.h b/libgfortran/caf/shmem/sync.h
+index b07f59cd361..6f8b28d378a 100644
+--- a/libgfortran/caf/shmem/sync.h
++++ b/libgfortran/caf/shmem/sync.h
+@@ -43,7 +43,7 @@ typedef struct {
+   caf_shmem_condvar *triggers;
+ } sync_t;
+ 
+-typedef caf_shmem_mutex lock_t;
++typedef caf_shmem_mutex caf_shmem_lock_t;
+ 
+ typedef int event_t;
+ 
