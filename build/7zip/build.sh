@@ -23,6 +23,7 @@ SUMMARY="The 7-Zip compression and archiving utility"
 DESC="7-Zip is a file archiver with a high compression ratio"
 
 set_arch 64
+set_gccver 15
 
 BUNDLEDIR=CPP/7zip/Bundles/Alone2
 

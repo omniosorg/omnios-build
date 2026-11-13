@@ -28,6 +28,8 @@ DESC+="and general purpose cryptographic library"
 SKIP_LICENCES=OpenSSL
 BMI_EXPECTED=1
 
+set_gccver 15
+
 MAJVER=${VER%.*}
 XFORM_ARGS+="
     -DMAJVER=$MAJVER
