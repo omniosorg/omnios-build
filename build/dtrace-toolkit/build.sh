@@ -13,17 +13,15 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2022 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
 PROG=DTraceToolkit
-VER=0.99.20220214
+VER=0.99.20261115
 PKG=developer/dtrace/toolkit
 SUMMARY="$PROG ($VER)"
 DESC="$PROG - a collection of over 200 useful and documented DTrace scripts"
-
-DEPENDS_IPS="runtime/python-27"
 
 set_builddir toolkit-$VER
 
