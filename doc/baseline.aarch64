@@ -394,6 +394,7 @@ omnios release/notices
 omnios runtime/perl
 omnios runtime/perl/module/sun-solaris
 omnios runtime/python-313
+omnios runtime/python-315
 omnios security/bart
 omnios security/sudo
 omnios service/fault-management
