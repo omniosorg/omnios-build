@@ -103,7 +103,7 @@ syn match p5ma_val /\v\S+/
   \ nextgroup=p5ma_attr,p5ma_nl
   \ skipwhite
 
-syn match p5ma_lit /\v\S+/
+syn match p5ma_lit /\v[^[:space:]=\\]+(\s|$)@=/
   \ contained
   \ contains=p5m_string,p5m_token
   \ nextgroup=p5ma_attr,p5ma_nl
