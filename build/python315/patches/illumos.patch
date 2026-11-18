@@ -1,3 +1,15 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Lib/sysconfig/__init__.py a/Lib/sysconfig/__init__.py
+--- a~/Lib/sysconfig/__init__.py	1970-01-01 00:00:00
++++ a/Lib/sysconfig/__init__.py	1970-01-01 00:00:00
+@@ -718,7 +718,7 @@ def get_platform():
+         # XXX what about Alpha, SPARC, etc?
+         return  f"{osname}-{machine}"
+     elif osname[:5] == "sunos":
+-        if release[0] >= "5":           # SunOS 5 == Solaris 2
++        if release is not None and release[0] >= "5":  # SunOS 5 == Solaris 2
+             osname = "solaris"
+             release = f"{int(release[0]) - 3}.{release[2:]}"
+             # We can't use "platform.architecture()[0]" because a
 diff -wpruN --no-dereference '--exclude=*.orig' a~/Misc/platform_triplet.c a/Misc/platform_triplet.c
 --- a~/Misc/platform_triplet.c	1970-01-01 00:00:00
 +++ a/Misc/platform_triplet.c	1970-01-01 00:00:00
@@ -75,3 +87,16 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure.ac a/configure.ac
  	*)
  		# for now, limit cross builds to known configurations
  		MACHDEP="unknown"
+@@ -1610,7 +1631,12 @@ if test $enable_shared = "yes"; then
+     SunOS*)
+       LDLIBRARY='libpython$(LDVERSION).so'
+       BLDLIBRARY='-Wl,-R,$(LIBDIR) -L. -lpython$(LDVERSION)'
++      if test "$cross_compiling" = yes; then
++        # ld.so.1 would load the target libpython into the build python
++        RUNSHARED=
++      else
+       RUNSHARED=LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
++      fi
+       INSTSONAME="$LDLIBRARY".$SOVERSION
+       if test "$with_pydebug" != yes
+       then
