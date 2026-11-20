@@ -1,0 +1,25 @@
+kitty and Ghostty set TERM to xterm-kitty and xterm-ghostty respectively by
+default, but ncurses only provides their descriptions under the names kitty
+and ghostty. Add the TERM names as aliases.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/misc/terminfo.src a/misc/terminfo.src
+--- a~/misc/terminfo.src	1970-01-01 00:00:00
++++ a/misc/terminfo.src	1970-01-01 00:00:00
+@@ -7948,7 +7948,7 @@ rio-direct|rio with direct-colors,
+ #*	ka1, ka3, kc1, kc3 were bogus (removed)
+ #*	meta sends escape (removed kmm) -TD
+ #*	cvvis does not make cursor "more visible" -TD
+-kitty|KovId's TTY,
++kitty|xterm-kitty|KovId's TTY,
+ 	use=xterm+256color, use=kitty+common,
+ kitty-direct|KovId's TTY using direct colors,
+ 	oc=\E]104\007, use=xterm+direct2, use=kitty+common,
+@@ -8531,7 +8531,7 @@ contour-direct|Contour terminal with dir
+ #
+ # The developers set "Tc" in their terminal description to hint that it
+ # supports direct-colors, but the feature did not work with this version -TD
+-ghostty|Ghostty terminal emulator,
++ghostty|xterm-ghostty|Ghostty terminal emulator,
+ 	am, bce, km, mc5i, mir, msgr, npc, xenl, AX, XT,
+ 	cols#80, lines#24, pairs#0x7fff,
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy
