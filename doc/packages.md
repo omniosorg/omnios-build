@@ -131,7 +131,7 @@
 | library/python-3/asn1crypto-315	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-315		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-315		| 2.1.1			| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-315		| 7.17.2		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-315		| 7.17.3		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-315		| 1.6.2			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-315	| 50.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-315		| 3.20			| https://pypi.org/rss/project/idna/releases.xml
