@@ -4,6 +4,57 @@
 
 # Release Notes for OmniOSce v11 r151060
 
+## r151060d (2026-11-23)
+Weekly release for w/c 23rd of November 2026.
+> This is a non-reboot update
+
+### Security Fixes
+
+- `OpenJDK` packages have been updated to versions 1.8.514-01, 11.0.33.1+1,
+  17.0.21.1+2 and 21.0.13.1+2, incorporating the fixes from the
+  [2026/11/17](https://openjdk.org/groups/vulnerability/advisories/2026-11-17)
+  OpenJDK vulnerability advisory.
+
+- `git` has been updated to version 2.56.1, fixing
+  [multiple vulnerabilities](https://github.com/git/git/blob/v2.50.2/Documentation/RelNotes/2.50.2.adoc).
+  A crafted repository could execute code during a recursive clone
+  ([CVE-2026-111760](https://www.cve.org/CVERecord?id=CVE-2026-111760)),
+  and a merge with many conflicts could corrupt the heap
+  ([CVE-2026-105437](https://www.cve.org/CVERecord?id=CVE-2026-105437)).
+  Other fixes cover path traversal through a server-advertised branch
+  name, reading of arbitrary paths by `fast-import`, and crashes from
+  crafted signatures and binary patches
+  ([CVE-2026-113408](https://www.cve.org/CVERecord?id=CVE-2026-113408),
+  [CVE-2026-114466](https://www.cve.org/CVERecord?id=CVE-2026-114466),
+  [CVE-2026-114467](https://www.cve.org/CVERecord?id=CVE-2026-114467),
+  [CVE-2026-114469](https://www.cve.org/CVERecord?id=CVE-2026-114469)).
+
+- `dbus` has been updated to version 1.16.4, fixing
+  [denial of service flaws](https://gitlab.freedesktop.org/dbus/dbus/-/blob/dbus-1.16.4/NEWS)
+  through which a local user could crash the system bus or make it
+  busy-loop, or stall a server using the `nonce-tcp` transport
+  ([CVE-2026-120749](https://www.cve.org/CVERecord?id=CVE-2026-120749),
+  [CVE-2026-128987](https://www.cve.org/CVERecord?id=CVE-2026-128987),
+  [CVE-2026-128886](https://www.cve.org/CVERecord?id=CVE-2026-128886)).
+
+- `7zip` has been updated to version 26.06, fixing
+  [several bugs and vulnerabilities](https://www.7-zip.org/history.txt),
+  including a heap buffer overflow when extracting a crafted multi-volume
+  CAB archive
+  ([CVE-2026-125742](https://www.cve.org/CVERecord?id=CVE-2026-125742)).
+
+- `lz4` has been updated to version 1.11.1, fixing an out-of-bounds write
+  during high compression that was introduced in version 1.11.0; see the
+  [upstream release notes](https://github.com/lz4/lz4/releases/tag/v1.11.1).
+
+### Other Changes
+
+- The time zone database has been updated to version 2026f.
+
+<br>
+
+---
+
 ## r151060b (2026-11-09)
 Weekly release for w/c 09th of November 2026.
 > This update requires a reboot if the `system/bhyve` package is installed
