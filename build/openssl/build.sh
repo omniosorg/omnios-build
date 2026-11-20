@@ -13,7 +13,7 @@
 #
 # }}}
 #
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/build.sh
 
@@ -23,8 +23,8 @@ SUMMARY="Cryptography and SSL/TLS Toolkit"
 DESC="A toolkit for Secure Sockets Layer and Transport Layer protocols "
 DESC+="and general purpose cryptographic library"
 
-# Use the version of the openssl 3 package for this meta package
-inherit_ver openssl build-3.sh
+# Use the version of the openssl 4 package for this meta package
+inherit_ver openssl build-4.sh
 
 create_manifest()
 {
@@ -38,7 +38,7 @@ set name=pkg.summary value="$SUMMARY"
 set name=pkg.description value="$DESC"
 set name=pkg.human-version value="$VER"
 
-depend fmri=library/security/openssl-3 type=require
+depend fmri=library/security/openssl-4 type=require
 
 EOM
 }

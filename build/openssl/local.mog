@@ -9,7 +9,7 @@
 # http://www.illumos.org/license/CDDL.
 #
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 # Drop static libraries
 <transform file path=.*\.a$ -> drop>
@@ -22,6 +22,10 @@
 
 # Move the libraries
 <include relocate-usr-lib.mog>
+# Move the provider modules to where libcrypto looks for them
+# (MODULESDIR_RUNTIME, see modulesdir.patch).
+<transform file dir path=usr/lib/.*ossl-modules -> \
+    edit path usr/lib/ usr/ssl-$(MAJVER)/lib/ >
 
 # .. and mediate the links
 <transform link path=(usr/)?lib/.*\.so$ -> set mediator openssl>
@@ -56,6 +60,20 @@ link path=NOMOVE/usr/ssl target=ssl-$(MAJVER) \
 $(i386_ONLY)<transform file path=usr/ssl-([^/]+)/lib/amd64/pkgconfig/(.*) \
     -> emit \
     link path=usr/lib/amd64/pkgconfig/%<2> target=../../../../%(path) \
+    mediator=openssl mediator-version=%<1> >
+
+# Move the cmake files
+<transform file dir path=usr/lib/.*\.cmake -> \
+    edit path usr/lib/ usr/ssl-$(MAJVER)/lib/ >
+
+# .. and add mediated links
+<transform file path=usr/ssl-([^/]+)/lib/cmake/(.*) -> emit \
+    link path=usr/lib/cmake/%<2> target=../../../../%(path) \
+    mediator=openssl mediator-version=%<1> >
+
+$(i386_ONLY)<transform file path=usr/ssl-([^/]+)/lib/amd64/cmake/(.*) \
+    -> emit \
+    link path=usr/lib/amd64/cmake/%<2> target=../../../../../%(path) \
     mediator=openssl mediator-version=%<1> >
 
 # Move the include files

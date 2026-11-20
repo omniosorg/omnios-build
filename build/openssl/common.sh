@@ -10,7 +10,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2026 OmniOS Community Edition (OmniOSce) Association.
 
 function patch_pc {
     typeset ver=${1?ver}
@@ -18,7 +18,7 @@ function patch_pc {
 
     # Patch the .pc files to point to the version-specific location
     logcmd sed -i "
-        /^libdir=/s/usr\/lib/usr\/ssl-$ver\/lib/
+        /^libdir=/s/=.*\/lib/=\/usr\/ssl-$ver\/lib/
         /^includedir=/c\\
 includedir=/usr/ssl-$ver/include
         " `$FD -t f -e pc . $dir`

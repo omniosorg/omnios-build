@@ -1,0 +1,29 @@
+We patch the build to accept a separate MODULESDIR_RUNTIME alongside the
+existing MODULESDIR. The former specifies where openssl looks at runtime
+while the latter is the installation location. We set MODULESDIR_RUNTIME
+to the per-version /usr/ssl-N tree, since openssl-3 and openssl-4 would
+otherwise deliver the same modules and each links to its own libcrypto.
+MODULESDIR stays in libdir because the .pc and cmake files record it
+relative to libdir, and pointing it elsewhere breaks those paths once the
+files are relocated. local.mog moves the installed modules into place.
+
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Configurations/unix-Makefile.tmpl a/Configurations/unix-Makefile.tmpl
+--- a~/Configurations/unix-Makefile.tmpl	1970-01-01 00:00:00
++++ a/Configurations/unix-Makefile.tmpl	1970-01-01 00:00:00
+@@ -352,6 +352,7 @@ LIBDIR={- our $libdir = $config{libdir};
+ libdir={- file_name_is_absolute($libdir)
+           ? $libdir : '$(INSTALLTOP)/$(LIBDIR)' -}
+ MODULESDIR=$(libdir)/ossl-modules
++MODULESDIR_RUNTIME=$(MODULESDIR)
+ 
+ # Convenience variable for those who want to set the rpath in shared
+ # libraries and applications
+@@ -467,7 +468,7 @@ LIB_CPPFLAGS={- our $lib_cppflags =
+                 join(' ', $lib_cppflags,
+                           (map { '-D'.$_ }
+                                'OPENSSLDIR="\"$(OPENSSLDIR)\""',
+-                               'MODULESDIR="\"$(MODULESDIR)\""'),
++                               'MODULESDIR="\"$(MODULESDIR_RUNTIME)\""'),
+                           '$(CNF_CPPFLAGS)', '$(CPPFLAGS)') -}
+ LIB_CFLAGS={- join(' ', $target{lib_cflags} || (),
+                         $target{shared_cflag} || (),
