@@ -1,0 +1,17 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/CPP/7zip/UI/Common/ArchiveExtractCallback.cpp a/CPP/7zip/UI/Common/ArchiveExtractCallback.cpp
+--- a~/CPP/7zip/UI/Common/ArchiveExtractCallback.cpp	1970-01-01 00:00:00
++++ a/CPP/7zip/UI/Common/ArchiveExtractCallback.cpp	1970-01-01 00:00:00
+@@ -563,7 +563,13 @@ HRESULT CArchiveExtractCallback::GetTime
+   NCOM::CPropVariant prop;
+   RINOK(_arc->Archive->GetProperty(index, propID, &prop))
+   if (prop.vt == VT_FILETIME)
++  {
+     ft.Set_From_Prop(prop);
++    // A zero FILETIME is a time that is not set. SetFileTime() ignores one
++    // on Windows, but utimensat() would apply it as the year 1601.
++    if (ft.IsZero())
++      ft.Clear();
++  }
+   else if (prop.vt != VT_EMPTY)
+     return E_FAIL;
+   return S_OK;
