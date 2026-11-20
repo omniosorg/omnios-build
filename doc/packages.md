@@ -48,7 +48,7 @@
 | library/libedit			| 20260512-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.13		| https://github.com/libevent/libevent/tags
 | library/libidn			| 1.44			| https://ftp.gnu.org/gnu/libidn/
-| library/libffi			| 3.8.0			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
+| library/libffi			| 3.8.1			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
 | library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.53.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind

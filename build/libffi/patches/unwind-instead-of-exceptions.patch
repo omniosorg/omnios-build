@@ -1,7 +1,7 @@
 diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
 --- a~/configure	1970-01-01 00:00:00
 +++ a/configure	1970-01-01 00:00:00
-@@ -18699,7 +18699,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -20445,7 +20445,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
  fi
  
  if test "x$GCC" = "xyes"; then
@@ -10,8 +10,8 @@ diff -wpruN --no-dereference '--exclude=*.orig' a~/configure a/configure
  fi
  
  cat > local.exp <<EOF
-@@ -19550,7 +19550,7 @@ else $as_nop
- 
+@@ -21324,7 +21324,7 @@ else case e in #(
+   e)
    	libffi_cv_ro_eh_frame=yes
    	echo 'extern void foo (void); void bar (void) { foo (); foo (); }' > conftest.c
 -  	if $CC $CFLAGS -c -fpic -fexceptions $libffi_cv_no_lto -o conftest.o conftest.c > /dev/null 2>&1; then
