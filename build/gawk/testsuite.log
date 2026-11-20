@@ -65,7 +65,6 @@ closebad
 clsflnam
 cmdlinefsbacknl
 cmdlinefsbacknl2
-./cmdlinefsbacknl2.ok _cmdlinefsbacknl2 differ: char 8, line 2
 compare
 compare2
 concat1
@@ -179,6 +178,7 @@ nfloop
 nfneg
 nfset
 nlfldsep
+negexp2
 nlinstr
 nlstrina
 noeffect
@@ -326,7 +326,6 @@ zeroflag
 fflush
 getlnhd
 localenl
-./localenl.ok _localenl differ: char 37, line 3
 pid
 pipeio1
 pipeio2
@@ -383,6 +382,8 @@ dbugtypedre1
 dbugtypedre2
 delmessy
 delsub
+dbugbadcmd
+dbugbreak
 devfd
 devfd1
 devfd2
@@ -395,6 +396,7 @@ elemnew4
 equiv
 errno
 exit
+elemnew7
 fieldwdth
 forcenum
 fpat1
@@ -457,6 +459,10 @@ indirectbuiltin5
 indirectbuiltin6
 indirectcall
 indirectcall2
+indirectbuiltin7
+indirectbuiltin8
+indirectbuiltin9
+indirectbuiltin10
 indirectcall3
 intarray
 iolint
@@ -593,6 +599,7 @@ symtab9
 symtab10
 symtab11
 symtab12
+symtab13
 timeout
 typedregex1
 typedregex2
@@ -679,10 +686,10 @@ inf-nan-torture
 intformat
 ======== Done with machine-specific tests ========
 2 TESTS FAILED
-make[3]: *** [Makefile:6104: pass-fail] Error 1
+make[3]: *** [Makefile:6183: pass-fail] Error 1
 ============== _cmdlinefsbacknl2 =============
---- cmdlinefsbacknl2.ok	Mon Jun 22 12:28:22 2026
-+++ _cmdlinefsbacknl2	Sat Jul 18 18:33:14 2026
+--- cmdlinefsbacknl2.ok	Mon Aug 24 14:12:46 2026
++++ _cmdlinefsbacknl2	Fri Nov 20 12:39:13 2026
 @@ -1,12 +1,19 @@
   5c 0a
 +
@@ -705,7 +712,7 @@ make[3]: *** [Makefile:6104: pass-fail] Error 1
  gawk: cmd. line:2: warning: invalid `\u' escape sequence
 ============== _localenl =============
 --- localenl.ok	Mon Jun 22 12:28:22 2026
-+++ _localenl	Sat Jul 18 18:33:24 2026
++++ _localenl	Fri Nov 20 12:39:31 2026
 @@ -1,4 +1,5 @@
  LC_ALL=C passed
  LC_ALL=POSIX passed
@@ -713,6 +720,6 @@ make[3]: *** [Makefile:6104: pass-fail] Error 1
 +en_US.ISO-8859-1: unknown locale
 +LC_ALL=POSIX passed
  LC_ALL=en_US.UTF-8 passed
-make[2]: *** [Makefile:2330: check] Error 1
-make[1]: *** [Makefile:803: check-recursive] Error 1
-make: *** [Makefile:1102: check] Error 2
+make[2]: *** [Makefile:2404: check] Error 1
+make[1]: *** [Makefile:802: check-recursive] Error 1
+make: *** [Makefile:1101: check] Error 2

@@ -143,4 +143,4 @@ not ok 6 - gettext: Fetching a UTF-8 msgid -> ISO-8859-1
 # failed 2 among 8 test(s)
 make[2]: *** [Makefile:86: t0204-gettext-reencode-sanity.sh] Error 1
 make[1]: *** [Makefile:67: test] Error 2
-make: *** [Makefile:3424: test] Error 2
+make: *** [Makefile:3426: test] Error 2

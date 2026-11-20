@@ -28,7 +28,7 @@
 | developer/nasm			| 3.02			| http://www.nasm.us/pub/nasm/releasebuilds
 | developer/parser/bison		| 3.8.2			| https://ftp.gnu.org/gnu/bison/
 | developer/pkg-config			| 0.29.2		| https://pkg-config.freedesktop.org/releases
-| developer/versioning/git		| 2.56.0		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
+| developer/versioning/git		| 2.56.1		| https://www.kernel.org/pub/software/scm/git https://git-scm.com/
 | developer/versioning/mercurial	| 7.2.4			| https://www.mercurial-scm.org/release/?M=D https://www.mercurial-scm.org/wiki/WhatsNew
 | developer/versioning/sccs		| 5.09			| https://sourceforge.net/projects/sccs/files/
 | driver/tuntap				| 1.3.3			| https://github.com/kaizawa/tuntap/tags
@@ -48,7 +48,7 @@
 | library/libedit			| 20260512-3.1		| https://thrysoee.dk/editline/
 | library/libevent			| 2.1.13		| https://github.com/libevent/libevent/tags
 | library/libidn			| 1.44			| https://ftp.gnu.org/gnu/libidn/
-| library/libffi			| 3.8.0			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
+| library/libffi			| 3.8.1			| https://github.com/libffi/libffi/releases https://sourceware.org/libffi/
 | library/libmagic			| 5.48			| https://github.com/file/file/tags
 | library/libpsl			| 0.23.3		| https://github.com/rockdaboot/libpsl/releases
 | library/libuv				| 1.53.0		| https://github.com/libuv/libuv/releases | Currently used solely by bind
@@ -58,7 +58,7 @@
 | library/nettle			| 4.0			| https://ftp.gnu.org/gnu/nettle/ https://www.lysator.liu.se/~nisse/nettle/ | Used solely by chrony
 | library/ncurses			| 6.6			| https://ftp.gnu.org/gnu/ncurses/
 | library/nghttp2			| 1.71.0		| https://github.com/nghttp2/nghttp2/releases
-| library/nspr				| 4.40			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
+| library/nspr				| 4.41			| http://archive.mozilla.org/pub/nspr/releases/ | https://ftp.mozilla.org/pub/security/nss/releases/
 | library/pcre2				| 10.49			| https://github.com/PhilipHazel/pcre2/releases
 | library/perl-5/xml-parser		| 2.59			| https://metacpan.org/pod/XML::Parser
 | library/readline			| 8.3			| https://ftp.gnu.org/gnu/readline/
@@ -69,17 +69,17 @@
 | library/zlib				| 1.4			| https://www.zlib.net/
 | meta/data/microcode/amd		| 20260724		| https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/log/amd-ucode
 | meta/data/microcode/intel		| 20260812		| https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases
-| network/dns/bind			| 9.20.30		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
+| network/dns/bind			| 9.20.31		| https://ftp.isc.org/isc/bind9/ https://www.isc.org/downloads/
 | network/openssh			| 10.6p2		| https://www.mirrorservice.org/pub/OpenBSD/OpenSSH/portable/
 | network/rsync				| 3.5.2			| https://rsync.samba.org/
 | network/service/isc-dhcp		| 4.4.3-P1		| https://ftp.isc.org/isc/dhcp/ https://www.isc.org/downloads/
 | network/socat				| 1.8.1.3		| http://www.dest-unreach.org/socat/download/
-| network/test/iperf			| 3.22			| https://github.com/esnet/iperf/releases
+| network/test/iperf			| 3.22.1		| https://github.com/esnet/iperf/releases
 | network/test/netperf			| 2.7.0			| https://github.com/HewlettPackard/netperf/tags
-| runtime/java/openjdk11		| 11.0.33+10		| https://github.com/openjdk/jdk11u/tags
-| runtime/java/openjdk17		| 17.0.21.0.3+1		| https://github.com/openjdk/jdk17u/tags
-| runtime/java/openjdk21		| 21.0.13.0.3+1		| https://github.com/openjdk/jdk21u/tags
-| runtime/java/openjdk8			| 1.8.512-09		| https://github.com/openjdk/jdk8u/tags
+| runtime/java/openjdk11		| 11.0.33.1+1		| https://github.com/openjdk/jdk11u/tags
+| runtime/java/openjdk17		| 17.0.21.1+2		| https://github.com/openjdk/jdk17u/tags
+| runtime/java/openjdk21		| 21.0.13.1+2		| https://github.com/openjdk/jdk21u/tags
+| runtime/java/openjdk8			| 1.8.514-01		| https://github.com/openjdk/jdk8u/tags
 | runtime/perl				| 5.44.0		| https://www.cpan.org/src/README.html
 | runtime/python-313			| 3.13.18		| https://www.python.org/downloads/source/
 | runtime/python-315			| 3.15.2		| https://www.python.org/downloads/source/
@@ -95,9 +95,9 @@
 | shell/zsh				| 5.9.2			| https://sourceforge.net/projects/zsh/files/zsh
 | system/cpuid				| 1.8.3			| https://github.com/tycho/cpuid/tags
 | system/data/urxvt-terminfo		| 9.32			| http://dist.schmorp.de/rxvt-unicode/
-| system/library/dbus			| 1.16.2		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
+| system/library/dbus			| 1.16.4		| https://dbus.freedesktop.org/releases/dbus | Odd minor versions are dev/unstable
 | system/library/libdbus-glib		| 0.116			| https://dbus.freedesktop.org/releases/dbus-glib/
-| system/library/mozilla-nss		| 3.133			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
+| system/library/mozilla-nss		| 3.134			| https://ftp.mozilla.org/pub/security/nss/releases/ https://firefox-source-docs.mozilla.org/security/nss/releases/
 | system/library/pcap			| 1.11.0		| http://www.tcpdump.org/#latest-releases
 | system/management/cloud-init		| 26.2			| https://github.com/canonical/cloud-init/releases
 | system/management/ipmitool		| 1.8.19		| https://github.com/ipmitool/ipmitool/releases
@@ -111,7 +111,7 @@
 | system/watch				| 4.0.7			| https://gitlab.com/api/v4/projects/procps-ng%2Fprocps/releases https://gitlab.com/procps-ng/procps/-/releases
 | terminal/screen			| 5.0.2			| https://ftp.gnu.org/gnu/screen/
 | terminal/tmux				| 3.8			| https://github.com/tmux/tmux/releases http://tmux.github.io/
-| text/gawk				| 5.4.1			| https://ftp.gnu.org/gnu/gawk/
+| text/gawk				| 5.4.2			| https://ftp.gnu.org/gnu/gawk/
 | text/gnu-diffutils			| 3.12			| https://ftp.gnu.org/gnu/diffutils/
 | text/gnu-gettext			| 1.0			| https://ftp.gnu.org/pub/gnu/gettext/
 | text/gnu-grep				| 3.12			| https://ftp.gnu.org/gnu/grep/
@@ -131,7 +131,7 @@
 | library/python-3/asn1crypto-315	| 1.5.1			| https://pypi.org/rss/project/asn1crypto/releases.xml
 | library/python-3/attrs-315		| 26.1.0		| https://pypi.org/rss/project/attrs/releases.xml
 | library/python-3/cffi-315		| 2.1.1			| https://pypi.org/rss/project/cffi/releases.xml
-| library/python-3/coverage-315		| 7.17.2		| https://pypi.org/rss/project/coverage/releases.xml
+| library/python-3/coverage-315		| 7.17.3		| https://pypi.org/rss/project/coverage/releases.xml
 | library/python-3/crossenv-315		| 1.6.2			| https://pypi.org/rss/project/crossenv/releases.xml
 | library/python-3/cryptography-315	| 50.0.2		| https://pypi.org/rss/project/cryptography/releases.xml
 | library/python-3/idna-315		| 3.20			| https://pypi.org/rss/project/idna/releases.xml

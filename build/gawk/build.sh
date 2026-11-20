@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=gawk
-VER=5.4.1
+VER=5.4.2
 PKG=text/gawk
 SUMMARY="GNU awk"
 DESC="gawk - GNU implementation of awk"
