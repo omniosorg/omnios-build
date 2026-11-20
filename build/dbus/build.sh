@@ -18,7 +18,7 @@
 . ../../lib/build.sh
 
 PROG=dbus
-VER=1.16.2
+VER=1.16.4
 PKG=dbus ##IGNORE##
 SUMMARY="filled in below"
 DESC="$SUMMARY"
