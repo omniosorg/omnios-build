@@ -2052,6 +2052,7 @@ make_package_impl() {
         pkgmeta pkg.human-version   "$VERHUMAN"
         [ -n "$PKG_ARCH" ] && pkgmeta variant.arch $PKG_ARCH
         [ $legacy -eq 1 ] && pkgmeta pkg.legacy true
+        [ -n "$SUPERSEDES" ] && pkgmeta pkg.depend.supersedes "$SUPERSEDES"
         if [[ $_ARC_SOURCE = *\ * ]]; then
             _asindex=0
             for _as in $_ARC_SOURCE; do
