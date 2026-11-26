@@ -23,9 +23,6 @@ PKG=security/sudo
 SUMMARY="Authority delegation tool"
 DESC="Provide limited super-user privileges to specific users"
 
-# does not yet build with OpenSSL 4
-set_opensslver 3
-
 set_arch 64
 
 CONFIGURE_OPTS="
