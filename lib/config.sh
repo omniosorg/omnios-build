@@ -318,7 +318,7 @@ DEFAULT_CLANG_VER=21
 PYTHON2VER=2.7
 PYTHON3VER=3.15
 DEFAULT_PYTHON_VER=$PYTHON3VER
-EXP_OPENSSLVER=3
+EXP_OPENSSLVER=4
 
 # Options to turn compiler features on and off. Associative array keyed by
 # compiler version or _ for all versions.

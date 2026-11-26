@@ -24,6 +24,9 @@ SUMMARY="GNU Wget"
 DESC="Retrieving files using HTTP, HTTPS, FTP and FTPS "
 DESC+="the most widely-used Internet protocols"
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 RUN_DEPENDS_IPS="library/libidn web/ca-bundle"
 BUILD_DEPENDS_IPS+="
     developer/lexer/flex

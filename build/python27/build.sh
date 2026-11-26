@@ -23,6 +23,9 @@ PKG=runtime/python-27
 SUMMARY="$PROG ${VER%.*}"
 DESC="$SUMMARY"
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 set_cstandard gnu17
 
 set_python_version $PYTHON2VER

@@ -31,6 +31,9 @@ PKG=library/security/trousers
 SUMMARY="TrouSerS - An open-source TCG Software Stack implementation."
 DESC="TrouSerS - software for accessing a TPM device"
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 forgo_isaexec
 
 # We need the XPG6 iconv()

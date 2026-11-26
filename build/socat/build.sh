@@ -23,6 +23,9 @@ SUMMARY="Multipurpose socket relay"
 DESC="socat is a relay for bidirectional data transfer between two "
 DESC+="independent data channels."
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 set_arch 64
 
 save_function patch_source _patch_source

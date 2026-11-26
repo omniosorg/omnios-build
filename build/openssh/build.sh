@@ -23,6 +23,9 @@ PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 set_arch 64
 set_cstandard gnu17
 
