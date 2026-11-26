@@ -1,0 +1,116 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/Modules/_ssl.c a/Modules/_ssl.c
+--- a~/Modules/_ssl.c	1970-01-01 00:00:00
++++ a/Modules/_ssl.c	1970-01-01 00:00:00
+@@ -120,6 +120,11 @@ struct py_ssl_library_code {
+ # define HAVE_TLSv1_2 0
+ #endif
+ 
++/* OpenSSL 4.0 has no SSLv3 support but does not define OPENSSL_NO_SSL3 */
++#if OPENSSL_VERSION_NUMBER >= 0x40000000L && !defined(OPENSSL_NO_SSL3)
++# define OPENSSL_NO_SSL3
++#endif
++
+ /* SNI support (client- and server-side) appeared in OpenSSL 1.0.0 and 0.9.8f
+  * This includes the SSL_set_SSL_CTX() function.
+  */
+@@ -592,7 +597,6 @@ newPySSLSocket(PySSLContext *sslctx, PyS
+     Py_INCREF(sslctx);
+ 
+     /* Make sure the SSL error state is initialized */
+-    (void) ERR_get_state();
+     ERR_clear_error();
+ 
+     PySSL_BEGIN_ALLOW_THREADS
+@@ -956,18 +960,18 @@ _get_peer_alt_names (X509 *certificate)
+             goto fail;
+         }
+ 
+-        p = X509_EXTENSION_get_data(ext)->data;
++        p = ASN1_STRING_get0_data(X509_EXTENSION_get_data(ext));
+         if (method->it)
+             names = (GENERAL_NAMES*)
+               (ASN1_item_d2i(NULL,
+                              &p,
+-                             X509_EXTENSION_get_data(ext)->length,
++                             ASN1_STRING_length(X509_EXTENSION_get_data(ext)),
+                              ASN1_ITEM_ptr(method->it)));
+         else
+             names = (GENERAL_NAMES*)
+               (method->d2i(NULL,
+                            &p,
+-                           X509_EXTENSION_get_data(ext)->length));
++                           ASN1_STRING_length(X509_EXTENSION_get_data(ext))));
+ 
+         for(j = 0; j < sk_GENERAL_NAME_num(names); j++) {
+             /* get a rendering of each name in the set of names */
+@@ -1028,7 +1032,7 @@ _get_peer_alt_names (X509 *certificate)
+                     goto fail;
+                 }
+                 PyTuple_SET_ITEM(t, 0, v);
+-                v = PyString_FromStringAndSize((char *)ASN1_STRING_data(as),
++                v = PyString_FromStringAndSize((char *)ASN1_STRING_get0_data(as),
+                                                ASN1_STRING_length(as));
+                 if (v == NULL) {
+                     Py_DECREF(t);
+@@ -1173,8 +1177,9 @@ _get_aia_uri(X509 *certificate, int nid)
+             continue;
+         }
+         uri = ad->location->d.uniformResourceIdentifier;
+-        ostr = PyUnicode_FromStringAndSize((char *)uri->data,
+-                                           uri->length);
++        ostr = PyUnicode_FromStringAndSize(
++            (const char *)ASN1_STRING_get0_data(uri),
++            ASN1_STRING_length(uri));
+         if (ostr == NULL) {
+             goto fail;
+         }
+@@ -1240,8 +1245,9 @@ _get_crl_dp(X509 *certificate) {
+                 continue;
+             }
+             uri = gn->d.uniformResourceIdentifier;
+-            ouri = PyUnicode_FromStringAndSize((char *)uri->data,
+-                                               uri->length);
++            ouri = PyUnicode_FromStringAndSize(
++                (const char *)ASN1_STRING_get0_data(uri),
++                ASN1_STRING_length(uri));
+             if (ouri == NULL)
+                 goto done;
+ 
+@@ -2173,6 +2179,21 @@ static PyTypeObject PySSLSocket_Type = {
+  * _SSLContext objects
+  */
+ 
++/* Create a context which is restricted to a single protocol version */
++static SSL_CTX *
++context_new_version(int version)
++{
++    SSL_CTX *ctx = SSL_CTX_new(TLS_method());
++
++    if (ctx != NULL &&
++        (!SSL_CTX_set_min_proto_version(ctx, version) ||
++        !SSL_CTX_set_max_proto_version(ctx, version))) {
++        SSL_CTX_free(ctx);
++        ctx = NULL;
++    }
++    return ctx;
++}
++
+ static PyObject *
+ context_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+ {
+@@ -2190,12 +2211,12 @@ context_new(PyTypeObject *type, PyObject
+ 
+     PySSL_BEGIN_ALLOW_THREADS
+     if (proto_version == PY_SSL_VERSION_TLS1)
+-        ctx = SSL_CTX_new(TLSv1_method());
++        ctx = context_new_version(TLS1_VERSION);
+ #if HAVE_TLSv1_2
+     else if (proto_version == PY_SSL_VERSION_TLS1_1)
+-        ctx = SSL_CTX_new(TLSv1_1_method());
++        ctx = context_new_version(TLS1_1_VERSION);
+     else if (proto_version == PY_SSL_VERSION_TLS1_2)
+-        ctx = SSL_CTX_new(TLSv1_2_method());
++        ctx = context_new_version(TLS1_2_VERSION);
+ #endif
+ #ifndef OPENSSL_NO_SSL3
+     else if (proto_version == PY_SSL_VERSION_SSL3)
