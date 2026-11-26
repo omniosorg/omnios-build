@@ -23,9 +23,6 @@ PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
 
-# does not yet build with OpenSSL 4
-set_opensslver 3
-
 set_arch 64
 set_cstandard gnu17
 
@@ -46,7 +43,6 @@ CONFIGURE_OPTS="
     --without-rpath
     --disable-lastlog
     --with-privsep-user=daemon
-    --with-ssl-engine
     --with-solaris-projects
 "
 CONFIGURE_OPTS[amd64]+="
