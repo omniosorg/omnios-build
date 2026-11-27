@@ -23,6 +23,9 @@ MVER=${VER%.*}
 SUMMARY="$PROG $MVER"
 DESC="$SUMMARY"
 
+# does not yet build with OpenSSL 4
+set_opensslver 3
+
 BUILD_DEPENDS_IPS="
     developer/build/autoconf
     developer/pkg-config

@@ -1,0 +1,12 @@
+diff -wpruN --no-dereference '--exclude=*.orig' a~/src/openssl.c a/src/openssl.c
+--- a~/src/openssl.c	1970-01-01 00:00:00
++++ a/src/openssl.c	1970-01-01 00:00:00
+@@ -226,7 +226,7 @@ ssl_init (void)
+       break;
+ 
+     case secure_protocol_sslv3:
+-#ifndef OPENSSL_NO_SSL3_METHOD
++#if !defined OPENSSL_NO_SSL3_METHOD && OPENSSL_VERSION_NUMBER < 0x40000000L
+       meth = SSLv3_client_method ();
+ #endif
+       break;

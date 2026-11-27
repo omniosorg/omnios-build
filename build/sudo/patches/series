@@ -3,3 +3,4 @@ Makefile.in.patch
 mansections.patch
 pam-illumos.patch
 intercept-netlibs.patch
+openssl4.patch

@@ -43,7 +43,6 @@ CONFIGURE_OPTS="
     --without-rpath
     --disable-lastlog
     --with-privsep-user=daemon
-    --with-ssl-engine
     --with-solaris-projects
 "
 CONFIGURE_OPTS[amd64]+="

@@ -1026,10 +1026,17 @@ init() {
     fi
 
     if [ -n "$FORCE_OPENSSL_VERSION" ]; then
-        CFLAGS[0]="-I/usr/ssl-$FORCE_OPENSSL_VERSION/include ${CFLAGS[0]}"
-        LDFLAGS[i386]="-L/usr/ssl-$FORCE_OPENSSL_VERSION/lib ${LDFLAGS[i386]}"
-        LDFLAGS[amd64]="-L/usr/ssl-$FORCE_OPENSSL_VERSION/lib/amd64 "
-        LDFLAGS[amd64]+="${LDFLAGS[amd64]}"
+        typeset a d
+        for a in $BUILDARCH; do
+            d="$OPENSSLPATH"
+            cross_arch $a && d="${SYSROOT[$a]}$d"
+            CPPFLAGS[$a]="-I$d/include ${CPPFLAGS[$a]}"
+            d+="/${LIBDIRS[$a]}"
+            LDFLAGS[$a]="-L$d ${LDFLAGS[$a]}"
+            d+="/pkgconfig"
+            [ -n "${PKG_CONFIG_PATH[$a]}" ] && d+=":${PKG_CONFIG_PATH[$a]}"
+            PKG_CONFIG_PATH[$a]="$d"
+        done
     fi
 
     # Create symbolic links to build area

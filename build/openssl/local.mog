@@ -139,8 +139,8 @@ $(i386_ONLY)link path=usr/ssl-$(MAJVER)/lib/amd64/libcrypto.so \
 
 ######################################################################
 
-# Make version 3 the default
-<transform link mediator-version=3 -> set mediator-priority vendor>
+# Make version 4 the default
+<transform link mediator-version=4 -> set mediator-priority vendor>
 
 # Remove NOMOVE/ prefixes, used above for actions that should not be
 # touched by the generic rename and mediation transforms above.
