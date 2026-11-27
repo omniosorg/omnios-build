@@ -292,6 +292,12 @@ SYS_XFORM_ARGS=
 XFORM_ARGS=
 PKG_INCLUDE_TS=
 
+# To revert a package to an older version after newer ones have been published,
+# set this in the build script to the highest version being withdrawn. Systems
+# with a version in the range (VER, SUPERSEDES] installed will move back to VER
+# on their next update.
+SUPERSEDES=
+
 #############################################################################
 # C compiler options - these can be overridden by a build script
 #############################################################################

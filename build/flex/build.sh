@@ -26,7 +26,10 @@
 . ../../lib/build.sh
 
 PROG=flex
-VER=2.6.11
+VER=2.6.4
+# 2.6.5 and the releases which quickly followed it are buggy in various ways.
+# 2.6.5 and 2.6.11 were published to bloody and then withdrawn.
+SUPERSEDES=2.6.11
 PKG=developer/lexer/flex
 SUMMARY="$PROG - A fast lexical analyser generator"
 DESC="$SUMMARY"
