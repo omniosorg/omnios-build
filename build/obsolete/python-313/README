@@ -1,0 +1,41 @@
+The following packages were made obsolete in r151061 as part of the migration
+to Python 3.15:
+
+	library/python-3/asn1crypto-313
+	library/python-3/attrs-313
+	library/python-3/cffi-313
+	library/python-3/coverage-313
+	library/python-3/crossenv-313
+	library/python-3/cryptography-313
+	library/python-3/idna-313
+	library/python-3/js-regex-313
+	library/python-3/jsonrpclib-313
+	library/python-3/jsonschema-313
+	library/python-3/jsonschema-specifications-313
+	library/python-3/maturin-313
+	library/python-3/meson-313
+	library/python-3/orjson-313
+	library/python-3/packaging-313
+	library/python-3/pip-313
+	library/python-3/pycodestyle-313
+	library/python-3/pycparser-313
+	library/python-3/pycurl-313
+	library/python-3/pyopenssl-313
+	library/python-3/pyrsistent-313
+	library/python-3/pyyaml-313
+	library/python-3/rapidjson-313
+	library/python-3/referencing-313
+	library/python-3/rpds-py-313
+	library/python-3/semantic-version-313
+	library/python-3/setuptools-313
+	library/python-3/setuptools-rust-313
+	library/python-3/six-313
+	library/python-3/tomli-313
+	library/python-3/typing-extensions-313
+	runtime/python-313
+	system/library/python/libbe-313
+	system/library/python/solaris-313
+	system/library/python/zfs-313
+
+All of these obsolete package entries can be removed in the r151063 cycle,
+after r151062 (next LTS) has been released.
