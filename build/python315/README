@@ -21,7 +21,6 @@ pkg
 		referencing
 		rpds-py
 			maturin (build)
-	orjson
 	pycurl
 	rapidjson
 	coverage
